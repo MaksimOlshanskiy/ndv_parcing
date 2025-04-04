@@ -136,27 +136,13 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                1,
-            ],
-        },
-        'publish_period': {
-            'type': 'term',
-            'value': 604800,
-        },
-        'house_material': {
-            'type': 'terms',
-            'value': [
-                8,
-                1,
-                4,
+                4743,
             ],
         },
         'room': {
             'type': 'terms',
             'value': [
-                4,
-                5,
-                6,
+                1,
             ],
         },
         'building_status': {
@@ -170,7 +156,8 @@ json_data = {
     },
 }
 
-name_counter = 16
+
+name_counter = 1
 
 
 
@@ -180,8 +167,6 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 current_date = datetime.date.today()
-
-
 
 
 session = requests.Session()
@@ -224,7 +209,8 @@ while len(flats) < total_count:
 
     for i in items:
         try:
-            city = i['geo']['address'][1]['fullName']
+            # city = i['geo']['address'][1]['fullName']
+            city = 'Санкт-Петербург'
         except:
             city = ''
         try:

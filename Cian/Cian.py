@@ -8,7 +8,7 @@ import openpyxl
 import os
 import random
 
-ids = [2498484
+ids = [843911
        ]  # id ЖК для парсинга
 
 proxies = {

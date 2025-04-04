@@ -5,7 +5,7 @@ import openpyxl
 import os
 import random
 from bs4 import BeautifulSoup
-from selenium import webdriver
+
 
 
 

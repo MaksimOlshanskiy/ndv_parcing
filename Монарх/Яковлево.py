@@ -65,7 +65,10 @@ def extract_digits_or_original(s):
 
 while True:
     response = session.post('https://xn----dtbalcybjze4p.xn--p1ai/api', cookies=cookies, headers=headers, params=params)
-    print(response.status_code)
+
+    print(response.status_code)  # Код ответа (200, 404, 500 и т. д.)
+    print(response.headers.get('Content-Type'))  # Тип содержимого ответа
+    print(response.text)  # Первые 1000 символов ответа
     items = response.json()['data']
 
     for i in items:

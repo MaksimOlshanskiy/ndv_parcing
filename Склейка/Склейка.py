@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = 'C:\\Users\\m.olshanskiy\\Desktop\\01.04'
+folder_path = 'C:\\Users\\m.olshanskiy\\Desktop\\Cian'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -42,7 +42,7 @@ def clean_project_name(df, column_name):
 print(all_data)
 print(f'Число строк в датафрейме {len(all_data)}')
 
-all_data = clean_project_name(all_data, 'Название проекта')
+# all_data = clean_project_name(all_data, 'Название проекта')
 
 # Сохраняем объединённые данные в новый Excel файл
 output_file_name = 'Combined_data.xlsx'
