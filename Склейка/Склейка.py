@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = 'C:\\Users\\m.olshanskiy\\Desktop\\Cian'
+folder_path = 'C:\\Users\\m.olshanskiy\\Desktop\\МО'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -34,9 +34,30 @@ def clean_project_name(df, column_name):
     df[column_name] = df[column_name].apply(clean_name)
     return df
 
+def remove_share_sale(df, column="Описание"):
+    """
+    Удаляет строки, содержащие ключевые слова, связанные с продажей доли в квартире.
+
+    Аргументы:
+        df (pd.DataFrame): DataFrame с данными.
+        column (str): Название столбца, в котором искать ключевые слова (по умолчанию "Описание").
+
+    Возвращает:
+        pd.DataFrame: DataFrame без строк, содержащих ключевые слова.
+    """
+    keywords = ["доля", "доли", 'долей', "продаётся комната", "продаю комнату", "продажа комнаты",
+                "часть квартиры", "1/2", "1/3", "1/4", "комната в квартире"]
+
+    # Фильтруем DataFrame, удаляя строки с ключевыми словами
+    mask = df[column].str.lower().str.contains("|".join(keywords), regex=True, na=False)
+    df_cleaned = df[~mask]  # Оставляем только строки, где ключевые слова не найдены
+
+    return df_cleaned
+
 
 
 # all_data = all_data.drop_duplicates()       # убираем полные дубликаты
+# all_data = remove_share_sale(all_data)   # убираем продажу долей
 
 # Проверяем результат
 print(all_data)

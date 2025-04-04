@@ -136,13 +136,32 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4743,
+                4820,
+            ],
+        },
+        'publish_period': {
+            'type': 'term',
+            'value': 2592000,
+        },
+        'with_neighbors': {
+            'type': 'term',
+            'value': False,
+        },
+        'house_material': {
+            'type': 'terms',
+            'value': [
+                8,
+                3,
+                4,
             ],
         },
         'room': {
             'type': 'terms',
             'value': [
-                1,
+                9,
+                3,
+                4,
+                5,
             ],
         },
         'building_status': {
@@ -157,7 +176,7 @@ json_data = {
 }
 
 
-name_counter = 1
+name_counter = 6
 
 
 
@@ -180,7 +199,7 @@ json_data["jsonQuery"]["page"]["value"] = 1
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(30, 45)
+        sleep_time = random.uniform(10, 15)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -209,8 +228,7 @@ while len(flats) < total_count:
 
     for i in items:
         try:
-            # city = i['geo']['address'][1]['fullName']
-            city = 'Санкт-Петербург'
+            city = i['geo']['address'][1]['fullName']
         except:
             city = ''
         try:
