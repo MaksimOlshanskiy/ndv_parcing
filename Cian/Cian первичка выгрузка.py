@@ -26,7 +26,8 @@ def classify_renovation(description: str) -> str:
         "стильный ремонт", "авторский дизайн", "ремонт класса люкс",
         "дорогой ремонт", "ремонт бизнес-класса", "реновация",
         "квартира в идеальном состоянии", "хорошем жилом состоянии",
-        "хорошем состоянии", "отличном состоянии", "меблирован", "с мебелью", "с техникой", 'с чистовой отделкой'
+        "хорошем состоянии", "отличном состоянии", "меблирован", "с мебелью", "с техникой", 'чистовой отделкой',
+        'чистовая отделка'
     ]
 
     no_renovation = [
@@ -43,17 +44,17 @@ def classify_renovation(description: str) -> str:
         "стройвариант", "под чистовую отделку", "без чистовой отделки", "без ремонта от застройщика",
         "в бетоне", "без финишной отделки", "предчистовая подготовка",
         "стены под покраску", "готово к отделке", "штукатурка стен",
-        "без напольного покрытия", "голые стены и пол", "только стяжка и штукатурка", 'с предчистовой отделкой'
+        "без напольного покрытия", "стяжка и штукатурка", 'предчистовой отделкой', 'white-box'
     ]
 
     # Проверяем ключевые слова
     for phrase in has_renovation:
         if re.search(rf"\b{phrase}\b", description):
-            return "С ремонтом"
+            return "С отделкой"
 
     for phrase in no_renovation:
         if re.search(rf"\b{phrase}\b", description):
-            return "Без ремонта"
+            return "Без отделки"
 
     for phrase in rough_finishing:
         if re.search(rf"\b{phrase}\b", description):
@@ -114,12 +115,12 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                176083,
+                5044,
             ],
         },
     },
-    'uri': '/newobjects/list?deal_type=sale&engine_version=2&offer_type=newobject&region=176083&p=2',
-    'subdomain': 'tver',
+    'uri': '/novostroyki/',
+    'subdomain': 'khimki',
     'offset': 0,
     'count': 25,
     'userCanUseHiddenBase': False,
