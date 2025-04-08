@@ -6,6 +6,9 @@ import openpyxl
 import os
 import random
 from bs4 import BeautifulSoup
+from selenium import webdriver
+
+driver = webdriver.Chrome()
 
 cookies = {
     'PHPSESSID': '1j7f30ldtelgl88i1ihm3gl0a6',

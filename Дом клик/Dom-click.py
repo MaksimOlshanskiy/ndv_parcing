@@ -5,6 +5,11 @@ import pandas as pd
 import openpyxl
 import os
 import random
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import undetected_chromedriver as uc
+
 
 cookies = {
     'mland_csi_user_id': 'b9dde91d-b7af-48fd-986e-b89ea703c3f3',
@@ -61,18 +66,21 @@ headers = {
     # 'Cookie': 'mland_csi_user_id=b9dde91d-b7af-48fd-986e-b89ea703c3f3; ns_session=5011a2ce-40b7-4307-9dff-9fed60e19442; _ym_uid=1740562161474500875; _ym_d=1740562161; RETENTION_COOKIES_NAME=da71a744b8a7424f8bc56bdf51b4ba8b:TYqJKjhpqh_akDpD7vt-jDOjHx8; sessionId=1dfe9bca45c844398634e16da44fce02:dBF_qU58ldZE_dfocSYyoxczPX0; UNIQ_SESSION_ID=a68756276f814777aa088db760c38ad9:ss86e0wOaMs90EdCxwTUV6aO8RY; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; adtech_uid=922aa77e-5a11-4674-bbc7-c1d747a45432%3Adomclick.ru; top100_id=t1.7711713.1593066985.1740562160961; logoSuffix=; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; _sv=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688; adrcid=A0r9KB4fc8duMUv2jPsp-tg; tmr_lvid=be20669b799d3b0c2f1ca532743794d3; tmr_lvidTS=1740562162078; canary-bind-id-985=next; favoriteHintShowed=true; regionAlert=1; currentRegionGuid=9930cc20-32c6-4f6f-a55e-cd67086c5171; currentLocalityGuid=ac7f923e-9a06-46c3-8f21-c72ae4ea9cac; regionName=ac7f923e-9a06-46c3-8f21-c72ae4ea9cac:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; cookieAlert=1; qrator_ssid2=v2.0.1742560890.331.023ba284zbW14vn4|CEicd1NamYaB7qlW|MJARO8jFNZb0BZxYWcZ1aTvQY0Lm4raFCzRFwq42frVfKEZSdtxJJKI/BJsdskr/gTWHVFcMBxjrdY2BVfNJuw==-Mrz2k1PuoSWP8D8QwJ+GtkSgzpk=; qrator_jsr=v2.0.1742560890.331.023ba284zbW14vn4|xlvIBrv4CY2OHgzn|35oCXdG2ka9KvnbY6fkHUopRiTmI4mYhuq1FmSvS0txbUlNha/gDX7NyXnAsoGrQKUyB7O03V1WplUyGTezCxA==-vaDjaw4bAkwoCEIgAdoHhav29iA=-00; qrator_jsid2=v2.0.1742560890.331.023ba284zbW14vn4|vLe2Iq2c7diFQiJ8|oUV6JyZNZ18gtFyQBQcjPByCxI2cUGADFrqtMUTNUG8AHX33s9rISk0ucj5lXNPu09zdYYLe7VOLZDFEepEv1gf7TBFBayR2La6Gl8QF7n/p/pmvxLLGGvgdf5MrL9qHX6txDP9F6UILLfequeR6Jw==-Y8sDZmTqEzTiVritpVJrgYLPNxo=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1742566539; _ym_isad=2; _visitId=633d6202-6db4-4d42-a1b1-ea00afdb42cd-f4f0dcc432ac8ba6; adrdel=1742566539730; _sas=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1742566541; t3_sid_7711713=s1.395297629.1742566539457.1742566634245.4.19.3.1; tmr_reqNum=52',
 }
 
+
+
 params = {
-    'address': 'ac7f923e-9a06-46c3-8f21-c72ae4ea9cac',
-    'offset': '0',
+    'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'offset': '20',
     'limit': '20',
-    'sort': 'price',
-    'sort_dir': 'asc',
+    'sort': 'qi',
+    'sort_dir': 'desc',
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '108464',
+    'complex_ids': '3195',
+    'complex_name': 'ЖК Времена года',
     'from_developer': '1',
-    'disable_payment': 'true',
+    'sort_by_tariff_date': '1'
 }
 
 response = requests.get('https://bff-search-web.domclick.ru/api/offers/v1', params=params, cookies=cookies, headers=headers)
@@ -80,6 +88,12 @@ response = requests.get('https://bff-search-web.domclick.ru/api/offers/v1', para
 
 
 flats = []
+options = uc.ChromeOptions()
+# Дополнительные настройки (опционально)
+options.add_argument("--start-maximized")  # Открыть браузер на весь экран
+# options.add_argument("--headless")       # Режим без графического интерфейса (может детектиться)
+driver = uc.Chrome(options=options)
+
 
 
 def extract_digits_or_original(s):
@@ -138,7 +152,6 @@ while True:
         room_count = i['generalInfo']['rooms']
         area = i['generalInfo']['area']
         price_per_metr = ''
-
         discount = ''
         price_per_metr_new = ''
         price = i["price"]
@@ -157,6 +170,15 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
+
+        if i['developerOffersCount'] > 1:
+            more_flats = i['path']
+            driver.get(more_flats)
+            page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
+            soup = BeautifulSoup(page_content, 'html.parser')
+            print(soup)
+            time.sleep(2)
+
     params["offset"] = str(int(params["offset"]) + 20)
     sleep_time = random.uniform(5, 10)
     time.sleep(sleep_time)

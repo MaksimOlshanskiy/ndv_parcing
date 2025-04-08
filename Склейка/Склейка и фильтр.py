@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = 'C:\\Users\\m.olshanskiy\\PycharmProjects\\ndv_parsing\\Cian\\2025-03-28'
+folder_path = 'C:\\Users\\m.olshanskiy\\PycharmProjects\\ndv_parsing\\Cian\\2025-04-07'
 
 df = pd.read_excel(file_path)  # Читаем Excel файл в DataFrame
 

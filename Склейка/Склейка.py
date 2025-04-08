@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = 'C:\\Users\\m.olshanskiy\\Desktop\\МО'
+folder_path = r'C:\Users\m.olshanskiy\Desktop\Тверь'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()

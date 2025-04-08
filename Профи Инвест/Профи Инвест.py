@@ -5,27 +5,58 @@ import pandas as pd
 import openpyxl
 import os
 import random
+from bs4 import BeautifulSoup
+
+cookies = {
+    'PHPSESSID': 'e27f2cc6bec9301a7ce623455c482aaa',
+    '_ym_uid': '174402831689653693',
+    '_ym_d': '1744028316',
+    '_ym_isad': '2',
+    '_ym_visorc': 'w',
+    '_ga': 'GA1.1.1236471003.1744028316',
+    '_cmg_csst9xkMh': '1744028317',
+    '_comagic_id9xkMh': '9267533637.13214484387.1744028316',
+    '_ga_07RX8YLWVE': 'GS1.1.1744028316.1.1.1744028339.0.0.0',
+}
 
 headers = {
     'accept': '*/*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-    'apptoken': 'e66a54282eb3dfcb12383577c08fe6c4',
-    'content-type': 'application/json',
-    'origin': 'https://rakurs.moscow',
-    'priority': 'u=0, i',
-    'referer': 'https://rakurs.moscow/',
-    'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    'origin': 'https://xn----dtbjjb4adhjrlq.xn--p1ai',
+    'priority': 'u=1, i',
+    'referer': 'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/property/object-43886',
+    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
+    'sec-fetch-site': 'same-origin',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'x-requested-with': 'XMLHttpRequest',
+    # 'cookie': 'PHPSESSID=e27f2cc6bec9301a7ce623455c482aaa; _ym_uid=174402831689653693; _ym_d=1744028316; _ym_isad=2; _ym_visorc=w; _ga=GA1.1.1236471003.1744028316; _cmg_csst9xkMh=1744028317; _comagic_id9xkMh=9267533637.13214484387.1744028316; _ga_07RX8YLWVE=GS1.1.1744028316.1.1.1744028339.0.0.0',
 }
 
-params = {
-    "page": 1,
+data = {
+    'type': 'property',
+    'view': 'list',
+    'sort': 'price_az',
+    'facing': '0',
+    'no_booked': '0',
+    'stage': '0',
+    'object': 'all',
+    'house': 'all',
+    'ready': 'all',
+    'rooms[]': 'all',
+    'price_min': '0',
+    'price_max': '0',
+    'floor_min': '0',
+    'floor_max': '0',
+    'size_min': '0',
+    'size_max': '0',
+    'page': '1',
 }
+
 
 flats = []
 date = datetime.now().date()
@@ -36,39 +67,59 @@ def extract_digits_or_original(s):
 
 while True:
 
-    response = requests.get('https://v2.planetarf.ru/api/v3/places?rooms[]=1&AgentCostStart=15742405&AgentCostEnd=54384162&allSquareStart=28&allSquareEnd=127&floorStart=2&floorEnd=44&id_house=&windowView=&viewsType=&repair=&placeAttr[]=noBooking&category[]=%D0%9A%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0&orderBy=AgentCost%20ASC&id_projects[]=883&saleStatus[]=1',
-                            params=params, headers=headers)
+    response = requests.post(
+        'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/api/load_more',
+        cookies=cookies,
+        headers=headers,
+        data=data,
+    )
 
-    items = response.json()["places"]
+    print(response.status_code)
+    html = response.json()['code']
+    soup = BeautifulSoup(html, 'html.parser')
+   #  items = soup.find_all(class_= 'row sale')
+
+    developer = ""
+    project = ''
+
+    flats_list = soup.find_all('a', class_='row')
+
+    for item in flats_list:
 
 
-    for i in items:
+        # Извлекаем данные
 
         url = ''
-        developer = "Дар"
-        project = 'Rakurs'
-        korpus = int(i["id_house"])
+        developer = "Профи Инвест"
+        project = item.find(class_='object_title').get_text(strip=True)
+        korpus = item.find(class_='cell col_house').get_text(strip=True).replace('Корпус ', '')
         type = ''
-        finish_type = i["repair"]
-        room_count = i["rooms"]
+        if item.find(class_='finishing_label'):
+            finish_type = 'С отделкой'
+        else:
+            finish_type = 'Без отделки'
+        if item.find(class_="rooms").get_text(strip=True) == 'Студия':
+            room_count = 0
+        else:
+            room_count = extract_digits_or_original(item.find(class_="rooms").get_text(strip=True))
         try:
-            area = float(i["allSquare"])
+            area = float(item.find(class_= 'size').get_text(strip=True).replace(' м²', ''))
         except:
             area = ''
         try:
-            old_price = int(i['AgentCost_old'])
+            old_price = int(item.find(class_= 'old_price').get_text(strip=True).replace(' ', '').replace('₽', ''))
         except:
             old_price = ''
         try:
-            price = int(i["AgentCost"])
+            price = int(item.find(class_= 'price').get_text(strip=True).replace(' ', '').replace('₽', ''))
         except:
             price = ''
         section = ''
         try:
-            floor = int()
+            floor = int(item.find(class_= 'cell col_floor').get_text(strip=True).split()[0])
         except:
-            floor = i["floor"]
-        flat_number = int(i["id"])
+            floor = ''
+        flat_number = ''
 
         english = ''
         promzona = ''
@@ -108,8 +159,13 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    if not items:
+    if not flats_list:
         break
+
+    data['page'] = str(int(data['page']) + 1)
+
+
+
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
 
@@ -158,7 +214,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Дар"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Профи Инвест"
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

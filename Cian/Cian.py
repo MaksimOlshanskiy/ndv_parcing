@@ -349,3 +349,7 @@ for y in ids:
 
     # Сохранение файла в папку
     df.to_excel(file_path, index=False)
+
+
+def classify_renovation():
+    return None
