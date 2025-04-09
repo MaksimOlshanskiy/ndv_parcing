@@ -82,7 +82,8 @@ json_data = {
         'from_mcad_km': {
             'type': 'range',
             'value': {
-                'lte': 20,
+                'gte': 70,
+                'lte': 100,
             },
         },
         'engine_version': {
@@ -92,53 +93,39 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                1,
                 4593,
-            ],
-        },
-        'geo': {
-            'type': 'geo',
-            'value': [
-                {
-                    'id': 3,
-                    'type': 'highway',
-                },
-                {
-                    'id': 53,
-                    'type': 'highway',
-                },
-                {
-                    'id': 135,
-                    'type': 'highway',
-                },
-                {
-                    'id': 8,
-                    'type': 'highway',
-                },
-                {
-                    'id': 139,
-                    'type': 'highway',
-                },
-                {
-                    'id': 20,
-                    'type': 'highway',
-                },
-                {
-                    'id': 36,
-                    'type': 'highway',
-                },
             ],
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
-        'offer_seller_type': {
-            'type': 'terms',
-            'value': [
-                1,
-                3,
-            ],
+        'house_year': {
+            'type': 'range',
+            'value': {
+                'gte': 1995,
+                'lte': 2025,
+            },
+        },
+        'electronic_trading': {
+            'type': 'term',
+            'value': 2,
+        },
+        'electricity': {
+            'type': 'term',
+            'value': True,
+        },
+        'gas': {
+            'type': 'term',
+            'value': True,
+        },
+        'has_water': {
+            'type': 'term',
+            'value': True,
+        },
+        'has_drainage': {
+            'type': 'term',
+            'value': True,
         },
         'land_status': {
             'type': 'terms',
@@ -146,18 +133,27 @@ json_data = {
                 2,
             ],
         },
+        'wc_site': {
+            'type': 'term',
+            'value': 1,
+        },
         'object_type': {
             'type': 'terms',
             'value': [
                 1,
             ],
         },
+        'is_dacha': {
+            'type': 'term',
+            'value': False,
+        },
         'page': {
             'type': 'term',
-            'value': 1,
+            'value': 2,
         },
     },
 }
+
 
 
 
@@ -190,7 +186,7 @@ json_data["jsonQuery"]["page"]["value"] = 1
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(30, 45)
+        sleep_time = random.uniform(10, 15)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -281,7 +277,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Коттеджи-1_{current_date}.xlsx"
+filename = f"Коттеджи-9_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

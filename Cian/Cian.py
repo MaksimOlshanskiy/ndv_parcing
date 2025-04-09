@@ -9,7 +9,7 @@ import os
 import random
 import re
 
-ids = [5208
+ids = [4482905
        ]  # id ЖК для парсинга
 
 proxies = {

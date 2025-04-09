@@ -8,36 +8,36 @@ import random
 
 import requests
 
+import requests
+
 cookies = {
-    'session': 'ee67d670a77185171cdddee3def5c3cda8f4aba83e98c025ef7b58dd0b782fcf',
-    'tmr_lvid': 'a75bace7f8204896de9dc77cf70e4731',
-    'tmr_lvidTS': '1744104565302',
-    'scbsid_old': '2746015342',
-    '_ym_uid': '1744104566621664155',
-    '_ym_d': '1744104566',
-    '_ym_isad': '2',
+    'PHPSESSID': '23bce2006c519e31a97d3d37a7b43309',
+    '_ga': 'GA1.1.78696301.1744199825',
+    'tmr_lvid': '90b120c5b664ffcb7746c2877fa742c4',
+    'tmr_lvidTS': '1744199825310',
+    '_ym_uid': '1744199826589358100',
+    '_ym_d': '1744199826',
     '_ym_visorc': 'w',
-    'domain_sid': 'fh-vdm9bFPiPyWd_6nOnu%3A1744104566138',
-    '_cmg_cssts_GL1': '1744104570',
-    '_comagic_ids_GL1': '9271096832.13218694877.1744104569',
-    'sma_session_id': '2254127166',
-    'SCBfrom': '',
-    'SCBnotShow': '-1',
-    'smFpId_old_values': '%5B%22b0d44eece823d71c253568fc397e79de%22%5D',
-    'SCBstart': '1744104571517',
-    'SCBporogAct': '5000',
-    'SCBFormsAlreadyPulled': 'true',
-    'sma_postview_ready': '1',
-    'tmr_detect': '0%7C1744104573181',
-    'SCBindexAct': '492',
-    'sma_index_activity': '692',
+    'domain_sid': 'Rq92cYaewhxIHaO8BJ8TL%3A1744199826355',
+    'cted': 'modId%3Dqtdubh9r%3Bclient_id%3D78696301.1744199825%3Bya_client_id%3D1744199826589358100',
+    '_ct_ids': 'qtdubh9r%3A51029%3A789028857',
+    '_ct_session_id': '789028857',
+    '_ct_site_id': '51029',
+    'call_s': '___qtdubh9r.1744201626.789028857.240032:742690|2___',
+    '_ct': '2100000000444084324',
+    '_ym_isad': '2',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    'tmr_detect': '0%7C1744199829032',
+    '_ga_VV5JQT0JNR': 'GS1.1.1744199825.1.1.1744199837.0.0.0',
 }
 
 headers = {
-    'accept': 'application/json, text/plain, */*',
+    'accept': 'application/json, text/javascript, */*; q=0.01',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    'origin': 'https://megalit-korolev.ru',
     'priority': 'u=1, i',
-    'referer': 'https://xn----7sbfkqrmjg.xn--p1ai/flats',
+    'referer': 'https://megalit-korolev.ru/choose/apartments/?page=3',
     'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
@@ -45,15 +45,16 @@ headers = {
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
-    'x-host': 'xn----7sbfkqrmjg.xn--p1ai',
-    # 'cookie': 'session=ee67d670a77185171cdddee3def5c3cda8f4aba83e98c025ef7b58dd0b782fcf; tmr_lvid=a75bace7f8204896de9dc77cf70e4731; tmr_lvidTS=1744104565302; scbsid_old=2746015342; _ym_uid=1744104566621664155; _ym_d=1744104566; _ym_isad=2; _ym_visorc=w; domain_sid=fh-vdm9bFPiPyWd_6nOnu%3A1744104566138; _cmg_cssts_GL1=1744104570; _comagic_ids_GL1=9271096832.13218694877.1744104569; sma_session_id=2254127166; SCBfrom=; SCBnotShow=-1; smFpId_old_values=%5B%22b0d44eece823d71c253568fc397e79de%22%5D; SCBstart=1744104571517; SCBporogAct=5000; SCBFormsAlreadyPulled=true; sma_postview_ready=1; tmr_detect=0%7C1744104573181; SCBindexAct=492; sma_index_activity=692',
+    'x-requested-with': 'XMLHttpRequest',
+    # 'cookie': 'PHPSESSID=23bce2006c519e31a97d3d37a7b43309; _ga=GA1.1.78696301.1744199825; tmr_lvid=90b120c5b664ffcb7746c2877fa742c4; tmr_lvidTS=1744199825310; _ym_uid=1744199826589358100; _ym_d=1744199826; _ym_visorc=w; domain_sid=Rq92cYaewhxIHaO8BJ8TL%3A1744199826355; cted=modId%3Dqtdubh9r%3Bclient_id%3D78696301.1744199825%3Bya_client_id%3D1744199826589358100; _ct_ids=qtdubh9r%3A51029%3A789028857; _ct_session_id=789028857; _ct_site_id=51029; call_s=___qtdubh9r.1744201626.789028857.240032:742690|2___; _ct=2100000000444084324; _ym_isad=2; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; tmr_detect=0%7C1744199829032; _ga_VV5JQT0JNR=GS1.1.1744199825.1.1.1744199837.0.0.0',
 }
 
 params = {
-    'project_id': '33974217-154f-492c-a9d4-b783b130d58e',
-    'status': 'free',
-    'offset': '0',
-    'limit': '48',
+    'page': '3',
+}
+
+data = {
+    'user_changed': '',
 }
 
 
@@ -66,50 +67,40 @@ def extract_digits_or_original(s):
 
 while True:
 
-    response = requests.get(
-        'https://xn----7sbfkqrmjg.xn--p1ai/api/realty-filter/residential/real-estates',
-        params=params,
-        cookies=cookies,
-        headers=headers,
-    )
+    response = requests.post('https://megalit-korolev.ru/choose/apartments/', params=params, cookies=cookies, headers=headers, data=data)
 
-    items = response.json()
+    items = response.json()['components'][1403]['rendered']
+
+
 
 
     for i in items:
 
         url = ''
-        developer = "Вектор"
-        project = 'Олива Лесной городок'
-        korpus = i['building_int_number']
-        type = 'Квартира'
-        if i['finishing_type'] == 'no':
-            finish_type = 'Без отделки'
-        elif i['finishing_type'] == 'fine':
-            finish_type = 'С отделкой'
-        elif i['finishing_type'] == 'white_box':
-            finish_type = 'Предчистовая'
-        else:
-            finish_type = i['finishing_type']
-        room_count = i['rooms']
+        developer = ""
+        project = ''
+        korpus = ''
+        type = ''
+        finish_type = ''
+        room_count = ''
         try:
-            area = float(i['total_area'])
+            area = float()
         except:
             area = ''
         try:
-            old_price = int(i['old_price'])
+            old_price = int()
         except:
             old_price = ''
         try:
-            price = int(i['price'])
+            price = int()
         except:
             price = ''
-        section = int(i['section_number'])
+        section = ''
         try:
-            floor = int(i['floor_number'])
+            floor = int()
         except:
             floor = ''
-        flat_number = i['int_number']
+        flat_number = ''
 
         english = ''
         promzona = ''
@@ -132,7 +123,7 @@ while True:
         eskrou = ''
         konstruktiv = ''
         klass = ''
-        srok_sdachi = i['completion_title']
+        srok_sdachi = ''
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
@@ -151,7 +142,6 @@ while True:
 
     if not items:
         break
-    params['offset'] = str(int(params['offset']) + 48)
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
 
@@ -200,7 +190,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Вектор"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Мегалит"
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

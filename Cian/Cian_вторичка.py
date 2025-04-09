@@ -136,7 +136,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                5044,
+                175578,
             ],
         },
         'publish_period': {
@@ -146,21 +146,18 @@ json_data = {
         'room': {
             'type': 'terms',
             'value': [
+                1,
+                2,
                 3,
                 4,
                 5,
                 6,
-                7,
                 9,
             ],
         },
         'building_status': {
             'type': 'term',
             'value': 1,
-        },
-        'flat_share': {
-            'type': 'term',
-            'value': 2,
         },
         'page': {
             'type': 'term',
@@ -170,7 +167,7 @@ json_data = {
 }
 
 
-name_counter = 2
+name_counter = 1
 
 
 
