@@ -6,9 +6,6 @@ import openpyxl
 import os
 import random
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import undetected_chromedriver as uc
 
 
 cookies = {
@@ -70,15 +67,15 @@ headers = {
 
 params = {
     'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'offset': '20',
+    'offset': '0',
     'limit': '20',
     'sort': 'qi',
     'sort_dir': 'desc',
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '3195',
-    'complex_name': 'ЖК Времена года',
+    'complex_ids': '108435',
+    'complex_name': "ЖК Оптима",
     'from_developer': '1',
     'sort_by_tariff_date': '1'
 }
@@ -88,13 +85,6 @@ response = requests.get('https://bff-search-web.domclick.ru/api/offers/v1', para
 
 
 flats = []
-options = uc.ChromeOptions()
-# Дополнительные настройки (опционально)
-options.add_argument("--start-maximized")  # Открыть браузер на весь экран
-# options.add_argument("--headless")       # Режим без графического интерфейса (может детектиться)
-driver = uc.Chrome(options=options)
-
-
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
@@ -171,13 +161,6 @@ while True:
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-        if i['developerOffersCount'] > 1:
-            more_flats = i['path']
-            driver.get(more_flats)
-            page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
-            soup = BeautifulSoup(page_content, 'html.parser')
-            print(soup)
-            time.sleep(2)
 
     params["offset"] = str(int(params["offset"]) + 20)
     sleep_time = random.uniform(5, 10)
@@ -231,7 +214,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"/"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Дом клик"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
