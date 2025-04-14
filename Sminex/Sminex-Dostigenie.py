@@ -50,7 +50,6 @@ headers = {
 }
 
 params = { 'page': 1
-
 }
 
 

@@ -5,59 +5,35 @@ import openpyxl
 import os
 import random
 from bs4 import BeautifulSoup
-
-
-
-
 import requests
+from ЖК_WAVE import cookies, headers
 
-cookies = {
-    'spid': '1742911906806_a6af7aafd6d36f3da75ead86dab92db1_il331eo3p5486g2p',
-    'scbsid_old': '2746015342',
-    'tmr_lvid': 'b846073c297ab0f227a0beeff859cbb0',
-    'tmr_lvidTS': '1742911907765',
-    '_ym_uid': '1742911908725726256',
-    '_ym_d': '1742911908',
-    '_ga': 'GA1.1.2011517384.1742911908',
-    'sma_session_id': '2237662266',
-    '_ym_isad': '2',
-    'SCBnotShow': '-1',
-    'smFpId_old_values': '%5B%22d3885f11f554d9bfaaad76858b685aaa%22%5D',
-    'domain_sid': '_s31UW6Md684Fha7bJKQS%3A1742911908297',
-    'cookie_consent': 'accepted',
-    'SCBporogAct': '5000',
-    'spsc': '1742971163602_e4b934355d5e238763fc5c94a895c8ee_e6cfb3ea8f0a0fa28cc6ebefdcae8ea5',
-    'PHPSESSID': '7nQ38a9oqA5YE6ye0iPiviXk1D1A3xcC',
-    'DOMAIN': 'msk',
-    'SCBstart': '1742971187157',
-    '_ym_visorc': 'b',
-    'backLink': '%2Fmsk%2Fkvartiry-v-novostroikah%2F%3Flast_delivery%3D30%26price%255Bmin%255D%3D7.1%26price%255Bmax%255D%3D26.3%26price_range%255Bmin%255D%3D7.1%26price_range%255Bmax%255D%3D26.3%26obj%255B%255D%3D52%26obj%255B%255D%3D52%26area%255Bmin%255D%3D20%26area%255Bmax%255D%3D65%26area_range%255Bmin%255D%3D20.0%26area_range%255Bmax%255D%3D65.0%26floor%255Bmin%255D%3D2%26floor%255Bmax%255D%3D24%26floor_range%255Bmin%255D%3D2%26floor_range%255Bmax%255D%3D24',
-    '_ga_FNTNBKC2H2': 'GS1.1.1742971180.3.1.1742971189.0.0.0',
-    '_cmg_csstA05bX': '1742971190',
-    '_comagic_idA05bX': '10483368114.14611733089.1742971190',
-    'number_phone_site': '74950211258',
-    'number_phone_site_arr': '%5B%2274950211258%22%5D',
-    'tmr_detect': '0%7C1742971192027',
-    'sma_index_activity': '3085',
-    'SCBindexAct': '2636',
-}
+cookies = cookies
+headers = headers
 
-headers = {
-    'Accept': 'application/json, text/javascript, */*; q=0.01',
-    'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'Connection': 'keep-alive',
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    'Origin': 'https://www.lsr.ru',
-    'Referer': 'https://www.lsr.ru/msk/kvartiry-v-novostroikah/?last_delivery=30&price%5Bmin%5D=7.1&price%5Bmax%5D=26.3&price_range%5Bmin%5D=7.1&price_range%5Bmax%5D=26.3&obj%5B%5D=52&obj%5B%5D=52&area%5Bmin%5D=20&area%5Bmax%5D=65&area_range%5Bmin%5D=20.0&area_range%5Bmax%5D=65.0&floor%5Bmin%5D=2&floor%5Bmax%5D=24&floor_range%5Bmin%5D=2&floor_range%5Bmax%5D=24',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
-    'X-Requested-With': 'XMLHttpRequest',
-    'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'spid=1742911906806_a6af7aafd6d36f3da75ead86dab92db1_il331eo3p5486g2p; scbsid_old=2746015342; tmr_lvid=b846073c297ab0f227a0beeff859cbb0; tmr_lvidTS=1742911907765; _ym_uid=1742911908725726256; _ym_d=1742911908; _ga=GA1.1.2011517384.1742911908; sma_session_id=2237662266; _ym_isad=2; SCBnotShow=-1; smFpId_old_values=%5B%22d3885f11f554d9bfaaad76858b685aaa%22%5D; domain_sid=_s31UW6Md684Fha7bJKQS%3A1742911908297; cookie_consent=accepted; SCBporogAct=5000; spsc=1742971163602_e4b934355d5e238763fc5c94a895c8ee_e6cfb3ea8f0a0fa28cc6ebefdcae8ea5; PHPSESSID=7nQ38a9oqA5YE6ye0iPiviXk1D1A3xcC; DOMAIN=msk; SCBstart=1742971187157; _ym_visorc=b; backLink=%2Fmsk%2Fkvartiry-v-novostroikah%2F%3Flast_delivery%3D30%26price%255Bmin%255D%3D7.1%26price%255Bmax%255D%3D26.3%26price_range%255Bmin%255D%3D7.1%26price_range%255Bmax%255D%3D26.3%26obj%255B%255D%3D52%26obj%255B%255D%3D52%26area%255Bmin%255D%3D20%26area%255Bmax%255D%3D65%26area_range%255Bmin%255D%3D20.0%26area_range%255Bmax%255D%3D65.0%26floor%255Bmin%255D%3D2%26floor%255Bmax%255D%3D24%26floor_range%255Bmin%255D%3D2%26floor_range%255Bmax%255D%3D24; _ga_FNTNBKC2H2=GS1.1.1742971180.3.1.1742971189.0.0.0; _cmg_csstA05bX=1742971190; _comagic_idA05bX=10483368114.14611733089.1742971190; number_phone_site=74950211258; number_phone_site_arr=%5B%2274950211258%22%5D; tmr_detect=0%7C1742971192027; sma_index_activity=3085; SCBindexAct=2636',
+data = {
+    'last_delivery': '30',
+    'price[min]': '1',
+    'price[max]': '999',
+    'price_range[min]': '1',
+    'price_range[max]': '999',
+    'obj[]': ['222', '222'],
+    'area[min]': '1',
+    'area[max]': '999',
+    'area_range[min]': '1',
+    'area_range[max]': '999',
+    'floor[min]': '1',
+    'floor[max]': '99',
+    'floor_range[min]': '1',
+    'floor_range[max]': '99',
+    'ob[page]': '1',
+    'ob[sort]': 'price',
+    'ob[order]': 'asc',
+    'group[t]': 'false',
+    'ob[id]': '207',
+    'object': '207',
+    'a': 'types',
+    'ok': 'L9BkJyIGWZ1fC1lLQdKcu325SphK4pYG'
 }
 
 
@@ -67,12 +43,10 @@ flats = []
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
-page_counter = 1
 
 while True:
 
 
-    data = f'last_delivery=30&price%5Bmin%5D=10.9&price%5Bmax%5D=35.3&price_range%5Bmin%5D=10.9&price_range%5Bmax%5D=35.3&obj%5B%5D=207&obj%5B%5D=207&area%5Bmin%5D=21&area%5Bmax%5D=79&area_range%5Bmin%5D=21.0&area_range%5Bmax%5D=79.0&floor%5Bmin%5D=2&floor%5Bmax%5D=32&floor_range%5Bmin%5D=2&floor_range%5Bmax%5D=32&ob[page]={str(page_counter)}&ob[sort]=price&ob[order]=asc&group[t]=false&ob[id]=207&object=207&a=types&ok=7nQ38a9oqA5YE6ye0iPiviXk1D1A3xcC'
 
     response = requests.post('https://www.lsr.ru/ajax/search/msk/', cookies=cookies, headers=headers, data=data)
     print(response.status_code)
@@ -113,13 +87,13 @@ while True:
         if len(all_tags) == 3:
             srok_sdachi = all_tags[0].text.strip()
             if all_tags[2].text.strip() == "С меблировкой":
-                finish_type = f"{all_tags[1].text.strip()}, С меблировкой"
+                finish_type = f"{all_tags[1].text.strip()} и доп опциями"
             else:
                 finish_type = all_tags[1].text.strip()
         else:
             srok_sdachi = ''
             if all_tags[1].text.strip() == "С меблировкой":
-                finish_type = f"{all_tags[0].text.strip()}, С меблировкой"
+                finish_type = f"{all_tags[0].text.strip()} и доп опциями"
             else:
                 finish_type = all_tags[0].text.strip()
 
@@ -161,7 +135,7 @@ while True:
 
     print('--------------------------------------------------------------------------------')
 
-    page_counter += 1
+    data['ob[page]'] = str(int(data['ob[page]']) + 1)
     sleep_time = random.uniform(1, 4)
     time.sleep(sleep_time)
 

@@ -243,7 +243,7 @@ for zk in zk_list:
         current_date = datetime.date.today()
 
         # Базовый путь для сохранения
-        base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Pik"
+        base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ПИК"
 
         folder_path = os.path.join(base_path, str(current_date))
         if not os.path.exists(folder_path):

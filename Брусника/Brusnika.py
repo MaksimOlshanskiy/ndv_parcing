@@ -189,7 +189,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"/Брусника"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Брусника"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

@@ -6,6 +6,7 @@ import time
 import pandas as pd
 import openpyxl
 import os
+from datetime import datetime
 
 
 cookies = {
@@ -79,6 +80,7 @@ response = requests.get('https://granelle.ru/api/flats/', params=params, cookies
 flats = []
 counter = 1
 offset = 0
+date = datetime.now().date()
 
 def extract_digits_or_original(s):
     if s == "Тихий дом":
@@ -93,51 +95,136 @@ response = requests.get(url, params=params, cookies=cookies, headers=headers)
 items = response.json()["results"]
 
 for i in items:
+
+    url = f"https://granelle.ru/flats/{i["id"]}"
     developer = "Гранель"
     project = i["project"]
-    url = f"https://granelle.ru/flats/{i["id"]}"
-    oplata = ""
-    date = datetime.date.today()
-    room_count = i["rooms"]
-    area = i["area"]
-    price = i["price_discounted"]
-    old_price = i["price"]
+    korpus = i["building"]
+    type = ''
     if i["finish_type"] == "whitebox":
-        finish_type = "Предчистовая отделка"
+        finish_type = "Предчистовая"
     elif i["finish_type"] == "finish":
         finish_type = "С отделкой"
     elif i["finish_type"] == "without_finish":
         finish_type = "Без отделки"
     else:
         finish_type = i["finish_type"]
-    korpus = i["building"]
-    floor = i["floor"]
-    floor_count = i["floor_count"]
-    completion_till = f"{i["completion_quarter"]} кв {i["completion_year"]} года"
+    room_count = i["rooms"]
+    try:
+        area = float(i["area"])
+    except:
+        area = ''
+    try:
+        old_price = int(i["price"])
+    except:
+        old_price = ''
+    try:
+        price = int(i["price_discounted"])
+    except:
+        price = ''
+    section = ''
+    try:
+        floor = int(i["floor"])
+    except:
+        floor = ''
+    flat_number = ''
+
+    english = ''
+    promzona = ''
+    mestopolozhenie = ''
+    subway = ''
+    distance_to_subway = ''
+    time_to_subway = ''
+    mck = ''
+    distance_to_mck = ''
+    time_to_mck = ''
+    bkl = ''
+    distance_to_bkl = ''
+    time_to_bkl = ''
+    status = ''
+    start = ''
+    comment = ''
+    okrug = ''
+    district = ''
+    adress = ''
+    eskrou = ''
+    konstruktiv = ''
+    klass = ''
+    srok_sdachi = f"{i["completion_quarter"]} кв {i["completion_year"]} года"
+    srok_sdachi_old = ''
+    stadia = ''
+    dogovor = ''
+    price_per_metr = ''
+    discount = ''
+    price_per_metr_new = ''
+
     print(
-        f"{project}, {url}, дата: {date}, тип: {room_count}, площадь: {area}, цена: {price},  отделка: {finish_type}, корпус: {korpus}, этаж: {floor}, срок сдачи {completion_till}")
-    result = [developer, project, oplata, date, room_count, area, price, old_price, finish_type, korpus, floor, floor_count, completion_till, url]
+        f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+    result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+              distance_to_mck, time_to_mck, distance_to_bkl,
+              time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
+              klass, srok_sdachi, srok_sdachi_old,
+              stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+              price_per_metr_new, price, section, floor, flat_number]
     flats.append(result)
 
+df = pd.DataFrame(flats, columns=['Дата обновления',
+ 'Название проекта',
+ 'на англ',
+ 'промзона',
+ 'Местоположение',
+ 'Метро',
+ 'Расстояние до метро, км',
+ 'Время до метро, мин',
+ 'МЦК/МЦД/БКЛ',
+ 'Расстояние до МЦК/МЦД, км',
+ 'Время до МЦК/МЦД, мин',
+ 'БКЛ',
+ 'Расстояние до БКЛ, км',
+ 'Время до БКЛ, мин',
+ 'статус',
+ 'старт',
+ 'Комментарий',
+ 'Девелопер',
+ 'Округ',
+ 'Район',
+ 'Адрес',
+ 'Эскроу',
+ 'Корпус',
+ 'Конструктив',
+ 'Класс',
+ 'Срок сдачи',
+ 'Старый срок сдачи',
+ 'Стадия строительной готовности',
+ 'Договор',
+ 'Тип помещения',
+ 'Отделка',
+ 'Кол-во комнат',
+ 'Площадь, кв.м',
+ 'Цена кв.м, руб.',
+ 'Цена лота, руб.',
+ 'Скидка,%',
+ 'Цена кв.м со ск, руб.',
+ 'Цена лота со ск, руб.',
+ 'секция',
+ 'этаж',
+ 'номер'])
 
-df = pd.DataFrame(flats, columns=["Застройщик", "Проект", "Способ оплаты", "Дата", "Число комнат", "Площадь", "Актуальная цена", "Старая цена", "Отделка", "Корпус", "Этаж", "Всего этажей", "Заселение до", "URL"])
-df.insert(0, 'Row Number', range(1, len(df) + 1))
-print(df)
-
-current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Granel"
+base_path = r"/Гранель"
 
-folder_path = os.path.join(base_path, str(current_date))
+folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Granel_{current_date}.xlsx"
-df.to_excel(filename, index=False)
+filename = f"{developer}_{project}_{date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)
 
 # Сохранение файла в папку
 df.to_excel(file_path, index=False)
+
+
+

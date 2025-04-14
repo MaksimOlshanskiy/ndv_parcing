@@ -90,9 +90,8 @@ while True:
     for i in items:
 
         url = ""
-
         date = datetime.date.today()
-        project = "West Garden"
+        project = "Ильинка 3/8"
         english = ''
         promzona = ''
         mestopolozhenie = ''

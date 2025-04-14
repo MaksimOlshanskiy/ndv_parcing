@@ -276,7 +276,7 @@ for project in projects:
         current_date = datetime.now().date()
 
         # Базовый путь для сохранения
-        base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Samolet"
+        base_path = r"/Самолёт"
 
         folder_path = os.path.join(base_path, str(current_date))
         if not os.path.exists(folder_path):

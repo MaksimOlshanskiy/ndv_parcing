@@ -82,7 +82,6 @@ while True:
     for i in items:
 
         url = ""
-
         date = datetime.date.today()
         project = "Фрунзенская набережная"
         english = ''
