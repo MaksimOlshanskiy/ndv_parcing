@@ -154,11 +154,11 @@ for zk in zk_list:
             if i["finishType"] == 0:
                 finish_type = "Без отделки"
             elif i["finishType"] == 1:
-                finish_type = "Готовая отделка"
+                finish_type = "С отделкой"
             elif i["finishType"] == 2:
-                finish_type = "Предчистовая отделка"
+                finish_type = "Предчистовая"
             elif i["finishType"] == 3:
-                finish_type = "Готовая отделка с мебелью"
+                finish_type = "С отделкой и доп опциями"
 
             if int(i["rooms"]) == 0 or int(i["rooms"]) == -1:
                 room_count = 0

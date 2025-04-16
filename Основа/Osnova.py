@@ -115,11 +115,11 @@ while True:
 
         try:
             if i["properties"].get("with_decoration_whitebox") is not None and i["properties"].get("with_decoration_whitebox") == True:
-                finish_type = "Предчистовая отделка"
+                finish_type = "Предчистовая"
             elif i["properties"].get("with_decoration_finishing") is not None and i["properties"].get("with_decoration_finishing") == True:
                 finish_type = "С отделкой"
             elif i["properties"].get("with_decoration_furnished") is not None and i["properties"].get("with_decoration_furnished") == True:
-                finish_type = "С отделкой и мебелью"
+                finish_type = "С отделкой и доп опциями"
             else:
                 finish_type = 'Без отделки'
         except:

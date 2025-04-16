@@ -129,7 +129,7 @@ while True:
         dogovor = ''
         type = 'Квартира'
         if i['finishing_type'] == "white_box":
-            finish_type = 'Предчистовая отделка'
+            finish_type = 'Предчистовая'
         else:
             finish_type = 'Без отделки'
 

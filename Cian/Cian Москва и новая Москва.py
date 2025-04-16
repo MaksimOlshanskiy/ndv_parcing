@@ -10,7 +10,12 @@ import random
 import re
 from functions import classify_renovation
 
-ids = [1358767
+ids = [1444810, 6381, 5494, 50743, 2352, 4712505, 48686, 2184313, 2344978, 2674035, 7778, 5138735, 3683691,
+       3419909, 3911074, 46840, 50027, 43299, 5149795, 4051375, 4186702, 2234022, 1900321, 368, 81377, 45865,
+       5227, 4771631, 4117447, 4708643, 36935, 4481761, 4280747, 3782658, 4157734, 45774, 843911, 4115687,
+       2498484, 8825, 4025502, 92320, 2511297, 4850351, 3932079, 4780951, 4296442, 4676364, 912499, 4033066,
+       3206071, 4457540, 3966751, 4720970, 5138871, 4682511, 3913242, 4779110, 8787, 3930584, 90586,
+       5100524
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -179,12 +184,12 @@ for y in ids:
             except:
                 project = ''
             try:
-                if i['decoration'] == "fine":
+                if i['decoration'] == "fine" or i['offerFeatureLabels'][0] == 'С отделкой':
                     finish_type = "С отделкой"
                 elif i['decoration'] == "without" or i['decoration'] == "rough":
                     finish_type = "Без отделки"
                 else:
-                    finish_type = i['decoration']
+                    finish_type = ''
             except:
                 finish_type = ''
             if not finish_type:

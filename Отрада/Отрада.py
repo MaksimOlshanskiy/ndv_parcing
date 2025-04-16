@@ -131,7 +131,7 @@ while True:
             if i.find('a', {'data-info': 'Квартира без отделки'}):
                 finish_type = 'Без отделки'
             elif i.find('a', {'data-info': 'Отделка White Box'}):
-                finish_type = 'Предчистовая отделка'
+                finish_type = 'Предчистовая'
         except:
             finish_type = ''
 

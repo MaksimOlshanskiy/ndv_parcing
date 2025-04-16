@@ -120,7 +120,7 @@ while True:
         dogovor = ''
         type = ''
         if i["decoration"]["name"] == "MR Base":
-            finish_type = "Предчистовая отделка"
+            finish_type = "Предчистовая"
         elif i["decoration"]["name"] == "MR Ready":
             finish_type = "С отделкой"
         else:

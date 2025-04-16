@@ -13,7 +13,6 @@ cookies = {
     'tmr_lvid': 'dfa41b5563807a150803810c3db1bd53',
     'tmr_lvidTS': '1742906679116',
     'roistat_first_visit': '22659698',
-    'roistat_visit_cookie_expire': '1209600',
     '_ct': '1700000000371104218',
     '_ga': 'GA1.1.1368495042.1742906680',
     '_ym_uid': '1742906680495120652',
@@ -21,30 +20,30 @@ cookies = {
     '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
     '___dc': '7f88fd35-7882-4206-b93a-bab62aea98bc',
     'uxs_uid': 'eec93500-0976-11f0-97e1-2336612bf0ed',
+    'qrator_jsr': '1744813652.518.gOoyTkdBN3fmJCDb-175oktlobnhnvmi4416i2lp9vg36a7ta-00',
+    'qrator_jsid': '1744813652.518.gOoyTkdBN3fmJCDb-mvmt8vumh02vakv9vl2qtv9fd6ivepai',
+    'auth.strategy': 'users',
+    'cted': 'modId%3Dom6ni2v1%3Bclient_id%3D1368495042.1742906680%3Bya_client_id%3D1742906680495120652',
+    '_ct_ids': 'om6ni2v1%3A44807%3A574815274',
+    '_ct_session_id': '574815274',
+    '_ct_site_id': '44807',
+    'roistat_visit': '23447266',
+    'roistat_visit_cookie_expire': '1209600',
+    'domain_sid': '5V7Z2Dbg0blJdGi5wSPww%3A1744813653798',
+    '_ga_BE304FWE0N': 'GS1.1.1744813653.6.0.1744813653.0.0.0',
+    '_ym_visorc': 'w',
+    '_ym_isad': '2',
+    'tmr_detect': '0%7C1744813655928',
     'roistat_call_tracking': '0',
     'roistat_emailtracking_email': 'null',
     'roistat_emailtracking_tracking_email': 'null',
     'roistat_emailtracking_emails': '%5B%5D',
-    'slug_city': 'msk',
+    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
     'auth.selectedCity': 'Q2l0eVR5cGU6MQ%3D%3D',
-    'auth.strategy': 'users',
-    'cted': 'modId%3Dom6ni2v1%3Bclient_id%3D1368495042.1742906680%3Bya_client_id%3D1742906680495120652',
-    '_ct_site_id': '44807',
-    'domain_sid': '5V7Z2Dbg0blJdGi5wSPww%3A1743426882467',
-    'roistat_visit': '22828708',
-    'roistat_marker': 'seo_google_',
-    'roistat_marker_old': 'seo_google_',
-    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails%2Croistat_visit%2Croistat_marker%2Croistat_marker_old',
-    '_ct_ids': 'om6ni2v1%3A44807%3A567484541',
-    '_ct_session_id': '567484541',
-    '_ym_isad': '2',
-    '_ym_visorc': 'w',
-    'qrator_jsid': '1743509991.551.MEX1vUAHfhjLRE0Q-edksneec4v82v5ia4l9grmgsusommb1i',
-    'call_s': '___om6ni2v1.1743512046.567484541.197416:602039|2___',
-    'tmr_detect': '0%7C1743510249645',
+    'slug_city': 'msk',
+    'call_s': '___om6ni2v1.1744815473.574815274.197416:602039|2___',
+    'csrftoken': 'n5NOGMDcB2O2lDaqpVWU6AJPRBqzKcepoo8jDhnUMgQq6iRjTrkSiDfL7AVfJkyK',
     'nuxt_breakpoint_detector': 'lg',
-    '_ga_BE304FWE0N': 'GS1.1.1743509993.4.1.1743510260.0.0.0',
-    'csrftoken': 'Rpz8h04sf7rCm6O2VxjKYqJOxeNa1SWvI5AzpcaV8xnodotofgkxoUwv0un8xH8x',
 }
 
 headers = {
@@ -127,7 +126,7 @@ while True:
                     finish_type = 'С отделкой'
                     break
                 elif y['name'] == 'Отделка Whitebox':
-                    finish_type = 'Предчистовая отделка'
+                    finish_type = 'Предчистовая'
                     break
         except:
             finish_type = ''
@@ -241,7 +240,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Страна Девелопмент"
+base_path = r"Страна Девелопмент"
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

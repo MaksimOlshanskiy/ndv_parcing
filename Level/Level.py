@@ -98,7 +98,6 @@ while True:
     for i in items:
 
         url = f"https://level.ru{i["url"]}"
-
         date = datetime.date.today()
         project = i["project"]
         english = ''

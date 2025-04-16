@@ -89,7 +89,7 @@ while True:
         korpus = extract_digits_or_original(i["CORPUS"])
         type = 'Квартира'
         if i['FINISH']['value'] == 'White Box':
-            finish_type = 'Предчистовая отделка'
+            finish_type = 'Предчистовая'
         else:
             finish_type = i['FINISH']['value']
         if i['NUMBER_OF_ROOMS'] == 'С-1':

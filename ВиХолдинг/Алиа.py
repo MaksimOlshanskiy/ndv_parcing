@@ -82,7 +82,7 @@ while True:
         korpus = f"{i['node']['floor']['section']['building']['urbanBlock']['name']} {i['node']['buildingNumber']}"
         type = i['node']['type']
         if i['node']['decoration']['title'] == "White box":
-            finish_type = 'Предчистовая отделка'
+            finish_type = 'Предчистовая'
         else:
             finish_type = i['node']['decoration']['title']
         room_count = i['node']['rooms']

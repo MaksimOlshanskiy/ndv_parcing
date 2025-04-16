@@ -146,7 +146,7 @@ for project in projects:
                 else:
                     finish_type = "С отделкой и доп опциями"
             elif i["default_decor_type"] == 3:
-                finish_type = "Предчистовая отделка"
+                finish_type = "Предчистовая"
             else:
                 finish_type = i["default_decor_type"]
             if int(i["rooms"]) == 0 or int(i["rooms"]) == -1:
@@ -171,7 +171,6 @@ for project in projects:
             except:
                 floor = ''
             flat_number = ''
-
             english = ''
             promzona = ''
             mestopolozhenie = ''

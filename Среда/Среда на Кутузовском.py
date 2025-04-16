@@ -100,7 +100,7 @@ while True:
         elif i['finish']['isFinish'] is True and i['finish']['furniture'] is True:
             finish_type = 'С отделкой и доп опциями'
         elif i['finish']['whiteBox'] is True:
-            finish_type = 'Предчистовая отделка'
+            finish_type = 'Предчистовая'
         else:
             finish_type = 'Без отделки'
         room_count = i['rooms']
