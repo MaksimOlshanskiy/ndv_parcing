@@ -47,16 +47,15 @@ cookies = {
     'tmr_lvidTS': '1743518291170',
     'regionAlert': '1',
     'COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING': 'true',
-    'favoriteHintShowed': 'true',
-    'qrator_ssid2': 'v2.0.1744361902.280.5b6ce31fEV5FyUP6|AFQJKTkx6q52QSVP|XFujMXAnJGTg6jX+P//C7I+hXM+YS5GHtKfuoMj1801VmbxFVRjKmYAujyBT1BCstfkZoUfxGH0+UEfvzrUU2g==-NzIChadIpys8VMKb/QvH0CEt+U8=',
-    'qrator_jsid2': 'v2.0.1744612585.463.5b6ce31fOsbaxanH|TaUrKli9ubPnMsJ3|x8ovVY5JqVCZSsS6m5Sdh8qJ7KbYZjhtnfIMyAHcJ/hduNbHqHAmbZUbxgH1f9y9KgzExc6bGjH86nOAeaVnhWaUg0Gj3kvk1VPTFkohoXpE7kOjwXaFf/RAkWjRL7GO+yuc3pUrtlOS1/I0/ncNDQ==-KYz1UvEcwCtdB706huii8HxlLCQ=',
-    '_visitId': 'd8e3c366-f27c-441d-a917-0a91e303212a-f4f0dcc432ac8ba6',
+    'cookieAlert': '1',
     '_ym_isad': '2',
-    'adrdel': '1744361910642',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1744363829',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1744363830',
-    't3_sid_7711713': 's1.1099592309.1744361909896.1744363945065.12.38.9.1',
-    'tmr_reqNum': '158',
+    'adrdel': '1745921103264',
+    'qrator_jsid2': 'v2.0.1745934833.216.5b6ce31f9XohaXxT|rar3ubU8O6ioAsAc|dBoWsV8RYkAX+t/L+5tp1mZBrMDC0BTLMPUmYDE++xB4mShx+dwjbL/tPHe2ol4pwq953jHiMlyagSBrHAtJX94ODNHiLYzz+in0JBdnTK5ng3GRimGCAgUp/DyLeb+/OVwRYApdbYz8XzQ6vh9AFg==-rsTTEomc12umD8Uf1VZtcITMp9o=',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1745934836',
+    '_visitId': 'b40df581-1b46-43b2-96a6-8a1e5de26c14-f4f0dcc432ac8ba6',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1745934837',
+    'tmr_reqNum': '291',
+    't3_sid_7711713': 's1.407824917.1745934836798.1745935513892.26.20.4.1',
 }
 
 headers = {
@@ -72,22 +71,22 @@ headers = {
     'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; _ym_d=1743518289; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; favoriteHintShowed=true; qrator_ssid2=v2.0.1744361902.280.5b6ce31fEV5FyUP6|AFQJKTkx6q52QSVP|XFujMXAnJGTg6jX+P//C7I+hXM+YS5GHtKfuoMj1801VmbxFVRjKmYAujyBT1BCstfkZoUfxGH0+UEfvzrUU2g==-NzIChadIpys8VMKb/QvH0CEt+U8=; qrator_jsid2=v2.0.1744361899.432.5b6ce31fvrKfb41H|eLaH7nrDjpVvGSlq|4eL4SVDH9E/ADoxCfQvLWdcwEEw5xbHP40Uyo/kaGQ3hJwVXlzI1+QTtz/iV9T9lzl4H2dooVw8AQpl6xpFmsaEQb5WnDXEkR7zi1ARMvxYW45wxESwRF1V4/95eTWHSC4ydWHa807HRyjMUaZ+r5w==-FLMqS0bbIuYb6tNmDpM4WSzvG3g=; _visitId=d8e3c366-f27c-441d-a917-0a91e303212a-f4f0dcc432ac8ba6; _ym_isad=2; adrdel=1744361910642; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1744363829; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1744363830; t3_sid_7711713=s1.1099592309.1744361909896.1744363945065.12.38.9.1; tmr_reqNum=158',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; _ym_d=1743518289; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; _ym_isad=2; adrdel=1745921103264; qrator_jsid2=v2.0.1745934833.216.5b6ce31f9XohaXxT|rar3ubU8O6ioAsAc|dBoWsV8RYkAX+t/L+5tp1mZBrMDC0BTLMPUmYDE++xB4mShx+dwjbL/tPHe2ol4pwq953jHiMlyagSBrHAtJX94ODNHiLYzz+in0JBdnTK5ng3GRimGCAgUp/DyLeb+/OVwRYApdbYz8XzQ6vh9AFg==-rsTTEomc12umD8Uf1VZtcITMp9o=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1745934836; _visitId=b40df581-1b46-43b2-96a6-8a1e5de26c14-f4f0dcc432ac8ba6; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1745934837; tmr_reqNum=291; t3_sid_7711713=s1.407824917.1745934836798.1745935513892.26.20.4.1',
 }
 
 params = {
     'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
     'offset': '0',
-    'limit': '20',
+    'limit': '5',
     'sort': 'qi',
     'sort_dir': 'desc',
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '119901',
-    'complex_name': 'ЖК в пер. Учебный',
+    'complex_ids': '108435',
+    'utm_referrer': 'https://www.google.com/',
+    'complex_name': 'ЖК "Оптима"',
     'from_developer': '1',
-    'sort_by_tariff_date': '1',
 }
 
 flats = []
@@ -235,13 +234,13 @@ while True:
 
                 try:
                     # Получаем все кнопки с нужным классом
-                    buttons = driver.find_elements(By.CLASS_NAME, "pgnt-control-eeb-3-0-4")
+                    buttons = driver.find_elements(By.CLASS_NAME, "pgnt-control-eeb-3-0-8")
                     next_button = None
 
                     for btn in buttons:
                         try:
                             # Проверяем, есть ли у кнопки div с нужным вложенным классом
-                            btn.find_element(By.CLASS_NAME, "pgnt-next-c9c-3-0-4")
+                            btn.find_element(By.CLASS_NAME, "pgnt-next-c9c-3-0-8")
                             next_button = btn
                             break  # нашли нужную кнопку — дальше не ищем
                         except NoSuchElementException:
@@ -252,7 +251,7 @@ while True:
                         break
 
                     # Проверяем, не отключена ли она
-                    if "pgnt-disabled-835-3-0-4" in next_button.get_attribute("class"):
+                    if "pgnt-disabled-835-3-0-8" in next_button.get_attribute("class"):
                         print("Кнопка 'вперёд' неактивна, выходим из цикла")
                         break
 

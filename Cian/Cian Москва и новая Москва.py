@@ -15,7 +15,7 @@ ids = [1444810, 6381, 5494, 50743, 2352, 4712505, 48686, 2184313, 2344978, 26740
        5227, 4771631, 4117447, 4708643, 36935, 4481761, 4280747, 3782658, 4157734, 45774, 843911, 4115687,
        2498484, 8825, 4025502, 92320, 2511297, 4850351, 3932079, 4780951, 4296442, 4676364, 912499, 4033066,
        3206071, 4457540, 3966751, 4720970, 5138871, 4682511, 3913242, 4779110, 8787, 3930584, 90586,
-       5100524
+       5100524, 3975866, 4260360, 49453, 5340468
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -186,8 +186,10 @@ for y in ids:
             try:
                 if i['decoration'] == "fine" or i['offerFeatureLabels'][0] == 'С отделкой':
                     finish_type = "С отделкой"
-                elif i['decoration'] == "without" or i['decoration'] == "rough":
+                elif i['decoration'] == "without":
                     finish_type = "Без отделки"
+                elif i['decoration'] == "rough":
+                    finish_type = 'Предчистовая'
                 else:
                     finish_type = ''
             except:
@@ -204,7 +206,7 @@ for y in ids:
                 adress = ""
 
             try:
-                korpus = extract_digits_or_original(i["geo"]["jk"]["house"]["name"])
+                korpus = str(i["geo"]["jk"]["house"]["name"]).replace('Корпус ', '')
             except:
                 korpus = ''
 

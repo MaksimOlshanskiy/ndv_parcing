@@ -1,23 +1,30 @@
 import pandas as pd
-import pyxlsb
+import pyxlsb  # если используется .xlsb, иначе можно не подключать
+import win32com.client as win32
+import os
 
 # Загрузка Excel-файла
-file_path = r"C:\Users\m.olshanskiy\Desktop\Test.xlsx"
-df = pd.read_excel(file_path, sheet_name="массив")    # sheet_name="название листа"  если нужен конкретный лист
-print(df)
+file_path = r"C:\Users\m.olshanskiy\Desktop\Апрель_итог22.xlsx"
+df = pd.read_excel(file_path)   # sheet_name="массив"
 
-unique_projects = df['Название проекта '].unique()
+# Столбцы, в которых нужно заполнить пропуски
+columns_to_fill = ['на англ', 'промзона', 'Местоположение',
+                   'Метро', 'Расстояние до метро, км',
+                   'Время до метро, мин', 'МЦК/МЦД/БКЛ', 'Расстояние до МЦК/МЦД, км',
+                   'Время до МЦК/МЦД, мин', 'БКЛ', 'Расстояние до БКЛ, км',
+                   'Время до БКЛ, мин', 'старт', 'Комментарий',
+                   'Округ', 'Район', 'Адрес', 'Эскроу']
 
-# Преобразование в список (если нужно именно список)
-projects = unique_projects.tolist()
+columns_to_fill_by_corpus = ['Конструктив', 'Класс', 'Срок сдачи', 'Старый срок сдачи', 'Договор']
 
-for i in projects:
-    mask = df["Название проекта "] == i
+# Группируем по названию проекта и заполняем только нужные столбцы
+for col in columns_to_fill:
+    df[col] = df.groupby(['Название проекта ', 'Девелопер'])[col].ffill()
 
-    df.loc[mask, :] = df.loc[mask, :].ffill()
+for col in columns_to_fill_by_corpus:
+    df[col] = df.groupby(['Название проекта ', 'Девелопер', 'Корпус'])[col].ffill()
 
-
-# Сохраняем результат в новый файл
-output_path = r"C:\Users\m.olshanskiy\Desktop\Test_filled.xlsx"
+# Сохраняем результат
+output_path = r"C:\Users\m.olshanskiy\Desktop\Апрель_итог2.xlsx"
 df.to_excel(output_path, index=False)
 print(f"Готово! Заполненный файл сохранён как {output_path}")

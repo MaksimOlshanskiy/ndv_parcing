@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2025-04-16'
+folder_path = r'C:\Users\m.olshanskiy\Desktop\Первичка_города герои'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -13,7 +13,7 @@ excel_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
 
 # Проходим по каждому файлу и добавляем его данные в DataFrame
 for file_path in excel_files:
-    df = pd.read_excel(file_path)  # Читаем Excel файл в DataFrame
+    df = pd.read_excel(file_path, dtype={'Корпус': str})  # Читаем Excel файл в DataFrame
     all_data = pd.concat([all_data, df], ignore_index=True)  # Добавляем данные в общий DataFrame
 
 
@@ -57,13 +57,13 @@ def remove_share_sale(df, column="Описание"):
 
 
 # all_data = all_data.drop_duplicates()       # убираем полные дубликаты
-# all_data = remove_share_sale(all_data)   # убираем продажу долей
-
+# all_data = remove_share_sale(all_data)   # убираем доли в квартирах
+all_data = clean_project_name(all_data, 'Название проекта') # убираем слова ЖК и кавычки в названии проектов
 # Проверяем результат
 print(all_data)
 print(f'Число строк в датафрейме {len(all_data)}')
 
-all_data = clean_project_name(all_data, 'Название проекта')
+
 
 # Сохраняем объединённые данные в новый Excel файл
 output_file_name = 'Combined_data.xlsx'

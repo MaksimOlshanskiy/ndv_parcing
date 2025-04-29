@@ -73,14 +73,16 @@ def extract_digits_or_original(s):
 
 counter = 1
 
-while counter < 19:
+while True:
     if counter == 1:
-        web_site = 'https://udolina.ru/genplan/selection-of-apartments/?area_from=29&area_to=82&price_from=1.0&price_to=16.0&property_286=1&object_type=1&filter=1'
+        web_site = 'https://udolina.ru/genplan/selection-of-apartments/?area_from=29&area_to=82&price_from=1.0&price_to=16.0&property_176=1&object_type=1&filter=1'
     else:
-        web_site = f'https://udolina.ru/genplan/selection-of-apartments/page-{counter}/?sorting=%20%20%20%20%20%20&price_from=1.0%20%20%20%20%20%20&price_to=16.0%20%20%20%20%20%20&area_from=29%20%20%20%20%20%20&area_to=82&property_286=1%20%20%20%20%20%20&object_type=1%20%20%20%20%20%20&filter=1'
+        web_site = f'https://udolina.ru/genplan/selection-of-apartments/page-{counter}/?sorting=%20%20%20%20%20%20&price_from=1.0%20%20%20%20%20%20&price_to=16.0%20%20%20%20%20%20&area_from=29%20%20%20%20%20%20&area_to=82&property_176=1%20%20%20%20%20%20&object_type=1%20%20%20%20%20%20&filter=1'
 
     response = requests.get(web_site,
         cookies=cookies, headers=headers)
+    if response.status_code != 200:
+        break
 
     soup = BeautifulSoup(response.text, "html.parser")
 
@@ -204,7 +206,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{current_date}_Без отделки.xlsx"
+filename = f"{developer}_{project}_{current_date}_отделка.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

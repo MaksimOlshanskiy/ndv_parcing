@@ -1,3 +1,5 @@
+# 'limit': '2000'  можно изменить, лучше посмотреть сколько квартир доступно на сайте
+
 import requests
 import datetime
 import time
@@ -59,7 +61,7 @@ headers = {
 params = {
     'offset': '0',
     'ordering': 'price_order',
-    'limit': '1700',      # можно поставить большой лимит
+    'limit': '2000',      # можно поставить большой лимит
     'active_banner': 'true',
     'active_big_card': 'true',
     'is_group': '0',
@@ -113,12 +115,12 @@ for i in items:
     srok_sdachi_old = ''
     stadia = ''
     dogovor = ''
-    type = ''
+    type = 'Квартира'
     for tag in i["tags"]:
         if "отделк" in tag:
-            finish_type = tag
+            finish_type = tag.replace(' отделка', '')
     room_count = int(i["rooms"])
-    area = i["square"]
+    area = float(i["square"])
     price_per_metr = ''
     old_price = i["price_package_without_promo"]
     discount = ''

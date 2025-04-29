@@ -93,7 +93,7 @@ while True:
         project = 'Примавера'
         korpus = extract_digits_or_original(i['building'])
         type = 'Квартира'
-        finish_type = ''
+        finish_type = 'Без отделки'
         room_count = extract_digits_or_original(i['title'].split()[0])
         try:
             area = float(i['area'].replace(',', '.'))

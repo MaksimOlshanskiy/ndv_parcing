@@ -39,6 +39,8 @@ def extract_digits_or_original(s):
 response = requests.get('https://hub.feedfox.ru/json/vzelenograde', headers=headers)
 
 items = response.json()
+developer = "Мосреалстрой"
+project = "В Зеленограде"
 
 for i in items:
     if (i['statuscode'] == '4' and i['subtypecode'] == '2' and i['typecode'] == '2' and float(i['square']) > 10 and
@@ -49,7 +51,7 @@ for i in items:
 
 
         date = datetime.now()
-        project = "В Зеленограде"
+
 
 
         english = ''
@@ -67,7 +69,7 @@ for i in items:
         status = ''
         start = ''
         comment = ''
-        developer = "Мосреалстрой"
+
         okrug = ''
         district = ''
         adress = i['address']

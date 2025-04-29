@@ -98,9 +98,9 @@ while True:
         adress = ''
         eskrou = ''
         try:
-            korpus = int(i["building"])
+            korpus = '1'
         except:
-            korpus = i["building"]
+            korpus = '1'
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''

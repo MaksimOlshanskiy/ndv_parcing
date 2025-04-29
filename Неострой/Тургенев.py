@@ -118,7 +118,7 @@ while True:
         stadia = ''
         dogovor = ''
         type = 'Квартира'
-        finish_type = ''
+        finish_type = 'С отделкой'
         room_count = int(i['rooms'])
 
         area = float(i['area'])
@@ -196,7 +196,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.now().date()
 
 # Базовый путь для сохранения
-base_path = r"/"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Неострой"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

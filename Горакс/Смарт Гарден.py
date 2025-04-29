@@ -1,11 +1,9 @@
-import requests
 from datetime import datetime
 import time
 import pandas as pd
 import openpyxl
 import os
 import random
-
 import requests
 
 headers = {

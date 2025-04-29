@@ -59,7 +59,7 @@ cookies = {
     'pageviewTimerMSKFired45min': 'true',
     '_ga_2WZB3B8QT0': 'GS1.1.1743500034.7.0.1743500034.0.0.1783200163',
     'qrator_jsr': '1743500035.340.lNzjMVYgUD6MhaVz-aigst9790a8lhculpspa1jnd2uv1nh48-00',
-    'qrator_jsid': '1743500035.340.lNzjMVYgUD6MhaVz-84i90kciqfvnff2coo5824to5jhoppk8',
+    'qrator_jsid': '1745310134.185.3tUZd7o4WlIotIQE-v6gp9sv76jgk0e59dkjaccj6h18u9qgh',
     '_ym_visorc': 'b',
     'csrftoken': 'cOTUE7JTGH5SVWNuymPfqC9iEzS9J3wXA52jhzTdYUMAhX2ePnvwS2HZx1XYHnRz',
     '_ct_ids': 'htlowve6%3A36409%3A842352338',
@@ -134,13 +134,13 @@ for project in projects:
         for i in items:
 
             url = i['url']
-            developer = "Самолёт"
+            developer = "Самолет"
             project = i["project"]
             korpus = i["building"]
             type = ''
             if i["default_decor_type"] == None:
                 finish_type = "Без отделки"
-            elif i["default_decor_type"] == 1 or i["default_decor_type"] == 0:
+            elif i["default_decor_type"] == 1 or i["default_decor_type"] == 0 or i["default_decor_type"] == 2:
                 if i["is_kitchen_included_in_price"] == False:
                     finish_type = "С отделкой"
                 else:
@@ -275,7 +275,7 @@ for project in projects:
         current_date = datetime.now().date()
 
         # Базовый путь для сохранения
-        base_path = r"/Самолёт"
+        base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Самолёт"
 
         folder_path = os.path.join(base_path, str(current_date))
         if not os.path.exists(folder_path):

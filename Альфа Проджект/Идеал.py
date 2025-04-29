@@ -6,60 +6,39 @@ import openpyxl
 import os
 import random
 
+cookies = {
+    'BX_USER_ID': '15016e9404744ee3cb1a5dfed786822b',
+    '_ct': '2800000000121563453',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    '_ym_uid': '1743764280660177038',
+    '_ym_d': '1743764280',
+    'amplitude_id_de5f414583dc2ee7cc70a58b21551c09dom-ideal.ru': 'eyJkZXZpY2VJZCI6IjgwNzI3MWM4LWFmMjQtNGI3YS1iMjNjLTE3NjFkN2Q3MjM3MFIiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTc0NDI5NTEwNjc1MSwibGFzdEV2ZW50VGltZSI6MTc0NDI5NTEwNjc1MSwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MCwic2VxdWVuY2VOdW1iZXIiOjB9',
+    'session': '470659aeac2ad11208750e937d8234a990e122a0bc135134bce636c89170cfb4',
+    '_ym_visorc': 'w',
+    '_ym_isad': '2',
+}
+
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'content-type': 'application/json',
-    'origin': 'https://dom-ideal.ru',
     'priority': 'u=1, i',
-    'referer': 'https://dom-ideal.ru/',
+    'referer': 'https://dom-ideal.ru/flats?status=free&status=booked&offset=96&limit=16',
     'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'cross-site',
+    'sec-fetch-site': 'same-origin',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'x-host': 'dom-ideal.ru',
+    # 'cookie': 'BX_USER_ID=15016e9404744ee3cb1a5dfed786822b; _ct=2800000000121563453; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ym_uid=1743764280660177038; _ym_d=1743764280; amplitude_id_de5f414583dc2ee7cc70a58b21551c09dom-ideal.ru=eyJkZXZpY2VJZCI6IjgwNzI3MWM4LWFmMjQtNGI3YS1iMjNjLTE3NjFkN2Q3MjM3MFIiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTc0NDI5NTEwNjc1MSwibGFzdEV2ZW50VGltZSI6MTc0NDI5NTEwNjc1MSwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MCwic2VxdWVuY2VOdW1iZXIiOjB9; session=470659aeac2ad11208750e937d8234a990e122a0bc135134bce636c89170cfb4; _ym_visorc=w; _ym_isad=2',
 }
 
-json_data = {
-    'action': 'objects_list',
-    'data': {
-        'category': 'flat',
-        'activity': 'sell',
-        'page': 0,
-        'filters': {
-            'studio': 'null',
-            'rooms': [],
-            'restorations': [],
-            'promos': [],
-            'tags': [],
-            'riser_side': [],
-            'geo_city': None,
-            'floors': [],
-            'houses_ids': [],
-            'type': None,
-            'areaFrom': None,
-            'areaTo': None,
-            'priceFrom': None,
-            'priceTo': None,
-            'priceM2From': None,
-            'priceM2To': None,
-            'priceRentFrom': None,
-            'priceRentTo': None,
-            'priceRentM2From': None,
-            'priceRentM2To': None,
-            'status': None,
-        },
-        'complex_id': None,
-        'house_id': 7541960,
-        'orders': [],
-        'complex_search': None,
-        'house_search': None,
-        'cabinetMode': False,
-    },
-    'auth_token': None,
-    'locale': None,
+params = {
+    'project_id': 'fc84199f-0e86-4840-97ab-d89067f06a79',
+    'status': 'free',
+    'offset': '0',
+    'limit': '16',
 }
 
 
@@ -73,46 +52,54 @@ def extract_digits_or_original(s):
 
 while True:
 
-    response = requests.post(
-        'https://api.macroserver.ru/estate/catalog/?domain=dom-ideal.ru&check=vXfbAjdBvIigt3aSdeK6WGhGF6UhOvKbShnz_WeAND0JImVSxXjnfDE3NDM3NjQzNDR8ZWM2N2M&type=catalog&inline=true&issetJQuery=1&presmode=house&houseid=7541960&uuid=1d11070c-8e88-4b81-bcba-c8c8a598e397&cookie_base64=eyJfeW1fdWlkIjoiMTc0Mzc2NDI4MDY2MDE3NzAzOCJ9&time=1743764344&token=a99e1244bf1de9c9afc79b5d1e7c66b1/',
+    response = requests.get(
+        'https://dom-ideal.ru/api/realty-filter/residential/real-estates',
+        params=params,
+        cookies=cookies,
         headers=headers,
-        json=json_data,
     )
-    if response.json()['isLastPage']:
-        break
-    items = response.json()["objects"]
+    # if response.json()['isLastPage']:
+    #     break
+    items = response.json()
 
 
 
     for i in items:
-        if i['status'] != 'available':
-            continue
+        # if i['status'] != 'available':
+        #     continue
 
-        url = i['id']
-        developer = ""
+        url = ''
+        developer = "Альфа Проджект"
         project = 'Идеал'
         korpus = ''
-        type = ''
-        finish_type = ''
-        room_count = extract_digits_or_original(i['rooms'])
         try:
-            area = float(i['area'])
+            if i['type'] == 'flat':
+                type = 'Квартира'
+        except:
+            type = ''
+        if i['finishing_type'] == 'fine':
+            finish_type = 'С отделкой'
+        else:
+            finish_type = 'Без отделки'
+        room_count = i['rooms']
+        try:
+            area = float(i['total_area'])
         except:
             area = ''
         try:
-            old_price = int()
+            old_price = int(i['old_price'])
         except:
             old_price = ''
         try:
-            price = int(i['price'].replace('.0000', ''))
+            price = int(i['price'])
         except:
             price = ''
-        section = ''
+        section = int(i['section_number'])
         try:
-            floor = int(i['floor'])
+            floor = int(i['floor_number'])
         except:
             floor = ''
-        flat_number = ''
+        flat_number = i['int_number']
 
         english = ''
         promzona = ''
@@ -154,7 +141,7 @@ while True:
 
     if not items:
         break
-    json_data['data']['page'] += 1
+    params['offset'] = str(int(params['offset']) + 16)
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
 

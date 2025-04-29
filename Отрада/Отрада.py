@@ -125,7 +125,7 @@ while True:
         korpus = flat_params[2].text.replace('Корпус', '').strip()
         konstruktiv = ''
         klass = ''
-        srok_sdachi = flat_params[3].text.replace('Корпус', '').strip()
+        srok_sdachi = ''
 
         try:
             if i.find('a', {'data-info': 'Квартира без отделки'}):

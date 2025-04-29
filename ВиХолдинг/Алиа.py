@@ -67,6 +67,8 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 flats = []
+current_date = datetime.now().date()
+
 while True:
 
     response = requests.post('https://alia.moscow/graphql/', cookies=cookies, headers=headers, json=json_data)
@@ -80,7 +82,12 @@ while True:
         developer = "ВиХолдинг"
         project = 'Алиа'
         korpus = f"{i['node']['floor']['section']['building']['urbanBlock']['name']} {i['node']['buildingNumber']}"
-        type = i['node']['type']
+        if i['node']['type'] == "TX":
+            type = "Таунхаусы"
+        elif i['node']['type'] == "Сити-хаус":
+            type ='Сити-хаус'
+        else:
+            type = 'Квартиры'
         if i['node']['decoration']['title'] == "White box":
             finish_type = 'Предчистовая'
         else:
@@ -91,7 +98,7 @@ while True:
         except:
             area = ''
         try:
-            old_price = int()
+            old_price = int(i['node']['originPrice'])
         except:
             old_price = ''
         try:
@@ -107,7 +114,6 @@ while True:
         except:
             floor = ''
         flat_number = ''
-
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -139,7 +145,7 @@ while True:
         price_per_metr = ''
         discount = ''
         price_per_metr_new = ''
-        date = datetime.now()
+        date = current_date
 
 
         print(
@@ -200,7 +206,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
  'этаж',
  'номер'])
 
-current_date = "2025-03-27"
+
 
 # Базовый путь для сохранения
 base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ВиХолдинг"

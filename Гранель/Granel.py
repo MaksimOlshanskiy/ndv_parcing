@@ -66,7 +66,7 @@ params = {
     'is_property_of_the_day': '',
     'is_released': '0',
     'is_with_keys': '',
-    'limit': '3000',
+    'limit': '4000',
     'offset': '0',
     'order': '',
     'price_max': '',
@@ -115,11 +115,11 @@ for i in items:
     except:
         area = ''
     try:
-        old_price = int(i["price"])
+        old_price = round(float(i["price"]))
     except:
         old_price = ''
     try:
-        price = int(i["price_discounted"])
+        price = round(float(i["price_discounted"]))
     except:
         price = ''
     section = ''
@@ -212,13 +212,13 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"/Гранель"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гранель"
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{date}.xlsx"
+filename = f"{developer}_{date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

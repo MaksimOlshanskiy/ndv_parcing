@@ -55,7 +55,7 @@ params = {
 
 zk_dict = {4: 'Mainstreet', 2: 'RED7', 3: "UNO, Старокоптевский", 1: "Very на ботанической", 7: "UNO, Головинские пруды",
        8: "Физтехсити", 9: "Nametkin tower", 11: "Гоголь парк", 12: "Мираполис", 14: "Emotion", 15: "Малиново",
-       16: "Evopark Сокольники", 17: "Evopark Измайлово", 18: "UNO, Соколиная гора",
+       16: "Evopark Сокольники", 17: "Evopark Измайлово", 18: "UNO, Соколиная гора", 19: 'UNO.Горбунова'
        }
 
 flats = []
@@ -111,7 +111,7 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = ''
+        type = 'Квартиры'
 
         try:
             if i["properties"].get("with_decoration_whitebox") is not None and i["properties"].get("with_decoration_whitebox") == True:
@@ -197,7 +197,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"/Основа"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Основа"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

@@ -97,7 +97,7 @@ for i in items:
     stadia = ''
     dogovor = ''
     type = 'Апартаменты'
-    finish_type = ''
+    finish_type = 'Без отделки'
 
     room_count = int(i['FlatRoomsCount'])
 

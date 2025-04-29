@@ -29,7 +29,7 @@ params = {
     "flatPage": 1,
     "flatLimit": 8,
     "onlyFlats": 1,
-    "currentBenefit": "polnaya-oplata-1",      #   проверить эту строчку, была проблема в прошлый раз
+    "currentBenefit": "polnaya-oplata",      #   проверить эту строчку, была проблема в прошлый раз
 
 }
 
@@ -142,7 +142,7 @@ for zk in zk_list:
             district = ''
             adress = ''
             eskrou = ''
-            korpus = i["bulkName"]
+            korpus = str(i["bulkName"]).replace('Корпус ', '')
             konstruktiv = ''
             klass = ''
             srok_sdachi = ''
@@ -150,7 +150,6 @@ for zk in zk_list:
             stadia = ''
             dogovor = ''
             type = ''
-
             if i["finishType"] == 0:
                 finish_type = "Без отделки"
             elif i["finishType"] == 1:
@@ -159,13 +158,11 @@ for zk in zk_list:
                 finish_type = "Предчистовая"
             elif i["finishType"] == 3:
                 finish_type = "С отделкой и доп опциями"
-
             if int(i["rooms"]) == 0 or int(i["rooms"]) == -1:
                 room_count = 0
             else:
                 room_count = int(i["rooms"])
-
-            area = i["area"]
+            area = float(i["area"])
             price_per_metr = ''
             if i["oldPrice"] is None:
                 old_price = 0

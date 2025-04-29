@@ -1,4 +1,4 @@
-# отдельно с отделкой и без, в 'params[finishing]'
+# отдельно с отделкой и без, в 'params[finishing]'  Автоматически, менять ничего не надо
 
 import requests
 from datetime import datetime
@@ -66,6 +66,7 @@ for i in range(2):
         data['params[finishing]'] = '1'
     else:
         data['params[finishing]'] = '0'
+    data['page'] = '1'
 
 
     while True:
@@ -77,7 +78,8 @@ for i in range(2):
         for flat in flats_soup:
 
             if int(flat.find('div', class_='layout-card__info-wrp').text.split()[9]) in flats_nums:
-                    continue
+                print(f'Квартира {flat.find('div', class_='layout-card__info-wrp').text.split()[9]} уже в списке')
+                continue
 
 
 
@@ -216,7 +218,7 @@ folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{date}_Без.xlsx"
+filename = f"{developer}_{project}_{date}_C.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

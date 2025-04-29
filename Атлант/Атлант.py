@@ -114,7 +114,7 @@ while True:
         konstruktiv = ''
         klass = ''
         elements = i.find_all('span', class_='badge__text')
-        finish_type = elements[1].text
+        finish_type = elements[1].text.replace(' отделка', '')
         srok_sdachi = ''
 
         srok_sdachi_old = ''

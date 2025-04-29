@@ -1,3 +1,5 @@
+# глазами смотреть количество страниц и проставлять в коде, иначе будут дубли!!!!!!!!!!!!!!!
+
 import datetime
 import time
 import pandas as pd
@@ -74,7 +76,7 @@ while True:
             continue
         # print(i.text.split())
 
-        flats = i.find_all('td')
+        flats2 = i.find_all('td')
 
 
         url = ''
@@ -103,9 +105,9 @@ while True:
         adress = ''
         eskrou = ''
         try:
-            korpus = ''
+            korpus = '1'
         except ValueError:
-            korpus = ''
+            korpus = '1'
         konstruktiv = ''
         klass = ''
         finish_type = ''
@@ -115,20 +117,25 @@ while True:
         stadia = ''
         dogovor = ''
         type = 'Квартиры'
-        room_count = i.text.split()[0]
+        if i.text.split()[0] == 'С':
+            room_count = 0
+        else:
+            room_count = extract_digits_or_original(i.text.split()[0])
         area = extract_digits_or_original(i.text.split()[7])
         price_per_metr = ''
-        old_price = ''
-
+        try:
+            old_price = int(i.find(class_= 'catalog__price_old').find(class_= 'catalog__price_max').text.replace('₽', '').replace(' ', ''))
+        except:
+            old_price = ''
         discount = ''
         price_per_metr_new = ''
         if len(i.text.split()) == 15:
-            price = ''.join(i.text.split()[11:14])
+            price = int(''.join(i.text.split()[11:14]).replace('₽', ''))
         else:
-            price = ''.join(i.text.split()[-4:-1])
+            price = int(''.join(i.text.split()[-4:-1]).replace('₽', ''))
         section = ''
-        floor = i.text.split()[3]
-        flat_number = extract_digits_or_original(i.text.split()[6])
+        floor = int(i.text.split()[3])
+        flat_number = int(extract_digits_or_original(i.text.split()[6]))
 
         print(
             f"{project}, квартира {flat_number}, отделка: {finish_type}, количество комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
@@ -141,6 +148,8 @@ while True:
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
     params['PAGEN_1'] = str(int(params['PAGEN_1']) + 1)
+    if params['PAGEN_1'] == '5':
+        break
     if not flats_soup:
         break
 
@@ -192,6 +201,69 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
                               'секция',
                               'этаж',
                               'номер'])
+
+params = {
+    'set_filter': 'y',
+    'catalogFilter_92': '270784970',
+    'PAGEN_1': '1',
+}
+
+flats_with_finishing = []
+while True:
+
+    response = requests.get('https://1-ng.ru/catalog/', params=params, cookies=cookies, headers=headers)
+    print(response.status_code)
+    items = response.text
+    soup = BeautifulSoup(items, 'html.parser')
+    flats_soup = soup.find_all('tr')
+    counter = 1
+
+    for i in flats_soup:
+        if counter == 1:
+            counter += 1
+            continue
+        if i.text.split() == []:
+            continue
+        # print(i.text.split())
+
+        flats2 = i.find_all('td')
+
+        flat_number = int(extract_digits_or_original(i.text.split()[6]))
+        flats_with_finishing.append(flat_number)
+    params['PAGEN_1'] = str(int(params['PAGEN_1']) + 1)
+    if params['PAGEN_1'] == '3':
+        break
+
+
+def set_finish(df, список_номеров, значение_есть='Предчистовая', значение_нет='Без отделки'):
+    """
+    Обновляет столбец 'Отделка' в датафрейме df:
+    - если 'номер' есть в списке_номеров — устанавливается значение_есть
+    - если 'номер' нет в списке — устанавливается значение_нет
+
+    Параметры:
+        df (pd.DataFrame): исходный датафрейм
+        список_номеров (list): список номеров квартир
+        значение_есть (str): значение, если номер найден (по умолчанию 'Предчистовая')
+        значение_нет (str): значение, если номер не найден (по умолчанию 'Без отделки')
+
+    Возвращает:
+        pd.DataFrame: обновлённый датафрейм
+    """
+    if 'номер' not in df.columns:
+        raise ValueError("В датафрейме нет столбца 'номер'")
+
+    # Убедимся, что столбец 'Отделка' существует
+    if 'Отделка' not in df.columns:
+        df['Отделка'] = None
+
+    # Проставляем значения в зависимости от наличия номера в списке
+    df['Отделка'] = df['номер'].apply(lambda x: значение_есть if x in список_номеров else значение_нет)
+
+    return df
+
+df = set_finish(df, flats_with_finishing)
+
 
 current_date = datetime.date.today()
 

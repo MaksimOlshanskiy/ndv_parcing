@@ -60,7 +60,7 @@ params = {
     'pereustupka': 'false',
     'secondhand': 'false',
     'order': 'price',
-    'finish_option': '0',
+    'finish_option': '1',
     'limit': '48',
     'offset': '0',
 }
@@ -120,7 +120,10 @@ while True:
         stadia = ''
         dogovor = ''
         type = 'Квартира'
-        finish_type = 'Без отделки'    # менять вручную
+        if params['finish_option'] == '1':
+            finish_type = 'С отделкой'
+        elif params['finish_option'] == '0':
+            finish_type = 'Без отделки'
 
         room_count = int(i['rooms'])
 
@@ -201,13 +204,13 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.now().date()
 
 # Базовый путь для сохранения
-base_path = r"/Рост"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Инвест траст"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}-0_{current_date}.xlsx"
+filename = f"{developer}_{project}-1_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

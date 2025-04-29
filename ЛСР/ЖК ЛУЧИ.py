@@ -33,7 +33,7 @@ data = {
     'ob[id]': '52',
     'object': '52',
     'a': 'types',
-    'ok': 'L9BkJyIGWZ1fC1lLQdKcu325SphK4pYG'
+    'ok': 'UUfLcU0cgOFHuP7JAPEE88HyPnaLnjqR'
 }
 
 
@@ -56,7 +56,7 @@ while True:
         url = ''
 
         date = datetime.date.today()
-        project = "ЖК Лучи"
+        project = "Лучи"
 
         english = ''
         promzona = ''
@@ -80,6 +80,8 @@ while True:
         eskrou = ''
         all_tags = i.find_all('div', class_='tag tag--isSmall')
         korpus = i.find('div', class_= 'listingCard__label').text.strip().split()[1]
+        if korpus == '(этап':
+            korpus = '15'
         konstruktiv = ''
         klass = ''
         srok_sdachi = all_tags[0].text.strip()

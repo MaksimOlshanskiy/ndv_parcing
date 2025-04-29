@@ -33,7 +33,7 @@ data = {
     'ob[id]': '211',
     'object': '211',
     'a': 'types',
-    'ok': 'L9BkJyIGWZ1fC1lLQdKcu325SphK4pYG'
+    'ok': 'wq2IAjhK6KjntiZG6ZtT16r8lY32mH7X'
 }
 
 
@@ -55,7 +55,7 @@ while True:
 
         url = ''
         date = datetime.date.today()
-        project = ("ЖК Обручева 30")
+        project = ("Обручева 30")
         english = ''
         promzona = ''
         mestopolozhenie = ''

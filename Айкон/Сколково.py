@@ -119,7 +119,7 @@ while params['PAGEN_1'] != '20':
         klass = ''
         srok_sdachi = ''
 
-        finish_type = ''
+        finish_type = 'Без отделки'
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''

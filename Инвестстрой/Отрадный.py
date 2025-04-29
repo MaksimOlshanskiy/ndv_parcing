@@ -48,7 +48,7 @@ counter = 1
 
 while True:
 
-    web_site = f'https://jk-otradny.ru/room/page/2/?slg=post&mdf_cat=7&page_mdf=0e73715f4716d2f56ed75357a742be9f&mdf_page_num={counter}'
+    web_site = f'https://jk-otradny.ru/room/page/{counter}/?slg=post&mdf_cat=7&page_mdf=0e73715f4716d2f56ed75357a742be9f'
 
     response = requests.get(web_site,
         cookies=cookies, headers=headers)

@@ -1,4 +1,3 @@
-# не нашёл откуда вытягивать данные об отделке!!!
 # запрос filter...
 
 import requests
@@ -100,6 +99,10 @@ while True:
         url = f"https://level.ru{i["url"]}"
         date = datetime.date.today()
         project = i["project"]
+        if project == 'Level Звенигородская, этап 1':
+            project = 'Level Звенигородская'
+        if 'Мичуринский' in project:
+            project = 'Level Мичуринский'
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -120,27 +123,30 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        korpus = extract_digits_or_original(i["building_name"])
+        korpus = str(i["building_name"]).replace('Корпус ', '')
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = ''
+        if i['flat_category'] == 'flat':
+            type = 'Квартиры'
+        elif i['flat_category'] == 'apartment':
+            type = 'Апартаменты'
         if i['renovation'] == 2:
             finish_type = "Предчистовая"
         elif i['renovation'] == 0:
             finish_type = "Без отделки"
         room_count = int(i["room"])
-        area = i["area"]
+        area = float(i["area"])
         price_per_metr = ''
-        old_price = i["old_price"]
+        old_price = int(i["old_price"])
         discount = ''
         price_per_metr_new = ''
-        price = i["price"]
+        price = int(i["price"])
         section = int(i["section_title"])
-        floor = i["floor"]
+        floor = int(i["floor"])
         flat_number = ''
 
         print(

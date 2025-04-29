@@ -91,40 +91,30 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                175578,
+                184723,
             ],
         },
-        'publish_period': {
+        'page': {
             'type': 'term',
-            'value': 2592000,
+            'value': 3,
         },
-        'room': {
-            'type': 'terms',
-            'value': [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                9,
-            ],
+        'total_area': {
+            'type': 'range',
+            'value': {
+                'gte': 44,
+                'lte': 64,
+            },
         },
         'building_status': {
             'type': 'term',
             'value': 1,
         },
-        'page': {
-            'type': 'term',
-            'value': 2,
-        },
     },
 }
 
 
+
 name_counter = 1
-
-
 
 
 def extract_digits_or_original(s):

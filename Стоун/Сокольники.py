@@ -81,7 +81,7 @@ while True:
         project = 'Сокольники'
         korpus = i['housing']
         type = i['type_name']
-        finish_type = ''
+        finish_type = 'Без отделки'
         room_count = i['bedrooms_count']
         try:
             area = float(i['area'])
@@ -191,7 +191,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Стоун"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Страна Девелопмент"
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

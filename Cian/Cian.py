@@ -1,7 +1,7 @@
 # меняем настройки поиска через json_data. Парсим отдельно по каждому ЖК. Если в ЖК более 1500 объявлений, то нужно разбивать по корпусам, например
 
 import requests
-import datetime
+from datetime import datetime
 import time
 import pandas as pd
 import openpyxl
@@ -10,7 +10,7 @@ import random
 import re
 from functions import classify_renovation
 
-ids = [1358767
+ids = [4126730
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -76,22 +76,22 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
+        'page': {
+            'type': 'term',
+            'value': 1,
+        },
         'geo': {
             'type': 'geo',
             'value': [
                 {
                     'type': 'newobject',
-                    'id': 4825183,
+                    'id': 4399722,
                 },
             ],
         },
         'from_developer': {
             'type': 'term',
             'value': True,
-        },
-        'page': {
-            'type': 'term',
-            'value': 1,
         },
     },
 }
@@ -102,7 +102,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-current_date = datetime.date.today()
+current_date = datetime.now().date()
 
 
 for y in ids:
@@ -179,27 +179,26 @@ for y in ids:
             except:
                 project = ''
             try:
-                if i['decoration'] == "fine":
+                if i['decoration'] == "fine" or i['offerFeatureLabels'][0] == 'С отделкой':
                     finish_type = "С отделкой"
-                elif i['decoration'] == "without" or i['decoration'] == "rough":
+                elif i['decoration'] == "without":
                     finish_type = "Без отделки"
+                elif i['decoration'] == "rough":
+                    finish_type = 'Предчистовая'
                 else:
-                    finish_type = i['decoration']
+                    finish_type = ''
             except:
                 finish_type = ''
             if not finish_type:
                 finish_type = classify_renovation(i['description'])
-            #try:
-            #    decoration2 = i['offerFeatureLabels'][0]
-            #except:
-            #    decoration2 = ''
+
             try:
                 adress = i['geo']['userInput']
             except:
                 adress = ""
 
             try:
-                korpus = extract_digits_or_original(i["geo"]["jk"]["house"]["name"])
+                korpus = str(i["geo"]["jk"]["house"]["name"])
             except:
                 korpus = ''
 
@@ -221,7 +220,7 @@ for y in ids:
                 area = ''
 
 
-            date = datetime.date.today()
+            date = datetime.now().date()
 
             try:
                 floor = i["floorNumber"]
@@ -336,7 +335,7 @@ for y in ids:
                                       'этаж',
                                       'номер'])
 
-    current_date = datetime.date.today()
+    current_date = datetime.now().date()
 
     # Базовый путь для сохранения
     base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian"
@@ -353,6 +352,3 @@ for y in ids:
     # Сохранение файла в папку
     df.to_excel(file_path, index=False)
 
-
-def classify_renovation():
-    return None

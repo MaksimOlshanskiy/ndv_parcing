@@ -111,7 +111,7 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        korpus = i["building"]["name"]
+        korpus = i["building"]["name"].replace('Корпус ', '')
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''

@@ -109,7 +109,7 @@ for i in items:
         dogovor = ''
         if i['type'] == "apartments":
             type = 'Апартаменты'
-        finish_type = ""
+        finish_type = "Без отделки"
         room_count = int(i['rooms'])
 
         area = float(i['square'])
@@ -179,7 +179,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\PycharmProjects\SeleniumParcer\Колди"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Колди"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

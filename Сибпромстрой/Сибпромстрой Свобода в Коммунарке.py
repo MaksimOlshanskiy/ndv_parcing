@@ -90,10 +90,8 @@ while True:
     for i in flats_soup:
 
         url = ''
-
         date = datetime.date.today()
         project = "Свобода"
-
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -117,7 +115,7 @@ while True:
         korpus = i.find('div', class_="korp-sect").text.strip().split()[3].replace(',', '')
         konstruktiv = ''
         klass = ''
-        finish_type = i.find('div', class_="facing fs-smlr mb-1").text.strip()
+        finish_type = i.find('div', class_="facing fs-12 mb-1").text.strip().replace('Отделка: ', '')
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
@@ -129,7 +127,7 @@ while True:
         srok_sdachi = ''
         discount = ''
         price_per_metr_new = ''
-        price = extract_digits_or_original(i.find('div', class_= 'flat-prices mb-2').text)
+        price = extract_digits_or_original(i.find('div', class_= 'flat-full-price').text)
         section = int(i.find('div', class_="korp-sect").text.strip().split()[5])
         floor = extract_digits_or_original(i.find('div', class_= 'floor').text.strip())
 

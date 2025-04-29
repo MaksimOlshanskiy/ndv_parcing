@@ -69,28 +69,30 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        try:
-            korpus = int(extract_digits_or_original(i["houseData"]["number"]))
-        except:
-            korpus = i["houseData"]["number"]
+        korpus = str(i["houseData"]["number"])
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = ''
-        finish_type = i["finish"]
+        if i['type'] == "flat":
+            type = 'Квартира'
+        else:
+            type = ''
+        if i["finish"] == 'White Box':
+            finish_type = 'Предчистовая'
+
         try:
             room_count = int(i["rooms"])
         except:
             room_count = i["rooms"]
-        area = i["square"]
+        area = float(i["square"])
         price_per_metr = ''
         old_price = i["priceNoDiscount"]
         discount = ''
         price_per_metr_new = ''
-        price = i["price"]
+        price = i['price'][0]
         section = ''
         try:
             floor = int(i["floorData"]["number"])
@@ -156,7 +158,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"/Инград"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Инград"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

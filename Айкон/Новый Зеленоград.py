@@ -102,7 +102,7 @@ while True:
         developer = "Айкон"
         project = 'Новый Зеленоград'
         korpus = i['building']
-        type = ''
+        type = 'Квартира'
         if i['finishing']:
             finish_type = 'С отделкой'
         else:

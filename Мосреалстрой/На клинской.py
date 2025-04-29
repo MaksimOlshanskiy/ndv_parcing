@@ -80,7 +80,7 @@ for i in items:
         stadia = ''
         dogovor = ''
         type = 'Квартира'
-        finish_type = ''
+        finish_type = 'Без отделки'
         room_count = int(i['rooms'])
 
         area = float(i['square'])
