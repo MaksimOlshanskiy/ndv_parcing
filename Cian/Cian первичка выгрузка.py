@@ -68,12 +68,12 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4871,     # меняем этот номер региона
+                5024,
             ],
         },
     },
-    'uri': '/newobjects/list?deal_type=sale&engine_version=2&offer_type=newobject&region=184723&p=2',
-    'subdomain': 'sevastopol',
+    'uri': '/newobjects/list?deal_type=sale&engine_version=2&offer_type=newobject&region=5024&p=2',
+    'subdomain': 'tyumen',
     'offset': 0,
     'count': 25,
     'userCanUseHiddenBase': False,
@@ -235,7 +235,7 @@ for y in ids:
                 adress = ""
 
             try:
-                korpus = extract_digits_or_original(i["geo"]["jk"]["house"]["name"])
+                korpus = i["geo"]["jk"]["house"]["name"]
             except:
                 korpus = ''
 
@@ -319,7 +319,7 @@ for y in ids:
         current_date = datetime.date.today()
 
         # Базовый путь для сохранения
-        base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian"
+        base_path = r"Cian"
 
         folder_path = os.path.join(base_path, str(current_date))
         if not os.path.exists(folder_path):
