@@ -76,12 +76,13 @@ developer_dict = {'ООО ТК Алладин': 'ТК Алладин',
                   'Ипотечная компания М-6' : 'Стройтек',
                   'ПроГород' : 'Level',
                   'УК СЕТЬСТРОЙ БАЛАШИХА' : 'Сетьстрой',
-                  'СЗ Элита-Эко' : 'Имена'}
+                  'СЗ Элита-Эко' : 'Имена',
+                  'Град' : 'ГРАД'}
 
 import pandas as pd
 import pyxlsb
 
-file_path = r"C:\Users\Mi\OneDrive\Desktop\База\Февраль.xlsx"
+file_path = r"C:\Users\Mi\OneDrive\Desktop\База\Feb-april_filled.xlsx"
 df = pd.read_excel(file_path)
 
 # Замена значений в столбце "Название проекта "
@@ -90,4 +91,4 @@ df["Название проекта "] = df["Название проекта "].
 df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 
 # Сохранение результата в новый файл
-df.to_excel("Fixed_Feb.xlsx", index=False)
+df.to_excel("Feb-april_filled.xlsx", index=False)
