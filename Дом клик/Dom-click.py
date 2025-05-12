@@ -40,7 +40,6 @@ cookies = {
     'top100_id': 't1.7711713.1405137252.1743518288740',
     '_ym_uid': '1743518289666663600',
     '_ym_d': '1743518289',
-    '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
     'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}',
     'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
     'tmr_lvid': '6b6b440680155a4ac17ccaf6a462f603',
@@ -48,15 +47,19 @@ cookies = {
     'regionAlert': '1',
     'COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING': 'true',
     'cookieAlert': '1',
+    'favoriteHintShowed': 'true',
+    'qrator_jsr': 'v2.0.1746443036.203.5b6ce31fqfMn7acw|6Hm11vjdN8tuwc5R|/CK4S9deePH0lg7lNmuYmGLMNxH6RUNcCKuuTJM+eFODAJjErvHEgrSngWpZd3uMrr5DbygqmGngMHD6JLckGQ==-cVGtdA890N5ryGKxVW1KA73/KrY=-00',
+    'qrator_jsid2': 'v2.0.1746443036.203.5b6ce31fqfMn7acw|dph4fBt8bPVz40fG|RS5WfVjVr8IpVRFQSltmP3udhcLz1IuI0UEf1gSIRWGWRFYrg5rBBCkCZKMIkfcYDBDQitalh+nCU0NZbruP59qo5cjoPKWtHkPgfxuEZ+b+MDWU76Lx+X2xOSQw2kmKZW7VLt+vcdN8KpGMMnle5A==-HI0BGCiEIMIg379YDkxbZbCMLD0=',
     '_ym_isad': '2',
-    'adrdel': '1745921103264',
-    'qrator_jsid2': 'v2.0.1745934833.216.5b6ce31f9XohaXxT|rar3ubU8O6ioAsAc|dBoWsV8RYkAX+t/L+5tp1mZBrMDC0BTLMPUmYDE++xB4mShx+dwjbL/tPHe2ol4pwq953jHiMlyagSBrHAtJX94ODNHiLYzz+in0JBdnTK5ng3GRimGCAgUp/DyLeb+/OVwRYApdbYz8XzQ6vh9AFg==-rsTTEomc12umD8Uf1VZtcITMp9o=',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1745934836',
-    '_visitId': 'b40df581-1b46-43b2-96a6-8a1e5de26c14-f4f0dcc432ac8ba6',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1745934837',
-    'tmr_reqNum': '291',
-    't3_sid_7711713': 's1.407824917.1745934836798.1745935513892.26.20.4.1',
+    '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1746443047',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1746443047',
+    'adrdel': '1746443047754',
+    '_visitId': 'ba91164e-2297-4cc5-ad06-898bf3d28912-f4f0dcc432ac8ba6',
+    't3_sid_7711713': 's1.1279952986.1746443047054.1746443162493.28.23.5.1',
+    'tmr_reqNum': '286',
 }
+
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
@@ -77,15 +80,15 @@ headers = {
 params = {
     'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
     'offset': '0',
-    'limit': '5',
+    'limit': '20',
     'sort': 'qi',
     'sort_dir': 'desc',
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '108435',
+    'complex_ids': '119901',
     'utm_referrer': 'https://www.google.com/',
-    'complex_name': 'ЖК "Оптима"',
+    'complex_name': 'ЖК в пер. Учебный',
     'from_developer': '1',
 }
 

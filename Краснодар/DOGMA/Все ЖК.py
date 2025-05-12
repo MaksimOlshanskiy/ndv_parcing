@@ -6,13 +6,15 @@ import openpyxl
 import os
 import random
 
+import requests
+
 headers = {
-    'accept': 'application/json, text/plain, */*',
+    'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'content-type': 'application/json',
-    'origin': 'https://xn--h1aafhhcesj.xn--p1ai',
+    'origin': 'https://dogma.ru',
     'priority': 'u=1, i',
-    'referer': 'https://xn--h1aafhhcesj.xn--p1ai/',
+    'referer': 'https://dogma.ru/',
     'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
@@ -23,49 +25,45 @@ headers = {
 }
 
 json_data = {
-    'action': 'objects_list',
-    'data': {
-        'category': 'flat',
-        'activity': 'sell',
-        'page': 3,
-        'filters': {
-            'studio': 'null',
-            'rooms': [],
-            'restorations': [],
-            'promos': [],
-            'tags': [],
-            'riser_side': [],
-            'geo_city': None,
-            'floors': [],
-            'houses_ids': [],
-            'type': None,
-            'areaFrom': None,
-            'areaTo': None,
-            'priceFrom': None,
-            'priceTo': None,
-            'priceM2From': None,
-            'priceM2To': None,
-            'priceRentFrom': None,
-            'priceRentTo': None,
-            'priceRentM2From': None,
-            'priceRentM2To': None,
-            'status': None,
-        },
-        'complex_id': None,
-        'house_id': 3147458,
-        'orders': [],
-        'complex_search': None,
-        'house_search': None,
-        'lazy': True,
-        'cabinetMode': False,
+    'areas': [
+        19.2,
+        222.4,
+    ],
+    'costs': [
+        3400000,
+        37800000,
+    ],
+    'deadlines': [],
+    'floors': [
+        1,
+        24,
+    ],
+    'layout_id': [],
+    'letter_ids': [],
+    'limit': 100,
+    'offset': 0,
+    'ids': [],
+    'project_ids': [
+        8,
+        2,
+        1,
+        3,
+    ],
+    'rooms': [],
+    'statuses': [
+        2,
+    ],
+    'tags': [],
+    'types': [
+        1,
+    ],
+    'group_by': '',
+    'order': {
+        'field': 'cost',
+        'type': 'asc',
     },
-    'auth_token': None,
-    'locale': None,
+    'classes': [],
 }
-
-
-
-
 
 flats = []
 date = datetime.now().date()
@@ -76,46 +74,51 @@ def extract_digits_or_original(s):
 
 while True:
 
-    response = requests.post(
-        'https://api.macroserver.ru/estate/catalog/?domain=xn--h1aafhhcesj.xn--p1ai&check=toQdDaB-5SM-IFhFuTSiFWydI9EAfWV3pHRAGBPI6LqXST-96LDk9D_nNgZjIlJsVc-9fDE3NDQyOTQ5MTZ8N2I0OTE&type=catalog&inline=true&issetJQuery=0&presmode=complex&complexid=3147490&uuid=9237f7af-3c5a-4841-bfc3-7eb5e0abaffc&cookie_base64=eyJfeW1fdWlkIjoiMTc0NDI5NDY0NjY3MjUwMTA1MyJ9&time=1744294916&token=3dbab31d00221254978f172118093a8b/',
-        headers=headers,
-        json=json_data,
-    )
-    if response.json()['isLastPage']:
+    response = requests.post('https://service.1dogma.ru/api/layouts-filter/v2/objects/filter', headers=headers, json=json_data)
+    print(response.status_code)
+    print(response)
+    if response.status_code != 200:
         break
-    items = response.json()["objects"]
 
+    items = response.json()['objects']
+    if items is None:
+        break
 
 
     for i in items:
-        if i['status'] != 'available':
-            continue
 
-        url = i['id']
-        developer = "Галакс"
-        project = 'Истомкино'
-        korpus = ''
+        url = ''
+        developer = "DOGMA"
+        project = i['project_name']
+        korpus = i['letter_name']
+        section = ''
         type = ''
-        finish_type = 'Предчистовая'
-        room_count = extract_digits_or_original(i['rooms'])
+        try:
+            if i['tags'][0]['text'] == 'С отделкой':
+                finish_type = 'С отделкой'
+            else:
+                finish_type = 'Без отделки'
+        except:
+            finish_type = 'Без отделки'
+        room_count = i['room']
+        flat_number = ''
         try:
             area = float(i['area'])
         except:
             area = ''
         try:
-            old_price = int()
+            old_price = int(i['cost'])
         except:
             old_price = ''
         try:
-            price = int(i['price'].replace('.0000', ''))
+            price = int(i['cost_sale'])
         except:
             price = ''
-        section = ''
         try:
             floor = int(i['floor'])
         except:
             floor = ''
-        flat_number = ''
+
 
         english = ''
         promzona = ''
@@ -147,7 +150,6 @@ while True:
         price_per_metr_new = ''
 
 
-
         print(
             f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
@@ -157,8 +159,9 @@ while True:
 
     if not items:
         break
-    json_data['data']['page'] += 1
-    sleep_time = random.uniform(1, 5)
+    print(f"Квартир загружено:{len(flats)}")
+    json_data['offset'] += 100
+    sleep_time = random.uniform(0.1, 0.2)
     time.sleep(sleep_time)
 
 df = pd.DataFrame(flats, columns=['Дата обновления',

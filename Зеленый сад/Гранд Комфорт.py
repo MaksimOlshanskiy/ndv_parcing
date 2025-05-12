@@ -1,3 +1,10 @@
+"""
+
+меняем номер максимальной страницы!!!!!!!!!!!!!!!!!!!!!
+
+
+"""
+
 import requests
 from datetime import datetime
 import time
@@ -71,9 +78,9 @@ def extract_digits_or_original(s):
 while True:
 
     if page_counter == 1:
-        url = f'https://www.green-garden.ru/mos/catalog/zhukovsky/'
+        url = f'https://www.green-garden.ru/mos/catalog/zhukovsky/filter/object_type-is-flat/'
     else:
-        url = f'https://www.green-garden.ru/mos/catalog/zhukovsky/?PAGEN_3={page_counter}'
+        url = f'https://www.green-garden.ru/mos/catalog/zhukovsky/filter/object_type-is-flat/?PAGEN_4={page_counter}'
 
     driver.get(url=url)
     page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
@@ -113,7 +120,7 @@ while True:
             floor = int(i.find(class_='b-list__floor').text.split()[0])
         except:
             floor = ''
-        flat_number = i.find(class_= 'mb-1').text.split()
+        flat_number = ''
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -152,7 +159,7 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    if page_counter == 40:
+    if page_counter == 16:
         break
     page_counter += 1
     sleep_time = random.uniform(1, 5)
@@ -203,7 +210,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Зеленый сад"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

@@ -189,7 +189,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = today
 
 # Базовый путь для сохранения
-base_path = r"C:\PycharmProjects\SeleniumParcer\СЗ Рублево-Архангельское"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

@@ -29,7 +29,7 @@ params = {
     'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': 'd6c9e893cc83fa31aabd28d74251b3a1b97198f8890288ee62836ca3d8061237',
+    'access_token': '361ba978b801e6a17896088ad0fff9d2ebda5d3a3507eae3799f35f7d5d9e984',
 }
 
 
@@ -168,7 +168,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Веста"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

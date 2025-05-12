@@ -1,16 +1,16 @@
 # меняем настройки поиска через json_data. Парсим отдельно по каждому ЖК. Если в ЖК более 1500 объявлений, то нужно разбивать по корпусам, например
 
 import requests
-from datetime import datetime
+import datetime
 import time
 import pandas as pd
 import openpyxl
 import os
 import random
 import re
-from functions import classify_renovation, clean_filename
+from functions import classify_renovation
 
-ids = [46529
+ids = [3730443, 7956, 4558643, 4729772, 1358767
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -76,22 +76,22 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'page': {
-            'type': 'term',
-            'value': 1,
-        },
         'geo': {
             'type': 'geo',
             'value': [
                 {
                     'type': 'newobject',
-                    'id': 4399722,
+                    'id': 4825183,
                 },
             ],
         },
         'from_developer': {
             'type': 'term',
             'value': True,
+        },
+        'page': {
+            'type': 'term',
+            'value': 1,
         },
     },
 }
@@ -102,7 +102,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-current_date = datetime.now().date()
+current_date = datetime.date.today()
 
 
 for y in ids:
@@ -175,7 +175,7 @@ for y in ids:
             except:
                 price = ''
             try:
-                project = i['geo']['jk']['displayName'].replace('ЖК ', '').strip('«»"')
+                project = i['geo']['jk']['displayName']
             except:
                 project = ''
             try:
@@ -191,14 +191,17 @@ for y in ids:
                 finish_type = ''
             if not finish_type:
                 finish_type = classify_renovation(i['description'])
-
+            #try:
+            #    decoration2 = i['offerFeatureLabels'][0]
+            #except:
+            #    decoration2 = ''
             try:
                 adress = i['geo']['userInput']
             except:
                 adress = ""
 
             try:
-                korpus = str(i["geo"]["jk"]["house"]["name"])
+                korpus = str(i["geo"]["jk"]["house"]["name"]).replace('Корпус ', '')
             except:
                 korpus = ''
 
@@ -220,7 +223,7 @@ for y in ids:
                 area = ''
 
 
-            date = datetime.now().date()
+            date = datetime.date.today()
 
             try:
                 floor = i["floorNumber"]
@@ -279,6 +282,20 @@ for y in ids:
 
     counter += 1
 
+    # Базовый путь для сохранения
+    base_path = r"C:\PycharmProjects\SeleniumParcer\Cian"
+
+    folder_path = os.path.join(base_path, str(current_date))
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    project = project.replace("/", "-")
+
+    filename = f"{project}_{current_date}.xlsx"
+
+    # Полный путь к файлу
+    file_path = os.path.join(folder_path, filename)
+
     df = pd.DataFrame(flats, columns=['Дата обновления',
                                       'Название проекта',
                                       'на англ',
@@ -321,10 +338,10 @@ for y in ids:
                                       'этаж',
                                       'номер'])
 
-    current_date = datetime.now().date()
+    current_date = datetime.date.today()
 
     # Базовый путь для сохранения
-    base_path = r""
+    base_path = r"Cian"
 
     folder_path = os.path.join(base_path, str(current_date))
     if not os.path.exists(folder_path):
@@ -336,9 +353,8 @@ for y in ids:
     file_path = os.path.join(folder_path, filename)
 
     # Сохранение файла в папку
-    try:
-        df.to_excel(file_path, index=False)
-    except:
-        filename = f"{project}_{current_date}_2.xlsx"
-        file_path = os.path.join(folder_path, filename)
-        df.to_excel(file_path, index=False)
+    df.to_excel(file_path, index=False)
+
+
+def classify_renovation():
+    return None

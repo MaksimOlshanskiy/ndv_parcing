@@ -91,9 +91,9 @@ while True:
 
         url = ''
         developer = "Профи Инвест"
-        project = item.find(class_='object_title').get_text(strip=True)
+        project = item.find(class_='object_title').get_text(strip=True).replace('"', '')
         korpus = item.find(class_='cell col_house').get_text(strip=True).replace('Корпус ', '')
-        type = ''
+        type = 'Квартиры'
         if item.find(class_='finishing_label'):
             finish_type = 'С отделкой'
         else:

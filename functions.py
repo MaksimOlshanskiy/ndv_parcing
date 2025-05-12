@@ -53,3 +53,22 @@ def classify_renovation(description: str) -> str:
             return "Предчистовая"
 
     return "Не удалось определить"
+
+def clean_filename(name: str, max_length: int = 255) -> str:
+    # Удаляем запрещённые символы для Windows
+    name = re.sub(r'[<>:"/\\|?*]', '', name)
+    # Зарезервированные имена (например, CON.xlsx)
+    reserved = {'CON', 'PRN', 'AUX', 'NUL', *(f'COM{i}' for i in range(1, 10)), *(f'LPT{i}' for i in range(1, 10))}
+    # Удаляем пробелы в начале и конце
+    name = name.strip()
+    # Удаляем расширение перед проверкой имени
+    base = name.rsplit('.', 1)[0]
+    # Переименовываем зарезервированные
+    if base.upper() in reserved:
+        base = f"{base}_safe"
+    # Возвращаем с ограничением длины
+
+    base = base.replace('ЖК ', '')  # Убираем 'ЖК '
+    base = base.strip('«»"')  # Убираем кавычки «», ""
+
+    return f"{base[:max_length - 5]}.xlsx"  # 5 символов под ".xlsx"
