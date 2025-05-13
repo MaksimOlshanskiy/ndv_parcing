@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\Desktop\Города млн май\Краснодар первичка"
+folder_path = r"C:\PycharmProjects\ndv_parcing\Cian\Cian\2025-05-13"
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -56,8 +56,8 @@ def remove_share_sale(df, column="Описание"):
 
 
 
-# all_data = all_data.drop_duplicates()       # убираем полные дубликаты
-# all_data = remove_share_sale(all_data)   # убираем доли в квартирах
+all_data = all_data.drop_duplicates()       # убираем полные дубликаты
+all_data = remove_share_sale(all_data)   # убираем доли в квартирах
 # all_data = clean_project_name(all_data, 'Название проекта') # убираем слова ЖК и кавычки в названии проектов
 # Проверяем результат
 print(all_data)

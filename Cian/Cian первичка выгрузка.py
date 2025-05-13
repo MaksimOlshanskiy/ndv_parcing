@@ -1,5 +1,6 @@
 # меняем настройки поиска через json_data. Парсим отдельно по каждому ЖК. Если в ЖК более 1500 объявлений, то нужно разбивать по корпусам
 
+import numpy
 import requests
 import datetime
 import time
@@ -75,7 +76,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4959,
+                4704,
             ],
         },
     },
@@ -194,7 +195,7 @@ for y in ids:
 
             print(f"Число комнат: {room_id}")
             if counter > 1:
-                sleep_time = random.uniform(8, 13)
+                sleep_time = random.uniform(8, 12)
                 time.sleep(sleep_time)
             try:
                 response = session.post(

@@ -88,7 +88,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                5024,
+                2,
             ],
         },
         'publish_period': {
@@ -99,18 +99,11 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'room': {
-            'type': 'terms',
-            'value': [
-                1,
-                2,
-            ],
-        },
         'total_area': {
             'type': 'range',
             'value': {
                 'gte': 1,
-                'lte': 37,
+                'lte': 35,
             },
         },
         'building_status': {
@@ -123,7 +116,7 @@ json_data = {
         },
         'page': {
             'type': 'term',
-            'value': 2,
+            'value': 1,
         },
     },
 }
@@ -136,7 +129,11 @@ def extract_digits_or_original(s):
 
 current_date = datetime.date.today()
 
-total_area_list = [[1, 37], [38, 45], [46, 57], [58, 88], [89, 1000]]
+total_area_list = [[1, 23], [23, 27], [27, 31], [31, 32], [33, 34],
+                   [34, 35], [35, 36], [36, 37], [37, 38], [38, 39], [39, 40], [40, 41], [41, 42], [42, 43],
+                   [43, 44], [44, 45], [45, 46], [46, 47], [47, 48], [48, 49], [49, 50],
+                   [50, 51], [51, 52], [52, 53], [53, 54], [55, 57], [57, 59], [59, 60],
+                   [60, 65], [65, 70], [70, 80], [80, 90], [90, 120], [120, 1000]]
 
 for area in total_area_list:
 
@@ -155,7 +152,7 @@ for area in total_area_list:
     while len(flats) < total_count:
 
         if counter > 1:
-            sleep_time = random.uniform(10, 15)
+            sleep_time = random.uniform(8, 12)
             time.sleep(sleep_time)
         try:
             response = session.post(
