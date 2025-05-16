@@ -82,6 +82,8 @@ while True:
             type = ''
         if i["finish"] == 'White Box':
             finish_type = 'Предчистовая'
+        else:
+            finish_type = ''
 
         try:
             room_count = int(i["rooms"])

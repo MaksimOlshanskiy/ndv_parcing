@@ -80,7 +80,7 @@ while True:
 
     for i in flats_soup:
         url = ''
-        developer = "Конструктор"
+        developer = "Град"
         project = 'Домодедово Парк Новый квартал'
         korpus = int(i.find(class_='product-card__subtitle').text.split()[1])
         type = 'Квартира'

@@ -21,8 +21,13 @@ ids_moscow = [1444810, 6381, 5494, 50743, 2352, 4712505, 48686, 2184313, 2344978
 ids_mo_dalnee = [3730443, 7956, 4558643, 4729772, 1358767
        ]
 
-ids_mo_srednee = [4833927, 1628126, 8689, 5208, 4482905, 5194393, 3394804, 600475, 5499
+ids_mo_srednee = [4833927, 1628126, 8689, 5208, 4482905, 5194393, 3394804, 600475, 5499, 4056931
+
        ]
+
+ids_mo_bliz = [118473,
+       ]
+
 
 proxies = {
     'https': '47.95.203.57:8080'
@@ -116,7 +121,7 @@ def extract_digits_or_original(s):
 current_date = datetime.date.today()
 
 
-for y in ids:
+for y in ids_mo_bliz:
 
     session = requests.Session()
 
@@ -132,7 +137,7 @@ for y in ids:
     while len(flats) < total_count:
 
         if counter > 1:
-            sleep_time = random.uniform(10, 15)
+            sleep_time = random.uniform(8, 12)
             time.sleep(sleep_time)
         try:
             response = session.post(

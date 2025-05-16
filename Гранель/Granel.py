@@ -54,7 +54,7 @@ headers = {
 params = {
     'area_max': '',
     'area_min': '',
-    'city': '',
+    'city': '1',
     'floor_number_max': '',
     'floor_number_min': '',
     'is_apartments': '',

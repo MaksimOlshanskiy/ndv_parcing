@@ -91,8 +91,12 @@ while True:
 
         url = ''
         developer = "Профи Инвест"
-        project = item.find(class_='object_title').get_text(strip=True).replace('"', '')
-        korpus = item.find(class_='cell col_house').get_text(strip=True).replace('Корпус ', '')
+        project = item.find(class_='object_title').get_text(strip=True).replace('"', '').replace('ЖК «', '').replace('»', '').replace('ЖК ', '')
+        korpus = item.find(class_='cell col_house').get_text(strip=True).replace('Корпус ', '').replace('Башня ', '')
+        if project == 'Новая Ивантеевка':
+            korpus = ' '.join(korpus.split()[0:2])
+        if project == 'Ривер Парк':
+            korpus = korpus.split()[0]
         type = 'Квартиры'
         if item.find(class_='finishing_label'):
             finish_type = 'С отделкой'
