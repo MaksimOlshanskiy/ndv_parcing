@@ -89,12 +89,12 @@ json_data = {
             'type': 'term',
             'value': '!1',
         },
-        'house_material': {
-            'type': 'terms',
-            'value': [
-                8,
-                4,
-            ],
+        'total_area': {
+            'type': 'range',
+            'value': {
+                'gte': 42,
+                'lte': 1000,
+            },
         },
         'room': {
             'type': 'terms',
@@ -104,12 +104,20 @@ json_data = {
         },
         'page': {
             'type': 'term',
-            'value': 2,
+            'value': 1,
         },
     },
 }
 
-name_counter = 5
+response = requests.post(
+    'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+    cookies=cookies,
+    headers=headers,
+    json=json_data,
+)
+
+
+name_counter = 10
 
 session = requests.Session()
 
@@ -128,7 +136,7 @@ current_date = datetime.date.today()
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(10, 15)
+        sleep_time = random.uniform(8, 12)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -143,6 +151,7 @@ while len(flats) < total_count:
         items = response.json()["data"]["offersSerialized"]
     except:
         print("Произошла ошибка, пробуем ещё раз")
+        print(response.status_code)
         time.sleep(61)
         session = requests.Session()
         response = session.post(
@@ -205,7 +214,7 @@ while len(flats) < total_count:
 counter += 1
 
 # Базовый путь для сохранения
-base_path = r"C:\PycharmProjects\SeleniumParcer\Cian"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

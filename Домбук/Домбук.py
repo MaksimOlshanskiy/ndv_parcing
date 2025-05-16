@@ -37,8 +37,9 @@ headers = {
 params = {
     'pagination[per_page]': '10',
     'pagination[page]': '1',
+    'filters[finishing_type][0]': 'f7c51519-b5eb-4055-9dfb-cc40b9f1a426',
     'filters[rooms][0]': 'studio',
-    'project_id': '80c85ea4-bf01-4f9a-b879-6e1c24cabecd',
+    'project_id': '8716b383-7dfb-417e-a7e4-ccb8489e173c',
     'lot_type_alias': 'kvartira',
 }
 
@@ -89,20 +90,20 @@ for rooms in rooms_count_list:
             status = ''
             start = ''
             comment = ''
-            developer = "Айгрин"
+            developer = "PLUS Development"
             okrug = ''
             district = ''
             adress = ''
             eskrou = ''
-            korpus = i['building_name']
+            korpus = i['building_name'].replace('Корпус ', '')
             konstruktiv = ''
             klass = ''
             srok_sdachi = ''
             srok_sdachi_old = ''
             stadia = ''
             dogovor = ''
-            type = 'Апартаменты'
-            finish_type = ''
+            type = 'Квартиры'
+            finish_type = 'Предчистовая'
             room_count = rooms_count_dict.get(rooms)
 
             area = float(i['square'])
@@ -191,7 +192,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{current_date}.xlsx"
+filename = f"{developer}_{project}_{current_date}_предчистовая.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

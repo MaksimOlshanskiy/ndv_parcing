@@ -10,7 +10,7 @@ import random
 import re
 from functions import classify_renovation, clean_filename
 
-ids = [46529
+ids = [5487211
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -179,7 +179,7 @@ for y in ids:
             except:
                 project = ''
             try:
-                if i['decoration'] == "fine" or i['offerFeatureLabels'][0] == 'С отделкой':
+                if i['decoration'] == "fine":  # or i['offerFeatureLabels'][0] == 'С отделкой'
                     finish_type = "С отделкой"
                 elif i['decoration'] == "without":
                     finish_type = "Без отделки"

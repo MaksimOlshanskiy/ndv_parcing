@@ -82,8 +82,8 @@ json_data = {
         'from_mcad_km': {
             'type': 'range',
             'value': {
-                'gte': 70,
-                'lte': 100,
+                'gte': 46,
+                'lte': 50,
             },
         },
         'engine_version': {
@@ -100,32 +100,9 @@ json_data = {
             'type': 'term',
             'value': 2592000,
         },
-        'house_year': {
-            'type': 'range',
-            'value': {
-                'gte': 1995,
-                'lte': 2025,
-            },
-        },
         'electronic_trading': {
             'type': 'term',
             'value': 2,
-        },
-        'electricity': {
-            'type': 'term',
-            'value': True,
-        },
-        'gas': {
-            'type': 'term',
-            'value': True,
-        },
-        'has_water': {
-            'type': 'term',
-            'value': True,
-        },
-        'has_drainage': {
-            'type': 'term',
-            'value': True,
         },
         'land_status': {
             'type': 'terms',
@@ -133,19 +110,11 @@ json_data = {
                 2,
             ],
         },
-        'wc_site': {
-            'type': 'term',
-            'value': 1,
-        },
         'object_type': {
             'type': 'terms',
             'value': [
                 1,
             ],
-        },
-        'is_dacha': {
-            'type': 'term',
-            'value': False,
         },
         'page': {
             'type': 'term',
@@ -154,7 +123,7 @@ json_data = {
     },
 }
 
-
+name_counter = 29
 
 
 response = requests.post(
@@ -186,7 +155,7 @@ json_data["jsonQuery"]["page"]["value"] = 1
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(10, 15)
+        sleep_time = random.uniform(8, 12)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -277,7 +246,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Коттеджи-9_{current_date}.xlsx"
+filename = f"Коттеджи-{name_counter}_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)
