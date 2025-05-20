@@ -9,6 +9,7 @@ import os
 import random
 import re
 
+
 ids = [4629063,
        ]  # id ЖК для парсинга
 
@@ -78,7 +79,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                1,
+                5024,
             ],
         },
         'publish_period': {
@@ -89,17 +90,12 @@ json_data = {
             'type': 'term',
             'value': '!1',
         },
-        'total_area': {
-            'type': 'range',
-            'value': {
-                'gte': 42,
-                'lte': 1000,
-            },
-        },
         'room': {
             'type': 'terms',
             'value': [
                 1,
+                2,
+                3,
             ],
         },
         'page': {
@@ -117,7 +113,7 @@ response = requests.post(
 )
 
 
-name_counter = 10
+name_counter = 2
 
 session = requests.Session()
 
@@ -193,7 +189,12 @@ while len(flats) < total_count:
             area = float(i["totalArea"])
         except:
             area = ''
-
+        try:
+            rooms = i['roomsCount']
+            if not rooms:
+                rooms = 0
+        except:
+            rooms = ''
 
         date = datetime.date.today()
 
@@ -229,18 +230,19 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
                                   'Район',
                                   'Площадь, кв.м',
                                   'Цена за месяц',
+                                  'Кол-во комнат'
                                   ])
 
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Москва_Аренда_{name_counter}-{current_date}.xlsx"
+filename = f"Аренда_{name_counter}-{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

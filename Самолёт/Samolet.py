@@ -27,34 +27,29 @@ cookies = {
     '_ga_2WZB3B8QT0': 'deleted',
     'city_approved': '1',
     'pageviewUrlProjectNovodanilovskaya8': 'true',
-    'qrator_jsr': '1746430683.353.66cQOSNNbTlyH528-n99jepu909pk2v8tofg44o9b170sf0ov-00',
-    'qrator_jsid': '1746430683.353.66cQOSNNbTlyH528-v9qm44dt7qbrb1i9rfnb3lqist7pmoia',
+    'sessionid': 'fjwvpzyyv4mdr7fqyunk6j9z5niagehb',
     'mindboxDeviceUUID': 'b8b42419-45ee-4a92-8e84-640b5c64455a',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D',
+    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
     'cted': 'modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974',
+    '_ct_ids': 'htlowve6%3A36409%3A864972541',
+    '_ct_session_id': '864972541',
+    '_ct_site_id': '36409',
+    'call_s': '___htlowve6.1747658612.864972541.143945:445562|2___',
     '_ym_isad': '2',
     '_ym_visorc': 'b',
-    '_ct_ids': 'htlowve6%3A36409%3A858767419',
-    '_ct_session_id': '858767419',
-    '_ct_site_id': '36409',
-    'city_approved_url_prefix': '',
-    'sessionid': 'fjwvpzyyv4mdr7fqyunk6j9z5niagehb',
+    'user_account_return_url_session': '%2Fflats%2F%3Fproject%3D45%26free%3D1%26from%3Dproject',
+    'csrftoken': 'og8fsPcYcpt3NHj5ay1QHwsocePrTP4MpAgNkU32kH63wM49INd8J8bnpajr68Sb',
+    'pageviewCount': '1',
+    'pageviewCountMSK': '1',
     'session_timer_104054': '1',
-    'FPLC': 'VJ7iNWmkGEyULnhxL7IypRUq1mWPDQAsifbV8UdXiDLQNJRNTBJDggrIT4VJm7rX1mGSNCcBucTXFHDQkl8SDcCCHaMKxXpD3B1VPF%2BbBH%2FRJlLos1X%2BTV40UzeaKw%3D%3D',
-    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1746430711558',
-    'undefined': '21.318',
-    'pageviewTimerAll': '21.318',
-    'pageviewTimerMSK': '21.318',
-    'pageviewTimerAllFired15sec': 'true',
-    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
-    'seconds_on_page_104054': '23',
-    'call_s': '___htlowve6.1746432534.858767419.185717:571622|2___',
-    'csrftoken': 'VXndsmI0Mp2yUGPtiHOU4vaSZaaZIc65IqHrQlawb2nQlFuy4QSAsJkxoITa1krt',
-    'pageviewCount': '3',
-    'pageviewCountMSK': '3',
-    'PageNumber': '3',
-    'tmr_detect': '0%7C1746430754266',
-    '_ga_2WZB3B8QT0': 'GS1.1.1746430709.16.1.1746430756.0.0.787329185',
+    'PageNumber': '1',
+    'FPLC': 'VJAK6Mtz%2F0OJVIFo0UoAykFf7QXarV%2FwEjLp7GK9Xc%2FaF4Q438qhpEiugKrGR%2BurC%2F7ipYxqeGdIlkQT3itnV3aH7GZNkgcsOnv5eWoLYgk5VLjwr2nTVbB5TW7LXw%3D%3D',
+    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1747656826730',
+    'tmr_detect': '0%7C1747656834728',
+    'was_called_in_current_session_104054': '1',
+    'qrator_jsid': '1747656806.950.PbuOTeGUmCrIupE0-994796kelvsgh8lm32v4iud7ktv8q9ih',
+    '_ga_2WZB3B8QT0': 'GS2.1.s1747656825$o19$g1$t1747657225$j0$l0$h1010119287',
 }
 
 
@@ -148,13 +143,17 @@ for project in projects:
             except:
                 area = ''
             try:
-                old_price = int(i["old_filter_price_package"])
-            except:
-                old_price = ''
-            try:
-                price = int(i["filter_price"])
+                price = int(i["price"])
+
             except:
                 price = ''
+            try:
+                old_price = int(i["old_price"])
+            except:
+                old_price = ''
+            if not old_price:
+                old_price = price
+
             section = i["section"]
             try:
                 floor = int(i["floor_number"])

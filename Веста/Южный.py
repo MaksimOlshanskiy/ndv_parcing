@@ -12,13 +12,13 @@ headers = {
     'origin': 'https://smart-catalog.profitbase.ru',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
 }
 
 params = {
@@ -29,8 +29,10 @@ params = {
     'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': '361ba978b801e6a17896088ad0fff9d2ebda5d3a3507eae3799f35f7d5d9e984',
+    'access_token': '8949797afbd63f4da135f739477c6f2bd2df6afbea9487cf00a0615fb4d05dc0',
 }
+
+
 
 
 
@@ -52,7 +54,7 @@ while True:
 
         url = ''
         developer = "Веста"
-        project = 'Южный'
+        project = 'Южный (Павловский Посад)'
         korpus = ''
         type = ''
         if i['attributes']['facing'] == 'нет':

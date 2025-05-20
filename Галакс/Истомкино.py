@@ -1,3 +1,9 @@
+'''
+
+по очереди по каждому дому 'house_id'
+
+'''
+
 import requests
 from datetime import datetime
 import time
@@ -27,7 +33,7 @@ json_data = {
     'data': {
         'category': 'flat',
         'activity': 'sell',
-        'page': 3,
+        'page': 1,
         'filters': {
             'studio': 'null',
             'rooms': [],
@@ -52,7 +58,7 @@ json_data = {
             'status': None,
         },
         'complex_id': None,
-        'house_id': 3147458,
+        'house_id': 3147458,    # 7095059
         'orders': [],
         'complex_search': None,
         'house_search': None,

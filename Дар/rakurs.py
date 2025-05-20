@@ -24,8 +24,23 @@ headers = {
 }
 
 params = {
-    "page": 1,
-}
+        'AgentCostStart': '16297326',
+        'AgentCostEnd': '57368927',
+        'allSquareStart': '28',
+        'allSquareEnd': '127',
+        'floorStart': '2',
+        'floorEnd': '44',
+        'id_house': '',
+        'windowView': '',
+        'viewsType': '',
+        'repair': '',
+        'placeAttr[]': 'noBooking',
+        'page': '1',
+        'category[]': 'Квартира',
+        'orderBy': 'AgentCost ASC',
+        'id_projects[]': '883',
+        'saleStatus[]': '1',
+    }
 
 flats = []
 date = datetime.now().date()
@@ -36,8 +51,10 @@ def extract_digits_or_original(s):
 
 while True:
 
-    response = requests.get('https://v2.planetarf.ru/api/v3/places?rooms[]=1&AgentCostStart=15742405&AgentCostEnd=54384162&allSquareStart=28&allSquareEnd=127&floorStart=2&floorEnd=44&id_house=&windowView=&viewsType=&repair=&placeAttr[]=noBooking&category[]=%D0%9A%D0%B2%D0%B0%D1%80%D1%82%D0%B8%D1%80%D0%B0&orderBy=AgentCost%20ASC&id_projects[]=883&saleStatus[]=1',
-                            params=params, headers=headers)
+    url = 'https://v2.planetarf.ru/api/v3/places'
+
+
+    response = requests.get(url, headers = headers, params=params)
 
     items = response.json()["places"]
 
@@ -110,6 +127,7 @@ while True:
 
     if not items:
         break
+    params['page'] = str(int(params['page']) + 1)
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
 
@@ -158,7 +176,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Дар"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

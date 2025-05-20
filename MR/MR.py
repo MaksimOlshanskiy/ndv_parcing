@@ -132,7 +132,12 @@ while True:
         old_price = ""
         discount = ''
         price_per_metr_new = ''
-        price = i["price"]
+        if not i['discount']:
+            price = i["price"]
+            old_price = i["price"]
+        else:
+            price = i['discount']['price']
+            old_price = i["price"]
         section = ''
         floor = i["floor"]
         flat_number = ''

@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2025-05-16"
+folder_path = r"C:\Users\m.olshanskiy\Desktop\Алушка"
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -54,11 +54,20 @@ def remove_share_sale(df, column="Описание"):
 
     return df_cleaned
 
+def fill_missing_price(df):
+    """
+    Заполняет пустые значения в колонке 'Цена лота, руб.'
+    значениями из колонки 'Цена лота со ск, руб.'
+    """
+    df['Цена лота, руб.'] = df['Цена лота, руб.'].fillna(df['Цена лота со ск, руб.'])
+    return df
+
 
 
 all_data = all_data.drop_duplicates()       # убираем полные дубликаты
 # all_data = remove_share_sale(all_data)   # убираем доли в квартирах
 all_data = clean_project_name(all_data, 'Название проекта') # убираем слова ЖК и кавычки в названии проектов
+# all_data = fill_missing_price(all_data)  # проставляем ценники в колонке старая цена
 # Проверяем результат
 print(all_data)
 print(f'Число строк в датафрейме {len(all_data)}')

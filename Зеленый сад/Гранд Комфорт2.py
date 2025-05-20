@@ -99,9 +99,9 @@ while True:
         url = ''
         developer = "Зеленый сад"
         project = 'Гранд Комфорт 2'
-        korpus = ''
+        korpus = 1
         type = 'Квартира'
-        finish_type = ''
+        finish_type = 'Без отделки'
         if i.find(class_= 'b-offers-name').text.split()[2] == 'Студия':
             room_count = 0
         else:

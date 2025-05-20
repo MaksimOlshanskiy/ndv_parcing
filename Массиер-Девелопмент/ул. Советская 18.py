@@ -99,7 +99,7 @@ while True:
         project = 'ул. Советская 18 (Мессиер 18)'
 
         type = extract_digits_or_original(i.find(class_= 'appartment_item-name').text.split()[0])
-        finish_type = ''
+        finish_type = 'Без отделки'
         room_count = extract_digits_or_original(i.find(class_= 'appartment_item-name').text.split()[3])
 
         try:
