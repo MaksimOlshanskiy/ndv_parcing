@@ -85,38 +85,41 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'region': {
-            'type': 'terms',
+        'geo': {
+            'type': 'geo',
             'value': [
-                1,
+                {
+                    'type': 'district',
+                    'id': 4,
+                },
             ],
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
-        'electronic_trading': {
-            'type': 'term',
-            'value': 2,
-        },
-        'total_area': {
-            'type': 'range',
-            'value': {
-                'gte': 1,
-                'lte': 35,
-            },
+
+        'room': {
+            'type': 'terms',
+            'value': [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                9,
+            ],
         },
         'building_status': {
             'type': 'term',
             'value': 1,
         },
-        'flat_share': {
-            'type': 'term',
-            'value': 2,
-        },
         'page': {
             'type': 'term',
-            'value': 1,
+            'value': 2,
+
         },
     },
 }
@@ -129,7 +132,7 @@ def extract_digits_or_original(s):
 
 current_date = datetime.date.today()
 
-total_area_list = [[1, 23], [23, 24], [24, 25], [25, 26], [26, 27], [27, 28], [28, 29], [29, 30], [30, 31], [31, 32], [32, 33], [33, 34], [34, 35], [35, 36], [36, 37], [37, 38], [38, 39], [39, 40], [40, 41], [41, 42], [42, 43], [43, 44], [44, 45], [45, 46], [46, 47], [47, 48], [48, 49], [49, 50], [50, 51], [51, 52], [52, 53], [53, 54], [54, 55], [55, 56], [56, 57], [57, 58], [58, 59], [59, 60], [60, 62], [62, 64], [64, 66], [66, 68], [68, 70], [70, 72], [72, 74], [74, 76], [76, 78], [78, 80], [80, 85], [85, 90], [90, 95], [95, 100], [100, 110], [110, 120], [120, 130], [130, 140], [140, 150], [150, 160], [160, 170], [170, 180], [180, 190], [190, 200], [200, 250], [250, 300], [300, 350], [350, 1000]]
+total_area_list = [[1, 35], [35, 55], [55, 75], [75, 100], [100, 150], [150, 200], [200, 2000]]
 
 for area in total_area_list:
 
@@ -177,9 +180,22 @@ for area in total_area_list:
 
         for i in items:
             try:
-                city = i['geo']['address'][1]['fullName']
+                geo1 = i['geo']['address'][0]['fullName']
             except:
-                city = ''
+                geo1 = ''
+            try:
+                geo2 = i['geo']['address'][1]['fullName']
+            except:
+                geo2 = ''
+            try:
+                geo3 = i['geo']['address'][2]['fullName']
+            except:
+                geo3 = ''
+            try:
+                geo4 = i['geo']['address'][3]['fullName']
+            except:
+                geo4 = ''
+
             try:
                 adress = i['geo']['userInput']
             except:
@@ -221,8 +237,8 @@ for area in total_area_list:
             url = i['fullUrl']
 
             print(
-                f"Город {city}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")
-            result = [city, adress, rooms_count, area, price, finish_type, description, property_from, url]
+                f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")
+            result = [geo1, geo2, geo3, geo4, adress, rooms_count, area, price, finish_type, description, property_from, url]
             flats.append(result)
 
         json_data["jsonQuery"]["page"]["value"] += 1
@@ -238,18 +254,21 @@ for area in total_area_list:
     counter += 1
 
     # Базовый путь для сохранения
-    base_path = r"Cian"
+    base_path = r""
 
     folder_path = os.path.join(base_path, str(current_date))
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
 
-    filename = f"{city}_{current_date}_{name_counter}.xlsx"
+    filename = f"{geo1}_{current_date}_{name_counter}.xlsx"
 
     # Полный путь к файлу
     file_path = os.path.join(folder_path, filename)
 
-    df = pd.DataFrame(flats, columns=['Город',
+    df = pd.DataFrame(flats, columns=['Гео1',
+                                      'Гео2',
+                                      'Гео3',
+                                      'Гео4',
                                       'Адрес',
                                       'Кол-во комнат',
                                       'Площадь',

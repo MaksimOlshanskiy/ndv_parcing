@@ -79,7 +79,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                5024,
+                4777,
             ],
         },
         'publish_period': {
@@ -90,17 +90,16 @@ json_data = {
             'type': 'term',
             'value': '!1',
         },
-        'room': {
-            'type': 'terms',
-            'value': [
-                1,
-                2,
-                3,
-            ],
+        'total_area': {
+            'type': 'range',
+            'value': {
+                'gte': 70,
+                'lte': 700,
+            },
         },
         'page': {
             'type': 'term',
-            'value': 1,
+            'value': 2,
         },
     },
 }
@@ -113,7 +112,7 @@ response = requests.post(
 )
 
 
-name_counter = 2
+name_counter = 700
 
 session = requests.Session()
 
@@ -200,7 +199,7 @@ while len(flats) < total_count:
 
         print(
             f"{url}, дата: {date}, площадь: {area}, цена: {price} ")
-        result = [date, url, adress, okrug, raion, area, price]
+        result = [date, url, adress, okrug, raion, area, price, rooms]
         flats.append(result)
 
     json_data["jsonQuery"]["page"]["value"] += 1
@@ -242,7 +241,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Аренда_{name_counter}-{current_date}.xlsx"
+filename = f"Аренда_Казань_{name_counter}-{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

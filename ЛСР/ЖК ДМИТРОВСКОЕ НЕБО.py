@@ -13,19 +13,19 @@ headers = headers
 
 data = {
     'last_delivery': '30',
-    'price[min]': '1',
-    'price[max]': '999',
-    'price_range[min]': '1',
-    'price_range[max]': '999',
-    'obj[]': ['222', '222'],
-    'area[min]': '1',
-    'area[max]': '999',
-    'area_range[min]': '1',
-    'area_range[max]': '999',
-    'floor[min]': '1',
-    'floor[max]': '99',
-    'floor_range[min]': '1',
-    'floor_range[max]': '99',
+    'price[min]': '11.5',
+    'price[max]': '38.9',
+    'price_range[min]': '11.5',
+    'price_range[max]': '38.9',
+    'obj[]': ['207', '207'],
+    'area[min]': '21',
+    'area[max]': '79',
+    'area_range[min]': '21.0',
+    'area_range[max]': '79.0',
+    'floor[min]': '2',
+    'floor[max]': '32',
+    'floor_range[min]': '2',
+    'floor_range[max]': '32',
     'ob[page]': '1',
     'ob[sort]': 'price',
     'ob[order]': 'asc',
@@ -33,7 +33,7 @@ data = {
     'ob[id]': '207',
     'object': '207',
     'a': 'types',
-    'ok': 'UUfLcU0cgOFHuP7JAPEE88HyPnaLnjqR'
+    'ok': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss'
 }
 
 
@@ -52,13 +52,13 @@ while True:
     print(response.status_code)
     items = response.json()['html']
     soup = BeautifulSoup(items, 'html.parser')
-    flats_soup = soup.find_all('div', class_="listingCard listingCard--isFlat")
+    flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard--isPromotion"])
     for i in flats_soup:
 
         url = ''
 
         date = datetime.date.today()
-        project = ("Дмитровское небо")
+        project = "Дмитровское небо"
 
         english = ''
         promzona = ''
@@ -81,7 +81,7 @@ while True:
         adress = ''
         eskrou = ''
         all_tags = i.find_all('div', class_='tag tag--isSmall')
-        korpus = int(i.find('div', class_= 'listingCard__label').text.strip().split()[1].replace(",", ''))
+        korpus = i.find('div', class_= 'listingCard__label').text.strip().split()[0].replace(",", '')
         konstruktiv = ''
         klass = ''
         if len(all_tags) == 3:
@@ -115,7 +115,7 @@ while True:
         price = extract_digits_or_original(i.find('span', class_= 'h4 isHiddenInGrid').text)
         section = ''
         try:
-            floor = int(i.find('div', class_= 'listingCard__label').text.strip().split()[5])
+            floor = i.find('div', class_= 'listingCard__label').text.strip().split()[-3]
         except:
             floor = i.find('div', class_='listingCard__label').text.strip().split()[5]
         flat_number = ''
@@ -185,7 +185,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ЛСР"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

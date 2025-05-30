@@ -10,7 +10,7 @@ import random
 import re
 from functions import classify_renovation, clean_filename
 
-ids = [4873489
+ids = [50743
        ]  # id ЖК для парсинга
 
 proxies = {

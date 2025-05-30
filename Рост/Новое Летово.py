@@ -1,5 +1,3 @@
-# отдельно выгрузка с отделкой и отдельно без отделки  'finish_option': '1' - с отделкой
-
 import requests
 import datetime
 import time
@@ -7,11 +5,8 @@ import pandas as pd
 import openpyxl
 import os
 import random
-
 from datetime import datetime
 
-
-import requests
 
 cookies = {
     'session': '3a3e139cfbf2b8537b8e21c45060d5c3a1cbbc19d5fdec06cccc8e500aeb5f05',
@@ -210,7 +205,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.now().date()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Рост"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

@@ -33,7 +33,7 @@ data = {
     'ob[id]': '152',
     'object': '152',
     'a': 'types',
-    'ok': 'UUfLcU0cgOFHuP7JAPEE88HyPnaLnjqR'
+    'ok': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss'
 }
 
 
@@ -50,13 +50,13 @@ while True:
     print(response.status_code)
     items = response.json()['html']
     soup = BeautifulSoup(items, 'html.parser')
-    flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard listingCard--isFlat listingCard--isPromotion"])
+    flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard--isPromotion"])
     for i in flats_soup:
 
         url = ''
 
         date = datetime.date.today()
-        project = ("Парксайд")
+        project = "Парксайд"
 
         english = ''
         promzona = ''
@@ -183,7 +183,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ЛСР"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

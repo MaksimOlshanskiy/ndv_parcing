@@ -100,7 +100,10 @@ for i in items:
     developer = "Гранель"
     project = i["project"]
     korpus = i["building"]
-    type = ''
+    if i['type'] == "flat":
+        type = 'Квартиры'
+    else:
+        type = i['type']
     if i["finish_type"] == "whitebox":
         finish_type = "Предчистовая"
     elif i["finish_type"] == "finish":
@@ -212,7 +215,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гранель"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

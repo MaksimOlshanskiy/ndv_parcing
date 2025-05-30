@@ -7,40 +7,40 @@ import os
 import random
 
 cookies = {
-    '_ym_uid': '174358513932310668',
-    '_ym_d': '1743585139',
-    'XSRF-TOKEN': 'eyJpdiI6IkRzeEU4bU5rUXErK080cGxab2ZybVE9PSIsInZhbHVlIjoiRU1SS2pVOERmMzN3TktZSGxYTXgvZXVHMURFSmVqdW5LUHZaUE44WXVpYmNZdm4xdGdlV2ZjSUN4Y1dmNTBXRmg1T2l5L09YcHF0SlJkbUhrY2orcktqUDhtakdDeEk1bzZkNDFaMzdqclE2WEg3dm1sRVFXc29wTG9VREF0ZWQiLCJtYWMiOiJmNjQ2MzRiZTNmNTU1MDdjMmY1YzMxYzk1ZGI0NzQzNmZlZjAzYmJkNmNkNmVlNzFlYWY4YmUxODE3OGZjMGU1IiwidGFnIjoiIn0%3D',
-    'aist_session': 'eyJpdiI6IkJUcVo4N01XRmFpN2s2WUh2dzVTZWc9PSIsInZhbHVlIjoic2NWTjFsMFlRWWZSZWZLWExUNnhVNGFvZU01aDdjZkZjK3pRL1Y1N21yc2hnWklKNm5LVHE4VEVqdXRuOTFhNnNGSHlRazg4dXN2QnJmc3VRN1JndkxCd1Bvdzl2ZTVFZGZVRlArSk5jb1QwelBLWDRPYmtuYnl1WG8rMjQzTzUiLCJtYWMiOiJjNTk1OWQxODEyYTI4NTgxOTNjZDcwYTBmZDhjNzIxOWVlYmU3YWZmMWE0YzU0ZmU1YjEzOWJlZTllYjFhMGQyIiwidGFnIjoiIn0%3D',
+    'tmr_lvid': 'b53f46415e692bb8064718745f7e2f21',
+    'tmr_lvidTS': '1745569317490',
+    '_ym_uid': '1745569318420487600',
+    '_ym_d': '1748328460',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
+    '_ct_ids': '8as82fa1%3A55785%3A455366553',
+    '_ct_session_id': '455366553',
+    '_ct_site_id': '55785',
+    'call_s': '___8as82fa1.1748330259.455366553.284733:854358|2___',
+    '_ct': '2300000000297765188',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    '_ga': 'GA1.1.139086639.1748328461',
+    'domain_sid': '7iLIzStIet7l7x7kwDvlv%3A1748328461449',
+    'cted': 'modId%3D8as82fa1%3Bya_client_id%3D1745569318420487600%3Bclient_id%3D139086639.1748328461',
+    'tmr_detect': '0%7C1748328462715',
+    '_ga_1ZPY9G3X05': 'GS2.1.s1748328460$o1$g1$t1748328545$j0$l0$h0',
 }
 
 headers = {
-    'accept': '*/*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    # 'content-length': '0',
-    'origin': 'https://aist-residence.com',
-    'priority': 'u=1, i',
-    'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=2',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'Accept': '*/*',
+    'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'Connection': 'keep-alive',
+    'If-None-Match': '"71625-kzRbropFQVZAJ00UAfhcSGpnie0"',
+    'Referer': 'https://aist-residence.ru/apartamenty',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-origin',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
-    'x-csrf-token': 'Mz2WyQdzfr0cJDjfYekNxfL5AmnH0FHh1SdM4smD',
-    # 'cookie': '_ym_uid=174358513932310668; _ym_d=1743585139; XSRF-TOKEN=eyJpdiI6IkRzeEU4bU5rUXErK080cGxab2ZybVE9PSIsInZhbHVlIjoiRU1SS2pVOERmMzN3TktZSGxYTXgvZXVHMURFSmVqdW5LUHZaUE44WXVpYmNZdm4xdGdlV2ZjSUN4Y1dmNTBXRmg1T2l5L09YcHF0SlJkbUhrY2orcktqUDhtakdDeEk1bzZkNDFaMzdqclE2WEg3dm1sRVFXc29wTG9VREF0ZWQiLCJtYWMiOiJmNjQ2MzRiZTNmNTU1MDdjMmY1YzMxYzk1ZGI0NzQzNmZlZjAzYmJkNmNkNmVlNzFlYWY4YmUxODE3OGZjMGU1IiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6IkJUcVo4N01XRmFpN2s2WUh2dzVTZWc9PSIsInZhbHVlIjoic2NWTjFsMFlRWWZSZWZLWExUNnhVNGFvZU01aDdjZkZjK3pRL1Y1N21yc2hnWklKNm5LVHE4VEVqdXRuOTFhNnNGSHlRazg4dXN2QnJmc3VRN1JndkxCd1Bvdzl2ZTVFZGZVRlArSk5jb1QwelBLWDRPYmtuYnl1WG8rMjQzTzUiLCJtYWMiOiJjNTk1OWQxODEyYTI4NTgxOTNjZDcwYTBmZDhjNzIxOWVlYmU3YWZmMWE0YzU0ZmU1YjEzOWJlZTllYjFhMGQyIiwidGFnIjoiIn0%3D; _ym_isad=2; _ym_visorc=w',
+    # 'Cookie': 'tmr_lvid=b53f46415e692bb8064718745f7e2f21; tmr_lvidTS=1745569317490; _ym_uid=1745569318420487600; _ym_d=1748328460; _ym_isad=2; _ym_visorc=w; _ct_ids=8as82fa1%3A55785%3A455366553; _ct_session_id=455366553; _ct_site_id=55785; call_s=___8as82fa1.1748330259.455366553.284733:854358|2___; _ct=2300000000297765188; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ga=GA1.1.139086639.1748328461; domain_sid=7iLIzStIet7l7x7kwDvlv%3A1748328461449; cted=modId%3D8as82fa1%3Bya_client_id%3D1745569318420487600%3Bclient_id%3D139086639.1748328461; tmr_detect=0%7C1748328462715; _ga_1ZPY9G3X05=GS2.1.s1748328460$o1$g1$t1748328545$j0$l0$h0',
 }
-
-params = {
-    'group_type[0]': '1',
-    'group_type[1]': '2',
-    'group_type[2]': '3',
-    'group_type[3]': '4',
-    'page': '1',
-}
-
 
 
 flats = []
@@ -50,72 +50,74 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-while True:
-    response = requests.post('https://aist-residence.com/api/v1/flats/kvartiry', params=params, cookies=cookies, headers=headers)
-    items = response.json()['data']
 
-    for i in items:
+response = requests.get(
+    'https://aist-residence.ru/_next/data/XgsqSoht3GvtWX5Po3V1p/apartamenty.json',
+    cookies=cookies,
+    headers=headers,
+)
+print(response.status_code)
+items = response.json()['pageProps']['data']['data']
 
-        url = i['link']
+for i in items:
 
-        date = datetime.date.today()
-        project = "Аист резиденс"
-        english = ''
-        promzona = ''
-        mestopolozhenie = ''
-        subway = ''
-        distance_to_subway = ''
-        time_to_subway = ''
-        mck = ''
-        distance_to_mck = ''
-        time_to_mck = ''
-        bkl = ''
-        distance_to_bkl = ''
-        time_to_bkl = ''
-        status = ''
-        start = ''
-        comment = ''
-        developer = "Монарх"
-        okrug = ''
-        district = ''
-        adress = ''
-        eskrou = ''
-        korpus = extract_digits_or_original(i['corpus_name'])
-        konstruktiv = ''
-        klass = ''
-        srok_sdachi = ''
-        srok_sdachi_old = ''
-        stadia = ''
-        dogovor = ''
-        type = 'Апартаменты'
-        finish_type = 'Без отделки'
-        if i['flat_type'] == 'Студии':
-            room_count = 0
-        else:
-            room_count = extract_digits_or_original(i['flat_type'])
-        area = i["area_total"]
-        price_per_metr = ''
-        old_price = ''
-        discount = ''
-        price_per_metr_new = ''
-        price = i["price"]
-        section = ''
-        floor = i["floor"]
-        flat_number = i['number']
+    if i['status'] != "AVAILABLE":
+        continue
 
-        print(
-            f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
-        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
-                  distance_to_mck, time_to_mck, distance_to_bkl,
-                  time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
-                  klass, srok_sdachi, srok_sdachi_old,
-                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                  price_per_metr_new, price, section, floor, flat_number]
-        flats.append(result)
-    params['page'] = str(int(params['page']) + 1)
-    if not items:
-        break
-    print('------------------------------------------------------')
+    url = ''
+    date = datetime.date.today()
+    project = "Аист резиденс"
+    english = ''
+    promzona = ''
+    mestopolozhenie = ''
+    subway = ''
+    distance_to_subway = ''
+    time_to_subway = ''
+    mck = ''
+    distance_to_mck = ''
+    time_to_mck = ''
+    bkl = ''
+    distance_to_bkl = ''
+    time_to_bkl = ''
+    status = ''
+    start = ''
+    comment = ''
+    developer = "Монарх"
+    okrug = ''
+    district = ''
+    adress = ''
+    eskrou = ''
+    korpus = '1'
+    konstruktiv = ''
+    klass = ''
+    srok_sdachi = ''
+    srok_sdachi_old = ''
+    stadia = ''
+    dogovor = ''
+    type = 'Апартаменты'
+    finish_type = 'Без отделки'
+    room_count = i['rooms']
+    area = i["area"]
+    price_per_metr = ''
+    old_price = ''
+    discount = ''
+    price_per_metr_new = ''
+    price = float(i["price"])
+    section = i['section']
+    floor = i["floor"]
+    flat_number = i['number']
+
+    print(
+        f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+    result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+              distance_to_mck, time_to_mck, distance_to_bkl,
+              time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
+              klass, srok_sdachi, srok_sdachi_old,
+              stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+              price_per_metr_new, price, section, floor, flat_number]
+    flats.append(result)
+
+
 
 
 df = pd.DataFrame(flats, columns=['Дата обновления',
@@ -163,7 +165,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Монарх"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

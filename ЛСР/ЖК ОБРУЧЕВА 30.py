@@ -33,7 +33,7 @@ data = {
     'ob[id]': '211',
     'object': '211',
     'a': 'types',
-    'ok': 'wq2IAjhK6KjntiZG6ZtT16r8lY32mH7X'
+    'ok': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss'
 }
 
 
@@ -50,7 +50,7 @@ while True:
     print(response.status_code)
     items = response.json()['html']
     soup = BeautifulSoup(items, 'html.parser')
-    flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard listingCard--isFlat listingCard--isPromotion"])
+    flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard--isPromotion"])
     for i in flats_soup:
 
         url = ''
@@ -78,7 +78,7 @@ while True:
         eskrou = ''
         all_tags = i.find_all('div', class_='tag tag--isSmall')
         try:
-            korpus = int(i.find('span', class_= 'label l3').text.strip().split()[1].replace(",", ''))
+            korpus = i.find('span', class_= 'label l3').text.strip().split()[1].replace(",", '').replace('корпуса ', '')
         except ValueError:
             korpus = i.find('span', class_= 'label l3').text.strip()
         konstruktiv = ''

@@ -112,7 +112,7 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        korpus = i.find('div', class_="korp-sect").text.strip().split()[3].replace(',', '')
+        korpus = i.find('div', class_="korp-sect").text.strip().split()[3].replace(',', '').replace('к', '')
         konstruktiv = ''
         klass = ''
         finish_type = i.find('div', class_="facing fs-12 mb-1").text.strip().replace('Отделка: ', '')
@@ -198,7 +198,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Сибпромстрой"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

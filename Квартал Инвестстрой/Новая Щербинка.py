@@ -83,7 +83,7 @@ while True:
         project = 'Новая Щербинка'
         korpus = int(i['building_number'])
         if i['type'] == 'flat':
-            type = 'Квартира'
+            type = 'Квартиры'
         else:
             type = i['type']
         try:

@@ -1,5 +1,5 @@
 """
-отдельно выгрузка с отделкой и отдельно без отделки  'finish_option': '1' - с отделкой
+отдельно выгрузка с отделкой и отдельно без отделки  'finish_option': '1' - с отделкой, 0 - без отделки
 
 """
 
@@ -122,7 +122,7 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = 'Квартира'
+        type = 'Квартиры'
         if params['finish_option'] == '1':
             finish_type = 'С отделкой'
         elif params['finish_option'] == '0':
@@ -133,11 +133,11 @@ while True:
         area = float(i['area'])
 
         price_per_metr = ''
-        old_price = i['price_compare']
+        old_price = round(float(i['price_compare']))
         discount = ''
         price_per_metr_new = ''
         try:
-            price = int(i["price"])
+            price = round(float(i["price"]))
         except:
             price = i["price"]
         section = int(i['section']['number'])
@@ -207,7 +207,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.now().date()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Инвест траст"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

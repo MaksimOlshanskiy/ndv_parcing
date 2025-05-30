@@ -23,14 +23,14 @@ headers = {
 }
 
 params = {
-    'pricem[0]': '194223',
-    'pricem[1]': '365339',
-    'price[0]': '5211459',
-    'price[1]': '22813647',
-    'area[0]': '17.8',
-    'area[1]': '88.4',
-    'floor[0]': '2',
-    'floor[1]': '14',
+    'pricem[0]': '1',
+    'pricem[1]': '365339999',
+    'price[0]': '1',
+    'price[1]': '22813647999',
+    'area[0]': '1',
+    'area[1]': '100',
+    'floor[0]': '1',
+    'floor[1]': '30',
     'currentField': 'floor',
     'sortBy': 'price',
     'sortDirection': 'asc',

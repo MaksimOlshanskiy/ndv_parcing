@@ -52,7 +52,7 @@ for i in items:
     project = 'Москворецкий (Тучково)'
     korpus = extract_digits_or_original(i['house_title'])
     if i['is_apart'] == 0:
-        type = 'Квартира'
+        type = 'Квартиры'
     else:
         type = i['is_apart']
     if not i['decoration_id']:

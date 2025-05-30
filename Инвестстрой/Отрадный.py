@@ -98,7 +98,7 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = 'Квартира'
+        type = 'Квартиры'
 
         if param[3] == 'Нет':
             finish_type = 'Без отделки'

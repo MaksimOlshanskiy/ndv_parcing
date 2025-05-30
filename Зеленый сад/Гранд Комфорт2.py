@@ -98,9 +98,9 @@ while True:
 
         url = ''
         developer = "Зеленый сад"
-        project = 'Гранд Комфорт 2'
-        korpus = 1
-        type = 'Квартира'
+        project = 'Гранд Комфорт'
+        korpus = 2
+        type = 'Квартиры'
         finish_type = 'Без отделки'
         if i.find(class_= 'b-offers-name').text.split()[2] == 'Студия':
             room_count = 0
@@ -162,7 +162,7 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    if page_counter == 38:
+    if page_counter == 36:
         break
     page_counter += 1
     sleep_time = random.uniform(1, 5)

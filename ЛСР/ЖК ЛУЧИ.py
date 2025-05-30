@@ -13,19 +13,19 @@ headers = headers
 
 data = {
     'last_delivery': '30',
-    'price[min]': '1',
-    'price[max]': '999',
-    'price_range[min]': '1',
-    'price_range[max]': '999',
-    'obj[]': ['222', '222'],
-    'area[min]': '1',
-    'area[max]': '999',
-    'area_range[min]': '1',
-    'area_range[max]': '999',
-    'floor[min]': '1',
-    'floor[max]': '99',
-    'floor_range[min]': '1',
-    'floor_range[max]': '99',
+    'price[min]': '7.4',
+    'price[max]': '29',
+    'price_range[min]': '7.4',
+    'price_range[max]': '29.0',
+    'obj[]': ['52', '52'],
+    'area[min]': '20',
+    'area[max]': '65',
+    'area_range[min]': '20.0',
+    'area_range[max]': '65.0',
+    'floor[min]': '2',
+    'floor[max]': '24',
+    'floor_range[min]': '2',
+    'floor_range[max]': '24',
     'ob[page]': '1',
     'ob[sort]': 'price',
     'ob[order]': 'asc',
@@ -33,7 +33,7 @@ data = {
     'ob[id]': '52',
     'object': '52',
     'a': 'types',
-    'ok': 'UUfLcU0cgOFHuP7JAPEE88HyPnaLnjqR'
+    'ok': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss'
 }
 
 
@@ -50,7 +50,7 @@ while True:
     print(response.status_code)
     items = response.json()['html']
     soup = BeautifulSoup(items, 'html.parser')
-    flats_soup = soup.find_all('div', class_="listingCard listingCard--isFlat")
+    flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard--isPromotion"])
     for i in flats_soup:
 
         url = ''

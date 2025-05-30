@@ -7,8 +7,6 @@ import openpyxl
 import os
 import random
 from bs4 import BeautifulSoup
-
-
 import requests
 
 cookies = {
@@ -268,7 +266,7 @@ df = set_finish(df, flats_with_finishing)
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Хант-Холдинг"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

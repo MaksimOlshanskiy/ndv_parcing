@@ -19,14 +19,15 @@ headers = {
     'origin': 'https://xn--h1aafhhcesj.xn--p1ai',
     'priority': 'u=1, i',
     'referer': 'https://xn--h1aafhhcesj.xn--p1ai/',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
 }
+
 
 json_data = {
     'action': 'objects_list',
@@ -37,7 +38,9 @@ json_data = {
         'filters': {
             'studio': 'null',
             'rooms': [],
-            'restorations': [],
+            'restorations': [
+                276,
+            ],
             'promos': [],
             'tags': [],
             'riser_side': [],
@@ -101,8 +104,8 @@ while True:
         developer = "Галакс"
         project = 'Истомкино'
         korpus = ''
-        type = ''
-        finish_type = 'Предчистовая'
+        type = 'Квартиры'
+        finish_type = 'С отделкой'
         room_count = extract_digits_or_original(i['rooms'])
         try:
             area = float(i['area'])
@@ -218,7 +221,7 @@ folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{date}.xlsx"
+filename = f"{developer}_{project}_{date}-с-1.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

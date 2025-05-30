@@ -8,35 +8,54 @@ from datetime import datetime
 import random
 
 cookies = {
-    'PHPSESSID': '6oigrd1mvnpas7270no670d9qi',
-    '_ym_uid': '1744366056493324114',
-    '_ym_d': '1744366056',
+    'auth.strategy': 'local',
+    'adrdel': '1748506330496',
+    'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
+    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1748592730505%2C%22sl%22%3A%7B%22224%22%3A1748506330505%2C%221228%22%3A1748506330505%7D%7D',
+    'scbsid_old': '2746015342',
+    '_cmg_cssttGbx8': '1748506331',
+    '_comagic_idtGbx8': '9453719617.13433207912.1748506330',
+    '_ym_uid': '1748506331775341849',
+    '_ym_d': '1748506331',
+    'PHPSESSID': '0jt5s9dl4rqce73som55vrp7ha',
+    'startSession': 'true',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
+    'SCBfrom': 'https%3A%2F%2Fyandex.ru%2F',
+    'SCBnotShow': '-1',
+    'smFpId_old_values': '%5B%22f0a18207107a745e280d9357abcbd51d%22%5D',
+    'SCBstart': '1748506334942',
+    'SCBporogAct': '5000',
+    'SCBFormsAlreadyPulled': 'true',
+    'sma_session_id': '2310216424',
+    'SCBindexAct': '810',
+    'PageNumber': '8',
+    'pageviewTimer': '344',
+    'startDate': '1748506676061',
+    'sma_index_activity': '4233',
+    'SCBindexAct': '3709',
 }
 
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://rk-gazsetservis.ru/catalog/choose/complex_2/filter/?turnId[]=34',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'referer': 'https://ice-towers.ru/search',
+    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
-    # 'cookie': 'PHPSESSID=6oigrd1mvnpas7270no670d9qi; _ym_uid=1744366056493324114; _ym_d=1744366056; _ym_isad=2; _ym_visorc=w',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+    # 'cookie': 'auth.strategy=local; adrdel=1748506330496; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1748592730505%2C%22sl%22%3A%7B%22224%22%3A1748506330505%2C%221228%22%3A1748506330505%7D%7D; scbsid_old=2746015342; _cmg_cssttGbx8=1748506331; _comagic_idtGbx8=9453719617.13433207912.1748506330; _ym_uid=1748506331775341849; _ym_d=1748506331; PHPSESSID=0jt5s9dl4rqce73som55vrp7ha; startSession=true; _ym_isad=2; _ym_visorc=w; SCBfrom=https%3A%2F%2Fyandex.ru%2F; SCBnotShow=-1; smFpId_old_values=%5B%22f0a18207107a745e280d9357abcbd51d%22%5D; SCBstart=1748506334942; SCBporogAct=5000; SCBFormsAlreadyPulled=true; sma_session_id=2310216424; SCBindexAct=810; PageNumber=8; pageviewTimer=344; startDate=1748506676061; sma_index_activity=4233; SCBindexAct=3709',
 }
 
-response = requests.get(
-    'https://rk-gazsetservis.ru/catalog/api/catalog_free/?complexId[]=2&turnId[]=34&tab[]=filter',
-    cookies=cookies,
-    headers=headers,
-)
+response = requests.get('https://ice-towers.ru/api/hydra/data', cookies=cookies, headers=headers)
 
-items = response.json()['flat']
+data = response.json()["apartments"]
 flats = []
 date = datetime.now().date()
 
@@ -44,17 +63,18 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-for i in items:
+for key, inner_dict in data.items():
 
     url = ''
-    developer = "РК-Газсетьсервис"
-    project = 'Донской (Коломна)'
+    developer = "Град"
+    project = 'ICE TOWERS'
     korpus = ''
-    type = 'Квартиры'
+    if inner_dict['t'] == 'Квартира':
+        type = 'Квартиры'
     finish_type = 'Без отделки'
-    room_count = int(i['room'])
+    room_count = inner_dict['rc']
     try:
-        area = float(i['area'])
+        area = inner_dict['sq']
     except:
         area = ''
     try:
@@ -62,15 +82,17 @@ for i in items:
     except:
         old_price = ''
     try:
-        price = int(i['price'])
+        price = inner_dict['tc']
     except:
         price = ''
+    if price == 0:
+        continue
     section = ''
     try:
-        floor = int()
+        floor = int(inner_dict['f'])
     except:
         floor = ''
-    flat_number = ''
+    flat_number = inner_dict['tr_n']
 
 
     english = ''
@@ -160,7 +182,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\РК-Газсетьсервис"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

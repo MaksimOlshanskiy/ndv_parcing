@@ -1,3 +1,10 @@
+'''
+
+нужно менять 'access_token'
+
+'''
+
+
 from datetime import datetime
 import time
 import pandas as pd
@@ -29,7 +36,7 @@ params = {
     'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': '8949797afbd63f4da135f739477c6f2bd2df6afbea9487cf00a0615fb4d05dc0',
+    'access_token': 'b7870ddaa595019f55f3df875e8a521bfc2532907fc23c0c3fd0d757a90cecd5',
 }
 
 
@@ -56,7 +63,7 @@ while True:
         developer = "Веста"
         project = 'Южный (Павловский Посад)'
         korpus = ''
-        type = ''
+        type = 'Квартиры'
         if i['attributes']['facing'] == 'нет':
             finish_type = 'Без отделки'
         else:

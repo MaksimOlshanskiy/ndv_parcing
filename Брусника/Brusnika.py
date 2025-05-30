@@ -61,7 +61,7 @@ headers = {
 params = {
     'offset': '0',
     'ordering': 'price_order',
-    'limit': '2000',      # можно поставить большой лимит
+    'limit': '2500',      # можно поставить большой лимит
     'active_banner': 'true',
     'active_big_card': 'true',
     'is_group': '0',
@@ -115,7 +115,7 @@ for i in items:
     srok_sdachi_old = ''
     stadia = ''
     dogovor = ''
-    type = 'Квартира'
+    type = 'Квартиры'
     for tag in i["tags"]:
         if "отделк" in tag:
             finish_type = tag.replace(' отделка', '')

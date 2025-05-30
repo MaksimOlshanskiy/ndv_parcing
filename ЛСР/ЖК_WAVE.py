@@ -17,27 +17,27 @@ cookies = {
     '_cmg_csst7Pddw': '1745507826',
     '_comagic_id7Pddw': '10313394311.14534335851.1745507826',
     'scbsid_old': '2746015342',
-    'smFpId_old_values': '%5B%22b0d44eece823d71c253568fc397e79de%22%5D',
     'cookie_consent': 'accepted',
-    'PHPSESSID': 'wq2IAjhK6KjntiZG6ZtT16r8lY32mH7X',
+    'smFpId_old_values': '%5B%22b0d44eece823d71c253568fc397e79de%22%2C%22f0a18207107a745e280d9357abcbd51d%22%5D',
+    'PHPSESSID': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss',
     'DOMAIN': 'msk',
-    'sma_session_id': '2278088762',
-    'SCBfrom': 'https%3A%2F%2Fwww.google.com%2F',
+    'sma_session_id': '2306920293',
+    'SCBfrom': '',
     'SCBnotShow': '-1',
-    '_ym_isad': '2',
+    'SCBstart': '1748254032451',
     'SCBporogAct': '5000',
+    '_ym_isad': '2',
     '_ym_visorc': 'b',
-    'SCBstart': '1745825623006',
-    '_cmg_csstA05bX': '1745825623',
-    '_comagic_idA05bX': '10734451204.14889096379.1745825622',
-    'domain_sid': '_s31UW6Md684Fha7bJKQS%3A1745825623278',
-    'number_phone_site': '74952368464',
-    'backLink': '%2Fmsk%2Fkvartiry-v-novostroikah%2F%3Flast_delivery%3D30%26price%255Bmin%255D%3D14%26price%255Bmax%255D%3D78%26price_range%255Bmin%255D%3D14.0%26price_range%255Bmax%255D%3D78.0%26obj%255B%255D%3D211%26obj%255B%255D%3D211%26area%255Bmin%255D%3D22%26area%255Bmax%255D%3D108%26area_range%255Bmin%255D%3D22.0%26area_range%255Bmax%255D%3D108.0%26floor%255Bmin%255D%3D2%26floor%255Bmax%255D%3D57%26floor_range%255Bmin%255D%3D2%26floor_range%255Bmax%255D%3D57',
-    '_ga_FNTNBKC2H2': 'GS1.1.1745825622.18.1.1745825626.0.0.0',
-    'number_phone_site_arr': '%5B%2274952368464%22%5D',
-    'tmr_detect': '0%7C1745825629298',
-    'sma_index_activity': '1289',
-    'SCBindexAct': '1088',
+    '_cmg_csstA05bX': '1748254034',
+    '_comagic_idA05bX': '10908863359.15084232564.1748254033',
+    'number_phone_site': '74950195932',
+    'domain_sid': '_s31UW6Md684Fha7bJKQS%3A1748254034643',
+    'backLink': '%2Fmsk%2Fkvartiry-v-novostroikah%2F%3Flast_delivery%3D30%26price%255Bmin%255D%3D8.8%26price%255Bmax%255D%3D75.1%26price_range%255Bmin%255D%3D8.8%26price_range%255Bmax%255D%3D75.1%26obj%255B%255D%3D202%26obj%255B%255D%3D202%26area%255Bmin%255D%3D19%26area%255Bmax%255D%3D108%26area_range%255Bmin%255D%3D19.0%26area_range%255Bmax%255D%3D108.0%26floor%255Bmin%255D%3D2%26floor%255Bmax%255D%3D52%26floor_range%255Bmin%255D%3D2%26floor_range%255Bmax%255D%3D52',
+    '_ga_FNTNBKC2H2': 'GS2.1.s1748254032$o22$g1$t1748254063$j0$l0$h0',
+    'number_phone_site_arr': '%5B%2274950195932%22%5D',
+    'tmr_detect': '0%7C1748254065843',
+    'sma_index_activity': '2780',
+    'SCBindexAct': '2580',
 }
 
 headers = {
@@ -46,44 +46,44 @@ headers = {
     'Connection': 'keep-alive',
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     'Origin': 'https://www.lsr.ru',
-    'Referer': 'https://www.lsr.ru/msk/kvartiry-v-novostroikah/?last_delivery=30&price%5Bmin%5D=14&price%5Bmax%5D=78&price_range%5Bmin%5D=14.0&price_range%5Bmax%5D=78.0&obj%5B%5D=211&obj%5B%5D=211&area%5Bmin%5D=22&area%5Bmax%5D=108&area_range%5Bmin%5D=22.0&area_range%5Bmax%5D=108.0&floor%5Bmin%5D=2&floor%5Bmax%5D=57&floor_range%5Bmin%5D=2&floor_range%5Bmax%5D=57',
+    'Referer': 'https://www.lsr.ru/msk/kvartiry-v-novostroikah/?last_delivery=30&price%5Bmin%5D=8.8&price%5Bmax%5D=75.1&price_range%5Bmin%5D=8.8&price_range%5Bmax%5D=75.1&obj%5B%5D=202&obj%5B%5D=202&area%5Bmin%5D=19&area%5Bmax%5D=108&area_range%5Bmin%5D=19.0&area_range%5Bmax%5D=108.0&floor%5Bmin%5D=2&floor%5Bmax%5D=52&floor_range%5Bmin%5D=2&floor_range%5Bmax%5D=52',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origin',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
     'X-Requested-With': 'XMLHttpRequest',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'tmr_lvid=b846073c297ab0f227a0beeff859cbb0; tmr_lvidTS=1742911907765; _ym_uid=1742911908725726256; _ym_d=1742911908; _ga_09LLC3Q7HR=GS1.2.1742978855.1.0.1742978855.0.0.0; _ga=GA1.1.2011517384.1742911908; _cmg_csst7Pddw=1745507826; _comagic_id7Pddw=10313394311.14534335851.1745507826; scbsid_old=2746015342; smFpId_old_values=%5B%22b0d44eece823d71c253568fc397e79de%22%5D; cookie_consent=accepted; PHPSESSID=wq2IAjhK6KjntiZG6ZtT16r8lY32mH7X; DOMAIN=msk; sma_session_id=2278088762; SCBfrom=https%3A%2F%2Fwww.google.com%2F; SCBnotShow=-1; _ym_isad=2; SCBporogAct=5000; _ym_visorc=b; SCBstart=1745825623006; _cmg_csstA05bX=1745825623; _comagic_idA05bX=10734451204.14889096379.1745825622; domain_sid=_s31UW6Md684Fha7bJKQS%3A1745825623278; number_phone_site=74952368464; backLink=%2Fmsk%2Fkvartiry-v-novostroikah%2F%3Flast_delivery%3D30%26price%255Bmin%255D%3D14%26price%255Bmax%255D%3D78%26price_range%255Bmin%255D%3D14.0%26price_range%255Bmax%255D%3D78.0%26obj%255B%255D%3D211%26obj%255B%255D%3D211%26area%255Bmin%255D%3D22%26area%255Bmax%255D%3D108%26area_range%255Bmin%255D%3D22.0%26area_range%255Bmax%255D%3D108.0%26floor%255Bmin%255D%3D2%26floor%255Bmax%255D%3D57%26floor_range%255Bmin%255D%3D2%26floor_range%255Bmax%255D%3D57; _ga_FNTNBKC2H2=GS1.1.1745825622.18.1.1745825626.0.0.0; number_phone_site_arr=%5B%2274952368464%22%5D; tmr_detect=0%7C1745825629298; sma_index_activity=1289; SCBindexAct=1088',
+    # 'Cookie': 'tmr_lvid=b846073c297ab0f227a0beeff859cbb0; tmr_lvidTS=1742911907765; _ym_uid=1742911908725726256; _ym_d=1742911908; _ga_09LLC3Q7HR=GS1.2.1742978855.1.0.1742978855.0.0.0; _ga=GA1.1.2011517384.1742911908; _cmg_csst7Pddw=1745507826; _comagic_id7Pddw=10313394311.14534335851.1745507826; scbsid_old=2746015342; cookie_consent=accepted; smFpId_old_values=%5B%22b0d44eece823d71c253568fc397e79de%22%2C%22f0a18207107a745e280d9357abcbd51d%22%5D; PHPSESSID=BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss; DOMAIN=msk; sma_session_id=2306920293; SCBfrom=; SCBnotShow=-1; SCBstart=1748254032451; SCBporogAct=5000; _ym_isad=2; _ym_visorc=b; _cmg_csstA05bX=1748254034; _comagic_idA05bX=10908863359.15084232564.1748254033; number_phone_site=74950195932; domain_sid=_s31UW6Md684Fha7bJKQS%3A1748254034643; backLink=%2Fmsk%2Fkvartiry-v-novostroikah%2F%3Flast_delivery%3D30%26price%255Bmin%255D%3D8.8%26price%255Bmax%255D%3D75.1%26price_range%255Bmin%255D%3D8.8%26price_range%255Bmax%255D%3D75.1%26obj%255B%255D%3D202%26obj%255B%255D%3D202%26area%255Bmin%255D%3D19%26area%255Bmax%255D%3D108%26area_range%255Bmin%255D%3D19.0%26area_range%255Bmax%255D%3D108.0%26floor%255Bmin%255D%3D2%26floor%255Bmax%255D%3D52%26floor_range%255Bmin%255D%3D2%26floor_range%255Bmax%255D%3D52; _ga_FNTNBKC2H2=GS2.1.s1748254032$o22$g1$t1748254063$j0$l0$h0; number_phone_site_arr=%5B%2274950195932%22%5D; tmr_detect=0%7C1748254065843; sma_index_activity=2780; SCBindexAct=2580',
 }
 
 if __name__ == "__main__":
 
     data = {
-  'last_delivery': '30',
-  'price[min]': '1',
-  'price[max]': '999',
-  'price_range[min]': '1',
-  'price_range[max]': '999',
-  'obj[]': ['202', '202'],
-  'area[min]': '1',
-  'area[max]': '999',
-  'area_range[min]': '1',
-  'area_range[max]': '999',
-  'floor[min]': '2',
-  'floor[max]': '52',
-  'floor_range[min]': '2',
-  'floor_range[max]': '52',
-  'ob[page]': '2',
-  'ob[sort]': 'price',
-  'ob[order]': 'asc',
-  'group[t]': 'false',
-  'ob[id]': '202',
-  'object': '202',
-  'a': 'types',
-  'ok': 'UUfLcU0cgOFHuP7JAPEE88HyPnaLnjqR'
-}
+        'last_delivery': ['30'],
+        'price[min]': ['8.8'],
+        'price[max]': ['75.1'],
+        'price_range[min]': ['8.8'],
+        'price_range[max]': ['75.1'],
+        'obj[]': ['202', '202'],
+        'area[min]': ['19'],
+        'area[max]': ['108'],
+        'area_range[min]': ['19.0'],
+        'area_range[max]': ['108.0'],
+        'floor[min]': ['2'],
+        'floor[max]': ['52'],
+        'floor_range[min]': ['2'],
+        'floor_range[max]': ['52'],
+        'ob[page]': '1',
+        'ob[sort]': ['price'],
+        'ob[order]': ['asc'],
+        'group[t]': ['false'],
+        'ob[id]': ['202'],
+        'object': ['202'],
+        'a': ['types'],
+        'ok': ['BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss']
+    }
 
 
     flats = []
@@ -100,7 +100,7 @@ if __name__ == "__main__":
         print(response.status_code)
         items = response.json()
         soup = BeautifulSoup(items['html'], 'html.parser')
-        flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard listingCard--isFlat listingCard--isPromotion"])
+        flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard--isPromotion"])
         soup2 = BeautifulSoup(items['object_link'], 'html.parser')
         flats_soup2 = soup2.find('a')
 
@@ -236,7 +236,7 @@ if __name__ == "__main__":
     current_date = datetime.date.today()
 
     # Базовый путь для сохранения
-    base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ЛСР"
+    base_path = r""
 
     folder_path = os.path.join(base_path, str(current_date))
     if not os.path.exists(folder_path):

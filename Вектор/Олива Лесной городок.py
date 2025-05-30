@@ -82,7 +82,7 @@ while True:
         developer = "Вектор"
         project = 'Олива Лесной городок'
         korpus = i['building_int_number']
-        type = 'Квартира'
+        type = 'Квартиры'
         if i['finishing_type'] == 'no':
             finish_type = 'Без отделки'
         elif i['finishing_type'] == 'fine':

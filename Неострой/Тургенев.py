@@ -59,11 +59,6 @@ params = {
     'lang': 'ru',
 }
 
-
-
-
-
-
 flats = []
 
 

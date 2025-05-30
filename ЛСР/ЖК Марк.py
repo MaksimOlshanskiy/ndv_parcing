@@ -33,7 +33,7 @@ data = {
     'ob[id]': '223',
     'object': '223',
     'a': 'types',
-    'ok': 'UUfLcU0cgOFHuP7JAPEE88HyPnaLnjqR'
+    'ok': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss'
 }
 
 
@@ -50,7 +50,7 @@ while True:
     print(response.status_code)
     items = response.json()['html']
     soup = BeautifulSoup(items, 'html.parser')
-    flats_soup = soup.find_all('div', class_="listingCard listingCard--isFlat")
+    flats_soup = soup.find_all('div', class_=["listingCard listingCard--isFlat", "listingCard--isPromotion"])
     for i in flats_soup:
 
         url = ''

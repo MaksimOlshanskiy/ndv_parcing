@@ -113,7 +113,7 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = 'Квартира'
+        type = 'Квартиры'
         finish_type = "Без отделки"
         try:
             room_count = int(i["roominess"])
@@ -202,7 +202,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Центр-инвест"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

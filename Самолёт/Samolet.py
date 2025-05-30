@@ -1,4 +1,8 @@
-# требуется менять cookie, а именно 'qrator_jsid'. Запросы через сессию
+'''
+
+требуется менять cookie, а именно 'qrator_jsid'. Запросы через сессию
+
+'''
 
 # id всех проектов: [68195,7,20,69054,5,57,69104,44,68189,56,41,69057,69011,68192,68188,68191,69106,69108,68199,69206,2,45,40,69103,21,68196,31,69101,68194,3,69051,55,1,49,68185,69102,4,42,69100,69110]
 
@@ -9,6 +13,7 @@ import pandas as pd
 import openpyxl
 import os
 import random
+from Developer_dict import developer_dict, name_dict
 
 cookies = {
     'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
@@ -28,47 +33,50 @@ cookies = {
     'city_approved': '1',
     'pageviewUrlProjectNovodanilovskaya8': 'true',
     'sessionid': 'fjwvpzyyv4mdr7fqyunk6j9z5niagehb',
+    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1748247284557',
+    'cted': 'modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974',
+    '_ym_isad': '2',
+    '_ym_visorc': 'b',
+    '_ct_ids': 'htlowve6%3A36409%3A868902508',
+    '_ct_session_id': '868902508',
+    '_ct_site_id': '36409',
+    'session_timer_104054': '1',
+    'undefined': '0.09',
+    'pageviewTimerAll': '0.09',
+    'pageviewTimerMSK': '0.09',
+    'FPLC': '58wNIxICKWhQoyvUzPbd%2BCgUP9bX4722vIeRQIFzWCc45GnS2ug1ol9iBcNgOpNeXwblwOgIhbItuNDgTPG%2F729lyEe2IO9OlvvFc3UZz4FYXHPMJmii6DC6uJ%2F0fg%3D%3D',
+    'seconds_on_page_104054': '',
+    'was_called_in_current_session_104054': '1',
+    'qrator_jsr': '1748333337.897.O3rajTUloKebZ0wy-jjjsv39d636ll7cac2abbghogseqs20f-00',
+    'qrator_jsid': '1748333337.897.O3rajTUloKebZ0wy-0q70rodvd4qb133115l00vkuidouhk8b',
     'mindboxDeviceUUID': 'b8b42419-45ee-4a92-8e84-640b5c64455a',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D',
     'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
-    'cted': 'modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974',
-    '_ct_ids': 'htlowve6%3A36409%3A864972541',
-    '_ct_session_id': '864972541',
-    '_ct_site_id': '36409',
-    'call_s': '___htlowve6.1747658612.864972541.143945:445562|2___',
-    '_ym_isad': '2',
-    '_ym_visorc': 'b',
-    'user_account_return_url_session': '%2Fflats%2F%3Fproject%3D45%26free%3D1%26from%3Dproject',
-    'csrftoken': 'og8fsPcYcpt3NHj5ay1QHwsocePrTP4MpAgNkU32kH63wM49INd8J8bnpajr68Sb',
-    'pageviewCount': '1',
-    'pageviewCountMSK': '1',
-    'session_timer_104054': '1',
-    'PageNumber': '1',
-    'FPLC': 'VJAK6Mtz%2F0OJVIFo0UoAykFf7QXarV%2FwEjLp7GK9Xc%2FaF4Q438qhpEiugKrGR%2BurC%2F7ipYxqeGdIlkQT3itnV3aH7GZNkgcsOnv5eWoLYgk5VLjwr2nTVbB5TW7LXw%3D%3D',
-    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1747656826730',
-    'tmr_detect': '0%7C1747656834728',
-    'was_called_in_current_session_104054': '1',
-    'qrator_jsid': '1747656806.950.PbuOTeGUmCrIupE0-994796kelvsgh8lm32v4iud7ktv8q9ih',
-    '_ga_2WZB3B8QT0': 'GS2.1.s1747656825$o19$g1$t1747657225$j0$l0$h1010119287',
+    'call_s': '___htlowve6.1748335143.868902508.185714:571620|2___',
+    'user_account_return_url_session': '%2Fflats%2F',
+    'csrftoken': 'WwJqMr2Ffx4HEtNyBA1Ge0kSzTiJ2cldrUU7d2RQULaUNwlxflA2wn6ZLatjwJOG',
+    'pageviewCount': '3',
+    'pageviewCountMSK': '3',
+    'PageNumber': '3',
+    '_ga_2WZB3B8QT0': 'GS2.1.s1748332806$o23$g1$t1748333352$j0$l0$h1322361807',
+    'tmr_detect': '0%7C1748333353313',
 }
-
-
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'baggage': 'sentry-environment=PROD,sentry-release=release-fast-track-250310,sentry-public_key=6f0fe185684eda71da9741fe58c43591,sentry-trace_id=dcd59396c8234adf87a7dabc61061167,sentry-sample_rate=0.1,sentry-transaction=flats,sentry-sampled=false',
+    'baggage': 'sentry-environment=PROD,sentry-release=release-fast-track-250526,sentry-public_key=6f0fe185684eda71da9741fe58c43591,sentry-trace_id=62f452053825463e8ff973cfde2ab68a,sentry-sample_rate=0.05,sentry-transaction=flats,sentry-sampled=false',
     'priority': 'u=1, i',
-    'referer': 'https://samolet.ru/flats/?project=5&free=1&from=project',
-    'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
+    'referer': 'https://samolet.ru/flats/',
+    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'sentry-trace': 'dcd59396c8234adf87a7dabc61061167-a563fa3af621171d-0',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
-    # 'cookie': '_smt=81d8713e-8dd9-4eb9-92d1-6eddb373e658; mindboxDeviceUUID=b8b42419-45ee-4a92-8e84-640b5c64455a; directCrm-session=%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct_ids=htlowve6%3A36409%3A831980740; _ct_session_id=831980740; _ct_site_id=36409; _ct=1300000000514654067; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ymab_param=8XRBcNsyXKtIDbacrAc2BACgO21rCm8Ag3D9zrGpvAndIxB0P18Yxc_5KjOr3ip1jyUFVoI_vSab5fXPK7ntewsKWyM; suggested_city=1; sessionid=niscdnumbzz5ymwbd7rmpyq7ebjbcarg; _ym_uid=1741678176664168974; _ym_d=1741678176; _ym_isad=2; _ym_visorc=b; _ga=GA1.1.1264916353.1741678184; FPID=FPID2.2.CDdF7rEkFIS%2FekBLl3jtW7K80kFov3hiqvjbDmcAEcw%3D.1741678184; FPLC=FoOEkf8%2F0WCKP6j5LQsl2x8AU5S0S8sZ2h%2BBIAfkqFPt54OWbmFIwaCGSY8lusIVo86YDf%2FVnY%2Bo%2Fu0p7Ryll6gcgRA9YteMlhOhyHCbwdccs2iqKmskPhI9AiPn9g%3D%3D; tmr_lvid=609b80c61abf0ce366c33bbd78503b61; tmr_lvidTS=1741678183827; cted=modId%3Dhtlowve6%3Bya_client_id%3D1741678176664168974%3Bclient_id%3D1264916353.1741678184; domain_sid=pPz3-bLEHe1VOjIhFyQ_1%3A1741678185598; nxt-city=%7B%22dep%22%3A%7B%22version%22%3A1%2C%22sc%22%3A0%7D%2C%22__v_isRef%22%3Atrue%2C%22__v_isShallow%22%3Afalse%2C%22_rawValue%22%3A%7B%22id%22%3A1%2C%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D%2C%22_value%22%3A%7B%22id%22%3A1%2C%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D%7D; cookies_accepted=1; pageviewTimerAllFired5min=true; pageviewTimerAllFired10min=true; pageviewTimerAllFired15min=true; pageviewTimerAllFired45min=true; pageviewTimerAllFired30min=true; pageviewTimerMSKFired5min=true; pageviewTimerMSKFired10min=true; pageviewTimerMSKFired15min=true; pageviewTimerMSKFired45min=true; pageviewCountMSKFired9pages=true; undefined=8419.6; pageviewTimerAll=12242.995; pageviewTimerMSK=12242.995; pageviewTimerAllFired1min=true; pageviewTimerAllFired2min=true; pageviewTimerAllFired15sec=true; pageviewTimerMSKFired1min=true; pageviewTimerMSKFired2min=true; qrator_jsid=1741685054.002.Zd4H2dQq7hWf3BKE-fd64o4rfkk7q39ll3sqthu3rlgojgo2o; pageviewCountMSKFired10pages=true; call_s=___htlowve6.1741688423.831980740.185717:571622|2___; csrftoken=P0UvLuD5XsszJiZCI9WLFAfXBxnKI2hPToXXZQr6WLwuQ987ESdoHvKzKA99iSnK; pageviewCount=11; pageviewCountMSK=11; _ga_2WZB3B8QT0=GS1.1.1741678183.1.1.1741686629.0.0.272202610; tmr_detect=0%7C1741686631901',
+    'sentry-trace': '62f452053825463e8ff973cfde2ab68a-8caa673b0d73b84e-0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+    # 'cookie': 'popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct=1300000000514654067; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ymab_param=8XRBcNsyXKtIDbacrAc2BACgO21rCm8Ag3D9zrGpvAndIxB0P18Yxc_5KjOr3ip1jyUFVoI_vSab5fXPK7ntewsKWyM; suggested_city=1; _ym_uid=1741678176664168974; _ym_d=1741678176; _ga=GA1.1.1264916353.1741678184; FPID=FPID2.2.CDdF7rEkFIS%2FekBLl3jtW7K80kFov3hiqvjbDmcAEcw%3D.1741678184; tmr_lvid=609b80c61abf0ce366c33bbd78503b61; tmr_lvidTS=1741678183827; cookies_accepted=1; _smt=1bdc3b2d-db01-43f7-9fc0-bb05e3cca9e5; _ga_2WZB3B8QT0=deleted; city_approved=1; pageviewUrlProjectNovodanilovskaya8=true; sessionid=fjwvpzyyv4mdr7fqyunk6j9z5niagehb; domain_sid=pPz3-bLEHe1VOjIhFyQ_1%3A1748247284557; cted=modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974; _ym_isad=2; _ym_visorc=b; _ct_ids=htlowve6%3A36409%3A868902508; _ct_session_id=868902508; _ct_site_id=36409; session_timer_104054=1; undefined=0.09; pageviewTimerAll=0.09; pageviewTimerMSK=0.09; FPLC=58wNIxICKWhQoyvUzPbd%2BCgUP9bX4722vIeRQIFzWCc45GnS2ug1ol9iBcNgOpNeXwblwOgIhbItuNDgTPG%2F729lyEe2IO9OlvvFc3UZz4FYXHPMJmii6DC6uJ%2F0fg%3D%3D; seconds_on_page_104054=; was_called_in_current_session_104054=1; qrator_jsr=1748333337.897.O3rajTUloKebZ0wy-jjjsv39d636ll7cac2abbghogseqs20f-00; qrator_jsid=1748333337.897.O3rajTUloKebZ0wy-0q70rodvd4qb133115l00vkuidouhk8b; mindboxDeviceUUID=b8b42419-45ee-4a92-8e84-640b5c64455a; directCrm-session=%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D; nxt-city=%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D; call_s=___htlowve6.1748335143.868902508.185714:571620|2___; user_account_return_url_session=%2Fflats%2F; csrftoken=WwJqMr2Ffx4HEtNyBA1Ge0kSzTiJ2cldrUU7d2RQULaUNwlxflA2wn6ZLatjwJOG; pageviewCount=3; pageviewCountMSK=3; PageNumber=3; _ga_2WZB3B8QT0=GS2.1.s1748332806$o23$g1$t1748333352$j0$l0$h1322361807; tmr_detect=0%7C1748333353313',
 }
 
 params = {
@@ -82,7 +90,7 @@ params = {
     "project": 68195
 }
 
-projects = [68195,7,20,69054,5,57,69104,44,68189,56,41,69057,69011,68192,68188,68191,69106,69108,68199,69206,2,45,40,69103,21,68196,31,69101,68194,3,69051,55,1,49,68185,69102,4,42,69100,69110, 69109]
+projects = [68195,7,20,69054,5,57,69104,44,68189,56,41,69057,69011,68192,68188,68191,69106,69108,68199,69206,2,45,40,69103,21,68196,31,69101,68194,3,69051,55,49,1,69109,68185,69102,4,42,69100,69110]
 
 
 session = requests.Session()
@@ -122,7 +130,10 @@ for project in projects:
             developer = "Самолет"
             project = i["project"]
             korpus = i["building"]
-            type = ''
+            if i['is_apartment'] is True:
+                type = 'Апартаменты'
+            else:
+                type = 'Квартиры'
             if i["default_decor_type"] == None:
                 finish_type = "Без отделки"
             elif i["default_decor_type"] == 1 or i["default_decor_type"] == 0 or i["default_decor_type"] == 2:
@@ -261,10 +272,13 @@ for project in projects:
                                           'этаж',
                                           'номер'])
 
+        df["Название проекта"] = df["Название проекта"].replace(name_dict)
+        df["Девелопер"] = df["Девелопер"].replace(developer_dict)
+
         current_date = datetime.now().date()
 
         # Базовый путь для сохранения
-        base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Самолёт"
+        base_path = r""
 
         folder_path = os.path.join(base_path, str(current_date))
         if not os.path.exists(folder_path):

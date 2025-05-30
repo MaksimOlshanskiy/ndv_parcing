@@ -5,6 +5,7 @@ import pandas as pd
 import openpyxl
 import os
 import random
+from datetime import datetime
 
 
 cookies = {
@@ -52,12 +53,9 @@ headers = {
 
 params = {
     'limit': '12',
-    'offset': '12',
+    'offset': '0',
 }
 
-
-
-today = '2025-03-20'
 
 
 flats = []
@@ -79,7 +77,7 @@ while True:
 
         url = ""
 
-        date = today
+        date = datetime.now().date()
         project = 'Сберсити'
         english = ''
         promzona = ''
@@ -186,10 +184,10 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
  'этаж',
  'номер'])
 
-current_date = today
+current_date = datetime.now().date()
 
 # Базовый путь для сохранения
-base_path = r""
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СЗ Рублево-Архангельское"
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

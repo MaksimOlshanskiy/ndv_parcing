@@ -1,4 +1,9 @@
-# обновляем куки
+"""
+
+обновляем куки
+
+
+"""
 
 import requests
 from datetime import datetime
@@ -11,42 +16,43 @@ import random
 import requests
 
 cookies = {
-    '_ymab_param': '08qI1MeTbZ6KE5qhxDORXMs7AIyYJwpIwhsDMjnwynPzm5XaW_oeb3oCvQ2xP99oJtk32PrPwms2CJ3bdt2feThNs6Y',
+    '_ymab_param': 'baIPZr2f3OKdi3ok_RTCoIPOJ5IfzwI7O0Dg-zcZKUQSqgrucd4l-o-1Il3QgXTxPs9qpKPE5MGE-OOzJHObiiPM3Uk',
     'tmr_lvid': 'dfa41b5563807a150803810c3db1bd53',
     'tmr_lvidTS': '1742906679116',
-    'roistat_first_visit': '22659698',
-    '_ct': '1700000000371104218',
-    '_ga': 'GA1.1.1368495042.1742906680',
+    '_ct': '1700000000387284447',
     '_ym_uid': '1742906680495120652',
-    '_ym_d': '1742906680',
-    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
-    '___dc': '7f88fd35-7882-4206-b93a-bab62aea98bc',
-    'uxs_uid': 'eec93500-0976-11f0-97e1-2336612bf0ed',
-    'roistat_visit': '23447266',
+    '_ym_d': '1748252893',
     'roistat_visit_cookie_expire': '1209600',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    'domain_sid': '5V7Z2Dbg0blJdGi5wSPww%3A1748252894979',
+    '___dc': '7f88fd35-7882-4206-b93a-bab62aea98bc',
+    'slug_city': 'msk',
+    'auth.selectedCity': 'Q2l0eVR5cGU6MQ%3D%3D',
+    'auth.strategy': 'users',
+    'roistat_marker': 'direct152_search_16735993960_---autotargeting',
+    'roistat_marker_old': 'direct152_search_16735993960_---autotargeting',
+    'roistat_yclid': '9241229446332547071',
+    '_ym_isad': '2',
+    '_ym_visorc': 'w',
+    'cted': 'modId%3Dom6ni2v1%3Bya_client_id%3D1742906680495120652',
+    'roistat_visit': '24398183',
+    '_ct_ids': 'om6ni2v1%3A44807%3A591534567',
+    '_ct_session_id': '591534567',
+    '_ct_site_id': '44807',
+    'tmr_detect': '0%7C1748333102596',
     'roistat_call_tracking': '0',
     'roistat_emailtracking_email': 'null',
     'roistat_emailtracking_tracking_email': 'null',
     'roistat_emailtracking_emails': '%5B%5D',
-    'qrator_jsr': '1745330835.150.8gqVpqFmVT2oaYJr-e6cqfi8a9tcm9fcvp4umi8vqt9tcs5is-00',
-    'qrator_jsid': '1745330835.150.8gqVpqFmVT2oaYJr-ccks0dedhcor8phgf99774o198cnl6qs',
-    'slug_city': 'msk',
-    'auth.selectedCity': 'Q2l0eVR5cGU6MQ%3D%3D',
-    'auth.strategy': 'users',
-    'cted': 'modId%3Dom6ni2v1%3Bclient_id%3D1368495042.1742906680%3Bya_client_id%3D1742906680495120652',
-    '_ym_isad': '2',
-    '_ym_visorc': 'w',
-    '_ct_ids': 'om6ni2v1%3A44807%3A577460735',
-    '_ct_session_id': '577460735',
-    '_ct_site_id': '44807',
-    'domain_sid': '5V7Z2Dbg0blJdGi5wSPww%3A1745330836823',
-    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
-    '_ga_BE304FWE0N': 'GS1.1.1745330836.7.1.1745330858.0.0.0',
-    'call_s': '___om6ni2v1.1745332658.577460735.201255:738599|2___',
-    'csrftoken': 'n5NOGMDcB2O2lDaqpVWU6AJPRBqzKcepoo8jDhnUMgQq6iRjTrkSiDfL7AVfJkyK',
-    'tmr_detect': '0%7C1745330860619',
-    'nuxt_breakpoint_detector': 'lg',
+    'roistat_cookies_to_resave': 'roistat_marker%2Croistat_marker_old%2Croistat_yclid%2Croistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
+    'city_approved': 'true',
+    'nuxt_breakpoint_detector': 'md',
+    'csrftoken': 'ULHCN9O5rjY7r4pnfk3Q65iGv1G1uvj2MIcEd9y9QUmJprgpOSpqLFMiJl86qHG9',
+    'qrator_jsr': '1748333431.864.nagrjXgS3jPvgueZ-ddghqmf0tkb97ij6v1h7cf7rtnocetch-00',
+    'qrator_jsid': '1748333431.864.nagrjXgS3jPvgueZ-vl5rd25cdh2qh514olql3sdu7ivg0rlk',
+    'call_s': '___om6ni2v1.1748335236.591534567.201255:1331864|2___',
 }
+
 
 headers = {
     'accept': 'application/json, text/plain, */*',
@@ -119,7 +125,10 @@ while True:
         developer = "Страна Девелопмент"
         project = i['node']['project']['name']
         korpus = i['node']['building']['nameDisplay']
-        type = ''
+        if i['node']['type'] == 'FLAT':
+            type = 'Квартиры'
+        else:
+            type = i['node']['type']
         finish = i['node']['features']
         try:
             finish_type = 'Без отделки'
@@ -242,7 +251,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Страна Девелопмент"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

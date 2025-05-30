@@ -118,7 +118,10 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = ''
+        if i['subtype']['name'] == 'Апартаменты':
+            type = 'Апартаменты'
+        else:
+            type = 'Квартиры'
         if i["decoration"]["name"] == "MR Base":
             finish_type = "Предчистовая"
         elif i["decoration"]["name"] == "MR Ready":
@@ -200,7 +203,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\MR"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

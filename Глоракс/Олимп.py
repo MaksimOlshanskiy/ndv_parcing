@@ -42,10 +42,10 @@ for korp in items:
 
 
         url = ''
-        developer = "Глоракс"
+        developer = "Glorax"
         project = 'Олимп (Хотьково)'
         korpus = i['house_number']
-        type = 'Квартира'
+        type = 'Квартиры'
         finish_type = 'Без отделки'
         room_count = i['room_count']
         try:

@@ -114,7 +114,8 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = ''
+        if i['type'] == 'Квартира':
+            type = 'Квартиры'
         if i["finishing"] == '':
             finish_type = "Без отделки"
         else:
@@ -200,7 +201,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Sminex"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):

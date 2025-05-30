@@ -76,7 +76,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4704,
+                5024,
             ],
         },
     },
@@ -112,6 +112,8 @@ while True:
     items = response.json()['newbuildings']
 
     for i in items:
+        if i['fromDeveloperPropsCount'] < 10:
+            continue
         id = i['id']
         ids.append(id)
     if not items:
@@ -163,7 +165,6 @@ json_data = {
 }
 
 
-
 current_date = datetime.date.today()
 
 for y in ids:
@@ -171,7 +172,7 @@ for y in ids:
     session = requests.Session()
     flats_total = []
 
-    if y in [353100, 4769290, 4593370, 4126104, 4000614, 149559, 8202, 4145774]:
+    if y in []:
         continue
 
 
@@ -195,7 +196,7 @@ for y in ids:
 
             print(f"Число комнат: {room_id}")
             if counter > 1:
-                sleep_time = random.uniform(8, 12)
+                sleep_time = random.uniform(7, 11)
                 time.sleep(sleep_time)
             try:
                 response = session.post(
@@ -349,6 +350,12 @@ for y in ids:
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
 
+        def sanitize_filename(name):
+            for char in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
+                name = name.replace(char, '_')
+            return name
+
+        project = sanitize_filename(project)
         filename = f"{project}__{current_date}.xlsx"
 
         # Полный путь к файлу0

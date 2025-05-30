@@ -116,7 +116,7 @@ for i in items:
     srok_sdachi_old = ''
     stadia = ''
     dogovor = ''
-    type = 'Квартира'
+    type = 'Квартиры'
     if i['PROPS']['OTDELKA']['VALUE'] == 'Чистовая':
         finish_type = 'С отделкой'
     elif i['PROPS']['OTDELKA']['VALUE'] == 'Черновая':

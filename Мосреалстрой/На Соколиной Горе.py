@@ -79,7 +79,7 @@ for i in items:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = 'Квартира'
+        type = 'Квартиры'
         finish_type = 'С отделкой'
         room_count = int(i['rooms'])
 
