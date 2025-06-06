@@ -89,7 +89,7 @@ for i in items:
     district = ''
     adress = ''
     eskrou = ''
-    korpus = ''
+    korpus = '1'
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''

@@ -10,7 +10,7 @@ import random
 import re
 from functions import classify_renovation, clean_filename
 
-ids = [50743
+ids = [6644
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -76,22 +76,26 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'page': {
-            'type': 'term',
-            'value': 1,
-        },
         'geo': {
             'type': 'geo',
             'value': [
                 {
                     'type': 'newobject',
-                    'id': 4399722,
+                    'id': 353100,
                 },
             ],
+        },
+        'publish_period': {
+            'type': 'term',
+            'value': 2592000,
         },
         'from_developer': {
             'type': 'term',
             'value': True,
+        },
+        'page': {
+            'type': 'term',
+            'value': 1,
         },
     },
 }
@@ -121,7 +125,7 @@ for y in ids:
     while len(flats) < total_count:
 
         if counter > 1:
-            sleep_time = random.uniform(10, 15)
+            sleep_time = random.uniform(8, 12)
             time.sleep(sleep_time)
         try:
             response = session.post(
@@ -276,6 +280,8 @@ for y in ids:
         downloaded = len(flats)
         print(f'ID ЖК: {y}. Загружено {downloaded} предложений из {total_count}')
         counter += 1
+        if not items:
+            break
 
     counter += 1
 
@@ -330,7 +336,7 @@ for y in ids:
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
 
-    filename = f"{project}_{current_date}.xlsx"
+    filename = f"{project}_{current_date}-4.xlsx"
 
     # Полный путь к файлу
     file_path = os.path.join(folder_path, filename)

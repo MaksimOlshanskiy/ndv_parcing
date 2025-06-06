@@ -68,7 +68,7 @@ for key, inner_dict in data.items():
     url = ''
     developer = "Град"
     project = 'ICE TOWERS'
-    korpus = ''
+    korpus = inner_dict['b']
     if inner_dict['t'] == 'Квартира':
         type = 'Квартиры'
     finish_type = 'Без отделки'
@@ -87,7 +87,7 @@ for key, inner_dict in data.items():
         price = ''
     if price == 0:
         continue
-    section = ''
+    section = inner_dict['s']
     try:
         floor = int(inner_dict['f'])
     except:

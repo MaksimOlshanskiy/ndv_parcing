@@ -79,7 +79,7 @@ while True:
         adress = ''
         eskrou = ''
         all_tags = i.find_all('div', class_='tag tag--isSmall')
-        korpus = ''
+        korpus = '1'
         konstruktiv = ''
         klass = ''
         srok_sdachi = all_tags[0].text.strip()

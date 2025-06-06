@@ -44,7 +44,7 @@ for i in items:
     url = ''
     developer = "Айгрин"
     project = 'Сигма Силино'
-    korpus = ''
+    korpus = '1'
     type = 'Апартаменты'
     if i['decoration_id'] == 273:
         finish_type = 'С отделкой'

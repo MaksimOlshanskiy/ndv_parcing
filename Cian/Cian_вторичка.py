@@ -85,30 +85,26 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'geo': {
-            'type': 'geo',
+        'region': {
+            'type': 'terms',
             'value': [
-                {
-                    'type': 'district',
-                    'id': 4,
-                },
+                4704,
             ],
+        },
+        'floor': {
+            'type': 'range',
+            'value': {
+                'gte': 8,
+                'lte': 9,
+            },
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
-
         'room': {
             'type': 'terms',
             'value': [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
                 9,
             ],
         },
@@ -116,10 +112,13 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'page': {
+        'flat_share': {
             'type': 'term',
             'value': 2,
-
+        },
+        'page': {
+            'type': 'term',
+            'value': 1,
         },
     },
 }
@@ -132,154 +131,163 @@ def extract_digits_or_original(s):
 
 current_date = datetime.date.today()
 
-total_area_list = [[1, 35], [35, 55], [55, 75], [75, 100], [100, 150], [150, 200], [200, 2000]]
+rooms_ids = [1,2,3,4,5,6,7,9]
 
-for area in total_area_list:
+total_floor_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 14], [15, 1000]]
 
-    json_data["jsonQuery"]["total_area"]["value"]["gte"] = area[0]
-    json_data["jsonQuery"]["total_area"]["value"]["lte"] = area[1]
-    print(f'Площадь квартир: {area}')
-    name_counter = f'{area[0]}-{area[1]}'
+for rooms in rooms_ids:
+
+    json_data["jsonQuery"]["page"]["value"] = 1
+    json_data["jsonQuery"]["room"]["value"][0] = rooms
+    print(f'Room ID: {rooms}')
 
     session = requests.Session()
 
-    flats = []
-    counter = 1
-    total_count = 1
-    json_data["jsonQuery"]["page"]["value"] = 1
+    for f in total_floor_list:
 
-    while len(flats) < total_count:
+        flats = []
+        json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
+        json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
+        json_data["jsonQuery"]["page"]["value"] = 1
+        print(f'Площадь квартир: {f}')
 
-        if counter > 1:
-            sleep_time = random.uniform(8, 12)
-            time.sleep(sleep_time)
-        try:
-            response = session.post(
-                'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                cookies=cookies,
-                headers=headers,
-                json=json_data
-            )
+        name_counter = f'{rooms}-{f[0]}-{f[1]}'
 
-            print(response.status_code)
+        counter = 1
+        total_count = 1
 
-            items = response.json()["data"]["offersSerialized"]
-        except:
-            print("Произошла ошибка, пробуем ещё раз")
-            print(response.status_code)
-            time.sleep(30)
-            session = requests.Session()
-            response = session.post(
-                'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                cookies=cookies,
-                headers=headers,
-                json=json_data
-            )
-            print(response.status_code)
-            items = response.json()["data"]["offersSerialized"]
+        while len(flats) < total_count:
 
-        for i in items:
+            if counter > 1:
+                sleep_time = random.uniform(7, 11)
+                time.sleep(sleep_time)
             try:
-                geo1 = i['geo']['address'][0]['fullName']
-            except:
-                geo1 = ''
-            try:
-                geo2 = i['geo']['address'][1]['fullName']
-            except:
-                geo2 = ''
-            try:
-                geo3 = i['geo']['address'][2]['fullName']
-            except:
-                geo3 = ''
-            try:
-                geo4 = i['geo']['address'][3]['fullName']
-            except:
-                geo4 = ''
+                response = session.post(
+                    'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                    cookies=cookies,
+                    headers=headers,
+                    json=json_data
+                )
 
-            try:
-                adress = i['geo']['userInput']
+                print(response.status_code)
+
+                items = response.json()["data"]["offersSerialized"]
             except:
-                adress = ''
-            try:
-                if not i['roomsCount'] and i['flatType'] == 'studio':
-                    rooms_count = 0
-                else:
-                    rooms_count = i['roomsCount']
-            except:
-                rooms_count = ''
-            try:
-                area = float(i['totalArea'])
-            except:
-                area = ''
-            try:
-                price = int(i['bargainTerms']['priceRur'])
-            except:
-                price = i['bargainTerms']['priceRur']
-            try:
-                finish_type = classify_renovation(i['description'])
-            except:
-                finish_type = ''
-            try:
-                description = i['description']
-            except:
-                description = ''
-            try:
-                if i['fromDeveloper'] == True or i['user']['isBuilder'] == True:
-                    property_from = "От застройщика"
-                elif i['user']['isAgent'] is True:
-                    property_from = "От агента"
-                elif i['isByHomeowner'] is True:
-                    property_from = 'От собственника'
-                else:
+                print("Произошла ошибка, пробуем ещё раз")
+                print(response.status_code)
+                time.sleep(30)
+                session = requests.Session()
+                response = session.post(
+                    'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                    cookies=cookies,
+                    headers=headers,
+                    json=json_data
+                )
+                print(response.status_code)
+                items = response.json()["data"]["offersSerialized"]
+
+            for i in items:
+                try:
+                    geo1 = i['geo']['address'][0]['fullName']
+                except:
+                    geo1 = ''
+                try:
+                    geo2 = i['geo']['address'][1]['fullName']
+                except:
+                    geo2 = ''
+                try:
+                    geo3 = i['geo']['address'][2]['fullName']
+                except:
+                    geo3 = ''
+                try:
+                    geo4 = i['geo']['address'][3]['fullName']
+                except:
+                    geo4 = ''
+
+                try:
+                    adress = i['geo']['userInput']
+                except:
+                    adress = ''
+                try:
+                    if not i['roomsCount'] and i['flatType'] == 'studio':
+                        rooms_count = 0
+                    else:
+                        rooms_count = i['roomsCount']
+                except:
+                    rooms_count = ''
+                try:
+                    area = float(i['totalArea'])
+                except:
+                    area = ''
+                try:
+                    price = int(i['bargainTerms']['priceRur'])
+                except:
+                    price = i['bargainTerms']['priceRur']
+                try:
+                    finish_type = classify_renovation(i['description'])
+                except:
+                    finish_type = ''
+                try:
+                    description = i['description']
+                except:
+                    description = ''
+                try:
+                    if i['fromDeveloper'] == True or i['user']['isBuilder'] == True:
+                        property_from = "От застройщика"
+                    elif i['user']['isAgent'] is True:
+                        property_from = "От агента"
+                    elif i['isByHomeowner'] is True:
+                        property_from = 'От собственника'
+                    else:
+                        property_from = ''
+                except:
                     property_from = ''
-            except:
-                property_from = ''
-            url = i['fullUrl']
+                url = i['fullUrl']
 
-            print(
-                f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")
-            result = [geo1, geo2, geo3, geo4, adress, rooms_count, area, price, finish_type, description, property_from, url]
-            flats.append(result)
+                print(
+                    f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")
+                result = [geo1, geo2, geo3, geo4, adress, rooms_count, area, price, finish_type, description, property_from, url]
+                flats.append(result)
 
-        json_data["jsonQuery"]["page"]["value"] += 1
-        print("-----------------------------------------------------------------------------")
-        total_count = response.json()["data"]["offerCount"]
-        downloaded = len(flats)
-        print(f'Номер страницы: {json_data["jsonQuery"]["page"]["value"]}')
-        print(f'Загружено {downloaded} предложений из {total_count}')
+            json_data["jsonQuery"]["page"]["value"] += 1
+            print("-----------------------------------------------------------------------------")
+            total_count = response.json()["data"]["offerCount"]
+            downloaded = len(flats)
+            print(f'Номер страницы: {json_data["jsonQuery"]["page"]["value"]}')
+            print(f'Загружено {downloaded} предложений из {total_count}')
+            counter += 1
+            if not items:
+                break
+
         counter += 1
-        if not items:
-            break
 
-    counter += 1
+        # Базовый путь для сохранения
+        base_path = r""
 
-    # Базовый путь для сохранения
-    base_path = r""
+        folder_path = os.path.join(base_path, str(current_date))
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
 
-    folder_path = os.path.join(base_path, str(current_date))
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
+        filename = f"{geo1}_{current_date}_{name_counter}.xlsx"
 
-    filename = f"{geo1}_{current_date}_{name_counter}.xlsx"
+        # Полный путь к файлу
+        file_path = os.path.join(folder_path, filename)
 
-    # Полный путь к файлу
-    file_path = os.path.join(folder_path, filename)
+        df = pd.DataFrame(flats, columns=['Гео1',
+                                          'Гео2',
+                                          'Гео3',
+                                          'Гео4',
+                                          'Адрес',
+                                          'Кол-во комнат',
+                                          'Площадь',
+                                          'Цена',
+                                          'Отделка',
+                                          'Описание',
+                                          'Объявление от',
+                                          'Ссылка'
+                                          ])
 
-    df = pd.DataFrame(flats, columns=['Гео1',
-                                      'Гео2',
-                                      'Гео3',
-                                      'Гео4',
-                                      'Адрес',
-                                      'Кол-во комнат',
-                                      'Площадь',
-                                      'Цена',
-                                      'Отделка',
-                                      'Описание',
-                                      'Объявление от',
-                                      'Ссылка'
-                                      ])
+        current_date = datetime.date.today()
 
-    current_date = datetime.date.today()
-
-    # Сохранение файла в папку
-    df.to_excel(file_path, index=False)
+        # Сохранение файла в папку
+        df.to_excel(file_path, index=False)

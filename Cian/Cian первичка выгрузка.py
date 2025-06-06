@@ -76,7 +76,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                5024,
+                4713,
             ],
         },
     },
@@ -143,7 +143,7 @@ json_data = {
             'value': [
                 {
                     'type': 'newobject',
-                    'id': 4145774,
+                    'id': 2,
                 },
             ],
         },
@@ -164,7 +164,6 @@ json_data = {
     },
 }
 
-
 current_date = datetime.date.today()
 
 for y in ids:
@@ -175,16 +174,12 @@ for y in ids:
     if y in []:
         continue
 
-
-
     print(f"Новый ЖК, {y}, {ids.index(y) + 1} из {len(ids)}")
 
     json_data["jsonQuery"]["geo"]["value"][0]["id"] = y
     time.sleep(10)
 
     for room_id in rooms_ids:
-
-
 
         json_data["jsonQuery"]["page"]["value"] = 1
         flats = []

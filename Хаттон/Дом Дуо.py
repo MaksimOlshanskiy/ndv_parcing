@@ -115,7 +115,7 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        korpus = ''
+        korpus = '1'
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
