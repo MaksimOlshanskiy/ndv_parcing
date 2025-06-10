@@ -31,35 +31,30 @@ cookies = {
     '_smt': '1bdc3b2d-db01-43f7-9fc0-bb05e3cca9e5',
     '_ga_2WZB3B8QT0': 'deleted',
     'city_approved': '1',
-    'pageviewUrlProjectNovodanilovskaya8': 'true',
     'sessionid': 'fjwvpzyyv4mdr7fqyunk6j9z5niagehb',
-    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1748247284557',
+    'qrator_jsr': '1749456399.503.vGVYCAuQ9HJgpJz7-oa8def2gv0cj9b157gbic2cbl6mva2q1-00',
+    'qrator_jsid': '1749456399.503.vGVYCAuQ9HJgpJz7-8n3ge30q9j6ai9qece5s5ebre9kjk900',
     'cted': 'modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974',
-    '_ym_isad': '2',
-    '_ym_visorc': 'b',
-    '_ct_ids': 'htlowve6%3A36409%3A868902508',
-    '_ct_session_id': '868902508',
-    '_ct_site_id': '36409',
-    'session_timer_104054': '1',
-    'undefined': '0.09',
-    'pageviewTimerAll': '0.09',
-    'pageviewTimerMSK': '0.09',
-    'FPLC': '58wNIxICKWhQoyvUzPbd%2BCgUP9bX4722vIeRQIFzWCc45GnS2ug1ol9iBcNgOpNeXwblwOgIhbItuNDgTPG%2F729lyEe2IO9OlvvFc3UZz4FYXHPMJmii6DC6uJ%2F0fg%3D%3D',
-    'seconds_on_page_104054': '',
-    'was_called_in_current_session_104054': '1',
-    'qrator_jsr': '1748333337.897.O3rajTUloKebZ0wy-jjjsv39d636ll7cac2abbghogseqs20f-00',
-    'qrator_jsid': '1748333337.897.O3rajTUloKebZ0wy-0q70rodvd4qb133115l00vkuidouhk8b',
     'mindboxDeviceUUID': 'b8b42419-45ee-4a92-8e84-640b5c64455a',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D',
+    '_ym_visorc': 'b',
     'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
-    'call_s': '___htlowve6.1748335143.868902508.185714:571620|2___',
-    'user_account_return_url_session': '%2Fflats%2F',
-    'csrftoken': 'WwJqMr2Ffx4HEtNyBA1Ge0kSzTiJ2cldrUU7d2RQULaUNwlxflA2wn6ZLatjwJOG',
-    'pageviewCount': '3',
-    'pageviewCountMSK': '3',
-    'PageNumber': '3',
-    '_ga_2WZB3B8QT0': 'GS2.1.s1748332806$o23$g1$t1748333352$j0$l0$h1322361807',
-    'tmr_detect': '0%7C1748333353313',
+    '_ct_ids': 'htlowve6%3A36409%3A875416247',
+    '_ct_session_id': '875416247',
+    '_ct_site_id': '36409',
+    '_ym_isad': '2',
+    'pageviewUrlProjectKvartalIvakino': 'true',
+    'session_timer_104054': '1',
+    'FPLC': '5zCf7XQ8zLuHfX4Bu7ZnV7r6F77VugPTYEYgUn5pBt%2B1EE1%2BoDfawKJtDM%2FrMpmI35lEwEgfRv7w1wnsMCWg6VBA78o6AqCz3qz4xGVqwvlOjfcvR6eEACxTWQRwYQ%3D%3D',
+    'call_s': '___htlowve6.1749458218.875416247.185714:571620|2___',
+    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1749456424722',
+    'user_account_return_url_session': '%2Fflats%2F%3Fproject%3D68188%26free%3D1%26from%3Dproject%26group_mode%3Dproject',
+    'csrftoken': 'NvmRe0OM3FCnyuB9ZblDKDYReRkGE9c2PQwsm1Gf6QEMkyxWHzPQc5Rtr0KZW31E',
+    'pageviewCount': '2',
+    'pageviewCountMSK': '2',
+    'PageNumber': '2',
+    '_ga_2WZB3B8QT0': 'GS2.1.s1749456422$o27$g1$t1749456430$j52$l0$h102251010',
+    'tmr_detect': '0%7C1749456431994',
 }
 
 headers = {
@@ -154,12 +149,12 @@ for project in projects:
             except:
                 area = ''
             try:
-                price = int(i["price"])
+                price = int(i["filter_price_package"])
 
             except:
                 price = ''
             try:
-                old_price = int(i["old_price"])
+                old_price = int(i["old_filter_price_package"])
             except:
                 old_price = ''
             if not old_price:

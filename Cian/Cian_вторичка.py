@@ -88,7 +88,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4704,
+                4927,
             ],
         },
         'floor': {
@@ -133,7 +133,7 @@ current_date = datetime.date.today()
 
 rooms_ids = [1,2,3,4,5,6,7,9]
 
-total_floor_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 14], [15, 1000]]
+total_floor_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 11], [12, 14], [15, 20], [21, 200]]
 
 for rooms in rooms_ids:
 
