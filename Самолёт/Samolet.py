@@ -30,31 +30,38 @@ cookies = {
     'cookies_accepted': '1',
     '_smt': '1bdc3b2d-db01-43f7-9fc0-bb05e3cca9e5',
     '_ga_2WZB3B8QT0': 'deleted',
-    'city_approved': '1',
     'sessionid': 'fjwvpzyyv4mdr7fqyunk6j9z5niagehb',
-    'qrator_jsr': '1749456399.503.vGVYCAuQ9HJgpJz7-oa8def2gv0cj9b157gbic2cbl6mva2q1-00',
-    'qrator_jsid': '1749456399.503.vGVYCAuQ9HJgpJz7-8n3ge30q9j6ai9qece5s5ebre9kjk900',
-    'cted': 'modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974',
+    'pageviewUrlProjectKvartalIvakino': 'true',
     'mindboxDeviceUUID': 'b8b42419-45ee-4a92-8e84-640b5c64455a',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D',
-    '_ym_visorc': 'b',
-    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
-    '_ct_ids': 'htlowve6%3A36409%3A875416247',
-    '_ct_session_id': '875416247',
+    'pageviewUrlPyatnitskieLuga': 'true',
+    'pageviewUrlProjectGorkiPark': 'true',
+    'pageviewUrlProjectEgorovoPark': 'true',
+    'pageviewUrlProjectTroparevoPark': 'true',
+    'pageviewUrlProjectPrigorodLesnoe': 'true',
+    'tmr_lvid': '609b80c61abf0ce366c33bbd78503b61',
+    'tmr_lvidTS': '1741678183827',
+    'pageviewUrlProjectNovodanilovskaya8': 'true',
+    'qrator_jsid': '1751029238.247.GdixGWH3c6ocQnsq-86ihj7hdtkohn51fniord8rphb4psr9d',
+    'cted': 'modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974',
+    '_ct_ids': 'htlowve6%3A36409%3A883653416',
+    '_ct_session_id': '883653416',
     '_ct_site_id': '36409',
+    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
     '_ym_isad': '2',
-    'pageviewUrlProjectKvartalIvakino': 'true',
+    '_ym_visorc': 'b',
     'session_timer_104054': '1',
-    'FPLC': '5zCf7XQ8zLuHfX4Bu7ZnV7r6F77VugPTYEYgUn5pBt%2B1EE1%2BoDfawKJtDM%2FrMpmI35lEwEgfRv7w1wnsMCWg6VBA78o6AqCz3qz4xGVqwvlOjfcvR6eEACxTWQRwYQ%3D%3D',
-    'call_s': '___htlowve6.1749458218.875416247.185714:571620|2___',
-    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1749456424722',
-    'user_account_return_url_session': '%2Fflats%2F%3Fproject%3D68188%26free%3D1%26from%3Dproject%26group_mode%3Dproject',
-    'csrftoken': 'NvmRe0OM3FCnyuB9ZblDKDYReRkGE9c2PQwsm1Gf6QEMkyxWHzPQc5Rtr0KZW31E',
-    'pageviewCount': '2',
-    'pageviewCountMSK': '2',
-    'PageNumber': '2',
-    '_ga_2WZB3B8QT0': 'GS2.1.s1749456422$o27$g1$t1749456430$j52$l0$h102251010',
-    'tmr_detect': '0%7C1749456431994',
+    'FPLC': 'ivJZTdapS17KcSZUN4%2BR24eUZAG%2FTB3iNw6lskJTCWtZVSH4gFDytaEDelKYOzlKDQ4NQ23cEDpVy0Z%2B3ifRgXX9Ihh6ytrQrPq%2BO6FGQuZofC5jlhWXOxDRQWlKyw%3D%3D',
+    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1751029260626',
+    'call_s': '___htlowve6.1751031232.883653416.143945:445562|2___',
+    'user_account_return_url_session': '%2Fflats%2F%3Fordering%3D-order_manual%2Cfilter_price_package%2Cpk%26type%3D100000000%26nameType%3Dsale%26project%3D69108%26from%3Dproject%26group_mode%3Dproject',
+    'csrftoken': 'mY22xYRXRPLVcpnsoTKlB8hGmCBbtxqEo4d6AD7NjBl8aeEhpbbi4ql6BTIibU63',
+    'pageviewCount': '4',
+    'pageviewCountMSK': '4',
+    'PageNumber': '4',
+    'tmr_detect': '0%7C1751029447689',
+    'was_called_in_current_session_104054': '1',
+    '_ga_2WZB3B8QT0': 'GS2.1.s1751029258$o36$g1$t1751029558$j60$l0$h2027757047',
 }
 
 headers = {
@@ -82,10 +89,10 @@ params = {
     "offset": 0,
     "limit": 12,
     "page": 1,
-    "project": 68195
+    "project": 68188
 }
 
-projects = [68195,7,20,69054,5,57,69104,44,68189,56,41,69057,69011,68192,68188,68191,69106,69108,68199,69206,2,45,40,69103,21,68196,31,69101,68194,3,69051,55,49,1,69109,68185,69102,4,42,69100,69110]
+projects = [68195,7,20,69054,5,57,69104,44,68189,41,69057,69011,68192,68188,68191,69106,68199,69206,2,45,40,9,69103,68196,31,69101,68194,3,69051,55,1,49,69109,68185,69102,42,69100,69110, 69108]
 
 
 session = requests.Session()

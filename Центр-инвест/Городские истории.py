@@ -1,4 +1,7 @@
-#   Нужно изменить в data количество на число квартир с сайта!! https://city-story.ru/flats/table/
+'''
+
+Нужно изменить в data количество на число квартир с сайта!! https://city-story.ru/flats/table/
+'''
 
 import requests
 import datetime
@@ -56,7 +59,7 @@ params = {
 data = {
     'post[prog]': 'PROG_M_1',
     'post[sort][PROPERTY_COST]': 'ASC',
-    'post[nPageSize]': '178',     #   Нужно изменить данное количество на число квартир с сайта!! https://city-story.ru/flats/table/
+    'post[nPageSize]': '160',     #   Нужно изменить данное количество на число квартир с сайта!! https://city-story.ru/flats/table/
     'post[iNumPage]': '1',
 }
 

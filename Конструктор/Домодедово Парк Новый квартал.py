@@ -1,3 +1,10 @@
+'''
+
+Указываем номер последней страницы с предложениями. if page_counter == ....
+
+'''
+
+
 import requests
 from datetime import datetime
 import time
@@ -147,7 +154,7 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    if page_counter == 42:
+    if page_counter == 39:
         break
     page_counter += 1
     sleep_time = random.uniform(1, 5)
@@ -198,7 +205,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Конструктор"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

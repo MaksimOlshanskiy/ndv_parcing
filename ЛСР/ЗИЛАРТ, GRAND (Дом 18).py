@@ -13,27 +13,27 @@ headers = headers
 
 data = {
   'last_delivery': '30',
-  'price[min]': '12.6',
-  'price[max]': '101.8',
-  'price_range[min]': '12.6',
-  'price_range[max]': '101.8',
+  'price[min]': '1',
+  'price[max]': '999',
+  'price_range[min]': '1',
+  'price_range[max]': '999',
   'obj[]': ['58', '170', '216', '218', '58', '170', '216', '218'],
-  'area[min]': '18',
-  'area[max]': '173',
-  'area_range[min]': '18.0',
-  'area_range[max]': '172.0',
-  'floor[min]': '3',
-  'floor[max]': '42',
-  'floor_range[min]': '3',
-  'floor_range[max]': '42',
-  'ob[page]': '2',
+  'area[min]': '1',
+  'area[max]': '999',
+  'area_range[min]': '1',
+  'area_range[max]': '999',
+  'floor[min]': '1',
+  'floor[max]': '99',
+  'floor_range[min]': '1',
+  'floor_range[max]': '99',
+  'ob[page]': '1',
   'ob[sort]': 'price',
   'ob[order]': 'asc',
   'group[t]': 'false',
   'ob[id]': '58',
   'object': '58',
   'a': 'types',
-  'ok': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss'
+  'ok': 'HUSDpN0GJCSQzrq4WbBP8fadlQKpVXmh'
 }
 
 

@@ -42,120 +42,118 @@ headers = {
     # 'cookie': '__5ef7e0433e4ed89e1ed6401318dbd504=d9adbb3436f0082d7fd4c7bf9c607aa1; tmr_lvid=6baabad62ed97e0c8cac51d222b836a3; tmr_lvidTS=1743769149664; _cmg_csst9Qnhc=1743769150; _comagic_id9Qnhc=10557529454.14690325474.1743769148; _ym_uid=174376915093858061; _ym_d=1743769150; _ym_isad=2; domain_sid=Z0B8lqisAdcpj4Arm6MOk%3A1743769150745; _ym_visorc=w; cto_bundle=A2jldl9Rbmd2USUyQiUyRnpCcXY5dyUyQjglMkJzNE5SUWdTT2o5U0RSMzNKZFRoUmJ1UE1GTTRSU0I5eEIlMkI3ejVydXNxVjZmaXlnbmZYV01ickJBU0loQmclMkZDWVNUdVNWbmJBbVBydHRjbm9MaDlZaUdLNTVidnRFNGN4Y01ZVndUcU9jbUVOclAlMkJsNDkxZDJuSzlVT0dqdFNkNTdxcXkyWWlpYUNVRDAxY2dCQkpJWVp2WUhWOCUzRA; tmr_detect=0%7C1743769565320',
 }
 
-params = {
-    'sorting': '0',
-    'price_from': '4498000',
-    'price_to': '128842000',
-    'property_145_from': '16',
-    'property_145_to': '682',
-    'property_167': '0',
-    'filter': '1',
-    'action': '',
-}
-
+pr_list = ['0', '1']   # 0 - предчистовая отделка, 1 - с отделкой
 
 
 flats = []
 
+for pr in pr_list:
 
-def extract_digits_or_original(s):
-    digits = ''.join([char for char in s if char.isdigit()])
-    return int(digits) if digits else s
-
-counter = 1
-
-while True:
-
-    if counter == 1:
-        response = requests.get(
-            'https://novo-molokovo.ru/kvartiry/choice-of-apartments/view-grid/',
-            params=params,
-            cookies=cookies,
-            headers=headers,
-        )
-    else:
-        response = requests.get(
-            f'https://novo-molokovo.ru/kvartiry/choice-of-apartments/view-grid/page-{counter}/',
-            params=params,
-            cookies=cookies,
-            headers=headers,
-        )
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    # все карточки квартир
-    flats_soup = soup.find_all("div", class_= 'param_resultList__item _new')
-
-    for i in flats_soup:
+    params = {'sorting': '0', 'price_from': '1', 'price_to': '9128842000', 'property_145_from': '16',
+              'property_145_to': '682', 'property_167': pr, 'filter': '1', 'action': ''}
 
 
+    def extract_digits_or_original(s):
+        digits = ''.join([char for char in s if char.isdigit()])
+        return int(digits) if digits else s
 
-        url = ''
+    counter = 1
 
-        date = datetime.date.today()
-        project = "Ново-Молоково"
+    while True:
 
-        english = ''
-        promzona = ''
-        mestopolozhenie = ''
-        subway = ''
-        distance_to_subway = ''
-        time_to_subway = ''
-        mck = ''
-        distance_to_mck = ''
-        time_to_mck = ''
-        bkl = ''
-        distance_to_bkl = ''
-        time_to_bkl = ''
-        status = ''
-        start = ''
-        comment = ''
-        developer = "Ар Ди Ай"
-        okrug = ''
-        district = ''
-        adress = ''
-        eskrou = ''
-        try:
-            korpus = int(i.find('div', class_= 'param_resultList__item--place').text.split()[1])
-        except:
-            korpus = ''
-        konstruktiv = ''
-        klass = ''
-        srok_sdachi = ''
-        srok_sdachi_old = ''
-        stadia = ''
-        dogovor = ''
-        type = 'Квартиры'
-        finish_type = "С отделкой"
-        if 'Е' in i.find('div', class_='param_resultList__item--name').text.split()[1]:
-            room_count = str(extract_digits_or_original(i.find('div', class_='param_resultList__itemInfo--room').text))+'Е'
+        if counter == 1:
+            response = requests.get(
+                'https://novo-molokovo.ru/kvartiry/choice-of-apartments/view-grid/',
+                params=params,
+                cookies=cookies,
+                headers=headers,
+            )
         else:
-            room_count = extract_digits_or_original(i.find('div', class_='param_resultList__itemInfo--room').text)
+            response = requests.get(
+                f'https://novo-molokovo.ru/kvartiry/choice-of-apartments/view-grid/page-{counter}/',
+                params=params,
+                cookies=cookies,
+                headers=headers,
+            )
 
-        area = float(i.find('div', class_='param_resultList__itemInfo--square').text.replace(' м²', ''))
-        price_per_metr = ''
-        old_price = int(i.find('span', class_= 'param_resultList__itemInfoPrice--old').text.strip().replace('₽', '').replace(' ', ''))
+        soup = BeautifulSoup(response.text, "html.parser")
 
-        discount = ''
-        price_per_metr_new = ''
-        price = int(i.find('span', class_= 'param_resultList__itemInfoPrice--hot').text.strip().replace('₽', '').replace(' ', ''))
-        section = int(i.find('div', class_= 'param_resultList__item--place').text.split()[-6])
-        floor = int(i.find('div', class_= 'param_resultList__item--place').text.split()[-3])
-        flat_number = int(i.find('div', class_= 'param_resultList__item--place').text.split()[-1].replace('№', ''))
+        # все карточки квартир
+        flats_soup = soup.find_all("div", class_= 'param_resultList__item _new')
 
-        print(
-            f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
-        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
-                  distance_to_mck, time_to_mck, distance_to_bkl,
-                  time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
-                  konstruktiv,
-                  klass, srok_sdachi, srok_sdachi_old,
-                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                  price_per_metr_new, price, section, floor, flat_number]
-        flats.append(result)
-    counter += 1
-    if not flats_soup:
-        break
+        for i in flats_soup:
+
+
+
+            url = ''
+
+            date = datetime.date.today()
+            project = "Ново-Молоково"
+
+            english = ''
+            promzona = ''
+            mestopolozhenie = ''
+            subway = ''
+            distance_to_subway = ''
+            time_to_subway = ''
+            mck = ''
+            distance_to_mck = ''
+            time_to_mck = ''
+            bkl = ''
+            distance_to_bkl = ''
+            time_to_bkl = ''
+            status = ''
+            start = ''
+            comment = ''
+            developer = "Ар Ди Ай"
+            okrug = ''
+            district = ''
+            adress = ''
+            eskrou = ''
+            try:
+                korpus = int(i.find('div', class_= 'param_resultList__item--place').text.split()[1])
+            except:
+                korpus = ''
+            konstruktiv = ''
+            klass = ''
+            srok_sdachi = ''
+            srok_sdachi_old = ''
+            stadia = ''
+            dogovor = ''
+            type = 'Квартиры'
+            if params['property_167'] == '1':
+                finish_type = "Предчистовая"
+            else:
+                finish_type = "С отделкой"
+            if 'Е' in i.find('div', class_='param_resultList__item--name').text.split()[1]:
+                room_count = str(extract_digits_or_original(i.find('div', class_='param_resultList__itemInfo--room').text))+'Е'
+            else:
+                room_count = extract_digits_or_original(i.find('div', class_='param_resultList__itemInfo--room').text)
+
+            area = float(i.find('div', class_='param_resultList__itemInfo--square').text.replace(' м²', ''))
+            price_per_metr = ''
+            old_price = int(i.find('span', class_= 'param_resultList__itemInfoPrice--old').text.strip().replace('₽', '').replace(' ', ''))
+
+            discount = ''
+            price_per_metr_new = ''
+            price = int(i.find('span', class_= 'param_resultList__itemInfoPrice--hot').text.strip().replace('₽', '').replace(' ', ''))
+            section = int(i.find('div', class_= 'param_resultList__item--place').text.split()[-6])
+            floor = int(i.find('div', class_= 'param_resultList__item--place').text.split()[-3])
+            flat_number = int(i.find('div', class_= 'param_resultList__item--place').text.split()[-1].replace('№', ''))
+
+            print(
+                f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+            result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+                      distance_to_mck, time_to_mck, distance_to_bkl,
+                      time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
+                      konstruktiv,
+                      klass, srok_sdachi, srok_sdachi_old,
+                      stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+                      price_per_metr_new, price, section, floor, flat_number]
+            flats.append(result)
+        counter += 1
+        if not flats_soup:
+            break
 
 df = pd.DataFrame(flats, columns=['Дата обновления',
                                   'Название проекта',
@@ -202,13 +200,13 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\\Users\\m.olshanskiy\\PycharmProjects\\ndv_parsing\\Ар Ди Ай"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{current_date}_отделка.xlsx"
+filename = f"{developer}_{project}_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

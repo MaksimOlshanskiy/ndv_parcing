@@ -79,12 +79,6 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'suburbansale',
-        'from_mcad_km': {
-            'type': 'range',
-            'value': {
-                'lte': 30,
-            },
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -92,57 +86,25 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                1,
-                4593,
+                4623,
             ],
         },
-        'geo': {
-            'type': 'geo',
-            'value': [
-                {
-                    'id': 1,
-                    'type': 'highway',
-                },
-                {
-                    'id': 7,
-                    'type': 'highway',
-                },
-                {
-                    'id': 26,
-                    'type': 'highway',
-                },
-                {
-                    'id': 2,
-                    'type': 'highway',
-                },
-                {
-                    'id': 12,
-                    'type': 'highway',
-                },
-                {
-                    'id': 42,
-                    'type': 'highway',
-                },
-                {
-                    'id': 41,
-                    'type': 'highway',
-                },
-            ],
+        'price': {
+            'type': 'range',
+            'value': {
+                'gte': 0,
+                'lte': 4000000,
+            },
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
-        'land_status': {
-            'type': 'terms',
-            'value': [
-                2,
-            ],
-        },
         'object_type': {
             'type': 'terms',
             'value': [
-                3,
+                1,
+                4,
             ],
         },
         'page': {
@@ -153,6 +115,7 @@ json_data = {
 }
 
 
+
 response = requests.post(
     'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
     cookies=cookies,
@@ -161,15 +124,11 @@ response = requests.post(
 )
 
 
-
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
 current_date = datetime.date.today()
-
-
-
 
 session = requests.Session()
 
@@ -182,7 +141,7 @@ json_data["jsonQuery"]["page"]["value"] = 1
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(45, 50)
+        sleep_time = random.uniform(7, 11)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -210,7 +169,10 @@ while len(flats) < total_count:
         items = response.json()["data"]["offersSerialized"]
 
     for i in items:
-        if float(i['land']['area']) > 200 or i['land']['areaUnitType'] == 'hectare':    #   можно менять данный фильтр, какой максимальный размер участка добавляем
+        try:
+            if float(i['land']['area']) > 200 or i['land']['areaUnitType'] == 'hectare':
+                continue#   можно менять данный фильтр, какой максимальный размер участка добавляем
+        except:
             continue
         try:
             highway = i['geo']['highways'][0]['name']
@@ -261,13 +223,13 @@ while len(flats) < total_count:
 counter += 1
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"ИЖС-СКМ_{current_date}.xlsx"
+filename = f"ИЖС-1_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

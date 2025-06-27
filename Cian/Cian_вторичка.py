@@ -88,7 +88,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4927,
+                4745,
             ],
         },
         'floor': {

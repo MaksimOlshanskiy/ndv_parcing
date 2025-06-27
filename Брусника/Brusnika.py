@@ -61,7 +61,7 @@ headers = {
 params = {
     'offset': '0',
     'ordering': 'price_order',
-    'limit': '2500',      # можно поставить большой лимит
+    'limit': '3200',      # можно поставить большой лимит
     'active_banner': 'true',
     'active_big_card': 'true',
     'is_group': '0',

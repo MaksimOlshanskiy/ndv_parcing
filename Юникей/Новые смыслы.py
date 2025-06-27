@@ -1,4 +1,8 @@
-# отдельно с отделкой и без, в 'params[finishing]'  Автоматически, менять ничего не надо
+"""
+
+отдельно с отделкой и без, в 'params[finishing]'  Автоматически, менять ничего не надо
+
+"""
 
 import requests
 from datetime import datetime

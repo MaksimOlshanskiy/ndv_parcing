@@ -76,7 +76,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4618,
+                4698,
             ],
         },
     },
@@ -112,7 +112,7 @@ while True:
     items = response.json()['newbuildings']
 
     for i in items:
-        if i['fromDeveloperPropsCount'] < 10:
+        if i['fromDeveloperPropsCount'] < 1:
             continue
         id = i['id']
         ids.append(id)
@@ -317,7 +317,7 @@ for y in ids:
 
 
 
-    if len(flats_total) > 10:
+    if len(flats_total) > 1:
 
 
 

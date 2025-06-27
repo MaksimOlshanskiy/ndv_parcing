@@ -50,9 +50,11 @@ data = {
         'ЖК «Внуково Парк»',
         'КД «Новое Вашутино»',
     ],
-    'FILTER_ITEMS_RESULT[COUNT]': '60',
+    'FILTER_ITEMS_RESULT[COUNT]': '55',
     'FILTER_ITEMS_RESULT[NEW_URL]': '',
 }
+
+
 
 
 
@@ -208,13 +210,13 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Атлант"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{current_date}.xlsx"
+filename = f"{developer}_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

@@ -78,13 +78,12 @@ while True:
 
     for i in items:
 
+        if not i["price"]:
+            continue
+
         url = ''
-
-
         date = datetime.now()
         project = "Тургенев"
-
-
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -115,9 +114,7 @@ while True:
         type = 'Квартира'
         finish_type = 'С отделкой'
         room_count = int(i['rooms'])
-
         area = float(i['area'])
-
         price_per_metr = ''
         old_price = ''
         discount = ''

@@ -75,6 +75,7 @@ params = {
 
 flats = []
 
+
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s

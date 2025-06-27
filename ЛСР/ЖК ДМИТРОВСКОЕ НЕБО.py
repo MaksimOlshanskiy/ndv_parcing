@@ -1,3 +1,11 @@
+"""
+
+Обновляем куки в файле ЖК_WAVE, далее они подтягиваются в остальные проекты.
+Также нужно обновлять data ( строка 'ок')
+
+"""
+
+
 import datetime
 import time
 import pandas as pd
@@ -12,20 +20,20 @@ cookies = cookies
 headers = headers
 
 data = {
-    'last_delivery': '30',
-    'price[min]': '11.5',
-    'price[max]': '38.9',
-    'price_range[min]': '11.5',
-    'price_range[max]': '38.9',
+    'price[min]': '1',
+    'price[max]': '999',
+    'price_range[min]': '1',
+    'price_range[max]': '999',
+    'last_delivery': '32',
     'obj[]': ['207', '207'],
-    'area[min]': '21',
-    'area[max]': '79',
-    'area_range[min]': '21.0',
-    'area_range[max]': '79.0',
-    'floor[min]': '2',
-    'floor[max]': '32',
-    'floor_range[min]': '2',
-    'floor_range[max]': '32',
+    'area[min]': '1',
+    'area[max]': '999',
+    'area_range[min]': '1.0',
+    'area_range[max]': '999.0',
+    'floor[min]': '1',
+    'floor[max]': '99',
+    'floor_range[min]': '1',
+    'floor_range[max]': '99',
     'ob[page]': '1',
     'ob[sort]': 'price',
     'ob[order]': 'asc',
@@ -33,7 +41,7 @@ data = {
     'ob[id]': '207',
     'object': '207',
     'a': 'types',
-    'ok': 'BGhcIT3u0NrlUEbj2OIVSOtmZOIhrcss'
+    'ok': '2eyjdo0CoLtGpyzOk5W4KBJRvVA1hbLf'
 }
 
 
@@ -81,11 +89,14 @@ while True:
         adress = ''
         eskrou = ''
         all_tags = i.find_all('div', class_='tag tag--isSmall')
-        korpus = i.find('div', class_= 'listingCard__label').text.strip().split()[0].replace(",", '')
+        listingCard = i.find('div', class_= 'listingCard__label').find_all(class_= 'label l3')
+
+        korpus = listingCard[0].text
         konstruktiv = ''
         klass = ''
+        srok_sdachi = ''
         if len(all_tags) == 3:
-            srok_sdachi = all_tags[0].text.strip()
+            srok_sdachi = ''
             if all_tags[2].text.strip() == "С меблировкой":
                 finish_type = f"{all_tags[1].text.strip()} и доп опциями"
             else:

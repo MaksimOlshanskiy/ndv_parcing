@@ -24,13 +24,13 @@ headers = {
 
 params = {
     'pricem[0]': '1',
-    'pricem[1]': '365339999',
+    'pricem[1]': '3653399999',
     'price[0]': '1',
-    'price[1]': '22813647999',
+    'price[1]': '228136479999',
     'area[0]': '1',
-    'area[1]': '100',
+    'area[1]': '1000',
     'floor[0]': '1',
-    'floor[1]': '30',
+    'floor[1]': '300',
     'currentField': 'floor',
     'sortBy': 'price',
     'sortDirection': 'asc',
@@ -174,7 +174,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Горакс"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

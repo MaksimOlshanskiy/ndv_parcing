@@ -4,7 +4,7 @@ import win32com.client as win32
 import os
 
 # Загрузка Excel-файла
-file_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\04-05.2025_РЫНОК_типология_fixed.xlsx"
+file_path = r"C:\Users\m.olshanskiy\Desktop\Свести\База июнь.xlsx"
 df = pd.read_excel(file_path)   # sheet_name="массив"
 
 # Столбцы, в которых нужно заполнить пропуски
@@ -29,7 +29,7 @@ for col in columns_to_fill_by_corpus:
     df[col] = df.groupby(['Название проекта', 'Девелопер', 'Корпус'])[col].ffill()
 
 # Сохраняем результат
-output_path = r"C:\Users\m.olshanskiy\Desktop\02-06.2025.xlsx"
+output_path = r"C:\Users\m.olshanskiy\Desktop\База_Июнь_Result.xlsx"
 df.to_excel(output_path, index=False)
 print(f"Готово! Заполненный файл сохранён как {output_path}")
 

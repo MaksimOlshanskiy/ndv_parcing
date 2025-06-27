@@ -63,7 +63,7 @@ params = {
     'pereustupka': 'false',
     'secondhand': 'false',
     'order': 'price',
-    'finish_option': '1',
+    'finish_option': '0',
     'limit': '48',
     'offset': '0',
 }
@@ -213,7 +213,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}-1_{current_date}.xlsx"
+filename = f"{developer}_{project}-0_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

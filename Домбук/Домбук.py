@@ -7,7 +7,7 @@ import random
 from datetime import datetime
 import requests
 
-finishing_ids = ['e78af76f-8f3c-49c0-ba9c-0421df104fa4', 'f7c51519-b5eb-4055-9dfb-cc40b9f1a426', '9120e779-f2a7-440c-91b1-aeb2ab2aec66'],
+finishing_ids = ['e78af76f-8f3c-49c0-ba9c-0421df104fa4', 'f7c51519-b5eb-4055-9dfb-cc40b9f1a426', '9120e779-f2a7-440c-91b1-aeb2ab2aec66']
 finishing_ids_dict = {'e78af76f-8f3c-49c0-ba9c-0421df104fa4' : 'С отделкой', 'f7c51519-b5eb-4055-9dfb-cc40b9f1a426' : 'Предчистовая', '9120e779-f2a7-440c-91b1-aeb2ab2aec66' : 'Без отделки' }
 rooms_count_list = ['studio', '1_room', '2_room', '3_room', '4_and_more_room']
 rooms_count_dict = {'studio': 0, '1_room': 1, '2_room': 2, '3_room': 3, '4_and_more_room': 4}
@@ -58,88 +58,89 @@ def extract_digits_or_original(s):
 
 for rooms in rooms_count_list:
     params['filters[rooms][0]'] = rooms
-    params["pagination[page]"] = '1'
 
-    while True:
+    for f_id in finishing_ids:
+        params['filters[finishing_type][0]'] = f_id
+        params["pagination[page]"] = '1'
 
-        response = requests.get('https://dombook.plus/api/v1/project/get.lots', params=params, cookies=cookies, headers=headers)
+        while True:
 
-        print(response.status_code)
-        items = response.json()['content']['lots']
+            print(params)
 
-        for i in items:
+            response = requests.get('https://dombook.plus/api/v1/project/get.lots', params=params, cookies=cookies, headers=headers)
 
-            url = ''
+            print(response.status_code)
+            items = response.json()['content']['lots']
+
+            for i in items:
+
+                url = ''
+                date = datetime.now()
+                project = i['project']['name']
+                english = ''
+                promzona = ''
+                mestopolozhenie = ''
+                subway = ''
+                distance_to_subway = ''
+                time_to_subway = ''
+                mck = ''
+                distance_to_mck = ''
+                time_to_mck = ''
+                bkl = ''
+                distance_to_bkl = ''
+                time_to_bkl = ''
+                status = ''
+                start = ''
+                comment = ''
+                developer = "PLUS Development"
+                okrug = ''
+                district = ''
+                adress = ''
+                eskrou = ''
+                korpus = i['building_name'].replace('Корпус ', '')
+                konstruktiv = ''
+                klass = ''
+                srok_sdachi = ''
+                srok_sdachi_old = ''
+                stadia = ''
+                dogovor = ''
+                type = 'Квартиры'
+                finish_type = finishing_ids_dict.get(params['filters[finishing_type][0]'])
+                room_count = rooms_count_dict.get(rooms)
+
+                area = float(i['square'])
+
+                price_per_metr = ''
+                if i['discount_price'] is not None:
+                    old_price = i['price']
+                else:
+                    old_price = ''
+                discount = ''
+                price_per_metr_new = ''
+                if i["discount_price"] is not None:
+                    price = i["discount_price"]
+                else:
+                    price = i["price"]
+                section = ''
+                floor = i['floor']
+                flat_number = ''
 
 
-            date = datetime.now()
-            project = i['project']['name']
 
-
-            english = ''
-            promzona = ''
-            mestopolozhenie = ''
-            subway = ''
-            distance_to_subway = ''
-            time_to_subway = ''
-            mck = ''
-            distance_to_mck = ''
-            time_to_mck = ''
-            bkl = ''
-            distance_to_bkl = ''
-            time_to_bkl = ''
-            status = ''
-            start = ''
-            comment = ''
-            developer = "PLUS Development"
-            okrug = ''
-            district = ''
-            adress = ''
-            eskrou = ''
-            korpus = i['building_name'].replace('Корпус ', '')
-            konstruktiv = ''
-            klass = ''
-            srok_sdachi = ''
-            srok_sdachi_old = ''
-            stadia = ''
-            dogovor = ''
-            type = 'Квартиры'
-            finish_type = finishing_ids_dict.get(params['filters[finishing_type][0]'])
-            room_count = rooms_count_dict.get(rooms)
-
-            area = float(i['square'])
-
-            price_per_metr = ''
-            if i['discount_price'] is not None:
-                old_price = i['price']
-            else:
-                old_price = ''
-            discount = ''
-            price_per_metr_new = ''
-            if i["discount_price"] is not None:
-                price = i["discount_price"]
-            else:
-                price = i["price"]
-            section = ''
-            floor = i['floor']
-            flat_number = ''
-
-
-
-            print(
-                f"{project}, {url}, отделка: {finish_type}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
-            result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
-                      distance_to_mck, time_to_mck, distance_to_bkl,
-                      time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
-                      klass, srok_sdachi, srok_sdachi_old,
-                      stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                      price_per_metr_new, price, section, floor, flat_number]
-            flats.append(result)
-        if not items:
-            break
-        params["pagination[page]"] = str(int(params["pagination[page]"]) + 1)
-        sleep_time = random.uniform(1, 4)
-        time.sleep(sleep_time)
+                print(
+                    f"{project}, {url}, отделка: {finish_type}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+                result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+                          distance_to_mck, time_to_mck, distance_to_bkl,
+                          time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
+                          klass, srok_sdachi, srok_sdachi_old,
+                          stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+                          price_per_metr_new, price, section, floor, flat_number]
+                flats.append(result)
+            if not items:
+                break
+            params["pagination[page]"] = str(int(params["pagination[page]"]) + 1)
+            sleep_time = random.uniform(1, 4)
+            time.sleep(sleep_time)
 
 
 df = pd.DataFrame(flats, columns=['Дата обновления',

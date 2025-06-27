@@ -1,5 +1,3 @@
-# web_site - ставим вручную отдельно для разных типов отделки, берём с сайта https://udolina.ru/genplan/selection-of-apartments/
-
 import requests
 import datetime
 import time
@@ -64,96 +62,106 @@ headers = {
     # 'cookie': '_ym_uid=1741358700301867031; _ym_d=1741358700; tmr_lvid=7eba1edd72b4140ebc326f27129cc0b9; tmr_lvidTS=1741358700073; _ct=1800000000438576885; _ct_client_global_id=fbe0ef66-3f93-5e30-a689-c3153a19a53a; cted=modId%3Divnmp5ss%3Bya_client_id%3D1741358700301867031; _ym_isad=2; _ym_visorc=w; scbsid_old=2725937795; _ct_ids=ivnmp5ss%3A45670%3A661050033; _ct_session_id=661050033; _ct_site_id=45670; WhiteCallback_visitorId=19425354114; WhiteCallback_visit=30897911865; WhiteSaas_uniqueLead=no; domain_sid=X6Yu_XrBUjJHD89FeWA5p%3A1742561962453; sma_session_id=2232477207; SCBfrom=https%3A%2F%2Fwww.google.com%2F; SCBnotShow=-1; smFpId_old_values=%5B%22ec8200dec572541a6b5585a0e4760a2b%22%5D; SCBstart=1742561963281; SCBporogAct=5000; SCBFormsAlreadyPulled=true; call_s=___ivnmp5ss.1742563771.661050033.200781:677691|2___; tmr_detect=0%7C1742561975678; WhiteCallback_timeAll=19; WhiteCallback_timePage=19; WhiteCallback_openedPages=VNMrx; XSRF-TOKEN=eyJpdiI6InFFa2J1aVBVMllST1BZb0o4K1N2N3c9PSIsInZhbHVlIjoiSDUwcFpSdGcrMGFlSDRCRFRza1A3WVB2eFZOMG85Y3lsZ0c0bTV3enk3SmdaWHVDb21LOGFIQ3NLSU5CMmd3ZUUyN2xlRm5qSEkvOGhXWUVKSHNVZ0IrR0Y1cjc0b21hTktkQzlIT2VsaHkybzFudVl2YmgvdDh0WDhrYmVUaVUiLCJtYWMiOiI4MWE5ZTQxODc5NmM3MGQ0OGI1OTJhYzUxZWU2OWEyZmY1ZDFhMjM3NjAwNGZhY2EzYmZkMjM5MjJlMzgxMTEyIn0%3D; niceloft_session=eyJpdiI6IjZWanlNNk16aWpsTnR0RDVpUnlsZnc9PSIsInZhbHVlIjoidFJVNmFDWTcvQnpTSmRtYnhqSDBKa2Q2aE5xWjBBaS9xMmFnbTNRQzVQdWRHODZDVDRVandQc1hjRGwwWmtvN3ZUdm9lcTZnUjA4MGZ4QnZZaHB4UHliVm0wbkNSVkpRbGJiRzRIVmRyUW5iUSs4YzlBV3dQMzFSbmpzUnljZkYiLCJtYWMiOiJhN2M3MmU0NmMxYTgzYzhlYmE5ZGZmYzM0MjMwZGI1YTdmYzg4MjU5MjM5ZjgwMTNkMGE2Y2FkNjUyYjhhMzE5In0%3D; activity=6|20; sma_index_activity=724; SCBindexAct=524',
 }
 
-flats = []
+
 
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-counter = 1
 
-while True:
-    if counter == 1:
-        web_site = 'https://udolina.ru/genplan/selection-of-apartments/?area_from=29&area_to=82&price_from=1.0&price_to=16.0&property_176=1&object_type=1&filter=1'
-    else:
-        web_site = f'https://udolina.ru/genplan/selection-of-apartments/page-{counter}/?sorting=%20%20%20%20%20%20&price_from=1.0%20%20%20%20%20%20&price_to=16.0%20%20%20%20%20%20&area_from=29%20%20%20%20%20%20&area_to=82&property_176=1%20%20%20%20%20%20&object_type=1%20%20%20%20%20%20&filter=1'
+flats = []
+pr_list = ['property_176=1', 'property_286=1', 'property_263=1']   # разные типы отделки снимаются в цикле
 
-    response = requests.get(web_site,
-        cookies=cookies, headers=headers)
-    if response.status_code != 200:
-        break
+for pr in pr_list:
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    counter = 1
+    while True:
+        if counter == 1:
+            web_site = f'https://udolina.ru/genplan/selection-of-apartments/?area_from=1&area_to=999&price_from=1.0&price_to=99.0&{pr}&object_type=1&filter=1'
+        else:
+            web_site = f'https://udolina.ru/genplan/selection-of-apartments/page-{counter}/?sorting=%20%20%20%20%20%20&price_from=1.0%20%20%20%20%20%20&price_to=99.0%20%20%20%20%20%20&area_from=00%20%20%20%20%20%20&area_to=982&{pr}%20%20%20%20%20%20&object_type=1%20%20%20%20%20%20&filter=1'
 
-    # все карточки квартир
-    flats_soup = soup.find_all("tr")
+        response = requests.get(web_site,
+            cookies=cookies, headers=headers)
+        if response.status_code != 200:
+            break
 
-    for y in range(1, len(flats_soup)):
+        soup = BeautifulSoup(response.text, "html.parser")
 
-        print(y)
+        # все карточки квартир
+        flats_soup = soup.find_all("tr")
 
-        td_elements = flats_soup[y].find_all('td')
+        for y in range(1, len(flats_soup)):
+
+            print(y)
+
+            td_elements = flats_soup[y].find_all('td')
 
 
-        url = ''
+            url = ''
 
-        date = datetime.date.today()
-        project = "Южная долина"
+            date = datetime.date.today()
+            project = "Южная долина"
 
-        english = ''
-        promzona = ''
-        mestopolozhenie = ''
-        subway = ''
-        distance_to_subway = ''
-        time_to_subway = ''
-        mck = ''
-        distance_to_mck = ''
-        time_to_mck = ''
-        bkl = ''
-        distance_to_bkl = ''
-        time_to_bkl = ''
-        status = ''
-        start = ''
-        comment = ''
-        developer = "Ар Ди Ай"
-        okrug = ''
-        district = ''
-        adress = ''
-        eskrou = ''
-        korpus = int(td_elements[0].text.strip())
-        konstruktiv = ''
-        klass = ''
-        srok_sdachi = ''
-        srok_sdachi_old = ''
-        stadia = ''
-        dogovor = ''
-        type = 'Апартаменты'
-        finish_type = "Без отделки"
-        room_count = int(td_elements[1].text.strip())
+            english = ''
+            promzona = ''
+            mestopolozhenie = ''
+            subway = ''
+            distance_to_subway = ''
+            time_to_subway = ''
+            mck = ''
+            distance_to_mck = ''
+            time_to_mck = ''
+            bkl = ''
+            distance_to_bkl = ''
+            time_to_bkl = ''
+            status = ''
+            start = ''
+            comment = ''
+            developer = "Ар Ди Ай"
+            okrug = ''
+            district = ''
+            adress = ''
+            eskrou = ''
+            korpus = int(td_elements[0].text.strip())
+            konstruktiv = ''
+            klass = ''
+            srok_sdachi = ''
+            srok_sdachi_old = ''
+            stadia = ''
+            dogovor = ''
+            type = 'Апартаменты'
+            if pr == 'property_176=1':
+                finish_type = "С отделкой"
+            elif pr == 'property_286=1':
+                finish_type = "Без отделки"
+            elif pr == 'property_263=1':
+                finish_type = "Предчистовая"
+            room_count = int(td_elements[1].text.strip())
 
-        area = float(td_elements[4].text.strip())
-        price_per_metr = ''
-        old_price = int(td_elements[6].text.strip().replace(' ', ''))
+            area = float(td_elements[4].text.strip())
+            price_per_metr = ''
+            old_price = int(td_elements[6].text.strip().replace(' ', ''))
 
-        discount = ''
-        price_per_metr_new = ''
-        price = int(td_elements[7].text.strip().replace(' ', ''))
-        section = ''
-        floor = int(td_elements[2].text.strip())
-        flat_number = ''
+            discount = ''
+            price_per_metr_new = ''
+            price = int(td_elements[7].text.strip().replace(' ', ''))
+            section = ''
+            floor = int(td_elements[2].text.strip())
+            flat_number = ''
 
-        print(
-            f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
-        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
-                  distance_to_mck, time_to_mck, distance_to_bkl,
-                  time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
-                  konstruktiv,
-                  klass, srok_sdachi, srok_sdachi_old,
-                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                  price_per_metr_new, price, section, floor, flat_number]
-        flats.append(result)
-    counter += 1
+            print(
+                f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+            result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+                      distance_to_mck, time_to_mck, distance_to_bkl,
+                      time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
+                      konstruktiv,
+                      klass, srok_sdachi, srok_sdachi_old,
+                      stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+                      price_per_metr_new, price, section, floor, flat_number]
+            flats.append(result)
+        counter += 1
 
 df = pd.DataFrame(flats, columns=['Дата обновления',
                                   'Название проекта',
@@ -200,13 +208,13 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 current_date = datetime.date.today()
 
 # Базовый путь для сохранения
-base_path = r"C:\\Users\\m.olshanskiy\\PycharmProjects\\ndv_parsing\\Ар Ди Ай"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"{developer}_{project}_{current_date}_отделка.xlsx"
+filename = f"{developer}_{project}_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

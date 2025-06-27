@@ -10,7 +10,7 @@ import random
 import re
 from functions import classify_renovation, clean_filename
 
-ids = [6644
+ids = [5303231
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -125,7 +125,7 @@ for y in ids:
     while len(flats) < total_count:
 
         if counter > 1:
-            sleep_time = random.uniform(8, 12)
+            sleep_time = random.uniform(7, 11)
             time.sleep(sleep_time)
         try:
             response = session.post(

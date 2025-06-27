@@ -46,7 +46,8 @@ params = {
     'limit': '20',
     'sortField': 'obj_publ_dt',
     'sortType': 'desc',
-    'place': '77',
+    'residentialBuildings': '1',
+    'place': '50',
     'objStatus': '0',
 }
 
@@ -63,7 +64,7 @@ offset_counter = 0
 
 while True:
 
-    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=obj_publ_dt&sortType=desc'
+    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=obj_publ_dt&sortType=desc&residentialBuildings=1&place=50&objStatus=0'
 
 
     driver.get(url=url)
@@ -235,11 +236,14 @@ folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"НашДомРФ_{date}.xlsx"
+filename = f"Мо_НашДомРФ_{date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)
 
 # Сохранение файла в папку
 df.to_excel(file_path, index=False)
+
+список_id = df['id'].tolist()
+print(список_id)
 
