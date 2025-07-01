@@ -76,7 +76,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4914,
+                4827,
             ],
         },
     },
@@ -88,15 +88,10 @@ json_data = {
 }
 
 ids = []
-rooms_ids = [    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    9,
-]
+
+rooms_ids = [1,2,3,4,5,6,7,9]
+total_floor_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 11], [12, 14], [15, 20], [21, 200]]
+
 json_data['offset'] = 0
 
 while True:
@@ -180,6 +175,10 @@ for y in ids:
     time.sleep(10)
 
     for room_id in rooms_ids:
+
+        session = requests.Session()
+
+        for f in total_floor_list:
 
         json_data["jsonQuery"]["page"]["value"] = 1
         flats = []

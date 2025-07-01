@@ -7,39 +7,62 @@ import os
 import random
 
 cookies = {
-    'BX_USER_ID': '15016e9404744ee3cb1a5dfed786822b',
-    '_ct': '2800000000121563453',
-    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
-    '_ym_uid': '1743764280660177038',
-    '_ym_d': '1743764280',
-    'amplitude_id_de5f414583dc2ee7cc70a58b21551c09dom-ideal.ru': 'eyJkZXZpY2VJZCI6IjgwNzI3MWM4LWFmMjQtNGI3YS1iMjNjLTE3NjFkN2Q3MjM3MFIiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTc0NDI5NTEwNjc1MSwibGFzdEV2ZW50VGltZSI6MTc0NDI5NTEwNjc1MSwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MCwic2VxdWVuY2VOdW1iZXIiOjB9',
-    'session': '470659aeac2ad11208750e937d8234a990e122a0bc135134bce636c89170cfb4',
-    '_ym_visorc': 'w',
+    'scbsid_old': '2746015342',
+    '_ym_uid': '175102697733232207',
+    '_ym_d': '1751026977',
+    'SCBnotShow': '-1',
+    'PHPSESSID': 'C2Om9gg4EGMTQYhXl1CNImuJ6LcmLXRD',
     '_ym_isad': '2',
+    '_ym_visorc': 'w',
+    'sma_session_id': '2343651904',
+    'SCBfrom': 'https%3A%2F%2Fyandex.ru%2F',
+    '_cmg_csstqF6Gk': '1751266777',
+    '_comagic_idqF6Gk': '10515642908.14792393388.1751266776',
+    'smFpId_old_values': '%5B%22f0a18207107a745e280d9357abcbd51d%22%2C%22d3b2a7a62667c988953915d7d3b4139e%22%2C%22ca505640ddf99ec8d4755fa1299dcd1a%22%2C%22a7ea49fc46c5a5b146d731ca169a44ef%22%5D',
+    'SCBstart': '1751266777282',
+    'SCBporogAct': '5000',
+    'sma_index_activity': '3440',
+    'SCBindexAct': '1940',
 }
 
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'priority': 'u=1, i',
-    'referer': 'https://dom-ideal.ru/flats?status=free&status=booked&offset=96&limit=16',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'referer': 'https://foriver.ru/vibor-kvartir/po-parametram/',
+    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
-    'x-host': 'dom-ideal.ru',
-    # 'cookie': 'BX_USER_ID=15016e9404744ee3cb1a5dfed786822b; _ct=2800000000121563453; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ym_uid=1743764280660177038; _ym_d=1743764280; amplitude_id_de5f414583dc2ee7cc70a58b21551c09dom-ideal.ru=eyJkZXZpY2VJZCI6IjgwNzI3MWM4LWFmMjQtNGI3YS1iMjNjLTE3NjFkN2Q3MjM3MFIiLCJ1c2VySWQiOm51bGwsIm9wdE91dCI6ZmFsc2UsInNlc3Npb25JZCI6MTc0NDI5NTEwNjc1MSwibGFzdEV2ZW50VGltZSI6MTc0NDI5NTEwNjc1MSwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MCwic2VxdWVuY2VOdW1iZXIiOjB9; session=470659aeac2ad11208750e937d8234a990e122a0bc135134bce636c89170cfb4; _ym_visorc=w; _ym_isad=2',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+    # 'cookie': 'scbsid_old=2746015342; _ym_uid=175102697733232207; _ym_d=1751026977; SCBnotShow=-1; PHPSESSID=C2Om9gg4EGMTQYhXl1CNImuJ6LcmLXRD; _ym_isad=2; _ym_visorc=w; sma_session_id=2343651904; SCBfrom=https%3A%2F%2Fyandex.ru%2F; _cmg_csstqF6Gk=1751266777; _comagic_idqF6Gk=10515642908.14792393388.1751266776; smFpId_old_values=%5B%22f0a18207107a745e280d9357abcbd51d%22%2C%22d3b2a7a62667c988953915d7d3b4139e%22%2C%22ca505640ddf99ec8d4755fa1299dcd1a%22%2C%22a7ea49fc46c5a5b146d731ca169a44ef%22%5D; SCBstart=1751266777282; SCBporogAct=5000; sma_index_activity=3440; SCBindexAct=1940',
 }
 
 params = {
-    'project_id': 'fc84199f-0e86-4840-97ab-d89067f06a79',
-    'status': 'free',
-    'offset': '0',
-    'limit': '16',
+    'filter[price_mln][0]': '0',
+    'filter[price_mln][1]': '0',
+    'filter[price_mlnusd][0]': '0',
+    'filter[price_mlnusd][1]': '0',
+    'filter[price_mlneur][0]': '0',
+    'filter[price_mlneur][1]': '0',
+    'filter[price_sqm][0]': '0',
+    'filter[price_sqm][1]': '0',
+    'filter[price_sqmusd][0]': '0',
+    'filter[price_sqmusd][1]': '0',
+    'filter[price_sqmeur][0]': '0',
+    'filter[price_sqmeur][1]': '0',
+    'filter[sq][0]': '0',
+    'filter[sq][1]': '0',
+    'filter[hide_reserved][0]': 'Y',
+    'filter[flat]': '',
+    'sort[sq]': '1',
+    'page': '1',
+    'cnt': '30',
+    'trigger': '',
 }
+
 
 
 
@@ -52,54 +75,38 @@ def extract_digits_or_original(s):
 
 while True:
 
-    response = requests.get(
-        'https://dom-ideal.ru/api/realty-filter/residential/real-estates',
-        params=params,
-        cookies=cookies,
-        headers=headers,
-    )
-    # if response.json()['isLastPage']:
-    #     break
-    items = response.json()
-
-
+    response = requests.get('https://foriver.ru/local/ajax/flats/', params=params, cookies=cookies, headers=headers)
+    items = response.json()['data']
+    print(items)
 
     for i in items:
-        # if i['status'] != 'available':
-        #     continue
 
         url = ''
-        developer = "Альфа Проджект"
-        project = 'Идеал'
-        korpus = '1'
-        try:
-            if i['type'] == 'flat':
-                type = 'Квартира'
-        except:
-            type = ''
-        if i['finishing_type'] == 'fine':
-            finish_type = 'С отделкой'
-        else:
-            finish_type = 'Без отделки'
+        developer = "Sminex"
+        project = i['project']
+        korpus = i['building']
+        section = i['section']
+        type = i['type']
+        finish_type = i['finishing']
         room_count = i['rooms']
+        flat_number = i['flats_num_maket']
         try:
-            area = float(i['total_area'])
+            area = float(i['sq'])
         except:
             area = ''
         try:
-            old_price = int(i['old_price'])
+            old_price = int(i['price'].replace(' ', ''))
         except:
             old_price = ''
         try:
-            price = int(i['price'])
+            price = int(i['real_price'].replace(' ', ''))
         except:
             price = ''
-        section = int(i['section_number'])
         try:
-            floor = int(i['floor_number'])
+            floor = int(i['floor'])
         except:
             floor = ''
-        flat_number = i['int_number']
+
 
         english = ''
         promzona = ''
@@ -131,7 +138,6 @@ while True:
         price_per_metr_new = ''
 
 
-
         print(
             f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
@@ -141,8 +147,8 @@ while True:
 
     if not items:
         break
-    params['offset'] = str(int(params['offset']) + 16)
-    sleep_time = random.uniform(1, 5)
+    params['page'] = str(int(params['page']) + 1)
+    sleep_time = random.uniform(1, 4)
     time.sleep(sleep_time)
 
 df = pd.DataFrame(flats, columns=['Дата обновления',
