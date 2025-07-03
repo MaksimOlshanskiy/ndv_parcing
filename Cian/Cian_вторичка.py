@@ -88,7 +88,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4745,
+                5048,
             ],
         },
         'floor': {
@@ -242,7 +242,7 @@ for rooms in rooms_ids:
                         property_from = ''
                 except:
                     property_from = ''
-                url = i['fullUrl']
+                url = str(i['fullUrl'])
 
                 print(
                     f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")

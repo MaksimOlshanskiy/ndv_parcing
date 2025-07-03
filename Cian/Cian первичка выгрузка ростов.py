@@ -76,7 +76,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4713,
+                4959,
             ],
         },
     },
@@ -153,13 +153,6 @@ json_data = {
                 1
             ],
         },
-        'floor': {
-            'type': 'range',
-            'value': {
-                'gte': 20,
-                'lte': 100,
-            },
-        },
         'from_developer': {
             'type': 'term',
             'value': True,
@@ -172,8 +165,11 @@ json_data = {
 }
 
 current_date = datetime.date.today()
-ids = [4731130]
+ids = [4362585, 4815246, 3877206, 1258683, 50732, 4095940, 8172, 3952382, 4691157, 3260347, 7984, 4800628, 4499896, 900192, 5238228, 4130711, 2038797, 3910227, 5283548, 4441515, 219525, 3923317, 43956, 4019247, 4927010]
 for y in ids:
+
+    if y == 4731130:
+        continue
 
     session = requests.Session()
     flats_total = []
@@ -358,7 +354,7 @@ for y in ids:
             return name
 
         project = sanitize_filename(project)
-        filename = f"{project}__{current_date}_{json_data['jsonQuery']['floor']['value']['lte']}.xlsx"
+        filename = f"{project}__{current_date}.xlsx"
 
         # Полный путь к файлу0
         file_path = os.path.join(folder_path, filename)
