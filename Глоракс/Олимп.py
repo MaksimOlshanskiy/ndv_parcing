@@ -155,7 +155,7 @@ df = pd.DataFrame(flats, columns=['Дата обновления',
 
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Глоракс"
+base_path = r""
 
 folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):

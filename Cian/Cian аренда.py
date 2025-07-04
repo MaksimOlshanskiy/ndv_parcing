@@ -1,4 +1,11 @@
-# меняем настройки поиска через json_data. Парсим отдельно по каждому ЖК. Если в ЖК более 1500 объявлений, то нужно разбивать по корпусам
+"""
+
+меняем настройки поиска через json_data. Парсим отдельно по каждому ЖК. Если в ЖК более 1500 объявлений, то нужно разбивать по корпусам
+
+По Москве берём только однушки!!!
+
+
+"""
 
 import requests
 import datetime
@@ -79,8 +86,15 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4777,
+                4701,
             ],
+        },
+        'floor': {
+            'type': 'range',
+            'value': {
+                'gte': 1,
+                'lte': 999,
+            },
         },
         'publish_period': {
             'type': 'term',
@@ -90,16 +104,9 @@ json_data = {
             'type': 'term',
             'value': '!1',
         },
-        'total_area': {
-            'type': 'range',
-            'value': {
-                'gte': 70,
-                'lte': 700,
-            },
-        },
         'page': {
             'type': 'term',
-            'value': 2,
+            'value': 1,
         },
     },
 }
@@ -112,7 +119,7 @@ response = requests.post(
 )
 
 
-name_counter = 700
+name_counter = 1
 
 session = requests.Session()
 
@@ -241,7 +248,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Аренда_Казань_{name_counter}-{current_date}.xlsx"
+filename = f"Аренда_Владивосток_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)
