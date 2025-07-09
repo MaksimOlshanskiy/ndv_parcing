@@ -131,7 +131,7 @@ for pr in pr_list:
             srok_sdachi_old = ''
             stadia = ''
             dogovor = ''
-            type = 'Апартаменты'
+            type = 'Квартиры'
             if pr == 'property_176=1':
                 finish_type = "С отделкой"
             elif pr == 'property_286=1':

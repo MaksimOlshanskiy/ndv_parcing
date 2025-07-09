@@ -112,12 +112,14 @@ for zk in zk_list:
             area = float(i["area"])
             price_per_metr = ''
             if i["oldPrice"] is None:
-                old_price = 0
+                old_price = i["price"]
+                price = ''
             else:
                 old_price = i["oldPrice"]
+                price = i["price"]
             discount = ''
             price_per_metr_new = ''
-            price = i["price"]
+
             section = i["sectionNumber"]
             floor = i["floor"]
             flat_number = ''

@@ -1,4 +1,5 @@
 import pandas as pd
+import seaborn as sns
 
 # Путь к папке, где находятся Excel файлы
 folder_path = 'C:\\Users\\m.olshanskiy\\PycharmProjects\\ndv_parsing\\Cian\\2025-04-07'

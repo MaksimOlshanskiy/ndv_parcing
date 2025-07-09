@@ -10,7 +10,7 @@ import random
 import re
 from functions import classify_renovation, clean_filename
 
-ids = [5303231
+ids = [18161
        ]  # id ЖК для парсинга
 
 proxies = {
@@ -72,6 +72,10 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'flatsale',
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -101,13 +105,12 @@ json_data = {
 }
 
 
-
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-current_date = datetime.now().date()
 
+current_date = datetime.now().date()
 
 for y in ids:
 
@@ -223,7 +226,6 @@ for y in ids:
             except:
                 area = ''
 
-
             date = datetime.now().date()
 
             try:
@@ -262,7 +264,6 @@ for y in ids:
 
             section = ''
             flat_number = ''
-
 
             print(
                 f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")

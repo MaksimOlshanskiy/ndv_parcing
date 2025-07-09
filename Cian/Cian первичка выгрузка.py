@@ -87,6 +87,43 @@ json_data = {
     'userCanUseHiddenBase': False,
 }
 
+cities_dict = {
+'Москва' : 1,
+'Санкт-Петербург' : 2,
+'Новосибирск' : 4897,
+'Екатеринбург' : 4743,
+'Казань' : 4777,
+'Красноярск' : 4827,
+'Нижний Новгород' : 4885,
+'Челябинск' : 5048,
+'Уфа' : 176245,
+'Краснодар' : 4820,
+'Самара' : 4966,
+'Ростов-на-Дону' : 4959,
+'Омск' : 4914,
+'Воронеж' : 4713,
+'Пермь' : 4927,
+'Волгоград' : 4704
+}
+
+print("Список доступных регионов:")
+for city, city_id in cities_dict.items():
+    print(f"{city}: {city_id}")
+
+user_input = input("\nВведите ID нужного региона или введите свой: ")
+
+try:
+    user_id = int(user_input)
+    if user_id in cities_dict.values():
+        selected_city = [city for city, cid in cities_dict.items() if cid == user_id][0]
+        print(f"\nВы выбрали город: {selected_city}")
+    else:
+        print("\nГород не в списке")
+except ValueError:
+    print("\nОшибка: введите числовой ID.")
+
+json_data['jsonQuery']['region']['value'] = [user_input]
+
 ids = []
 
 json_data['offset'] = 0
@@ -100,7 +137,6 @@ while True:
         json=json_data,
     )
 
-
     items = response.json()['newbuildings']
 
     for i in items:
@@ -112,7 +148,8 @@ while True:
         break
     json_data['offset'] += 25
 
-print(response.json()['breadcrumbs'][0]['title'])
+city_in_work = response.json()['breadcrumbs'][0]['title']
+print(city_in_work)
 print(response.json()['breadcrumbs'][1]['title'])
 print(ids)
 print(f'Количество ЖК: {len(ids)}'
@@ -122,6 +159,10 @@ print(f'Количество ЖК: {len(ids)}'
 json_data = {
     'jsonQuery': {
         '_type': 'flatsale',
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -179,7 +220,11 @@ for y in ids:
 
     print(f"Новый ЖК, {y}, {ids.index(y) + 1} из {len(ids)}")
 
-    json_data["jsonQuery"]["room"]["value"] = [1, 2, 3, 4, 5, 6, 7, 9]
+    json_data['jsonQuery']['room'] = {
+        'type': 'terms',
+        'value': [1, 2, 3, 4, 5, 6, 7, 9]
+    }
+
     json_data["jsonQuery"]["floor"]["value"]["gte"] = 1
     json_data["jsonQuery"]["floor"]["value"]["lte"] = 99
     json_data["jsonQuery"]["geo"]["value"][0]["id"] = y
@@ -213,14 +258,20 @@ for y in ids:
         total_floor_list = [[1, 100]]
 
     else:
+        del json_data['jsonQuery']['room']
         rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
         total_floor_list = [[1, 100]]
+
+    print(json_data)
 
     for room_id in rooms_ids:
 
         json_data["jsonQuery"]["page"]["value"] = 1
         flats = []
-        json_data["jsonQuery"]["room"]["value"][0] = room_id
+        try:
+            json_data["jsonQuery"]["room"]["value"][0] = room_id
+        except:
+            ''
         counter = 1
         total_count = 1
 
@@ -411,5 +462,5 @@ for y in ids:
             file_path = os.path.join(folder_path, filename)
             df.to_excel(file_path, index=False)
 
-merge_and_clean(folder_path, 'Итог.xlsx')
+merge_and_clean(folder_path, f'{city_in_work}_{current_date}.xlsx')
 

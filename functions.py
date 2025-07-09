@@ -157,7 +157,7 @@ def merge_and_clean(folder_path, output_file_name):
 
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
-
+        # удаляем за собой все лишние файлы в папке
         if os.path.isfile(file_path) and filename != file_to_keep:
             os.remove(file_path)
             print(f'Удалён файл: {filename}')
