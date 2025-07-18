@@ -142,9 +142,24 @@ def merge_and_clean(folder_path, output_file_name):
     except:
         ''
     #  all_data = fill_missing_price(all_data)  # проставляем ценники в колонке старая цена
-    # Проверяем результат
-    print(all_data)
-    print(f'Число строк в датафрейме {len(all_data)}')
+    try:
+        all_data["Цена лота, руб."] = pd.to_numeric(
+            all_data["Цена лота, руб."].astype(str).str.replace(r"[^\d,\.]", "", regex=True).str.replace(",", "."),
+            errors="coerce"
+        )
+    except:
+        ''
+    try:
+        all_data["Цена со скидкой, руб."] = pd.to_numeric(
+        all_data["Цена со скидкой, руб."].astype(str).str.replace(r"[^\d,\.]", "", regex=True).str.replace(",", "."),
+        errors="coerce"
+    )
+    except:
+        ''
+
+    all_data['Отделка'] = all_data['Отделка'].replace('без отделки', 'Без отделки').replace('с отделкой', 'С отделкой')
+
+
 
 
     # Сохраняем объединённые данные в новый Excel файл
@@ -161,3 +176,5 @@ def merge_and_clean(folder_path, output_file_name):
         if os.path.isfile(file_path) and filename != file_to_keep:
             os.remove(file_path)
             print(f'Удалён файл: {filename}')
+
+    print(f'Число строк в датафрейме {len(all_data)}')

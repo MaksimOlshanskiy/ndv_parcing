@@ -6,6 +6,11 @@ import openpyxl
 import os
 import random
 from bs4 import BeautifulSoup
+from functions import merge_and_clean
+
+'''
+Снимаются по очереди разные типы отделки. Затем автоматически объединяются в один файл
+'''
 
 cookies = {
     'PHPSESSID': 'e27f2cc6bec9301a7ce623455c482aaa',
@@ -57,6 +62,8 @@ data = {
     'page': '1',
 }
 
+finishing_list = ['0', '1', '2', '3', '5']
+finishing_dict = {'0' : 'Без отделки', '1' : 'Предчистовая', '2': 'Предчистовая', '3': 'Предчистовая', '4' : 'Без отделки', '5': 'С отделкой'}
 
 flats = []
 date = datetime.now().date()
@@ -65,170 +72,179 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-while True:
+for finishing in finishing_list:
 
-    response = requests.post(
-        'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/api/load_more',
-        cookies=cookies,
-        headers=headers,
-        data=data,
-    )
+    flats = []
+    data['page'] = '1'
+    data['facing'] = finishing
+    print(f'Отделка: {finishing}')
 
-    print(response.status_code)
-    html = response.json()['code']
-    soup = BeautifulSoup(html, 'html.parser')
-   #  items = soup.find_all(class_= 'row sale')
+    while True:
 
-    developer = ""
-    project = ''
+        response = requests.post(
+            'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/api/load_more',
+            cookies=cookies,
+            headers=headers,
+            data=data,
+        )
 
-    flats_list = soup.find_all('a', class_='row')
+        print(response.status_code)
+        html = response.json()['code']
+        soup = BeautifulSoup(html, 'html.parser')
+       #  items = soup.find_all(class_= 'row sale')
 
-    for item in flats_list:
+        developer = ""
+        project = ''
 
+        flats_list = soup.find_all('a', class_='row')
 
-        # Извлекаем данные
+        for item in flats_list:
 
-        url = ''
-        developer = "Профи Инвест"
-        project = item.find(class_='object_title').get_text(strip=True).replace('"', '').replace('ЖК «', '').replace('»', '').replace('ЖК ', '')
-        korpus = item.find(class_='cell col_house').get_text(strip=True).replace('Корпус ', '').replace('Башня ', '')
-        if project == 'Новая Ивантеевка':
-            korpus = ' '.join(korpus.split()[0:2])
-        if project == 'Ривер Парк':
-            korpus = korpus.split()[0]
-        type = 'Квартиры'
-        if item.find(class_='finishing_label'):
-            finish_type = 'С отделкой'
-        else:
-            finish_type = 'Без отделки'
-        if item.find(class_="rooms").get_text(strip=True) == 'Студия':
-            room_count = 0
-        else:
-            room_count = extract_digits_or_original(item.find(class_="rooms").get_text(strip=True))
-        try:
-            area = float(item.find(class_= 'size').get_text(strip=True).replace(' м²', ''))
-        except:
-            area = ''
-        try:
-            old_price = int(item.find(class_= 'old_price').get_text(strip=True).replace(' ', '').replace('₽', ''))
-        except:
-            old_price = ''
-        try:
-            price = int(item.find(class_= 'price').get_text(strip=True).replace(' ', '').replace('₽', ''))
-        except:
-            price = ''
-        section = ''
-        try:
-            floor = int(item.find(class_= 'cell col_floor').get_text(strip=True).split()[0])
-        except:
-            floor = ''
-        flat_number = ''
-
-        english = ''
-        promzona = ''
-        mestopolozhenie = ''
-        subway = ''
-        distance_to_subway = ''
-        time_to_subway = ''
-        mck = ''
-        distance_to_mck = ''
-        time_to_mck = ''
-        bkl = ''
-        distance_to_bkl = ''
-        time_to_bkl = ''
-        status = ''
-        start = ''
-        comment = ''
-        okrug = ''
-        district = ''
-        adress = ''
-        eskrou = ''
-        konstruktiv = ''
-        klass = ''
-        srok_sdachi = ''
-        srok_sdachi_old = ''
-        stadia = ''
-        dogovor = ''
-        price_per_metr = ''
-        discount = ''
-        price_per_metr_new = ''
+            if data['facing'] == '0' and item.find(class_='facing_label'):
+                continue
 
 
+            # Извлекаем данные
 
-        print(
-            f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
-        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
-                  time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
-                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
-        flats.append(result)
+            url = ''
+            developer = "Профи Инвест"
+            project = item.find(class_='object_title').get_text(strip=True).replace('"', '').replace('ЖК «', '').replace('»', '').replace('ЖК ', '')
+            korpus = item.find(class_='cell col_house').get_text(strip=True).replace('Корпус ', '').replace('Башня ', '')
+            if project == 'Новая Ивантеевка':
+                korpus = ' '.join(korpus.split()[0:2])
+            if project == 'Ривер Парк':
+                korpus = korpus.split()[0]
+            type = 'Квартиры'
+            finish_type = finishing_dict.get(finishing)
+            if item.find(class_="rooms").get_text(strip=True) == 'Студия':
+                room_count = 0
+            else:
+                room_count = extract_digits_or_original(item.find(class_="rooms").get_text(strip=True))
+            try:
+                area = float(item.find(class_= 'size').get_text(strip=True).replace(' м²', ''))
+            except:
+                area = ''
+            try:
+                old_price = int(item.find(class_= 'old_price').get_text(strip=True).replace(' ', '').replace('₽', ''))
+            except:
+                old_price = ''
+            try:
+                price = int(item.find(class_= 'price').get_text(strip=True).replace(' ', '').replace('₽', ''))
+            except:
+                price = ''
+            section = ''
+            try:
+                floor = int(item.find(class_= 'cell col_floor').get_text(strip=True).split()[0])
+            except:
+                floor = ''
+            flat_number = ''
 
-    if not flats_list:
-        break
-
-    data['page'] = str(int(data['page']) + 1)
+            english = ''
+            promzona = ''
+            mestopolozhenie = ''
+            subway = ''
+            distance_to_subway = ''
+            time_to_subway = ''
+            mck = ''
+            distance_to_mck = ''
+            time_to_mck = ''
+            bkl = ''
+            distance_to_bkl = ''
+            time_to_bkl = ''
+            status = ''
+            start = ''
+            comment = ''
+            okrug = ''
+            district = ''
+            adress = ''
+            eskrou = ''
+            konstruktiv = ''
+            klass = ''
+            srok_sdachi = ''
+            srok_sdachi_old = ''
+            stadia = ''
+            dogovor = ''
+            price_per_metr = ''
+            discount = ''
+            price_per_metr_new = ''
 
 
 
-    sleep_time = random.uniform(1, 5)
-    time.sleep(sleep_time)
+            print(
+                f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+            result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
+                      time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
+                      stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
+            flats.append(result)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
+        if not flats_list:
+            break
+
+        data['page'] = str(int(data['page']) + 1)
 
 
 
-# Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Профи Инвест"
+        sleep_time = random.uniform(1, 5)
+        time.sleep(sleep_time)
 
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
+    df = pd.DataFrame(flats, columns=['Дата обновления',
+     'Название проекта',
+     'на англ',
+     'промзона',
+     'Местоположение',
+     'Метро',
+     'Расстояние до метро, км',
+     'Время до метро, мин',
+     'МЦК/МЦД/БКЛ',
+     'Расстояние до МЦК/МЦД, км',
+     'Время до МЦК/МЦД, мин',
+     'БКЛ',
+     'Расстояние до БКЛ, км',
+     'Время до БКЛ, мин',
+     'статус',
+     'старт',
+     'Комментарий',
+     'Девелопер',
+     'Округ',
+     'Район',
+     'Адрес',
+     'Эскроу',
+     'Корпус',
+     'Конструктив',
+     'Класс',
+     'Срок сдачи',
+     'Старый срок сдачи',
+     'Стадия строительной готовности',
+     'Договор',
+     'Тип помещения',
+     'Отделка',
+     'Кол-во комнат',
+     'Площадь, кв.м',
+     'Цена кв.м, руб.',
+     'Цена лота, руб.',
+     'Скидка,%',
+     'Цена кв.м со ск, руб.',
+     'Цена лота со ск, руб.',
+     'секция',
+     'этаж',
+     'номер'])
 
-filename = f"{developer}_{project}_{date}.xlsx"
 
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
 
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+    # Базовый путь для сохранения
+    base_path = r""
+
+    folder_path = os.path.join(base_path, str(date))
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    filename = f"{developer}_{project}_{date}_{finishing}.xlsx"
+
+    # Полный путь к файлу
+    file_path = os.path.join(folder_path, filename)
+
+    # Сохранение файла в папку
+    df.to_excel(file_path, index=False)
+
+merge_and_clean(folder_path, f'Профи инвест_{date}.xlsx')
 
