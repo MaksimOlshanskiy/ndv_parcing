@@ -13,6 +13,7 @@ import openpyxl
 import os
 import random
 from Developer_dict import developer_dict, name_dict
+from functions import save_flats_to_excel
 
 jks = {1317 : "SOLOS", 1316: "Rakurs"}
 houses = {1183: '2', 1184: '3', 1185: '4', 1186 : '1', 1187: '2'}
@@ -151,65 +152,5 @@ for pr in projects_id:
         sleep_time = random.uniform(1, 5)
         time.sleep(sleep_time)
 
-    df = pd.DataFrame(flats, columns=['Дата обновления',
-     'Название проекта',
-     'на англ',
-     'промзона',
-     'Местоположение',
-     'Метро',
-     'Расстояние до метро, км',
-     'Время до метро, мин',
-     'МЦК/МЦД/БКЛ',
-     'Расстояние до МЦК/МЦД, км',
-     'Время до МЦК/МЦД, мин',
-     'БКЛ',
-     'Расстояние до БКЛ, км',
-     'Время до БКЛ, мин',
-     'статус',
-     'старт',
-     'Комментарий',
-     'Девелопер',
-     'Округ',
-     'Район',
-     'Адрес',
-     'Эскроу',
-     'Корпус',
-     'Конструктив',
-     'Класс',
-     'Срок сдачи',
-     'Старый срок сдачи',
-     'Стадия строительной готовности',
-     'Договор',
-     'Тип помещения',
-     'Отделка',
-     'Кол-во комнат',
-     'Площадь, кв.м',
-     'Цена кв.м, руб.',
-     'Цена лота, руб.',
-     'Скидка,%',
-     'Цена кв.м со ск, руб.',
-     'Цена лота со ск, руб.',
-     'секция',
-     'этаж',
-     'номер'])
-
-    df["Название проекта"] = df["Название проекта"].replace(name_dict)
-    df["Девелопер"] = df["Девелопер"].replace(developer_dict)
-
-
-
-    # Базовый путь для сохранения
-    base_path = r""
-
-    folder_path = os.path.join(base_path, str(date))
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-
-    filename = f"{developer}_{project}_{date}.xlsx"
-
-    # Полный путь к файлу
-    file_path = os.path.join(folder_path, filename)
-
-    # Сохранение файла в папку
-    df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

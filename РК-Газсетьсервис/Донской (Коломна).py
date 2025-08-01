@@ -7,6 +7,8 @@ import os
 from datetime import datetime
 import random
 
+from functions import save_flats_to_excel
+
 cookies = {
     'PHPSESSID': '6oigrd1mvnpas7270no670d9qi',
     '_ym_uid': '1744366056493324114',
@@ -58,11 +60,11 @@ for i in items:
     except:
         area = ''
     try:
-        old_price = int()
+        old_price = int(i['price'])
     except:
         old_price = ''
     try:
-        price = int(i['price'])
+        price = ''
     except:
         price = ''
     section = ''
@@ -116,61 +118,5 @@ for i in items:
 
     flats.append(result)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-# Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\РК-Газсетьсервис"
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

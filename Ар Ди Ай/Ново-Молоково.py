@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup
 
 import requests
 
+from functions import save_flats_to_excel
+
 cookies = {
     '__5ef7e0433e4ed89e1ed6401318dbd504': 'd9adbb3436f0082d7fd4c7bf9c607aa1',
     'tmr_lvid': '6baabad62ed97e0c8cac51d222b836a3',
@@ -155,61 +157,4 @@ for pr in pr_list:
         if not flats_soup:
             break
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                                  'Название проекта',
-                                  'на англ',
-                                  'промзона',
-                                  'Местоположение',
-                                  'Метро',
-                                  'Расстояние до метро, км',
-                                  'Время до метро, мин',
-                                  'МЦК/МЦД/БКЛ',
-                                  'Расстояние до МЦК/МЦД, км',
-                                  'Время до МЦК/МЦД, мин',
-                                  'БКЛ',
-                                  'Расстояние до БКЛ, км',
-                                  'Время до БКЛ, мин',
-                                  'статус',
-                                  'старт',
-                                  'Комментарий',
-                                  'Девелопер',
-                                  'Округ',
-                                  'Район',
-                                  'Адрес',
-                                  'Эскроу',
-                                  'Корпус',
-                                  'Конструктив',
-                                  'Класс',
-                                  'Срок сдачи',
-                                  'Старый срок сдачи',
-                                  'Стадия строительной готовности',
-                                  'Договор',
-                                  'Тип помещения',
-                                  'Отделка',
-                                  'Кол-во комнат',
-                                  'Площадь, кв.м',
-                                  'Цена кв.м, руб.',
-                                  'Цена лота, руб.',
-                                  'Скидка,%',
-                                  'Цена кв.м со ск, руб.',
-                                  'Цена лота со ск, руб.',
-                                  'секция',
-                                  'этаж',
-                                  'номер'])
-
-current_date = datetime.date.today()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)

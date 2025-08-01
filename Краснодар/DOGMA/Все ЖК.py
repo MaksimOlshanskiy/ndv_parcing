@@ -5,8 +5,8 @@ import pandas as pd
 import openpyxl
 import os
 import random
-
 import requests
+from functions import save_flats_to_excel
 
 headers = {
     'accept': '*/*',
@@ -26,17 +26,17 @@ headers = {
 
 json_data = {
     'areas': [
-        19.2,
-        222.4,
+        1.2,
+        922.4,
     ],
     'costs': [
-        3400000,
-        37800000,
+        400000,
+        97800000,
     ],
     'deadlines': [],
     'floors': [
         1,
-        24,
+        99,
     ],
     'layout_id': [],
     'letter_ids': [],
@@ -164,62 +164,5 @@ while True:
     sleep_time = random.uniform(0.1, 0.2)
     time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

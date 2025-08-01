@@ -8,6 +8,8 @@ import random
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+from functions import save_flats_to_excel
+
 flats = []
 
 def extract_digits_or_original(s):
@@ -57,11 +59,11 @@ for f in flats_soup:
     finish_type = "Без отделки"
     area = float(f.select_one('div.SearchDesktopResultsRow__cell.SearchDesktopResultsRow__cell_sq.sq').text)
     price_per_metr = ''
-    old_price = ''
+    old_price = int(float(f.select_one('div.SearchDesktopResultsRow__cell.SearchDesktopResultsRow__cell_tc.tc').text.replace(' ', ''))*1000000)
     room_count = f.select_one("div.SearchDesktopResultsRow__cell.SearchDesktopResultsRow__cell_rc.rc").text
     discount = ''
     price_per_metr_new = ''
-    price = int(float(f.select_one('div.SearchDesktopResultsRow__cell.SearchDesktopResultsRow__cell_tc.tc').text.replace(' ', ''))*1000000)
+    price = ''
     section = ''
     floor = f.select_one("div.SearchDesktopResultsRow__cell.SearchDesktopResultsRow__cell_f.f").text
     flat_number = f.select_one("div.SearchDesktopResultsRow__cell.SearchDesktopResultsRow__cell_n.n").text
@@ -78,63 +80,6 @@ for f in flats_soup:
     flats.append(result)
 
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                              'Название проекта',
-                              'на англ',
-                              'промзона',
-                              'Местоположение',
-                              'Метро',
-                              'Расстояние до метро, км',
-                              'Время до метро, мин',
-                              'МЦК/МЦД/БКЛ',
-                              'Расстояние до МЦК/МЦД, км',
-                              'Время до МЦК/МЦД, мин',
-                              'БКЛ',
-                              'Расстояние до БКЛ, км',
-                              'Время до БКЛ, мин',
-                              'статус',
-                              'старт',
-                              'Комментарий',
-                              'Девелопер',
-                              'Округ',
-                              'Район',
-                              'Адрес',
-                              'Эскроу',
-                              'Корпус',
-                              'Конструктив',
-                              'Класс',
-                              'Срок сдачи',
-                              'Старый срок сдачи',
-                              'Стадия строительной готовности',
-                              'Договор',
-                              'Тип помещения',
-                              'Отделка',
-                              'Кол-во комнат',
-                              'Площадь, кв.м',
-                              'Цена кв.м, руб.',
-                              'Цена лота, руб.',
-                              'Скидка,%',
-                              'Цена кв.м со ск, руб.',
-                              'Цена лота со ск, руб.',
-                              'секция',
-                              'этаж',
-                              'номер'])
-
-current_date = datetime.date.today()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 
 

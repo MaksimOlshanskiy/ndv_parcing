@@ -2,6 +2,163 @@ import re
 import pandas as pd
 import os
 import glob
+import datetime
+from Developer_dict import name_dict, developer_dict
+
+
+def save_flats_to_excel(flats, project, developer):
+    df = pd.DataFrame(flats, columns=['Дата обновления',
+                                      'Название проекта',
+                                      'на англ',
+                                      'промзона',
+                                      'Местоположение',
+                                      'Метро',
+                                      'Расстояние до метро, км',
+                                      'Время до метро, мин',
+                                      'МЦК/МЦД/БКЛ',
+                                      'Расстояние до МЦК/МЦД, км',
+                                      'Время до МЦК/МЦД, мин',
+                                      'БКЛ',
+                                      'Расстояние до БКЛ, км',
+                                      'Время до БКЛ, мин',
+                                      'статус',
+                                      'старт',
+                                      'Комментарий',
+                                      'Девелопер',
+                                      'Округ',
+                                      'Район',
+                                      'Адрес',
+                                      'Эскроу',
+                                      'Корпус',
+                                      'Конструктив',
+                                      'Класс',
+                                      'Срок сдачи',
+                                      'Старый срок сдачи',
+                                      'Стадия строительной готовности',
+                                      'Договор',
+                                      'Тип помещения',
+                                      'Отделка',
+                                      'Кол-во комнат',
+                                      'Площадь, кв.м',
+                                      'Цена кв.м, руб.',
+                                      'Цена лота, руб.',
+                                      'Скидка,%',
+                                      'Цена кв.м со ск, руб.',
+                                      'Цена лота со ск, руб.',
+                                      'секция',
+                                      'этаж',
+                                      'номер'])
+
+    df["Корпус"] = (
+         df["Корпус"]
+         .astype(str)  # приводим всё к строкам
+         .str.replace(r'(?i)\bкорпус\b\.?\s*', '', regex=True)  # удаляем "корпус"
+         .str.strip()  # убираем лишние пробелы
+         .replace(['', '-', 'nan', 'NaN'], '1')  # заменяем пустые строки и текстовые NaN на "1"
+     )
+
+    df["Название проекта"] = df["Название проекта"].replace(name_dict)
+    df["Девелопер"] = df["Девелопер"].replace(developer_dict)
+
+    print(f'')
+    print(f'Число лотов: {len(df)}')
+    print(f'')
+    print(f'Типы отделки: {df['Отделка'].value_counts()}')
+
+
+    def clean_name(name):
+        name = name.replace('ЖК ', '').replace('«', '').replace('»', '')  # Убираем 'ЖК '
+        return name
+
+    df['Название проекта'] = df['Название проекта'].apply(clean_name)
+
+    current_date = datetime.date.today()
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    base_path = os.path.join(project_root, "Date_files")
+    folder_path = os.path.join(base_path, str(current_date))
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    filename = f"{developer}_{project}_{current_date}.xlsx"
+    file_path = os.path.join(folder_path, filename)
+    df.to_excel(file_path, index=False)
+    print(f"✅ Данные сохранены в файл: {file_path}")
+
+
+def save_cian_to_excel(flats, project, developer):
+    df = pd.DataFrame(flats, columns=['Дата обновления',
+                                      'Название проекта',
+                                      'на англ',
+                                      'промзона',
+                                      'Местоположение',
+                                      'Метро',
+                                      'Расстояние до метро, км',
+                                      'Время до метро, мин',
+                                      'МЦК/МЦД/БКЛ',
+                                      'Расстояние до МЦК/МЦД, км',
+                                      'Время до МЦК/МЦД, мин',
+                                      'БКЛ',
+                                      'Расстояние до БКЛ, км',
+                                      'Время до БКЛ, мин',
+                                      'статус',
+                                      'старт',
+                                      'Комментарий',
+                                      'Девелопер',
+                                      'Округ',
+                                      'Район',
+                                      'Адрес',
+                                      'Эскроу',
+                                      'Корпус',
+                                      'Конструктив',
+                                      'Класс',
+                                      'Срок сдачи',
+                                      'Старый срок сдачи',
+                                      'Стадия строительной готовности',
+                                      'Договор',
+                                      'Тип помещения',
+                                      'Отделка',
+                                      'Кол-во комнат',
+                                      'Площадь, кв.м',
+                                      'Цена кв.м, руб.',
+                                      'Цена лота, руб.',
+                                      'Скидка,%',
+                                      'Цена кв.м со ск, руб.',
+                                      'Цена лота со ск, руб.',
+                                      'секция',
+                                      'этаж',
+                                      'номер'])
+
+    df["Корпус"] = (
+         df["Корпус"]
+         .astype(str)  # приводим всё к строкам
+         .str.replace(r'(?i)\bкорпус\b\.?\s*', '', regex=True)  # удаляем "корпус"
+         .str.strip()  # убираем лишние пробелы
+         .replace(['', '-', 'nan', 'NaN'], '1')  # заменяем пустые строки и текстовые NaN на "1"
+     )
+
+    df["Название проекта"] = df["Название проекта"].replace(name_dict)
+    df["Девелопер"] = df["Девелопер"].replace(developer_dict)
+
+    print(f'Число лотов: {len(df)}')
+
+    def clean_name(name):
+        name = name.replace('ЖК ', '').replace('«', '').replace('»', '')  # Убираем 'ЖК '
+        return name
+
+    df['Название проекта'] = df['Название проекта'].apply(clean_name)
+
+
+    current_date = datetime.date.today()
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    base_path = r""
+    folder_path = os.path.join(base_path, str(current_date))
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+
+    filename = f"{developer}_{project}_{current_date}.xlsx"
+    file_path = os.path.join(folder_path, filename)
+    df.to_excel(file_path, index=False)
+    print(f"✅ Данные сохранены в файл: {file_path}")
 
 def classify_renovation(description: str) -> str:
 

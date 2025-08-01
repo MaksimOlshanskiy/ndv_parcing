@@ -25,6 +25,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 
+from functions import save_flats_to_excel
+
 developer = ''
 project = ''
 area = ''
@@ -58,21 +60,20 @@ cookies = {
     'COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING': 'true',
     'cookieAlert': '1',
     'iosAppLink': '',
-    'qrator_jsr': 'v2.0.1751901428.338.5b6ce31fQOR3tRO1|2YVJRQluFs4i0lHJ|7f0BO6RKXPO05HNOoS6ttHG6sEBUhH8/2uWSTxISmTL1kDt6Q6fdjhQ5anS5CfM1c7Sm632LPAMUzKYQcocm7A==-CEvpa84Vxkk+AQzgfbR81KFYze8=-00',
-    'qrator_jsid2': 'v2.0.1751901428.338.5b6ce31fQOR3tRO1|UL6wznfAjSNMcbdP|S8kHgT/le18aaS3DymL6lsUF4+jBNI1q1IwuLtMdeKB6xBzDNl1W5uE6DAkaWrkti74bEyUL6Wn54abm/wdb7WoLREXfNrNKqdQBNxkoKYxDD5SVs64hNAZOYkqYuanxx8YhD+S7W97hRNKhwUEAfg==-fCG/v6DXq+JHGUyfODw2+esDFVk=',
     '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1751901439',
-    '_visitId': 'e8734b88-9428-4f31-89b8-055ab3cf50d5-a46a7c4799c8234b',
-    '_ym_isad': '2',
-    'adrdel': '1751901442232',
-    'favoriteHintShowed': 'true',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1751901480',
     'currentRegionGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
     'currentLocalityGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
     'regionName': '1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
-    'tmr_reqNum': '285',
-    't3_sid_7711713': 's1.437905756.1751901441274.1751901513626.72.22.5.1',
+    'qrator_jsid2': 'v2.0.1753685075.732.5b6ce31fHEcqJz16|On9CIvoAlpeeQbk3|qU+ORmFbtYe+njo2ZXZ6ZYCAd3ZPw4Ujc2QwvMxTxMQLGscrzn4TwbbBP+sjO2+PqqhpZpQB9ouQopAZEIrgYe5brPdytBGzXRhD6OfuKyVJmyGqXI5qzfVUB7jqZ2DLNhcRI+31PKjrnsHWCKqGgw==-QgKUKAeCmWuiFHYuFMgT3ZjeoQg=',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1753685081',
+    '_ym_isad': '2',
+    '_visitId': '91201357-2294-463e-9a8d-3243f2473270-f4f0dcc432ac8ba6',
+    'adrdel': '1753685083172',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1753685084',
+    'tmr_reqNum': '287',
+    't3_sid_7711713': 's1.62005754.1753685082562.1753685629086.86.29.4.1',
 }
+
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
@@ -87,7 +88,7 @@ headers = {
     'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; _ym_d=1743518289; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; iosAppLink=; qrator_jsr=v2.0.1751901428.338.5b6ce31fQOR3tRO1|2YVJRQluFs4i0lHJ|7f0BO6RKXPO05HNOoS6ttHG6sEBUhH8/2uWSTxISmTL1kDt6Q6fdjhQ5anS5CfM1c7Sm632LPAMUzKYQcocm7A==-CEvpa84Vxkk+AQzgfbR81KFYze8=-00; qrator_jsid2=v2.0.1751901428.338.5b6ce31fQOR3tRO1|UL6wznfAjSNMcbdP|S8kHgT/le18aaS3DymL6lsUF4+jBNI1q1IwuLtMdeKB6xBzDNl1W5uE6DAkaWrkti74bEyUL6Wn54abm/wdb7WoLREXfNrNKqdQBNxkoKYxDD5SVs64hNAZOYkqYuanxx8YhD+S7W97hRNKhwUEAfg==-fCG/v6DXq+JHGUyfODw2+esDFVk=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1751901439; _visitId=e8734b88-9428-4f31-89b8-055ab3cf50d5-a46a7c4799c8234b; _ym_isad=2; adrdel=1751901442232; favoriteHintShowed=true; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1751901480; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; tmr_reqNum=285; t3_sid_7711713=s1.437905756.1751901441274.1751901513626.72.22.5.1',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; _ym_d=1743518289; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; iosAppLink=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; favoriteHintShowed=true; qrator_jsr=v2.0.1753348588.406.5b6ce31fmRiEj4mW|OwEn6haNhOQTrWqz|ruv3VAjDgQRtQu/Ew1Q4fHoRGP0O0Eg6CUM3bbLWnNbBAUyznBzYjBZ7fo4nO6qBkZZP1JcvEvQ2OHnDO1LKeA==-c20b9374IbnVBhcs4+Ao+a2Qtbo=-00; qrator_jsid2=v2.0.1753348588.406.5b6ce31fmRiEj4mW|WIqYL88ewBhcb1DD|/JNthpnWkYllqs2KNtdCBzXLnCosMtOCuIHWHa9iTYvqj9xRRCLZaLjVjSSndt8GFoFFGSv8mdObcdMvSnht3h9d3+eA3RmcHqJei3pNRIXEAsnAaOJs5TpBzZNhR/TuKF3igas+nIaT+FNquawZsw==-1Iasve+qaoUnfky5nOiuN9mUFic=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1753348592; _ym_isad=2; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1753348592; _visitId=b00d90e4-ab07-460f-8395-56a57101926d-f4f0dcc432ac8ba6; adrdel=1753348593375; canary-bind-id-3330=next-2; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; tmr_reqNum=288; t3_sid_7711713=s1.571213679.1753348592568.1753348656464.80.29.5.1',
 }
 
 params = {
@@ -99,7 +100,7 @@ params = {
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '112798',
+    'complex_ids': '118809',
     'complex_name': 'ЖК КВАТРО',
     'from_developer': '1',
     'sort_by_tariff_date': '1',
@@ -145,8 +146,12 @@ while True:
         korpus = ''
         konstruktiv = ''
         klass = ''
-        quarter = i['complex']['building']['endBuildQuarter']
-        year = i['complex']['building']['endBuildYear']
+        try:
+            quarter = i['complex']['building']['endBuildQuarter']
+            year = i['complex']['building']['endBuildYear']
+        except:
+            quarter = ''
+            year = ''
         srok_sdachi = f"{quarter} квартал {year} года"
         srok_sdachi_old = ''
         stadia = ''
@@ -160,8 +165,8 @@ while True:
         price_per_metr = ''
         discount = ''
         price_per_metr_new = ''
-        price = int(i["price"])
-        old_price = ''
+        price = ''
+        old_price = int(i["price"])
         section = ''
         floor = int(i['generalInfo']['maxFloor'])
         flat_number = ''
@@ -231,8 +236,8 @@ while True:
                     price_per_metr2 = ''
                     discount2 = ''
                     price_per_metr_new2 = ''
-                    price2 = int(y.find(class_= 'VkJXv').get_text(strip=True).replace(' ₽', '').replace(' ', ''))
-                    old_price2 = ''
+                    price2 = ''
+                    old_price2 = int(y.find(class_= 'VkJXv').get_text(strip=True).replace(' ₽', '').replace(' ', ''))
                     section2 = ''
                     floor2 = int(y.get_text(separator='!').split('!')[1])
                     flat_number2 = '' # y.find(class_= 'T8vBE').get_text(strip=True)
@@ -312,61 +317,4 @@ while True:
 
 
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                                  'Название проекта',
-                                  'на англ',
-                                  'промзона',
-                                  'Местоположение',
-                                  'Метро',
-                                  'Расстояние до метро, км',
-                                  'Время до метро, мин',
-                                  'МЦК/МЦД/БКЛ',
-                                  'Расстояние до МЦК/МЦД, км',
-                                  'Время до МЦК/МЦД, мин',
-                                  'БКЛ',
-                                  'Расстояние до БКЛ, км',
-                                  'Время до БКЛ, мин',
-                                  'статус',
-                                  'старт',
-                                  'Комментарий',
-                                  'Девелопер',
-                                  'Округ',
-                                  'Район',
-                                  'Адрес',
-                                  'Эскроу',
-                                  'Корпус',
-                                  'Конструктив',
-                                  'Класс',
-                                  'Срок сдачи',
-                                  'Старый срок сдачи',
-                                  'Стадия строительной готовности',
-                                  'Договор',
-                                  'Тип помещения',
-                                  'Отделка',
-                                  'Кол-во комнат',
-                                  'Площадь, кв.м',
-                                  'Цена кв.м, руб.',
-                                  'Цена лота, руб.',
-                                  'Скидка,%',
-                                  'Цена кв.м со ск, руб.',
-                                  'Цена лота со ск, руб.',
-                                  'секция',
-                                  'этаж',
-                                  'номер'])
-
-current_date = datetime.date.today()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{project}_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)

@@ -3,11 +3,8 @@
 cian отдаёт не более 1500 объявлений
 нужно проходиться по каждому списку: ids_moscow и т.д., подставляя его в 40 строке
 
-
-
-
-
 '''
+
 
 import requests
 import datetime
@@ -17,24 +14,27 @@ import openpyxl
 import os
 import random
 import re
-from functions import classify_renovation
+from functions import classify_renovation, save_cian_to_excel
+
+decoration_dict = {'preFine' : 'Предчистовая', 'fine' : 'С отделкой', 'without' : 'Без отделки', 'fineWithFurniture' : 'С отделкой и доп опциями'}
+decoration_list = ['preFine', 'fine', 'without', 'fineWithFurniture']
 
 
-obshiy = [1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 2344978, 7778, 5138735, 3683691,
+obshiy = [36935, 1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 2344978, 7778, 5138735, 3683691,
        3419909, 3911074, 46840, 50027, 4051375, 4186702, 2234022, 1900321, 368, 81377, 45865,
        5227, 4771631, 4117447, 4708643, 3782658, 4157734, 45774, 843911, 2498484, 8825,
        4025502, 92320, 2511297, 4850351, 3932079, 4780951, 4296442, 4676364, 912499, 4033066,
        3206071, 4457540, 3966751, 4720970, 4682511, 3913242, 4779110, 8787, 3930584, 90586,
-       5100524, 3975866, 4260360, 5340468, 4648486, 46529, 48693, 4482950, 176051, 7789, 2567913, 4585408, 7030,
+       5100524, 4260360, 5340468, 4648486, 46529, 48693, 4482950, 176051, 7789, 2567913, 4585408, 7030,
        1641578, 300653, 5138871, 3730443, 7956, 4558643, 4729772, 1358767, 17877, 4833927, 1628126, 8689, 5208,
-        4482905, 5194393, 3394804, 600475, 5499, 4056931, 2522095, 2202, 118473, 4677457, 3922634, 4109874, 6644, 319, 4126730]
+        4482905, 5194393, 3394804, 600475, 5499, 4056931, 2522095, 2202, 4677457, 3922634, 4109874, 6644, 319, 4126730, 3402470, 3872784, 5500590]
 
 ids_moscow = [1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 2344978, 7778, 5138735, 3683691,
        3419909, 3911074, 46840, 50027, 4051375, 4186702, 2234022, 1900321, 368, 81377, 45865,
        5227, 4771631, 4117447, 4708643, 3782658, 4157734, 45774, 843911, 2498484, 8825,
        4025502, 92320, 2511297, 4850351, 3932079, 4780951, 4296442, 4676364, 912499, 4033066,
        3206071, 4457540, 3966751, 4720970, 4682511, 3913242, 4779110, 8787, 3930584, 90586,
-       5100524, 3975866, 4260360, 5340468, 4648486, 46529, 48693, 4482950, 176051, 7789, 2567913, 4585408, 7030,
+       5100524, 4260360, 5340468, 4648486, 46529, 48693, 4482950, 176051, 7789, 2567913, 4585408, 7030,
        1641578, 300653, 5138871
        ]  # id ЖК для парсинга, переименовываем на просто ids
 
@@ -48,11 +48,8 @@ ids_mo_srednee = [4833927, 1628126, 8689, 5208, 4482905, 5194393, 3394804, 60047
 ids_mo_bliz = [118473, 4677457, 3922634, 4109874, 6644, 319, 4126730
        ]
 
-parsim = obshiy
+parsim = [5500590]
 
-proxies = {
-    'https': '47.95.203.57:8080'
-}
 
 cookies = {
     '_CIAN_GK': '787699e3-fc12-4a31-a77a-6cfd610b499c',
@@ -113,6 +110,10 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
+        },
         'geo': {
             'type': 'geo',
             'value': [
@@ -120,6 +121,12 @@ json_data = {
                     'type': 'newobject',
                     'id': 4825183,
                 },
+            ],
+        },
+        'decorations_list': {
+            'type': 'terms',
+            'value': [
+                'preFine',
             ],
         },
         'from_developer': {
@@ -141,257 +148,191 @@ def extract_digits_or_original(s):
 
 current_date = datetime.date.today()
 
+no_flats = []
 
 for y in parsim:
 
     session = requests.Session()
 
     flats = []
-    counter = 1
-    total_count = 1
+
     json_data["jsonQuery"]["page"]["value"] = 1
 
     print("Новый ЖК", y)
 
     json_data["jsonQuery"]["geo"]["value"][0]["id"] = y
 
-    while len(flats) < total_count:
+    for decoration in decoration_list:
 
-        if counter > 1:
-            sleep_time = random.uniform(7, 11)
-            time.sleep(sleep_time)
-        try:
-            response = session.post(
-                'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                cookies=cookies,
-                headers=headers,
-                json=json_data
-            )
+        counter = 1
+        total_count = 1
+        json_data["jsonQuery"]["decorations_list"]["value"][0] = decoration
+        json_data["jsonQuery"]["page"]["value"] = 1
+        print(decoration)
 
-            print(response.status_code)
 
-            items = response.json()["data"]["offersSerialized"]
-        except:
-            print("Произошла ошибка, пробуем ещё раз")
-            time.sleep(61)
-            session = requests.Session()
-            response = session.post(
-                'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                cookies=cookies,
-                headers=headers,
-                json=json_data
-            )
-            print(response.status_code)
-            items = response.json()["data"]["offersSerialized"]
 
-        for i in items:
+
+        while True:
+
+            if counter > 1:
+                sleep_time = random.uniform(7, 11)
+                time.sleep(sleep_time)
+
             try:
-                if i['building']['deadline']['isComplete'] == True:
-                    srok_sdachi = "Дом сдан"
-                elif i['building']['deadline']['quarterEnd'] is None:
+                response = session.post(
+                    'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                    cookies=cookies,
+                    headers=headers,
+                    json=json_data
+                )
+
+                print(response.status_code)
+            except:
+                print("Произошла ошибка, пробуем ещё раз")
+                time.sleep(61)
+                session = requests.Session()
+                response = session.post(
+                    'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                    cookies=cookies,
+                    headers=headers,
+                    json=json_data
+                )
+                print(response.status_code)
+            items = response.json()["data"]["offersSerialized"]
+
+
+            for i in items:
+                try:
+                    if i['building']['deadline']['isComplete'] == True:
+                        srok_sdachi = "Дом сдан"
+                    elif i['building']['deadline']['quarterEnd'] is None:
+                        srok_sdachi = ''
+                    else:
+                        srok_sdachi = f"Cдача ГК: {i['building']['deadline']['quarterEnd']}"
+                except:
                     srok_sdachi = ''
-                else:
-                    srok_sdachi = f"Cдача ГК: {i['building']['deadline']['quarterEnd']}"
-            except:
-                srok_sdachi = ''
-            try:
-                url = i['fullUrl']
-            except:
-                url = ''
+                try:
+                    url = i['fullUrl']
+                except:
+                    url = ''
 
-            try:
-                if i['isApartments'] == True:
-                    type = "Апартаменты"
-                else:
-                    type = "Квартира"
-            except:
-                type = ''
+                try:
+                    if i['isApartments'] == True:
+                        type = "Апартаменты"
+                    else:
+                        type = "Квартира"
+                except:
+                    type = ''
 
-            try:
-                price = i['bargainTerms']['priceRur']
-            except:
+                try:
+                    old_price = i['bargainTerms']['priceRur']
+                except:
+                    old_price = ''
                 price = ''
-            try:
-                project = i['geo']['jk']['displayName']
-            except:
-                project = ''
-            try:
-                if i['decoration'] == "fine" or i['offerFeatureLabels'][0] == 'С отделкой':
-                    finish_type = "С отделкой"
-                elif i['decoration'] == "without":
-                    finish_type = "Без отделки"
-                elif i['decoration'] == "rough":
-                    finish_type = 'Предчистовая'
-                else:
+                try:
+                    project = i['geo']['jk']['displayName']
+                except:
+                    project = ''
+                try:
+                    finish_type = decoration_dict.get(decoration)
+                except:
                     finish_type = ''
-            except:
-                finish_type = ''
-            if not finish_type:
-                finish_type = classify_renovation(i['description'])
-            #try:
-            #    decoration2 = i['offerFeatureLabels'][0]
-            #except:
-            #    decoration2 = ''
-            try:
-                adress = i['geo']['userInput']
-            except:
-                adress = ""
+                try:
+                    adress = i['geo']['userInput']
+                except:
+                    adress = ""
 
-            try:
-                korpus = str(i["geo"]["jk"]["house"]["name"]).replace('Корпус ', '')
-            except:
-                korpus = ''
+                try:
+                    korpus = str(i["geo"]["jk"]["house"]["name"]).replace('Корпус ', '')
+                except:
+                    korpus = ''
 
-            try:
-                developer = i['geo']['jk']['developer']['name']
-            except:
-                developer = ""
+                try:
+                    developer = i['geo']['jk']['developer']['name']
+                except:
+                    developer = ""
 
-            try:
-                if i["roomsCount"] == None:
-                    room_count = 0
-                else:
-                    room_count = int(i["roomsCount"])
-            except:
-                room_count = ''
-            try:
-                area = float(i["totalArea"])
-            except:
-                area = ''
+                try:
+                    if i["roomsCount"] == None:
+                        room_count = 0
+                    else:
+                        room_count = int(i["roomsCount"])
+                except:
+                    room_count = ''
+                try:
+                    area = float(i["totalArea"])
+                except:
+                    area = ''
 
 
-            date = datetime.date.today()
+                date = datetime.date.today()
 
-            try:
-                floor = i["floorNumber"]
-            except:
-                floor = ''
-            english = ''
-            promzona = ''
-            mestopolozhenie = ''
-            subway = ''
-            distance_to_subway = ''
-            time_to_subway = ''
-            mck = ''
-            distance_to_mck = ''
-            time_to_mck = ''
-            bkl = ''
-            distance_to_bkl = ''
-            time_to_bkl = ''
-            status = ''
-            start = ''
-            comment = ''
+                try:
+                    floor = i["floorNumber"]
+                except:
+                    floor = ''
+                english = ''
+                promzona = ''
+                mestopolozhenie = ''
+                subway = ''
+                distance_to_subway = ''
+                time_to_subway = ''
+                mck = ''
+                distance_to_mck = ''
+                time_to_mck = ''
+                bkl = ''
+                distance_to_bkl = ''
+                time_to_bkl = ''
+                status = ''
+                start = ''
+                comment = ''
 
-            okrug = ''
-            district = ''
+                okrug = ''
+                district = ''
 
-            eskrou = ''
-            konstruktiv = ''
-            klass = ''
-            srok_sdachi_old = ''
-            stadia = ''
-            dogovor = ''
-            old_price = ''
-            discount = ''
-            price_per_metr = ''
-            price_per_metr_new = ''
+                eskrou = ''
+                konstruktiv = ''
+                klass = ''
+                srok_sdachi_old = ''
+                stadia = ''
+                dogovor = ''
 
-            section = ''
-            flat_number = ''
+                discount = ''
+                price_per_metr = ''
+                price_per_metr_new = ''
 
-
-            print(
-                f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
-            result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway,
-                      mck, distance_to_mck, time_to_mck, distance_to_bkl,
-                      time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
-                      konstruktiv, klass, srok_sdachi, srok_sdachi_old,
-                      stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                      price_per_metr_new, price, section, floor, flat_number]
-            flats.append(result)
-
-        json_data["jsonQuery"]["page"]["value"] += 1
-        print("-----------------------------------------------------------------------------")
-        total_count = response.json()["data"]["offerCount"]
-        downloaded = len(flats)
-        print(f'ID ЖК: {y}. Загружено {downloaded} предложений из {total_count}')
-        counter += 1
-
-    counter += 1
-
-    # Базовый путь для сохранения
-    base_path = r"C:\PycharmProjects\SeleniumParcer\Cian"
-
-    folder_path = os.path.join(base_path, str(current_date))
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-
-    project = project.replace("/", "-")
-
-    filename = f"{project}_{current_date}.xlsx"
-
-    # Полный путь к файлу
-    file_path = os.path.join(folder_path, filename)
-
-    df = pd.DataFrame(flats, columns=['Дата обновления',
-                                      'Название проекта',
-                                      'на англ',
-                                      'промзона',
-                                      'Местоположение',
-                                      'Метро',
-                                      'Расстояние до метро, км',
-                                      'Время до метро, мин',
-                                      'МЦК/МЦД/БКЛ',
-                                      'Расстояние до МЦК/МЦД, км',
-                                      'Время до МЦК/МЦД, мин',
-                                      'БКЛ',
-                                      'Расстояние до БКЛ, км',
-                                      'Время до БКЛ, мин',
-                                      'статус',
-                                      'старт',
-                                      'Комментарий',
-                                      'Девелопер',
-                                      'Округ',
-                                      'Район',
-                                      'Адрес',
-                                      'Эскроу',
-                                      'Корпус',
-                                      'Конструктив',
-                                      'Класс',
-                                      'Срок сдачи',
-                                      'Старый срок сдачи',
-                                      'Стадия строительной готовности',
-                                      'Договор',
-                                      'Тип помещения',
-                                      'Отделка',
-                                      'Кол-во комнат',
-                                      'Площадь, кв.м',
-                                      'Цена кв.м, руб.',
-                                      'Цена лота, руб.',
-                                      'Скидка,%',
-                                      'Цена кв.м со ск, руб.',
-                                      'Цена лота со ск, руб.',
-                                      'секция',
-                                      'этаж',
-                                      'номер'])
-
-    current_date = datetime.date.today()
-
-    # Базовый путь для сохранения
-    base_path = r""
-
-    folder_path = os.path.join(base_path, str(current_date))
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-
-    filename = f"{project}_{current_date}.xlsx"
-
-    # Полный путь к файлу
-    file_path = os.path.join(folder_path, filename)
-
-    # Сохранение файла в папку
-    df.to_excel(file_path, index=False)
+                section = ''
+                flat_number = ''
 
 
-def classify_renovation():
-    return None
+                print(
+                    f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
+                result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway,
+                          mck, distance_to_mck, time_to_mck, distance_to_bkl,
+                          time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
+                          konstruktiv, klass, srok_sdachi, srok_sdachi_old,
+                          stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+                          price_per_metr_new, price, section, floor, flat_number]
+                flats.append(result)
+
+            total_count = response.json()["data"]["offerCount"]
+            downloaded = len(flats)
+            print(f'ID ЖК: {y}. Отделка: {decoration}. Загружено {downloaded} предложений из {total_count}')
+            print("-----------------------------------------------------------------------------")
+            if not items:
+                break
+            json_data["jsonQuery"]["page"]["value"] += 1
+
+
+
+            counter += 1
+
+    if len(flats) > 0:
+        save_cian_to_excel(flats, project, developer)
+    else:
+        no_flats.append(y)
+
+print(f'Пустые проекты: {no_flats}')
+
+

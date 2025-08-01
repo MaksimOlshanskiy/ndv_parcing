@@ -83,10 +83,14 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
+        },
         'region': {
             'type': 'terms',
             'value': [
-                4701,
+                4770,
             ],
         },
         'floor': {

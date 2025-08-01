@@ -6,19 +6,21 @@ import openpyxl
 import os
 import random
 
+from functions import save_flats_to_excel
+
 cookies = {
-    'session': '84016a2a3a738a14747a7731e823d2ad435251e89f8b9284a76c929edf5d1605',
+    'session': 'c02def3adb1df7a7c2afc03f8957cc113038213a736bb7dda7f28cce4f6a4bd9',
     '_ym_uid': '174411617377976528',
-    '_ym_d': '1744116173',
+    '_ym_d': '1753350977',
     '_ym_isad': '2',
-    '_ym_visorc': 'w',
-    '_ct_ids': 'js5ahoyi%3A72072%3A54711461',
-    '_ct_session_id': '54711461',
-    '_ct_site_id': '72072',
-    'call_s': '___js5ahoyi.1744117972.54711461.449093:1267842|2___',
-    '_ct': '3000000000039278721',
-    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
     'cted': 'modId%3Djs5ahoyi%3Bya_client_id%3D174411617377976528',
+    '_ym_visorc': 'w',
+    '_ct_ids': 'js5ahoyi%3A72072%3A122145867',
+    '_ct_session_id': '122145867',
+    '_ct_site_id': '72072',
+    'call_s': '___js5ahoyi.1753352777.122145867.449093:1267841|2___',
+    '_ct': '3000000000085636699',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
 }
 
 headers = {
@@ -26,22 +28,22 @@ headers = {
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'priority': 'u=1, i',
     'referer': 'https://kino-kvartal.ru/flats',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
     'x-host': 'kino-kvartal.ru',
-    # 'cookie': 'session=84016a2a3a738a14747a7731e823d2ad435251e89f8b9284a76c929edf5d1605; _ym_uid=174411617377976528; _ym_d=1744116173; _ym_isad=2; _ym_visorc=w; _ct_ids=js5ahoyi%3A72072%3A54711461; _ct_session_id=54711461; _ct_site_id=72072; call_s=___js5ahoyi.1744117972.54711461.449093:1267842|2___; _ct=3000000000039278721; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; cted=modId%3Djs5ahoyi%3Bya_client_id%3D174411617377976528',
+    # 'cookie': 'session=c02def3adb1df7a7c2afc03f8957cc113038213a736bb7dda7f28cce4f6a4bd9; _ym_uid=174411617377976528; _ym_d=1753350977; _ym_isad=2; cted=modId%3Djs5ahoyi%3Bya_client_id%3D174411617377976528; _ym_visorc=w; _ct_ids=js5ahoyi%3A72072%3A122145867; _ct_session_id=122145867; _ct_site_id=72072; call_s=___js5ahoyi.1753352777.122145867.449093:1267841|2___; _ct=3000000000085636699; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae',
 }
 
 params = {
     'project_id': 'dccdada0-9c61-4e54-85aa-cdf4802414c0',
     'status': 'free',
     'offset': '0',
-    'limit': '48',
+    'limit': '16',
     'order_by': 'price',
 }
 
@@ -54,13 +56,16 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
+session = requests.Session()
+
 while True:
 
-    response = requests.get(
+    response = session.get(
         'https://kino-kvartal.ru/api/realty-filter/residential/real-estates',
         params=params,
         cookies=cookies,
         headers=headers,
+        timeout=None
     )
 
     items = response.json()
@@ -139,66 +144,9 @@ while True:
 
     if not items:
         break
-    params['offset'] = str(int(params['offset']) + 48)
-    sleep_time = random.uniform(1, 5)
+    params['offset'] = str(int(params['offset']) + 16)
+    sleep_time = random.uniform(3, 6)
     time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

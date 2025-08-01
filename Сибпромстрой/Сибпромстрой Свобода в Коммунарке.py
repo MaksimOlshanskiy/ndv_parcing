@@ -6,12 +6,15 @@ import os
 import random
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 
 import requests
 
 import requests
+
+from functions import save_flats_to_excel
 
 cookies = {
     '_gid': 'GA1.2.712955819.1743077089',
@@ -78,15 +81,17 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
+page_counter = 0
+driver = webdriver.Chrome()
 
 while True:
 
+    web_site = f'https://www.sibpromstroy.ru/flat-search/?f%5B0%5D=city_region%3A32&f%5B1%5D=project%3A22825&page={page_counter}'
 
-    response = requests.get('https://www.sibpromstroy.ru/views/ajax', params=params, cookies=cookies, headers=headers)
-    print(response.status_code)
-    items = response.json()[2]['data']
-    soup = BeautifulSoup(items, 'html.parser')
-    flats_soup = soup.find_all('div', class_=["col-12 col-md-7 flat-body fw-light d-md-flex flex-column"])
+    driver.get(url=web_site)
+    page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
+    soup = BeautifulSoup(page_content, 'html.parser')
+    flats_soup = soup.find_all('div', class_=["node__content row"])
     for i in flats_soup:
 
         url = ''
@@ -112,24 +117,24 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        korpus = i.find('div', class_="korp-sect").text.strip().split()[3].replace(',', '').replace('к', '')
+        korpus = extract_digits_or_original(i.find('span', class_="flat--addr--building").text.strip())
         konstruktiv = ''
         klass = ''
-        finish_type = i.find('div', class_="facing fs-12 mb-1").text.strip().replace('Отделка: ', '')
+        finish_type = i.find('div', class_="flat--stats--facing col-8 col-lg-9 col-xxl-10").text.strip().replace('Отделка: ', '')
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
         type = 'Квартиры'
-        room_count = extract_digits_or_original(i.find('div', class_="rooms-area").text.strip().split()[0])
-        area = float(i.find('div', class_="rooms-area").text.strip().split()[1])
+        room_count = extract_digits_or_original(i.find('span', class_="flat--stats--rooms").text.strip())
+        area = float(i.find('span', class_="flat--stats--area").text.strip().replace(' м²', ''))
         price_per_metr = ''
-        old_price = ''
+        old_price = int(i.find('div', class_= 'flat--prices--full-price fw-bold me-md-3 me-lg-0').text.replace(' ₽', '').replace(' ', ''))
         srok_sdachi = ''
         discount = ''
         price_per_metr_new = ''
-        price = extract_digits_or_original(i.find('div', class_= 'flat-full-price').text)
-        section = int(i.find('div', class_="korp-sect").text.strip().split()[5])
-        floor = extract_digits_or_original(i.find('div', class_= 'floor').text.strip())
+        price = ''
+        section = ''
+        floor = ''
 
         flat_number = ''
 
@@ -146,68 +151,12 @@ while True:
     if not flats_soup:
         break
 
+
     print('--------------------------------------------------------------------------------')
 
-    params['page'] = str(int(params['page']) + 1)
+    page_counter += 1
     sleep_time = random.uniform(1, 4)
     time.sleep(sleep_time)
 
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                              'Название проекта',
-                              'на англ',
-                              'промзона',
-                              'Местоположение',
-                              'Метро',
-                              'Расстояние до метро, км',
-                              'Время до метро, мин',
-                              'МЦК/МЦД/БКЛ',
-                              'Расстояние до МЦК/МЦД, км',
-                              'Время до МЦК/МЦД, мин',
-                              'БКЛ',
-                              'Расстояние до БКЛ, км',
-                              'Время до БКЛ, мин',
-                              'статус',
-                              'старт',
-                              'Комментарий',
-                              'Девелопер',
-                              'Округ',
-                              'Район',
-                              'Адрес',
-                              'Эскроу',
-                              'Корпус',
-                              'Конструктив',
-                              'Класс',
-                              'Срок сдачи',
-                              'Старый срок сдачи',
-                              'Стадия строительной готовности',
-                              'Договор',
-                              'Тип помещения',
-                              'Отделка',
-                              'Кол-во комнат',
-                              'Площадь, кв.м',
-                              'Цена кв.м, руб.',
-                              'Цена лота, руб.',
-                              'Скидка,%',
-                              'Цена кв.м со ск, руб.',
-                              'Цена лота со ск, руб.',
-                              'секция',
-                              'этаж',
-                              'номер'])
-
-current_date = datetime.date.today()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)

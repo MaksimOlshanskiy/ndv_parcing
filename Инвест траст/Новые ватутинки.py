@@ -1,5 +1,6 @@
 """
-отдельно выгрузка с отделкой и отдельно без отделки  'finish_option': '1' - с отделкой, 0 - без отделки
+отдельно выгрузка с отделкой и отдельно без отделки 'finish_option': '1' - с отделкой, 0 - без отделки
+Автоматически, менять ничего не нужно
 
 """
 
@@ -13,6 +14,7 @@ import random
 
 from datetime import datetime
 
+from functions import save_flats_to_excel
 
 cookies = {
     '_ga_KSG3KSTJM3': 'GS1.1.1742906448.1.0.1742906448.60.0.0',
@@ -63,160 +65,98 @@ params = {
     'pereustupka': 'false',
     'secondhand': 'false',
     'order': 'price',
-    'finish_option': '0',
+    'finish_option': '1',
     'limit': '48',
     'offset': '0',
 }
 
-
-
 flats = []
-
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
+for finishing in range(2):
+
+    params['finish_option'] = str(finishing)
+    params['offset'] = '0'
+    print(params)
+
+    while True:
+
+        response = requests.get('https://vatutinki.ru/api/property/', params=params, cookies=cookies, headers=headers)
+        print(response.status_code)
+        items = response.json()['results']
+
+        for i in items:
+
+            url = ''
+            date = datetime.now()
+            project = "Новые Ватутинки"
+            english = ''
+            promzona = ''
+            mestopolozhenie = ''
+            subway = ''
+            distance_to_subway = ''
+            time_to_subway = ''
+            mck = ''
+            distance_to_mck = ''
+            time_to_mck = ''
+            bkl = ''
+            distance_to_bkl = ''
+            time_to_bkl = ''
+            status = ''
+            start = ''
+            comment = ''
+            developer = "Инвест Траст"
+            okrug = ''
+            district = ''
+            adress = f"Мкр-н {i['project']['name']}"
+            eskrou = ''
+            korpus = i['building']['number']
+            konstruktiv = ''
+            klass = ''
+            srok_sdachi = ''
+            srok_sdachi_old = ''
+            stadia = ''
+            dogovor = ''
+            type = 'Квартиры'
+            if params['finish_option'] == '1':
+                finish_type = 'С отделкой'
+            elif params['finish_option'] == '0':
+                finish_type = 'Без отделки'
+
+            room_count = int(i['rooms'])
+
+            area = float(i['area'])
+
+            price_per_metr = ''
+            old_price = round(float(i['price_compare']))
+            discount = ''
+            price_per_metr_new = ''
+            try:
+                price = round(float(i["price"]))
+            except:
+                price = i["price"]
+            section = int(i['section']['number'])
+            floor = i['floor']['number']
+            flat_number = i['number']
 
 
+            print(
+                f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+            result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+                      distance_to_mck, time_to_mck, distance_to_bkl,
+                      time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
+                      klass, srok_sdachi, srok_sdachi_old,
+                      stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+                      price_per_metr_new, price, section, floor, flat_number]
+            flats.append(result)
 
-while True:
+        if not items:
+            break
+        params["offset"] = int(params["offset"]) + 48
+        sleep_time = random.uniform(1, 4)
+        time.sleep(sleep_time)
 
-    response = requests.get('https://vatutinki.ru/api/property/', params=params, cookies=cookies, headers=headers)
-    print(response.status_code)
-    items = response.json()['results']
-
-    for i in items:
-
-        url = ''
-
-
-        date = datetime.now()
-        project = "Новые Ватутинки"
-
-
-        english = ''
-        promzona = ''
-        mestopolozhenie = ''
-        subway = ''
-        distance_to_subway = ''
-        time_to_subway = ''
-        mck = ''
-        distance_to_mck = ''
-        time_to_mck = ''
-        bkl = ''
-        distance_to_bkl = ''
-        time_to_bkl = ''
-        status = ''
-        start = ''
-        comment = ''
-        developer = "Инвест Траст"
-        okrug = ''
-        district = ''
-        adress = f"Мкр-н {i['project']['name']}"
-        eskrou = ''
-        korpus = i['building']['number']
-        konstruktiv = ''
-        klass = ''
-        srok_sdachi = ''
-        srok_sdachi_old = ''
-        stadia = ''
-        dogovor = ''
-        type = 'Квартиры'
-        if params['finish_option'] == '1':
-            finish_type = 'С отделкой'
-        elif params['finish_option'] == '0':
-            finish_type = 'Без отделки'
-
-        room_count = int(i['rooms'])
-
-        area = float(i['area'])
-
-        price_per_metr = ''
-        old_price = round(float(i['price_compare']))
-        discount = ''
-        price_per_metr_new = ''
-        try:
-            price = round(float(i["price"]))
-        except:
-            price = i["price"]
-        section = int(i['section']['number'])
-        floor = i['floor']['number']
-        flat_number = i['number']
-
-
-
-        print(
-            f"{project}, {url}, отделка: {finish_type}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
-        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
-                  distance_to_mck, time_to_mck, distance_to_bkl,
-                  time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
-                  klass, srok_sdachi, srok_sdachi_old,
-                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                  price_per_metr_new, price, section, floor, flat_number]
-        flats.append(result)
-    if not items:
-        break
-    params["offset"] = int(params["offset"]) + 48
-    sleep_time = random.uniform(1, 4)
-    time.sleep(sleep_time)
-
-
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                                  'Название проекта',
-                                  'на англ',
-                                  'промзона',
-                                  'Местоположение',
-                                  'Метро',
-                                  'Расстояние до метро, км',
-                                  'Время до метро, мин',
-                                  'МЦК/МЦД/БКЛ',
-                                  'Расстояние до МЦК/МЦД, км',
-                                  'Время до МЦК/МЦД, мин',
-                                  'БКЛ',
-                                  'Расстояние до БКЛ, км',
-                                  'Время до БКЛ, мин',
-                                  'статус',
-                                  'старт',
-                                  'Комментарий',
-                                  'Девелопер',
-                                  'Округ',
-                                  'Район',
-                                  'Адрес',
-                                  'Эскроу',
-                                  'Корпус',
-                                  'Конструктив',
-                                  'Класс',
-                                  'Срок сдачи',
-                                  'Старый срок сдачи',
-                                  'Стадия строительной готовности',
-                                  'Договор',
-                                  'Тип помещения',
-                                  'Отделка',
-                                  'Кол-во комнат',
-                                  'Площадь, кв.м',
-                                  'Цена кв.м, руб.',
-                                  'Цена лота, руб.',
-                                  'Скидка,%',
-                                  'Цена кв.м со ск, руб.',
-                                  'Цена лота со ск, руб.',
-                                  'секция',
-                                  'этаж',
-                                  'номер'])
-
-current_date = datetime.now().date()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}-0_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)

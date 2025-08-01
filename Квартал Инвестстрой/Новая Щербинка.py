@@ -5,8 +5,7 @@ import pandas as pd
 import openpyxl
 import os
 import random
-
-import requests
+from functions import save_flats_to_excel
 
 cookies = {
     'csrftoken': 'dc18A6B92a8a6c54A6CE76C58f7b45672430faD90924d9e0AaB6328eb67Eb5C2',
@@ -100,13 +99,11 @@ while True:
             area = float(i['area'])
         except:
             area = ''
-        try:
+        if i['original_price'] is not None:
             old_price = int(i['original_price'].replace('.00', ''))
-        except:
-            old_price = ''
-        try:
             price = int(i['price'].replace('.00', ''))
-        except:
+        else:
+            old_price = int(i['price'].replace('.00', ''))
             price = ''
         section = int(i['section_number'])
         try:
@@ -159,62 +156,5 @@ while True:
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, "Sminex-Инград")
 

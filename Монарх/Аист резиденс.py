@@ -6,33 +6,39 @@ import openpyxl
 import os
 import random
 
+from functions import save_flats_to_excel
+
+'''
+Обновляем куки
+'''
+
 cookies = {
     '_ym_uid': '174358513932310668',
     '_ym_d': '1750922038',
     '_ym_isad': '2',
-    'XSRF-TOKEN': 'eyJpdiI6IkVZR0VERzYzcnZzMzJwMkkvbDY0QWc9PSIsInZhbHVlIjoidUFjNjhCaTZtSUdqa0pQVDBZZ2xtcHpqS0YzUy9SSDJiaC8xdkZWcUtxNGQ3clBRZFdLbWM2SlVsWlBYaGd3WjJhQzBteGhDUVNmMkIwQndYeEUrTnUwNzYvQWJIbHMrMUw3TzJmNDhhbjZySjZ0MHBxNmZOVzRGSUdlb1pyeUkiLCJtYWMiOiI1NGEzZmZkOTg5MzBkNDk5YjhjNjdlN2NiNTgxYjgyMzUxNWRkZDcwNjYxMTU0MGVlY2I5MTE0ZWUzNzViYTEwIiwidGFnIjoiIn0%3D',
-    'aist_session': 'eyJpdiI6IjJtdnFnS2Yza2s2N0VSU1p2VnhObWc9PSIsInZhbHVlIjoiVkRJa0RPV2w2cnkvV1VuMlRZVGY0VFhkS0xYVE0vUUNwS3RyVkNmbzA3aGp2S0ZIRG1zWWptN2V3dlpNeHVQTzJrTEVSaUV5ZEdOK29aVkl3SXpGSGxxQ3lSUTBycWV4dkpIMkJYb2dMN0FPVjhHd3BtcFdMV0hONDNvNm82SFIiLCJtYWMiOiJlNDYyZmYyYWU2YWNmZmUwYTgyZDdiYmE4MTEyYzdjZDk5ZDVhYmZkZmZiNDhmZTZhMzRkODA2YWMwYzQ4MDEwIiwidGFnIjoiIn0%3D',
+    'XSRF-TOKEN': 'eyJpdiI6ImZuQnJIVE93blVOckszbXFhRzRKNWc9PSIsInZhbHVlIjoiYmJSV2dQMzA0cklJU1BvNllVT1JBVFdBUTlGMDVOOTFTN0NLMnBlVnpLQlNFTmNwalpDZW9STGJzMzRZbjVxZmJmcWM5LzZGQUpyV2phWG5kQUJ1ekFad0pTckZvK0hlQTdhMzJ5MDFjbXJmVy9VMm9zOXJjeVphN1NuU3I1Vk8iLCJtYWMiOiI4YmY5YjE4MzhlYWQ4OTg4ZGY2YTgxNWYyZWUwOTljOTViZTJiZTMxYjA0YjY0NzJlZmNkMGU3ZGQ1MmJjOWNkIiwidGFnIjoiIn0%3D',
+    'aist_session': 'eyJpdiI6IjRQbXhINlRiNGtqV2xjQTZtYTVoTFE9PSIsInZhbHVlIjoidE5jZjIwRU1HcmhpclRocE5ISW5EcHltRHVlNXBjNlozMGVwUENVMDJYZlZpL05FcUEvdm9mMTc3Ny9UMlBoUHR2NDlVd3ZISk5EZGhaL2hhVmNpRC9GVHNEM3FIRTBoVEZNQmd3bUY1cnFrRGtZZndTSEIwUCsyUHQwNlF2L0YiLCJtYWMiOiIyMzE3MDczMDlhMTcwZTRlM2M5ODMxOTI2YzQxYzA1ZDAxNmUzODUyMDFjZTJiMTAyMjk4ZjIxNjk3MzgyNzAxIiwidGFnIjoiIn0%3D',
+    '_ym_visorc': 'w',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'cache-control': 'no-cache',
     # 'content-length': '0',
     'origin': 'https://aist-residence.com',
-    'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=3',
-    'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+    'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=2',
+    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
-    'x-csrf-token': 'juRHWXIs3Lf8bKKIZ2vEtawTD9CTR2zSFSwkZrRC',
-    # 'cookie': '_ym_uid=174358513932310668; _ym_d=1750922038; _ym_isad=2; XSRF-TOKEN=eyJpdiI6IkVZR0VERzYzcnZzMzJwMkkvbDY0QWc9PSIsInZhbHVlIjoidUFjNjhCaTZtSUdqa0pQVDBZZ2xtcHpqS0YzUy9SSDJiaC8xdkZWcUtxNGQ3clBRZFdLbWM2SlVsWlBYaGd3WjJhQzBteGhDUVNmMkIwQndYeEUrTnUwNzYvQWJIbHMrMUw3TzJmNDhhbjZySjZ0MHBxNmZOVzRGSUdlb1pyeUkiLCJtYWMiOiI1NGEzZmZkOTg5MzBkNDk5YjhjNjdlN2NiNTgxYjgyMzUxNWRkZDcwNjYxMTU0MGVlY2I5MTE0ZWUzNzViYTEwIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6IjJtdnFnS2Yza2s2N0VSU1p2VnhObWc9PSIsInZhbHVlIjoiVkRJa0RPV2w2cnkvV1VuMlRZVGY0VFhkS0xYVE0vUUNwS3RyVkNmbzA3aGp2S0ZIRG1zWWptN2V3dlpNeHVQTzJrTEVSaUV5ZEdOK29aVkl3SXpGSGxxQ3lSUTBycWV4dkpIMkJYb2dMN0FPVjhHd3BtcFdMV0hONDNvNm82SFIiLCJtYWMiOiJlNDYyZmYyYWU2YWNmZmUwYTgyZDdiYmE4MTEyYzdjZDk5ZDVhYmZkZmZiNDhmZTZhMzRkODA2YWMwYzQ4MDEwIiwidGFnIjoiIn0%3D',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+    'x-csrf-token': 'yTa5lZTEXianpQgmMhm3gIWhEuHd3wlJU544yWsx',
+    # 'cookie': '_ym_uid=174358513932310668; _ym_d=1750922038; _ym_isad=2; XSRF-TOKEN=eyJpdiI6ImZuQnJIVE93blVOckszbXFhRzRKNWc9PSIsInZhbHVlIjoiYmJSV2dQMzA0cklJU1BvNllVT1JBVFdBUTlGMDVOOTFTN0NLMnBlVnpLQlNFTmNwalpDZW9STGJzMzRZbjVxZmJmcWM5LzZGQUpyV2phWG5kQUJ1ekFad0pTckZvK0hlQTdhMzJ5MDFjbXJmVy9VMm9zOXJjeVphN1NuU3I1Vk8iLCJtYWMiOiI4YmY5YjE4MzhlYWQ4OTg4ZGY2YTgxNWYyZWUwOTljOTViZTJiZTMxYjA0YjY0NzJlZmNkMGU3ZGQ1MmJjOWNkIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6IjRQbXhINlRiNGtqV2xjQTZtYTVoTFE9PSIsInZhbHVlIjoidE5jZjIwRU1HcmhpclRocE5ISW5EcHltRHVlNXBjNlozMGVwUENVMDJYZlZpL05FcUEvdm9mMTc3Ny9UMlBoUHR2NDlVd3ZISk5EZGhaL2hhVmNpRC9GVHNEM3FIRTBoVEZNQmd3bUY1cnFrRGtZZndTSEIwUCsyUHQwNlF2L0YiLCJtYWMiOiIyMzE3MDczMDlhMTcwZTRlM2M5ODMxOTI2YzQxYzA1ZDAxNmUzODUyMDFjZTJiMTAyMjk4ZjIxNjk3MzgyNzAxIiwidGFnIjoiIn0%3D; _ym_visorc=w',
 }
+
 
 params = {
     'group_type[0]': '1',
@@ -93,10 +99,10 @@ while True:
         room_count = i['flat_type']
         area = i["area_total"]
         price_per_metr = ''
-        old_price = ''
+        old_price = float(i["price"])
         discount = ''
         price_per_metr_new = ''
-        price = float(i["price"])
+        price = ''
         section = ''
         floor = i["floor"]
         flat_number = i['number']
@@ -116,63 +122,4 @@ while True:
         break
 
 
-
-
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                                  'Название проекта',
-                                  'на англ',
-                                  'промзона',
-                                  'Местоположение',
-                                  'Метро',
-                                  'Расстояние до метро, км',
-                                  'Время до метро, мин',
-                                  'МЦК/МЦД/БКЛ',
-                                  'Расстояние до МЦК/МЦД, км',
-                                  'Время до МЦК/МЦД, мин',
-                                  'БКЛ',
-                                  'Расстояние до БКЛ, км',
-                                  'Время до БКЛ, мин',
-                                  'статус',
-                                  'старт',
-                                  'Комментарий',
-                                  'Девелопер',
-                                  'Округ',
-                                  'Район',
-                                  'Адрес',
-                                  'Эскроу',
-                                  'Корпус',
-                                  'Конструктив',
-                                  'Класс',
-                                  'Срок сдачи',
-                                  'Старый срок сдачи',
-                                  'Стадия строительной готовности',
-                                  'Договор',
-                                  'Тип помещения',
-                                  'Отделка',
-                                  'Кол-во комнат',
-                                  'Площадь, кв.м',
-                                  'Цена кв.м, руб.',
-                                  'Цена лота, руб.',
-                                  'Скидка,%',
-                                  'Цена кв.м со ск, руб.',
-                                  'Цена лота со ск, руб.',
-                                  'секция',
-                                  'этаж',
-                                  'номер'])
-
-current_date = datetime.date.today()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)

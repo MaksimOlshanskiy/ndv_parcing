@@ -7,6 +7,8 @@ import random
 from bs4 import BeautifulSoup
 import requests
 
+from functions import save_flats_to_excel
+
 cookies = {
     'SCBFormsAlreadyPulled': 'true',
     'PHPSESSID': 'P0x6UkI61PTRUL3FZB3ggzj9HDpG5l0W',
@@ -135,14 +137,21 @@ while params['PAGEN_1'] != '20':
         except:
             old_price = ''
 
+
         discount = ''
         price_per_metr_new = ''
         try:
-            price_element = i.find('div', class_="price-room action-pr")
-            if price_element:
-                for stock in price_element.find_all(class_="price-stock"):
-                    stock.extract()
-                price = int(price_element.get_text(strip=True).replace('i','').replace(' ', ''))
+
+            lena = len(i.find('div', class_='price-room action-pr').text.split())
+            if lena > 5:
+                price = ''.join(i.find('div', class_='price-room action-pr').text.split()[5:8])
+                old_price = int(''.join(i.find('div', class_='price-room action-pr').text.split()[0:3]))
+
+            else:
+
+                old_price = int(''.join(i.find('div', class_='price-room action-pr').text.split()[0:3]))
+                price = ''
+
 
         except:
             price = ''
@@ -172,61 +181,4 @@ while params['PAGEN_1'] != '20':
     time.sleep(sleep_time)
 
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                              'Название проекта',
-                              'на англ',
-                              'промзона',
-                              'Местоположение',
-                              'Метро',
-                              'Расстояние до метро, км',
-                              'Время до метро, мин',
-                              'МЦК/МЦД/БКЛ',
-                              'Расстояние до МЦК/МЦД, км',
-                              'Время до МЦК/МЦД, мин',
-                              'БКЛ',
-                              'Расстояние до БКЛ, км',
-                              'Время до БКЛ, мин',
-                              'статус',
-                              'старт',
-                              'Комментарий',
-                              'Девелопер',
-                              'Округ',
-                              'Район',
-                              'Адрес',
-                              'Эскроу',
-                              'Корпус',
-                              'Конструктив',
-                              'Класс',
-                              'Срок сдачи',
-                              'Старый срок сдачи',
-                              'Стадия строительной готовности',
-                              'Договор',
-                              'Тип помещения',
-                              'Отделка',
-                              'Кол-во комнат',
-                              'Площадь, кв.м',
-                              'Цена кв.м, руб.',
-                              'Цена лота, руб.',
-                              'Скидка,%',
-                              'Цена кв.м со ск, руб.',
-                              'Цена лота со ск, руб.',
-                              'секция',
-                              'этаж',
-                              'номер'])
-
-current_date = datetime.date.today()
-
-# Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Айкон"
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)

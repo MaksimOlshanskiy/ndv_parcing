@@ -6,6 +6,8 @@ import openpyxl
 import os
 import random
 
+from functions import save_flats_to_excel
+
 cookies = {
     'PHPSESSID': 'dreulTzli2StjgslrOr6AycwRP9zsaJF',
     'uid': 'bc501188670593f2b86756c15477bb94',
@@ -61,12 +63,12 @@ headers = {
 
 params = {
     'chess-build': '13',
-    'price[min]': '3 813 530',
-    'price[max]': '13 920 000',
-    'area[min]': '23',
-    'area[max]': '60',
-    'floor[min]': '2',
-    'floor[max]': '17',
+    'price[min]': '1 813 530',
+    'price[max]': '99 920 000',
+    'area[min]': '1',
+    'area[max]': '999',
+    'floor[min]': '1',
+    'floor[max]': '99',
     'sorting': 'price-asc',
     'page': '0',
     'showMore': '',
@@ -171,62 +173,5 @@ while True:
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

@@ -13,63 +13,62 @@ import os
 from datetime import datetime
 import random
 
+from functions import save_flats_to_excel
+
 cookies = {
-    '__js_p_': '356,86400,1,0,0',
-    '__jhash_': '792',
-    '__jua_': 'Mozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F137.0.0.0%20Safari%2F537.36',
-    '__hash_': 'cf4f68f68a876c52a79beac25b74bc66',
-    '__lhash_': '28dad3360ec92d6b6be76cf3433419b6',
+    '__js_p_': '530,86400,1,0,0',
+    '__jhash_': '227',
+    '__jua_': 'Mozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F138.0.0.0%20Safari%2F537.36',
+    '__hash_': 'd6b2419ab0684ef59792d0aa8e6742f4',
+    '__lhash_': '2224f29c577a35592fdfc3c250e054ec',
     'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
-    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1751028759098%2C%22sl%22%3A%7B%22224%22%3A1750942359098%2C%221228%22%3A1750942359098%7D%7D',
-    'adrdel': '1750942359490',
-    '_ga': 'GA1.1.531695832.1750942360',
-    'scbsid_old': '2746015342',
+    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1753776935906%2C%22sl%22%3A%7B%22224%22%3A1753690535906%2C%221228%22%3A1753690535906%7D%7D',
+    'adrdel': '1753690536253',
+    '_ga_CW8DX22VWK': 'GS2.1.s1753690537$o1$g0$t1753690537$j60$l0$h0',
+    '_ga': 'GA1.1.970088777.1753690538',
     'tmr_lvid': '264deae7a4cd3a9d92d563d67bdba7e6',
     'tmr_lvidTS': '1743082464542',
-    'mindboxDeviceUUID': 'b8b42419-45ee-4a92-8e84-640b5c64455a',
-    'directCrm-session': '%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D',
-    '_ct_ids': '5wfm9jtf%3A67186%3A225717261',
-    '_ct_session_id': '225717261',
-    '_ct_site_id': '67186',
-    'call_s': '___5wfm9jtf.1750944160.225717261.401330:1128693|2___',
-    '_ct': '2800000000151489421',
     '_ym_uid': '1743082465444153846',
-    '_ym_d': '1750942361',
-    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    '_ym_d': '1753690539',
+    'scbsid_old': '2746015342',
     '_ym_isad': '2',
-    'domain_sid': 'rz11zN0wchT0nNAfs1mRu%3A1750942361478',
     '_ym_visorc': 'w',
+    '_ct_ids': '5wfm9jtf%3A67186%3A241297163',
+    '_ct_session_id': '241297163',
+    '_ct_site_id': '67186',
+    'call_s': '___5wfm9jtf.1753692337.241297163.401330:1377215|2___',
+    '_ct': '2800000000162151209',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    'tmr_detect': '0%7C1753690540182',
+    'cted': 'modId%3D5wfm9jtf%3Bclient_id%3D970088777.1753690538%3Bya_client_id%3D1743082465444153846',
+    'domain_sid': 'rz11zN0wchT0nNAfs1mRu%3A1753690541119',
     'cookieConsent': 'true',
-    'cted': 'modId%3D5wfm9jtf%3Bclient_id%3D531695832.1750942360%3Bya_client_id%3D1743082465444153846',
-    'tmr_detect': '0%7C1750942362735',
-    'sma_session_id': '2340110960',
+    'sma_session_id': '2373062359',
     'SCBfrom': 'https%3A%2F%2Fsreda.ru%2Fflats%3FfiltersFlat%3D%257B%2522default%2522%253A0%252C%2522block_id_list%2522%253A%255B%25222192%2522%255D%257D%26gridType%3Dlist',
     'SCBnotShow': '-1',
+    'smFpId_old_values': '%5B%22a7ea49fc46c5a5b146d731ca169a44ef%22%5D',
     'SCBporogAct': '5000',
-    'smFpId_old_values': '%5B%22d3b2a7a62667c988953915d7d3b4139e%22%5D',
-    'SCBstart': '1750942365129',
-    'SCBindexAct': '330',
-    '_ga_CW8DX22VWK': 'GS2.1.s1750942360$o1$g1$t1750942365$j55$l0$h0',
-    'SCBFormsAlreadyPulled': 'true',
+    'SCBstart': '1753690544695',
     'sma_postview_ready': '1',
-    'SCBindexAct': '545',
-    'sma_index_activity': '997',
+    'sma_index_activity': '94',
+    'SCBindexAct': '94',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'priority': 'u=1, i',
-    'referer': 'https://sreda.ru/flats',
-    'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
+    'referer': 'https://sreda.ru/flats/sreda-na-kutuzovskom?filtersFlat=%7B%22default%22%3A0%7D&gridType=list&utm_source=google.com&utm_medium=organic&utm_campaign=google.com&utm_referrer=google.com',
+    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
-    # 'cookie': '__js_p_=356,86400,1,0,0; __jhash_=792; __jua_=Mozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F137.0.0.0%20Safari%2F537.36; __hash_=cf4f68f68a876c52a79beac25b74bc66; __lhash_=28dad3360ec92d6b6be76cf3433419b6; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1751028759098%2C%22sl%22%3A%7B%22224%22%3A1750942359098%2C%221228%22%3A1750942359098%7D%7D; adrdel=1750942359490; _ga=GA1.1.531695832.1750942360; scbsid_old=2746015342; tmr_lvid=264deae7a4cd3a9d92d563d67bdba7e6; tmr_lvidTS=1743082464542; mindboxDeviceUUID=b8b42419-45ee-4a92-8e84-640b5c64455a; directCrm-session=%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D; _ct_ids=5wfm9jtf%3A67186%3A225717261; _ct_session_id=225717261; _ct_site_id=67186; call_s=___5wfm9jtf.1750944160.225717261.401330:1128693|2___; _ct=2800000000151489421; _ym_uid=1743082465444153846; _ym_d=1750942361; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ym_isad=2; domain_sid=rz11zN0wchT0nNAfs1mRu%3A1750942361478; _ym_visorc=w; cookieConsent=true; cted=modId%3D5wfm9jtf%3Bclient_id%3D531695832.1750942360%3Bya_client_id%3D1743082465444153846; tmr_detect=0%7C1750942362735; sma_session_id=2340110960; SCBfrom=https%3A%2F%2Fsreda.ru%2Fflats%3FfiltersFlat%3D%257B%2522default%2522%253A0%252C%2522block_id_list%2522%253A%255B%25222192%2522%255D%257D%26gridType%3Dlist; SCBnotShow=-1; SCBporogAct=5000; smFpId_old_values=%5B%22d3b2a7a62667c988953915d7d3b4139e%22%5D; SCBstart=1750942365129; SCBindexAct=330; _ga_CW8DX22VWK=GS2.1.s1750942360$o1$g1$t1750942365$j55$l0$h0; SCBFormsAlreadyPulled=true; sma_postview_ready=1; SCBindexAct=545; sma_index_activity=997',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+    # 'cookie': '__js_p_=530,86400,1,0,0; __jhash_=227; __jua_=Mozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F138.0.0.0%20Safari%2F537.36; __hash_=d6b2419ab0684ef59792d0aa8e6742f4; __lhash_=2224f29c577a35592fdfc3c250e054ec; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1753776935906%2C%22sl%22%3A%7B%22224%22%3A1753690535906%2C%221228%22%3A1753690535906%7D%7D; adrdel=1753690536253; _ga_CW8DX22VWK=GS2.1.s1753690537$o1$g0$t1753690537$j60$l0$h0; _ga=GA1.1.970088777.1753690538; tmr_lvid=264deae7a4cd3a9d92d563d67bdba7e6; tmr_lvidTS=1743082464542; _ym_uid=1743082465444153846; _ym_d=1753690539; scbsid_old=2746015342; _ym_isad=2; _ym_visorc=w; _ct_ids=5wfm9jtf%3A67186%3A241297163; _ct_session_id=241297163; _ct_site_id=67186; call_s=___5wfm9jtf.1753692337.241297163.401330:1377215|2___; _ct=2800000000162151209; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; tmr_detect=0%7C1753690540182; cted=modId%3D5wfm9jtf%3Bclient_id%3D970088777.1753690538%3Bya_client_id%3D1743082465444153846; domain_sid=rz11zN0wchT0nNAfs1mRu%3A1753690541119; cookieConsent=true; sma_session_id=2373062359; SCBfrom=https%3A%2F%2Fsreda.ru%2Fflats%3FfiltersFlat%3D%257B%2522default%2522%253A0%252C%2522block_id_list%2522%253A%255B%25222192%2522%255D%257D%26gridType%3Dlist; SCBnotShow=-1; smFpId_old_values=%5B%22a7ea49fc46c5a5b146d731ca169a44ef%22%5D; SCBporogAct=5000; SCBstart=1753690544695; sma_postview_ready=1; sma_index_activity=94; SCBindexAct=94',
 }
+
 
 params = {
     'default': '1',
@@ -174,62 +173,5 @@ while True:
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-current_date = datetime.now().date()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{current_date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

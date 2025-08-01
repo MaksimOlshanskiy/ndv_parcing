@@ -14,6 +14,8 @@ import random
 
 import requests
 
+from functions import save_flats_to_excel
+
 cookies = {
     '__ddg1_': 'ZRyROBeQARGk2nXIvwj2',
     'tmr_lvid': 'c30c50b0541ba21ba401a8b744a17f78',
@@ -65,10 +67,10 @@ data = {
         '154',
         '153',
     ],
-    'filters[maxPrice]': '64900000',
-    'filters[minPrice]': '7800000',
-    'filters[maxSquare]': '286.7',
-    'filters[minSquare]': '39.14',
+    'filters[maxPrice]': '99900000',
+    'filters[minPrice]': '100000',
+    'filters[maxSquare]': '999.7',
+    'filters[minSquare]': '1.14',
     'filters[currentType][]': [
         'townhouse',
         'ready-townhouse',
@@ -143,14 +145,14 @@ while True:
                     area = ''
                 if not area:
                     continue
-                try:
+                print(i['price_old'])
+                if i['price_old'] != '':
                     old_price = int(i['price_old'])
-                except:
-                    old_price = ''
-                try:
                     price = int(i['price'])
-                except:
+                else:
+                    old_price = int(i['price'])
                     price = ''
+
                 try:
                     floor = i['floor']
                 except:
@@ -239,12 +241,14 @@ while True:
             if not area:
                 continue
             try:
-                old_price = int(i['price_old'])
+                if i['price_old'] != '':
+                    old_price = int(i['price_old'])
+                    price = int(i['price'])
+                else:
+                    old_price = int(i['price'])
+                    price = ''
             except:
-                old_price = ''
-            try:
-                price = int(i['price'])
-            except:
+                old_price = int(i['price'])
                 price = ''
             try:
                 floor = i['floor']
@@ -294,62 +298,5 @@ while True:
     sleep_time = random.uniform(1, 4)
     time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

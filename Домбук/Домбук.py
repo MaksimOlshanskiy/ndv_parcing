@@ -7,6 +7,8 @@ import random
 from datetime import datetime
 import requests
 
+from functions import save_flats_to_excel
+
 finishing_ids = ['e78af76f-8f3c-49c0-ba9c-0421df104fa4', 'f7c51519-b5eb-4055-9dfb-cc40b9f1a426', '9120e779-f2a7-440c-91b1-aeb2ab2aec66']
 finishing_ids_dict = {'e78af76f-8f3c-49c0-ba9c-0421df104fa4' : 'С отделкой', 'f7c51519-b5eb-4055-9dfb-cc40b9f1a426' : 'Предчистовая', '9120e779-f2a7-440c-91b1-aeb2ab2aec66' : 'Без отделки' }
 rooms_count_list = ['studio', '1_room', '2_room', '3_room', '4_and_more_room']
@@ -143,61 +145,4 @@ for rooms in rooms_count_list:
             time.sleep(sleep_time)
 
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                                  'Название проекта',
-                                  'на англ',
-                                  'промзона',
-                                  'Местоположение',
-                                  'Метро',
-                                  'Расстояние до метро, км',
-                                  'Время до метро, мин',
-                                  'МЦК/МЦД/БКЛ',
-                                  'Расстояние до МЦК/МЦД, км',
-                                  'Время до МЦК/МЦД, мин',
-                                  'БКЛ',
-                                  'Расстояние до БКЛ, км',
-                                  'Время до БКЛ, мин',
-                                  'статус',
-                                  'старт',
-                                  'Комментарий',
-                                  'Девелопер',
-                                  'Округ',
-                                  'Район',
-                                  'Адрес',
-                                  'Эскроу',
-                                  'Корпус',
-                                  'Конструктив',
-                                  'Класс',
-                                  'Срок сдачи',
-                                  'Старый срок сдачи',
-                                  'Стадия строительной готовности',
-                                  'Договор',
-                                  'Тип помещения',
-                                  'Отделка',
-                                  'Кол-во комнат',
-                                  'Площадь, кв.м',
-                                  'Цена кв.м, руб.',
-                                  'Цена лота, руб.',
-                                  'Скидка,%',
-                                  'Цена кв.м со ск, руб.',
-                                  'Цена лота со ск, руб.',
-                                  'секция',
-                                  'этаж',
-                                  'номер'])
-
-current_date = datetime.now().date()
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{current_date}_{finish_type}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)

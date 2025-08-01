@@ -10,18 +10,21 @@ import requests
 
 import requests
 
+from functions import save_flats_to_excel
+
 cookies = {
-    'session': '66db614237b50b4410475b0f5728607c2ecf4b1958b901fd7c760dc695522ea1',
+    'session': '2e31cfafb8c8ae1bd49825a613b9b134b080d80ec35a2e37e0bf54ed6b6eb348',
+    '_ym_uid': '1744123184975636231',
+    '_ym_d': '1753352243',
     'tmr_lvid': '9d70403686a809f88ffed7e0be97ad87',
     'tmr_lvidTS': '1744123183149',
-    '_ym_uid': '1744123184975636231',
-    '_ym_d': '1744123184',
+    'cted': 'modId%3Dt43gunl9%3Bya_client_id%3D1744123184975636231',
     '_ym_isad': '2',
-    'domain_sid': 'EN61jaTFwmqrIUj5aoVGH%3A1744123183961',
     '_ym_visorc': 'w',
-    'tmr_detect': '0%7C1744123185486',
-    '_cmg_cssta5X99': '1744123186',
-    '_comagic_ida5X99': '10589670029.14726334554.1744123185',
+    '_cmg_cssta5X99': '1753352243',
+    '_comagic_ida5X99': '11333060459.15556459669.1753352243',
+    'domain_sid': 'EN61jaTFwmqrIUj5aoVGH%3A1753352244131',
+    'tmr_detect': '0%7C1753352245581',
 }
 
 headers = {
@@ -29,27 +32,27 @@ headers = {
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'priority': 'u=1, i',
     'referer': 'https://triumf-pushkino.ru/flats',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
     'x-host': 'triumf-pushkino.ru',
-    # 'cookie': 'session=66db614237b50b4410475b0f5728607c2ecf4b1958b901fd7c760dc695522ea1; tmr_lvid=9d70403686a809f88ffed7e0be97ad87; tmr_lvidTS=1744123183149; _ym_uid=1744123184975636231; _ym_d=1744123184; _ym_isad=2; domain_sid=EN61jaTFwmqrIUj5aoVGH%3A1744123183961; _ym_visorc=w; tmr_detect=0%7C1744123185486; _cmg_cssta5X99=1744123186; _comagic_ida5X99=10589670029.14726334554.1744123185',
+    # 'cookie': 'session=2e31cfafb8c8ae1bd49825a613b9b134b080d80ec35a2e37e0bf54ed6b6eb348; _ym_uid=1744123184975636231; _ym_d=1753352243; tmr_lvid=9d70403686a809f88ffed7e0be97ad87; tmr_lvidTS=1744123183149; cted=modId%3Dt43gunl9%3Bya_client_id%3D1744123184975636231; _ym_isad=2; _ym_visorc=w; _cmg_cssta5X99=1753352243; _comagic_ida5X99=11333060459.15556459669.1753352243; domain_sid=EN61jaTFwmqrIUj5aoVGH%3A1753352244131; tmr_detect=0%7C1753352245581',
 }
 
 params = {
     'project_id': 'afbd9c73-caa4-4e11-88bd-3d752d7730c8',
     'status': 'free',
     'offset': '0',
-    'limit': '48',
+    'limit': '16',
     'order_by': 'price',
 }
 
 
-
+session = requests.Session()
 
 flats = []
 date = datetime.now().date()
@@ -60,7 +63,7 @@ def extract_digits_or_original(s):
 
 while True:
 
-    response = requests.get(
+    response = session.get(
         'https://triumf-pushkino.ru/api/realty-filter/residential/real-estates',
         params=params,
         cookies=cookies,
@@ -144,66 +147,9 @@ while True:
 
     if not items:
         break
-    params['offset'] = str(int(params['offset']) + 48)
-    sleep_time = random.uniform(1, 5)
+    params['offset'] = str(int(params['offset']) + 16)
+    sleep_time = random.uniform(4, 7)
     time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-
-# Базовый путь для сохранения
-base_path = r""
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 

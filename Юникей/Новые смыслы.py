@@ -13,6 +13,7 @@ import os
 import random
 from bs4 import BeautifulSoup
 
+from functions import save_flats_to_excel
 
 cookies = {
     '_ym_uid': '1742827436146654235',
@@ -55,6 +56,7 @@ data = {
     'params[finishing]': '0',
 }
 
+finishings = ['UniLoft', 'Без отделки', 'UniBox']
 
 flats = []
 flats_nums = []
@@ -64,12 +66,9 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-for i in range(2):
+for finish in finishings:
     print(flats_nums)
-    if i == 0:
-        data['params[finishing]'] = '1'
-    else:
-        data['params[finishing]'] = '0'
+    data['params[finishing]'] = finish
     data['page'] = '1'
 
 
@@ -97,10 +96,7 @@ for i in range(2):
             project = 'Новые смыслы'
             korpus = flat.find('div', class_='layout-card__info-wrp').text.split()[4]
             type = 'Квартира'
-            if data['params[finishing]'] == '0':
-                finish_type = 'Без отделки'
-            else:
-                finish_type = 'С отделкой'
+            finish_type = finish
             if flat.find('span', class_='layout-card__count').text.split()[0] == 'Студия':
                 room_count = 0
             else:
@@ -111,14 +107,13 @@ for i in range(2):
                 area = ''
             try:
                 old_price = extract_digits_or_original(price_div.find('span', class_='layout-card__title').get_text(strip=True))
-            except:
-                old_price = ''
-            try:
-                price = extract_digits_or_original(price_div.find('span', class_='layout-card__count').find('span', class_='is-red').get_text(
-                strip=True))
-            except:
                 price = extract_digits_or_original(price_div.find('span', class_='layout-card__count').get_text(
+                    strip=True))
+            except:
+                old_price = extract_digits_or_original(price_div.find('span', class_='layout-card__count').get_text(
                 strip=True))
+                price = ''
+
             section = ''
             try:
                 floor = int(flat.find('div', class_='layout-card__info-wrp').text.split()[6].split('/')[0])
@@ -171,62 +166,5 @@ for i in range(2):
         sleep_time = random.uniform(1, 3)
         time.sleep(sleep_time)
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
- 'Название проекта',
- 'на англ',
- 'промзона',
- 'Местоположение',
- 'Метро',
- 'Расстояние до метро, км',
- 'Время до метро, мин',
- 'МЦК/МЦД/БКЛ',
- 'Расстояние до МЦК/МЦД, км',
- 'Время до МЦК/МЦД, мин',
- 'БКЛ',
- 'Расстояние до БКЛ, км',
- 'Время до БКЛ, мин',
- 'статус',
- 'старт',
- 'Комментарий',
- 'Девелопер',
- 'Округ',
- 'Район',
- 'Адрес',
- 'Эскроу',
- 'Корпус',
- 'Конструктив',
- 'Класс',
- 'Срок сдачи',
- 'Старый срок сдачи',
- 'Стадия строительной готовности',
- 'Договор',
- 'Тип помещения',
- 'Отделка',
- 'Кол-во комнат',
- 'Площадь, кв.м',
- 'Цена кв.м, руб.',
- 'Цена лота, руб.',
- 'Скидка,%',
- 'Цена кв.м со ск, руб.',
- 'Цена лота со ск, руб.',
- 'секция',
- 'этаж',
- 'номер'])
-
-
-
-# Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Юникей"
-
-folder_path = os.path.join(base_path, str(date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
-
-filename = f"{developer}_{project}_{date}_C.xlsx"
-
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
-
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+save_flats_to_excel(flats, project, developer)
 
