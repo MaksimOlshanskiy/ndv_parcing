@@ -128,7 +128,6 @@ except ValueError:
 json_data['jsonQuery']['region']['value'] = [user_input]
 
 ids = []
-
 json_data['offset'] = 0
 
 while True:
@@ -234,10 +233,12 @@ for y in ids:
         'value': [1, 2, 3, 4, 5, 6, 7, 9]
     }
 
+
     json_data["jsonQuery"]["floor"]["value"]["gte"] = 1
     json_data["jsonQuery"]["floor"]["value"]["lte"] = 99
     json_data["jsonQuery"]["geo"]["value"][0]["id"] = y
     json_data["jsonQuery"]["page"]["value"] = 1
+    json_data["jsonQuery"]["decorations_list"]["value"][0] = []
 
     response = session.post(
         'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
@@ -246,7 +247,7 @@ for y in ids:
         json=json_data
     )
     flats_count = response.json()['data']['aggregatedCount']
-    print(f'flats_count = {flats_count}')
+    print(f'Количество квартир в проекте: {flats_count}')
     time.sleep(7)
 
     if flats_count > 2500:

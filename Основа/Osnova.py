@@ -132,8 +132,10 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = 'Квартиры'
-
+        if i['layout']['type'] == 'apartment':
+            type = 'Апартаменты'
+        elif i['layout']['type'] == 'flat':
+            type = 'Квартиры'
         try:
             if i["properties"].get("with_decoration_whitebox") is not None and i["properties"].get("with_decoration_whitebox") == True:
                 finish_type = "Предчистовая"

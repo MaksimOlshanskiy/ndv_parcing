@@ -56,14 +56,17 @@ def save_flats_to_excel(flats, project, developer):
          .str.strip()  # убираем лишние пробелы
          .replace(['', '-', 'nan', 'NaN'], '1')  # заменяем пустые строки и текстовые NaN на "1"
      )
-
+    df['col1'] = df['col1'].astype(int)
     df["Название проекта"] = df["Название проекта"].replace(name_dict)
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 
+    print(df[['Корпус', 'Кол-во комнат', 'Площадь, кв.м', 'Цена лота, руб.', 'Цена лота со ск, руб.']].info())
     print(f'')
     print(f'Число лотов: {len(df)}')
     print(f'')
     print(f'Типы отделки: {df['Отделка'].value_counts()}')
+    print(f'')
+
 
 
     def clean_name(name):
@@ -323,7 +326,7 @@ def merge_and_clean(folder_path, output_file_name):
     output_file = f'{folder_path}\\{output_file_name}'
     all_data.to_excel(output_file, index=False)
 
-    print(f"Все данные сохранены в {output_file}")
+    print(f"✅ Все данные сохранены в {output_file}")
 
     file_to_keep = output_file_name
 
@@ -334,4 +337,4 @@ def merge_and_clean(folder_path, output_file_name):
             os.remove(file_path)
             print(f'Удалён файл: {filename}')
 
-    print(f'Число строк в датафрейме {len(all_data)}')
+    print(f'📦 Число строк в датафрейме {len(all_data)}')

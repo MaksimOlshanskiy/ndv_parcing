@@ -17,12 +17,19 @@ def process_data(json_data, excel_df):
     result_df = excel_df.copy()
     result_df['Площадь, кв.м'] = result_df['Площадь, кв.м'].astype(str).str.replace(',', '.').str.replace(' ', '').astype(float)
 
+    last_month = result_df['Дата обновления'].max().to_period('M')
+
     total = len(result_df)
 
     # Список застройщиков, у которых не надо менять типологию
     developers_to_skip = {'Фонд реновации'}
 
     for idx, row in result_df.iterrows():
+
+        update_date = row.get('Дата обновления')
+        if pd.isna(update_date) or pd.to_datetime(update_date).to_period('M') != last_month:
+            continue  # Пропускаем строки не из последнего месяца
+
         jk_name = str(row.get('Название проекта')).strip()
         area = row.get('Площадь, кв.м')
         developer = str(row.get('Девелопер')).strip()
@@ -31,9 +38,16 @@ def process_data(json_data, excel_df):
             result_df.at[idx, 'Кол-во комнат'] = 'Н/Д'
             continue
 
+        # Условие: если площадь <= 28 — это студия
+        if area <= 28:
+            result_df.at[idx, 'Кол-во комнат'] = 'студия'
+            print(f"[{idx + 1}/{total}] Назначено как студия по площади <= 28: ЖК {jk_name}, площадь {area}")
+            continue
+
         # Если девелопер из списка — пропускаем изменение типологии
         if developer in developers_to_skip:
             print(f"[{idx + 1}/{total}] Пропущен (застройщик): ЖК {jk_name}, площадь {area}, девелопер: {developer}")
+            print(result_df.at[idx, 'Кол-во комнат'])
             continue
 
         found = False
@@ -69,7 +83,7 @@ def process_data(json_data, excel_df):
                 for json_area_str, room_type in jk_dict.items():
                     try:
                         json_area = round(float(json_area_str), 2)
-                        if area - 1.5 <= json_area < area:
+                        if area - 3 <= json_area < area:
                             if closest_area is None or json_area > closest_area:
                                 closest_area = json_area
                                 closest_room = room_type
@@ -81,7 +95,7 @@ def process_data(json_data, excel_df):
                     for json_area_str, room_type in jk_dict.items():
                         try:
                             json_area = round(float(json_area_str), 2)
-                            if area < json_area <= area + 1.0:
+                            if area < json_area <= area + 3:
                                 if closest_area is None or json_area < closest_area:
                                     closest_area = json_area
                                     closest_room = room_type
@@ -114,8 +128,8 @@ def save_as_xlsx(df, output_path_xlsx, sheet_name='Sheet1'):
 
 # --- Запуск ---
 json_path = 'normalized_output.json'
-excel_path = r"C:\Users\m.olshanskiy\Desktop\База Июль\06-07.2025_рынок.xlsx"
-output_path = r"C:\Users\m.olshanskiy\Desktop\06-07.2025_рынок_типология.xlsx"
+excel_path = r"C:\Users\m.olshanskiy\Desktop\База нд\По одному.xlsx"
+output_path = r"C:\Users\m.olshanskiy\Desktop\База нд\06-07.2025_рынок_типология_1.xlsx"
 
 json_data = load_json_data(json_path)
 excel_df = load_excel_data(excel_path)
