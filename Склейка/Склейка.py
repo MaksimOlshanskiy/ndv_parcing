@@ -5,7 +5,7 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\Desktop\Города млн Август\Первичка"
+folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2025-08-11"
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -86,7 +86,7 @@ print(f'Число строк в датафрейме {len(all_data)}')
 
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'Первичка.xlsx'
+output_file_name = 'Омск.xlsx'
 output_file = f'{folder_path}\\{output_file_name}'
 
 all_data.to_excel(output_file, index=False)

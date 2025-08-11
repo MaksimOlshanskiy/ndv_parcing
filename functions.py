@@ -56,7 +56,7 @@ def save_flats_to_excel(flats, project, developer):
          .str.strip()  # убираем лишние пробелы
          .replace(['', '-', 'nan', 'NaN'], '1')  # заменяем пустые строки и текстовые NaN на "1"
      )
-    df['col1'] = df['col1'].astype(int)
+    # df['col1'] = df['col1'].astype(int)
     df["Название проекта"] = df["Название проекта"].replace(name_dict)
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 
@@ -77,7 +77,7 @@ def save_flats_to_excel(flats, project, developer):
 
     current_date = datetime.date.today()
     project_root = os.path.dirname(os.path.abspath(__file__))
-    base_path = os.path.join(project_root, "Date_files")
+    base_path = os.path.join(project_root, "1_FILES")
     folder_path = os.path.join(base_path, str(current_date))
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)

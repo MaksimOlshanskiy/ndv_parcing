@@ -197,7 +197,7 @@ response = session.post(    # Первичный запрос для опред�
                         json=json_data
                     )
 
-items_count = response.json()['data']["aggregatedCount"]
+items_count = 10000
 print(f'В городе {items_count} лотов')
 
 # добавляем отделку в json_data
@@ -216,11 +216,15 @@ elif  1500 < items_count < 2500:
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
     total_floor_list = [[1, 100]]
 
-elif items_count >= 2500:
+elif 2500 <= items_count <= 4500:
 
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 11], [12, 14], [15, 20],
-                        [21, 200]]
+    total_floor_list = [[1, 6], [7, 12], [13, 200]]
+
+elif items_count > 4500:
+
+    rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
+    total_floor_list = [[1, 3], [4, 7], [8, 15], [16, 200]]
 
 
 

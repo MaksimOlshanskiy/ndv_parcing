@@ -186,7 +186,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-
+start_time = time.time()
 current_date = datetime.date.today()
 
 repair_ids = [1, 2, 3, 4]
@@ -244,6 +244,9 @@ for rooms in rooms_ids:
 
         for f in total_floor_list:
 
+            # if (rooms == [1] and repair_id == 1) or (rooms == [1] and repair_id == 2 and (f in [[1, 3], [4, 7]])):
+            #    continue
+
             json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
             json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
             json_data["jsonQuery"]["page"]["value"] = 1
@@ -256,10 +259,12 @@ for rooms in rooms_ids:
             counter = 1
             total_count = 1
 
+
+
             while len(flats) < total_count:
 
                 if counter > 1:
-                    sleep_time = random.uniform(7, 11)
+                    sleep_time = random.uniform(7, 10)
                     time.sleep(sleep_time)
                 try:
                     response = session.post(
@@ -364,7 +369,7 @@ for rooms in rooms_ids:
                 counter += 1
                 if not items:
                     break
-                sleep_time = random.uniform(7, 11)
+                sleep_time = random.uniform(7, 9)
                 time.sleep(sleep_time)
 
 
@@ -400,6 +405,9 @@ for rooms in rooms_ids:
             df.to_excel(file_path, index=False)
             print(f'✅ Файл {filename} успешно сохранён')
 
+end_time = time.time()
+
+
 merge_and_clean(folder_path, f'Вторичка_{geo1}_{current_date}.xlsx')
 
-
+print(f"Время выполнения: {end_time - start_time:.4f} сек")
