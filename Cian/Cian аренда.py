@@ -90,15 +90,21 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4770,
+                1,
             ],
         },
         'floor': {
             'type': 'range',
             'value': {
-                'gte': 1,
-                'lte': 999,
+                'gte': 13,
+                'lte': 200,
             },
+        },
+        'room': {
+            'type': 'terms',
+            'value': [
+                1,
+            ],
         },
         'publish_period': {
             'type': 'term',
@@ -142,7 +148,7 @@ current_date = datetime.date.today()
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(8, 12)
+        sleep_time = random.uniform(7, 10)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -252,7 +258,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Аренда_Владивосток_{current_date}.xlsx"
+filename = f"Аренда_Москва_13-200_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

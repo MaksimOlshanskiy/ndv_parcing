@@ -7,6 +7,7 @@ import os
 import random
 import re
 from functions import classify_renovation, merge_and_clean
+import os
 import glob
 
 
@@ -90,16 +91,13 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'region': {
-            'type': 'terms',
+        'geo': {
+            'type': 'geo',
             'value': [
-                5024,
-            ],
-        },
-        'repair': {
-            'type': 'terms',
-            'value': [
-                2,
+                {
+                    'type': 'newobject',
+                    'id': 5411,
+                },
             ],
         },
         'floor': {
@@ -108,10 +106,6 @@ json_data = {
                 'gte': 1,
                 'lte': 99,
             },
-        },
-        'publish_period': {
-            'type': 'term',
-            'value': 2592000,
         },
         'room': {
             'type': 'terms',
@@ -126,71 +120,33 @@ json_data = {
                 9,
             ],
         },
-        'building_status': {
+        'from_developer': {
             'type': 'term',
-            'value': 1,
+            'value': False,
         },
-        'flat_share': {
-            'type': 'term',
-            'value': 2,
+        'decorations_list': {
+            'type': 'terms',
+            'value': [
+                'without',
+            ],
         },
         'page': {
-            'type': 'term',
-            'value': 1,
-        },
-        'electronic_trading': {
             'type': 'term',
             'value': 2,
         },
     },
 }
 
-cities_dict = {
-    'Москва': 1,
-    'Санкт-Петербург': 2,
-    'Новосибирск': 4897,
-    'Екатеринбург': 4743,
-    'Казань': 4777,
-    'Красноярск': 4827,
-    'Нижний Новгород': 4885,
-    'Челябинск': 5048,
-    'Уфа': 176245,
-    'Краснодар': 4820,
-    'Самара': 4966,
-    'Ростов-на-Дону': 4959,
-    'Омск': 4914,
-    'Воронеж': 4713,
-    'Пермь': 4927,
-    'Волгоград': 4704
-}
-
-print("Список доступных регионов:")
-for city, city_id in cities_dict.items():
-    print(f"{city}: {city_id}")
-
-user_input = input("\nВведите ID нужного региона или введите свой: ")
-
-try:
-    user_id = int(user_input)
-    if user_id in cities_dict.values():
-        selected_city = [city for city, cid in cities_dict.items() if cid == user_id][0]
-        print(f"\nВы выбрали город: {selected_city}")
-    else:
-        print("\nГород не в списке")
-except ValueError:
-    print("\nОшибка: введите числовой ID.")
-
-json_data['jsonQuery']['region']['value'] = [user_input]
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-start_time = time.time()
+
 current_date = datetime.date.today()
 
-repair_ids = [1, 2, 3, 4]
-repair_ids_dict = {1: 'Без отделки', 2: 'Косметический', 3: 'Евроремонт', 4: 'Дизайнерский'}
+repair_ids = ['fine', 'preFine', 'without', 'fineWithFurniture']
+repair_ids_dict = {'without': 'Без отделки', 'preFine': 'Предчистовая', 'fine': 'С отделкой', 'fineWithFurniture': 'С отделкой и опциями'}
 rooms_ids = [1,2,3,4,5,6,7,9]
 
 session = requests.Session()
@@ -202,7 +158,7 @@ response = session.post(    # Первичный запрос для опред�
                         json=json_data
                     )
 
-items_count = response.json()['data']["aggregatedCount"]
+items_count = response.json()["data"]["offerCount"]
 print(f'В городе {items_count} лотов')
 
 
@@ -239,11 +195,10 @@ for rooms in rooms_ids:
     for repair_id in repair_ids:
 
         json_data["jsonQuery"]["page"]["value"] = 1
-        json_data["jsonQuery"]["repair"]["value"][0] = repair_id
+        json_data["jsonQuery"]['decorations_list']["value"][0] = repair_id
 
 
         for f in total_floor_list:
-
 
             json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
             json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
@@ -257,12 +212,10 @@ for rooms in rooms_ids:
             counter = 1
             total_count = 1
 
-
-
             while len(flats) < total_count:
 
                 if counter > 1:
-                    sleep_time = random.uniform(7, 10)
+                    sleep_time = random.uniform(7, 11)
                     time.sleep(sleep_time)
                 try:
                     response = session.post(
@@ -352,10 +305,11 @@ for rooms in rooms_ids:
                     except:
                         property_from = ''
                     url = str(i['fullUrl'])
+                    jk_name = i['geo']['jk']['displayName']
 
                     print(
-                        f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")
-                    result = [geo1, geo2, geo3, geo4, adress, rooms_count, area, price, finish_type, description, property_from, url]
+                        f"ЖК: {jk_name}, Город: {geo1}, {geo2}, {geo3}, {geo4}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")
+                    result = [jk_name, geo1, geo2, geo3, geo4, adress, rooms_count, area, price, finish_type, description, property_from, url]
                     flats.append(result)
 
                 json_data["jsonQuery"]["page"]["value"] += 1
@@ -367,45 +321,46 @@ for rooms in rooms_ids:
                 counter += 1
                 if not items:
                     break
-                sleep_time = random.uniform(7, 9)
+                sleep_time = random.uniform(7, 11)
                 time.sleep(sleep_time)
 
+                counter += 1
 
             # Базовый путь для сохранения
-            base_path = r""
+            if flats:
 
-            folder_path = os.path.join(base_path, str(current_date))
-            if not os.path.exists(folder_path):
-                os.makedirs(folder_path)
+                base_path = r""
 
-            filename = f"{geo1}_{current_date}_{name_counter}.xlsx"
+                folder_path = os.path.join(base_path, str(current_date))
+                if not os.path.exists(folder_path):
+                    os.makedirs(folder_path)
 
-            # Полный путь к файлу
-            file_path = os.path.join(folder_path, filename)
+                filename = f"{geo1}_{current_date}_{name_counter}.xlsx"
 
-            df = pd.DataFrame(flats, columns=['Гео1',
-                                              'Гео2',
-                                              'Гео3',
-                                              'Гео4',
-                                              'Адрес',
-                                              'Кол-во комнат',
-                                              'Площадь',
-                                              'Цена',
-                                              'Отделка',
-                                              'Описание',
-                                              'Объявление от',
-                                              'Ссылка'
-                                              ])
+                # Полный путь к файлу
+                file_path = os.path.join(folder_path, filename)
+
+                df = pd.DataFrame(flats, columns=['ЖК',
+                                                  'Гео1',
+                                                  'Гео2',
+                                                  'Гео3',
+                                                  'Гео4',
+                                                  'Адрес',
+                                                  'Кол-во комнат',
+                                                  'Площадь',
+                                                  'Цена',
+                                                  'Отделка',
+                                                  'Описание',
+                                                  'Объявление от',
+                                                  'Ссылка'
+                                                  ])
+
+                current_date = datetime.date.today()
+
+                # Сохранение файла в папку
+                df.to_excel(file_path, index=False)
+                print(f'✅ Файл {filename} успешно сохранён')
+
+merge_and_clean(folder_path, f'Вторичка_{jk_name}_{current_date}.xlsx')
 
 
-
-            # Сохранение файла в папку
-            df.to_excel(file_path, index=False)
-            print(f'✅ Файл {filename} успешно сохранён')
-
-end_time = time.time()
-
-
-merge_and_clean(folder_path, f'Вторичка_{geo1}_{current_date}.xlsx')
-
-print(f"Время выполнения: {end_time - start_time:.4f} сек")

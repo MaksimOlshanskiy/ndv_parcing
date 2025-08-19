@@ -11,18 +11,18 @@ https://baza.bz/projects/bestseller#/catalog/projects/list?filter=project:50007&
 
 headers = {
     'accept': 'application/json, text/plain, */*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6IjA2MTkyZDE0M2RkNzZiMTk2NmYzOGNmMDhiZjc1OTZhYWIwMmZiMTM4NmYzYzEyZmIyNjU2ODk3NDc3M2U3NWYxNjEzMjllOGQ3ZjZkOGVlIiwiaWF0IjoxNzUzMzQyODA2LjczNTk3OSwibmJmIjoxNzUzMzQyODA2LjczNTk4MSwiZXhwIjoxNzUzMzQ2NDA2LjczMjUzNCwic3ViIjoiU0lURV9XSURHRVR8MjM0MSIsInNjb3BlcyI6WyJTSVRFX1dJREdFVCJdLCJ0eXBlIjoic2l0ZVdpZGdldCIsImVudGl0bGVtZW50cyI6IiIsImFjY291bnQiOnsiaWQiOjE1MzUzLCJ0aXRsZSI6IkJBWkEgRGV2ZWxvcG1lbnQiLCJzdWJkb21haW4iOiJwYjE1MzUzIiwiYmlsbGluZ093bmVySWQiOjE1NDExLCJjb3VudHJ5Q29kZSI6IlJVIn0sInJvbGVzIjpbIlJPTEVfU0lURV9XSURHRVQiXSwic2l0ZVdpZGdldCI6eyJpZCI6MjM0MSwiZG9tYWluIjoiaHR0cHM6Ly9iYXphLmJ6In19.lCmze3H_Pc6iYyzAuk7O7R-wSalnUPhtEubXCAgzBrVnGSViieZECrVKUx62kwnMNN5G1vvM4k4hBWWw5E6Iwo-Dfr8E-Z0r-n-B1-x-MDVrFACXS6uNtWzVghdB6Rgw0AbA29Lz7CZ6Vi-n-3x7x3yN61Z0pRRlCuju0zys4IjaKhbBNBhrsNy2TyHwZXbhIUjoNemZSiA6T-bAR2Kd-6UdTIRPl6bcIqHov5xDpsEc7mlzbzWCRHUclZ45B4d0AxeMOsH-2utvFjI-Nl73Wv0VmB2k9LGQtcedo2x0rkcHZ3T4M6I0ie8g4yq22_Vn5WXkD_gtzloHlpSMy3cy3w',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6IjNmODE2YWM2MjVmYTE2MzNkY2U1YTE4MGY4NWFkMDYzNjUwOWYwYjM4Y2MxOGNlNjQwYmI3NTZkMWZkZDFhNjY5MmVhNTYzNzUyZTRjMTMxIiwiaWF0IjoxNzU1MjQwNzIyLjY5MTE1LCJuYmYiOjE3NTUyNDA3MjIuNjkxMTUyLCJleHAiOjE3NTUyNDQzMjIuNjg1MzcxLCJzdWIiOiJTSVRFX1dJREdFVHwyMzQxIiwic2NvcGVzIjpbIlNJVEVfV0lER0VUIl0sInR5cGUiOiJzaXRlV2lkZ2V0IiwiZW50aXRsZW1lbnRzIjoiIiwiYWNjb3VudCI6eyJpZCI6MTUzNTMsInRpdGxlIjoiQkFaQSBEZXZlbG9wbWVudCIsInN1YmRvbWFpbiI6InBiMTUzNTMiLCJiaWxsaW5nT3duZXJJZCI6MTU0MTEsImNvdW50cnlDb2RlIjoiUlUifSwicm9sZXMiOlsiUk9MRV9TSVRFX1dJREdFVCJdLCJzaXRlV2lkZ2V0Ijp7ImlkIjoyMzQxLCJkb21haW4iOiJodHRwczovL2JhemEuYnoifX0.STmh0qn826DRmlOj3gv3pY_fyi7uDipPGItoGqT8bsVvKF6MRZZ4gGVwHzd4CoO9oHpY9iRCdY-jKoHRuDZtFyDhr_DyOJHf7OgFx-sJ-ohX8QlnZxcGKI9GIwbK0ubV_99VB176fmya3nuN9lS6tC525o_R3ukrctDCv04CbrgQIhDr9VtIh_CY3wIe0m_ee2JYvD9HqzzXVJmqVQlIwZ67lVLPsr_VtrcYi0TFvGJudEUgtolgq4EvZOfHFBcLuoZLcV4ykwPmVEa8LLKuQacOY8v7m2csW3Hd-nQKIPCF1MSRDacf-WoTDyMc-rhWH1EFd2d5LnwnKNeUSzH4ZQ',
     'origin': 'https://smart-catalog.profitbase.ru',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
+    'sec-ch-ua': '"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
 }
 params = {
     'projectIds[0]': '50007',

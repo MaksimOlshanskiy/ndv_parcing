@@ -48,43 +48,32 @@ headers = {
     # 'cookie': 'session=aa51c0a817ca2ddf676b5c3107d541d5da32f60f31ca6a4999dbbd50f54f166b; _ga=GA1.1.1313715207.1753688326; _ym_uid=1744027341243641216; _ym_d=1753688326; _ym_isad=1; roistat_visit=668135; roistat_visit_cookie_expire=1209600; roistat_is_need_listen_requests=0; roistat_is_save_data_in_cookie=1; _ym_visorc=w; nfCpwHashId=47265bf9785fbaea1ce68aefaa674a8d30f2540ffcc6afc45f9e4f243d739329; _cmg_csstIbdzG=1753688327; _comagic_idIbdzG=10893347831.15204330676.1753688330; scbsid_old=2796070936; sma_session_id=2373021597; SCBfrom=; SCBnotShow=-1; smFpId_old_values=%5B%22a932251185d3bf41fcd7e2656de279f5%22%5D; _ga_F8P0RH67MV=GS2.1.s1753688325$o1$g1$t1753688333$j52$l0$h0; SCBporogAct=5000; SCBstart=1753688333794; SCBFormsAlreadyPulled=true; SCBindexAct=1637; sma_index_activity=2637',
 }
 
-flats = []
-limit = 100
-offset = 0
-total_flats = 0
-processed_flats = 0
-
-try:
-
-    initial_params = {
+params = {
         'project_id': "61b193a5-aa22-4f3a-bf22-216ebc5648b1",
         'status': 'free',
         'offset': 0,
-        'limit': 1,  # Минимальный запрос для получения метаданных
+        'limit': 100,
         'order_by': 'price',
     }
 
-    initial_response = requests.get('https://legendakorenevo.ru/api/realty-filter/residential/real-estates',
-                                    params=initial_params,
-                                    headers=headers,
-                                    cookies=cookies)
+flats = []
+limit = 100
+total_flats = 0
+processed_flats = 0
+project_ids = ["61b193a5-aa22-4f3a-bf22-216ebc5648b1", "a5f9b6b9-037d-4cd8-981c-cbd55e93a5c0"]
+project_dict = {"61b193a5-aa22-4f3a-bf22-216ebc5648b1" : 'Легенда Коренево', "a5f9b6b9-037d-4cd8-981c-cbd55e93a5c0" : 'Легенда Марусино'}
 
-    if initial_response.status_code == 200:
-        initial_data = initial_response.json()
-        total_flats = len(initial_data)
-        total_flats = 284
+for project_id in project_ids:
 
-        print(f"Всего квартир: {total_flats}")
+    params['project_id'] = project_id
+    params['offset'] = 0
 
-        # Запрашиваем данные пачками по limit записей
-        while offset < total_flats:
-            params = {
-                'project_id': '61b193a5-aa22-4f3a-bf22-216ebc5648b1',
-                'status': 'free',
-                'offset': offset,
-                'limit': limit,
-                'order_by': 'price',
-            }
+    try:
+
+
+        while True:
+
+
 
             response = requests.get('https://legendakorenevo.ru/api/realty-filter/residential/real-estates',
                                     params=params,
@@ -99,7 +88,7 @@ try:
                 for i in data:
                     try:
                         date = datetime.date.today()
-                        project = 'Легенда Коренево'
+                        project = project_dict.get(project_id, project_id)
                         developer = "Некрасовка Девелопмент"
                         korpus = i['building_number'].replace('Корпус ', '')
                         room_count = i['rooms']
@@ -138,20 +127,22 @@ try:
                         print(f"Ошибка при обработке квартиры: {e}")
                         continue
 
-                offset += limit
-                print(f"Обработано {processed_flats} из {total_flats} квартир")
+                if not data:
+                    break
+
+                params['offset'] += params['limit']
+                print(f"Обработано {processed_flats} квартир")
 
                 time.sleep(1)
             else:
                 print(f'Ошибка запроса: {response.status_code}, {response.text}')
                 break
-    else:
-        print(f'Ошибка начального запроса: {initial_response.status_code}, {initial_response.text}')
 
-except Exception as e:
-    print(f"Общая ошибка: {e}")
+
+    except Exception as e:
+        print(f"Общая ошибка: {e}")
 
 if flats:
-    save_flats_to_excel(flats, project, developer)
+    save_flats_to_excel(flats, all, developer)
 else:
     print("Нет данных для сохранения")

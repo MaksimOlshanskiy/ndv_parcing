@@ -23,7 +23,7 @@ flats = []
 limit = 100
 offset = 0
 has_more_data = True
-total_objects = 303
+
 max_attempts = 2
 attempt = 0
 count=0
@@ -31,16 +31,16 @@ count=0
 try:
     while has_more_data and attempt < max_attempts:
         json_data = {
-            'areas': [27.82, 101.52],
-            'costs': [7660000, 22800000],
+            'areas': [1, 999.52],
+            'costs': [76600, 2280000099],
             'deadlines': [],
-            'floors': [2, 25],
+            'floors': [1, 99],
             'layout_id': [],
             'letter_ids': [],
             'limit': limit,
             'offset': offset,
             'ids': [],
-            'project_ids': [5],
+            'project_ids': [5, 6],
             'rooms': [],
             'statuses': [2],
             'tags': [],
@@ -66,13 +66,14 @@ try:
 
             if response.status_code == 200:
                 try:
-                    item = response.json()
-                    items = item.get('objects', [])
+                    items = response.json()["objects"]
+
 
                     # Обновляем общее количество объектов при первом запросе
                     if offset == 0:
-                        total_objects = item.get('total', 303)  # Используем 303 как fallback
-                        print(f"Всего найдено объектов: {total_objects}")
+
+                        total_objects = response.json()['count']
+                        print(f"Total objects: {total_objects}")
 
                     print(f"Получено {len(items)} записей, offset: {offset}")
 
@@ -80,7 +81,7 @@ try:
                         try:
                             count+=1
                             date = datetime.date.today()
-                            project = 'EVO'
+                            project = i['project_name']
                             developer = "Догма"
                             korpus = i.get('letter_name', '')
                             room_count = i.get('room', '')
@@ -162,6 +163,6 @@ except Exception as e:
 print(f"Всего получено записей: {len(flats)} (ожидалось: {total_objects})")
 
 if flats:
-    save_flats_to_excel(flats, project, developer)
+    save_flats_to_excel(flats, 'all', "Догма")
 else:
     print("Нет данных для сохранения")

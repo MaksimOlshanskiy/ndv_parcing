@@ -56,16 +56,16 @@ headers = {
 
 json_data = {
     'price': [
-        14.8,
-        911.2,
+        1,
+        9119.2,
     ],
     'area': [
-        21,
-        392,
+        1,
+        999,
     ],
     'floor_number': [
         1,
-        50,
+        99,
     ],
     'rooms': [],
     'projects': [],
@@ -92,9 +92,7 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 
-page = 1
-for page in range(1, 80):
-    json_data["page"] = page
+while True:
 
     response = requests.post(
         'https://donstroy.moscow/api/v1/flatssearch/choose_params_api_flats/',
@@ -102,13 +100,10 @@ for page in range(1, 80):
         headers=headers,
         json=json_data,
     )
-
+    result = []
     items = response.json().get("flats", [])
-    if not items:
-        print(f"Данные закончились на странице {page}.")
-        break
-    print('-------------------------------------------------------------------')
-    print(f'Сейчас страница номер {page}')
+
+    print(f'Сейчас страница номер {json_data['page']}')
     for i in items:
         if not i["isUtp"]:
             count+=1
@@ -182,7 +177,14 @@ for page in range(1, 80):
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    page += 1
+    json_data['page'] = str(int(json_data['page']) + 1)
+    try:
+        if not result:
+            print(f"Данные закончились на странице {json_data['page']}.")
+            break
+    except:
+        ''
+    print('-------------------------------------------------------------------')
 
     time.sleep(0.1)
 

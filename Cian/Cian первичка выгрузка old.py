@@ -204,10 +204,6 @@ json_data = {
                 9,
             ],
         },
-        'from_developer': {
-            'type': 'term',
-            'value': True,
-        },
         'page': {
             'type': 'term',
             'value': 1,
@@ -216,6 +212,8 @@ json_data = {
 }
 
 current_date = datetime.date.today()
+
+ids = [4308373]
 
 for y in ids:
 
@@ -306,7 +304,7 @@ for y in ids:
 
                     print(f"Число комнат: {room_id}")
                     if counter > 1:
-                        sleep_time = random.uniform(7, 11)
+                        sleep_time = random.uniform(7, 9)
                         time.sleep(sleep_time)
                     try:
                         response = session.post(

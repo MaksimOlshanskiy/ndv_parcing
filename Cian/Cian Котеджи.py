@@ -82,6 +82,7 @@ json_data = {
         'from_mcad_km': {
             'type': 'range',
             'value': {
+                'gte': 41,
                 'lte': 50,
             },
         },
@@ -89,22 +90,70 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'region': {
-            'type': 'terms',
-            'value': [
-                4593,
-            ],
+        'page': {
+            'type': 'term',
+            'value': 3,
         },
-        'price': {
-            'type': 'range',
-            'value': {
-                'gte': 370000001,
-                'lte': 9999000000,
-            },
+        'geo': {
+            'type': 'geo',
+            'value': [
+                {
+                    'id': 4,
+                    'type': 'highway',
+                },
+                {
+                    'id': 129,
+                    'type': 'highway',
+                },
+                {
+                    'id': 10,
+                    'type': 'highway',
+                },
+                {
+                    'id': 29,
+                    'type': 'highway',
+                },
+                {
+                    'id': 1,
+                    'type': 'highway',
+                },
+                {
+                    'id': 7,
+                    'type': 'highway',
+                },
+                {
+                    'id': 26,
+                    'type': 'highway',
+                },
+                {
+                    'id': 5,
+                    'type': 'highway',
+                },
+                {
+                    'id': 19,
+                    'type': 'highway',
+                },
+                {
+                    'id': 40,
+                    'type': 'highway',
+                },
+                {
+                    'id': 42,
+                    'type': 'highway',
+                },
+                {
+                    'id': 41,
+                    'type': 'highway',
+                },
+            ],
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
+        },
+        'electronic_trading': {
+            'type': 'term',
+            'value': 2,
         },
         'land_status': {
             'type': 'terms',
@@ -118,14 +167,12 @@ json_data = {
                 1,
             ],
         },
-        'page': {
-            'type': 'term',
-            'value': 1,
-        },
     },
 }
 
-name_counter = 9
+
+
+name_counter = 17
 
 
 response = requests.post(
@@ -135,7 +182,8 @@ response = requests.post(
     json=json_data,
 )
 
-
+items_count = response.json()['data']["aggregatedCount"]
+print(f'Found {items_count} items')
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
@@ -157,7 +205,7 @@ json_data["jsonQuery"]["page"]["value"] = 1
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(7, 11)
+        sleep_time = random.uniform(6, 9)
         time.sleep(sleep_time)
     try:
         response = session.post(

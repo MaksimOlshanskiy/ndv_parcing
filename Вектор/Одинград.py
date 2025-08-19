@@ -97,7 +97,7 @@ while True:
         korpus = i['building_int_number']
         konstruktiv = ''
         klass = ''
-        srok_sdachi = ''
+        srok_sdachi = i['completion_title']
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''

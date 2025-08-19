@@ -7,7 +7,7 @@ import requests
 from info import info
 
 '''
-Надо проверять gata filter в info.py
+Надо проверять data filter в info.py
 '''
 
 flats = []

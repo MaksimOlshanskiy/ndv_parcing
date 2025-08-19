@@ -66,7 +66,7 @@ try:
                 count += 1
                 date = datetime.date.today()
                 project = 'Одинцовские кварталы'
-                developer = "Стройтек"
+                developer = "Вектор"
                 korpus = i['building_int_number']
                 room_count = i['rooms']
                 type_ = "Квартира"

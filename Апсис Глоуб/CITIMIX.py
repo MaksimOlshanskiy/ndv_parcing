@@ -10,7 +10,7 @@ from save_to_excel import save_flats_to_excel_old_new
 
 def parse_citi_mix_flats():
     base_url = "https://citi-mix.ru"
-    start_url = "/flats/catalog?corp=all&floor=all&korpus=5%2C4&pmin=5.5&pmax=8.6&fmin=2&fmax=19&tags=&sort=default&sortType=ASC"
+    start_url = "/flats/catalog?corp=all&floor=all&korpus=5%2C4&pmin=7.6&pmax=10.8&fmin=6&fmax=18&tags=&sort=price&sortType=ASC"
     developer = "Apsis Globe"
     project = "Citi-Mix"
 

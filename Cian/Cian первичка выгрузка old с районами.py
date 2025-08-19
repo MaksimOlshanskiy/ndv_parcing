@@ -1,14 +1,14 @@
-import numpy
-import requests
+# меняем настройки поиска через json_data. Парсим отдельно по каждому ЖК. Если в ЖК более 1500 объявлений, то нужно разбивать по корпусам
+
 import datetime
-import time
-import pandas as pd
-import openpyxl
 import os
 import random
-import re
-from Cian_jk_list import list_of_ids_maker
-from functions import classify_renovation, clean_filename, merge_and_clean
+import time
+
+import pandas as pd
+import requests
+
+from functions import merge_and_clean
 
 decoration_dict = {'preFine' : 'Предчистовая', 'fine' : 'С отделкой', 'without' : 'Без отделки', 'fineWithFurniture' : 'С отделкой и доп опциями'}
 decoration_list = ['preFine', 'fine', 'without', 'fineWithFurniture']
@@ -70,30 +70,23 @@ headers = {
 
 json_data = {
     'jsonQuery': {
-        'region': {
-            'type': 'terms',
-            'value': [
-                4593,
-            ],
-        },
         'from_developer': {
             'type': 'term',
             'value': True,
         },
-        'newbuilding_class': {
+        'region': {
             'type': 'terms',
             'value': [
-                'comfort',
+                4820,
             ],
         },
     },
-    'uri': '/newobjects/list?class%5B0%5D=4104&deal_type=sale&engine_version=2&from_developer=1&offer_type=newobject&region=4593&p=2',
-    'subdomain': 'www',
+    'uri': '/newobjects/list?deal_type=sale&engine_version=2&from_developer=1&offer_type=newobject&region=2&p=4',
+    'subdomain': 'spb',
     'offset': 0,
     'count': 25,
     'userCanUseHiddenBase': False,
 }
-
 
 cities_dict = {
     'Москва': 1,
@@ -130,10 +123,36 @@ try:
 except ValueError:
     print("\nОшибка: введите числовой ID.")
 
-ids, building_classes_dict = list_of_ids_maker(user_input, cookies, headers, json_data)
+json_data['jsonQuery']['region']['value'] = [user_input]
 
-# print(response.json()['breadcrumbs'][1]['title'])
+ids = []
 
+json_data['offset'] = 0
+
+while True:
+
+    response = requests.post(
+        'https://api.cian.ru/newbuilding-search/v1/get-newbuildings-for-serp/',
+        cookies=cookies,
+        headers=headers,
+        json=json_data,
+    )
+
+    items = response.json()['newbuildings']
+
+    for i in items:
+        if i['fromDeveloperPropsCount'] < 1:
+            continue
+        id = i['id']
+        ids.append(id)
+    if not items:
+        break
+    json_data['offset'] += 25
+
+city_in_work = response.json()['breadcrumbs'][0]['title']
+print(city_in_work)
+print(response.json()['breadcrumbs'][1]['title'])
+print(ids)
 print(f'Количество ЖК: {len(ids)}'
 )
 
@@ -196,16 +215,7 @@ json_data = {
 }
 
 current_date = datetime.date.today()
-
-ids = [1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 2344978, 7778, 5138735, 3683691,
-       3419909, 3911074, 46840, 50027, 4051375, 4186702, 2234022, 1900321, 368, 81377, 45865,
-       5227, 4771631, 4117447, 4708643, 3782658, 4157734, 45774, 843911, 2498484, 8825,
-       4025502, 92320, 2511297, 4850351, 3932079, 4780951, 4296442, 4676364, 912499, 4033066,
-       3206071, 4457540, 3966751, 4720970, 4682511, 3913242, 4779110, 8787, 3930584, 90586,
-       5100524, 3975866, 4260360, 5340468, 4648486, 46529, 48693, 4482950, 176051, 7789, 2567913, 4585408, 7030,
-       1641578, 300653, 5138871, 3730443, 7956, 4558643, 4729772, 1358767, 17877, 4833927, 1628126, 8689, 5208,
-        4482905, 5194393, 3394804, 600475, 5499, 4056931, 2522095, 2202, 118473, 4677457, 3922634, 4109874, 6644, 319, 4126730]
-
+ids = [3342050, 4492945, 3001470, 4699226, 5643257, 1329209, 3798039, 4503768, 3449025]
 for y in ids:
 
     session = requests.Session()
@@ -222,10 +232,12 @@ for y in ids:
         'value': [1, 2, 3, 4, 5, 6, 7, 9]
     }
 
+
     json_data["jsonQuery"]["floor"]["value"]["gte"] = 1
     json_data["jsonQuery"]["floor"]["value"]["lte"] = 99
     json_data["jsonQuery"]["geo"]["value"][0]["id"] = y
     json_data["jsonQuery"]["page"]["value"] = 1
+    json_data["jsonQuery"]["decorations_list"]["value"][0] = []
 
     response = session.post(
         'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
@@ -234,7 +246,7 @@ for y in ids:
         json=json_data
     )
     flats_count = response.json()['data']['aggregatedCount']
-    print(f'flats_count = {flats_count}')
+    print(f'Количество квартир в проекте: {flats_count}')
     time.sleep(7)
 
     if flats_count > 2500:
@@ -261,10 +273,6 @@ for y in ids:
         total_floor_list = [[1, 100]]
 
     print(json_data)
-
-    if flats_count == 0:
-        # json_data["jsonQuery"].pop("decorations_list", None)
-        decoration_list = ['']
 
     for decoration in decoration_list:
 
@@ -297,7 +305,7 @@ for y in ids:
 
                     print(f"Число комнат: {room_id}")
                     if counter > 1:
-                        sleep_time = random.uniform(7, 11)
+                        sleep_time = random.uniform(7, 9)
                         time.sleep(sleep_time)
                     try:
                         response = session.post(
@@ -354,7 +362,17 @@ for y in ids:
                             project = i['geo']['jk']['displayName'].replace('ЖК ', '').replace('«', '').replace('»', '')
                         except:
                             project = ''
-                        build_class = building_classes_dict.get(y)
+                        # try:
+                            #   if i['decoration'] == "fine":
+                            #      finish_type = "С отделкой"
+                            #    elif i['decoration'] == "without" or i['decoration'] == "rough":
+                            #       finish_type = "Без отделки"
+                            #   else:
+                        #      finish_type = i['decoration']
+                        #except:
+                        #   finish_type = ''
+                        # if not finish_type:
+                        #    finish_type = classify_renovation(i['description'])
                         try:
                             finish_type = decoration_dict.get(decoration)
                         except:
@@ -398,11 +416,27 @@ for y in ids:
                             added = i['added']
                         except:
                             added = ''
+                        try:
+                            geo1 = i['geo']['address'][1]['fullName']
+                        except:
+                            geo1 = ''
+                        try:
+                            geo2 = i['geo']['address'][2]['fullName']
+                        except:
+                            geo2 = ''
+                        try:
+                            geo3 = i['geo']['address'][3]['fullName']
+                        except:
+                            geo3 = ''
+                        try:
+                            district = i['geo']['districts'][0]['fullName']
+                        except:
+                            district = ''
 
 
                         print(
-                            f"Проект:{project}, класс: {build_class}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
-                        result = [date, srok_sdachi, url, project, build_class, developer, adress, korpus, type, finish_type, room_count, area, price, floor, added]
+                            f"{project}, {url}, район: {geo2}, район2: {district}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
+                        result = [date, srok_sdachi, url, project, developer, adress, geo1, geo2, geo3, district, korpus, type, finish_type, room_count, area, price, floor, added]
                         flats.append(result)
                         flats_total.append(result)
 
@@ -423,9 +457,12 @@ for y in ids:
                                                 'Срок сдачи',
                                                 'Ссылка',
                                                 'Название проекта',
-                                                'Класс ЖК',
                                                 'Девелопер',
                                                 'Адрес',
+                                                'geo1',
+                                                'geo2',
+                                                'geo3',
+                                                'district',
                                                 'Корпус',
                                                 'Тип помещения',
                                                 'Отделка',
