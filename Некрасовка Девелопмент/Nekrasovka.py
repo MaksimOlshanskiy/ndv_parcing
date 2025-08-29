@@ -143,6 +143,6 @@ for project_id in project_ids:
         print(f"Общая ошибка: {e}")
 
 if flats:
-    save_flats_to_excel(flats, all, developer)
+    save_flats_to_excel(flats, 'all', 'Некрасовка Девелопмент')
 else:
     print("Нет данных для сохранения")

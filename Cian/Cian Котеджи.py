@@ -79,93 +79,31 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'suburbansale',
-        'from_mcad_km': {
-            'type': 'range',
-            'value': {
-                'gte': 41,
-                'lte': 50,
-            },
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
         'page': {
             'type': 'term',
-            'value': 3,
+            'value': 1,
         },
-        'geo': {
-            'type': 'geo',
-            'value': [
-                {
-                    'id': 4,
-                    'type': 'highway',
-                },
-                {
-                    'id': 129,
-                    'type': 'highway',
-                },
-                {
-                    'id': 10,
-                    'type': 'highway',
-                },
-                {
-                    'id': 29,
-                    'type': 'highway',
-                },
-                {
-                    'id': 1,
-                    'type': 'highway',
-                },
-                {
-                    'id': 7,
-                    'type': 'highway',
-                },
-                {
-                    'id': 26,
-                    'type': 'highway',
-                },
-                {
-                    'id': 5,
-                    'type': 'highway',
-                },
-                {
-                    'id': 19,
-                    'type': 'highway',
-                },
-                {
-                    'id': 40,
-                    'type': 'highway',
-                },
-                {
-                    'id': 42,
-                    'type': 'highway',
-                },
-                {
-                    'id': 41,
-                    'type': 'highway',
-                },
-            ],
-        },
-        'publish_period': {
+        'kp_id': {
             'type': 'term',
-            'value': 2592000,
+            'value': 82906,
         },
-        'electronic_trading': {
+        'suburban_offer_filter': {
             'type': 'term',
-            'value': 2,
-        },
-        'land_status': {
-            'type': 'terms',
-            'value': [
-                2,
-            ],
+            'value': 0,
         },
         'object_type': {
             'type': 'terms',
             'value': [
                 1,
             ],
+        },
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
         },
     },
 }

@@ -99,9 +99,9 @@ while True:
         else:
             room_count = extract_digits_or_original(i.find(class_= 'product-card__name').get_text(strip=True).split()[0])
         try:
-            area = float(i.find(class_= 'product-card__name').get_text(strip=True).split()[1])
+            area = float(i.find(class_= 'product-card__name').get_text(strip=True).split()[-2])
         except:
-            area = ''
+            area = float(i.find(class_= 'product-card__name').get_text(strip=True).split()[-1].replace('м2', ''))
         try:
             old_price = int(i.find(class_= ['product-card__price', 'product-card__price--old']).text.replace('₽', '').replace(' ', ''))
         except:
@@ -156,10 +156,10 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    if page_counter == 51:
+    if page_counter == 48:
         break
     page_counter += 1
-    sleep_time = random.uniform(1, 5)
+    sleep_time = random.uniform(1, 3)
     time.sleep(sleep_time)
 
 save_flats_to_excel(flats, project, developer)

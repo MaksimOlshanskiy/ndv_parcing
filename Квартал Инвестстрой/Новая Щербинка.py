@@ -33,7 +33,6 @@ cookies = {
     'sma_index_activity': '1026',
     'SCBindexAct': '772',
 }
-
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
@@ -52,7 +51,6 @@ headers = {
     'x-csrftoken': 'dc18A6B92a8a6c54A6CE76C58f7b45672430faD90924d9e0AaB6328eb67Eb5C2',
     # 'cookie': 'csrftoken=dc18A6B92a8a6c54A6CE76C58f7b45672430faD90924d9e0AaB6328eb67Eb5C2; tmr_lvid=7c602fbb4b46b557c69fd271bfd44083; tmr_lvidTS=1744113461164; domain_sid=RfVqkNAlnJZxrVhiQ5Spc%3A1744113461292; _cmg_csstiPQdg=1744113462; _comagic_idiPQdg=10206793271.14411519501.1744113461; scbsid_old=2746015342; gtm-session-start=1744113461644; counter=1; ab_id=59bc78365d11c0d9bdd92160239241477342a305; _ym_uid=1744113462156893317; _ym_d=1744113462; _ym_isad=2; sma_session_id=2254310963; SCBfrom=; smFpId_old_values=%5B%22b0d44eece823d71c253568fc397e79de%22%5D; SCBnotShow=-1; _ym_visorc=w; SCBstart=1744113462374; SCBporogAct=5000; SCBFormsAlreadyPulled=true; tmr_detect=0%7C1744113463792; sma_index_activity=1026; SCBindexAct=772',
 }
-
 params = {
     'type': 'flat',
     'limit': '48',

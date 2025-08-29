@@ -66,7 +66,8 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 for key, inner_dict in data.items():
-
+    if inner_dict['st'] != 1:
+        continue
     url = ''
     developer = "Град"
     project = 'ICE TOWERS'

@@ -89,7 +89,10 @@ while True:
         korpus = i['building']
         section = i['section']
         type = i['type']
-        finish_type = i['finishing']
+        if not i['finishing']:
+            finish_type = 'Без отделки'
+        else:
+            finish_type = i['finishing']
         room_count = i['rooms']
         flat_number = i['flats_num_maket']
         try:

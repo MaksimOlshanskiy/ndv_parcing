@@ -1,6 +1,3 @@
-# меняем настройки поиска через json_data. Парсим отдельно по каждому ЖК. Если в ЖК более 1500 объявлений, то нужно разбивать по корпусам
-
-import numpy
 import requests
 import datetime
 import time
@@ -9,15 +6,21 @@ import openpyxl
 import os
 import random
 import re
-from functions import classify_renovation, clean_filename, merge_and_clean
+import json
+from functions import classify_renovation, clean_filename, merge_and_clean, haversine
 
-
-decoration_dict = {'preFine' : 'Предчистовая', 'fine' : 'С отделкой', 'without' : 'Без отделки', 'fineWithFurniture' : 'С отделкой и доп опциями'}
+decoration_dict = {'preFine': 'Предчистовая', 'fine': 'С отделкой', 'without': 'Без отделки',
+                   'fineWithFurniture': 'С отделкой и доп опциями'}
 decoration_list = ['preFine', 'fine', 'without', 'fineWithFurniture']
+
+with open("coordinates.json", "r", encoding="utf-8") as f:
+    city_centers = json.load(f)
+
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
+
 
 cookies = {
     '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
@@ -125,6 +128,8 @@ try:
 except ValueError:
     print("\nОшибка: введите числовой ID.")
 
+coords = city_centers.get(user_input)
+
 json_data['jsonQuery']['region']['value'] = [user_input]
 
 ids = []
@@ -154,9 +159,7 @@ city_in_work = response.json()['breadcrumbs'][0]['title']
 print(city_in_work)
 print(response.json()['breadcrumbs'][1]['title'])
 print(ids)
-print(f'Количество ЖК: {len(ids)}'
-)
-
+print(f'Количество ЖК: {len(ids)}'      )
 
 json_data = {
     'jsonQuery': {
@@ -208,18 +211,24 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
+        'from_developer': {
+            'type': 'term',
+            'value': True,
+        },
+        'publish_period': {
+            'type': 'term',
+            'value': 2592000,
+        },
     },
 }
 
 current_date = datetime.date.today()
 
-ids = [4308373]
-
 for y in ids:
 
+    flats = []
     session = requests.Session()
     flats_total = []
-
 
     if y in []:
         continue
@@ -230,7 +239,6 @@ for y in ids:
         'type': 'terms',
         'value': [1, 2, 3, 4, 5, 6, 7, 9]
     }
-
 
     json_data["jsonQuery"]["floor"]["value"]["gte"] = 1
     json_data["jsonQuery"]["floor"]["value"]["lte"] = 99
@@ -278,11 +286,10 @@ for y in ids:
         json_data["jsonQuery"]["decorations_list"]["value"][0] = decoration
         json_data["jsonQuery"]["page"]["value"] = 1
 
-
         for room_id in rooms_ids:
 
             json_data["jsonQuery"]["page"]["value"] = 1
-            flats = []
+
             try:
                 json_data["jsonQuery"]["room"]["value"][0] = room_id
             except:
@@ -292,7 +299,7 @@ for y in ids:
 
             for f in total_floor_list:
 
-                flats = []
+
                 json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
                 json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
                 json_data["jsonQuery"]["page"]["value"] = 1
@@ -300,7 +307,7 @@ for y in ids:
 
                 name_counter = f'{room_id}-{f[0]}-{f[1]}-{decoration}'
 
-                while len(flats) < total_count:
+                while True:
 
                     print(f"Число комнат: {room_id}")
                     if counter > 1:
@@ -332,12 +339,30 @@ for y in ids:
 
                     for i in items:
                         try:
+                            geo1 = i['geo']['address'][0]['fullName']
+                        except:
+                            geo1 = ''
+                        try:
+                            geo2 = i['geo']['address'][1]['fullName']
+                        except:
+                            geo2 = ''
+                        try:
+                            geo3 = i['geo']['address'][2]['fullName']
+                        except:
+                            geo3 = ''
+                        try:
+                            geo4 = i['geo']['address'][3]['fullName']
+                        except:
+                            geo4 = ''
+                        try:
                             if i['building']['deadline']['isComplete'] == True:
                                 srok_sdachi = "Дом сдан"
-                            elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline']['year'] is None:
+                            elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline'][
+                                'year'] is None:
                                 srok_sdachi = ''
                             else:
-                                srok_sdachi = f"Cдача ГК: {i['newbuilding']['house']['finishDate']['quarter']} квартал, {i['newbuilding']['house']['finishDate']['year']} года".replace('None', '')
+                                srok_sdachi = f"Cдача ГК: {i['newbuilding']['house']['finishDate']['quarter']} квартал, {i['newbuilding']['house']['finishDate']['year']} года".replace(
+                                    'None', '')
                         except:
                             srok_sdachi = ''
                         try:
@@ -362,13 +387,13 @@ for y in ids:
                         except:
                             project = ''
                         # try:
-                            #   if i['decoration'] == "fine":
-                            #      finish_type = "С отделкой"
-                            #    elif i['decoration'] == "without" or i['decoration'] == "rough":
-                            #       finish_type = "Без отделки"
-                            #   else:
+                        #   if i['decoration'] == "fine":
+                        #      finish_type = "С отделкой"
+                        #    elif i['decoration'] == "without" or i['decoration'] == "rough":
+                        #       finish_type = "Без отделки"
+                        #   else:
                         #      finish_type = i['decoration']
-                        #except:
+                        # except:
                         #   finish_type = ''
                         # if not finish_type:
                         #    finish_type = classify_renovation(i['description'])
@@ -404,7 +429,6 @@ for y in ids:
                         except:
                             area = ''
 
-
                         date = datetime.date.today()
 
                         try:
@@ -415,43 +439,80 @@ for y in ids:
                             added = i['added']
                         except:
                             added = ''
+                        try:
+                            kitchenArea = float(i['kitchenArea'])
+                        except:
+                            kitchenArea = 0
+                        try:
+                            livingArea = float(i['livingArea'])
+                        except:
+                            livingArea = 0
+                        try:
+                            parking = i['building']['parking']['type']
+                        except:
+                            parking = ''
+                        try:
+                            balconiesCount = int(i['balconiesCount'])
+                        except:
+                            balconiesCount = 0
+                        try:
+                            loggiasCount = int(i['loggiasCount'])
+                        except:
+                            loggiasCount = 0
+                        balconies_and_loggias_count = balconiesCount + loggiasCount
+                        try:
 
+                            lat_jk = i['geo']['coordinates']['lat']
+                            lon_jk = i['geo']['coordinates']['lng']
+                            lat_center = coords["lat_center"]
+                            lon_center = coords["lon_center"]
+                            distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
+
+                        except:
+                            distance = ''
 
                         print(
                             f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
-                        result = [date, srok_sdachi, url, project, developer, adress, korpus, type, finish_type, room_count, area, price, floor, added]
+                        result = [project, developer, geo1, geo2, geo3, geo4, korpus, distance, srok_sdachi, type,
+                                  finish_type, room_count, area, kitchenArea, livingArea, price, floor,
+                                  balconies_and_loggias_count, parking, url]
                         flats.append(result)
                         flats_total.append(result)
 
                     if not items:
                         break
                     json_data["jsonQuery"]["page"]["value"] += 1
+                    print(len(flats))
                     print("-----------------------------------------------------------------------------")
                     total_count = response.json()["data"]["offerCount"]
                     downloaded = len(flats)
-                    print(f'ID ЖК: {y}, {ids.index(y)+1} из {len(ids)}. Загружено {downloaded} предложений из {total_count}')
+                    print(
+                        f'ID ЖК: {y}, {ids.index(y) + 1} из {len(ids)}. Загружено {downloaded} предложений из {total_count}')
                     counter += 1
-
-
 
     if len(flats_total) > 1:
 
-
-
-        df = pd.DataFrame(flats_total, columns=['Дата обновления',
-                                          'Срок сдачи',
-                                          'Ссылка',
-                                          'Название проекта',
-                                          'Девелопер',
-                                          'Адрес',
-                                          'Корпус',
-                                          'Тип помещения',
-                                          'Отделка',
-                                          'Кол-во комнат',
-                                          'Площадь, кв.м',
-                                          'Цена лота, руб.',
-                                          'Этаж',
-                                          'Дата объявления'])
+        df = pd.DataFrame(flats_total, columns=['Название проекта',
+                                                'Девелопер',
+                                                'Гео1',
+                                                'Гео2',
+                                                'Гео3',
+                                                'Гео4',
+                                                'Корпус',
+                                                'Расстояние до центра, км',
+                                                'Срок сдачи',
+                                                'Тип помещения',
+                                                'Отделка',
+                                                'Кол-во комнат',
+                                                'Площадь, кв.м',
+                                                'Площадь кухни, кв.м',
+                                                'Жилая площадь, кв.м',
+                                                'Цена лота, руб.',
+                                                'Этаж',
+                                                'Балконы/лоджии',
+                                                'Паркинг',
+                                                'Ссылка'
+                                                ])
 
         current_date = datetime.date.today()
 
@@ -462,10 +523,12 @@ for y in ids:
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
 
+
         def sanitize_filename(name):
             for char in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
                 name = name.replace(char, '_')
             return name
+
 
         project = sanitize_filename(project)
         filename = f"{project}__{current_date}_{name_counter}.xlsx"
@@ -482,4 +545,3 @@ for y in ids:
             df.to_excel(file_path, index=False)
 
 merge_and_clean(folder_path, f'Первичка_{city_in_work}_{current_date}.xlsx')
-

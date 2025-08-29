@@ -13,6 +13,11 @@ import re
 from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new
 
+"""
+Нужно посчитать количество необходимых кликов и вписать это число в переменную max_clicks
+А в идеале переделать
+"""
+
 # Настройки для Selenium
 chrome_options = Options()
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
@@ -36,7 +41,7 @@ def setup_driver():
     return driver
 
 
-def click_show_more(driver, max_clicks=20):
+def click_show_more(driver, max_clicks=28):
     from selenium.common.exceptions import (
         NoSuchElementException, StaleElementReferenceException,
         TimeoutException, ElementClickInterceptedException

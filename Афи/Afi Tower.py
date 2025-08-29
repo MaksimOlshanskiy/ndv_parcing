@@ -93,7 +93,7 @@ while True:
     for i in flats_soup:
 
         try:
-            if i.find(class_=['room-preview__bottom', 'room-preview__bottom-bron']).text == 'резерв':
+            if i.find('div', class_=['room-preview__bottom', 'room-preview__bottom-bron']).text == 'резерв':
                 continue
         except:
             ''
@@ -135,16 +135,14 @@ while True:
         type = 'Квартиры'
         room_count = ''
         area = float(i.select('.room-preview__description .list__item')[0].text.replace(' м²', ''))
-        try:
-            old_price = int(i.find(class_='room-preview__price-sale').text.replace(' ', '').replace('₽', ''))
-        except:
-            old_price = ''
         discount = ''
         price_per_metr = ''
         price_per_metr_new = ''
         try:
-            price = int(i.find(class_='room-preview__price-old').text.replace(' ', '').replace('₽', ''))
+            old_price = int(i.find(class_='room-preview__price-old').text.replace(' ', '').replace('₽', ''))
+            price = int(i.find(class_='room-preview__price-sale').text.replace(' ', '').replace('₽', ''))
         except:
+            old_price = ''
             price = ''
         section = ''
         floor = i.select('.room-preview__description .list__item')[1].text.replace(' этаж', '')

@@ -114,12 +114,14 @@ for f in flats_soup:
     price_per_metr = ''
     try:
         old_price = int(f.find('s').get_text(strip=True).replace(',', '').replace(' млн.₽', '') + '0000')
+        price = int(f.find('label').get_text(strip=True).replace(',', '').replace(' млн.₽', '') + '0000')
     except:
-        old_price = ''
+        old_price = int(f.find('label').get_text(strip=True).replace(',', '').replace(' млн.₽', '') + '0000')
+        price = ''
     room_count = ''
     discount = ''
     price_per_metr_new = ''
-    price = int(f.find('label').get_text(strip=True).replace(',', '').replace(' млн.₽', '') + '0000')
+
     section = ''
     floor = int(f.find_all('span', class_='_valueLabel_bvxtf_24')[0].text.split('/')[0])
     flat_number = ''

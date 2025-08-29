@@ -35,14 +35,14 @@ def parse_flats():
 
     base_params = {
         'arFilterFlat_134': '',
-        'arFilterFlat_135': '1610553442',
+        'arFilterFlat_135': '2731206077',
         'arFilterFlat_571': '',
         'arFilterFlat_122': '',
         'arFilterFlat_123': '',
         'arFilterFlat_124_MIN': '14.9',
         'arFilterFlat_124_MAX': '148.7',
-        'arFilterFlat_570_MIN': '2.1',
-        'arFilterFlat_570_MAX': '51.3',
+        'arFilterFlat_570_MIN': '2.2',
+        'arFilterFlat_570_MAX': '39.4',
         'set_filter': 'Показать',
     }
 

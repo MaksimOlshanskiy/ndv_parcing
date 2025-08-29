@@ -1,123 +1,148 @@
+'''
+
+Проверяем сайт https://afi-park.ru/param/ на количество предложений, вписываем это число в переменную count_of_flats
+Часть квартир снимается с неопределённой отделкой. Это не точно, но вроде как это квартиры без отделки.
+Они выгружаются как без отделки.
+
+'''
+
+
+count_of_flats = 462
+
 import datetime
 import time
+import pandas as pd
+import openpyxl
+import os
 import random
-import requests
+from bs4 import BeautifulSoup
 
 from functions import save_flats_to_excel
-from save_to_excel import save_flats_to_excel_old_new
+import requests
 
-'''
-Иногда надо менять base_url и проверять ссылку в headers и данные в params
-'''
 
-# Настройки запроса
-base_url =     'https://afi-park.ru/_next/data/qHSv8pGINzwrfEs7NqRbe/param.json'
 cookies = {
-    'scbsid_old': '2796070936',
-    '_ym_uid': '1745310982287293563',
-    '_ym_d': '1745310982',
-    '_ym_isad': '1',
-    '_ym_visorc': 'w',
-    'fav': '[]',
-    '_gid': 'GA1.2.1869136493.1750841467',
-    '_gat_UA-233170057-1': '1',
-    '_cmg_csst6BzgD': '1750841467',
-    '_comagic_id6BzgD': '10688711056.14968917321.1750841466',
-    'sma_session_id': '2338846633',
-    'SCBfrom': '',
-    'SCBnotShow': '-1',
-    'SCBstart': '1750841468143',
-    'smFpId_old_values': '%5B%2204b0ffbac42ccceb635ec5bff5b15618%22%2C%22408b57183b182c79d2b9a0b3fa0d260b%22%2C%22be3e67a53916489460608b992809da55%22%5D',
-    '_ga': 'GA1.2.306144266.1745310982',
-    'SCBporogAct': '5000',
-    '_ga_WTP9H68PBV': 'GS2.1.s1750841466$o4$g1$t1750841473$j53$l0$h0',
-    'SCBFormsAlreadyPulled': 'true',
-    'sma_index_activity': '2181',
-    'SCBindexAct': '1731',
+    'PHPSESSID': 'F7L59dlf7VkWnKp7Vo32KnePo2pBhQ7j',
+    '_cmg_csstS0cfD': '1755522598',
+    '_comagic_idS0cfD': '11024933896.15356351591.1755522598',
+    'cookies_policy': 'true',
+    'cookies_promo': 'true',
 }
 
 headers = {
-    'accept': '*/*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-    'priority': 'u=1, i',
-    'referer': 'https://afi-park.ru/param?price_min=11.4&price_max=44',
-    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
+    'Accept': 'text/html, */*; q=0.01',
+    'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'Connection': 'keep-alive',
+    'Referer': 'https://afi-park.ru/param/',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-origin',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+    'X-Requested-With': 'XMLHttpRequest',
+    'sec-ch-ua': '"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
-    'x-nextjs-data': '1',
-    # 'cookie': 'scbsid_old=2796070936; _ym_uid=1745310982287293563; _ym_d=1745310982; fav=[]; _ym_isad=1; _ym_visorc=w; _ga=GA1.2.306144266.1745310982; _gid=GA1.2.1979708302.1748252266; _gat_UA-233170057-1=1; _cmg_csst6BzgD=1748252267; _comagic_id6BzgD=10502752376.14752746421.1748252269; sma_session_id=2306882647; SCBfrom=; smFpId_old_values=%5B%2204b0ffbac42ccceb635ec5bff5b15618%22%2C%22408b57183b182c79d2b9a0b3fa0d260b%22%5D; SCBnotShow=-1; SCBporogAct=5000; PHPSESSID=CZTKXdeyuDhKgmSlSajREa6mHCjUMzH6; SCBstart=1748252268029; _ga_WTP9H68PBV=GS2.1.s1748252265$o3$g1$t1748252290$j0$l0$h0; sma_index_activity=3973; SCBindexAct=4990',
+    # 'Cookie': 'PHPSESSID=F7L59dlf7VkWnKp7Vo32KnePo2pBhQ7j; _cmg_csstS0cfD=1755522598; _comagic_idS0cfD=11024933896.15356351591.1755522598; cookies_policy=true; cookies_promo=true',
 }
 
-project = "Сиреневый парк"
-developer = "АФИ"
+params = {
+    'PAGEN_1': '1',
+}
+
 flats = []
 
-try:
-    response = requests.get(
-        base_url,
-        params={'price_min': '11.4', 'price_max': '44', },
-        cookies=cookies,
-        headers=headers,
-    )
-    response.raise_for_status()
 
-    data = response.json()
-    queries = data.get('pageProps', {}).get('initialState', {}).get('api', {}).get('queries', {})
-    param_query_key = next((k for k in queries.keys() if 'getParam' in k), None)
+def extract_digits_or_original(s):
+    digits = ''.join([char for char in s if char.isdigit()])
+    return int(digits) if digits else s
 
-    if not param_query_key:
-        raise Exception("Не удалось найти данные о квартирах")
+while len(flats) < count_of_flats:
 
-    items = queries[param_query_key].get('data', {}).get('list', [])
+    response = requests.get('https://afi-park.ru/param/', params=params, cookies=cookies, headers=headers)
+    print(response.status_code)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    flats_soup = soup.find_all('a', class_="commercial-box newStyleBox loadMoreItem")
+    for i in flats_soup:
+        elements = i.find_all('div', class_="commercial-item-properties-element")
+        elems = []
+        for j in elements:
+            if j.text != '':
+                j = j.text.split('\n')
+                for e in j:
+                    if e != '':
+                        elems.append(e)
 
-    # Обрабатываем квартиры
-    count = 0
-    for item in items:
-        count += 1
+        url = ''
         date = datetime.date.today()
-        korpus = item.get('corpus', '')
-        finish_type = item.get('decor', '')
-        if finish_type == 'чистовая':
-            finish_type = 'С отделкой'
-        room_count = item.get('rooms', '')
-
-        if room_count == 'С':
-            room_count = 'студия'
-
-        type = 'Квартира'
-        area = item.get('square', '')
-        old_price = item.get('price', '')
-        price = item.get('price_discount', '')
-        section = item.get('section', '')
-        floor = item.get('floor', '')
+        project = "Сиреневый парк"
+        english = ''
+        promzona = ''
+        mestopolozhenie = ''
+        subway = ''
+        distance_to_subway = ''
+        time_to_subway = ''
+        mck = ''
+        distance_to_mck = ''
+        time_to_mck = ''
+        bkl = ''
+        distance_to_bkl = ''
+        time_to_bkl = ''
+        status = ''
+        start = ''
+        comment = ''
+        developer = "АФИ"
+        okrug = ''
+        district = ''
+        adress = ''
+        eskrou = ''
+        korpus = elems[2]
+        konstruktiv = ''
+        klass = ''
+        srok_sdachi = ''
+        srok_sdachi_old = ''
+        stadia = ''
+        dogovor = ''
+        type = 'Квартиры'
+        try:
+            finish_type = i.find('div', class_='facingLabel').text
+            if finish_type == 'без отделки':
+                finish_type = 'Без отделки'
+            elif finish_type == 'предчистовая':
+                finish_type = 'Предчистовая'
+            elif finish_type == 'комфорт':
+                finish_type = 'С отделкой'
+            elif finish_type == 'чистовая':
+                finish_type = 'С отделкой'
+        except:
+            finish_type = 'Без отделки'
+        room_count = elems[8]
+        area = float(elems[4].replace('м²', ''))
+        price_per_metr = ''
+        old_price = int(i.find('div', class_='G-align-center').text.split('\n')[3].replace(' ', '').replace('₽', ''))
+        discount = ''
+        price_per_metr_new = ''
+        price = int(i.find('div', class_='G-align-center').text.split('\n')[1].replace(' ', '').replace('₽', ''))
+        section = ''
+        floor = ''
+        flat_number = ''
 
         print(
-            f"{count}, {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, корпус: {korpus}, этаж: {floor}")
-
-        result = [
-            date, project, '', '', '', '', '',
-            '', '', '', '', '',
-            '', '', '', '', '', developer, '', '',
-            '', '', korpus, '', '', '', '',
-            '', '', type, finish_type.capitalize(), room_count, area, '',
-            old_price, '', '', price, section, floor, ''
-        ]
+            f"{project}, квартира {flat_number}, отделка: {finish_type}, количество комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+                  distance_to_mck, time_to_mck, distance_to_bkl,
+                  time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
+                  konstruktiv,
+                  klass, srok_sdachi, srok_sdachi_old,
+                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+                  price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
+    if not flats_soup:
+        break
 
-        time.sleep(0.05)
+    print('--------------------------------------------------------------------------------')
 
-    save_flats_to_excel(flats, project, developer)
+    params['PAGEN_1'] = str(int(params['PAGEN_1']) + 1)
+    sleep_time = random.uniform(1, 4)
+    time.sleep(sleep_time)
 
-    print(f"Успешно сохранено {len(flats)} квартир")
-
-except requests.exceptions.RequestException as e:
-    print(f"Ошибка при запросе к серверу: {e}")
-except Exception as e:
-    print(f"Неожиданная ошибка: {e}")
-
-# Задержка перед завершением
-time.sleep(random.uniform(10, 15))
+save_flats_to_excel(flats, project, developer)

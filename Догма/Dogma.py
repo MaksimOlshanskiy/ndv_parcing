@@ -6,10 +6,6 @@ import json
 from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_near
 
-'''
-максимальное количество объектов выставлено 303, смотри json
-'''
-
 headers = {
     'accept': 'application/json',
     'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',

@@ -56,7 +56,7 @@ data = {
     'params[finishing]': '0',
 }
 
-finishings = ['UniLoft', 'Без отделки', 'UniBox']
+finishings = ['UniLoft', 'Без отделки', 'UniBox', 'UniDesign']
 
 flats = []
 flats_nums = []

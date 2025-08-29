@@ -14,36 +14,33 @@ import os
 import random
 from bs4 import BeautifulSoup
 import requests
-
+from info import cookies, headers, ok
 from functions import save_flats_to_excel
-from ЖК_WAVE import cookies, headers
 
-cookies = cookies
-headers = headers
 
 data = {
-    'price[min]': '1',
-    'price[max]': '999',
-    'price_range[min]': '1',
-    'price_range[max]': '999',
-    'last_delivery': '32',
-    'obj[]': ['207', '207'],
-    'area[min]': '1',
-    'area[max]': '999',
-    'area_range[min]': '1.0',
-    'area_range[max]': '999.0',
-    'floor[min]': '1',
-    'floor[max]': '99',
-    'floor_range[min]': '1',
-    'floor_range[max]': '99',
-    'ob[page]': '1',
-    'ob[sort]': 'price',
-    'ob[order]': 'asc',
-    'group[t]': 'false',
-    'ob[id]': '207',
-    'object': '207',
-    'a': 'types',
-    'ok': '9I6cUsbCaYXxEGNhbfAopnQOP0VhDSVT'
+    "price[min]": 12,
+    "price[max]": 39.7,
+    "price_range[min]": 12.0,
+    "price_range[max]": 39.7,
+    "last_delivery": 32,
+    "obj[]": [207, 207],
+    "area[min]": 21,
+    "area[max]": 79,
+    "area_range[min]": 21.0,
+    "area_range[max]": 79.0,
+    "floor[min]": 2,
+    "floor[max]": 32,
+    "floor_range[min]": 2,
+    "floor_range[max]": 32,
+    "ob[page]": 2,
+    "ob[sort]": "price",
+    "ob[order]": "asc",
+    "group[t]": "false",
+    "ob[id]": 207,
+    "object": 207,
+    "a": "types",
+    "ok": ok
 }
 
 

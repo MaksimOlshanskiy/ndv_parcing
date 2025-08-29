@@ -23,6 +23,8 @@ def process_data(json_data, excel_df):
 
     # Список застройщиков, у которых не надо менять типологию
     developers_to_skip = {'Фонд реновации'}
+    # Список проектов, у которых не надо менять типологию
+    jk_name_to_skip = {'Гармония парк', 'Мишино-2', 'Берег'}
 
     for idx, row in result_df.iterrows():
 
@@ -47,6 +49,13 @@ def process_data(json_data, excel_df):
         # Если девелопер из списка — пропускаем изменение типологии
         if developer in developers_to_skip:
             print(f"[{idx + 1}/{total}] Пропущен (застройщик): ЖК {jk_name}, площадь {area}, девелопер: {developer}")
+            print(result_df.at[idx, 'Кол-во комнат'])
+            continue
+
+        # Если проект из списка — пропускаем изменение типологии
+        if jk_name in jk_name_to_skip:
+            print(
+                f"[{idx + 1}/{total}] Пропущен (застройщик): ЖК {jk_name}, площадь {area}, девелопер: {developer}")
             print(result_df.at[idx, 'Кол-во комнат'])
             continue
 
@@ -128,11 +137,13 @@ def save_as_xlsx(df, output_path_xlsx, sheet_name='Sheet1'):
 
 # --- Запуск ---
 json_path = 'normalized_output.json'
-excel_path = r"C:\Users\m.olshanskiy\Desktop\База нд\По одному.xlsx"
-output_path = r"C:\Users\m.olshanskiy\Desktop\База нд\06-07.2025_рынок_типология_1.xlsx"
+excel_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!area_dictionary\07-08.2025_рынок.xlsx"
+output_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!area_dictionary\07-08.2025_рынок_тип.xlsx"
 
 json_data = load_json_data(json_path)
 excel_df = load_excel_data(excel_path)
 
 result_df = process_data(json_data, excel_df)
 save_as_xlsx(result_df, output_path)
+
+

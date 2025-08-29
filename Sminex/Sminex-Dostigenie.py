@@ -124,7 +124,10 @@ while True:
         price = ''
         section = int(i["section"])
         floor = int(i["floor"])
-        flat_number = int(i['num'])
+        try:
+            flat_number = int(i['num'])
+        except:
+            flat_number = ''
 
         print(
             f"{project}, {url}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, {finish_type}")

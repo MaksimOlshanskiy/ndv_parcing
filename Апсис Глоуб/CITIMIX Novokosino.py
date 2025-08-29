@@ -26,10 +26,10 @@ params = {
     'limit': '10',
     'offset': '0',
     'house_ids': '111054',
-    'area_total__gte': '13.25',
-    'area_total__lte': '537.8',
-    'min_price__gte': '1300000',
-    'min_price__lte': '119000000',
+    'area_total__gte': '1',
+    'area_total__lte': '999.8',
+    'min_price__gte': '130000',
+    'min_price__lte': '119000099999',
     'ordering': 'price',
 }
 

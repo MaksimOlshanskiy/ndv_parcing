@@ -68,7 +68,8 @@ info = {
             'view': 'card',
             'filter_type': 'price',
             'design': '2',
-            'limit': '20',
+            'limit': '19',
+            'offset': '0',
             'city': 'msk',
             'ab_test': 'false',
         }
@@ -141,7 +142,8 @@ info = {
             'view': 'card',
             'filter_type': 'price',
             'design': '1',
-            'limit': '20',
+            'limit': '19',
+            'offset': '0',
             'city': 'msk',
             'ab_test': 'false',
         }
@@ -214,8 +216,8 @@ info = {
             'view': 'card',
             'filter_type': 'price',
             'design': '3',
-            'limit': '20',
-            'offset': '20',
+            'limit': '19',
+            'offset': '0',
             'city': 'msk',
             'ab_test': 'false',
         }

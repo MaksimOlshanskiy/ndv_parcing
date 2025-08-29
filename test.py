@@ -1,19 +1,46 @@
-result = []
+import numpy as np
+import pandas as pd
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
-# от 23 до 60 с шагом 1
-for i in range(23, 60):
-    result.append([i, i + 1])
+# --- Входные данные ---
+target = 1_500_000   # цель накоплений (руб.)
+initial = 100_000    # стартовый капитал (руб.)
+annual_rate = 0.14   # 14% годовых
+years = 9            # срок накоплений в годах
+months = years * 12  # срок в месяцах
 
-# от 60 до 80 с шагом 2
-for i in range(60, 80, 2):
-    result.append([i, i + 2])
+# --- Расчёт месячной доходности ---
+monthly_rate = (1 + annual_rate) ** (1/12) - 1
 
-# от 80 до 100 с шагом 5
-for i in range(80, 100, 5):
-    result.append([i, i + 5])
+# --- Рассчёт будущей стоимости стартового капитала ---
+future_initial = initial * (1 + monthly_rate) ** months
 
-# от 100 до 200 с шагом 10
-for i in range(100, 200, 10):
-    result.append([i, i + 10])
+# --- Сколько нужно накопить за счет ежемесячных взносов ---
+needed_from_contributions = target - future_initial
 
-print(result)
+# --- Ежемесячный взнос ---
+monthly_contribution = needed_from_contributions * monthly_rate / ((1 + monthly_rate) ** months - 1)
+
+print(f"Необходимо ежемесячно откладывать: {monthly_contribution:,.2f} руб.")
+
+# --- Построение таблицы накоплений ---
+balance = []
+amount = initial
+start_date = datetime(2025, 9, 1)  # Сентябрь 2025
+
+for m in range(1, months + 1):
+    # начисляем доход
+    amount *= (1 + monthly_rate)
+    # пополняем
+    amount += monthly_contribution
+    # вычисляем дату
+    current_date = start_date + relativedelta(months=m-1)
+    balance.append((m, current_date.month, current_date.year, amount))
+
+df = pd.DataFrame(balance, columns=["Номер месяца", "Месяц", "Год", "Сумма на счёте"])
+
+# --- Сохраняем в Excel ---
+df.to_excel("накопления.xlsx", index=False)
+
+print("Таблица сохранена в файл 'накопления.xlsx'")

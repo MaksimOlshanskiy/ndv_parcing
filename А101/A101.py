@@ -1,5 +1,4 @@
 import datetime
-
 from functions import save_flats_to_excel
 from info import info
 import requests

@@ -7,7 +7,7 @@ import random
 from bs4 import BeautifulSoup
 
 from functions import save_flats_to_excel
-from ЖК_WAVE import cookies, headers
+from info import cookies, headers, ok
 import requests
 
 cookies = cookies
@@ -35,7 +35,7 @@ data = {
     'ob[id]': '52',
     'object': '52',
     'a': 'types',
-    'ok': 'AOh62eYGcl8tIk4c4IknAX6vrqvI106z'
+    'ok': ok
 }
 
 
@@ -129,7 +129,7 @@ while True:
     print('--------------------------------------------------------------------------------')
 
     data['ob[page]'] = str(int(data['ob[page]']) + 1)
-    sleep_time = random.uniform(1, 4)
+    sleep_time = random.uniform(1, 3)
     time.sleep(sleep_time)
 
 save_flats_to_excel(flats, project, developer)

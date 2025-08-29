@@ -16,6 +16,10 @@ import requests
 
 from functions import save_flats_to_excel
 
+"""
+Свобода снимается файлом moscow
+"""
+
 cookies = {
     '_gid': 'GA1.2.712955819.1743077089',
     'tmr_lvid': '0ba93a2232def7fd1f999fc186b673ce',

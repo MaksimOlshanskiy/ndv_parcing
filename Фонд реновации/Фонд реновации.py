@@ -82,7 +82,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-url = 'https://fr.mos.ru/pokupka-nedvizhimosti-dlya-vseh/flats/'
+url = 'https://xn--80aae5aibotfo5h.xn--p1ai/kvartiry/'
 
 driver.get(url=url)
 

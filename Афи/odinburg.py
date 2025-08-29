@@ -17,9 +17,9 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
 }
 json_data = {
-    'floor': [2, 24],
-    'square': [24, 122],
-    'price': [6, 27],
+    'floor': [1, 99],
+    'square': [1, 999],
+    'price': [1, 99],
     'sort': 'price_asc',
     'offset': 0,
 }

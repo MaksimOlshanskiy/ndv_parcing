@@ -81,7 +81,7 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 
-while params['PAGEN_1'] != '20':
+while params['PAGEN_1'] != '17':
 
 
     response = requests.get('https://skolkovoone.ru/catalog/filter/clear/apply/', params=params, cookies=cookies, headers=headers)

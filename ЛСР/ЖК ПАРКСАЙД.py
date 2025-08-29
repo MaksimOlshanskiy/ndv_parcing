@@ -7,7 +7,7 @@ import random
 from bs4 import BeautifulSoup
 
 from functions import save_flats_to_excel
-from ЖК_WAVE import cookies, headers
+from info import cookies, headers, ok
 import requests
 
 cookies = cookies
@@ -35,7 +35,7 @@ data = {
     'ob[id]': '152',
     'object': '152',
     'a': 'types',
-    'ok': 'AOh62eYGcl8tIk4c4IknAX6vrqvI106z'
+    'ok': ok
 }
 
 

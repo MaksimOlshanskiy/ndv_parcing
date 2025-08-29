@@ -101,7 +101,7 @@ while True:
         status = ''
         start = ''
         comment = ''
-        developer = "Хант-Холдинг"
+        developer = "Прайм Лайф"
         okrug = ''
         district = ''
         adress = ''

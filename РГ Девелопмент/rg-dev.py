@@ -37,7 +37,7 @@ headers = {
 
 response = requests.get('https://rg-dev.ru/api/flats/?page=1&active=1&', cookies=cookies, headers=headers)
 
-url = 'https://rg-dev.ru/api/flats/?page=1&active=1&'
+url = 'https://rg-dev.ru/api/flats/?page=1&active=1&status=1&'
 
 flats = []
 count = 0

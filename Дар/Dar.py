@@ -17,8 +17,8 @@ from functions import save_flats_to_excel
 
 jks = {1317 : "SOLOS", 1316: "Rakurs"}
 houses = {1183: '2', 1184: '3', 1185: '4', 1186 : '1', 1187: '2'}
-
-projects_id = ['883', '258']
+flats = []
+projects_id = [883, 258]
 
 for pr in projects_id:
 
@@ -40,27 +40,27 @@ for pr in projects_id:
     }
 
     params = {
-            'AgentCostStart': '1',
-            'AgentCostEnd': '57368927999',
-            'allSquareStart': '1',
-            'allSquareEnd': '500',
-            'floorStart': '1',
-            'floorEnd': '999',
+            'AgentCostStart': 1,
+            'AgentCostEnd': 57368927999,
+            'allSquareStart': 1,
+            'allSquareEnd': 500,
+            'floorStart': 2,
+            'floorEnd': 999,
             'id_house': '',
             'windowView': '',
             'viewsType': '',
             'repair': '',
             'placeAttr[]': 'noBooking',
-            'page': '1',
+            'page': 1,
             'category[]': 'Квартира',
             'orderBy': 'AgentCost ASC',
             'id_projects[]': pr,
-            'saleStatus[]': '1',
+            'saleStatus[]': 1,
         }
 
 
 
-    flats = []
+
     date = datetime.now().date()
 
     def extract_digits_or_original(s):
@@ -148,8 +148,8 @@ for pr in projects_id:
 
         if not items:
             break
-        params['page'] = str(int(params['page']) + 1)
-        sleep_time = random.uniform(1, 5)
+        params['page'] += 1
+        sleep_time = random.uniform(1, 3)
         time.sleep(sleep_time)
 
 save_flats_to_excel(flats, project, developer)

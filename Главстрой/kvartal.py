@@ -6,6 +6,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+
+from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_middle
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -87,7 +89,7 @@ for apartment in apartments:
 
         apartment_data.append({
             'Дата обновления': datetime.date.today(),
-            'Название проекта': 'Героев',
+            'Название проекта': 'Квартал Героев',
             'на англ': None,
             'промзона': None,
             'Местоположение': None,
@@ -132,7 +134,7 @@ for apartment in apartments:
         print(f"Ошибка при извлечении данных из элемента: {e}")
 
 if apartment_data:
-    save_flats_to_excel_middle(apartment_data, 'Квартал героев', 'Главстрой')
+    save_flats_to_excel(apartment_data, 'Квартал героев', 'Главстрой')
 else:
     print("Не удалось извлечь данные с сайта.")
 

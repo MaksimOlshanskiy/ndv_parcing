@@ -62,7 +62,7 @@ json_data = {
         },
         'price': {
             'from': None,
-            'to': 187313305,
+            'to': 18731330599,
         },
         'area': {
             'from': None,

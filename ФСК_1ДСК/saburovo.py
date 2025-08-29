@@ -1,6 +1,8 @@
 import datetime
 import time
 import random
+
+from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new
 
 import requests
@@ -146,4 +148,4 @@ for i in items:
 sleep_time = random.uniform(10, 15)
 time.sleep(sleep_time)
 
-save_flats_to_excel_old_new(flats, project, developer)
+save_flats_to_excel(flats, project, developer)

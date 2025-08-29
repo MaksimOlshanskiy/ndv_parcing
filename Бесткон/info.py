@@ -20,7 +20,7 @@ info = {
 
         'data': {
             'method': 'getPlaces',
-            'filter': '{"jk_verified":1,"orderBy":"","saleStatus":[1],"id_jk":"1","category":"Квартира","cost_min":"17243982","cost_max":"33191939","square_min":"39","square_max":"91","floor_min":"2","floor_max":"17","page":"1","page_count":30}',
+            'filter': '{"orderBy":"","saleStatus":[1],"id_jk":"1","category":"Квартира","rooms":["1","2","3"],"cost_min":"17243982","cost_max":"33191939","square_min":"39","square_max":"91","floor_min":"2","floor_max":"17","page":"1","jk_verified":1,"page_count":30}',
         },
         'project_name': 'Большая Семерка'
     },

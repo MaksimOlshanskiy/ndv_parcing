@@ -107,7 +107,10 @@ while True:
             room_count = i.get("rooms", "")
             area = float(i.get("sq", ""))
             price_per_metr = ''
-            old_price = int(i.get("price", "").replace(' ', ''))
+            try:
+                old_price = int(i.get("price", "").replace(' ', ''))
+            except:
+                old_price = 0
             discount = ''
             price_per_metr_new = ''
             price = ''

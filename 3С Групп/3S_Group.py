@@ -47,10 +47,10 @@ headers = {
 
 
 params = {
-    'area_min': '20',
-    'area_max': '73',
-    'price_min': '6535280',
-    'price_max': '30939220',
+    'area_min': '1',
+    'area_max': '999',
+    'price_min': '653520',
+    'price_max': '3093922099',
     'order': '-status,price',
     'limit': '9',
     'city': 'moskva',
@@ -153,4 +153,4 @@ while url:
 
     time.sleep(0.05)
 
-save_flats_to_excel(flats, developer)
+save_flats_to_excel(flats, 'all', developer)

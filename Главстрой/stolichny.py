@@ -7,6 +7,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException, \
     StaleElementReferenceException
 from bs4 import BeautifulSoup
+
+from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_middle
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -138,7 +140,7 @@ for apt in apartments:
         print(f"Ошибка при обработке элемента: {e}")
 
 if apartment_data:
-    save_flats_to_excel_middle(apartment_data,'Столичный','Главстрой')
+    save_flats_to_excel(apartment_data,'Столичный','Главстрой')
 else:
     print("Не удалось извлечь данные с сайта.")
 

@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import pyxlsb
 
-file_path = r"C:\Users\m.olshanskiy\Desktop\База Июль\Июль.xlsx"
+file_path = r"C:\Users\m.olshanskiy\Desktop\Новая папка (2)\База август.xlsx"
 df = pd.read_excel(file_path, sheet_name='Sheet1')
 
 def strip_trailing_spaces(df):
