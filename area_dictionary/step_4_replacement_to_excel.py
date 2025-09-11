@@ -136,14 +136,16 @@ def save_as_xlsx(df, output_path_xlsx, sheet_name='Sheet1'):
 
 
 # --- Запуск ---
-json_path = 'normalized_output.json'
-excel_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!area_dictionary\07-08.2025_рынок.xlsx"
-output_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!area_dictionary\07-08.2025_рынок_тип.xlsx"
+if __name__ == "__main__":
 
-json_data = load_json_data(json_path)
-excel_df = load_excel_data(excel_path)
+    json_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\normalized_output.json'
+    excel_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\1_FILES\2025-09-10\ПИК_Митинский лес_2025-09-10.xlsx"
+    output_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\1_FILES\2025-09-10\ПИК_Митинский лес_2025-09-10_тип.xlsx"
 
-result_df = process_data(json_data, excel_df)
-save_as_xlsx(result_df, output_path)
+    json_data = load_json_data(json_path)
+    excel_df = load_excel_data(excel_path)
+
+    result_df = process_data(json_data, excel_df)
+    save_as_xlsx(result_df, output_path)
 
 

@@ -2,14 +2,12 @@ import requests
 import datetime
 import time
 import pandas as pd
-import openpyxl
 import os
 import random
-import re
-from functions import classify_renovation, merge_and_clean
-import glob
+from functions import merge_and_clean, haversine
+import json
 
-
+# noinspection PyDictDuplicateKeys
 cookies = {
     '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
     'cf_clearance': 'iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk',
@@ -164,11 +162,17 @@ cities_dict = {
     'Волгоград': 4704
 }
 
+
 print("Список доступных регионов:")
 for city, city_id in cities_dict.items():
     print(f"{city}: {city_id}")
 
 user_input = input("\nВведите ID нужного региона или введите свой: ")
+
+with open("coordinates.json", "r", encoding="utf-8") as f:
+    city_centers = json.load(f)
+
+coords = city_centers.get(user_input)
 
 try:
     user_id = int(user_input)
@@ -353,9 +357,20 @@ for rooms in rooms_ids:
                         property_from = ''
                     url = str(i['fullUrl'])
 
+                    try:
+
+                        lat_jk = i['geo']['coordinates']['lat']
+                        lon_jk = i['geo']['coordinates']['lng']
+                        lat_center = coords["lat_center"]
+                        lon_center = coords["lon_center"]
+                        distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
+
+                    except:
+                        distance = ''
+
                     print(
-                        f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}, объявление {property_from}")
-                    result = [geo1, geo2, geo3, geo4, adress, rooms_count, area, price, finish_type, description, property_from, url]
+                        f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Расстояние: {distance}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}")
+                    result = [geo1, geo2, geo3, geo4, distance, adress, rooms_count, area, price, finish_type, description, property_from, url]
                     flats.append(result)
 
                 json_data["jsonQuery"]["page"]["value"] += 1
@@ -387,6 +402,7 @@ for rooms in rooms_ids:
                                               'Гео2',
                                               'Гео3',
                                               'Гео4',
+                                              'Расстояние до центра, км',
                                               'Адрес',
                                               'Кол-во комнат',
                                               'Площадь',

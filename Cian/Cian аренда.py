@@ -11,11 +11,15 @@ import requests
 import datetime
 import time
 import pandas as pd
-import openpyxl
 import os
 import random
-import re
+import json
+from functions import haversine
 
+with open("coordinates.json", "r", encoding="utf-8") as f:
+    city_centers = json.load(f)
+
+coords = city_centers.get("1")
 
 ids = [4629063,
        ]  # id ЖК для парсинга
@@ -96,7 +100,7 @@ json_data = {
         'floor': {
             'type': 'range',
             'value': {
-                'gte': 13,
+                'gte': 19,
                 'lte': 200,
             },
         },
@@ -128,7 +132,6 @@ response = requests.post(
     json=json_data,
 )
 
-
 name_counter = 1
 
 session = requests.Session()
@@ -142,8 +145,8 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-current_date = datetime.date.today()
 
+current_date = datetime.date.today()
 
 while len(flats) < total_count:
 
@@ -212,11 +215,45 @@ while len(flats) < total_count:
         except:
             rooms = ''
 
+        try:
+
+            lat_jk = i['geo']['coordinates']['lat']
+            lon_jk = i['geo']['coordinates']['lng']
+            lat_center = coords["lat_center"]
+            lon_center = coords["lon_center"]
+            distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
+
+        except:
+            distance = ''
+
+        try:
+            kitchenArea = float(i['kitchenArea'])
+        except:
+            kitchenArea = 0
+        try:
+            livingArea = float(i['livingArea'])
+        except:
+            livingArea = 0
+        try:
+            parking = i['building']['parking']['type']
+        except:
+            parking = ''
+        try:
+            balconiesCount = int(i['balconiesCount'])
+        except:
+            balconiesCount = 0
+        try:
+            loggiasCount = int(i['loggiasCount'])
+        except:
+            loggiasCount = 0
+        balconies_and_loggias_count = balconiesCount + loggiasCount
+
         date = datetime.date.today()
 
         print(
-            f"{url}, дата: {date}, площадь: {area}, цена: {price} ")
-        result = [date, url, adress, okrug, raion, area, price, rooms]
+            f"{url}, дата: {date}, площадь: {area}, цена: {price}, расстояние: {distance}")
+        result = [date, url, adress, okrug, raion, distance, area, kitchenArea, livingArea, balconies_and_loggias_count,
+                  price, rooms]
         flats.append(result)
 
     json_data["jsonQuery"]["page"]["value"] += 1
@@ -237,14 +274,16 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-
-
 df = pd.DataFrame(flats, columns=['Дата обновления',
                                   'Ссылка',
                                   'Адрес',
                                   'Округ',
                                   'Район',
+                                  'Расстояние до центра, км',
                                   'Площадь, кв.м',
+                                  'Площадь кухни, кв.м',
+                                  'Жилая площадь, кв.м',
+                                  'Балконы/лоджии',
                                   'Цена за месяц',
                                   'Кол-во комнат'
                                   ])
@@ -258,7 +297,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"Аренда_Москва_13-200_{current_date}.xlsx"
+filename = f"Аренда_Москва_200_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

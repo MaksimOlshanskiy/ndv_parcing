@@ -1,11 +1,11 @@
 import re
-
 import numpy as np
 import pandas as pd
 import os
 import glob
 import datetime
 from Developer_dict import name_dict, developer_dict
+from area_dictionary.step_4_replacement_to_excel import process_data, load_json_data
 import json
 
 
@@ -85,6 +85,10 @@ def save_flats_to_excel(flats, project, developer):
                 # заполняем только если колонка есть в df
                 if col in df.columns:
                     df.at[idx, col] = value
+    df['Дата обновления'] = pd.to_datetime(df['Дата обновления'], errors="coerce")
+
+    json_data = load_json_data(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\normalized_output.json')
+    df = process_data(json_data, df)
 
     df.drop(columns=["primary_key"], inplace=True)
 

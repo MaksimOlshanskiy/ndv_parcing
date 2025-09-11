@@ -24,7 +24,7 @@ headers = {
     'sec-ch-ua-platform': '"Windows"',
 }
 
-
+# "type" 4 это коммерческая недвижимость
 params = {
     "type": "1,2",
     "location": "2,3",

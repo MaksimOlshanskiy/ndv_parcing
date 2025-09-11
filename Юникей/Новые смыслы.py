@@ -57,6 +57,7 @@ data = {
 }
 
 finishings = ['UniLoft', 'Без отделки', 'UniBox', 'UniDesign']
+finishings_dict = {'UniLoft': 'С отделкой', 'Без отделки' : 'Без отделки', 'UniBox' : 'Предчистовая', 'UniDesign' : 'С отделкой'}
 
 flats = []
 flats_nums = []
@@ -96,7 +97,7 @@ for finish in finishings:
             project = 'Новые смыслы'
             korpus = flat.find('div', class_='layout-card__info-wrp').text.split()[4]
             type = 'Квартира'
-            finish_type = finish
+            finish_type = finishings_dict.get(finish, finish)
             if flat.find('span', class_='layout-card__count').text.split()[0] == 'Студия':
                 room_count = 0
             else:

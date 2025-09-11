@@ -2,12 +2,10 @@ import requests
 import datetime
 import time
 import pandas as pd
-import openpyxl
 import os
 import random
-import re
 import json
-from functions import classify_renovation, clean_filename, merge_and_clean, haversine
+from functions import merge_and_clean, haversine
 
 decoration_dict = {'preFine': 'Предчистовая', 'fine': 'С отделкой', 'without': 'Без отделки',
                    'fineWithFurniture': 'С отделкой и доп опциями'}
@@ -22,6 +20,7 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 
+# noinspection PyDictDuplicateKeys
 cookies = {
     '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
     'cf_clearance': 'iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk',
@@ -130,6 +129,7 @@ except ValueError:
 
 coords = city_centers.get(user_input)
 
+# noinspection PyTypeChecker
 json_data['jsonQuery']['region']['value'] = [user_input]
 
 ids = []
@@ -355,7 +355,7 @@ for y in ids:
                         except:
                             geo4 = ''
                         try:
-                            if i['building']['deadline']['isComplete'] == True:
+                            if i['building']['deadline']['isComplete']:
                                 srok_sdachi = "Дом сдан"
                             elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline'][
                                 'year'] is None:
@@ -371,7 +371,7 @@ for y in ids:
                             url = ''
 
                         try:
-                            if i['isApartments'] == True:
+                            if i['isApartments']:
                                 type = "Апартаменты"
                             else:
                                 type = "Квартира"
@@ -418,7 +418,7 @@ for y in ids:
                             developer = ""
 
                         try:
-                            if i["roomsCount"] == None:
+                            if i["roomsCount"] is None:
                                 room_count = 0
                             else:
                                 room_count = int(i["roomsCount"])
