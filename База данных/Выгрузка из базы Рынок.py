@@ -3,11 +3,13 @@ import numpy as np
 import psycopg2
 import time
 import warnings
+from Developer_dict import name_dict, developer_dict
 
 year = 2025
 previous_year = 2024
 month = 8
 previous_month = 7
+project = 'Берег'
 
 warnings.filterwarnings(
     "ignore",
@@ -16,22 +18,22 @@ warnings.filterwarnings(
 )
 
 # localhost
+# 192.168.100.88
+# postgres:ndv212XO
+# readonly_user:1234
 try:
     # пытаемся подключиться к базе данных
-    conn = psycopg2.connect('postgresql://postgres:ndv212XO@localhost:5432/postgres')
+    conn = psycopg2.connect('postgresql://postgres:ndv212XO@192.168.100.88:5432/postgres')
     print('Подключились к базе данных')
 except:
     # в случае сбоя подключения будет выведено сообщение в STDOUT
     print('Ошибка подключения к базе данных')
 
 sql_query = f"""
-SELECT * 
+SELECT *
 FROM ndv.ndv_data
-WHERE (extract(YEAR from update_date) = 2024
-OR extract(YEAR from update_date) = 2025)
-AND extract(MONTH from update_date) = 8
-AND district LIKE '%АО%'  
-AND district NOT IN ('НАО', 'ТАО');
+WHERE EXTRACT(YEAR from update_date) = 2025
+AND project_name = 'Берег'
                     """
 
 
@@ -79,4 +81,10 @@ df.columns = [
     "Цена со скидкой, руб."
 ]
 
-df.to_excel("output.xlsx", index=False)
+print(df.info())
+
+# df["Название проекта"] = df["Название проекта"].replace(name_dict)
+# df["Девелопер"] = df["Девелопер"].replace(developer_dict)
+
+# df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
+# df.to_excel("База Июль-Август.xlsx", index=False)
