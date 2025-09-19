@@ -28,13 +28,14 @@ def process_data(json_data, excel_df):
 
     for idx, row in result_df.iterrows():
 
-        update_date = row.get('Дата обновления')
-        if pd.isna(update_date) or pd.to_datetime(update_date).to_period('M') != last_month:
-            continue  # Пропускаем строки не из последнего месяца
+        # update_date = row.get('Дата обновления')
+        # if pd.isna(update_date) or pd.to_datetime(update_date).to_period('M') != last_month:
+        #    continue
+        # Пропускаем строки не из последнего месяца, закоментить этот блок, если нужно сделать несколько месяцев
 
-        jk_name = str(row.get('Название проекта')).strip()
+        jk_name = str(row.get('Название проекта')).strip().lower()
         area = row.get('Площадь, кв.м')
-        developer = str(row.get('Девелопер')).strip()
+        developer = str(row.get('Девелопер')).strip().lower()
 
         if pd.isna(jk_name) or pd.isna(area):
             result_df.at[idx, 'Кол-во комнат'] = 'Н/Д'
@@ -139,8 +140,8 @@ def save_as_xlsx(df, output_path_xlsx, sheet_name='Sheet1'):
 if __name__ == "__main__":
 
     json_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\normalized_output.json'
-    excel_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\База данных\База Июль-Август.xlsx"
-    output_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\База данных\База Июль-Август-2.xlsx"
+    excel_path = r"C:\Users\m.olshanskiy\Desktop\База по годам\2025\Новая папка\2025-3.xlsx"
+    output_path = r"C:\Users\m.olshanskiy\Desktop\База по годам\2025\Новая папка\2025-квартирография.xlsx"
 
     json_data = load_json_data(json_path)
     excel_df = load_excel_data(excel_path)

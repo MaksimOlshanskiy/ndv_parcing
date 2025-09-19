@@ -3,6 +3,8 @@ import time
 import pandas as pd
 import os
 import requests
+
+from functions import save_flats_to_excel
 from info_FSK import info
 from save_to_excel import save_flats_to_excel_old_new_all
 
@@ -77,4 +79,4 @@ for key, data in info.items():
 
     time.sleep(0.05)
 
-save_flats_to_excel_old_new_all(flats, developer)
+save_flats_to_excel(flats, 'all', developer)

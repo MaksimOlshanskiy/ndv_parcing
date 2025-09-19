@@ -4,7 +4,7 @@ import requests
 
 from functions import save_flats_to_excel
 from info_1DSK import info
-from save_to_excel import save_flats_to_excel_old_new_all
+
 
 flats = []
 count = 1

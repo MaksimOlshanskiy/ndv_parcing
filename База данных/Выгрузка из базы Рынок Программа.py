@@ -4,12 +4,33 @@ import psycopg2
 import time
 import warnings
 from Developer_dict import name_dict, developer_dict
+year = input("Введите год: ")
+
+# если нужно число, приводим к int
+try:
+    year = int(year)
+    print(f"Вы ввели год: {year}")
+except ValueError:
+    print("Ошибка: нужно ввести число (год).")
+
+year = input("Введите месяц: ")
+
+# если нужно число, приводим к int
+try:
+    year = int(year)
+    print(f"Вы ввели год: {year}")
+except ValueError:
+    print("Ошибка: нужно ввести число (год).")
+
 
 year = 2025
-previous_year = 2024
+previous_year = year-1
 month = 8
-previous_month = 7
-project = 'Берег'
+if month == 1:
+    previous_month = 12
+else:
+    previous_month = month - 1
+
 
 warnings.filterwarnings(
     "ignore",
@@ -32,12 +53,12 @@ except:
 sql_query = f"""
 SELECT *
 FROM ndv_data
-WHERE (EXTRACT(YEAR from update_date) = 2024
-AND EXTRACT(MONTH from update_date) = 8)
-OR (EXTRACT(YEAR from update_date) = 2025
-AND EXTRACT(MONTH from update_date) = 7)
-OR (EXTRACT(YEAR from update_date) = 2025
-AND EXTRACT(MONTH from update_date) = 8)
+WHERE (EXTRACT(YEAR from update_date) = {previous_year}
+AND EXTRACT(MONTH from update_date) = {month})
+OR (EXTRACT(YEAR from update_date) = {year}
+AND EXTRACT(MONTH from update_date) = {previous_month})
+OR (EXTRACT(YEAR from update_date) = {year}
+AND EXTRACT(MONTH from update_date) = {month})
                     """
 
 
