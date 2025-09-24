@@ -44,7 +44,8 @@ def process_data(json_data, excel_df):
         # Условие: если площадь <= 28 — это студия
         if area <= 28:
             result_df.at[idx, 'Кол-во комнат'] = 'студия'
-            print(f"[{idx + 1}/{total}] Назначено как студия по площади <= 28: ЖК {jk_name}, площадь {area}")
+            if __name__ == "__main__":
+                print(f"[{idx + 1}/{total}] Назначено как студия по площади <= 28: ЖК {jk_name}, площадь {area}")
             continue
 
         # Если девелопер из списка — пропускаем изменение типологии
@@ -126,8 +127,8 @@ def process_data(json_data, excel_df):
 
         if not found:
             result_df.at[idx, 'Кол-во комнат'] = 'Н/Д'
-
-        print(f"[{idx + 1}/{total}] Обработано: ЖК {jk_name}, площадь {area}")
+        if __name__ == "__main__":
+            print(f"[{idx + 1}/{total}] Обработано: ЖК {jk_name}, площадь {area}")
 
     return result_df
 

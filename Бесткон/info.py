@@ -20,7 +20,7 @@ info = {
 
         'data': {
             'method': 'getPlaces',
-            'filter': '{"orderBy":"","saleStatus":[1],"id_jk":"1","category":"Квартира","rooms":["1","2","3"],"cost_min":"17243982","cost_max":"33191939","square_min":"39","square_max":"91","floor_min":"2","floor_max":"17","page":"1","jk_verified":1,"page_count":30}',
+            'filter': '{"orderBy":"","saleStatus":[1],"id_jk":"1","category":"Квартира","rooms":["1","2","3"],"cost_min":"17243982","cost_max":"33191939","square_min":"10","square_max":"191","floor_min":"1","floor_max":"99","page":"1","jk_verified":1,"page_count":30}',
         },
         'project_name': 'Большая Семерка'
     },
@@ -45,7 +45,7 @@ info = {
 
         'data': {
             'method': 'getPlaces',
-            'filter': '{"jk_verified":1,"orderBy":"","saleStatus":[1],"id_jk":"9","category":"Квартира","cost_min":"17017697","cost_max":"36167339","square_min":"35","square_max":"100","floor_min":"1","floor_max":"18","page":"1","page_count":30}',
+            'filter': '{"jk_verified":1,"orderBy":"","saleStatus":[1],"id_jk":"9","category":"Квартира","cost_min":"1","cost_max":"3616733999","square_min":"10","square_max":"999","floor_min":"1","floor_max":"99","page":"1","page_count":30}',
         },
         'project_name': 'Время'
     }

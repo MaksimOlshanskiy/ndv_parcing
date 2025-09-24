@@ -120,6 +120,8 @@ def save_flats_to_excel(flats, project, developer):
     print(f'')
     print(f'Типы отделки: {df['Отделка'].value_counts()}')
     print(f'')
+    print(f'Проекты: {df['Название проекта'].value_counts()}')
+    print(f'')
 
 
 
@@ -259,10 +261,14 @@ def save_cian_to_excel(flats, project, developer):
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
     project = re.sub(r'[<>:"/\\|?*]', '_', project)
+    developer = re.sub(r'[<>:"/\\|?*]', '_', developer)
     filename = f"{developer}_{project}_{current_date}.xlsx"
     file_path = os.path.join(folder_path, filename)
     df.to_excel(file_path, index=False)
-    print(f"✅ Данные сохранены в файл: {file_path}")
+    try:
+        print(f"✅ Данные сохранены в файл: {file_path}")
+    except:
+        ''
 
 def classify_renovation(description: str) -> str:
 

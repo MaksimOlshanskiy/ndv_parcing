@@ -7,12 +7,19 @@ from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_near
 
 headers = {
-    'accept': 'application/json',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+    'accept': '*/*',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'content-type': 'application/json',
-    'origin': 'https://dogma-evo.ru',
-    'referer': 'https://dogma-evo.ru/',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
+    'origin': 'https://dogma.ru',
+    'priority': 'u=1, i',
+    'referer': 'https://dogma.ru/',
+    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
 }
 
 flats = []
@@ -27,32 +34,50 @@ count=0
 try:
     while has_more_data and attempt < max_attempts:
         json_data = {
-            'areas': [1, 999.52],
-            'costs': [76600, 2280000099],
+            'areas': [
+                17.63,
+                98.61,
+            ],
+            'costs': [
+                4058426,
+                26812059,
+            ],
             'deadlines': [],
-            'floors': [1, 99],
+            'floors': [
+                2,
+                25,
+            ],
             'layout_id': [],
             'letter_ids': [],
-            'limit': limit,
-            'offset': offset,
+            'limit': 12,
+            'offset': 12,
             'ids': [],
-            'project_ids': [5, 6],
+            'project_ids': [
+                6,
+                5,
+            ],
             'rooms': [],
-            'statuses': [2],
+            'statuses': [
+                2,
+            ],
             'tags': [],
-            'types': [1],
+            'types': [
+                1,
+            ],
             'group_by': '',
             'order': {
                 'field': 'cost',
-                'type': 'asc',
+                'type': 'desc',
             },
+            'classes': [],
         }
+
 
         json_payload = json.dumps(json_data, ensure_ascii=False)
 
         try:
             response = requests.post(
-                'https://service.1dogma.ru/api/layouts-filter/v2/objects/filter',
+                'https://service.dogma.ru/api/layouts-filter/v2/objects/filter',
                 data=json_payload,
                 headers=headers,
                 timeout=30

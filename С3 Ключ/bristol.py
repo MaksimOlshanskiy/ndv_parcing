@@ -3,10 +3,18 @@ import requests
 
 from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new
+from Profitbase_token import get_token
 
 '''
 обновить в headers authorization по ссылке
 '''
+
+
+
+tenant_id = 3890
+headers = get_token(tenant_id)
+
+print(headers)
 
 #https://zhkbristol.ru/#/catalog/projects/list?filter=property.status:AVAILABLE
 

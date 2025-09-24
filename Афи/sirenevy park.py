@@ -7,7 +7,7 @@
 '''
 
 
-count_of_flats = 462
+count_of_flats = 401
 
 import datetime
 import time
@@ -22,27 +22,30 @@ import requests
 
 
 cookies = {
-    'PHPSESSID': 'F7L59dlf7VkWnKp7Vo32KnePo2pBhQ7j',
-    '_cmg_csstS0cfD': '1755522598',
-    '_comagic_idS0cfD': '11024933896.15356351591.1755522598',
-    'cookies_policy': 'true',
-    'cookies_promo': 'true',
+    'PHPSESSID': 'eUZ3RC66imxPVZ6vbllRqUNx8cO31biE',
+    '_cmg_csstS0cfD': '1758704848',
+    '_comagic_idS0cfD': '11249979726.15617038936.1758704848',
+    '_ym_uid': '1742816888674822329',
+    '_ym_d': '1758704849',
+    '_ym_isad': '2',
 }
 
 headers = {
-    'Accept': 'text/html, */*; q=0.01',
+    'Accept': '*/*',
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'Bx-ajax': 'true',
     'Connection': 'keep-alive',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Origin': 'https://afi-park.ru',
     'Referer': 'https://afi-park.ru/param/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origin',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
-    'X-Requested-With': 'XMLHttpRequest',
-    'sec-ch-ua': '"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'PHPSESSID=F7L59dlf7VkWnKp7Vo32KnePo2pBhQ7j; _cmg_csstS0cfD=1755522598; _comagic_idS0cfD=11024933896.15356351591.1755522598; cookies_policy=true; cookies_promo=true',
+    # 'Cookie': 'PHPSESSID=eUZ3RC66imxPVZ6vbllRqUNx8cO31biE; _cmg_csstS0cfD=1758704848; _comagic_idS0cfD=11249979726.15617038936.1758704848; _ym_uid=1742816888674822329; _ym_d=1758704849; _ym_isad=2',
 }
 
 params = {
@@ -61,7 +64,8 @@ while len(flats) < count_of_flats:
     response = requests.get('https://afi-park.ru/param/', params=params, cookies=cookies, headers=headers)
     print(response.status_code)
     soup = BeautifulSoup(response.text, 'html.parser')
-    flats_soup = soup.find_all('a', class_="commercial-box newStyleBox loadMoreItem")
+    flats_soup = soup.find_all('div', class_="commercial-box newStyleBox")
+
     for i in flats_soup:
         elements = i.find_all('div', class_="commercial-item-properties-element")
         elems = []
@@ -104,7 +108,7 @@ while len(flats) < count_of_flats:
         dogovor = ''
         type = 'Квартиры'
         try:
-            finish_type = i.find('div', class_='facingLabel').text
+            finish_type = i.find('div', class_='facingLabel').text.strip()
             if finish_type == 'без отделки':
                 finish_type = 'Без отделки'
             elif finish_type == 'предчистовая':
@@ -118,10 +122,16 @@ while len(flats) < count_of_flats:
         room_count = elems[8]
         area = float(elems[4].replace('м²', ''))
         price_per_metr = ''
-        old_price = int(i.find('div', class_='G-align-center').text.split('\n')[3].replace(' ', '').replace('₽', ''))
+        try:
+            old_price = int(i.find('div', class_='G-align-center').text.split('\n')[4].replace(' ', '').replace('₽', ''))
+        except:
+            old_price = ''
         discount = ''
         price_per_metr_new = ''
-        price = int(i.find('div', class_='G-align-center').text.split('\n')[1].replace(' ', '').replace('₽', ''))
+        try:
+            price = int(i.find('div', class_='G-align-center').text.split('\n')[2].replace(' ', '').replace('₽', ''))
+        except:
+            price = ''
         section = ''
         floor = ''
         flat_number = ''

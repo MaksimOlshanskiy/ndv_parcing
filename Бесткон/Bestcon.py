@@ -39,12 +39,11 @@ for key, item in info.items():
                     room_count = flat_data.get("RoomsCount", "")
                     area = f'{float(flat_data.get("allSquare", "")):.2f}'
                     old_price = f'{float(flat_data.get("AgentCost_old", "")):.0f}'
-                    price = f'{float(flat_data.get("AgentCost", "")):.0f}'
+                    price = f'{float(flat_data.get("AgentCost")):.0f}'
                     floor = flat_data.get("floor", "")
 
-                    if old_price=='0':
+                    if old_price=="0":
                         old_price=price
-                        price=None
 
                     print(
                         f"{count} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}")
@@ -54,8 +53,7 @@ for key, item in info.items():
                         '',
                         '', korpus,
                         '', '', '', '', '', '', type_, 'Без отделки', int(room_count), area, '', int(old_price), '',
-                        '', '',
-                        '', int(floor), ''
+                        '', int(price), '', int(floor), ''
                     ]
                     flats.append(result)
 

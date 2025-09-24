@@ -12,7 +12,7 @@ import requests
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6ImQ1OGU5YjFkNzc0YTVmN2JlMmJhZGVmZDcyNzE4NDhkMTU2OTI0ZGJmNzc1MjY2YjkxZmY2NGJkY2MwNjljODIwNDIzNzAwYmNhOGExMTJkIiwiaWF0IjoxNzU1Njk3MTgzLjk2MDIwNCwibmJmIjoxNzU1Njk3MTgzLjk2MDIwNywiZXhwIjoxNzU1NzAwNzgzLjk1NjM4LCJzdWIiOiJTSVRFX1dJREdFVHwyNzcxIiwic2NvcGVzIjpbIlNJVEVfV0lER0VUIl0sInR5cGUiOiJzaXRlV2lkZ2V0IiwiZW50aXRsZW1lbnRzIjoiIiwiYWNjb3VudCI6eyJpZCI6NTI5MCwidGl0bGUiOiLQkNCcINCU0LXQstC10LvQvtC_0LzQtdC90YIiLCJzdWJkb21haW4iOiJwYjUyOTAiLCJiaWxsaW5nT3duZXJJZCI6NTI5OCwiY291bnRyeUNvZGUiOiJSVSJ9LCJyb2xlcyI6WyJST0xFX1NJVEVfV0lER0VUIl0sInNpdGVXaWRnZXQiOnsiaWQiOjI3NzEsImRvbWFpbiI6Imh0dHBzOi8veG4tLS0tY3RiZmZxcnV4ajdiM2MueG4tLXAxYWkifX0.zbqGPlFgYL2PrUQLucSQGmCzlhgi6HcWfQ2Ed29W18VsTdUBWsrsw4RAFSDzWyi-QZBvRs7y-fluI2kQUFPDoQyCxgUhIqu8mPPaOg01OadgYTn9vVSGWt_6w_qKpM-X0vYNFgHm5ZuzrKmvg9yaVM4gMQhOYQEuXBoH2rLlHOfKhEeHnhltTTvUk3i42b8nBsLG9y5IkYgLiYiOKngg6qs_AQpJSMEl4bBMsFiKutwjC0IZ8o3TpC9U0qiAF4_O1BNiUGruJBXZ2CBEBNUwCKO7nqD-ymkD9TLcIaxjT8OsCpG5ukEjhmqTRfvl3P5WRIrTh1CKa1GDkRljcNywkw',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6IjY1YWUyZWUzMDFjYzk1YmRkZWM4ODE3YTg3ZDdiNTNlNTUxNWJmNTZkNjgyNGNjZWQ5ZDhhYzZmMDRmNWE2NzM5MmZkNDI4NDgzYTI2ZTgyIiwiaWF0IjoxNzU4NzAyNzc0Ljk5NzYwNCwibmJmIjoxNzU4NzAyNzc0Ljk5NzYwNiwiZXhwIjoxNzU4NzA2Mzc0Ljk5MTAwMiwic3ViIjoiU0lURV9XSURHRVR8Mjc3MSIsInNjb3BlcyI6WyJTSVRFX1dJREdFVCJdLCJ0eXBlIjoic2l0ZVdpZGdldCIsImVudGl0bGVtZW50cyI6IiIsImFjY291bnQiOnsiaWQiOjUyOTAsInRpdGxlIjoi0JDQnCDQlNC10LLQtdC70L7Qv9C80LXQvdGCIiwic3ViZG9tYWluIjoicGI1MjkwIiwiYmlsbGluZ093bmVySWQiOjUyOTgsImNvdW50cnlDb2RlIjoiUlUifSwicm9sZXMiOlsiUk9MRV9TSVRFX1dJREdFVCJdLCJzaXRlV2lkZ2V0Ijp7ImlkIjoyNzcxLCJkb21haW4iOiJodHRwczovL3huLS0tLWN0YmZmcXJ1eGo3YjNjLnhuLS1wMWFpIn19.IEPOEbvDJkGFH1VO3P4vI8CiBdb96bTJQZ1_fO-OldjWCHpDqoszMhRcgd981mvzc3sL-qgUt8QyFViOWP3WuEclo5Xv8_wnHD5Y21iSrnqsYFHgzk7tO85Tx1j8qRNsi8Orly5nlHVRNxOVSWU69r0B7N1IODZToxILJDPDw8M8Bbt-Dx7ytCLv5R5mI6ZzmjHgBEahcDCCZefCutahUbTF8DAb3Dtq74QZi34Zy9lv6MJg0VpN1V8ppgeXuI2Ei5BrJ_BI4-Fi1xVFnYRYL2e_pkrGCZucqGYSaZyXfkavSjyglZ0k2dHTwb52HlGFwPFZSjxANpJxsGA6tYDzNA',
     'origin': 'https://smart-catalog.profitbase.ru',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
@@ -27,6 +27,7 @@ headers = {
 
 params = {
     'projectIds[0]': '36880',
+    'propertyTypeAliases[0]': 'property',
     'isHouseFinished': '0',
     'status[0]': 'AVAILABLE',
     'limit': '10',

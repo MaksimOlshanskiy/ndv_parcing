@@ -14,10 +14,10 @@ PARAMS = {
     "flat[2]": "1",
     "flat[3]": "2",
     "flat[4]": "3",
-    "pricelower": "1500000.00",
-    "priceupper": "12040000.00",
-    "sqlower": "18.00",
-    "squpper": "150.00"
+    "pricelower": "100000.00",
+    "priceupper": "1204000099.00",
+    "sqlower": "10.00",
+    "squpper": "999.00"
 }
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 

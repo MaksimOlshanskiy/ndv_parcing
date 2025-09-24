@@ -12,8 +12,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
-
+from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, \
+    StaleElementReferenceException, NoSuchElementException
 
 cookies = {
     'ced': 'iogu7qg4r9p33u3bhr1lohcus4tmmavd',
@@ -80,19 +80,35 @@ wait = WebDriverWait(driver, 5)  # небольшое ожидание
 
 while True:
     try:
-        # ждём появления кнопки
-        button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-more-btn]")))
+        # ждём, пока кнопка снова станет кликабельной
+        button = wait.until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-more-btn]"))
+        )
+        time.sleep(2)
 
         try:
             # пробуем обычный клик
             button.click()
-        except:
-            # если перекрыта элементом, скроллим и кликаем через JS
-            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
-            driver.execute_script("arguments[0].click();", button)
+        except (StaleElementReferenceException, Exception):
+            # если элемент "устарел" или перекрыт
+            try:
+                button = driver.find_element(By.CSS_SELECTOR, "button[data-more-btn]")
+                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
+                driver.execute_script("arguments[0].click();", button)
+            except (NoSuchElementException, StaleElementReferenceException):
+                continue
+
 
     except TimeoutException:
-        print("Кнопка 'Показать еще' больше не найдена. Выход из цикла.")
+
+        print("Кнопка 'Показать ещё' больше не найдена. Выход из цикла.")
+
+        break
+
+    except NoSuchElementException:
+
+        print("Кнопка отсутствует. Выход из цикла.")
+
         break
 
 driver.quit()

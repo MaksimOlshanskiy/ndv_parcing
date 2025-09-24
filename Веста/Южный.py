@@ -38,7 +38,8 @@ params = {
     'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': 'eada59b0edad07a1e5e8b3cbec78f96d7aade7cc43d3e4ec12396410e1d001a1',
+    'access_token': '28193c0cf4e64f66962187a4a8b5665717cb0d4d542b4638add454fe55d266ef'
+
 }
 
 

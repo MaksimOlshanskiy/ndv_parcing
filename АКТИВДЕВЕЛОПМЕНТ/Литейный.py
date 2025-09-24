@@ -1,6 +1,6 @@
 """
 
-Прописываем максимальные номера страниц в max_page_dict (+1)
+Прописываем максимальные номера страниц в max_page_dict (+1)  https://liteyniy.life/
 
 """
 
@@ -64,7 +64,7 @@ data = {
 flats = []
 buildings_ids = ['13', '16']
 buildings_ids_dict = {'13' : 'Литейная 18', '16' : 'Народная 15'}
-max_page_dict = {'13' : '10', '16' : '10'}
+max_page_dict = {'13' : '10', '16' : '9'}
 
 
 def extract_digits_or_original(s):
