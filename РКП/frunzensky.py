@@ -1,97 +1,175 @@
-import datetime
+'''
+
+по очереди по каждому дому 'house_id'
+
+'''
+
+import requests
+from datetime import datetime
+import time
+import pandas as pd
+import openpyxl
+import os
+import random
 
 from functions import save_flats_to_excel
-from save_to_excel import save_flats_to_excel_middle
-import requests
-
-cookies = {
-    'session': '39aa63958008563b6728d56113ce3f5708ca5c9f5f63804d323ee9c6e535ac26',
-    '_ym_uid': '174427988640780778',
-    '_ym_d': '1744279886',
-    '_ym_isad': '1',
-    '_ym_visorc': 'w',
-    'cted': 'modId%3Dt1he8a81%3Bya_client_id%3D174427988640780778',
-}
 
 headers = {
     'accept': 'application/json, text/plain, */*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'content-type': 'application/json',
+    'origin': 'https://xn----jtbbfggcdyc3aqvm.xn--p1ai',
     'priority': 'u=1, i',
-    'referer': 'https://xn----jtbbfggcdyc3aqvm.xn--p1ai/flats',
-    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+    'referer': 'https://xn----jtbbfggcdyc3aqvm.xn--p1ai/',
+    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-    'x-host': 'xn----jtbbfggcdyc3aqvm.xn--p1ai',
-    # 'cookie': 'session=faebabe85f2dd1fa3f0e4291108cc484693efbceca9cfdb6fdb27031d15dffce; _ym_uid=174427988640780778; _ym_d=1753688964; _ym_isad=1; _ym_visorc=w',
+    'sec-fetch-site': 'cross-site',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
 }
 
-params = {
-    'project_id': '823c3be0-6a4c-4383-8607-cfcc4414d9da',
-    'status': 'free',
-    'offset': '0',
-    'limit': '50',
+json_data = {
+    'action': 'objects_list',
+    'data': {
+        'category': 'flat',
+        'activity': 'sell',
+        'page': 0,
+        'filters': {
+            'studio': 'null',
+            'rooms': [],
+            'restorations': [],
+            'promos': [],
+            'tags': [],
+            'riser_side': [],
+            'geo_city': None,
+            'floors': [],
+            'houses_ids': [],
+            'type': None,
+            'areaFrom': None,
+            'areaTo': None,
+            'priceFrom': None,
+            'priceTo': None,
+            'priceM2From': None,
+            'priceM2To': None,
+            'priceRentFrom': None,
+            'priceRentTo': None,
+            'priceRentM2From': None,
+            'priceRentM2To': None,
+            'status': None,
+            'isHot': False,
+            'isExclusive': False,
+        },
+        'complex_id': None,
+        'house_id': 7750570,
+        'orders': [],
+        'complex_search': None,
+        'house_search': None,
+        'cabinetMode': False,
+    },
+    'auth_token': None,
+    'locale': None,
 }
+
+
+
+
 
 flats = []
-count = 0
+date = datetime.now().date()
 
-try:
-    response = requests.get('https://xn----jtbbfggcdyc3aqvm.xn--p1ai/api/realty-filter/residential/real-estates',
-                            params=params,
-                            headers=headers,
-                            cookies=cookies)
+def extract_digits_or_original(s):
+    digits = ''.join([char for char in s if char.isdigit()])
+    return int(digits) if digits else s
 
-    if response.status_code == 200:
-        data = response.json()
+while True:
 
-        for i in data:
-            try:
-                count += 1
-                date = datetime.date.today()
-                project = 'Фрунзенский'
-                developer = "РКП"
-                korpus = '1'
-                room_count = i['rooms']
+    response = requests.post(
+        'https://api.macroserver.ru/estate/catalog/?domain=xn----jtbbfggcdyc3aqvm.xn--p1ai&check=O4XxZ3x_IwtiWW_h90AJNXusswcJnvp7OPO2BEGWq6zcougpDlKAwUg6ZDy8bffGuZmpn4WpWqD6EHwxNzU4ODg4MDM5fDQ5MDFi&type=catalog&inline=true&issetJQuery=1&uuid=0c26cc2f-e737-48af-97e6-153cc2858eaa&cookie_base64=eyJfeW1fdWlkIjoiMTc0NDI4Mjg0Mzk5NzE4NzQ0MiJ9&time=1758888039&token=ad930a9128a289defa2e25b4021067e7/',
+        headers=headers,
+        json=json_data,
+    )
+    print(response.status_code)
 
-                if room_count == 0:
-                    room_count = 'студия'
+    items = response.json()["objects"]
 
-                type_ = "Квартира"
-                area = i['total_area']
-                old_price = i['old_price']
-                price = i['price']
-                section = i['section_number']
-                floor = i['floor_number']
 
-                if old_price == price:
-                    price = None
 
-                print(
-                    f"{count} | {project}, комнаты: {room_count}, площадь: {area}, цена: {price}, стар. цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+    for i in items:
+        if i['status'] == 'booked':
+            continue
 
-                result = [
-                    date, project, '', '', '', '', '', '', '', '', '', '', '', '',
-                    '', '', '', developer, '', '', '', '', korpus, '', '', '', '',
-                    '', '', type_, 'Без отделки', room_count, area, '', old_price, '',
-                    '', price, int(section), int(str(floor)), ''
-                ]
-                flats.append(result)
+        url = i['id']
+        developer = "РКП"
+        project = 'Фрунзенский'
+        korpus = ''
+        type = 'Квартиры'
+        finish_type = 'С отделкой'
+        room_count = extract_digits_or_original(i['rooms'])
+        try:
+            area = float(i['area'])
+        except:
+            area = ''
+        try:
+            old_price = int(i['price'].replace('.0000', ''))
+        except:
+            old_price = ''
+        try:
+            price = ''
+        except:
+            price = ''
+        section = ''
+        try:
+            floor = int(i['floor'])
+        except:
+            floor = ''
+        flat_number = ''
 
-            except Exception as e:
-                print(f"Ошибка при обработке квартиры: {e}")
-                continue
+        english = ''
+        promzona = ''
+        mestopolozhenie = ''
+        subway = ''
+        distance_to_subway = ''
+        time_to_subway = ''
+        mck = ''
+        distance_to_mck = ''
+        time_to_mck = ''
+        bkl = ''
+        distance_to_bkl = ''
+        time_to_bkl = ''
+        status = ''
+        start = ''
+        comment = ''
+        okrug = ''
+        district = ''
+        adress = ''
+        eskrou = ''
+        konstruktiv = ''
+        klass = ''
+        srok_sdachi = ''
+        srok_sdachi_old = ''
+        stadia = ''
+        dogovor = ''
+        price_per_metr = ''
+        discount = ''
+        price_per_metr_new = ''
 
+
+
+        print(
+            f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
+                  time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
+                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
+        flats.append(result)
+
+    if response.json()['isLastPage']:
+        break
     else:
-        print(f'Ошибка запроса: {response.status_code}, {response.text}')
+        json_data['data']['page'] += 1
+        sleep_time = random.uniform(1, 5)
+        time.sleep(sleep_time)
 
-except Exception as e:
-    print(f"Общая ошибка: {e}")
+save_flats_to_excel(flats, project, developer)
 
-if flats:
-    save_flats_to_excel(flats, project, developer)
-else:
-    print("Нет данных для сохранения")

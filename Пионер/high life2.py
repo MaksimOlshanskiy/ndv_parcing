@@ -49,9 +49,11 @@ soup = BeautifulSoup(page_content, 'html.parser')
 flats_soup = soup.find_all('div', class_="flat")
 
 for f in flats_soup:
-
-    flat_params = f.find('div', class_="flat-info").text.split(' ')
-    print(flat_params)
+    try:
+        flat_params = f.find('div', class_="flat-info").text.split(' ')
+        print(flat_params)
+    except AttributeError:
+        continue
 
     url = ''
     date = datetime.date.today()

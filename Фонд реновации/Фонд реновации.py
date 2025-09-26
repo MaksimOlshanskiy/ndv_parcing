@@ -110,7 +110,10 @@ for i in flats_soup:
         korpus = korpus.replace('к.', '')
 
     type = 'Квартиры'
-    finish_type = i.select_one('div.bf_list_tags > div > div:nth-of-type(2)').text
+    try:
+        finish_type = i.select_one('div.bf_list_tags > div > div:nth-of-type(2)').text
+    except AttributeError:
+        finish_type = ''
     room_count = extract_digits_or_original(i.select_one('div.-params span').text)
 
     area = float(i.select_one('div.-params > span:nth-of-type(2)').text.replace(' м2', ''))

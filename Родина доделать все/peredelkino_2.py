@@ -10,9 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 import time
-
 from functions import save_flats_to_excel
-from save_to_excel import save_flats_to_excel_old_new
 
 
 def get_full_catalog_html(url):

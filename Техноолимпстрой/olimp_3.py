@@ -29,9 +29,10 @@ params = {
     'isHouseFinished': '0',
     'status[0]': 'AVAILABLE',
     'limit': '10',
+    'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': '246cc7ce7320cb3f5233b3103503681b5b6810cd7d3e3ccf3861f3db129c75b5',
+    'access_token': '1ef711f96fa578c1e8e8f365408b56793cf9e542b1dda43032cdee8a1d8f739b',
 }
 
 flats = []

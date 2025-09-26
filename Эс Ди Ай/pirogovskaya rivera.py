@@ -32,9 +32,9 @@ while True:
         load_more_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a.load-more-all')))
         driver.execute_script("arguments[0].scrollIntoView(true);", load_more_button)
         time.sleep(1)
-        load_more_button.click()
+        driver.execute_script("arguments[0].click();", load_more_button)
         print("Нажали кнопку 'Показать еще'")
-        time.sleep(4)  # ждем подгрузки квартир
+        time.sleep(4)
     except (TimeoutException, NoSuchElementException):
         print("Кнопка 'Показать еще' не найдена или недоступна, выходим из цикла")
         break

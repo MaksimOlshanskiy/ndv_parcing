@@ -1,3 +1,8 @@
+"""
+Проверять код кнопки и сверяться с количеством снятых лотов
+
+"""
+
 import datetime
 import time
 import pandas as pd
@@ -100,7 +105,7 @@ while True:
     try:
         button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable(
-                (By.CSS_SELECTOR, 'body > main > div > div.kvartiry__catalog.pt-4.pb-4 > div:nth-child(4) > div > div > div.pagination.d-flex.align-items-center.justify-content-center.flex-wrap.align-self-end > a.pagination-item.d-flex.align-items-center.justify-content-center.flex-shrink-0.text-decoration-none.to-end.default')
+                (By.XPATH, '//a[contains(@class, "pagination-item") and contains(@class, "to-end")]')
             )
         )
 

@@ -14,20 +14,19 @@ cookies = cookies
 headers = headers
 
 data = {
-    'last_delivery': '30',
-    'price[min]': '1',
-    'price[max]': '999',
-    'price_range[min]': '1',
-    'price_range[max]': '999',
-    'obj[]': ['223', '223'],
-    'area[min]': '1',
-    'area[max]': '999',
-    'area_range[min]': '1',
-    'area_range[max]': '999',
-    'floor[min]': '1',
-    'floor[max]': '99',
-    'floor_range[min]': '1',
-    'floor_range[max]': '99',
+    'price[min]': '13.3',
+    'price[max]': '38.9',
+    'price_range[min]': '13.3',
+    'price_range[max]': '38.9',
+    'obj[]': '152',
+    'area[min]': '20',
+    'area[max]': '69',
+    'area_range[min]': '20.0',
+    'area_range[max]': '69.0',
+    'floor[min]': '2',
+    'floor[max]': '23',
+    'floor_range[min]': '2',
+    'floor_range[max]': '23',
     'ob[page]': '1',
     'ob[sort]': 'price',
     'ob[order]': 'asc',
@@ -35,7 +34,7 @@ data = {
     'ob[id]': '152',
     'object': '152',
     'a': 'types',
-    'ok': ok
+    'ok': 'JiLYQ6UE7zlqLDA9UVrheXtexoXfiJVP'
 }
 
 
@@ -81,7 +80,7 @@ while True:
         adress = ''
         eskrou = ''
         all_tags = i.find_all('div', class_='tag tag--isSmall')
-        korpus = int(i.find('div', class_= 'listingCard__label').text.strip().split()[1].replace(",", ''))
+        korpus = i.find('div', class_= 'listingCard__label').text.strip().split()[1].replace(",", '')
         konstruktiv = ''
         klass = ''
         if len(all_tags) == 3:

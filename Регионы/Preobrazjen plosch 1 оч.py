@@ -41,7 +41,7 @@ def setup_driver():
     return driver
 
 
-def click_show_more(driver, max_clicks=28):
+def click_show_more(driver, max_clicks=27):
     from selenium.common.exceptions import (
         NoSuchElementException, StaleElementReferenceException,
         TimeoutException, ElementClickInterceptedException

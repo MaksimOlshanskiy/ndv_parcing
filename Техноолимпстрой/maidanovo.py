@@ -25,14 +25,13 @@ headers = {
 }
 
 params = {
-    'projectIds[0]': '6191',
-    'propertyTypeAliases[0]': 'property',
     'isHouseFinished': '0',
     'status[0]': 'AVAILABLE',
-    'limit': '89',
+    'limit': '10',
+    'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': '301ef7943ac07dbe99d1dbb88971c19ad6fd16fa81b1791dc4bb05880053be98',
+    'access_token': '9f05fbcc4eefb50e9e4c5039d9f74551543f2b2d0ab360fe4d8a74b8eeca22ad',
 }
 
 flats = []

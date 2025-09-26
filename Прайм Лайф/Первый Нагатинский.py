@@ -14,20 +14,34 @@ from bs4 import BeautifulSoup
 import requests
 
 cookies = {
-    'PHPSESSID': 'J9wHIhcnTQBXjdHqe3SorHBl9TDjsyUP',
-    'BITRIX_CONVERSION_CONTEXT_s1': '%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1743465540%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D',
-    'BX_USER_ID': '15016e9404744ee3cb1a5dfed786822b',
-    'roistat_visit': '102334',
-    'roistat_first_visit': '102334',
-    'roistat_visit_cookie_expire': '1209600',
-    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit',
+    'roistat_is_need_listen_requests': '0',
+    'roistat_is_save_data_in_cookie': '1',
+    'SCBFormsAlreadyPulled': 'true',
+    'PHPSESSID': 'LsiULCoW5ByXvVF8YLpG0HulCq3wmmQI',
     '_ym_uid': '1743415929559311987',
-    '_ym_d': '1743415929',
+    '_ym_d': '1758876784',
+    'scbsid_old': '2746015342',
+    'roistat_visit': '274388',
+    'roistat_visit_cookie_expire': '1209600',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
+    'BITRIX_CONVERSION_CONTEXT_s1': '%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1758931140%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D',
     '___dc': 'a754551e-265e-4d6b-9f95-8a533f4aa9bc',
-    '_cmg_csstZgRm6': '1743415931',
-    '_comagic_idZgRm6': '10067765488.14273203563.1743415930',
+    'roistat_call_tracking': '1',
+    'roistat_emailtracking_email': 'null',
+    'roistat_emailtracking_tracking_email': 'null',
+    'roistat_emailtracking_emails': 'null',
+    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
+    'sma_session_id': '2439137776',
+    'SCBfrom': '',
+    'SCBnotShow': '-1',
+    'smFpId_old_values': '%5B%222488b0e958469f2da6c6193c8be92e7e%22%5D',
+    'SCBporogAct': '5000',
+    'SCBstart': '1758876789394',
+    'sma_postview_ready': '1',
+    'screen_width': '1416',
+    'SCBindexAct': '4397',
+    'sma_index_activity': '10850',
 }
 
 headers = {
@@ -35,15 +49,15 @@ headers = {
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'bx-ajax': 'true',
     'priority': 'u=1, i',
-    'referer': 'https://1-ng.ru/catalog/',
-    'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
+    'referer': 'https://1-ng.ru/catalog/?catalogFilter_96_MIN=19.3&catalogFilter_96_MAX=69.5&catalogFilter_96_MIN=19267776&catalogFilter_96_MAX=69492597&catalogFilter_83_MIN=3&catalogFilter_83_MAX=28&catalogFilter_83_MIN=3&catalogFilter_83_MAX=28&catalogFilter_69_MIN=29&catalogFilter_69_MAX=113&catalogFilter_69_MIN=29.48&catalogFilter_69_MAX=113.48&catalogFilter_92_270784970=Y&set_filter=Y',
+    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
-    # 'cookie': 'PHPSESSID=J9wHIhcnTQBXjdHqe3SorHBl9TDjsyUP; BITRIX_CONVERSION_CONTEXT_s1=%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1743465540%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D; BX_USER_ID=15016e9404744ee3cb1a5dfed786822b; roistat_visit=102334; roistat_first_visit=102334; roistat_visit_cookie_expire=1209600; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit; _ym_uid=1743415929559311987; _ym_d=1743415929; _ym_isad=2; _ym_visorc=w; ___dc=a754551e-265e-4d6b-9f95-8a533f4aa9bc; _cmg_csstZgRm6=1743415931; _comagic_idZgRm6=10067765488.14273203563.1743415930',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
+    # 'cookie': 'roistat_is_need_listen_requests=0; roistat_is_save_data_in_cookie=1; SCBFormsAlreadyPulled=true; PHPSESSID=LsiULCoW5ByXvVF8YLpG0HulCq3wmmQI; _ym_uid=1743415929559311987; _ym_d=1758876784; scbsid_old=2746015342; roistat_visit=274388; roistat_visit_cookie_expire=1209600; _ym_isad=2; _ym_visorc=w; BITRIX_CONVERSION_CONTEXT_s1=%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1758931140%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D; ___dc=a754551e-265e-4d6b-9f95-8a533f4aa9bc; roistat_call_tracking=1; roistat_emailtracking_email=null; roistat_emailtracking_tracking_email=null; roistat_emailtracking_emails=null; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails; sma_session_id=2439137776; SCBfrom=; SCBnotShow=-1; smFpId_old_values=%5B%222488b0e958469f2da6c6193c8be92e7e%22%5D; SCBporogAct=5000; SCBstart=1758876789394; sma_postview_ready=1; screen_width=1416; SCBindexAct=4397; sma_index_activity=10850',
 }
 
 params = {
@@ -59,7 +73,7 @@ flats = []
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
-page_counter = 1
+
 
 while True:
 
@@ -150,14 +164,13 @@ while True:
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
     params['PAGEN_1'] = str(int(params['PAGEN_1']) + 1)
-    if params['PAGEN_1'] == '6':
+    if params['PAGEN_1'] == '2':
         break
     if not flats_soup:
         break
 
     print('--------------------------------------------------------------------------------')
 
-    page_counter += 1
     sleep_time = random.uniform(1, 4)
     time.sleep(sleep_time)
 
@@ -212,7 +225,9 @@ params = {
 
 flats_with_finishing = []
 while True:
-
+    params = {
+        'PAGEN_1': '1',
+    }
     response = requests.get('https://1-ng.ru/catalog/', params=params, cookies=cookies, headers=headers)
     print(response.status_code)
     items = response.text
@@ -233,7 +248,7 @@ while True:
         flat_number = int(extract_digits_or_original(i.text.split()[6]))
         flats_with_finishing.append(flat_number)
     params['PAGEN_1'] = str(int(params['PAGEN_1']) + 1)
-    if params['PAGEN_1'] == '3':
+    if params['PAGEN_1'] == '1':
         break
 
 
