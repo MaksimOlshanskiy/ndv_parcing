@@ -89,8 +89,8 @@ if response.status_code == 200:
             old_price = i['price'][0]['valueOld']
             price = i['price'][0]['value']
         else:
-            price = i['price'][0]['value']
-            old_price = ''
+            price = ''
+            old_price = i['price'][0]['value']
         discount = ''
         price_per_metr_new = ''
         floor = i['floor']['title']
@@ -106,7 +106,7 @@ if response.status_code == 200:
                   time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
                   konstruktiv, klass, srok_sdachi, srok_sdachi_old,
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                  price_per_metr_new, '', section, floor, flat_number]
+                  price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
 save_flats_to_excel(flats, project, developer)

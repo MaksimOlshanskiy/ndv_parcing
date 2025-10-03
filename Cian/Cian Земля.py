@@ -79,6 +79,13 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'suburbansale',
+        'from_mcad_km': {
+            'type': 'range',
+            'value': {
+                'gte': 46,
+                'lte': 50,
+            },
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -86,25 +93,23 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4623,
+                4593,
             ],
-        },
-        'price': {
-            'type': 'range',
-            'value': {
-                'gte': 0,
-                'lte': 4000000,
-            },
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
+        'land_status': {
+            'type': 'terms',
+            'value': [
+                2,
+            ],
+        },
         'object_type': {
             'type': 'terms',
             'value': [
-                1,
-                4,
+                3,
             ],
         },
         'page': {
@@ -141,7 +146,7 @@ json_data["jsonQuery"]["page"]["value"] = 1
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(7, 11)
+        sleep_time = random.uniform(7, 10)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -229,7 +234,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"ИЖС-1_{current_date}.xlsx"
+filename = f"ИЖС-1_50_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

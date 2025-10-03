@@ -67,7 +67,7 @@ while url:
             status = ''
             start = ''
             comment = ''
-            developer = "Крост"
+            developer = "КРОСТ"
             okrug = ''
             district = ''
             adress = ''
@@ -135,5 +135,4 @@ while url:
 
     time.sleep(0.3)
 
-project = 'all'
-save_flats_to_excel(flats, project, developer)
+save_flats_to_excel(flats, 'all', developer)

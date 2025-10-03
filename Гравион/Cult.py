@@ -48,10 +48,7 @@ if response.status_code == 200:
         price_element = apartment.find('div', class_='flat__card_price')
         price = int(price_element.get_text(strip=True).replace('₽', '').replace(' ','')) if price_element else None
 
-        if type_=='Резиденция':
-            type_='Таунхаус'
-        elif type_=='Пентхаус':
-            type_ = 'Квартира'
+        type_='Апартаменты'
 
         flats.append([datetime.date.today(), 'CULT', "", "", "", "",
                       "", "", "",

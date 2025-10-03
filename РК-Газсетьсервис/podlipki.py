@@ -53,7 +53,7 @@ if response.status_code == 200:
     for i in items:
         count += 1
         date = datetime.date.today()
-        project = 'Подлипки Город'
+        project = 'Подлипки город'
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -89,8 +89,8 @@ if response.status_code == 200:
             old_price = i['price'][0]['valueOld']
             price = i['price'][0]['value']
         else:
-            price = i['price'][0]['value']
-            old_price = ''
+            price = ''
+            old_price = i['price'][0]['value']
         discount = ''
         price_per_metr_new = ''
         floor = i['floor']['title']
@@ -99,14 +99,14 @@ if response.status_code == 200:
         korpus = i['turn']['title'].replace('Позиция ', '')
 
         print(
-            f"{count} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area},  корпус: {korpus}, секция: {section}, этаж: {floor}")
+            f"{count} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area},  корпус: {korpus}, секция: {section}, этаж: {floor}, цена: {old_price}")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway,
                   mck,
                   distance_to_mck, time_to_mck, distance_to_bkl,
                   time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
                   konstruktiv, klass, srok_sdachi, srok_sdachi_old,
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                  price_per_metr_new, '', section, floor, flat_number]
+                  price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
 save_flats_to_excel(flats, project, developer)

@@ -62,19 +62,20 @@ cookies = {
     'iosAppLink': '',
     '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
     'COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING': 'true',
-    'currentRegionGuid': '9930cc20-32c6-4f6f-a55e-cd67086c5171',
-    'currentLocalityGuid': '9930cc20-32c6-4f6f-a55e-cd67086c5171',
-    'regionName': '9930cc20-32c6-4f6f-a55e-cd67086c5171:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
     'favoriteHintShowed': 'true',
     '_ym_isad': '2',
-    'qrator_jsr': 'v2.0.1758896419.628.59bc7836HTkQtqNE|VIaa1okYVOl7fpNb|tQZfaRxq8rsmm94l/w1b/74koRnFNv+PRgj1OSjDQ4MbNUJ5v6md5VsmwI0Thm66LImmLBnT+oBKRgQhydvI3w==-WMDrdJ9L/XcDxzeHpMGVUaVsOXA=-00',
-    'qrator_jsid2': 'v2.0.1758896419.628.59bc7836HTkQtqNE|rJKJpaY23gxFFeja|94IbKX4LIjEpseX8KH491paWbqz1olFZhi2+gVttSOp7m71NUUcKHZWdcm4LubmocOxQsJXQXIqmZX7gEif1FpvvcIRLk9t91gzGnFvf7BAg+2d7jd+qkEYMq0RQ4dSa2yeCWtLgWqFyJq9Ctf2Gkg==-dNplpRLXngijjcCsWa3ugcUaYmE=',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1758896421',
-    'adrdel': '1758896421766',
-    '_visitId': '3d42f958-7e59-4f76-a1a2-b50682c3b971-f4f0dcc432ac8ba6',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1758896422',
-    'tmr_reqNum': '285',
-    't3_sid_7711713': 's1.1528747613.1758896421488.1758896522498.9.15.5.1..',
+    'adrdel': '1759132486817',
+    'qrator_ssid2': 'v2.0.1759156387.184.5b6ce31fgxtfta2v|75dDQeLUWOUsJrmj|Qgdn/voqNEB4WwlvxacuOsQHSRHHJThl1M6iB8XiJrOsy5gH8x236qCoWJWSXWcSW3F9eVK/qdE9LkyZEEXuEA==-1CfgJeeTg9EBJ6JF7OgdaJ9vCQA=',
+    '_visitId': '310aee75-8187-4411-becb-42090a1fcbca-f4f0dcc432ac8ba6',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755',
+    'qrator_jsid2': 'v2.0.1759156387.184.5b6ce31fgxtfta2v|kwXWacviz2ZxzTfG|h1lkADxbBhIC2uscDJNtVc1SfZ0s+Eg6QQufJjU8PzEN2+5SAwuGhbPZpmQtNVer1bTquy7mJ63iIsnup1APN250J1lt23eiDm/7jYaHDOP6A2+orwDqN5WTwiIkE7iqbVIpeC58GBoZcHAjjygSlgJDoXPV3Mf4Knsbo4h2/AI=-yZyQ3FpROYQRFnYREhyl9qkma/k=',
+    'canary-bind-id-5080': 'prev-1',
+    'currentRegionGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'currentLocalityGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'regionName': '1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
+    'tmr_reqNum': '286',
+    't3_sid_7711713': 's1.683097059.1759156813415.1759157894416.12.36.5.1..',
 }
 
 headers = {
@@ -90,20 +91,22 @@ headers = {
     'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; _ym_d=1743518289; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; iosAppLink=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; currentRegionGuid=9930cc20-32c6-4f6f-a55e-cd67086c5171; currentLocalityGuid=9930cc20-32c6-4f6f-a55e-cd67086c5171; regionName=9930cc20-32c6-4f6f-a55e-cd67086c5171:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; favoriteHintShowed=true; _ym_isad=2; qrator_jsr=v2.0.1758896419.628.59bc7836HTkQtqNE|VIaa1okYVOl7fpNb|tQZfaRxq8rsmm94l/w1b/74koRnFNv+PRgj1OSjDQ4MbNUJ5v6md5VsmwI0Thm66LImmLBnT+oBKRgQhydvI3w==-WMDrdJ9L/XcDxzeHpMGVUaVsOXA=-00; qrator_jsid2=v2.0.1758896419.628.59bc7836HTkQtqNE|rJKJpaY23gxFFeja|94IbKX4LIjEpseX8KH491paWbqz1olFZhi2+gVttSOp7m71NUUcKHZWdcm4LubmocOxQsJXQXIqmZX7gEif1FpvvcIRLk9t91gzGnFvf7BAg+2d7jd+qkEYMq0RQ4dSa2yeCWtLgWqFyJq9Ctf2Gkg==-dNplpRLXngijjcCsWa3ugcUaYmE=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1758896421; adrdel=1758896421766; _visitId=3d42f958-7e59-4f76-a1a2-b50682c3b971-f4f0dcc432ac8ba6; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1758896422; tmr_reqNum=285; t3_sid_7711713=s1.1528747613.1758896421488.1758896522498.9.15.5.1..',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; _ym_d=1743518289; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; iosAppLink=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; favoriteHintShowed=true; _ym_isad=2; adrdel=1759132486817; qrator_ssid2=v2.0.1759156387.184.5b6ce31fgxtfta2v|75dDQeLUWOUsJrmj|Qgdn/voqNEB4WwlvxacuOsQHSRHHJThl1M6iB8XiJrOsy5gH8x236qCoWJWSXWcSW3F9eVK/qdE9LkyZEEXuEA==-1CfgJeeTg9EBJ6JF7OgdaJ9vCQA=; _visitId=310aee75-8187-4411-becb-42090a1fcbca-f4f0dcc432ac8ba6; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755; qrator_jsid2=v2.0.1759156387.184.5b6ce31fgxtfta2v|kwXWacviz2ZxzTfG|h1lkADxbBhIC2uscDJNtVc1SfZ0s+Eg6QQufJjU8PzEN2+5SAwuGhbPZpmQtNVer1bTquy7mJ63iIsnup1APN250J1lt23eiDm/7jYaHDOP6A2+orwDqN5WTwiIkE7iqbVIpeC58GBoZcHAjjygSlgJDoXPV3Mf4Knsbo4h2/AI=-yZyQ3FpROYQRFnYREhyl9qkma/k=; canary-bind-id-5080=prev-1; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; tmr_reqNum=286; t3_sid_7711713=s1.683097059.1759156813415.1759157894416.12.36.5.1..',
 }
 
+
 params = {
-    'address': '6369cbfc-1f06-4574-adba-82f4dc42c0f7',
-    'offset': '0',
+    'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'offset': '20',
     'limit': '20',
     'sort': 'qi',
     'sort_dir': 'desc',
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '108464',
-    'complex_name': 'ЖК Горки Марусино',
+    'complex_ids': '118916',
+    'utm_source': 'yandex',
+    'complex_name': 'ЖК Гранд Комфорт',
     'from_developer': '1',
     'sort_by_tariff_date': '1',
     'enable_mixed_ranking': '1',
@@ -223,7 +226,7 @@ while True:
                     district2 = ''
                     adress2 = adress
                     eskrou2 = ''
-                    korpus2 = ''
+                    korpus2 = y.find('span', class_= 'Is5nd').text
                     konstruktiv2 = ''
                     klass2 = ''
                     quarter2 = ''

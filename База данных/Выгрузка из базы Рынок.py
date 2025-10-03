@@ -32,12 +32,12 @@ except:
 sql_query = f"""
 SELECT *
 FROM ndv_data
-WHERE (EXTRACT(YEAR from update_date) = 2024
+WHERE (EXTRACT(YEAR from update_date) = 2025
 AND EXTRACT(MONTH from update_date) = 8)
 OR (EXTRACT(YEAR from update_date) = 2025
 AND EXTRACT(MONTH from update_date) = 7)
 OR (EXTRACT(YEAR from update_date) = 2025
-AND EXTRACT(MONTH from update_date) = 8)
+AND EXTRACT(MONTH from update_date) = 6)
                     """
 
 
