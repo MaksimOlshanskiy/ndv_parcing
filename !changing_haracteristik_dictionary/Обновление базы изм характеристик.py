@@ -6,7 +6,7 @@ import os
 df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные.xlsx")
 
 # удаляем дубликаты по ключам
-df = df.drop_duplicates(subset=["Название проекта", "Девелопер", "Корпус"])
+df = df.drop_duplicates(subset=["Название проекта", "Девелопер", "Корпус", "Договор"])
 
 # пробуем загрузить старый JSON (если он есть)
 if os.path.exists("projects.json"):
@@ -30,11 +30,12 @@ for _, row in df.iterrows():
     corpus = str(row['Корпус'])
     srok = str(row['Срок сдачи'])
     stage = str(row['Стадия строительной готовности'])
+    ddu = str(row['Договор'])
 
     # если проект новый
     if project_key not in new_result:
         new_result[project_key] = {
-            corpus: {"Срок сдачи": srok, "Стадия строительной готовности": stage}
+            corpus: {"Срок сдачи": srok, "Стадия строительной готовности": stage, "Договор": ddu}
         }
         stats["projects_added"] += 1
         stats["corpus_added"] += 1
@@ -44,7 +45,8 @@ for _, row in df.iterrows():
     if corpus not in new_result[project_key]:
         new_result[project_key][corpus] = {
             "Срок сдачи": srok,
-            "Стадия строительной готовности": stage
+            "Стадия строительной готовности": stage,
+            "Договор": ddu
         }
         stats["corpus_added"] += 1
         stats["projects_updated"] += 1
@@ -55,6 +57,7 @@ for _, row in df.iterrows():
     if old_data["Срок сдачи"] != srok or old_data["Стадия строительной готовности"] != stage:
         new_result[project_key][corpus]["Срок сдачи"] = srok
         new_result[project_key][corpus]["Стадия строительной готовности"] = stage
+        new_result[project_key][corpus]["Договор"] = ddu
         stats["corpus_updated"] += 1
         stats["projects_updated"] += 1
 
@@ -63,8 +66,8 @@ with open("projects.json", "w", encoding="utf-8") as f:
     json.dump(new_result, f, ensure_ascii=False, indent=4)
 
 # выводим логи
-print("=== ЛОГИ ===")
-print(f"Добавлено проектов: {stats['projects_added']}")
-print(f"Обновлено проектов: {stats['projects_updated']}")
-print(f"Добавлено корпусов: {stats['corpus_added']}")
-print(f"Обновлено корпусов: {stats['corpus_updated']}")
+print("=== Изменяемые характеристики ===")
+print(f"✅ Добавлено проектов: {stats['projects_added']}")
+print(f"🔁 Обновлено проектов: {stats['projects_updated']}")
+print(f"🔁 Добавлено корпусов: {stats['corpus_added']}")
+print(f"✅ Обновлено корпусов: {stats['corpus_updated']}")

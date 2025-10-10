@@ -65,7 +65,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-web_site = f'https://www.metrium.ru/novostroyki/novostroyki-moskvy/zhk-u2/v-prodazhe/?price-min=14+510+000&price-max=70+490+000&floor-min=2&floor-max=28&IS_SUBMIT=Y'
+web_site = f'https://www.metrium.ru/novostroyki/novostroyki-moskvy/zhk-noble/v-prodazhe/'
 driver = webdriver.Chrome()
 driver.get(url=web_site)
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
@@ -78,7 +78,7 @@ for f in flats_soup:
 
     url = ''
     date = datetime.date.today()
-    project = "U2"
+    project = "Noble"
     english = ''
     promzona = ''
     mestopolozhenie = ''
@@ -94,7 +94,7 @@ for f in flats_soup:
     status = ''
     start = ''
     comment = ''
-    developer = "Точно"
+    developer = "MR"
     okrug = ''
     district = ''
     adress = ''

@@ -62,6 +62,7 @@ for key, new_values in projects_dict.items():
 with open("projects.json", "w", encoding="utf-8") as f:
     json.dump(projects_dict, f, ensure_ascii=False, indent=4)
 
+print("=== Неизменяемые характеристики ===")
 print(f"✅ Новых проектов добавлено: {new_count}")
 print(f"🔁 Проектов обновлено: {updated_projects_count}")
 print(f"🔁 Ячеек обновлено: {updated_cells_count}")

@@ -100,7 +100,7 @@ json_data = {
         'floor': {
             'type': 'range',
             'value': {
-                'gte': 19,
+                'gte': 12,
                 'lte': 200,
             },
         },

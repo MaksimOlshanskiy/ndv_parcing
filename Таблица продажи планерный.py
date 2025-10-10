@@ -6,11 +6,15 @@ import warnings
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, Alignment
 
+project_list = ["'4962'", "'5805'", "'5020'", "'6922'", "'6943'",
+                "'7393'", "'7616'", "'5652'", "'5722'", "'4505'",
+                "'5784'", "'1898'", "'6180'", "'7402'", "'7277'"]
+
 year = 2025
 previous_year = 2024
-month = 8
-previous_month = 7
-file_name = 'SQL_19-09'
+month = 9
+previous_month = 8
+file_name = 'Продажи конкурентов Планерный'
 
 warnings.filterwarnings(
     "ignore",
@@ -27,16 +31,11 @@ except:
     # в случае сбоя подключения будет выведено сообщение в STDOUT
     print('Ошибка подключения к базе данных')
 
-projects_dict = {"'1-й Донской'": "'Первый Донской'", "'1-й Южный'": "'Первый Южный'",
-                 "'Видный берег 2.0'": "'Видный берег 2'",
-                 "'1-й Шереметьевский'": "'Первый Шереметьевский'", "'У реки. Эко Видное 2.0'": "'Эко Видное 2.0'",
-                 "'Пятницкие Луга'": "'Пятницкие луга'"}
+
 months_ru = {1: "Январь", 2: "Февраль", 3: "Март", 4: "Апрель", 5: "Май", 6: "Июнь",
              7: "Июль", 8: "Август", 9: "Сентябрь", 10: "Октябрь", 11: "Ноябрь", 12: "Декабрь"}
 
-project_list = ["'1-й Донской'", "'1-й Южный'", "'Богдановский Лес'", "'Видный берег 2.0'", "'Восточное Бутово'",
-                "'Горки Парк'", "'Живописный'", "'Новое Видное'", "'Первый квартал'", "'Пригород Лесное'",
-                "'Римский'", "'У реки. Эко Видное 2.0'", "'Южная Битца'"]
+
 
 startrow0 = 0
 startrow = 0  # отслеживаем, куда писать следующий проект
@@ -52,7 +51,7 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
     worksheet4 = None
 
     sql_query_itog_sales = f"""
-                    WITH prev_year_count AS (SELECT region, COUNT(id_jk) AS py_count     
+                    WITH prev_year_count AS (SELECT region, COUNT(id) AS py_count     
                     FROM pipin
                     WHERE tip_pomescheniya IN ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -62,7 +61,7 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     GROUP BY region 
                     ),
 
-                    prev_month_count AS(SELECT region, COUNT(id_jk) as pm_count       
+                    prev_month_count AS(SELECT region, COUNT(id) as pm_count       
                     FROM pipin
                     WHERE tip_pomescheniya IN ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -72,7 +71,7 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     GROUP BY region 
                     ),
 
-                    current_month_count AS(SELECT region, COUNT(id_jk) AS cur_count     
+                    current_month_count AS(SELECT region, COUNT(id) AS cur_count     
                     FROM pipin
                     WHERE tip_pomescheniya IN ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -182,9 +181,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     FROM now n
                     LEFT JOIN prev_month pm ON n.region = pm.region
                     LEFT JOIN prev_year py  ON n.region = py.region
-                
+
                     UNION ALL
-                
+
                     SELECT
                         'Итого' AS region,
                         t.prev_year,
@@ -195,7 +194,7 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     FROM totals t
                 ) q
                 ORDER BY CASE WHEN region = 'Итого' THEN 1 ELSE 0 END, region; 
-    
+
     '''
 
     try:
@@ -254,15 +253,26 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
     df_itog_ipoteka.to_excel(writer, sheet_name="Итоги реализации", startrow=startrow0, index=False, header=True)
 
     for i, project in enumerate(project_list):
-        print(project)
-        print(projects_dict.get(project, project))
+
+        project_name_sql = f"""
+            select distinct project_name
+            from pipin
+            where id = {project}
+            """
+        cur = conn.cursor()
+        # Выполняем запрос
+        cur.execute(project_name_sql)
+
+        # Получаем одно значение
+        project_name_text = cur.fetchone()[0]
+        print(project_name_text)
 
         sql_query = f"""
         WITH
         prev_year AS (
-                SELECT COUNT(id_jk) AS val
+                SELECT COUNT(id) AS val
                 FROM pipin
-                WHERE jk_rus = {projects_dict.get(project, project)}
+                WHERE id = {project}
                 AND extract(YEAR from data_registratsii) = {previous_year}
                 AND extract(MONTH from data_registratsii) = {month}
                 AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -271,9 +281,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                 AND otsenka_ceny is not NULL
         ),
         prev_month AS (
-                SELECT COUNT(id_jk) AS val
+                SELECT COUNT(id) AS val
                 FROM pipin
-                WHERE jk_rus = {projects_dict.get(project, project)}
+                WHERE id = {project}
                 AND extract(YEAR from data_registratsii) = {year}
                 AND extract(MONTH from data_registratsii) = {previous_month}
                 AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -282,9 +292,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                 AND otsenka_ceny is not NULL
         ),
         now AS (
-            SELECT COUNT(id_jk) AS val
+            SELECT COUNT(id) AS val
                 FROM pipin
-                WHERE jk_rus = {projects_dict.get(project, project)}
+                WHERE id = {project}
                 AND extract(YEAR from data_registratsii) = {year}
                 AND extract(MONTH from data_registratsii) = {month}
                 AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -292,14 +302,14 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                 AND kupil_lotov_v_jk BETWEEN 1 AND 5
                 AND otsenka_ceny is not NULL
         )
-        
+
         SELECT
             prev_year.val  AS prev_year,
             prev_month.val AS prev_month,
             now.val        AS now,
             (now.val::numeric / NULLIF(prev_year.val, 0) - 1) AS year_to_year,
             (now.val::numeric / NULLIF(prev_month.val, 0) - 1) AS month_to_month
-        
+
         FROM now, prev_month, prev_year;
         """
 
@@ -308,41 +318,44 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         prev_year AS (
                 SELECT round((sum(price_total_discounted) / sum(area_sqm)) / 1000, 1) AS val
                 from ndv_data
-                WHERE project_name = {project}
-                and extract(year from update_date) = {previous_year}
-                and extract(month from update_date) = {month}
-                
+                Join ids ON ndv_data.project_name = ids.project_name
+                WHERE id = {project}
+                and extract(year from date) = {previous_year}
+                and extract(month from date) = {month}
+
         ),
         prev_month AS (
                 SELECT round((sum(price_total_discounted) / sum(area_sqm)) / 1000, 1) AS val
                 from ndv_data
-                WHERE project_name = {project}
-                and extract(year from update_date) = {year}
-                and extract(month from update_date) = {previous_month}
+                Join ids ON ndv_data.project_name = ids.project_name
+                WHERE id = {project}
+                and extract(year from date) = {year}
+                and extract(month from date) = {previous_month}
         ),
         now AS (
                 SELECT round((sum(price_total_discounted) / sum(area_sqm)) / 1000, 1) AS val
                 from ndv_data
-                WHERE project_name = {project}
-                and extract(year from update_date) = {year}
-                and extract(month from update_date) = {month}
+                Join ids ON ndv_data.project_name = ids.project_name
+                WHERE id = {project}
+                and extract(year from date) = {year}
+                and extract(month from date) = {month}
         )
-        
+
         SELECT
             prev_year.val  AS prev_year,
             prev_month.val AS prev_month,
             now.val        AS now,
             (now.val::numeric / prev_year.val - 1) AS year_to_year,
             (now.val::numeric / prev_month.val - 1) AS month_to_month
-        
+
         FROM now, prev_month, prev_year;
         """
 
         sql_query3 = f"""
         WITH
-        prev_year AS (SELECT round(AVG(ploshchad)::numeric, 1) as val
+        prev_year AS (SELECT round(AVG(area_sqm)::numeric, 1) as val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     AND extract(YEAR from data_registratsii) = {previous_year}
                     AND extract(MONTH from data_registratsii) = {month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -350,9 +363,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     AND kupil_lotov_v_jk BETWEEN 1 AND 5
                     AND otsenka_ceny is not NULL
         ),
-        prev_month AS (SELECT round(AVG(ploshchad)::numeric, 1) as val
+        prev_month AS (SELECT round(AVG(area_sqm)::numeric, 1) as val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {year}
                     and extract(MONTH from data_registratsii) = {previous_month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -360,9 +373,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     AND kupil_lotov_v_jk BETWEEN 1 AND 5
                     AND otsenka_ceny is not NULL
         ),
-        now AS ( SELECT round(AVG(ploshchad)::numeric, 1) as val
+        now AS ( SELECT round(AVG(area_sqm)::numeric, 1) as val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {year}
                     and extract(MONTH from data_registratsii) = {month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -370,14 +383,14 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     AND kupil_lotov_v_jk BETWEEN 1 AND 5
                     AND otsenka_ceny is not NULL
         )
-        
+
         SELECT
             prev_year.val  AS prev_year,
             prev_month.val AS prev_month,
             now.val        AS now,
             (now.val::numeric / prev_year.val - 1) AS year_to_year,
             (now.val::numeric / prev_month.val - 1) AS month_to_month
-        
+
         FROM now, prev_month, prev_year;
         """
 
@@ -385,7 +398,7 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         WITH
         prev_year AS (SELECT round(AVG(otsenka_ceny) / 1000000, 1) as val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {previous_year}
                     and extract(MONTH from data_registratsii) = {month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -395,7 +408,7 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         ),
         prev_month AS (SELECT round(AVG(otsenka_ceny) / 1000000, 1) as val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {year}
                     and extract(MONTH from data_registratsii) = {previous_month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -405,7 +418,7 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         ),
         now AS ( SELECT round(AVG(otsenka_ceny)/ 1000000, 1) as val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {year}
                     and extract(MONTH from data_registratsii) = {month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -413,23 +426,23 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     AND kupil_lotov_v_jk BETWEEN 1 AND 5
                     AND otsenka_ceny is not NULL
         )
-        
+
         SELECT
             prev_year.val  AS prev_year,
             prev_month.val AS prev_month,
             now.val        AS now,
             (now.val::numeric / prev_year.val - 1) AS year_to_year,
             (now.val::numeric / prev_month.val - 1) AS month_to_month
-        
+
         FROM now, prev_month, prev_year;
         """
 
         sql_query5 = f"""
         WITH
         prev_year AS (SELECT (
-        SELECT COUNT(id_jk)
+        SELECT COUNT(id)
         from pipin
-        WHERE jk_rus = {projects_dict.get(project, project)}
+        WHERE id = {project}
         and extract(YEAR from data_registratsii) = {previous_year}
         and extract(MONTH from data_registratsii) = {month}
         and ipoteka = 1
@@ -437,21 +450,21 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
         AND kupil_lotov_v_jk BETWEEN 1 AND 5
         AND otsenka_ceny is not NULL
-        )::numeric / NULLIF(COUNT(id_jk), 0) AS val
+        )::numeric / NULLIF(COUNT(id), 0) AS val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {previous_year}
                     and extract(MONTH from data_registratsii) = {month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
                     AND kupil_lotov_v_jk BETWEEN 1 AND 5
                     AND otsenka_ceny is not NULL
-        
+
         ),
         prev_month AS (SELECT (
-        SELECT COUNT(id_jk)
+        SELECT COUNT(id)
         from pipin
-        WHERE jk_rus = {projects_dict.get(project, project)}
+        WHERE id = {project}
         and extract(YEAR from data_registratsii) = {year}
         and extract(MONTH from data_registratsii) = {previous_month}
         and ipoteka = 1
@@ -459,9 +472,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
         AND kupil_lotov_v_jk BETWEEN 1 AND 5
         AND otsenka_ceny is not NULL
-        )::numeric / NULLIF(COUNT(id_jk), 0) AS val
+        )::numeric / NULLIF(COUNT(id), 0) AS val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {year}
                     and extract(MONTH from data_registratsii) = {previous_month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -470,9 +483,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     AND otsenka_ceny is not NULL
         ),
         now AS ( SELECT (
-        SELECT COUNT(id_jk)
+        SELECT COUNT(id)
         from pipin
-        WHERE jk_rus = {projects_dict.get(project, project)}
+        WHERE id = {project}
         and extract(YEAR from data_registratsii) = {year}
         and extract(MONTH from data_registratsii) = {month}
         and ipoteka = 1
@@ -480,9 +493,9 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
         AND kupil_lotov_v_jk BETWEEN 1 AND 5
         AND otsenka_ceny is not NULL
-        )::numeric / NULLIF(COUNT(id_jk), 0) AS val
+        )::numeric / NULLIF(COUNT(id), 0) AS val
                     from pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                     and extract(YEAR from data_registratsii) = {year}
                     and extract(MONTH from data_registratsii) = {month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -490,14 +503,14 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     AND kupil_lotov_v_jk BETWEEN 1 AND 5
                     AND otsenka_ceny is not NULL
         )
-        
+
         SELECT
             prev_year.val  AS prev_year,
             prev_month.val AS prev_month,
             now.val        AS now,
             (now.val - prev_year.val) AS year_to_year,
             (now.val - prev_month.val) AS month_to_month
-        
+
         FROM now, prev_month, prev_year;
         """
 
@@ -505,11 +518,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
 WITH flats AS (
     SELECT 
         tip_komnatnosti,
-        ploshchad,
+        area_sqm,
         EXTRACT(YEAR FROM data_registratsii) AS yy,
         EXTRACT(MONTH FROM data_registratsii) AS mm
     FROM pipin
-    WHERE jk_rus = {projects_dict.get(project, project)}
+    WHERE id = {project}
       AND tip_pomescheniya IN ('квартира', 'апартамент')
       AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
       AND kupil_lotov_v_jk BETWEEN 1 AND 5
@@ -526,7 +539,7 @@ stats AS (
         f.yy,
         f.mm,
         ROUND(COUNT(*)::numeric / fc.total_count, 2) AS percent,
-        ROUND(AVG(f.ploshchad)::numeric, 1) AS avg_metr
+        ROUND(AVG(f.area_sqm)::numeric, 1) AS avg_metr
     FROM flats f
     JOIN flat_count fc ON f.yy = fc.yy AND f.mm = fc.mm
     GROUP BY f.tip_komnatnosti, f.yy, f.mm, fc.total_count
@@ -538,7 +551,7 @@ joined AS (
         cur.avg_metr AS avg_metr_now,
         cur.percent AS percent_now,        
         prev.avg_metr AS avg_metr_prev
-        
+
     FROM stats cur
     LEFT JOIN stats prev 
            ON cur.tip_komnatnosti = prev.tip_komnatnosti
@@ -550,9 +563,9 @@ total AS (
         'Общий итог' AS tip_komnatnosti,
         1.00 AS percent_now,
         -- реальная средняя по всем квартирам текущего месяца
-        (SELECT ROUND(AVG(ploshchad)::numeric,1)
+        (SELECT ROUND(AVG(area_sqm)::numeric,1)
          FROM pipin
-         WHERE jk_rus = {projects_dict.get(project, project)}
+         WHERE id = {project}
            AND EXTRACT(YEAR FROM data_registratsii) = {year}
            AND EXTRACT(MONTH FROM data_registratsii) = {month}
            AND tip_pomescheniya IN ('квартира','апартамент')
@@ -561,9 +574,9 @@ total AS (
            AND otsenka_ceny IS NOT NULL) AS avg_metr_now,
         1.00 AS percent_prev,
         -- реальная средняя по всем квартирам предыдущего месяца
-        (SELECT ROUND(AVG(ploshchad)::numeric,1)
+        (SELECT ROUND(AVG(area_sqm)::numeric,1)
          FROM pipin
-         WHERE jk_rus = {projects_dict.get(project, project)}
+         WHERE id = {project}
            AND EXTRACT(YEAR FROM data_registratsii) = {year}
            AND EXTRACT(MONTH FROM data_registratsii) = {previous_month}
            AND tip_pomescheniya IN ('квартира','апартамент')
@@ -592,7 +605,7 @@ ORDER BY
                 WITH filter AS (
                     SELECT *       
                     FROM pipin
-                    WHERE jk_rus = {projects_dict.get(project, project)}
+                    WHERE id = {project}
                       AND tip_pomescheniya IN ('квартира', 'апартамент')
                       AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
                       AND kupil_lotov_v_jk BETWEEN 1 AND 5
@@ -601,26 +614,26 @@ ORDER BY
                     ORDER BY otsenka_ceny
                       ),
 
-                curent_month AS (SELECT zalogoderzhatel, round(count(jk_rus)::numeric /
-                (SELECT count(jk_rus) from filter WHERE extract(YEAR from data_registratsii) = 2025
-                      AND extract(MONTH from data_registratsii) = 8), 3) AS cur_procent,
-                      ROUND(AVG(ploshchad)::numeric,1) AS cur_ploshchad
+                curent_month AS (SELECT zalogoderzhatel, round(count(id)::numeric /
+                (SELECT count(id) from filter WHERE extract(YEAR from data_registratsii) = {year}
+                      AND extract(MONTH from data_registratsii) = {month}), 3) AS cur_procent,
+                      ROUND(AVG(area_sqm)::numeric,1) AS cur_ploshchad
                 FROM filter
-                WHERE extract(YEAR from data_registratsii) = 2025
-                      AND extract(MONTH from data_registratsii) = 8
+                WHERE extract(YEAR from data_registratsii) = {year}
+                      AND extract(MONTH from data_registratsii) = {month}
                 GROUP BY zalogoderzhatel
-                ORDER BY count(jk_rus) desc
+                ORDER BY count(id) desc
                 LIMIT 5),
 
-                prev_month AS (SELECT zalogoderzhatel, round(count(jk_rus)::numeric /
-                (SELECT count(jk_rus) from filter WHERE extract(YEAR from data_registratsii) = 2025
-                      AND extract(MONTH from data_registratsii) = 7), 3) AS prev_procent,
-                      ROUND(AVG(ploshchad)::numeric,1) AS prev_ploshchad
+                prev_month AS (SELECT zalogoderzhatel, round(count(id)::numeric /
+                (SELECT count(id) from filter WHERE extract(YEAR from data_registratsii) = {year}
+                      AND extract(MONTH from data_registratsii) = {previous_month}), 3) AS prev_procent,
+                      ROUND(AVG(area_sqm)::numeric,1) AS prev_ploshchad
                 FROM filter
-                WHERE extract(YEAR from data_registratsii) = 2025
-                      AND extract(MONTH from data_registratsii) = 7
+                WHERE extract(YEAR from data_registratsii) = {year}
+                      AND extract(MONTH from data_registratsii) = {previous_month}
                 GROUP BY zalogoderzhatel
-                ORDER BY count(jk_rus) desc
+                ORDER BY count(id) desc
                 )
 
                 SELECT cm.zalogoderzhatel, pm.prev_procent, pm.prev_ploshchad, cur_procent, cur_ploshchad
@@ -654,7 +667,7 @@ ORDER BY
         result = pd.concat([df, df2, df3, df4, df5], ignore_index=True)
         result.insert(0, "Характеристика", chars)
         col_names = [
-            project,
+            project_name_text,
             f"{months_ru[month]} {previous_year}",
             f"{months_ru[previous_month]} {year}",
             f"{months_ru[month]} {year}",
@@ -662,7 +675,7 @@ ORDER BY
             "мес/мес"
         ]
         col_names_komnatnost = [
-            project,
+            project_name_text,
             f"Доля,% {months_ru[previous_month]} {year}",
             f"Средняя площадь,кв.м {months_ru[previous_month]} {year}",
             f"Доля,% {months_ru[month]} {year}",
@@ -688,22 +701,24 @@ ORDER BY
         ]
         df_banks.columns = col_names
 
-        df_banks.insert(0, project, range(1, len(df_banks) + 1))
+        df_banks.insert(0, project_name_text, range(1, len(df_banks) + 1))
         # Считаем взвешенные средние
         # Взвешенное среднее за прошлый месяц
-        if df_banks["Июль 2025, доля"].sum() != 0:
+        if df_banks[f"{months_ru[previous_month]} {year}, доля"].sum() != 0:
             perc_prev_avg = (
-                    (df_banks["Июль 2025, доля"] * df_banks["Июль 2025, средняя площадь, кв.м"]).sum()
-                    / df_banks["Июль 2025, доля"].sum()
+                    (df_banks[f"{months_ru[previous_month]} {year}, доля"] * df_banks[
+                        f"{months_ru[previous_month]} {year}, средняя площадь, кв.м"]).sum()
+                    / df_banks[f"{months_ru[previous_month]} {year}, доля"].sum()
             )
         else:
             perc_prev_avg = 0  # или np.nan, если хочешь именно пропуск
 
         # Взвешенное среднее за текущий месяц
-        if df_banks["Август 2025, доля"].sum() != 0:
+        if df_banks[f"{months_ru[month]} {year}, доля"].sum() != 0:
             perc_cur_avg = (
-                    (df_banks["Август 2025, доля"] * df_banks["Август 2025, средняя площадь, кв.м"]).sum()
-                    / df_banks["Август 2025, доля"].sum()
+                    (df_banks[f"{months_ru[month]} {year}, доля"] * df_banks[
+                        f"{months_ru[month]} {year}, средняя площадь, кв.м"]).sum()
+                    / df_banks[f"{months_ru[month]} {year}, доля"].sum()
             )
         else:
             perc_cur_avg = 0  # или np.nan
@@ -715,12 +730,12 @@ ORDER BY
 
         # Формируем строку "Итого"
         total_row = {
-            project: "Итого",
+            project_name_text: "Итого",
             "Банки": "",
-            "Июль 2025, доля": df_banks["Июль 2025, доля"].sum(),
-            "Июль 2025, средняя площадь, кв.м": round(perc_prev_avg, 1),
-            "Август 2025, доля": df_banks["Август 2025, доля"].sum(),
-            "Август 2025, средняя площадь, кв.м": round(perc_cur_avg, 1),
+            f"{months_ru[previous_month]} {year}, доля": df_banks[f"{months_ru[previous_month]} {year}, доля"].sum(),
+            f"{months_ru[previous_month]} {year}, средняя площадь, кв.м": round(perc_prev_avg, 1),
+            f"{months_ru[month]} {year}, доля": df_banks[f"{months_ru[month]} {year}, доля"].sum(),
+            f"{months_ru[month]} {year}, средняя площадь, кв.м": round(perc_cur_avg, 1),
             "Динамика: ср. площадь, кв.м": dinamika_total
         }
 
