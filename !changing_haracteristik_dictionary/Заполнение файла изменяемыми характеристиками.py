@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # Загружаем Excel
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Сентябрь последняя.xlsx")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\База 08-09.xlsb")
 
 # Загружаем JSON
 with open("projects.json", "r", encoding="utf-8") as f:
@@ -26,12 +26,13 @@ for idx, row in df.iterrows():
     if project_key in data and corpus in data[project_key]:
         df.at[idx, "Срок сдачи"] = data[project_key][corpus]["Срок сдачи"]
         df.at[idx, "Стадия строительной готовности"] = data[project_key][corpus]["Стадия строительной готовности"]
+        df.at[idx, "Договор"] = data[project_key][corpus]["Договор"]
         rows_updated += 1
     else:
         rows_skipped += 1
 
 # сохраняем результат
-df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Сентябрь последняя2.xlsx", index=False)
+df.to_excel(r"C:\Users\m.olshanskiy\Desktop\База 08-0999.xlsx", index=False)
 
 # выводим логи
 print("=== ЛОГИ ===")

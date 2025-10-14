@@ -99,7 +99,7 @@ while True:
         status = ''
         start = ''
         comment = ''
-        developer = "СЗ Бест Проект"
+        developer = "Дело"
         okrug = ''
         district = ''
         adress = ''

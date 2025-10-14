@@ -51,7 +51,6 @@ cookies = {
     'adtech_uid': '5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru',
     'top100_id': 't1.7711713.1405137252.1743518288740',
     '_ym_uid': '1743518289666663600',
-    '_ym_d': '1743518289',
     'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}',
     'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
     'tmr_lvid': '6b6b440680155a4ac17ccaf6a462f603',
@@ -60,30 +59,29 @@ cookies = {
     'COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING': 'true',
     'cookieAlert': '1',
     'iosAppLink': '',
-    '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
     'COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING': 'true',
-    'favoriteHintShowed': 'true',
+    '_ym_d': '1759300554',
+    'adrdel': '1759300555210',
     '_ym_isad': '2',
-    'adrdel': '1759132486817',
-    'qrator_ssid2': 'v2.0.1759156387.184.5b6ce31fgxtfta2v|75dDQeLUWOUsJrmj|Qgdn/voqNEB4WwlvxacuOsQHSRHHJThl1M6iB8XiJrOsy5gH8x236qCoWJWSXWcSW3F9eVK/qdE9LkyZEEXuEA==-1CfgJeeTg9EBJ6JF7OgdaJ9vCQA=',
-    '_visitId': '310aee75-8187-4411-becb-42090a1fcbca-f4f0dcc432ac8ba6',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755',
-    'qrator_jsid2': 'v2.0.1759156387.184.5b6ce31fgxtfta2v|kwXWacviz2ZxzTfG|h1lkADxbBhIC2uscDJNtVc1SfZ0s+Eg6QQufJjU8PzEN2+5SAwuGhbPZpmQtNVer1bTquy7mJ63iIsnup1APN250J1lt23eiDm/7jYaHDOP6A2+orwDqN5WTwiIkE7iqbVIpeC58GBoZcHAjjygSlgJDoXPV3Mf4Knsbo4h2/AI=-yZyQ3FpROYQRFnYREhyl9qkma/k=',
-    'canary-bind-id-5080': 'prev-1',
-    'currentRegionGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'currentLocalityGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'regionName': '1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
-    'tmr_reqNum': '286',
-    't3_sid_7711713': 's1.683097059.1759156813415.1759157894416.12.36.5.1..',
+    '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
+    'currentRegionGuid': '3a4c1826-5bcf-4c44-a8c1-71762989cd9b',
+    'currentLocalityGuid': '2a37a4fb-0838-4fe0-8021-4b8580627428',
+    'regionName': '2a37a4fb-0838-4fe0-8021-4b8580627428:%D0%A1%D0%B0%D0%BB%D0%B5%D1%85%D0%B0%D1%80%D0%B4',
+    '_visitId': 'f83deea0-8960-493a-8023-7cb4d08fdf15-f4f0dcc432ac8ba6',
+    'favoriteHintShowed': 'true',
+    'qrator_jsid2': 'v2.0.1760356618.989.5b6ce31fwuNbXAeo|A6igwbPRAVEcjEJm|wVevY1dyRWaDW2oNVBBsP4nlURAN1yrs/ES1Pk7ZsLgZrTQ5lVJ+clCsBnLha7E5VKD1O5bRdZNOjbm/QHzTO39UBMP+5zxZcBtKUwK1v2MAMrMNxGz36/nYCOMWrTt1axxzWKIjnVuTDTxO+XAc3udEvbh6i8p/ZJJe5hPnwlE=-wfcMGnvisNkZSKRCUcHXKI9dFAA=',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1760358045',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1760358045',
+    'tmr_reqNum': '296',
+    't3_sid_7711713': 's1.1359309900.1760356622210.1760358562219.19.34.3.1..',
 }
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'Connection': 'keep-alive',
-    'Origin': 'https://domclick.ru',
-    'Referer': 'https://domclick.ru/',
+    'Origin': 'https://salexard.domclick.ru',
+    'Referer': 'https://salexard.domclick.ru/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
@@ -91,22 +89,22 @@ headers = {
     'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; _ym_d=1743518289; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; iosAppLink=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; favoriteHintShowed=true; _ym_isad=2; adrdel=1759132486817; qrator_ssid2=v2.0.1759156387.184.5b6ce31fgxtfta2v|75dDQeLUWOUsJrmj|Qgdn/voqNEB4WwlvxacuOsQHSRHHJThl1M6iB8XiJrOsy5gH8x236qCoWJWSXWcSW3F9eVK/qdE9LkyZEEXuEA==-1CfgJeeTg9EBJ6JF7OgdaJ9vCQA=; _visitId=310aee75-8187-4411-becb-42090a1fcbca-f4f0dcc432ac8ba6; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1759157755; qrator_jsid2=v2.0.1759156387.184.5b6ce31fgxtfta2v|kwXWacviz2ZxzTfG|h1lkADxbBhIC2uscDJNtVc1SfZ0s+Eg6QQufJjU8PzEN2+5SAwuGhbPZpmQtNVer1bTquy7mJ63iIsnup1APN250J1lt23eiDm/7jYaHDOP6A2+orwDqN5WTwiIkE7iqbVIpeC58GBoZcHAjjygSlgJDoXPV3Mf4Knsbo4h2/AI=-yZyQ3FpROYQRFnYREhyl9qkma/k=; canary-bind-id-5080=prev-1; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; tmr_reqNum=286; t3_sid_7711713=s1.683097059.1759156813415.1759157894416.12.36.5.1..',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; iosAppAvailable=true; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; iosAppLink=; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; _ym_isad=2; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; currentRegionGuid=3a4c1826-5bcf-4c44-a8c1-71762989cd9b; currentLocalityGuid=2a37a4fb-0838-4fe0-8021-4b8580627428; regionName=2a37a4fb-0838-4fe0-8021-4b8580627428:%D0%A1%D0%B0%D0%BB%D0%B5%D1%85%D0%B0%D1%80%D0%B4; _visitId=f83deea0-8960-493a-8023-7cb4d08fdf15-f4f0dcc432ac8ba6; favoriteHintShowed=true; qrator_jsid2=v2.0.1760356618.989.5b6ce31fwuNbXAeo|A6igwbPRAVEcjEJm|wVevY1dyRWaDW2oNVBBsP4nlURAN1yrs/ES1Pk7ZsLgZrTQ5lVJ+clCsBnLha7E5VKD1O5bRdZNOjbm/QHzTO39UBMP+5zxZcBtKUwK1v2MAMrMNxGz36/nYCOMWrTt1axxzWKIjnVuTDTxO+XAc3udEvbh6i8p/ZJJe5hPnwlE=-wfcMGnvisNkZSKRCUcHXKI9dFAA=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1760358045; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1760358045; tmr_reqNum=296; t3_sid_7711713=s1.1359309900.1760356622210.1760358562219.19.34.3.1..',
 }
 
 
 params = {
-    'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'offset': '20',
+    'address': '2a37a4fb-0838-4fe0-8021-4b8580627428',
+    'offset': '0',
     'limit': '20',
     'sort': 'qi',
     'sort_dir': 'desc',
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '118916',
+    'complex_ids': '124757',
     'utm_source': 'yandex',
-    'complex_name': 'ЖК Гранд Комфорт',
+    'complex_name': 'ЖК Жилой дом по ул. Станционная',
     'from_developer': '1',
     'sort_by_tariff_date': '1',
     'enable_mixed_ranking': '1',
@@ -199,9 +197,11 @@ while True:
                 page_content = driver.page_source
                 soup = BeautifulSoup(page_content, 'html.parser')
                 items2 = soup.find_all(class_='tHj6o')
+
                 for item in range(1,len(items2)):
 
                     y = items2[item]
+
 
                     url2 = ""
                     date2 = datetime.date.today()
@@ -226,7 +226,7 @@ while True:
                     district2 = ''
                     adress2 = adress
                     eskrou2 = ''
-                    korpus2 = y.find('span', class_= 'Is5nd').text
+                    korpus2 = soup.find('span', class_= 'Is5nd').text.replace('Корпус: ', '').replace('Корпус ', '').replace('№', '').strip()
                     konstruktiv2 = ''
                     klass2 = ''
                     quarter2 = ''
@@ -243,7 +243,7 @@ while True:
                     discount2 = ''
                     price_per_metr_new2 = ''
                     price2 = ''
-                    old_price2 = int(y.find(class_= 'VkJXv').get_text(strip=True).replace(' ₽', '').replace(' ', ''))
+                    old_price2 = int(y.find(class_= 'VkJXv').get_text(strip=True).replace(' ₽', '').replace(' ', '').replace('Новое', ''))
                     section2 = ''
                     floor2 = int(y.get_text(separator='!').split('!')[1])
                     flat_number2 = '' # y.find(class_= 'T8vBE').get_text(strip=True)

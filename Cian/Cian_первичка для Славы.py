@@ -511,11 +511,7 @@ for city in cities_to_parse[cities_to_parse.index(user_input):]:
             current_date = datetime.date.today()
 
             # Базовый путь для сохранения
-            base_path = r""
-
-            folder_path = os.path.join(base_path, str(current_date))
-            if not os.path.exists(folder_path):
-                os.makedirs(folder_path)
+            base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\Первичка"
 
 
             def sanitize_filename(name):
@@ -525,17 +521,17 @@ for city in cities_to_parse[cities_to_parse.index(user_input):]:
 
 
             project = sanitize_filename(project)
-            filename = f"{project}__{current_date}_{name_counter}.xlsx"
+            filename = f"{geo1}_{project}_{name_counter}.xlsx"
 
             # Полный путь к файлу0
-            file_path = os.path.join(folder_path, filename)
+            file_path = os.path.join(base_path, filename)
 
             # Сохранение файла в папку
             try:
                 df.to_excel(file_path, index=False)
             except:
                 filename = f"{project}_{current_date}_2.xlsx"
-                file_path = os.path.join(folder_path, filename)
+                file_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\Первичка"
                 df.to_excel(file_path, index=False)
 
-merge_and_clean(folder_path, f'Первичка_{current_date}.xlsx')
+merge_and_clean(base_path, f'Первичка_{current_date}.xlsx')
