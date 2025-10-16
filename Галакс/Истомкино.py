@@ -1,5 +1,5 @@
 '''
-
+возможно нужно обновлять headers и ссылку
 по очереди по каждому дому 'house_id'
 
 '''
@@ -21,13 +21,13 @@ headers = {
     'origin': 'https://xn--h1aafhhcesj.xn--p1ai',
     'priority': 'u=1, i',
     'referer': 'https://xn--h1aafhhcesj.xn--p1ai/',
-    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
+    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
 }
 
 
@@ -36,13 +36,11 @@ json_data = {
     'data': {
         'category': 'flat',
         'activity': 'sell',
-        'page': 1,
+        'page': 2,
         'filters': {
             'studio': 'null',
             'rooms': [],
-            'restorations': [
-                276,
-            ],
+            'restorations': [],
             'promos': [],
             'tags': [],
             'riser_side': [],
@@ -61,9 +59,11 @@ json_data = {
             'priceRentM2From': None,
             'priceRentM2To': None,
             'status': None,
+            'isHot': False,
+            'isExclusive': False,
         },
         'complex_id': None,
-        'house_id': 3147458,    # 7095059
+        'house_id': 3147458,
         'orders': [],
         'complex_search': None,
         'house_search': None,
@@ -88,7 +88,8 @@ def extract_digits_or_original(s):
 while True:
 
     response = requests.post(
-        'https://api.macroserver.ru/estate/catalog/?domain=xn--h1aafhhcesj.xn--p1ai&check=toQdDaB-5SM-IFhFuTSiFWydI9EAfWV3pHRAGBPI6LqXST-96LDk9D_nNgZjIlJsVc-9fDE3NDQyOTQ5MTZ8N2I0OTE&type=catalog&inline=true&issetJQuery=0&presmode=complex&complexid=3147490&uuid=9237f7af-3c5a-4841-bfc3-7eb5e0abaffc&cookie_base64=eyJfeW1fdWlkIjoiMTc0NDI5NDY0NjY3MjUwMTA1MyJ9&time=1744294916&token=3dbab31d00221254978f172118093a8b/',
+        'https://api.macroserver.ru/estate/catalog/?domain=xn--h1aafhhcesj.xn--p1ai&check=toQdDaB-5SM-IFhFuTSiFWydI9EAfWV3pHRAGBPI6LqXST-96LDk9D_nNgZjIlJsVc-9fDE3NTkxMzYxNjh8Mzk2YTc&type=catalog&inline=true&issetJQuery=0&presmode=complex&complexid=3147490&uuid=2100edcc-fb08-4aa4-8920-0c17cd4e741e&cookie_base64=eyJfeW1fdWlkIjoiMTc0NDI5NDY0NjY3MjUwMTA1MyJ9&time=1759136168&token=e63d6d342dee5a590aee61111fd01d3a/',
+
         headers=headers,
         json=json_data,
     )
@@ -103,7 +104,7 @@ while True:
             continue
 
         url = i['id']
-        developer = "Галакс"
+        developer = "Галакс+"
         project = 'Истомкино'
         korpus = ''
         type = 'Квартиры'

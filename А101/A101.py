@@ -2,7 +2,8 @@ import datetime
 from functions import save_flats_to_excel
 from info import info
 import requests
-from save_to_excel import save_flats_to_excel_old_new_all
+import random
+import time
 
 flats = []
 count = 1
@@ -12,10 +13,11 @@ for key, data in info.items():
     params = data['params']
     cookies = data['cookies']
 
-    url = 'https://a101.ru/api/v2/flat/'
+    url = 'https://a101.ru/api/flats/'
 
     while url:
         response = requests.get(url, params=params, cookies=cookies, headers=headers)
+        print(response.status_code)
 
         if response.status_code == 200:
             item = response.json()
@@ -23,21 +25,29 @@ for key, data in info.items():
 
             for i in items:
 
-                if i["complex"] == 'Испанские кварталы':
+                if i["project"] == 'Испанские кварталы':
                     continue
 
-                if i["complex"] == 'Белые ночи':
+                if i["project"] == 'Белые ночи':
                     continue
 
                 if i['status'] == 4:
                     continue
 
                 date = datetime.date.today()
-                project = i["complex"]
+                project = i["project"]
                 status = ''
                 developer = 'А101'
                 district = ''
                 korpus = i["building"]
+                try:
+                    if project == 'Скандинавия' and int(korpus.split('.')[0]) < 25:
+                        project = 'Скандинавия Юг'
+                    if project == 'Скандинавия' and int(korpus.split('.')[0]) >= 25:
+                        project = 'Скандинавия Центр'
+                except:
+                    pass
+
                 room_count = i["room"]
 
                 if params.get("design") == '2':
@@ -53,7 +63,7 @@ for key, data in info.items():
 
                 type = 'Квартира'
                 area = i["area"]
-                old_price = i["modified_price"]
+                old_price = i["price"]
                 discount = ''
                 price = i["actual_price"]
                 section = i["section_number"]
@@ -75,16 +85,15 @@ for key, data in info.items():
                 count += 1
 
             # Проверяем, есть ли следующая страница
-            next_url = item.get("next")
-            if next_url:
-                url = next_url  # Переходим на следующую страницу
-                params = {}  # Очищаем параметры, так как URL следующей страницы уже содержит их
-            else:
-                break  # Если следующей страницы нет, выходим из цикла
+            if not items:
+                break
+            params['offset'] = str(int(params['offset']) + int(params['limit']))
+
         else:
             print(f'Ошибка: {response.status_code}')
             break
+        sleep_time = random.uniform(0.1, 2)
+        time.sleep(sleep_time)
 
-            time.sleep(0.01)
 
 save_flats_to_excel(flats, project, developer)

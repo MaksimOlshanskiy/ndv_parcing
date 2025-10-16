@@ -123,6 +123,8 @@ while True:
         adress = ''
         eskrou = ''
         korpus = i["building"]["name"].replace('Корпус ', '')
+        if korpus == 'Janssen':
+            korpus = 'Jansson'
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''

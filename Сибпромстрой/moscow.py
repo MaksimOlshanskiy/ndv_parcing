@@ -93,7 +93,7 @@ def parse_page(url):
 base_url = "https://www.sibpromstroy.ru/flat-search/?set_filter=%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C&arrFilter_175=3801791676&arrFilter_213=&arrFilter_196_MIN=&arrFilter_196_MAX=&f%5B0%5D=city_region%3A32&f%5B1%5D=price%3A%28min%3A4360000%2Cmax%3A26290000%29&f%5B2%5D=status%3AAVAILABLE"
 flats_all = []
 
-for page_num in range(0, 15):
+for page_num in range(0, 28):
     print(f"Парсинг страницы {page_num}...")
     url = f"{base_url}&page={page_num}"
     flats = parse_page(url)

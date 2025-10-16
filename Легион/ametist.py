@@ -1,27 +1,18 @@
 import datetime
 import time
 import requests
+
+from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_near
+from Profitbase_token import get_token
 
-'''
-обновить authorization в headers по ссылке https://ametist-hotel.ru/#/catalog/house/111759/list?facadeId=49584&filter=property.type:hotel-room&filter=property.status:AVAILABLE
-'''
+tenant_id = 17494
+referer = 'https://ametist-hotel.ru/'
+headers_token = get_token(tenant_id, referer)
 
-headers = {
-    'accept': 'application/json, text/plain, */*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6ImYwZGIzNzUwOGIyNDc0Mjk4NDdlNjg2NDU2ODlhNjRkZWVlYTQ3MTQzYjY5MzA1ODE3OWQ5MzZlNWIwYTgxNjEwZjk5NjA3NzU1YWE0ZTBlIiwiaWF0IjoxNzU1Nzc3NzAzLjMzMzM0LCJuYmYiOjE3NTU3Nzc3MDMuMzMzMzQyLCJleHAiOjE3NTU3ODEzMDMuMzMwMDg5LCJzdWIiOiJTSVRFX1dJREdFVHwzMDM5Iiwic2NvcGVzIjpbIlNJVEVfV0lER0VUIl0sInR5cGUiOiJzaXRlV2lkZ2V0IiwiZW50aXRsZW1lbnRzIjoiIiwiYWNjb3VudCI6eyJpZCI6MTc0OTQsInRpdGxlIjoi0KHQlyDQkNC80LXRgtC40YHRgiIsInN1YmRvbWFpbiI6InBiMTc0OTQiLCJiaWxsaW5nT3duZXJJZCI6MTc1ODQsImNvdW50cnlDb2RlIjoiUlUifSwicm9sZXMiOlsiUk9MRV9TSVRFX1dJREdFVCJdLCJzaXRlV2lkZ2V0Ijp7ImlkIjozMDM5LCJkb21haW4iOiJodHRwczovL2FtZXRpc3QtaG90ZWwucnUifX0.Spht5jUgzLRtHfGrtqYSSDDnvyhkxN5SspzeQZjN4jpC42pT73euucCsGFPnKyVmdcWEgXIphCtOnk7WtgKx1JDrxZdr2Dgv5zJG940ZY-gxWpoIvn3Fo0GPihnFQ9Ut-Yh3jKvooz7VONuA1mKpjKu8QEH7Au9Ssoom7n1-_NLa01uZtX9Y4NDfqWoSYnofJmEKJIFV5UayAa3R0eYzGjAakxow6QTxQB9gQeDkTl3rjC9VDTaaV0ZkIJWf6pmpwo5BpGJsQW6GAXxGaY6pEkKWXNLaTVsnb9Il1tzVc0jre_3-ohIoHC36I4KjpZImSCBZrHH_RDHt5SQs4nhvCA',
-    'origin': 'https://smart-catalog.profitbase.ru',
-    'priority': 'u=1, i',
-    'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Not;A=Brand";v="99", "Google Chrome";v="139", "Chromium";v="139"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"',
-    'sec-fetch-dest': 'empty',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
-}
+print('Токен для авторизации успешно получен')
+
+headers = headers_token
 
 params = {
     'propertyTypeAliases[0]': 'hotel_room',
@@ -104,6 +95,6 @@ while True:
         break
 
 if flats:
-    save_flats_to_excel_near(flats, project, developer)
+    save_flats_to_excel(flats, project, developer)
 else:
     print("Нет данных для сохранения")

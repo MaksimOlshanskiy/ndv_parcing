@@ -81,38 +81,46 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'suburbansale',
+        'from_mcad_km': {
+            'type': 'range',
+            'value': {
+                'lte': 20,
+            },
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
-        'from_developer': {
+        'region': {
+            'type': 'terms',
+            'value': [
+                1,
+                4593,
+            ],
+        },
+        'publish_period': {
             'type': 'term',
-            'value': True,
+            'value': 2592000,
+        },
+        'offer_seller_type': {
+            'type': 'terms',
+            'value': [
+                1,
+            ],
+        },
+        'object_type': {
+            'type': 'terms',
+            'value': [
+                1,
+            ],
         },
         'page': {
             'type': 'term',
             'value': 1,
         },
-        'kp_id': {
-            'type': 'term',
-            'value': 81525,
-        },
-        'suburban_offer_filter': {
-            'type': 'term',
-            'value': 1,
-        },
-        'object_type': {
-            'type': 'terms',
-            'value': [
-                4,
-            ],
-        },
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
     },
 }
+
 
 name_counter = 17
 
@@ -328,7 +336,6 @@ for mult_id in multi_ids:
         counter += 1
         if not items:
             break
-
 
 counter += 1
 

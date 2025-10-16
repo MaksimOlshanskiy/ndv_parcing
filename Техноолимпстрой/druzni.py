@@ -31,7 +31,7 @@ params = {
     'limit': '44',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': '301ef7943ac07dbe99d1dbb88971c19ad6fd16fa81b1791dc4bb05880053be98',
+    'access_token': '5191635620d93a95efd18a9a3fba78bc6a4fa415436031539235e3ce5c02cea3',
 }
 
 flats = []

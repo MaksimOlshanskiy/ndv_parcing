@@ -81,7 +81,7 @@ for project_id in project_id_list:
         except:
             area = ''
         try:
-            old_price = int(i['price'].replace('.00', ''))
+            old_price = round(float(i['price'].replace('.00', '')))
         except:
             old_price = ''
         price = ''

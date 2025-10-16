@@ -85,10 +85,13 @@ while url:
                 type = 'Квартира'
             else:
                 type = 'Апартаменты'
-            finish_type = i["finishing_name"]
+            try:
+                finish_type = i["finishing_name"]
+            except KeyError:
+                finish_type = ''
             area = float(i["area"])
             old_price = round(float(i["original_price"]))
-            discount = round(float(i["discount_value"]))
+            discount = ''
             price = round(float(i["price"]))
             section = ''
             floor = i["floor_number"]

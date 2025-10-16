@@ -22,9 +22,10 @@ def process_data(json_data, excel_df):
     total = len(result_df)
 
     # Список застройщиков, у которых не надо менять типологию
-    developers_to_skip = {'Фонд реновации'}
+    developers_to_skip = {'фонд реновации'}
     # Список проектов, у которых не надо менять типологию
-    jk_name_to_skip = {'Гармония парк', 'Мишино-2', 'Берег'}
+    jk_name_to_skip = {'гармония парк', 'мишино-2'}
+    jk_name_to_skip2 = {'серебро', 'берег'}
 
     for idx, row in result_df.iterrows():
 
@@ -42,7 +43,7 @@ def process_data(json_data, excel_df):
             continue
 
         # Условие: если площадь <= 28 — это студия
-        if area <= 28:
+        if area <= 28 and jk_name not in jk_name_to_skip2:
             result_df.at[idx, 'Кол-во комнат'] = 'студия'
             if __name__ == "__main__":
                 print(f"[{idx + 1}/{total}] Назначено как студия по площади <= 28: ЖК {jk_name}, площадь {area}")
@@ -141,8 +142,8 @@ def save_as_xlsx(df, output_path_xlsx, sheet_name='Sheet1'):
 if __name__ == "__main__":
 
     json_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\normalized_output.json'
-    excel_path = r"C:\Users\m.olshanskiy\Desktop\База по годам\2025\Новая папка\2025-3.xlsx"
-    output_path = r"C:\Users\m.olshanskiy\Desktop\База по годам\2025\Новая папка\2025-квартирография.xlsx"
+    excel_path = r"C:\Users\m.olshanskiy\Desktop\Сентябрь последняя3.xlsx"
+    output_path = r"C:\Users\m.olshanskiy\Desktop\Сентябрь последняя4.xlsx"
 
     json_data = load_json_data(json_path)
     excel_df = load_excel_data(excel_path)

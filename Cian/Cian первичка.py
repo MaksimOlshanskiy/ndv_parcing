@@ -224,6 +224,7 @@ json_data = {
 
 current_date = datetime.date.today()
 
+
 for y in ids:
 
     flats = []

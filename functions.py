@@ -59,10 +59,40 @@ def save_flats_to_excel(flats, project, developer):
          .str.strip()  # убираем лишние пробелы
          .replace(['', '-', 'nan', 'NaN'], '1')  # заменяем пустые строки и текстовые NaN на "1"
      )
+
+    # В столбце Корпус, если номер корпуса идёт в скобках, то удаляем всё за скобками, оставляем только то,
+    # что в скобках. Если в скобках есть слово очередь, то ничего не трогаем
+    df['Корпус'] = df['Корпус'].astype(str)
+    # Выделим текст в скобках
+    bracket_content = df['Корпус'].str.extract(r'\((.*?)\)', expand=False)
+    # Маска: строка содержит скобки
+    has_brackets = df['Корпус'].str.contains(r'\(.*?\)', na=False)
+    # Маска: в строке есть слово "очередь" где угодно (внутри или снаружи скобок)
+    contains_ochered = df['Корпус'].str.contains(r'очередь', case=False, na=False)
+    # Маска: есть скобки, но НЕТ "очередь" вообще
+    mask = has_brackets & ~contains_ochered
+    # Заменяем только те строки, которые соответствуют маске
+    df.loc[mask, 'Корпус'] = bracket_content[mask].str.strip()
+
+    # 1. Удаляем текст 'Жилой дом № ' (всё равно на NaN это не повлияет)
+    df['Корпус'] = df['Корпус'].replace('Жилой дом № ', '', regex=True)
+    # Заменяем строку 'nan' и пустые строки на np.nan
+    df['Корпус'] = df['Корпус'].replace(['nan', r'^\s*$'], np.nan, regex=True)
+    # 3. Заполняем NaN единицами
+    df['Корпус'] = df['Корпус'].fillna('1')
+
+    df["Корпус"] = df["Корпус"].astype(str).str.replace(",", ".", regex=False)
+
+    def clean_name(name):
+        name = name.replace('ЖК ', '').replace('«', '').replace('»', '').strip()  # Убираем 'ЖК '
+        return name
+
+    df['Название проекта'] = df['Название проекта'].apply(clean_name)
+    df['Название проекта'] = df['Название проекта'].str.strip()
+
     # df['col1'] = df['col1'].astype(int)
     df["Название проекта"] = df["Название проекта"].replace(name_dict)
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)
-
 
     # Загружаем JSON с характеристиками проектов
     with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
@@ -88,30 +118,12 @@ def save_flats_to_excel(flats, project, developer):
     df['Дата обновления'] = pd.to_datetime(df['Дата обновления'], errors="coerce")
 
     json_data = load_json_data(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\normalized_output.json')
-    df = process_data(json_data, df)
+    if developer != 'Фонд реновации':
+        df = process_data(json_data, df)
 
     df.drop(columns=["primary_key"], inplace=True)
 
-    # В столбце Корпус, если номер корпуса идёт в скобках, то удаляем всё за скобками, оставляем только то,
-    # что в скобках. Если в скобках есть слово очередь, то ничего не трогаем
-    df['Корпус'] = df['Корпус'].astype(str)
-    # Выделим текст в скобках
-    bracket_content = df['Корпус'].str.extract(r'\((.*?)\)', expand=False)
-    # Маска: строка содержит скобки
-    has_brackets = df['Корпус'].str.contains(r'\(.*?\)', na=False)
-    # Маска: в строке есть слово "очередь" где угодно (внутри или снаружи скобок)
-    contains_ochered = df['Корпус'].str.contains(r'очередь', case=False, na=False)
-    # Маска: есть скобки, но НЕТ "очередь" вообще
-    mask = has_brackets & ~contains_ochered
-    # Заменяем только те строки, которые соответствуют маске
-    df.loc[mask, 'Корпус'] = bracket_content[mask].str.strip()
 
-    # 1. Удаляем текст 'Жилой дом № ' (всё равно на NaN это не повлияет)
-    df['Корпус'] = df['Корпус'].replace('Жилой дом № ', '', regex=True)
-    # Заменяем строку 'nan' и пустые строки на np.nan
-    df['Корпус'] = df['Корпус'].replace(['nan', r'^\s*$'], np.nan, regex=True)
-    # 3. Заполняем NaN единицами
-    df['Корпус'] = df['Корпус'].fillna('1')
 
 
     print(df[['Корпус', 'Кол-во комнат', 'Площадь, кв.м', 'Цена лота, руб.', 'Цена лота со ск, руб.']].info())
@@ -123,13 +135,6 @@ def save_flats_to_excel(flats, project, developer):
     print(f'Проекты: {df['Название проекта'].value_counts()}')
     print(f'')
 
-
-
-    def clean_name(name):
-        name = name.replace('ЖК ', '').replace('«', '').replace('»', '')  # Убираем 'ЖК '
-        return name
-
-    df['Название проекта'] = df['Название проекта'].apply(clean_name)
 
     current_date = datetime.date.today()
     project_root = os.path.dirname(os.path.abspath(__file__))
@@ -192,9 +197,31 @@ def save_cian_to_excel(flats, project, developer):
          .astype(str)  # приводим всё к строкам
          .str.replace(r'(?i)\bкорпус\b\.?\s*', '', regex=True)  # удаляем "корпус"
          .str.strip()  # убираем лишние пробелы
-         .replace(['', '-', 'nan', 'NaN'], '1')  # заменяем пустые строки и текстовые NaN на "1"
+         .replace(['', '-', 'nan', 'NaN'], '1') # заменяем пустые строки и текстовые NaN на "1"
      )
 
+    # В столбце Корпус, если номер корпуса идёт в скобках, то удаляем всё за скобками, оставляем только то,
+    # что в скобках. Если в скобках есть слово очередь, то ничего не трогаем
+    df['Корпус'] = df['Корпус'].astype(str)
+    # Выделим текст в скобках
+    bracket_content = df['Корпус'].str.extract(r'\((.*?)\)', expand=False)
+    # Маска: строка содержит скобки
+    has_brackets = df['Корпус'].str.contains(r'\(.*?\)', na=False)
+    # Маска: в строке есть слово "очередь" где угодно (внутри или снаружи скобок)
+    contains_ochered = df['Корпус'].str.contains(r'очередь', case=False, na=False)
+    # Маска: есть скобки, но НЕТ "очередь" вообще
+    mask = has_brackets & ~contains_ochered
+    # Заменяем только те строки, которые соответствуют маске
+    df.loc[mask, 'Корпус'] = bracket_content[mask].str.strip()
+
+    # 1. Удаляем текст 'Жилой дом № ' (всё равно на NaN это не повлияет)
+    df['Корпус'] = df['Корпус'].replace('Жилой дом № ', '', regex=True)
+    # Заменяем строку 'nan' и пустые строки на np.nan
+    df['Корпус'] = df['Корпус'].replace(['nan', r'^\s*$'], np.nan, regex=True)
+    # 3. Заполняем NaN единицами
+    df['Корпус'] = df['Корпус'].fillna('1')
+
+    df["Корпус"] = df["Корпус"].astype(str).str.replace(",", ".", regex=False)
 
     def clean_name(name):
         name = name.replace('ЖК ', '').replace('«', '').replace('»', '').replace('/', '')
@@ -229,26 +256,7 @@ def save_cian_to_excel(flats, project, developer):
 
     df.drop(columns=["primary_key"], inplace=True)
 
-    # В столбце Корпус, если номер корпуса идёт в скобках, то удаляем всё за скобками, оставляем только то,
-    # что в скобках. Если в скобках есть слово очередь, то ничего не трогаем
-    df['Корпус'] = df['Корпус'].astype(str)
-    # Выделим текст в скобках
-    bracket_content = df['Корпус'].str.extract(r'\((.*?)\)', expand=False)
-    # Маска: строка содержит скобки
-    has_brackets = df['Корпус'].str.contains(r'\(.*?\)', na=False)
-    # Маска: в строке есть слово "очередь" где угодно (внутри или снаружи скобок)
-    contains_ochered = df['Корпус'].str.contains(r'очередь', case=False, na=False)
-    # Маска: есть скобки, но НЕТ "очередь" вообще
-    mask = has_brackets & ~contains_ochered
-    # Заменяем только те строки, которые соответствуют маске
-    df.loc[mask, 'Корпус'] = bracket_content[mask].str.strip()
 
-    # 1. Удаляем текст 'Жилой дом № ' (всё равно на NaN это не повлияет)
-    df['Корпус'] = df['Корпус'].replace('Жилой дом № ', '', regex=True)
-    # Заменяем строку 'nan' и пустые строки на np.nan
-    df['Корпус'] = df['Корпус'].replace(['nan', r'^\s*$'], np.nan, regex=True)
-    # 3. Заполняем NaN единицами
-    df['Корпус'] = df['Корпус'].fillna('1')
 
 
     print(f'Число лотов: {len(df)}')

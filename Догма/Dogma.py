@@ -50,11 +50,10 @@ try:
             'layout_id': [],
             'letter_ids': [],
             'limit': 12,
-            'offset': 12,
+            'offset': 0,
             'ids': [],
             'project_ids': [
                 6,
-                5,
             ],
             'rooms': [],
             'statuses': [
@@ -67,7 +66,7 @@ try:
             'group_by': '',
             'order': {
                 'field': 'cost',
-                'type': 'desc',
+                'type': 'asc',
             },
             'classes': [],
         }

@@ -4,10 +4,6 @@ import requests
 from functions import save_flats_to_excel
 from Profitbase_token import get_token
 
-'''
-заменить в headers authorization по ссылке https://xn--80abdl0adtby.xn--p1ai/#/catalog/projects/houses?filter=property.status:AVAILABLE
-'''
-
 tenant_id = 4242
 referer = 'https://xn--80abdl0adtby.xn--p1ai/'
 headers_token = get_token(tenant_id, referer)
