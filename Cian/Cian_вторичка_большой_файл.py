@@ -8,14 +8,14 @@ from functions import merge_and_clean, haversine
 import json
 
 region_list = [
-    1, 2, 4593, 4588, 4584, 4596, 4606, 4608, 4618, 4560, 4609, 4619, 181462,
+    1, 2, 4593, 4588, 4596, 4606, 4608, 4618, 4560, 4609, 4619, 181462,
     4564, 4581, 4620, 4607, 4557, 4623, 4612, 4573, 4598, 4585, 4555,
     4567, 4621, 4587, 4605, 4568, 4625, 184723, 4604, 4576, 4574, 4603,
     4602, 4562, 4561, 4565, 4601, 4636, 4599, 4629, 4580, 4630, 4572,
     4615, 4614, 4591, 4553, 4635, 4624, 4570, 4583, 4566, 4600, 4554,
     4556, 4558, 4563, 4569, 5053, 4571, 4575, 4577, 4578, 4579, 4582,
     4586, 4589, 4590, 4592, 4594, 4595, 4597, 4610, 4611, 4613, 4617,
-    4622, 4627, 4628, 4631, 4633, 4634
+    4622, 4627
 ]
 
 type_of_lot = 'Вторичка, продажа'
@@ -104,7 +104,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4634,
+                4627,
             ],
         },
         'repair': {
@@ -119,10 +119,6 @@ json_data = {
                 'gte': 1,
                 'lte': 99,
             },
-        },
-        'publish_period': {
-            'type': 'term',
-            'value': 2592000,
         },
         'room': {
             'type': 'terms',
@@ -160,7 +156,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-start_time = time.time()
+
 current_date = datetime.date.today()
 
 repair_ids = [1, 2, 3, 4]
@@ -175,6 +171,8 @@ response = session.post(    # Первичный запрос для опред�
                         headers=headers,
                         json=json_data
                     )
+
+print(f"Первичный json: {json_data}")
 
 items_count = response.json()['data']["aggregatedCount"]
 print(f'В городе {items_count} лотов')
@@ -202,7 +200,7 @@ elif items_count > 4500:
 
 
 
-
+json_data["jsonQuery"]["repair"]["value"] = [0]
 
 for rooms in rooms_ids:
 
@@ -233,7 +231,7 @@ for rooms in rooms_ids:
 
 
             while len(flats) < total_count:
-
+                start_time = time.time()
                 if counter > 1:
                     sleep_time = random.uniform(6, 9)
                     time.sleep(sleep_time)
@@ -284,7 +282,7 @@ for rooms in rooms_ids:
                         result[key] = name
 
                     # список нужных переменных
-                    keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
+                    keys = ["location", "location2", "location3", "okrug", "raion", "mikroraion", "metro", "street", "house"]
 
                     # создаём переменные
                     for key in keys:
@@ -332,7 +330,10 @@ for rooms in rooms_ids:
                             property_from = ''
                     except:
                         property_from = ''
-                    url = str(i['fullUrl'])
+                    try:
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
+                    except:
+                        url = ''
 
                     try:
                         added = i['added']
@@ -446,7 +447,7 @@ for rooms in rooms_ids:
 
                     print(
                         f"Город {location}, {location2}, {okrug}, {raion}, {metro}, {street}, {house}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}")
-                    result = [type_of_lot, location, location2, okrug, raion, mikroraion, metro, street, house, adress, rooms_count, area, price, finish_type, description, property_from, url,
+                    result = [type_of_lot, location, location2, location3, okrug, raion, mikroraion, metro, street, house, adress, rooms_count, area, price, finish_type, description, property_from, url,
                               added, balconiesCount, bedroomsCount, buildYear, cargoLiftsCount, passengerLiftsCount, floorsCount, materialType,
                               parking, creationDate, floorNumber, coordinates_lat, coordinates_lng, highways_nearest, highway_distance,
                               railways_nearest, railways_nearest_distance, railways_nearest_time, railways_nearest_travelType, jk,
@@ -464,8 +465,10 @@ for rooms in rooms_ids:
                 counter += 1
                 if not items:
                     break
-                sleep_time = random.uniform(7, 9)
+                sleep_time = random.uniform(1, 3)
                 time.sleep(sleep_time)
+                end_time = time.time()
+                print(f"Время выполнения: {end_time - start_time:.4f} сек")
 
 
             # Базовый путь для сохранения
@@ -475,7 +478,7 @@ for rooms in rooms_ids:
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
 
-            filename = f"{location}_{json_data['jsonQuery']['room']['value']}_{json_data['jsonQuery']['floor']['value']['lte']}_{current_date}.xlsx"
+            filename = f"{location}_{json_data['jsonQuery']['room']['value']}_{json_data['jsonQuery']['floor']['value']['lte']}_{finish_type}_{current_date}.xlsx"
 
             # Полный путь к файлу
             file_path = os.path.join(folder_path, filename)
@@ -483,6 +486,7 @@ for rooms in rooms_ids:
             df = pd.DataFrame(flats, columns=['Тип объявления',
                                               'Локация',
                                               'Локация2',
+                                              'Локация3',
                                               'Округ',
                                               'Район',
                                               'Микрорайон',
@@ -496,7 +500,7 @@ for rooms in rooms_ids:
                                               'Отделка',
                                               'Описание',
                                               'Объявление от',
-                                              'Ссылка',
+                                              'ID объявления',
                                               'Обновлено',
                                               'Балконы',
                                               'Число спален',
@@ -531,9 +535,9 @@ for rooms in rooms_ids:
             df.to_excel(file_path, index=False)
             print(f'✅ Файл {filename} успешно сохранён')
 
-end_time = time.time()
+
 
 
 merge_and_clean(folder_path, f'Вторичка_{location}_{current_date}.xlsx')
 
-print(f"Время выполнения: {end_time - start_time:.4f} сек")
+
