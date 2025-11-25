@@ -13,6 +13,12 @@ import requests
 
 from functions import save_flats_to_excel
 
+'''
+Нужно проверять количество страниц с лотами и проставлять это число в переменную count_of_pages
+'''
+
+count_of_pages = 21
+
 cookies = {
     'BX_USER_ID': '15016e9404744ee3cb1a5dfed786822b',
     '_ym_uid': '174357795115798414',
@@ -42,6 +48,10 @@ headers = {
     # 'Cookie': 'BX_USER_ID=15016e9404744ee3cb1a5dfed786822b; _ym_uid=174357795115798414; _ym_d=1743577951; cookieAccepted=true; PHPSESSID=y31XWPSqmH8GiJoiC2sqVWdadX1JYMeB; _ym_isad=2; _ym_visorc=w; lastClickedComplex=%5B%5D',
 }
 
+params = {
+    'PAGEN_1': '1',
+}
+
 data = {
     'page': '1',
     'FILTER_ITEMS_RESULT[arrFilter][PROPERTY_170][]': [
@@ -52,7 +62,7 @@ data = {
         'ЖК «Внуково Парк»',
         'КД «Новое Вашутино»',
     ],
-    'FILTER_ITEMS_RESULT[COUNT]': '166',
+    'FILTER_ITEMS_RESULT[COUNT]': '242',
     'FILTER_ITEMS_RESULT[NEW_URL]': '',
 }
 
@@ -71,13 +81,15 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 
-while True:
+
+while int(params['PAGEN_1']) <= count_of_pages:
 
     response = requests.post(
         'https://atlantdevelopment.ru/local/templates/.default/components/bitrix/catalog/flats/filter_catalog_result.php',
         cookies=cookies,
         headers=headers,
         data=data,
+        params=params
     )
     print(response.status_code)
 
@@ -166,7 +178,7 @@ while True:
 
     if not flats_soup:
         break
-    data['page'] = str(int(data['page']) +1)
+    params['PAGEN_1'] = str(int(params['PAGEN_1']) +1)
 
     print('--------------------------------------------------------------------------------')
 

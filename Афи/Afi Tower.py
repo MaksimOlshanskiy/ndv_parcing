@@ -6,7 +6,6 @@ import os
 import random
 from bs4 import BeautifulSoup
 import requests
-
 from functions import save_flats_to_excel
 
 cookies = {
@@ -125,16 +124,18 @@ while True:
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
-        if i.select('.room-preview__description .list__item')[2].text == 'чистовая':
+        otdelka = i.select('.room-preview__description .list__item')[2].text.strip().split('\n')
+        if otdelka[0] == 'чистовая':
             finish_type = 'С отделкой'
-        if i.select('.room-preview__description .list__item')[2].text == 'white box':
+        if otdelka[0] == 'white box':
             finish_type = 'Предчистовая'
+
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
         type = 'Квартиры'
         room_count = ''
-        area = float(i.select('.room-preview__description .list__item')[0].text.replace(' м²', ''))
+        area = float(i.select('.room-preview__description .list__item')[0].text.replace(' м²', '').replace('площадь', ''))
         discount = ''
         price_per_metr = ''
         price_per_metr_new = ''

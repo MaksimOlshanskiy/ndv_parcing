@@ -13,7 +13,7 @@ def fetch_data(name, conf):
     flats = []
     count = 1
 
-    response = requests.post(
+    response = requests.get(
         conf['url'],
         params=conf['params'],
         headers=conf['headers'],

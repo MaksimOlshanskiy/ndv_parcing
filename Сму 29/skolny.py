@@ -13,6 +13,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+'''
+Если количество не совпадает, то нажимать на Показать ещё вручную
+'''
+
 # Настройки Selenium
 options = Options()
 # options.add_argument('--headless')  # Можно убрать, если хочешь видеть окно
@@ -25,12 +29,13 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 # Открываем страницу
 url = 'https://shkolny-nf.ru/prices/flats'
 driver.get(url)
+time.sleep(5)
 
 # Ждём, пока появится кнопка
 try:
     while True:
         # Ждём, пока кнопка станет доступной
-        WebDriverWait(driver, 5).until(
+        WebDriverWait(driver, 8).until(
             EC.element_to_be_clickable((By.ID, 'products__show-more'))
         )
         show_more = driver.find_element(By.ID, 'products__show-more')
@@ -40,7 +45,7 @@ try:
         # Пробуем кликнуть
         try:
             show_more.click()
-            time.sleep(2)  # даём время подгрузиться
+            time.sleep(5)  # даём время подгрузиться
         except:
             break  # если клик не проходит — выходим
 except:

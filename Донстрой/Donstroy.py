@@ -6,52 +6,49 @@ from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new_all
 
 cookies = {
-    'PHPSESSID': '48SfpibSVlcqePSJGRzMlBrj9mCnREBf',
-    'BX_USER_ID': '7c7565be1314918dd51b7cd2a5978979',
-    'BITRIX_CONVERSION_CONTEXT_sm': '%7B%22ID%22%3A82%2C%22EXPIRE%22%3A1741899540%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D',
-    '_ct': '3100000002821121974',
-    '_ct_client_global_id': 'b7bf8ff5-0827-5c41-830e-bad9491c1c5e',
-    '_ct_ids': 'dde5d0a5%3A7883%3A4795557837_36b04ec4%3A13517%3A1124557406',
-    '_ym_uid': '1741862569989643464',
-    '_ym_d': '1741862569',
-    '_ym_isad': '1',
-    '_gid': 'GA1.2.62523463.1741862569',
-    'd_session_start_time': '1741862569438',
+    '_ct': '3100000002889012760',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    '_ym_uid': '1745588248351634478',
+    '_ym_d': '1763648083',
+    '_ym_isad': '2',
     'sbjs_migrations': '1418474375998%3D1',
-    'sbjs_first_add': 'fd%3D2025-03-13%2013%3A42%3A49%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F',
-    'sbjs_current': 'typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29',
-    'sbjs_first': 'typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29',
-    'sbjs_udata': 'vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F134.0.0.0%20Safari%2F537.36',
+    'sbjs_first_add': 'fd%3D2025-11-20%2017%3A14%3A42%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2Ffull-search%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fdonstroy.moscow%2F',
+    'sbjs_first': 'typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29',
+    'tmr_lvid': 'e0dcbecb89a2a37efdd9c3e08f83390c',
+    'tmr_lvidTS': '1745588249051',
+    'domain_sid': 'Ko8nhcVLMJEX5YUs1eWe4%3A1763648082980',
+    'PHPSESSID': 'lGpYvXVImWcT5Yax4t2qSRcB05OImoZM',
+    'BITRIX_CONVERSION_CONTEXT_sm': '%7B%22ID%22%3A76%2C%22EXPIRE%22%3A1763758740%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D',
+    'cted': 'modId%3Ddde5d0a5%3Bya_client_id%3D1745588248351634478%7CmodId%3D36b04ec4%3Bya_client_id%3D1745588248351634478',
+    '_ct_ids': '36b04ec4%3A13517%3A1221946196_dde5d0a5%3A7883%3A4899574275',
     '_ym_visorc': 'w',
-    'cted': 'modId%3Ddde5d0a5%3Bclient_id%3D2018500939.1741862569%3Bya_client_id%3D1741862569989643464%7CmodId%3D36b04ec4%3Bclient_id%3D2018500939.1741862569%3Bya_client_id%3D1741862569989643464',
-    'sbjs_current_add': 'fd%3D2025-03-13%2013%3A46%3A01%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2Fbuy-living%2Fliving-objects%2F%3Ftype%3Dlist%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F',
-    '_gat_UA-79524626-1': '1',
-    '_gat': '1',
-    '_ct_session_id': '1124557406',
-    '_ct_site_id': '13517',
-    'call_s': '___dde5d0a5.1741864627.4795557837.163277:435675|36b04ec4.1741864627.1124557406.251833:770624|2___',
-    'sbjs_session': 'pgs%3D14%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fdonstroy.moscow%2Ffull-search%2F',
-    '_ga_H36T4JN56M': 'GS1.1.1741862569.1.1.1741862828.51.0.0',
-    '_ga': 'GA1.1.2018500939.1741862569',
-    '_ga_LJV2D2Z2D2': 'GS1.1.1741862569.1.1.1741862828.0.0.0',
-    '_ga_F522MVXW9K': 'GS1.2.1741862569.1.1.1741862828.9.0.0',
+    'sbjs_current_add': 'fd%3D2025-11-21%2009%3A42%3A45%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2Fobjects%2Fnachalo%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fyandex.ru%2F',
+    'sbjs_current': 'typ%3Dreferral%7C%7C%7Csrc%3Dyandex.ru%7C%7C%7Cmdm%3Dreferral%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%2F%7C%7C%7Ctrm%3D%28none%29',
+    'sbjs_udata': 'vst%3D3%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F142.0.0.0%20Safari%2F537.36',
+    'd_session_start_time': '1763707365193',
+    'agree-cookie': '1',
+    '_ct_session_id': '4899574275',
+    '_ct_site_id': '7883',
+    'call_s': '___36b04ec4.1763709168.1221946196.251833:770624|dde5d0a5.1763709168.4899574275.163277:84489|2___',
+    'sbjs_session': 'pgs%3D2%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fdonstroy.moscow%2Ffull-search%2F%3Fprojects%255B%255D%3D2810',
+    'tmr_detect': '0%7C1763707372279',
 }
 
 headers = {
     'accept': 'application/json, text/plain, */*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,ka;q=0.5',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'content-type': 'application/json',
     'origin': 'https://donstroy.moscow',
     'priority': 'u=1, i',
-    'referer': 'https://donstroy.moscow/full-search/?price%5B%5D=14.8&price%5B%5D=545.2&area%5B%5D=21&area%5B%5D=392&floor_number%5B%5D=1&floor_number%5B%5D=50&floor_first_last=false&discount=false&furnish=false&apartments=false&secondary=false&sort=price-asc&view_type=flats&page=1&view=card',
-    'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
+    'referer': 'https://donstroy.moscow/full-search/?price%5B%5D=15.8&price%5B%5D=915.2&area%5B%5D=27&area%5B%5D=392&floor_number%5B%5D=2&floor_number%5B%5D=35&floor_first_last=false&discount=false&furnish=false&apartments=false&secondary=false&sort=price-asc&view_type=flats&page=2&view=card',
+    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
-    # 'cookie': 'PHPSESSID=48SfpibSVlcqePSJGRzMlBrj9mCnREBf; BX_USER_ID=7c7565be1314918dd51b7cd2a5978979; BITRIX_CONVERSION_CONTEXT_sm=%7B%22ID%22%3A82%2C%22EXPIRE%22%3A1741899540%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D; _ct=3100000002821121974; _ct_client_global_id=b7bf8ff5-0827-5c41-830e-bad9491c1c5e; _ct_ids=dde5d0a5%3A7883%3A4795557837_36b04ec4%3A13517%3A1124557406; _ym_uid=1741862569989643464; _ym_d=1741862569; _ym_isad=1; _gid=GA1.2.62523463.1741862569; d_session_start_time=1741862569438; sbjs_migrations=1418474375998%3D1; sbjs_first_add=fd%3D2025-03-13%2013%3A42%3A49%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F; sbjs_current=typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29; sbjs_first=typ%3Dorganic%7C%7C%7Csrc%3Dgoogle%7C%7C%7Cmdm%3Dorganic%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F134.0.0.0%20Safari%2F537.36; _ym_visorc=w; cted=modId%3Ddde5d0a5%3Bclient_id%3D2018500939.1741862569%3Bya_client_id%3D1741862569989643464%7CmodId%3D36b04ec4%3Bclient_id%3D2018500939.1741862569%3Bya_client_id%3D1741862569989643464; sbjs_current_add=fd%3D2025-03-13%2013%3A46%3A01%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2Fbuy-living%2Fliving-objects%2F%3Ftype%3Dlist%7C%7C%7Crf%3Dhttps%3A%2F%2Fwww.google.com%2F; _gat_UA-79524626-1=1; _gat=1; _ct_session_id=1124557406; _ct_site_id=13517; call_s=___dde5d0a5.1741864627.4795557837.163277:435675|36b04ec4.1741864627.1124557406.251833:770624|2___; sbjs_session=pgs%3D14%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fdonstroy.moscow%2Ffull-search%2F; _ga_H36T4JN56M=GS1.1.1741862569.1.1.1741862828.51.0.0; _ga=GA1.1.2018500939.1741862569; _ga_LJV2D2Z2D2=GS1.1.1741862569.1.1.1741862828.0.0.0; _ga_F522MVXW9K=GS1.2.1741862569.1.1.1741862828.9.0.0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+    # 'cookie': '_ct=3100000002889012760; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ym_uid=1745588248351634478; _ym_d=1763648083; _ym_isad=2; sbjs_migrations=1418474375998%3D1; sbjs_first_add=fd%3D2025-11-20%2017%3A14%3A42%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2Ffull-search%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fdonstroy.moscow%2F; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29; tmr_lvid=e0dcbecb89a2a37efdd9c3e08f83390c; tmr_lvidTS=1745588249051; domain_sid=Ko8nhcVLMJEX5YUs1eWe4%3A1763648082980; PHPSESSID=lGpYvXVImWcT5Yax4t2qSRcB05OImoZM; BITRIX_CONVERSION_CONTEXT_sm=%7B%22ID%22%3A76%2C%22EXPIRE%22%3A1763758740%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D; cted=modId%3Ddde5d0a5%3Bya_client_id%3D1745588248351634478%7CmodId%3D36b04ec4%3Bya_client_id%3D1745588248351634478; _ct_ids=36b04ec4%3A13517%3A1221946196_dde5d0a5%3A7883%3A4899574275; _ym_visorc=w; sbjs_current_add=fd%3D2025-11-21%2009%3A42%3A45%7C%7C%7Cep%3Dhttps%3A%2F%2Fdonstroy.moscow%2Fobjects%2Fnachalo%2F%7C%7C%7Crf%3Dhttps%3A%2F%2Fyandex.ru%2F; sbjs_current=typ%3Dreferral%7C%7C%7Csrc%3Dyandex.ru%7C%7C%7Cmdm%3Dreferral%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%2F%7C%7C%7Ctrm%3D%28none%29; sbjs_udata=vst%3D3%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28Windows%20NT%2010.0%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F142.0.0.0%20Safari%2F537.36; d_session_start_time=1763707365193; agree-cookie=1; _ct_session_id=4899574275; _ct_site_id=7883; call_s=___36b04ec4.1763709168.1221946196.251833:770624|dde5d0a5.1763709168.4899574275.163277:84489|2___; sbjs_session=pgs%3D2%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fdonstroy.moscow%2Ffull-search%2F%3Fprojects%255B%255D%3D2810; tmr_detect=0%7C1763707372279',
 }
 
 json_data = {
@@ -68,7 +65,7 @@ json_data = {
         99,
     ],
     'rooms': [],
-    'projects': [],
+    'projects': [2810],
     'quarters': [],
     'buildings': [],
     'advantages': [],
@@ -129,7 +126,10 @@ while True:
             district = ''
             adress = ''
             eskrou = ''
-            korpus = i["building"]
+            if i["quarter"]:
+                korpus = f"{i["quarter"]} корп. {i["building"]}"
+            else:
+                korpus = i["building"]
             konstruktiv = ''
             klass = ''
             srok_sdachi = ''

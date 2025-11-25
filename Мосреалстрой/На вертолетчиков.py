@@ -8,6 +8,7 @@ import random
 from datetime import datetime
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -61,9 +62,12 @@ web_site = f'https://xn----7sbhaoavqgppeu2ad4f.xn--p1ai/prices/flats#&orderby=pr
 driver = webdriver.Chrome()
 driver.get(url=web_site)
 time.sleep(2)
-button = driver.find_element(By.XPATH, "/html/body/div[1]/main/div[3]/div/div/a")
-button.click()
-time.sleep(1)
+try:
+    button = driver.find_element(By.XPATH, "/html/body/div[1]/main/div[3]/div/div/a")
+    button.click()
+    time.sleep(1)
+except:
+    pass
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
 soup = BeautifulSoup(page_content, 'html.parser')
 flats_soup = soup.find_all(class_="flat-item")

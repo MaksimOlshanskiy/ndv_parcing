@@ -135,13 +135,15 @@ while True:
             type = 'Апартаменты'
         else:
             type = 'Квартиры'
-        if i["decoration"]["name"] == "MR Base":
-            finish_type = "Предчистовая"
-        elif i["decoration"]["name"] == "MR Ready":
-            finish_type = "С отделкой"
-        else:
-            finish_type = i["decoration"]["name"]
-
+        try:
+            if i["decoration"]["name"] == "MR Base":
+                finish_type = "Предчистовая"
+            elif i["decoration"]["name"] == "MR Ready":
+                finish_type = "С отделкой"
+            else:
+                finish_type = i["decoration"]["name"]
+        except:
+            finish_type = 'Неизвестно'
         room_count = int(i["rooms_number"])
         area = i["area"]
         price_per_metr = ''

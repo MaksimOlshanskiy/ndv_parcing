@@ -156,7 +156,7 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    if page_counter == 44:
+    if page_counter == 36:
         break
     page_counter += 1
     sleep_time = random.uniform(1, 3)

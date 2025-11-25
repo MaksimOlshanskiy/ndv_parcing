@@ -12,7 +12,7 @@ import openpyxl
 import os
 import random
 import requests
-
+from Profitbase_token import get_token
 from functions import save_flats_to_excel
 
 headers = {
@@ -21,13 +21,13 @@ headers = {
     'origin': 'https://smart-catalog.profitbase.ru',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Chromium";v="136", "Google Chrome";v="136", "Not.A/Brand";v="99"',
+    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
 }
 
 params = {
@@ -35,15 +35,10 @@ params = {
     'status[0]': 'AVAILABLE',
     'houseId': '103974',
     'limit': '10',
-    'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': '28193c0cf4e64f66962187a4a8b5665717cb0d4d542b4638add454fe55d266ef'
-
+    'access_token': 'f2094265c24843eb47152b387de2f896d5c9b3c23de44e51e267ef274ccc5eb2',
 }
-
-
-
 
 
 flats = []
@@ -56,7 +51,7 @@ def extract_digits_or_original(s):
 while True:
 
     response = requests.get('https://pb2956.profitbase.ru/api/v4/json/property', params=params, headers=headers)
-
+    print(response.status_code)
     items = response.json()['data']['properties']
 
 
@@ -128,12 +123,14 @@ while True:
                   time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
-
-    if not items:
+    try:
+        if not items:
+            break
+        params['offset'] = str(int(params['offset']) + 10)
+        sleep_time = random.uniform(1, 5)
+        time.sleep(sleep_time)
+    except:
         break
-    params['offset'] = str(int(params['offset']) + 10)
-    sleep_time = random.uniform(1, 5)
-    time.sleep(sleep_time)
 
 save_flats_to_excel(flats, project, developer)
 

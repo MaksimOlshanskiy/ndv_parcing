@@ -17,12 +17,13 @@ headers = {
 }
 
 params = {
-    'area[from]': '28.1',
-    'area[to]': '144.5',
-    'floor[from]': '3',
-    'floor[to]': '39',
-    'price[from]': '15000000',
-    'price[to]': '109200000',
+    'area[from]': '1',
+    'area[to]': '999.5',
+    'floor[from]': '1',
+    'floor[to]': '99',
+    'price[from]': '150000',
+    'price[to]': '1092000000',
+    'status': 'on',
     'sort': 'price-asc',
     'project': 'all',
     'type': 'flat',

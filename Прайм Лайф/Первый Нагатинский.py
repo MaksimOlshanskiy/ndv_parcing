@@ -164,7 +164,7 @@ while True:
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
     params['PAGEN_1'] = str(int(params['PAGEN_1']) + 1)
-    if params['PAGEN_1'] == '2':
+    if params['PAGEN_1'] == '8':
         break
     if not flats_soup:
         break

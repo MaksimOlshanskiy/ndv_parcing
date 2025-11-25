@@ -14,19 +14,19 @@ cookies = cookies
 headers = headers
 
 data = {
-    'price[min]': '13.3',
-    'price[max]': '38.9',
-    'price_range[min]': '13.3',
-    'price_range[max]': '38.9',
+    'price[min]': '1',
+    'price[max]': '999',
+    'price_range[min]': '1',
+    'price_range[max]': '999',
     'obj[]': '152',
-    'area[min]': '20',
-    'area[max]': '69',
-    'area_range[min]': '20.0',
-    'area_range[max]': '69.0',
+    'area[min]': '1',
+    'area[max]': '999',
+    'area_range[min]': '1',
+    'area_range[max]': '999',
     'floor[min]': '2',
-    'floor[max]': '23',
+    'floor[max]': '99',
     'floor_range[min]': '2',
-    'floor_range[max]': '23',
+    'floor_range[max]': '99',
     'ob[page]': '1',
     'ob[sort]': 'price',
     'ob[order]': 'asc',
@@ -34,7 +34,7 @@ data = {
     'ob[id]': '152',
     'object': '152',
     'a': 'types',
-    'ok': 'JiLYQ6UE7zlqLDA9UVrheXtexoXfiJVP'
+    'ok': ok
 }
 
 

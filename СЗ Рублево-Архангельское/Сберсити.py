@@ -9,6 +9,10 @@ from datetime import datetime
 
 from functions import save_flats_to_excel
 
+'''
+Снимает только не забронированные лоты
+'''
+
 cookies = {
     'ma_cid': '4056384301741529079',
     '_ym_uid': '1741529079657008183',
@@ -137,7 +141,7 @@ while True:
               stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
     params["offset"] = str(int(params["offset"]) + 12)
-    sleep_time = random.uniform(5, 15)
+    sleep_time = random.uniform(5, 7)
     time.sleep(sleep_time)
     if not items:
         print("Всё скачано. Переходим к загрузке в файл")

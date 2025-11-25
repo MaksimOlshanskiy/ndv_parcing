@@ -1,4 +1,18 @@
-info = {
+info = {'nexus': {
+        'headers': {
+            'sec-ch-ua-platform': '"Windows"',
+            'Referer': 'https://msk.group-akvilon.ru/project/akvilon-signal/flats/?project=37098&price_min=7983795&price_max=23122410&order=price&price=%5Bobject%20Object%5D',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+            'Accept': 'application/json, text/plain, */*',
+            'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+            'sec-ch-ua-mobile': '?0',
+        },
+        'params': {
+            'project': '38095',
+            'order': 'price',
+            'city': '2',
+            'page': '1'}
+    },
     'signal': {
         'headers': {
             'sec-ch-ua-platform': '"Windows"',

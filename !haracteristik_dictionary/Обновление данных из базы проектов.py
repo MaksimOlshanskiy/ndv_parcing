@@ -8,9 +8,8 @@ def normalize_value(v):
     if pd.isna(v):   # NaN -> None
         return None
     if isinstance(v, str):
-        return v.strip()  # убираем пробелы
+        return v.strip()
     if isinstance(v, (np.int64, np.float64)):
-        # если число без дробной части -> int
         if float(v).is_integer():
             return int(v)
         return float(v)
@@ -19,21 +18,32 @@ def normalize_value(v):
 # загружаем Excel
 df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База проектов.xlsx")
 
-# создаем новый столбец-ключ = Название проекта + "_" + Девелопер
-df["primary_key"] = df["Название проекта"].astype(str).str.strip() + "_" + df["Девелопер"].astype(str).str.strip()
+# создаем новый столбец-ключ = только Название проекта
+df["primary_key"] = (
+    df["Название проекта"]
+        .astype(str)
+        .str.strip()
+        .str.replace("«", "", regex=False)
+        .str.replace("»", "", regex=False)
+)
 
-# нормализуем значения в датафрейме
+# нормализуем значения
 try:
     df = df.map(normalize_value)  # pandas >= 2.2
 except AttributeError:
-    df = df.applymap(normalize_value)  # старые версии pandas
+    df = df.applymap(normalize_value)
 
 df['id'] = df['id'].astype(str).str.replace(".0", "")
 
-# формируем словарь из Excel
-projects_dict = df.set_index("primary_key").drop(columns=["Название проекта", "Девелопер"]).to_dict(orient="index")
+# формируем словарь из Excel (удаляем только Название проекта — теперь девелопер сохраняется)
+projects_dict = (
+    df
+    .set_index("primary_key")
+    .drop(columns=["Название проекта"])  # девелопер теперь НЕ участвует в ключе, но остаётся в данных
+    .to_dict(orient="index")
+)
 
-# читаем старый JSON (если он существует)
+# читаем старый JSON (если он есть)
 old_projects = {}
 if os.path.exists("projects.json"):
     with open("projects.json", "r", encoding="utf-8") as f:

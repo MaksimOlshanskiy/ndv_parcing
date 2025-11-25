@@ -5,11 +5,12 @@ import os
 import glob
 import datetime
 from Developer_dict import name_dict, developer_dict
-from area_dictionary.step_4_replacement_to_excel import process_data, load_json_data
+from area_dictionary.Старая_квартирография.step_4_replacement_to_excel import process_data, load_json_data
 import json
 
 
 def save_flats_to_excel(flats, project, developer):
+
     df = pd.DataFrame(flats, columns=['Дата обновления',
                                       'Название проекта',
                                       'На англ',
@@ -47,7 +48,7 @@ def save_flats_to_excel(flats, project, developer):
                                       'Цена лота, руб.',
                                       'Скидка,%',
                                       'Цена кв.м со ск, руб.',
-                                      'Цена лота со ск, руб.',
+                                      'Цена со скидкой, руб.',
                                       'секция',
                                       'этаж',
                                       'номер'])
@@ -98,35 +99,30 @@ def save_flats_to_excel(flats, project, developer):
     with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
         projects_dict = json.load(f)
 
-    # создаем ключ из Названия проекта и Девелопера
-    df["primary_key"] = (
-            df["Название проекта"].astype(str)
-            .str.replace("«", "", regex=False)
-            .str.replace("»", "", regex=False)
-            + "_" +
-            df["Девелопер"].astype(str)
+    # Готовим название проекта к сопоставлению (убираем «»)
+    df["project_key"] = (
+        df["Название проекта"].astype(str)
+        .str.replace("«", "", regex=False)
+        .str.replace("»", "", regex=False)
     )
 
-    # заполняем характеристиками из JSON
+    # Заполняем характеристики ТОЛЬКО по совпадению Названия проекта
     for idx, row in df.iterrows():
-        key = row["primary_key"]
+        key = row["project_key"]
         if key in projects_dict:
             for col, value in projects_dict[key].items():
-                # заполняем только если колонка есть в df
                 if col in df.columns:
                     df.at[idx, col] = value
+
+    df.drop(columns=["project_key"], inplace=True)
+
     df['Дата обновления'] = pd.to_datetime(df['Дата обновления'], errors="coerce")
 
-    json_data = load_json_data(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\normalized_output.json')
+    json_data = load_json_data(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json')
     if developer != 'Фонд реновации':
         df = process_data(json_data, df)
 
-    df.drop(columns=["primary_key"], inplace=True)
-
-
-
-
-    print(df[['Корпус', 'Кол-во комнат', 'Площадь, кв.м', 'Цена лота, руб.', 'Цена лота со ск, руб.']].info())
+    print(df[['Корпус', 'Кол-во комнат', 'Площадь, кв.м', 'Цена лота, руб.', 'Цена со скидкой, руб.']].info())
     print(f'')
     print(f'Число лотов: {len(df)}')
     print(f'')
@@ -187,7 +183,7 @@ def save_cian_to_excel(flats, project, developer):
                                       'Цена лота, руб.',
                                       'Скидка,%',
                                       'Цена кв.м со ск, руб.',
-                                      'Цена лота со ск, руб.',
+                                      'Цена со скидкой, руб.',
                                       'секция',
                                       'этаж',
                                       'номер'])
@@ -403,8 +399,8 @@ def merge_and_clean(folder_path, output_file_name):
         Заполняет пустые значения в колонке 'Цена лота, руб.'
         значениями из колонки 'Цена лота со ск, руб.'
         """
-        df['Цена лота, руб.'] = df['Цена лота, руб.'].fillna(df['Цена лота со ск, руб.'])
-        df.loc[df['Цена лота, руб.'] == 0, 'Цена лота, руб.'] = df.loc[df['Цена лота, руб.'] == 0, 'Цена лота со ск, руб.']
+        df['Цена лота, руб.'] = df['Цена лота, руб.'].fillna(df['Цена со скидкой, руб.'])
+        df.loc[df['Цена лота, руб.'] == 0, 'Цена лота, руб.'] = df.loc[df['Цена лота, руб.'] == 0, 'Цена со скидкой, руб.']
 
         return df
 
@@ -431,8 +427,11 @@ def merge_and_clean(folder_path, output_file_name):
     )
     except:
         ''
-
-    all_data['Отделка'] = all_data['Отделка'].replace('без отделки', 'Без отделки').replace('с отделкой', 'С отделкой')
+    if 'Отделка' in all_data.columns:
+        all_data['Отделка'] = all_data['Отделка'].replace({
+            'без отделки': 'Без отделки',
+            'с отделкой': 'С отделкой'
+        })
 
 
 

@@ -10,7 +10,7 @@ from save_to_excel import save_flats_to_excel_old_new
 
 def parse_citi_mix_flats():
     base_url = "https://citi-mix.ru"
-    start_url = "/flats/catalog?corp=all&floor=all&korpus=5%2C4&pmin=1&pmax=99.8&fmin=1&fmax=188&tags=&sort=price&sortType=ASC"
+    start_url = "/flats/catalog?corp=all&floor=all&korpus=5%2C4&pmin=7&pmax=9.6&fmin=6&fmax=18&tags=&sort=default&sortType=ASC"
     developer = "Apsis Globe"
     project = "Citi-Mix"
 
@@ -36,7 +36,7 @@ def parse_citi_mix_flats():
             title = title.get_text(strip=True) if title else ''
             description = card.find('div', class_='c-flat-row__description')
             description = description.get_text(strip=True) if description else ''
-            price_element = card.find('div', class_='c-flat-row__price-layout')
+            price_element = card.find('div', class_='c-flat-row__price')
             price = re.search(r'[\d\s]+', price_element.get_text(strip=True)).group().replace(' ',
                                                                                               '') if price_element else ''
 
@@ -51,7 +51,7 @@ def parse_citi_mix_flats():
             flats.append([
                 datetime.date.today(), project, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
                 developer, "", "", "", "", corp_number, "", "", "", "", "", "", 'Апартаменты', "С отделкой", "",
-                float(area), "", int(price), "", "", '', "", int(floor_number), ""
+                float(area), "",int(price), "", "", '', "", int(floor_number), ""
             ])
 
         next_button = soup.find('a', class_='c-grid__pagers-button c-grid__pagers-button--next')

@@ -124,10 +124,12 @@ for i in items:
     room_count = int(i["rooms"])
     area = float(i["square"])
     price_per_metr = ''
-    old_price = i["price_package_without_promo"]
+    old_price = int(str(i["price_old"]).replace('.00', ''))
+    if old_price == 0:
+        old_price = int(str(i["price_package_without_promo"]).replace('.00', '').replace('.0', ''))
     discount = ''
     price_per_metr_new = ''
-    price = i["price"]
+    price = int(str(i["price_marketing"]).replace('.00', ''))
     if i["section_number"] == "Тихий дом":
         section = "Тихий дом"
     else:

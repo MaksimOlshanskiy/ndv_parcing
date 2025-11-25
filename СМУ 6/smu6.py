@@ -49,6 +49,7 @@ flats = []
 count = 1
 
 response = requests.get(url, cookies=cookies, headers=headers)
+korpus_dict = {'Б' : 'Атлас', 'Г' : 'Монте Бьянко', 'В' : 'Олимп', 'А' : 'Эльбрус'}
 
 if response.status_code == 200:
     data = response.json()
@@ -58,7 +59,8 @@ if response.status_code == 200:
         date = datetime.date.today()
         project = 'Апсайд Тауэрс'
         developer = 'Upside Development'
-        korpus = j.get('b', '')
+        korpus = j.get('tr_n', '')[0]
+        korpus = korpus_dict.get(korpus, korpus)
         room_count = j.get('rc', '')
 
         if room_count==0:

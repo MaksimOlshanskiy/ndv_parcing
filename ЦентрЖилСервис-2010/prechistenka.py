@@ -1,10 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import datetime
+
+from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new
 
-url = 'https://hamovnyki.ru/prechistenka-8?filters=price_rub%2Fint_band_filter%7C31+000+000%3A3+766+700+000%3Barea%2Fint_band_filter%7C28%3A584&sort_type=expert_choice%3Adesc%2Cprice_rub%3Aasc&sort_direction=asc&viewType=list'
-
+url = 'https://hamovnyki.ru/?filters=price_rub%2Fint_band_filter%7C42+000+000%3A7+038+470+000%3Barea%2Fint_band_filter%7C32%3A1+030&sort_type=expert_choice%3Adesc%2Cprice_rub%3Aasc&sort_direction=asc&viewType=list&type=lot'
 # Делаем запрос
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
