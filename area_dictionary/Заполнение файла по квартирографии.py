@@ -3,8 +3,8 @@ import pandas as pd
 
 json_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json' # база квартирографии
 
-excel_path = r"C:\Users\m.olshanskiy\Desktop\Наши проекты 10 2025.xlsx"   # загружаемый файл
-output_path = r"C:\Users\m.olshanskiy\Desktop\Наши проекты 10 2025.xlsx"  # сохраняемый файл
+excel_path = r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12.xlsx"   # загружаемый файл
+output_path = r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12к.xlsx"  # сохраняемый файл
 
 
 def load_json_data(json_path):

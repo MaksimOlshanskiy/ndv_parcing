@@ -6,18 +6,17 @@ import os
 import random
 from functions import merge_and_clean, haversine
 import json
+'''
+region_list = [    
+    
+    4618 - 6700,
+    4567 - 4200,
 
-region_list = [
-    1, 2, 4593, 4588, 4596, 4606, 4608, 4618, 4560, 4609, 4619, 181462,
-    4564, 4581, 4620, 4607, 4557, 4623, 4612, 4573, 4598, 4585, 4555,
-    4567, 4621, 4587, 4605, 4568, 4625, 184723, 4604, 4576, 4574, 4603,
-    4602, 4562, 4561, 4565, 4601, 4636, 4599, 4629, 4580, 4630, 4572,
-    4615, 4614, 4591, 4553, 4635, 4624, 4570, 4583, 4566, 4600, 4554,
-    4556, 4558, 4563, 4569, 5053, 4571, 4575, 4577, 4578, 4579, 4582,
-    4586, 4589, 4590, 4592, 4594, 4595, 4597, 4610, 4611, 4613, 4617,
-    4622, 4627
+
+
+
 ]
-
+'''
 type_of_lot = 'Вторичка, продажа'
 
 # noinspection PyDictDuplicateKeys
@@ -25,7 +24,6 @@ cookies = {
     '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
     'cf_clearance': 'iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk',
     '_ym_uid': '174161324651361127',
-    '_ym_d': '1741613246',
     'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
     'adrdel': '1744094487237',
     'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D',
@@ -40,117 +38,87 @@ cookies = {
     'cian_ruid': '8098251',
     'map_preview_onboarding_counter': '3',
     'frontend-serp.offer_chat_onboarding_shown': '1',
-    'forever_region_id': '4593',
-    'forever_region_name': '%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
-    '__zzatw-cian': 'MDA0dC0cTHtmcDhhDHEWTT17CT4VHThHKHIzd2UxO24lYUxaET9HFTZnXEpCNxVZcU4nfAsmMl4tYQ8rCB5UNV9OCCobFn5tI1ULEF9APV8/cnsiD2k5IVt0FhNFWmFVaUAfQTY6flJkGBRIWRw2czljajUjfj1qTnsJXSlRCg4Ybkp1cyxDaSFneFwldlYKCVdPRggnKwoPEGNuRip7X0BuH2RPFyRKV1UzWxxCNW4mCRAUYEBIdHQqQB4PWzkhVA0gDkRpCxtpNmcWSTwacjNpZW10KlJRUVomSFdSCCcZF3twJ1J7dScOCSplMy0tWRgIH2N4JRlrcmY=6fyd8A==',
-    'cfidsw-cian': 'diusco/HSHrB9muzOk+431TeS6cQwA2I56HMt/7brov/94HTt6PZxKAttqRA7cknvlkPExofzYUUaNpGYM2H3DX5+hW6lp34e+dk6dKONIrD4BtCmA9ax5zv9A5uVB4jEA/l10JrXkqxq87yHcnzszymNb9JyssBbvtBWHxb',
-    'gsscw-cian': 'fWi9cwYAjXKpsYlye2CIqEFatNR4EzAzID3Zv8nXkSLj2gG3G+rhCtmTIBBXqIffuzxFFT0I3QaemDa69+WG6yhz8jocBX9XoM1QZ9WOLsAbuE554o6WsFW2SlrMKXGaXvZx38BtHWGZTxEUGCedMrZGjNCnDnyWb6wDb+lhWZ/3ICCKy8gqOujBw7e44OzzFAx5nLhMDNDyVOf8JUYkPc2St/9z2O7Gz+ihq/Kr7XZw5LL+akepnMYjfqpBEVBBwoKgBCYOkI/4/TKnYg==',
-    'fgsscw-cian': '5dqc76ef4ba5a714de38640aa08605216bfb216e',
     'frontend-offer-card.newbuilding_broker_onboarding_shown': '1',
-    '_gcl_au': '1.1.730586332.1753699444',
-    'last_paid_utm': '?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037806106|ad:16202020484|grp:5454186765|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&yclid=4414867700825718783',
-    'DMIR_AUTH': 'KaxPvqgCTBCI5zCe%2FjZEmCDp2qM0RCK2hIVrc%2BBeEt7NRmQr1%2BnsiC%2BbHZ3iUSROflUa18%2BMHTLVVCblh6fvxHSLY6xnYFAHzAPDGcpuV03ZLPabLxOU4bSj2cQYuC%2B4UVbQP%2FkU%2BbmhOCHACsyC4ouWMMu2h9bVJeu458AFWWE%3D',
-    'sopr_utm': '%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
     'rrpvid': '771260525504896',
     'rcuid': '67e27578d41e2c9a8a114add',
-    'F6_CIAN_SID': '2d0d2794e97e6e79802163da7bbe16360dd116dd0dffcd58a510b35388de706f',
+    'frontend-offer-card.builder_chat_onboarding_shown': '1',
+    'transport-accessibility_onboarding_counter': '3',
+    'ma_id': '6225667261741613246584',
+    '__upin': 'jzXjhLRLkqO1JTeopJQqkQ',
+    '_ym_d': '1757401308',
+    '__ai_fp_uuid': '245d903c22bdc927%3A15',
+    'cfidsw-cian': 'SgybcGIxNohISLx1pm7TZqH4g2s0yZuun/43PQdS2lgKaW1Kt2AcGCTAyJaFGaa6yif3R/HldhAgXm3NC0K1u2QP7/sFfrGAdA4ZVPMfOJa4b0/tEUtDjqgwm9GSX+69a5J2oQxu0kb6xLq5qabHFKDbtz7bLcmntk7vk6q2',
+    'fgsscw-cian': 'dkUfb3f6bf8a85c6dfe120486165772c64b880e0',
+    'gsscw-cian': 'GdzeiSCNUpAGrW7VRqkf5HSFFt9sNQakyL+AtSmc+VocwkwctD0owGAy6Ep70WOKkOAy04eijt+ES0daHnOK3gwUOuidmlC2G9TB0+wNvtP8V7sHMYFtMTpkKfyD6YRffqoxkmNFnaFzVK89TYWEvJqUdrnwGhnmR1lz4ESuajkKMlmHorWlZYK6F5eL8vkb18AUsoA0gb3TqJZcjGTNUM0NDgVC77X1RVs+OTJ0BoIZS5emlG03oHMUOE5DmailvO+/rtfQBtyE',
+    'ma_id_api': 'GxRtmeoGuaB8279kyKiOOWoPH3AsJBUy4myCSKYvMpjBeANYebQlWRDzcAcb90W0aJ3L82J0ln2wRtm+ZcV/EtxWXxRMU3PbIiQ+wf0Q2kPuA5vJ5WrM0laQZQoxa7r8hTzTdJ1xpw4hKDANo4wrMeQ5E+pmcaaQlBTcWkjgFjcCgrcb5/1hOsy4Nv8P/yxdpkf2ErnEUxaWyUGayjdao676tqTl//KiB2aQXIbJV6N/+hg6BweZ4ef6fwjquBXebADBMM3MAawoME8u0fnP/3qkkD3/m4jccb4sC735sgX3+kYmdxq/nQjGk3O11dbRxbZaLgMPt6C6d8xY+FzAhg==',
+    '_gcl_au': '1.1.1810869406.1761569722',
+    'frontend-offer-card.consultant_chat_onboarding_shown': '1',
+    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki-ot-zastroyschikov%2F',
+    'countCallNowPopupShowed': '2%3A1763716639971',
+    'last_paid_utm': '?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037811265|ad:16202025265|grp:5454187042|drf:no|dev:desktop|p:premium|n:1|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&ybaip=1&yclid=10829203034459865087',
+    'sopr_utm': '%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
     '_ym_isad': '2',
-    'session_region_id': '4820',
-    'session_main_town_region_id': '4820',
-    'countCallNowPopupShowed': '1%3A1754392030516',
-    '_yasc': 'Rx8/kjbQXML3XheE7gdCnjr4dL1FnqxkN3Id+8soVKYUe2bV2BKe+O8g0t+/0D6GYaM=',
-    'F6_CIAN_UID': '8098251',
-    '_yasc': 't3zeYqoVISApPynimhXVtQIVX+VEjCKgXC68pqmluVwnCpBhUUoX73uKe5e/9UwPW1c=',
-    'sopr_session': '4809e916fe2040e4',
-    'cookieUserID': '8098251',
+    'newbuilding-search-frontend.chatAnimationCounter': '3',
+    'newbuilding_mortgage_payment_filter_onboarding': '1',
+    'session_region_name': '%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4',
+    'forever_region_id': '4704',
+    'forever_region_name': '%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4',
+    'uxfb_card_satisfaction': '%5B309384022%2C324043854%2C323869097%2C323963675%5D',
+    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D184723%26with_newobject%3D1',
+    'domain_sid': 'h9UFzhDmhYsy0jug-hr66%3A1764075804222',
+    'tmr_detect': '0%7C1764075908711',
+    '_yasc': '2pJhiBC9TKWK+iEBt0k7uqLzYAamY8koI2dwBC1R57nRBWm98Pc4WfFXcGpEyCYGbQ==',
+    '_yasc': 'ehxxEZLh8A5uNNZIvEAgT48WIgAamRbce24lu+osB4O/l8bs7EXwxOmp6kY4whrppw==',
+    'session_region_id': '184723',
+    'session_main_town_region_id': '184723',
+    'login_mro_popup': '1',
+    'sopr_session': '7fde76427fd54c5e',
     '_ym_visorc': 'b',
-    'uxfb_card_satisfaction': '%5B305455884%2C319149332%2C314358350%2C306236662%5D',
-    'cfidsw-cian': 'JevClYyqu4xnr5IdnzWEyvxjvYh/gulO8h6lncNqo/8wDciHJ8rCKlHGpsDIJ9hl+BANTmVzBf1f/WtRHkkCyIDK2E3CJ4Zs6x26Ka0BBL2UQGj86QfHoS0uJBR/P52AlB5pcoiOm9W2PmNflPpUCJlST1M2uA6elKA8+2mu',
-    'fgsscw-cian': 'M7sx47635bb5b204cb5a694ab604226b42610fbf',
-    'gsscw-cian': 'hEt7/3Xo0ldTvJsb9jO5itQ53tJCNytOmREaShRa6BgWuO6hLtbkYoB8qC8KcP1mngKjvyJ2RBfhvVEodXPOGyevTbDLv1jTfsgU7eAWrcqsdcs2UJkD9ik+31xHsxVs5HRKeSpront7+4px7pVzUBrBz2pLEmC4QhB1bs2h8K9J/seT5oa27eHfDQAnitxRwlj4/wV79dSZzMoWUK2hUUVhLcth2KTwp+AWXb9MaUNuDi+8wAy0whjdtifVwnD6cpWUxVxr+RRu9cJIieK4RUGMv1Q=',
-    '_ga_3369S417EL': 'GS2.1.s1754403489$o143$g1$t1754404041$j43$l0$h0',
+    'cookieUserID': '8098251',
+    '_ga_3369S417EL': 'GS2.1.s1764083298$o390$g1$t1764083308$j50$l0$h0',
+    'frontend-serp.chatAnimationCounter': '4',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'content-type': 'application/json',
-    'origin': 'https://krasnodar.cian.ru',
+    'origin': 'https://sevastopol.cian.ru',
     'priority': 'u=1, i',
-    'referer': 'https://krasnodar.cian.ru/',
-    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+    'referer': 'https://sevastopol.cian.ru/',
+    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-    # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; cf_clearance=iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk; _ym_uid=174161324651361127; _ym_d=1741613246; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; adrdel=1744094487237; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D; newbuilding-search-frontend.consultant_cian_chat_onboarding_shown=1; cookie_agreement_accepted=1; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; _ga=GA1.1.460280003.1749468781; uxfb_usertype=searcher; uxs_uid=1ed08180-4604-11f0-94f5-19dbce91137e; seen_cpd_landing=1; cian_ruid=8098251; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; forever_region_id=4593; forever_region_name=%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; __zzatw-cian=MDA0dC0cTHtmcDhhDHEWTT17CT4VHThHKHIzd2UxO24lYUxaET9HFTZnXEpCNxVZcU4nfAsmMl4tYQ8rCB5UNV9OCCobFn5tI1ULEF9APV8/cnsiD2k5IVt0FhNFWmFVaUAfQTY6flJkGBRIWRw2czljajUjfj1qTnsJXSlRCg4Ybkp1cyxDaSFneFwldlYKCVdPRggnKwoPEGNuRip7X0BuH2RPFyRKV1UzWxxCNW4mCRAUYEBIdHQqQB4PWzkhVA0gDkRpCxtpNmcWSTwacjNpZW10KlJRUVomSFdSCCcZF3twJ1J7dScOCSplMy0tWRgIH2N4JRlrcmY=6fyd8A==; cfidsw-cian=diusco/HSHrB9muzOk+431TeS6cQwA2I56HMt/7brov/94HTt6PZxKAttqRA7cknvlkPExofzYUUaNpGYM2H3DX5+hW6lp34e+dk6dKONIrD4BtCmA9ax5zv9A5uVB4jEA/l10JrXkqxq87yHcnzszymNb9JyssBbvtBWHxb; gsscw-cian=fWi9cwYAjXKpsYlye2CIqEFatNR4EzAzID3Zv8nXkSLj2gG3G+rhCtmTIBBXqIffuzxFFT0I3QaemDa69+WG6yhz8jocBX9XoM1QZ9WOLsAbuE554o6WsFW2SlrMKXGaXvZx38BtHWGZTxEUGCedMrZGjNCnDnyWb6wDb+lhWZ/3ICCKy8gqOujBw7e44OzzFAx5nLhMDNDyVOf8JUYkPc2St/9z2O7Gz+ihq/Kr7XZw5LL+akepnMYjfqpBEVBBwoKgBCYOkI/4/TKnYg==; fgsscw-cian=5dqc76ef4ba5a714de38640aa08605216bfb216e; frontend-offer-card.newbuilding_broker_onboarding_shown=1; _gcl_au=1.1.730586332.1753699444; last_paid_utm=?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037806106|ad:16202020484|grp:5454186765|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&yclid=4414867700825718783; DMIR_AUTH=KaxPvqgCTBCI5zCe%2FjZEmCDp2qM0RCK2hIVrc%2BBeEt7NRmQr1%2BnsiC%2BbHZ3iUSROflUa18%2BMHTLVVCblh6fvxHSLY6xnYFAHzAPDGcpuV03ZLPabLxOU4bSj2cQYuC%2B4UVbQP%2FkU%2BbmhOCHACsyC4ouWMMu2h9bVJeu458AFWWE%3D; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; rrpvid=771260525504896; rcuid=67e27578d41e2c9a8a114add; F6_CIAN_SID=2d0d2794e97e6e79802163da7bbe16360dd116dd0dffcd58a510b35388de706f; _ym_isad=2; session_region_id=4820; session_main_town_region_id=4820; countCallNowPopupShowed=1%3A1754392030516; _yasc=Rx8/kjbQXML3XheE7gdCnjr4dL1FnqxkN3Id+8soVKYUe2bV2BKe+O8g0t+/0D6GYaM=; F6_CIAN_UID=8098251; _yasc=t3zeYqoVISApPynimhXVtQIVX+VEjCKgXC68pqmluVwnCpBhUUoX73uKe5e/9UwPW1c=; sopr_session=4809e916fe2040e4; cookieUserID=8098251; _ym_visorc=b; uxfb_card_satisfaction=%5B305455884%2C319149332%2C314358350%2C306236662%5D; cfidsw-cian=JevClYyqu4xnr5IdnzWEyvxjvYh/gulO8h6lncNqo/8wDciHJ8rCKlHGpsDIJ9hl+BANTmVzBf1f/WtRHkkCyIDK2E3CJ4Zs6x26Ka0BBL2UQGj86QfHoS0uJBR/P52AlB5pcoiOm9W2PmNflPpUCJlST1M2uA6elKA8+2mu; fgsscw-cian=M7sx47635bb5b204cb5a694ab604226b42610fbf; gsscw-cian=hEt7/3Xo0ldTvJsb9jO5itQ53tJCNytOmREaShRa6BgWuO6hLtbkYoB8qC8KcP1mngKjvyJ2RBfhvVEodXPOGyevTbDLv1jTfsgU7eAWrcqsdcs2UJkD9ik+31xHsxVs5HRKeSpront7+4px7pVzUBrBz2pLEmC4QhB1bs2h8K9J/seT5oa27eHfDQAnitxRwlj4/wV79dSZzMoWUK2hUUVhLcth2KTwp+AWXb9MaUNuDi+8wAy0whjdtifVwnD6cpWUxVxr+RRu9cJIieK4RUGMv1Q=; _ga_3369S417EL=GS2.1.s1754403489$o143$g1$t1754404041$j43$l0$h0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+    # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; cf_clearance=iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk; _ym_uid=174161324651361127; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; adrdel=1744094487237; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D; newbuilding-search-frontend.consultant_cian_chat_onboarding_shown=1; cookie_agreement_accepted=1; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; _ga=GA1.1.460280003.1749468781; uxfb_usertype=searcher; uxs_uid=1ed08180-4604-11f0-94f5-19dbce91137e; seen_cpd_landing=1; cian_ruid=8098251; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; rrpvid=771260525504896; rcuid=67e27578d41e2c9a8a114add; frontend-offer-card.builder_chat_onboarding_shown=1; transport-accessibility_onboarding_counter=3; ma_id=6225667261741613246584; __upin=jzXjhLRLkqO1JTeopJQqkQ; _ym_d=1757401308; __ai_fp_uuid=245d903c22bdc927%3A15; cfidsw-cian=SgybcGIxNohISLx1pm7TZqH4g2s0yZuun/43PQdS2lgKaW1Kt2AcGCTAyJaFGaa6yif3R/HldhAgXm3NC0K1u2QP7/sFfrGAdA4ZVPMfOJa4b0/tEUtDjqgwm9GSX+69a5J2oQxu0kb6xLq5qabHFKDbtz7bLcmntk7vk6q2; fgsscw-cian=dkUfb3f6bf8a85c6dfe120486165772c64b880e0; gsscw-cian=GdzeiSCNUpAGrW7VRqkf5HSFFt9sNQakyL+AtSmc+VocwkwctD0owGAy6Ep70WOKkOAy04eijt+ES0daHnOK3gwUOuidmlC2G9TB0+wNvtP8V7sHMYFtMTpkKfyD6YRffqoxkmNFnaFzVK89TYWEvJqUdrnwGhnmR1lz4ESuajkKMlmHorWlZYK6F5eL8vkb18AUsoA0gb3TqJZcjGTNUM0NDgVC77X1RVs+OTJ0BoIZS5emlG03oHMUOE5DmailvO+/rtfQBtyE; ma_id_api=GxRtmeoGuaB8279kyKiOOWoPH3AsJBUy4myCSKYvMpjBeANYebQlWRDzcAcb90W0aJ3L82J0ln2wRtm+ZcV/EtxWXxRMU3PbIiQ+wf0Q2kPuA5vJ5WrM0laQZQoxa7r8hTzTdJ1xpw4hKDANo4wrMeQ5E+pmcaaQlBTcWkjgFjcCgrcb5/1hOsy4Nv8P/yxdpkf2ErnEUxaWyUGayjdao676tqTl//KiB2aQXIbJV6N/+hg6BweZ4ef6fwjquBXebADBMM3MAawoME8u0fnP/3qkkD3/m4jccb4sC735sgX3+kYmdxq/nQjGk3O11dbRxbZaLgMPt6C6d8xY+FzAhg==; _gcl_au=1.1.1810869406.1761569722; frontend-offer-card.consultant_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki-ot-zastroyschikov%2F; countCallNowPopupShowed=2%3A1763716639971; last_paid_utm=?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037811265|ad:16202025265|grp:5454187042|drf:no|dev:desktop|p:premium|n:1|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&ybaip=1&yclid=10829203034459865087; sopr_utm=%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D; _ym_isad=2; newbuilding-search-frontend.chatAnimationCounter=3; newbuilding_mortgage_payment_filter_onboarding=1; session_region_name=%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4; forever_region_id=4704; forever_region_name=%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4; uxfb_card_satisfaction=%5B309384022%2C324043854%2C323869097%2C323963675%5D; frontend-serp.chatAnimationPrevPath=%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D184723%26with_newobject%3D1; domain_sid=h9UFzhDmhYsy0jug-hr66%3A1764075804222; tmr_detect=0%7C1764075908711; _yasc=2pJhiBC9TKWK+iEBt0k7uqLzYAamY8koI2dwBC1R57nRBWm98Pc4WfFXcGpEyCYGbQ==; _yasc=ehxxEZLh8A5uNNZIvEAgT48WIgAamRbce24lu+osB4O/l8bs7EXwxOmp6kY4whrppw==; session_region_id=184723; session_main_town_region_id=184723; login_mro_popup=1; sopr_session=7fde76427fd54c5e; _ym_visorc=b; cookieUserID=8098251; _ga_3369S417EL=GS2.1.s1764083298$o390$g1$t1764083308$j50$l0$h0; frontend-serp.chatAnimationCounter=4',
 }
+
 
 
 
 json_data = {
     'jsonQuery': {
-        '_type': 'flatsale',
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
+        '_type': 'suburbansale',
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
-        'region': {
+        'object_type': {
             'type': 'terms',
             'value': [
-                4627,
-            ],
-        },
-        'repair': {
-            'type': 'terms',
-            'value': [
-                1, 2, 3, 4
-            ],
-        },
-        'floor': {
-            'type': 'range',
-            'value': {
-                'gte': 1,
-                'lte': 99,
-            },
-        },
-        'room': {
-            'type': 'terms',
-            'value': [
-                1,
-                2,
                 3,
-                4,
-                5,
-                6,
-                7,
-                9,
             ],
-        },
-        'building_status': {
-            'type': 'term',
-            'value': 1,
-        },
-        'flat_share': {
-            'type': 'term',
-            'value': 2,
         },
         'page': {
             'type': 'term',
             'value': 1,
         },
-        'electronic_trading': {
-            'type': 'term',
-            'value': 2,
-        },
     },
 }
+
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])

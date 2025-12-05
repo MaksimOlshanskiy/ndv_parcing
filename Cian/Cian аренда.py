@@ -7,6 +7,29 @@ import random
 import json
 from functions import haversine
 
+'''
+
+cities_dict = {
+    'Москва': 1,
+    'Санкт-Петербург': 2,
+    'Новосибирск': 4897,
+    'Екатеринбург': 4743,
+    'Казань': 4777,
+    'Красноярск': 4827,
+    'Нижний Новгород': 4885,
+    'Челябинск': 5048,
+    'Уфа': 176245,
+    'Краснодар': 4820,
+    'Самара': 4966,
+    'Ростов-на-Дону': 4959,
+    'Омск': 4914,
+    'Воронеж': 4713,
+    'Пермь': 4927,
+    'Волгоград': 4704
+}
+
+'''
+
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
@@ -85,10 +108,10 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                1
+                4927
             ],
         },
-'repair': {
+        'repair': {
             'type': 'terms',
             'value': [
                 1, 2, 3, 4
@@ -133,7 +156,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-repair_ids = [1, 2, 3, 4]
+repair_ids = [2, 3, 4]
 repair_ids_dict = {1: 'Без отделки', 2: 'Косметический', 3: 'Евроремонт', 4: 'Дизайнерский'}
 rooms_ids = [1,2,3,4,5,6,7,9]
 
@@ -172,6 +195,7 @@ elif items_count > 4500:
 
 
 current_date = datetime.date.today()
+json_data["jsonQuery"]["repair"]["value"] = [0]
 
 for rooms in rooms_ids:
 
@@ -200,8 +224,10 @@ for rooms in rooms_ids:
 
             while len(flats) < total_count:
 
+                print(json_data)
+
                 if counter > 1:
-                    sleep_time = random.uniform(6, 9)
+                    sleep_time = random.uniform(3, 5)
                     time.sleep(sleep_time)
                 try:
                     response = session.post(
@@ -377,7 +403,7 @@ for rooms in rooms_ids:
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
 
-            filename = f"Аренда_{location}_{json_data['jsonQuery']['room']['value']}_{json_data['jsonQuery']['floor']['value']['lte']}_{current_date}.xlsx"
+            filename = f"Аренда_{json_data['jsonQuery']['region']['value']}_{json_data['jsonQuery']['room']['value']}_{json_data['jsonQuery']['floor']['value']['lte']}_{json_data['jsonQuery']['repair']['value']}_{current_date}.xlsx"
 
             # Полный путь к файлу
             file_path = os.path.join(folder_path, filename)

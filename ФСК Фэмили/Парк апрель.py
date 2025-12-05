@@ -76,6 +76,7 @@ driver = webdriver.Chrome()
 driver.get(url=web_site)
 time.sleep(9)
 
+
 while True:
     try:
         # Ищем кнопку КАЖДЫЙ раз заново (важно!)

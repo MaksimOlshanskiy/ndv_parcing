@@ -87,10 +87,10 @@ url = 'https://xn--80aae5aibotfo5h.xn--p1ai/kvartiry/'
 driver.get(url=url)
 
 button = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, '/html/body/main/div[4]/div[5]/div[2]/div/div[2]/span/span'))  # Или другой локатор
+    EC.element_to_be_clickable((By.CSS_SELECTOR, ".bf_pag_arr.-r"))
 )
 button.click()
-time.sleep(5)
+time.sleep(2)
 
 
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
@@ -101,7 +101,7 @@ flats_soup = soup.select('div.bf_list_in>div.bf_list_r')
 for i in flats_soup:
 
     url = ''
-    developer = "Фонд реновации"
+    developer = "Московские кварталы"
     project = remove_korpus(i.select_one('.bf_list_info > div.-name a').text.strip())
     korpus = extract_korpus(i.select_one('.bf_list_info > div.-name a').text.strip())
     if korpus is None:

@@ -4,7 +4,7 @@ import json
 
 
 # Загружаем Excel
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База12.xlsx")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12.xlsx")
 
 # Загружаем JSON
 with open("projects.json", "r", encoding="utf-8") as f:
@@ -37,7 +37,7 @@ for idx, row in df.iterrows():
         rows_skipped += 1
 
 # сохраняем результат
-df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База13.xlsx", index=False)
+df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12-2.xlsx", index=False)
 
 # выводим логи
 print("=== ЛОГИ ===")

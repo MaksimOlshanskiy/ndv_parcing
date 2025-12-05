@@ -5,6 +5,10 @@ import requests
 from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new_all
 
+"""
+voice towers  - проверить чтобы не было квартир с лишним нулём
+"""
+
 cookies = {
     'city': 'moskva',
     'scbsid_old': '2796070936',

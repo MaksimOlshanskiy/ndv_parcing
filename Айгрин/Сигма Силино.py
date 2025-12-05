@@ -4,7 +4,7 @@ import time
 import pandas as pd
 import openpyxl
 import os
-from datetime import datetime
+import datetime
 import random
 
 from functions import save_flats_to_excel

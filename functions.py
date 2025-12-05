@@ -9,7 +9,7 @@ from area_dictionary.Старая_квартирография.step_4_replacemen
 import json
 
 
-def save_flats_to_excel(flats, project, developer):
+def save_flats_to_excel(flats, project, developer, kvartirografia=True):
 
     df = pd.DataFrame(flats, columns=['Дата обновления',
                                       'Название проекта',
@@ -119,7 +119,7 @@ def save_flats_to_excel(flats, project, developer):
     df['Дата обновления'] = pd.to_datetime(df['Дата обновления'], errors="coerce")
 
     json_data = load_json_data(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json')
-    if developer != 'Фонд реновации':
+    if kvartirografia and developer != 'Фонд реновации':
         df = process_data(json_data, df)
 
     print(df[['Корпус', 'Кол-во комнат', 'Площадь, кв.м', 'Цена лота, руб.', 'Цена со скидкой, руб.']].info())

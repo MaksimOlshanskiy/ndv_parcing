@@ -5,10 +5,10 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2025-11-20"
+folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2025-12-05"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'База.xlsx'
+output_file_name = 'Запрос 04.12.xlsx'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -74,7 +74,7 @@ def fill_missing_price(df):
 
 
 # all_data = all_data.drop_duplicates(subset=["Ссылка"], keep="first")       # убираем полные дубликаты
-#  all_data = remove_share_sale(all_data)   # убираем доли в квартирах
+#  all_data = remove_share_sale(all_data)   # убираем доли в квартирахВоронежская область
 try:
     all_data = clean_project_name(all_data, 'Название проекта') # убираем слова ЖК и кавычки в названии проектов
 except:

@@ -33,7 +33,7 @@ while True:
         # Ждём появления кнопки "Показать ещё"
         button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div.button span")))
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(1)  # ждём подгрузку контента
+        time.sleep(3)  # ждём подгрузку контента
 
         button.click()
         print("Кликнули 'Показать ещё'")

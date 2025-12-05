@@ -81,7 +81,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4820,
+                467539,
             ],
         },
     },
@@ -312,7 +312,7 @@ for y in ids:
 
                     print(f"Число комнат: {room_id}")
                     if counter > 1:
-                        sleep_time = random.uniform(7, 9)
+                        sleep_time = random.uniform(2, 4)
                         time.sleep(sleep_time)
                     try:
                         response = session.post(
@@ -377,7 +377,7 @@ for y in ids:
                         except:
                             srok_sdachi = ''
                         try:
-                            url = i['fullUrl']
+                            url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
                         except:
                             url = ''
 

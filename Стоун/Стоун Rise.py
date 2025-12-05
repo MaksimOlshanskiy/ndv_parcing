@@ -12,24 +12,24 @@ cookies = {
     'abgroup': 'B',
     '_ym_uid': '1743402914697638259',
     '_ym_d': '1762787263',
-    '_ym_isad': '2',
-    '_ym_visorc': 'w',
     'tmr_lvid': '8456c48cbfff04f3365fee220f6fab1f',
     'tmr_lvidTS': '1758892867530',
     'scbsid_old': '2746015342',
-    '_cmg_cssty4CyW': '1762787264',
-    '_comagic_idy4CyW': '12130983714.16441811619.1762787264',
-    'tmr_detect': '1%7C1762787264537',
-    'domain_sid': 'YlAIKTLGLLmWJINg1DJD9%3A1762787264891',
-    'sma_session_id': '2491517845',
-    'SCBfrom': '',
-    'smFpId_old_values': '%5B%229d3c150d063b8304ca161a15bac1d838%22%5D',
+    '_ym_isad': '2',
+    '_ym_visorc': 'w',
+    'domain_sid': 'YlAIKTLGLLmWJINg1DJD9%3A1764746005818',
+    'smFpId_old_values': '%5B%229d3c150d063b8304ca161a15bac1d838%22%2C%225a4ba48b0c99505318ede61cd1067357%22%5D',
     'SCBnotShow': '-1',
     'SCBporogAct': '5000',
-    'SCBstart': '1762787266190',
+    'SCBstart': '1764746007967',
     'sma_postview_ready': '1',
-    'SCBindexAct': '3019',
-    'sma_index_activity': '4222',
+    '_cmg_cssty4CyW': '1764746248',
+    '_comagic_idy4CyW': '12289233694.16619269039.1764746247',
+    'sma_session_id': '2519190204',
+    'SCBfrom': 'https%3A%2F%2Fyandex.ru%2F',
+    'tmr_detect': '1%7C1764746252979',
+    'sma_index_activity': '4807',
+    'SCBindexAct': '3029',
 }
 
 headers = {
@@ -45,13 +45,13 @@ headers = {
     'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'abgroup=B; _ym_uid=1743402914697638259; _ym_d=1762787263; _ym_isad=2; _ym_visorc=w; tmr_lvid=8456c48cbfff04f3365fee220f6fab1f; tmr_lvidTS=1758892867530; scbsid_old=2746015342; _cmg_cssty4CyW=1762787264; _comagic_idy4CyW=12130983714.16441811619.1762787264; tmr_detect=1%7C1762787264537; domain_sid=YlAIKTLGLLmWJINg1DJD9%3A1762787264891; sma_session_id=2491517845; SCBfrom=; smFpId_old_values=%5B%229d3c150d063b8304ca161a15bac1d838%22%5D; SCBnotShow=-1; SCBporogAct=5000; SCBstart=1762787266190; sma_postview_ready=1; SCBindexAct=3019; sma_index_activity=4222',
+    # 'Cookie': 'abgroup=B; _ym_uid=1743402914697638259; _ym_d=1762787263; tmr_lvid=8456c48cbfff04f3365fee220f6fab1f; tmr_lvidTS=1758892867530; scbsid_old=2746015342; _ym_isad=2; _ym_visorc=w; domain_sid=YlAIKTLGLLmWJINg1DJD9%3A1764746005818; smFpId_old_values=%5B%229d3c150d063b8304ca161a15bac1d838%22%2C%225a4ba48b0c99505318ede61cd1067357%22%5D; SCBnotShow=-1; SCBporogAct=5000; SCBstart=1764746007967; sma_postview_ready=1; _cmg_cssty4CyW=1764746248; _comagic_idy4CyW=12289233694.16619269039.1764746247; sma_session_id=2519190204; SCBfrom=https%3A%2F%2Fyandex.ru%2F; tmr_detect=1%7C1764746252979; sma_index_activity=4807; SCBindexAct=3029',
 }
 
 params = {
     "filter[status]": 1,
     "filter[direction]": 2,
-    "filter[projects]": '34:1,34:2,34:69,34:70,34:71',
+    "filter[projects]": '34',
     "sort": "lots.selling_price",
     "page": 1
 }

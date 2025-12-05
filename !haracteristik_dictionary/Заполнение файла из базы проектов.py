@@ -2,7 +2,7 @@ import json
 import pandas as pd
 from Developer_dict import name_dict, developer_dict
 
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База11.xlsx")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12.xlsx")
 
 # df["Название проекта"] = df["Название проекта"].replace(name_dict)
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
@@ -29,4 +29,4 @@ for idx, row in df.iterrows():
 
 df.drop(columns=["project_key"], inplace=True)
 
-df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База11.xlsx", index=False)
+df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12.xlsx", index=False)

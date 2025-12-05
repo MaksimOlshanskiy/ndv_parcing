@@ -46,10 +46,10 @@ headers = {
 }
 
 data = {
-    'price_from': '7780000',
-    'price_to': '18990000',
-    'area_from': '38',
-    'area_to': '108',
+    'price_from': '778000',
+    'price_to': '189900000',
+    'area_from': '1',
+    'area_to': '1089',
     'ajax_mode': 'y',
     'sort': '',
     'page': '1',
@@ -64,7 +64,7 @@ data = {
 flats = []
 buildings_ids = ['13', '16']
 buildings_ids_dict = {'13' : 'Литейная 18', '16' : 'Народная 15'}
-max_page_dict = {'13' : '6', '16' : '6'}
+max_page_dict = {'13' : '5', '16' : '3'}
 
 
 def extract_digits_or_original(s):

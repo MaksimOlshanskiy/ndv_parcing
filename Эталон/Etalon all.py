@@ -13,12 +13,27 @@ cookies = {
 }
 
 headers = {
-    'accept': 'application/json, text/plain, */*',
-    'content-type': 'application/json',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
+    'accept': '*/*',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'origin': 'https://etalongroup.ru',
+    'priority': 'u=1, i',
+    'referer': 'https://etalongroup.ru/',
+    'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
 }
 
-url = 'https://etalongroup.ru/bitrix/services/main/ajax.php?action=etalongroup:filter.FlatFilter.getFlatList'
+params = {
+        'haveItem': 'true',
+        'limit': '9',
+        'offset': '0',
+    }
+
+url = 'https://newsite.etalongroup.ru/api/filter/msk/flat/list/'
 
 flats = []
 count = 1
@@ -69,26 +84,21 @@ def extract_building_and_complex(meta_description):
     return korpus, project
 
 
-while have_item:
+while True:
     print(f"Загружаю объявления с offset={offset}...")
 
-    params = {
-        'filter[onlyInSale]': 'true',
-        'getAuctionSlider': 'true',
-        'limit': limit,  # Количество объявлений на страницу
-        'offset': offset,  # Смещение
-    }
 
-    response = requests.post(url, headers=headers, cookies=cookies, params=params)
+
+    response = requests.get(url, headers=headers, params=params)
+    print(response.status_code)
 
     if response.status_code != 200:
         print(f"Ошибка: {response.status_code}")
         break
 
     try:
-        data = response.json()
-        items = data.get("data", [{}])[0].get("itemList", [])
-        pagination = data.get("data", [{}])[0].get("pagination", {})
+        items = response.json()['data']['itemList']
+
 
         if not items:
             print("Данные закончились, выхожу из цикла.")
@@ -147,10 +157,8 @@ while have_item:
             count += 1
             time.sleep(0.05)
 
-        # Проверяем, есть ли еще данные
-        have_item = pagination.get("haveItem", False)
-        offset = pagination.get("offset", offset + limit)  # Обновляем offset
 
+        params["offset"] = str(int(params["offset"]) + 9)
         time.sleep(0.05)  # Задержка между запросами
     except Exception as e:
         print(f"Ошибка обработки JSON: {e}")
