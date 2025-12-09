@@ -6,18 +6,8 @@ import os
 import random
 from functions import merge_and_clean, haversine
 import json
-'''
-region_list = [    
-    
-    4618 - 6700,
-    4567 - 4200,
 
-
-
-
-]
-'''
-type_of_lot = 'Вторичка, продажа'
+type_of_lot = 'Коммерция, продажа'
 
 # noinspection PyDictDuplicateKeys
 cookies = {
@@ -102,13 +92,19 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'commercialsale',
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
-        'electronic_trading': {
-            'type': 'term',
-            'value': 2,
+        'region': {
+            'type': 'terms',
+            'value': [
+                2,
+            ],
         },
         'office_type': {
             'type': 'terms',
@@ -116,32 +112,28 @@ json_data = {
                 1,
                 2,
                 3,
-                4,
                 5,
                 7,
-                9,
-                10,
                 11,
-                12,
             ],
         },
-        'contract': {
+        'object_type': {
             'type': 'terms',
             'value': [
                 3,
-                4,
-            ],
-        },
-        'ready_business_types': {
-            'type': 'terms',
-            'value': [
-                1,
-                2,
             ],
         },
         'page': {
             'type': 'term',
-            'value': 2,
+            'value': 1,
+        },
+        'offer_seller_type': {
+            'type': 'terms',
+            'value': [
+                2,
+                3,
+                1,
+            ],
         },
     },
 }
@@ -151,79 +143,91 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 
+
 current_date = datetime.date.today()
 
-repair_ids = []
-repair_ids_dict = {1: 'Без отделки', 2: 'Косметический', 3: 'Евроремонт', 4: 'Дизайнерский'}
-rooms_ids = [1,2,3,4,5,6,7,9]
+region_list = [
+    4593, 4588, 4584, 4596, 4606, 4608, 4618, 4560, 4609, 4619, 181462,
+    4564, 4581, 4620, 4607, 4557, 4623, 4612, 4573, 4598, 4585, 4555,
+    4567, 4621, 4587, 4605, 4568, 4625, 184723, 4604, 4576, 4574, 4603,
+    4602, 4562, 4561, 4565, 4601, 4636, 4599, 4629, 4580, 4630, 4572,
+    4615, 4614, 4591, 4553, 4635, 4624, 4570, 4583, 4566, 4600, 4554,
+    4556, 4558, 4563, 4569, 5053, 4571, 4575, 4577, 4578, 4579, 4582,
+    4586, 4589, 4590, 4592, 4594, 4595, 4597, 4610, 4611, 4613, 4617,
+    4622, 4627, 4628, 4631, 4633, 4634
+]
 
 session = requests.Session()
 
-response = session.post(    # Первичный запрос для определения количества лотов
-                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                        cookies=cookies,
-                        headers=headers,
-                        json=json_data
-                    )
-
-print(f"Первичный json: {json_data}")
-
-items_count = response.json()['data']["aggregatedCount"]
-print(f'В городе {items_count} лотов')
+for region in region_list:
 
 
-if items_count <=  1500:
-
-    rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
-    total_floor_list = [[1, 100]]
-
-elif  1500 < items_count < 2500:
-
-    rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 100]]
-
-elif 2500 <= items_count <= 4500:
-
-    rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 6], [7, 12], [13, 200]]
-
-elif items_count > 4500:
-
-    rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 13], [14, 16], [17, 20], [21, 25], [26, 200]]
-
-
-
-
-
-for rooms in rooms_ids:
 
     json_data["jsonQuery"]["page"]["value"] = 1
-    json_data["jsonQuery"]["room"]["value"] = rooms
+    json_data["jsonQuery"]["region"]["value"][0] = region
+    json_data["jsonQuery"]["office_type"]["value"] = [1, 2, 3, 4, 5, 7]
+    json_data["jsonQuery"]["offer_seller_type"]["value"] = [2, 3, 1]
 
 
-    for repair_id in repair_ids:
 
 
 
+    session = requests.Session()
 
-        for f in total_floor_list:
+    response = session.post(  # Первичный запрос для определения количества лотов
+        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+        cookies=cookies,
+        headers=headers,
+        json=json_data
+    )
+
+    print(f"Первичный json: {json_data}")
+
+    items_count = response.json()['data']["aggregatedCount"]
+    print(f'В регионе {items_count} лотов')
+
+    if items_count <= 1500:
+
+        land_status_ids = [[1,2,3,5,7,11]]
+        offer_seller_types = [[1, 2, 3]]
+
+    elif 1500 < items_count < 2500:
+
+        land_status_ids = [[1], [2], [3], [5], [7], [11]]
+        offer_seller_types = [[1, 2, 3]]
+
+    elif 2500 <= items_count <= 4500:
+
+        land_status_ids = [[1], [2], [3], [5], [7], [11]]
+        offer_seller_types = [[1], [2], [3]]
+
+    elif items_count > 4500:
+
+        land_status_ids = [[1], [2], [3], [5], [7], [11]]
+        offer_seller_types = [[1], [2], [3]]
+
+    flats = []
+    counter = 1
+    total_count = 1
 
 
-            json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
-            json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
+    for land_status in land_status_ids:
+
+        json_data["jsonQuery"]["page"]["value"] = 1
+        json_data["jsonQuery"]["office_type"]["value"] = land_status
+
+
+        for offer_seller_type in offer_seller_types:
             json_data["jsonQuery"]["page"]["value"] = 1
-            print(f'Снимаем комнатность: {rooms}')
-            print(f'Снимаем отделку: {repair_ids_dict.get(repair_id)}')
-            print(f'Снимаем следующие этажи: {f}')
+            json_data["jsonQuery"]["offer_seller_type"]["value"] = offer_seller_type
+            json_data["jsonQuery"]["page"]["value"] = 1
+            print(f'Снимаем регион: {region}')
+            print(f"Снимаем land_status: {land_status}")
+            print(f"Снимаем offer_seller_type: {offer_seller_type}")
 
             flats = []
-            counter = 1
-            total_count = 1
 
-
-
-            while len(flats) < total_count:
+            while True:
                 start_time = time.time()
                 if counter > 1:
                     sleep_time = random.uniform(6, 9)
@@ -305,7 +309,7 @@ for rooms in rooms_ids:
                     except:
                         price = i['bargainTerms']['priceRur']
                     try:
-                        finish_type = repair_ids_dict.get(repair_id)
+                        finish_type = ''
                     except:
                         finish_type = 'Неизвестно'
                     try:
@@ -436,6 +440,56 @@ for rooms in rooms_ids:
                         loggiasCount = i['loggiasCount']
                     except:
                         loggiasCount = ''
+                    try:
+                        land_area = i['land']['area']
+                    except:
+                        land_area = ''
+                    try:
+                        land_area_unit_type = i['land']['areaUnitType']
+                    except:
+                        land_area_unit_type = ''
+                    try:
+                        possibleToChangeStatus = i['land']['possibleToChangeStatus']
+                    except:
+                        possibleToChangeStatus = ''
+                    try:
+                        land_statusl = i['land']['status']
+                    except:
+                        land_statusl = ''
+                    try:
+                        land_type = i['land']['type']
+                    except:
+                        land_type = ''
+                    try:
+                        buildingType2 = i['businessShoppingCenter']['buildingType']
+                    except:
+                        buildingType2 = ''
+                    try:
+                        buildingClassType = i['businessShoppingCenter']['buildingClassType']
+                    except:
+                        buildingClassType = ''
+                    try:
+                        building_name = i['businessShoppingCenter']['name']
+                    except:
+                        building_name = ''
+                    try:
+                        buildingType = i['businessShoppingCenter']['type']
+                    except:
+                        buildingType = ''
+                    try:
+                        layout = i['layout']
+                    except:
+                        layout = ''
+                    try:
+                        offerType = i['offerType']
+                    except:
+                        offerType = ''
+                    try:
+                        officeType = i['office']
+                    except:
+                        officeType = ''
+
+
 
 
                     print(
@@ -445,7 +499,8 @@ for rooms in rooms_ids:
                               parking, creationDate, floorNumber, coordinates_lat, coordinates_lng, highways_nearest, highway_distance,
                               railways_nearest, railways_nearest_distance, railways_nearest_time, railways_nearest_travelType, jk,
                               underground_nearest, underground_nearest_time, hasFurniture,
-                              kitchenArea, livingArea, loggiasCount
+                              kitchenArea, livingArea, loggiasCount, land_area, land_area_unit_type, possibleToChangeStatus, land_statusl, land_type,
+                              buildingType2, buildingClassType, building_name, buildingType, layout, offerType, officeType
                               ]
                     flats.append(result)
 
@@ -463,74 +518,84 @@ for rooms in rooms_ids:
                 end_time = time.time()
                 print(f"Время выполнения: {end_time - start_time:.4f} сек")
 
+            if len(flats) > 0:
+                # Базовый путь для сохранения
+                base_path = r""
 
-            # Базовый путь для сохранения
-            base_path = r""
+                folder_path = os.path.join(base_path, str(current_date))
+                if not os.path.exists(folder_path):
+                    os.makedirs(folder_path)
 
-            folder_path = os.path.join(base_path, str(current_date))
-            if not os.path.exists(folder_path):
-                os.makedirs(folder_path)
+                filename = f"Коммерция_продажа_{region}_{land_status}_{offer_seller_type}.xlsx"
 
-            filename = f"{location}_{json_data['jsonQuery']['room']['value']}_{json_data['jsonQuery']['floor']['value']['lte']}_{finish_type}_{current_date}.xlsx"
+                # Полный путь к файлу
+                file_path = os.path.join(folder_path, filename)
 
-            # Полный путь к файлу
-            file_path = os.path.join(folder_path, filename)
+                df = pd.DataFrame(flats, columns=['Тип объявления',
+                                                  'Локация',
+                                                  'Локация2',
+                                                  'Локация3',
+                                                  'Округ',
+                                                  'Район',
+                                                  'Микрорайон',
+                                                  'Метро',
+                                                  'Улица',
+                                                  'Дом',
+                                                  'Адрес',
+                                                  'Кол-во комнат',
+                                                  'Площадь',
+                                                  'Цена',
+                                                  'Отделка',
+                                                  'Описание',
+                                                  'Объявление от',
+                                                  'ID объявления',
+                                                  'Обновлено',
+                                                  'Балконы',
+                                                  'Число спален',
+                                                  'Год постройки',
+                                                  'Грузовые лифты',
+                                                  'Пассажирские лифты',
+                                                  'Всего этажей',
+                                                  'Тип материалов',
+                                                  'Паркинг',
+                                                  'Дата создания',
+                                                  'Этаж',
+                                                  'Координаты широта',
+                                                  'Координаты долгота',
+                                                  'Ближайшее шоссе',
+                                                  'Расстояние от МКАД',
+                                                  'Ближайшая жд станция',
+                                                  'Расстояние до жд станции',
+                                                  'Время до жд',
+                                                  'Тип траспорта',
+                                                  'ЖК',
+                                                  'Ближайшее метро',
+                                                  'Время до метро',
+                                                  'С мебелью',
+                                                  'Площадь кухни',
+                                                  'Жилая площадь',
+                                                  'Число лоджий',
+                                                  'Площадь земли',
+                                                  'Единица измерения площади',
+                                                  'Возможность смены статуса',
+                                                  'Статус земли',
+                                                  'Тип земли',
+                                                  'buildingType2',
+                                                  'buildingClassType',
+                                                  'building_name',
+                                                  'buildingType',
+                                                  'layout',
+                                                  'offerType',
+                                                  'officeType'
+                                                  ])
 
-            df = pd.DataFrame(flats, columns=['Тип объявления',
-                                              'Локация',
-                                              'Локация2',
-                                              'Локация3',
-                                              'Округ',
-                                              'Район',
-                                              'Микрорайон',
-                                              'Метро',
-                                              'Улица',
-                                              'Дом',
-                                              'Адрес',
-                                              'Кол-во комнат',
-                                              'Площадь',
-                                              'Цена',
-                                              'Отделка',
-                                              'Описание',
-                                              'Объявление от',
-                                              'ID объявления',
-                                              'Обновлено',
-                                              'Балконы',
-                                              'Число спален',
-                                              'Год постройки',
-                                              'Грузовые лифты',
-                                              'Пассажирские лифты',
-                                              'Всего этажей',
-                                              'Тип материалов',
-                                              'Паркинг',
-                                              'Дата создания',
-                                              'Этаж',
-                                              'Координаты широта',
-                                              'Координаты долгота',
-                                              'Ближайшее шоссе',
-                                              'Расстояние от МКАД',
-                                              'Ближайшая жд станция',
-                                              'Расстояние до жд станции',
-                                              'Время до жд',
-                                              'Тип траспорта',
-                                              'ЖК',
-                                              'Ближайшее метро',
-                                              'Время до метро',
-                                              'С мебелью',
-                                              'Площадь кухни',
-                                              'Жилая площадь',
-                                              'Число лоджий'
-                                              ])
+
+
+                # Сохранение файла в папку
+                df.to_excel(file_path, index=False)
+                print(f'✅ Файл {filename} успешно сохранён')
 
 
 
-            # Сохранение файла в папку
-            df.to_excel(file_path, index=False)
-            print(f'✅ Файл {filename} успешно сохранён')
-
-
-
-
-merge_and_clean(folder_path, f'Вторичка_{location}_{current_date}.xlsx')
 
 
