@@ -101,7 +101,7 @@ headers = {
 
 json_data = {
     'jsonQuery': {
-        '_type': 'suburbansale',
+        '_type': 'flatsale',
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -112,9 +112,60 @@ json_data = {
                 3,
             ],
         },
+'building_status': {
+            'type': 'term',
+            'value': 1,
+        },
+        'region': {
+            'type': 'terms',
+            'value': [
+                4623,
+            ],
+        },
         'page': {
             'type': 'term',
             'value': 1,
+        },
+        'publish_period': {
+            'type': 'term',
+            'value': 2592000,
+        },
+'room': {
+            'type': 'terms',
+            'value': [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                9,
+            ],
+        },
+'repair': {
+            'type': 'terms',
+            'value': [
+                1,
+                2,
+                3,
+                4,
+            ],
+        },
+'floor': {
+            'type': 'range',
+            'value': {
+                'gte': 1,
+                'lte': 99,
+            },
+        },
+'electronic_trading': {
+            'type': 'term',
+            'value': 2,
+        },
+        'flat_share': {
+            'type': 'term',
+            'value': 2,
         },
     },
 }
