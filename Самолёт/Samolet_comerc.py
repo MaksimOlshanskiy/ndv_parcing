@@ -17,76 +17,97 @@ from Developer_dict import developer_dict, name_dict
 from functions import save_flats_to_excel
 
 cookies = {
-    'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
-    '_ct': '1300000000514654067',
-    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
     '_ymab_param': '8XRBcNsyXKtIDbacrAc2BACgO21rCm8Ag3D9zrGpvAndIxB0P18Yxc_5KjOr3ip1jyUFVoI_vSab5fXPK7ntewsKWyM',
-    'suggested_city': '1',
     '_ym_uid': '1741678176664168974',
-    '_ga': 'GA1.1.1264916353.1741678184',
     'FPID': 'FPID2.2.CDdF7rEkFIS%2FekBLl3jtW7K80kFov3hiqvjbDmcAEcw%3D.1741678184',
-    'tmr_lvid': '609b80c61abf0ce366c33bbd78503b61',
-    'tmr_lvidTS': '1741678183827',
-    'cookies_accepted': '1',
-    '_smt': '1bdc3b2d-db01-43f7-9fc0-bb05e3cca9e5',
-    '_ga_2WZB3B8QT0': 'deleted',
-    'sessionid': 'fjwvpzyyv4mdr7fqyunk6j9z5niagehb',
-    'tmr_lvid': '609b80c61abf0ce366c33bbd78503b61',
-    'tmr_lvidTS': '1741678183827',
-    '_ga_2WZB3B8QT0': 'GS2.1.s1751029258$o36$g1$t1751029931$j58$l0$h2027757047',
+    '_ym_d': '1757579555',
     'mindboxDeviceUUID': 'b8b42419-45ee-4a92-8e84-640b5c64455a',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D',
-    'qrator_jsr': '1757579547.917.ZfHfJnAmTn4aOJhb-a1aj9vfmqrap9lqm9r0v3ejppksug49m-00',
-    'qrator_jsid': '1757579547.917.ZfHfJnAmTn4aOJhb-r8ht8e56bcrato8tj9u3jrmt1j9m9rn8',
-    'cted': 'modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974',
-    '_ct_ids': 'htlowve6%3A36409%3A915347989',
-    '_ct_session_id': '915347989',
+    'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
+    '_ct': '1300000000581157422',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    'undefined': 'true',
+    'tmr_lvid': '609b80c61abf0ce366c33bbd78503b61',
+    'tmr_lvidTS': '1741678183827',
+    'suggested_city': '1',
+    'gbuuid': '113c42b2-cd5b-4919-9195-57a7ceaff3e0',
+    'cookies_accepted': '1',
+    'cted': 'modId%3Dhtlowve6%3Bya_client_id%3D1741678176664168974',
     '_ct_site_id': '36409',
-    'call_s': '___htlowve6.1757581352.915347989.143945:445562|2___',
-    'csrftoken': '3UHRhP8HOP8xFDKiUwqn6aJ6nuS00ESeQug0cimtIMGS2N7nGH9sxvxEkNPNJJBR',
-    '_ym_d': '1757579555',
     '_ym_isad': '2',
-    '_ym_visorc': 'b',
-    'session_timer_104054': '1',
-    'PageNumber': '1',
-    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1757579560041',
-    'tmr_detect': '0%7C1757579560419',
-    'pageviewTimerCommercial': '92.2',
+    'city_was_suggested': '1',
+    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
+    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1764246868977',
+    'vp_width': '2560',
+    'user_account_return_url_session': '%2Fcommercial%2F',
+    'helperBlockWatch': 'header',
+    'pageviewTimerCommercialFired10min': 'true',
+    'pageviewTimerCommercialFired15min': 'true',
     'pageviewTimerCommercialFired1min': 'true',
-    'pageviewTimerAll': '92.2',
+    'pageviewTimerCommercialFired2min': 'true',
+    'pageviewTimerCommercialFired5min': 'true',
+    'pageviewTimerAllFired10min': 'true',
+    'pageviewTimerAllFired15min': 'true',
     'pageviewTimerAllFired1min': 'true',
-    'pageviewTimerMSK': '92.2',
+    'pageviewTimerAllFired2min': 'true',
+    'pageviewTimerAllFired30min': 'true',
+    'pageviewTimerAllFired45min': 'true',
+    'pageviewTimerAllFired5min': 'true',
+    'pageviewTimerMSKFired10min': 'true',
+    'pageviewTimerMSKFired15min': 'true',
     'pageviewTimerMSKFired1min': 'true',
-    'seconds_on_page_104054': '92',
-    'pageviewCountMSK': '2',
-    'pageviewCount': '2',
+    'pageviewTimerMSKFired2min': 'true',
+    'pageviewTimerMSKFired45min': 'true',
+    'pageviewTimerMSKFired5min': 'true',
+    'pageviewTimerAllPages120seconds': '1',
+    'qrator_jsr': '1764252728.215.MbXEth8simLaAOdd-35eb240n49ejn6n31nu0b69gimvumt2o-00',
+    'qrator_jsid': '1764252728.215.MbXEth8simLaAOdd-kdh9u7vt0ar51vtje4bnqhv0mb0m1vgj',
+    '_ct_ids': 'htlowve6%3A36409%3A952420521',
+    '_ct_session_id': '952420521',
+    '_ym_visorc': 'w',
+    'session_timer_104054': '1',
+    'pageviewTimerCommercial': '5290.49',
+    'pageviewTimerAll': '5290.49',
+    'pageviewTimerMSK': '5290.49',
+    'pageviewTimerAllPages': '5290.49',
+    'seconds_on_page_104054': '44',
+    'pageviewCountMSK': '4',
+    'pageviewCount': '4',
+    'PageNumber': '4',
+    'csrftoken': 'ATlLK4H5uK30zFHXyLuF13rOU4qMTetJ8Z3E0tVzWoM39zwFYDUxXkW1hq8pBoD8',
+    'call_s': '___htlowve6.1764254586.952420521.185714:571620|2___',
+    'tmr_detect': '0%7C1764252790399',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'baggage': 'sentry-environment=PROD,sentry-release=release-major-251120,sentry-public_key=e92b18b752b5a57fcab9400337321152,sentry-trace_id=c5f27743a4d04e61aae5b290afdbd317,sentry-sample_rate=0.1,sentry-sampled=false',
     'priority': 'u=1, i',
-    'referer': 'https://samolet.ru/commercial/objects/sale/?ordering=price,pk&free=1&project=45',
-    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+    'referer': 'https://samolet.ru/commercial/objects/sale/?project=49&type=100000000',
+    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
+    'sec-ch-viewport-height': '945',
+    'sec-ch-viewport-width': '1686',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
-    # 'cookie': 'popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct=1300000000514654067; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; _ymab_param=8XRBcNsyXKtIDbacrAc2BACgO21rCm8Ag3D9zrGpvAndIxB0P18Yxc_5KjOr3ip1jyUFVoI_vSab5fXPK7ntewsKWyM; suggested_city=1; _ym_uid=1741678176664168974; _ga=GA1.1.1264916353.1741678184; FPID=FPID2.2.CDdF7rEkFIS%2FekBLl3jtW7K80kFov3hiqvjbDmcAEcw%3D.1741678184; tmr_lvid=609b80c61abf0ce366c33bbd78503b61; tmr_lvidTS=1741678183827; cookies_accepted=1; _smt=1bdc3b2d-db01-43f7-9fc0-bb05e3cca9e5; _ga_2WZB3B8QT0=deleted; sessionid=fjwvpzyyv4mdr7fqyunk6j9z5niagehb; tmr_lvid=609b80c61abf0ce366c33bbd78503b61; tmr_lvidTS=1741678183827; _ga_2WZB3B8QT0=GS2.1.s1751029258$o36$g1$t1751029931$j58$l0$h2027757047; mindboxDeviceUUID=b8b42419-45ee-4a92-8e84-640b5c64455a; directCrm-session=%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D; qrator_jsr=1757579547.917.ZfHfJnAmTn4aOJhb-a1aj9vfmqrap9lqm9r0v3ejppksug49m-00; qrator_jsid=1757579547.917.ZfHfJnAmTn4aOJhb-r8ht8e56bcrato8tj9u3jrmt1j9m9rn8; cted=modId%3Dhtlowve6%3Bclient_id%3D1264916353.1741678184%3Bya_client_id%3D1741678176664168974; _ct_ids=htlowve6%3A36409%3A915347989; _ct_session_id=915347989; _ct_site_id=36409; call_s=___htlowve6.1757581352.915347989.143945:445562|2___; csrftoken=3UHRhP8HOP8xFDKiUwqn6aJ6nuS00ESeQug0cimtIMGS2N7nGH9sxvxEkNPNJJBR; _ym_d=1757579555; _ym_isad=2; _ym_visorc=b; session_timer_104054=1; PageNumber=1; domain_sid=pPz3-bLEHe1VOjIhFyQ_1%3A1757579560041; tmr_detect=0%7C1757579560419; pageviewTimerCommercial=92.2; pageviewTimerCommercialFired1min=true; pageviewTimerAll=92.2; pageviewTimerAllFired1min=true; pageviewTimerMSK=92.2; pageviewTimerMSKFired1min=true; seconds_on_page_104054=92; pageviewCountMSK=2; pageviewCount=2',
+    'sentry-trace': 'c5f27743a4d04e61aae5b290afdbd317-a2eafa14df4b3081-0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+    # 'cookie': '_ymab_param=8XRBcNsyXKtIDbacrAc2BACgO21rCm8Ag3D9zrGpvAndIxB0P18Yxc_5KjOr3ip1jyUFVoI_vSab5fXPK7ntewsKWyM; _ym_uid=1741678176664168974; FPID=FPID2.2.CDdF7rEkFIS%2FekBLl3jtW7K80kFov3hiqvjbDmcAEcw%3D.1741678184; _ym_d=1757579555; mindboxDeviceUUID=b8b42419-45ee-4a92-8e84-640b5c64455a; directCrm-session=%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct=1300000000581157422; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; undefined=true; tmr_lvid=609b80c61abf0ce366c33bbd78503b61; tmr_lvidTS=1741678183827; suggested_city=1; gbuuid=113c42b2-cd5b-4919-9195-57a7ceaff3e0; cookies_accepted=1; cted=modId%3Dhtlowve6%3Bya_client_id%3D1741678176664168974; _ct_site_id=36409; _ym_isad=2; city_was_suggested=1; nxt-city=%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D; domain_sid=pPz3-bLEHe1VOjIhFyQ_1%3A1764246868977; vp_width=2560; user_account_return_url_session=%2Fcommercial%2F; helperBlockWatch=header; pageviewTimerCommercialFired10min=true; pageviewTimerCommercialFired15min=true; pageviewTimerCommercialFired1min=true; pageviewTimerCommercialFired2min=true; pageviewTimerCommercialFired5min=true; pageviewTimerAllFired10min=true; pageviewTimerAllFired15min=true; pageviewTimerAllFired1min=true; pageviewTimerAllFired2min=true; pageviewTimerAllFired30min=true; pageviewTimerAllFired45min=true; pageviewTimerAllFired5min=true; pageviewTimerMSKFired10min=true; pageviewTimerMSKFired15min=true; pageviewTimerMSKFired1min=true; pageviewTimerMSKFired2min=true; pageviewTimerMSKFired45min=true; pageviewTimerMSKFired5min=true; pageviewTimerAllPages120seconds=1; qrator_jsr=1764252728.215.MbXEth8simLaAOdd-35eb240n49ejn6n31nu0b69gimvumt2o-00; qrator_jsid=1764252728.215.MbXEth8simLaAOdd-kdh9u7vt0ar51vtje4bnqhv0mb0m1vgj; _ct_ids=htlowve6%3A36409%3A952420521; _ct_session_id=952420521; _ym_visorc=w; session_timer_104054=1; pageviewTimerCommercial=5290.49; pageviewTimerAll=5290.49; pageviewTimerMSK=5290.49; pageviewTimerAllPages=5290.49; seconds_on_page_104054=44; pageviewCountMSK=4; pageviewCount=4; PageNumber=4; csrftoken=ATlLK4H5uK30zFHXyLuF13rOU4qMTetJ8Z3E0tVzWoM39zwFYDUxXkW1hq8pBoD8; call_s=___htlowve6.1764254586.952420521.185714:571620|2___; tmr_detect=0%7C1764252790399',
 }
 
 params = {
     "ordering": "price,pk",
     "free": 1,
-    "project": 45,
+    "project": 49,
     "filter_type": "standard",
     "type": 100000000,
     "name": "sale"
 }
 
-projects = [45, 49]
+projects = [5, 49, 45]
 
 session = requests.Session()
 
@@ -173,7 +194,7 @@ for project in projects:
             eskrou = ''
             konstruktiv = ''
             klass = ''
-            srok_sdachi = i["settling_date_formatted"]
+            srok_sdachi = ''
             srok_sdachi_old = ''
             stadia = ''
             dogovor = ''
@@ -203,5 +224,5 @@ for project in projects:
         sleep_time = random.uniform(0.5, 2)
         time.sleep(sleep_time)
 
-save_flats_to_excel(flats, project, developer)
+save_flats_to_excel(flats, project, developer, kvartirografia=False)
 

@@ -7,6 +7,29 @@ import random
 import json
 from functions import haversine
 
+'''
+
+cities_dict = {
+    'Москва': 1,
+    'Санкт-Петербург': 2,
+    'Новосибирск': 4897,
+    'Екатеринбург': 4743,
+    'Казань': 4777,
+    'Красноярск': 4827,
+    'Нижний Новгород': 4885,
+    'Челябинск': 5048,
+    'Уфа': 176245,
+    'Краснодар': 4820,
+    'Самара': 4966,
+    'Ростов-на-Дону': 4959,
+    'Омск': 4914,
+    'Воронеж': 4713,
+    'Пермь': 4927,
+    'Волгоград': 4704
+}
+
+'''
+
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
@@ -85,20 +108,26 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                1,
+                4927
+            ],
+        },
+        'repair': {
+            'type': 'terms',
+            'value': [
+                1, 2, 3, 4
             ],
         },
         'floor': {
             'type': 'range',
             'value': {
-                'gte': 12,
-                'lte': 200,
+                'gte': 1,
+                'lte': 99,
             },
         },
         'room': {
             'type': 'terms',
             'value': [
-                1,
+                1, 9
             ],
         },
         'publish_period': {
@@ -116,16 +145,7 @@ json_data = {
     },
 }
 
-response = requests.post(
-    'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-    cookies=cookies,
-    headers=headers,
-    json=json_data,
-)
 
-name_counter = 1
-
-session = requests.Session()
 
 flats = []
 counter = 1
@@ -136,162 +156,257 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
+repair_ids = [2, 3, 4]
+repair_ids_dict = {1: 'Без отделки', 2: 'Косметический', 3: 'Евроремонт', 4: 'Дизайнерский'}
+rooms_ids = [1,2,3,4,5,6,7,9]
+
+session = requests.Session()
+
+response = session.post(    # Первичный запрос для определения количества лотов
+                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                        cookies=cookies,
+                        headers=headers,
+                        json=json_data
+                    )
+
+items_count = response.json()['data']["aggregatedCount"]
+print(f'В городе {items_count} лотов')
+
+
+if items_count <=  1500:
+
+    rooms_ids = [[1, 9]]
+    total_floor_list = [[1, 100]]
+
+elif  1500 < items_count < 2500:
+
+    rooms_ids = [[1], [9]]
+    total_floor_list = [[1, 100]]
+
+elif 2500 <= items_count <= 4500:
+
+    rooms_ids = [[1], [9]]
+    total_floor_list = [[1, 6], [7, 12], [13, 200]]
+
+elif items_count > 4500:
+
+    rooms_ids = [[1], [9]]
+    total_floor_list = [[1, 2], [3, 5], [6, 8], [9, 12], [13, 200]]
+
 
 current_date = datetime.date.today()
+json_data["jsonQuery"]["repair"]["value"] = [0]
 
-while len(flats) < total_count:
+for rooms in rooms_ids:
 
-    if counter > 1:
-        sleep_time = random.uniform(7, 10)
-        time.sleep(sleep_time)
-    try:
-        response = session.post(
-            'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-            cookies=cookies,
-            headers=headers,
-            json=json_data
-        )
+    json_data["jsonQuery"]["page"]["value"] = 1
+    json_data["jsonQuery"]["room"]["value"] = rooms
 
-        print(response.status_code)
 
-        items = response.json()["data"]["offersSerialized"]
-    except:
-        print("Произошла ошибка, пробуем ещё раз")
-        print(response.status_code)
-        time.sleep(61)
-        session = requests.Session()
-        response = session.post(
-            'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-            cookies=cookies,
-            headers=headers,
-            json=json_data
-        )
-        print(response.status_code)
-        items = response.json()["data"]["offersSerialized"]
+    for repair_id in repair_ids:
 
-    for i in items:
+        json_data["jsonQuery"]["page"]["value"] = 1
+        json_data["jsonQuery"]["repair"]["value"][0] = repair_id
 
-        try:
-            url = i['fullUrl']
-        except:
-            url = ''
-        try:
-            price = i['bargainTerms']['priceRur']
-        except:
-            price = ''
 
-        try:
-            okrug = i['geo']['districts'][1]['name']
-        except:
-            okrug = ''
+        for f in total_floor_list:
 
-        try:
-            adress = i['geo']['userInput']
-        except:
-            adress = ""
 
-        try:
-            raion = i['geo']['districts'][0]['name']
-        except:
-            raion = ''
+            json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
+            json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
+            json_data["jsonQuery"]["page"]["value"] = 1
+            print(f'Снимаем комнатность: {rooms}')
+            print(f'Снимаем отделку: {repair_ids_dict.get(repair_id)}')
+            print(f'Снимаем следующие этажи: {f}')
 
-        try:
-            area = float(i["totalArea"])
-        except:
-            area = ''
-        try:
-            rooms = i['roomsCount']
-            if not rooms:
-                rooms = 0
-        except:
-            rooms = ''
+            name_counter = f'{rooms} комнат_этажи - {f[0]}-{f[1]}_{repair_ids_dict.get(repair_id)}'
+            flats = []
 
-        try:
+            while len(flats) < total_count:
 
-            lat_jk = i['geo']['coordinates']['lat']
-            lon_jk = i['geo']['coordinates']['lng']
-            lat_center = coords["lat_center"]
-            lon_center = coords["lon_center"]
-            distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
+                print(json_data)
 
-        except:
-            distance = ''
+                if counter > 1:
+                    sleep_time = random.uniform(3, 5)
+                    time.sleep(sleep_time)
+                try:
+                    response = session.post(
+                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                        cookies=cookies,
+                        headers=headers,
+                        json=json_data
+                    )
 
-        try:
-            kitchenArea = float(i['kitchenArea'])
-        except:
-            kitchenArea = 0
-        try:
-            livingArea = float(i['livingArea'])
-        except:
-            livingArea = 0
-        try:
-            parking = i['building']['parking']['type']
-        except:
-            parking = ''
-        try:
-            balconiesCount = int(i['balconiesCount'])
-        except:
-            balconiesCount = 0
-        try:
-            loggiasCount = int(i['loggiasCount'])
-        except:
-            loggiasCount = 0
-        balconies_and_loggias_count = balconiesCount + loggiasCount
+                    print(response.status_code)
 
-        date = datetime.date.today()
+                    items = response.json()["data"]["offersSerialized"]
+                except:
+                    print("Произошла ошибка, пробуем ещё раз")
+                    print(response.status_code)
+                    time.sleep(61)
+                    session = requests.Session()
+                    response = session.post(
+                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                        cookies=cookies,
+                        headers=headers,
+                        json=json_data
+                    )
+                    print(response.status_code)
+                    items = response.json()["data"]["offersSerialized"]
 
-        print(
-            f"{url}, дата: {date}, площадь: {area}, цена: {price}, расстояние: {distance}")
-        result = [date, url, adress, okrug, raion, distance, area, kitchenArea, livingArea, balconies_and_loggias_count,
-                  price, rooms]
-        flats.append(result)
+                for i in items:
 
-    json_data["jsonQuery"]["page"]["value"] += 1
-    print("-----------------------------------------------------------------------------")
-    total_count = response.json()["data"]["offerCount"]
-    downloaded = len(flats)
-    print(f'Загружено {downloaded} предложений из {total_count}')
-    counter += 1
-    if not items:
-        break
 
-counter += 1
+                    data = i['geo']['address']
+                    result = {}
+                    counterr = {}
 
-# Базовый путь для сохранения
-base_path = r""
+                    for item in data:
+                        t = item["type"]
+                        name = item["fullName"]
 
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
+                        # Первый раз — без номера
+                        if t not in counterr:
+                            counterr[t] = 1
+                            key = t
+                        else:
+                            counterr[t] += 1
+                            key = f"{t}{counterr[t]}"
 
-df = pd.DataFrame(flats, columns=['Дата обновления',
-                                  'Ссылка',
-                                  'Адрес',
-                                  'Округ',
-                                  'Район',
-                                  'Расстояние до центра, км',
-                                  'Площадь, кв.м',
-                                  'Площадь кухни, кв.м',
-                                  'Жилая площадь, кв.м',
-                                  'Балконы/лоджии',
-                                  'Цена за месяц',
-                                  'Кол-во комнат'
-                                  ])
+                        result[key] = name
 
-current_date = datetime.date.today()
 
-# Базовый путь для сохранения
-base_path = r""
+                    # список нужных переменных
+                    keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
 
-folder_path = os.path.join(base_path, str(current_date))
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
+                    # создаём переменные
+                    for key in keys:
+                        globals()[key] = result.get(key, "")
 
-filename = f"Аренда_Москва_200_{current_date}.xlsx"
+                    try:
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
+                    except:
+                        url = ''
+                    try:
+                        price = i['bargainTerms']['priceRur']
+                    except:
+                        price = ''
 
-# Полный путь к файлу
-file_path = os.path.join(folder_path, filename)
+                    try:
+                        adress = i['geo']['userInput']
+                    except:
+                        adress = ""
 
-# Сохранение файла в папку
-df.to_excel(file_path, index=False)
+                    try:
+                        area = float(i["totalArea"])
+                    except:
+                        area = ''
+                    try:
+                        rooms = i['roomsCount']
+                        if not rooms:
+                            rooms = 0
+                    except:
+                        rooms = ''
+
+                    try:
+
+                        lat_jk = i['geo']['coordinates']['lat']
+                        lon_jk = i['geo']['coordinates']['lng']
+                        lat_center = coords["lat_center"]
+                        lon_center = coords["lon_center"]
+                        distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
+
+                    except:
+                        distance = ''
+
+                    try:
+                        kitchenArea = float(i['kitchenArea'])
+                    except:
+                        kitchenArea = 0
+                    try:
+                        livingArea = float(i['livingArea'])
+                    except:
+                        livingArea = 0
+                    try:
+                        parking = i['building']['parking']['type']
+                    except:
+                        parking = ''
+                    try:
+                        balconiesCount = int(i['balconiesCount'])
+                    except:
+                        balconiesCount = 0
+                    try:
+                        loggiasCount = int(i['loggiasCount'])
+                    except:
+                        loggiasCount = 0
+                    balconies_and_loggias_count = balconiesCount + loggiasCount
+                    try:
+                        finish_type = repair_ids_dict.get(repair_id)
+                    except:
+                        finish_type = 'Неизвестно'
+
+                    date = datetime.date.today()
+
+                    print(
+                        f"{location}, {location2}, {url}, площадь: {area}, цена: {price}")
+                    result = [date, location, location2, okrug, raion, mikroraion, metro, street, house, url, adress, distance, area, kitchenArea, livingArea, balconies_and_loggias_count,
+                              price, rooms, finish_type]
+                    flats.append(result)
+
+                json_data["jsonQuery"]["page"]["value"] += 1
+                print("-----------------------------------------------------------------------------")
+                total_count = response.json()["data"]["offerCount"]
+                downloaded = len(flats)
+                print(f'Загружено {downloaded} предложений из {total_count}')
+                counter += 1
+                if not items:
+                    break
+
+
+
+            # Базовый путь для сохранения
+            base_path = r""
+
+            folder_path = os.path.join(base_path, str(current_date))
+            if not os.path.exists(folder_path):
+                os.makedirs(folder_path)
+
+            df = pd.DataFrame(flats, columns=['Дата обновления',
+                                              'Локация',
+                                              'Локация2',
+                                                          'Округ',
+                                                          'Район',
+                                                          'Микрорайон',
+                                                          'Метро',
+                                                          'Улица',
+                                                          'Дом',
+
+                                              'Ссылка',
+                                              'Адрес',
+                                              'Расстояние до центра, км',
+
+                                              'Площадь, кв.м',
+                                              'Площадь кухни, кв.м',
+                                              'Жилая площадь, кв.м',
+                                              'Балконы/лоджии',
+                                              'Цена за месяц',
+                                              'Кол-во комнат',
+                                              'Отделка'
+                                              ])
+
+            current_date = datetime.date.today()
+
+            # Базовый путь для сохранения
+            base_path = r""
+
+            folder_path = os.path.join(base_path, str(current_date))
+            if not os.path.exists(folder_path):
+                os.makedirs(folder_path)
+
+            filename = f"Аренда_{json_data['jsonQuery']['region']['value']}_{json_data['jsonQuery']['room']['value']}_{json_data['jsonQuery']['floor']['value']['lte']}_{json_data['jsonQuery']['repair']['value']}_{current_date}.xlsx"
+
+            # Полный путь к файлу
+            file_path = os.path.join(folder_path, filename)
+
+            # Сохранение файла в папку
+            df.to_excel(file_path, index=False)

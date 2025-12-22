@@ -1,8 +1,10 @@
 import pandas as pd
 import json
 
+
+
 # Загружаем Excel
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\База 08-09.xlsb")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12.xlsx")
 
 # Загружаем JSON
 with open("projects.json", "r", encoding="utf-8") as f:
@@ -18,6 +20,9 @@ if "Стадия строительной готовности" not in df.column
 rows_updated = 0
 rows_skipped = 0
 
+df['Корпус'] = df['Корпус'].astype(str)
+df['Корпус'] = df['Корпус'].str.replace(',', '.')
+
 # Заполняем значения
 for idx, row in df.iterrows():
     project_key = f"{row['Название проекта']}_{row['Девелопер']}"
@@ -32,11 +37,11 @@ for idx, row in df.iterrows():
         rows_skipped += 1
 
 # сохраняем результат
-df.to_excel(r"C:\Users\m.olshanskiy\Desktop\База 08-0999.xlsx", index=False)
+df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12-2.xlsx", index=False)
 
 # выводим логи
 print("=== ЛОГИ ===")
 print(f"Всего строк: {len(df)}")
 print(f"Обновлено строк: {rows_updated}")
 print(f"Пропущено строк (нет в JSON): {rows_skipped}")
-print("✅ Файл сохранён: projects_filled.xlsx")
+print("✅ Файл сохранён")

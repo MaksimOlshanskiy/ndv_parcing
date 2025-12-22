@@ -132,4 +132,4 @@ for i in items:
 
 time.sleep(0.2)  # Задержка между запросами
 
-save_flats_to_excel(flats, 'all', developer)
+save_flats_to_excel(flats, project, developer)

@@ -79,13 +79,6 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'suburbansale',
-        'from_mcad_km': {
-            'type': 'range',
-            'value': {
-                'gte': 46,
-                'lte': 50,
-            },
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -93,28 +86,18 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4593,
+                4599,
             ],
         },
-        'publish_period': {
+        'page': {
             'type': 'term',
-            'value': 2592000,
-        },
-        'land_status': {
-            'type': 'terms',
-            'value': [
-                2,
-            ],
+            'value': 3,
         },
         'object_type': {
             'type': 'terms',
             'value': [
                 3,
             ],
-        },
-        'page': {
-            'type': 'term',
-            'value': 1,
         },
     },
 }

@@ -92,7 +92,7 @@ while True:
         url = ''
         developer = "Стадион Спартак"
         project = 'Примавера'
-        korpus = extract_digits_or_original(i['building'])
+        korpus = f"{i['quarter']} {i['building']}"
         type = 'Квартиры'
         finish_type = 'Без отделки'
         room_count = extract_digits_or_original(i['title'].split()[0])

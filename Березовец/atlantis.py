@@ -12,17 +12,17 @@ import requests
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6IjM3ZGYwNmMyY2U1Yjk4ZTYyNDgzZWE2ZjljNzVhYWRmOTU3M2QzODQ1ZDJiYTU4YjdmMzkyOTc0MDFjMGVmYTMyNTk5OWEzYWY2MDI4MDQyIiwiaWF0IjoxNzU4NzA4MjE5LjYzNDQ5NywibmJmIjoxNzU4NzA4MjE5LjYzNDQ5OSwiZXhwIjoxNzU4NzExODE5LjYyODQ3OSwic3ViIjoiU0lURV9XSURHRVR8MjIwMSIsInNjb3BlcyI6WyJTSVRFX1dJREdFVCJdLCJ0eXBlIjoic2l0ZVdpZGdldCIsImVudGl0bGVtZW50cyI6IiIsImFjY291bnQiOnsiaWQiOjE0NDQwLCJ0aXRsZSI6ItCc0YvRgtC40YnQuCDQlNC10LLQtdC70L7Qv9C80LXQvdGCIiwic3ViZG9tYWluIjoicGIxNDQ0MCIsImJpbGxpbmdPd25lcklkIjoxNDQ5OCwiY291bnRyeUNvZGUiOiJSVSJ9LCJyb2xlcyI6WyJST0xFX1NJVEVfV0lER0VUIl0sInNpdGVXaWRnZXQiOnsiaWQiOjIyMDEsImRvbWFpbiI6Imh0dHBzOi8vYXRsYW50aXMtY2FwaXRhbC5ydSJ9fQ.RK_gu4YhYyFKNopOqE3C39Dz0jjQqND5mP_IzqEKHHGDJFwatIo0kjxx7Sr4AAzugBinXxT7MlzwhUo3LFvv7Y_xSkzYJ_qEDrODWNL0OKue3R1HFZJiYe0KN5ROntOO3j408BB215AnyH1SV0HvXBPKy3Y_4VLlqepaIbD5EINpHJMNVjW6vQeL8oz8m6NhvX9r3qXWHd7NhvJjv_g407psrokawgipMCfgTEgXJp6v9melZBGJOb6SGPkPAMEl23JTsoJTpIXzhA6GOMVXrwSA-uT3gPC2bpNKrkE4UdfIA-Ahvw9SZyc2mVN8imjn1foqLwIdRyE9wClzRLS5EQ',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6ImIwMjE3YzdiZDQ3MWE3ZGYwZmFlZDg4MzY1OGUyZmRiYmY1ZDlkMzhhN2I4ZDY0NmFkNGYxZGMzN2ExZjE3MWE2NGZkZDM0ZmQ1ODY5OTc1IiwiaWF0IjoxNzY0NTc5OTUzLjA0MzUxNiwibmJmIjoxNzY0NTc5OTUzLjA0MzUyLCJleHAiOjE3NjQ1ODM1NTMuMDMzNDU0LCJzdWIiOiJTSVRFX1dJREdFVHwyMjAxIiwic2NvcGVzIjpbIlNJVEVfV0lER0VUIl0sInR5cGUiOiJzaXRlV2lkZ2V0IiwiZW50aXRsZW1lbnRzIjoiIiwiYWNjb3VudCI6eyJpZCI6MTQ0NDAsInRpdGxlIjoi0JzRi9GC0LjRidC4INCU0LXQstC10LvQvtC_0LzQtdC90YIiLCJzdWJkb21haW4iOiJwYjE0NDQwIiwiYmlsbGluZ093bmVySWQiOjE0NDk4LCJjb3VudHJ5Q29kZSI6IlJVIn0sInJvbGVzIjpbIlJPTEVfU0lURV9XSURHRVQiXSwic2l0ZVdpZGdldCI6eyJpZCI6MjIwMSwiZG9tYWluIjoiaHR0cHM6Ly9hdGxhbnRpcy1jYXBpdGFsLnJ1In19.t6r1rdsxv_4lu9dJ1lnV3GIwlPhrnmyoyEP8gboIYNVWV-q87eDmz-ulMCTq0PVmPFi9COTgpMSR87kKdQ0UrPRJWE1M7l_JQq1RtdeWDEnwZYtVYW9u8JuFMCXtCGZhQoBLE7RUtaqrXsxbBHsJI-60yZA8E0xvHIYCSvWTfP-B3exuOJG1M0W1cibOxWs14CzOnayRlyTqiFiWYdrRVRCdcYxNBhH_6EFNXWOqFg2YmteY-2MncrNyMDdLrsvhQA7TsQPFGuAyi6dLofJ_EiIr09-aFeRY-0qEv5joIwqym5CQjCHI0Ok5yNX6eSJRAdN0fvFkSEF1MZqC1PKUzw',
     'origin': 'https://smart-catalog.profitbase.ru',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
 }
 
 params = {

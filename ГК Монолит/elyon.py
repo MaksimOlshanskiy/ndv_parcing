@@ -90,7 +90,7 @@ try:
                     date, project, '', '', '', '', '', '', '', '', '', '', '', '',
                     '', '', '', developer, '', '', '', '', korpus, '', '', '', '',
                     '', '', type_, finish_type, room_count, area, '', int(old_price), '',
-                    '', int(price), int(section), int(str(floor)), ''
+                    '', price, section, floor, ''
                 ]
                 flats.append(result)
 

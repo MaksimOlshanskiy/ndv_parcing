@@ -115,6 +115,8 @@ for finishing in finishing_list:
                 korpus = korpus.split()[0]
             type = 'Квартиры'
             finish_type = finishing_dict.get(finishing)
+            if item.find(class_='object_title').get_text(strip=True).replace('"', '').replace('ЖК «', '').replace('»', '').replace('ЖК ', '') == '31 квартал 3-я очередь' and korpus == '1':
+                finish_type = 'С отделкой'
             if item.find(class_="rooms").get_text(strip=True) == 'Студия':
                 room_count = 0
             else:

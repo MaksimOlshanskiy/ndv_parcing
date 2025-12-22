@@ -1,7 +1,12 @@
 import pandas as pd
 
+'''
+Скрипт принимает на вход эксель с актуальной базой и сохраняет список проектов и корпусов
+с незаполненными сроком сдачи и стадией строительной готовности
+'''
+
 # Загружаем исходный файл
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Новая папка (4)\База 08-09 newest-4.xlsx")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База11.xlsx")
 
 # Фильтрация строк
 filtered_df = df[
@@ -23,6 +28,6 @@ unique_df = filtered_df.drop_duplicates()
 
 
 # Сохраняем результат в новый Excel
-unique_df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Недостающее.xlsx", index=False)
+unique_df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Недостающее11.xlsx", index=False)
 
-print("Файл сохранен как output.xlsx")
+print("Файл сохранен как Недостающее.xlsx")

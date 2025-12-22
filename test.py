@@ -1,26 +1,3 @@
-import requests
+x = [4670392, 5311533, 4125380, 4118022, 5713096, 4115083, 4189985, 4699409, 4104167, 4417107, 4832098, 3929498, 5705688, 8779, 4682275, 4390785, 4160667, 4868530, 2515169, 5130920, 4306295, 3715498, 4732673, 5708118, 3929718, 5389406, 5005700, 4629085, 3945670, 1407341, 4539021, 4111965, 5684685, 5691758, 4831790, 5032939, 4873489, 4366981, 4127968, 354880, 4596777, 5533968, 4498904, 4699509, 3996419, 4386811, 4687597, 4001776, 4076836, 5408473, 5418159, 4131079, 5266211, 3929307, 4061664, 4704933, 4545098, 3731125, 4702054, 4708464, 36820, 32759, 4735657, 4916907, 4504302, 4692232, 4622258, 5698950, 3759157, 4086472, 5007922, 2895917, 4255599, 4682174, 4913912, 3365057, 5420768, 5679747, 5710961, 50208, 3771871, 911557, 4905973, 602552, 3748230, 7219, 5619273, 5198956, 4670401, 321231, 917084, 4212534, 4368512, 4059439, 861137, 37026, 16246]
 
-url = "https://sso.profitbase.ru/api/oauth2/token"
-
-payload = {
-    "client_id": "site_widget",
-    "client_secret": "site_widget",
-    "grant_type": "site_widget",
-    "scope": "SITE_WIDGET",
-
-}
-
-headers = {
-    "accept": "application/json",
-    "content-type": "application/json",
-    "x-tenant-id": "4242",  # ← у тебя этот ID
-    "origin": "https://xn--80abdl0adtby.xn--p1ai",
-    "referer": "https://xn--80abdl0adtby.xn--p1ai",
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-}
-
-resp = requests.post(url, json=payload, headers=headers)
-resp.raise_for_status()
-
-token = resp.json().get("access_token")
-print("Bearer", token)
+print(len(x))

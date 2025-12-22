@@ -169,7 +169,7 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
-    if len(flats)-flats_start != 15:
+    if len(flats_soup) == 1 or not flats:
         break
 
 

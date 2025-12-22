@@ -15,5 +15,7 @@
   "4713":   {"lat_center": 51.67167,  "lon_center": 39.21056},
   "4927":   {"lat_center": 58.01389,  "lon_center": 56.24889},
   "4704":   {"lat_center": 48.70861,  "lon_center": 44.51472},
-  "5024":   {"lat_center": 57.15333,  "lon_center": 65.54188}
+   "Уфа": {"lat_center": 54.73333,  "lon_center": 55.96667},
+  "Самара":   {"lat_center": 53.18333,  "lon_center": 50.11667},
+  "5024": {"lat_center": 57.15333,  "lon_center": 65.54188}
 }

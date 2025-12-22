@@ -94,7 +94,7 @@ def parse_apartments(html):
         if flat['Кол-во комнат']=='Студия':
             flat['Кол-во комнат']='Студия'
         else:
-            flat['Кол-во комнат']=int(rooms.get_text(strip=True).replace(' комнаты',''))
+            flat['Кол-во комнат']=rooms.get_text(strip=True).replace(' комнаты','')
 
 
         area = card.select_one('.card-footer-accent')

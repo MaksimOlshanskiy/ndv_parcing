@@ -75,7 +75,7 @@ while has_more_data:
             if room_count == 0:
                 room_count = 'студия'
 
-            type = "Квартира"
+            type = "Апартаменты"
             area = i["area"]
             old_price = i['oldPrice']
             price = i["price"]

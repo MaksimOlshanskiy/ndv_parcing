@@ -81,7 +81,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4820,
+                467539,
             ],
         },
     },
@@ -312,7 +312,7 @@ for y in ids:
 
                     print(f"Число комнат: {room_id}")
                     if counter > 1:
-                        sleep_time = random.uniform(7, 9)
+                        sleep_time = random.uniform(2, 4)
                         time.sleep(sleep_time)
                     try:
                         response = session.post(
@@ -339,22 +339,32 @@ for y in ids:
                         items = response.json()["data"]["offersSerialized"]
 
                     for i in items:
-                        try:
-                            geo1 = i['geo']['address'][0]['fullName']
-                        except:
-                            geo1 = ''
-                        try:
-                            geo2 = i['geo']['address'][1]['fullName']
-                        except:
-                            geo2 = ''
-                        try:
-                            geo3 = i['geo']['address'][2]['fullName']
-                        except:
-                            geo3 = ''
-                        try:
-                            geo4 = i['geo']['address'][3]['fullName']
-                        except:
-                            geo4 = ''
+
+                        data = i['geo']['address']
+                        result = {}
+                        counterr = {}
+
+                        for item in data:
+                            t = item["type"]
+                            name = item["fullName"]
+
+                            # Первый раз — без номера
+                            if t not in counterr:
+                                counterr[t] = 1
+                                key = t
+                            else:
+                                counterr[t] += 1
+                                key = f"{t}{counterr[t]}"
+
+                            result[key] = name
+
+
+                        # список нужных переменных
+                        keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
+
+                        # создаём переменные
+                        for key in keys:
+                            globals()[key] = result.get(key, "")
                         try:
                             if i['building']['deadline']['isComplete']:
                                 srok_sdachi = "Дом сдан"
@@ -367,7 +377,7 @@ for y in ids:
                         except:
                             srok_sdachi = ''
                         try:
-                            url = i['fullUrl']
+                            url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
                         except:
                             url = ''
 
@@ -474,7 +484,7 @@ for y in ids:
 
                         print(
                             f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
-                        result = [project, developer, geo1, geo2, geo3, geo4, korpus, distance, srok_sdachi, type,
+                        result = [project, developer, location, location2, okrug, raion, mikroraion, metro, street, house, korpus, distance, srok_sdachi, type,
                                   finish_type, room_count, area, kitchenArea, livingArea, price, floor,
                                   balconies_and_loggias_count, parking, url]
                         flats.append(result)
@@ -495,10 +505,14 @@ for y in ids:
 
         df = pd.DataFrame(flats_total, columns=['Название проекта',
                                                 'Девелопер',
-                                                'Гео1',
-                                                'Гео2',
-                                                'Гео3',
-                                                'Гео4',
+                                                'Локация',
+                                                'Локация2',
+                                                          'Округ',
+                                                          'Район',
+                                                          'Микрорайон',
+                                                          'Метро',
+                                                          'Улица',
+                                                          'Дом',
                                                 'Корпус',
                                                 'Расстояние до центра, км',
                                                 'Срок сдачи',

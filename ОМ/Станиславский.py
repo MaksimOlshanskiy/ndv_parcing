@@ -66,9 +66,9 @@ while True:
     for i in items:
 
         url = ''
-        developer = "OM Development"
+        developer = "ОМ Девелопмент"
         project = 'Станиславский'
-        korpus = i['building_int_number']
+        korpus = i['building_number'].split()[-1]
         type = 'Квартиры'
         if i['finishing_type'] == 'no':
             finish_type = 'Без отделки'

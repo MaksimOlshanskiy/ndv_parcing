@@ -100,7 +100,7 @@ for i in items:
     type = 'Апартаменты'
     finish_type = 'Без отделки'
 
-    room_count = int(i['FlatRoomsCount'])
+    room_count = i['FlatRoomsCount']
 
     area = float(i["TotalArea"])
     price_per_metr = ''

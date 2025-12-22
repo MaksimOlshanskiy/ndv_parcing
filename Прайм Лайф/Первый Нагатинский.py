@@ -14,34 +14,24 @@ from bs4 import BeautifulSoup
 import requests
 
 cookies = {
-    'roistat_is_need_listen_requests': '0',
-    'roistat_is_save_data_in_cookie': '1',
     'SCBFormsAlreadyPulled': 'true',
-    'PHPSESSID': 'LsiULCoW5ByXvVF8YLpG0HulCq3wmmQI',
     '_ym_uid': '1743415929559311987',
-    '_ym_d': '1758876784',
+    '_ym_d': '1762781390',
     'scbsid_old': '2746015342',
-    'roistat_visit': '274388',
-    'roistat_visit_cookie_expire': '1209600',
+    'PHPSESSID': 'cyeGt2XLrhr3NnUtD4ATWhugPklmXmbd',
+    'BITRIX_CONVERSION_CONTEXT_s1': '%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1764719940%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
-    'BITRIX_CONVERSION_CONTEXT_s1': '%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1758931140%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D',
-    '___dc': 'a754551e-265e-4d6b-9f95-8a533f4aa9bc',
-    'roistat_call_tracking': '1',
-    'roistat_emailtracking_email': 'null',
-    'roistat_emailtracking_tracking_email': 'null',
-    'roistat_emailtracking_emails': 'null',
-    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
-    'sma_session_id': '2439137776',
+    'sma_session_id': '2518443682',
     'SCBfrom': '',
+    'smFpId_old_values': '%5B%229d3c150d063b8304ca161a15bac1d838%22%2C%225a4ba48b0c99505318ede61cd1067357%22%5D',
     'SCBnotShow': '-1',
-    'smFpId_old_values': '%5B%222488b0e958469f2da6c6193c8be92e7e%22%5D',
-    'SCBporogAct': '5000',
-    'SCBstart': '1758876789394',
+    'SCBstart': '1764684210628',
     'sma_postview_ready': '1',
-    'screen_width': '1416',
-    'SCBindexAct': '4397',
-    'sma_index_activity': '10850',
+    'SCBporogAct': '5000',
+    'screen_width': '1425',
+    'SCBindexAct': '1233',
+    'sma_index_activity': '8186',
 }
 
 headers = {
@@ -49,15 +39,15 @@ headers = {
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'bx-ajax': 'true',
     'priority': 'u=1, i',
-    'referer': 'https://1-ng.ru/catalog/?catalogFilter_96_MIN=19.3&catalogFilter_96_MAX=69.5&catalogFilter_96_MIN=19267776&catalogFilter_96_MAX=69492597&catalogFilter_83_MIN=3&catalogFilter_83_MAX=28&catalogFilter_83_MIN=3&catalogFilter_83_MAX=28&catalogFilter_69_MIN=29&catalogFilter_69_MAX=113&catalogFilter_69_MIN=29.48&catalogFilter_69_MAX=113.48&catalogFilter_92_270784970=Y&set_filter=Y',
-    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+    'referer': 'https://1-ng.ru/catalog/',
+    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
-    # 'cookie': 'roistat_is_need_listen_requests=0; roistat_is_save_data_in_cookie=1; SCBFormsAlreadyPulled=true; PHPSESSID=LsiULCoW5ByXvVF8YLpG0HulCq3wmmQI; _ym_uid=1743415929559311987; _ym_d=1758876784; scbsid_old=2746015342; roistat_visit=274388; roistat_visit_cookie_expire=1209600; _ym_isad=2; _ym_visorc=w; BITRIX_CONVERSION_CONTEXT_s1=%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1758931140%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D; ___dc=a754551e-265e-4d6b-9f95-8a533f4aa9bc; roistat_call_tracking=1; roistat_emailtracking_email=null; roistat_emailtracking_tracking_email=null; roistat_emailtracking_emails=null; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails; sma_session_id=2439137776; SCBfrom=; SCBnotShow=-1; smFpId_old_values=%5B%222488b0e958469f2da6c6193c8be92e7e%22%5D; SCBporogAct=5000; SCBstart=1758876789394; sma_postview_ready=1; screen_width=1416; SCBindexAct=4397; sma_index_activity=10850',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+    # 'cookie': 'SCBFormsAlreadyPulled=true; _ym_uid=1743415929559311987; _ym_d=1762781390; scbsid_old=2746015342; PHPSESSID=cyeGt2XLrhr3NnUtD4ATWhugPklmXmbd; BITRIX_CONVERSION_CONTEXT_s1=%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1764719940%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D; _ym_isad=2; _ym_visorc=w; sma_session_id=2518443682; SCBfrom=; smFpId_old_values=%5B%229d3c150d063b8304ca161a15bac1d838%22%2C%225a4ba48b0c99505318ede61cd1067357%22%5D; SCBnotShow=-1; SCBstart=1764684210628; sma_postview_ready=1; SCBporogAct=5000; screen_width=1425; SCBindexAct=1233; sma_index_activity=8186',
 }
 
 params = {
@@ -164,7 +154,7 @@ while True:
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
     params['PAGEN_1'] = str(int(params['PAGEN_1']) + 1)
-    if params['PAGEN_1'] == '2':
+    if params['PAGEN_1'] == '8':
         break
     if not flats_soup:
         break

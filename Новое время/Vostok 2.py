@@ -24,12 +24,12 @@ headers = {
 
 base_params = {
     'gk': 'bu9ece90tp2f0th77xe6sev9',
-    'price_min': '4922490',
-    'price_max': '43740000',
-    'area_min': '24.49',
-    'area_max': '108',
-    'floor_min': '2',
-    'floor_max': '17',
+    'price_min': '49224',
+    'price_max': '4374000099',
+    'area_min': '14.49',
+    'area_max': '999',
+    'floor_min': '1',
+    'floor_max': '99',
     'ordering': 'price',
     'pagination[page]': '1',
     'pagination[pageSize]': '10',
@@ -82,7 +82,7 @@ try:
                     result = [
                         date, project, '', '', '', '', '', '', '', '', '', '', '', '',
                         '', '', '', developer, '', '', '', '', float(str(korpus)), '', '', '', '',
-                        '', '', type_, 'Без отделки', room_count, area, price_per_metr, old_price, '',
+                        '', '', type_, 'Предчистовая', room_count, area, price_per_metr, old_price, '',
                         '', price, int(section), int(str(floor)), ''
                     ]
                     flats.append(result)

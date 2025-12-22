@@ -55,7 +55,10 @@ for key, selected_info in info.items():
                 district = ''
                 adress = ''
                 eskrou = ''
-                korpus = i["building_number"][:1]
+                if project == 'NEXUS':
+                    korpus = i["building_number"]
+                else:
+                    korpus = i["building_number"][:1]
                 konstruktiv = ''
                 klass = ''
                 srok_sdachi = ''

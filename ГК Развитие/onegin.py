@@ -39,11 +39,12 @@ def parse_flats():
         'arFilterFlat_571': '',
         'arFilterFlat_122': '',
         'arFilterFlat_123': '',
-        'arFilterFlat_124_MIN': '1',
-        'arFilterFlat_124_MAX': '999',
-        'arFilterFlat_570_MIN': '1',
-        'arFilterFlat_570_MAX': '99',
-        'set_filter': 'Показать',
+        'arFilterFlat_124_MIN': '14.9',
+        'arFilterFlat_124_MAX': '148.7',
+        'arFilterFlat_570_MIN': '2',
+        'arFilterFlat_570_MAX': '47.8',
+        'set_filter': 'Y',
+        'PAGEN_1': '1',
     }
 
     try:

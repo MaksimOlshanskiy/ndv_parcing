@@ -1,0 +1,173 @@
+import datetime
+import time
+import pandas as pd
+import openpyxl
+import os
+import random
+from bs4 import BeautifulSoup
+import requests
+from functions import save_flats_to_excel
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from bs4 import BeautifulSoup
+
+cookies = {
+    'PHPSESSID': 'zw39082pWx8pAKfGHBuDhAoZQ75HKnMs',
+    'scbsid_old': '2746015342',
+    '_cmg_csstS0cfD': '1751363409',
+    '_comagic_idS0cfD': '10727269081.15013256636.1751363409',
+    '_slid': '67e145e9c43eb1caaf5ed242',
+    '_slsession': 'a89d4890-7da2-4149-8f23-29e9f9cbdc3a',
+    '_ym_uid': '1742816746489519570',
+    '_ym_d': '1751363410',
+    '_ym_isad': '2',
+    '_ym_visorc': 'w',
+    '_slid_server': '67e145e9c43eb1caaf5ed242',
+    'sma_session_id': '2344782810',
+    'SCBfrom': 'https%3A%2F%2Fyandex.ru%2F',
+    'SCBnotShow': '-1',
+    'SCBstart': '1751363453574',
+    'smFpId_old_values': '%5B%22d9eadf726ef363c2da5f2fae87307f58%22%5D',
+    'SCBporogAct': '5000',
+    'sma_index_activity': '32012',
+    'SCBindexAct': '2798',
+}
+
+headers = {
+    'accept': 'text/html, */*; q=0.01',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'priority': 'u=1, i',
+    'referer': 'https://afitower.ru/?utm_source=yandex&utm_medium=cpc&utm_campaign=vim|brand_manual_site_search_mmo|118267340|search&utm_term=%D0%B6%D0%BA%20%D0%B0%D1%84%D0%B8%20%D1%82%D0%B0%D1%83%D1%8D%D1%80&utm_content=5543281619|16894430087|54336079432|none|desktop|16894430087|type1|54336079432|54336079432|1|premium|213|no&cm_id=118267340_5543281619_16894430087_54336079432_54336079432_none_search_type1_no_desktop_premium_213&yclid=14973195589236555775',
+    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-origin',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+    'x-requested-with': 'XMLHttpRequest',
+    # 'cookie': 'PHPSESSID=zw39082pWx8pAKfGHBuDhAoZQ75HKnMs; scbsid_old=2746015342; _cmg_csstS0cfD=1751363409; _comagic_idS0cfD=10727269081.15013256636.1751363409; _slid=67e145e9c43eb1caaf5ed242; _slsession=a89d4890-7da2-4149-8f23-29e9f9cbdc3a; _ym_uid=1742816746489519570; _ym_d=1751363410; _ym_isad=2; _ym_visorc=w; _slid_server=67e145e9c43eb1caaf5ed242; sma_session_id=2344782810; SCBfrom=https%3A%2F%2Fyandex.ru%2F; SCBnotShow=-1; SCBstart=1751363453574; smFpId_old_values=%5B%22d9eadf726ef363c2da5f2fae87307f58%22%5D; SCBporogAct=5000; sma_index_activity=32012; SCBindexAct=2798',
+}
+
+params = {
+    'utm_source': 'yandex',
+    'utm_medium': 'cpc',
+    'utm_campaign': 'vim|brand_manual_site_search_mmo|118267340|search',
+    'utm_term': 'жк афи тауэр',
+    'utm_content': '5543281619|16894430087|54336079432|none|desktop|16894430087|type1|54336079432|54336079432|1|premium|213|no',
+    'cm_id': '118267340_5543281619_16894430087_54336079432_54336079432_none_search_type1_no_desktop_premium_213',
+    'yclid': '14973195589236555775',
+    'sort': 'price',
+    'sortBy': 'asc',
+    'square[]': ['1', '999'],
+    'stock': 'all',
+    'floor[]': ['2', '52'],
+    'price[]': ['1', '99'],
+    'pageView': 'params',
+    'numberFlat': '',
+    'assignment': 'false',
+    'page': '1',
+    'offset': '8',
+    'showMore': 'true'
+}
+
+# Запуск драйвера
+driver = webdriver.Chrome()
+
+# Открытие страницы
+url = "https://intermark.ru/objects/zhk-allegoria-mosca-ostozhenka-4-6-204?ysclid=mgrq6se1su220252803"
+driver.get(url)
+
+# Ждём загрузку JS
+time.sleep(3)
+
+html = driver.page_source
+driver.quit()
+
+flats = []
+
+
+def extract_digits_or_original(s):
+    digits = ''.join([char for char in s if char.isdigit()])
+    return int(digits) if digits else s
+page_counter = 1
+
+
+soup = BeautifulSoup(html, 'html.parser')
+flats_soup = soup.find_all('tr', class_='plans-filter__item plan__item')
+
+for i in flats_soup:
+
+    flat_spec = i.text.strip().split('\n')
+    url = ''
+    date = datetime.date.today()
+    project = 'Allegoria Mosca'
+    english = ''
+    promzona = ''
+    mestopolozhenie = ''
+    subway = ''
+    distance_to_subway = ''
+    time_to_subway = ''
+    mck = ''
+    distance_to_mck = ''
+    time_to_mck = ''
+    bkl = ''
+    distance_to_bkl = ''
+    time_to_bkl = ''
+    status = ''
+    start = ''
+    comment = ''
+    developer = "Стройтекс"
+    okrug = ''
+    district = ''
+    adress = ''
+    eskrou = ''
+    korpus = '1'
+    konstruktiv = ''
+    klass = ''
+    srok_sdachi = ''
+    finish_type = 'С отделкой'
+    srok_sdachi_old = ''
+    stadia = ''
+    dogovor = ''
+    type = 'Квартиры'
+    if len(flat_spec) == 5:
+        floor = flat_spec[1]
+        room_count = flat_spec[2]
+        area = float(flat_spec[3])
+        if flat_spec[4] == 'Продана':
+            break
+        old_price = int(flat_spec[4])
+
+
+    else:
+        floor = flat_spec[0]
+        room_count = flat_spec[1]
+        area = float(flat_spec[2])
+        old_price = int(flat_spec[3])
+        if flat_spec[3] == 'Продана':
+            break
+
+    discount = ''
+    price_per_metr = ''
+    price_per_metr_new = ''
+
+    price = ''
+
+    section = ''
+
+    flat_number = ''
+
+    print(
+        f"{project}, отделка: {finish_type}, количество комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+    result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+              distance_to_mck, time_to_mck, distance_to_bkl,
+              time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
+              konstruktiv,
+              klass, srok_sdachi, srok_sdachi_old,
+              stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+              price_per_metr_new, price, section, floor, flat_number]
+    flats.append(result)
+
+
+save_flats_to_excel(flats, project, developer)

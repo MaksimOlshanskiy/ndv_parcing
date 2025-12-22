@@ -7,7 +7,7 @@
 '''
 
 
-count_of_flats = 401
+count_of_flats = 342
 
 import datetime
 import time

@@ -59,7 +59,7 @@ while url:
         for i in items:
             count += 1
             date = datetime.date.today()
-            project = i["data"]["classifier_name"]
+            project = i["data"]["classifier_name"].replace('НАЗАРÉ', 'НАЗАРЕ').replace('НАЗАРÈ', 'НАЗАРЕ')
             english = ''
             promzona = ''
             mestopolozhenie = ''

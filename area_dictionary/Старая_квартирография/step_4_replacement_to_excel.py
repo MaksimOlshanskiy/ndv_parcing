@@ -141,9 +141,9 @@ def save_as_xlsx(df, output_path_xlsx, sheet_name='Sheet1'):
 # --- Запуск ---
 if __name__ == "__main__":
 
-    json_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\normalized_output.json'
-    excel_path = r"C:\Users\m.olshanskiy\Desktop\Сентябрь последняя3.xlsx"
-    output_path = r"C:\Users\m.olshanskiy\Desktop\Сентябрь последняя4.xlsx"
+    json_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json'
+    excel_path = r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База9.xlsx"
+    output_path = r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База9.xlsx"
 
     json_data = load_json_data(json_path)
     excel_df = load_excel_data(excel_path)

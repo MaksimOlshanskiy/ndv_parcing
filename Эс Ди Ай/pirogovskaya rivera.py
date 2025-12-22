@@ -8,6 +8,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from bs4 import BeautifulSoup
+import datetime
 
 from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_middle
@@ -21,7 +22,8 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 driver.get(url)
 
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 4)
+date = datetime.date.today()
 
 # Цикл клика по кнопке "Показать еще"
 while True:
@@ -57,90 +59,98 @@ soup = BeautifulSoup(page_source, 'html.parser')
 flats_data = []
 
 for item in soup.select('li.product'):
-    title_tag = item.select_one('.woocommerce-loop-product__title a')
-    if not title_tag:
+    try:
+        title_tag = item.select_one('.woocommerce-loop-product__title a')
+        if not title_tag:
+            continue
+
+        flat_name = title_tag.text.strip()
+        flat_url = title_tag['href']
+
+        korpus = item.select_one('.product-title')
+        korpus = korpus.text.strip().replace('Корпус №', '') if korpus else ''
+
+
+        area_tag = item.select_one('.product-footage')
+        area = area_tag.text.replace('кв. м', '').strip() if area_tag else ''
+
+        tags = item.select('.product-tags span')
+        flat_type, floor, finishing = '', '', ''
+        if tags:
+            flat_type = tags[0].text.strip()
+            if len(tags) > 1:
+                floor = tags[1].text.replace('этаж ', '').split(' ')[0]
+            if len(tags) > 2:
+                finishing = tags[2].text.strip()
+        price_lots = item.find_all('span', class_= ['woocommerce-Price-amount', 'amount'])
+
+        try:
+            price_lot = price_lots[1].text.strip().replace('от', '').replace(' ', '').replace('р', '')
+            price_discounted = price_lots[0].text.strip().replace('от', '').replace(' ', '').replace('р', '')
+
+        except IndexError:
+
+            price_lot = price_lots[0].text.strip().replace('от', '').replace(' ', '').replace('р', '')
+            price_discounted = ''
+
+
+        project = 'Пироговская Ривьера'
+        english = ''
+        promzona = ''
+        mestopolozhenie = ''
+        subway = ''
+        distance_to_subway = ''
+        time_to_subway = ''
+        mck = ''
+        distance_to_mck = ''
+        time_to_mck = ''
+        distance_to_bkl = ''
+        time_to_bkl = ''
+        bkl = ''
+        status = ''
+        start = ''
+        comment = ''
+        developer = 'Эс Ди Ай'
+        okrug = ''
+        district = ''
+        adress = ''
+        eskrou = ''
+        korpus = item.find('p', class_='product-title').text.strip().replace('Корпус №', '')
+        konstruktiv = ''
+        klass= ''
+        srok_sdachi = ''
+        srok_sdachi_old = ''
+        stadia = ''
+        dogovor = ''
+        type = "Квартира"
+        finish_type = finishing
+        room_count = flat_type.split(' ')[0]
+        area = area
+        price_per_metr = ''
+        old_price = int(price_lot)
+        discount = ''
+        price_per_metr_new = ''
+        try:
+            price = int(price_discounted)
+        except:
+            price = ''
+        section = ''
+        floor = floor
+        flat_number = ''
+    except:
         continue
 
-    flat_name = title_tag.text.strip()
-    flat_url = title_tag['href']
+    print(
+        f"{project}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+    result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
+              distance_to_mck, time_to_mck, distance_to_bkl,
+              time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,
+              klass, srok_sdachi, srok_sdachi_old,
+              stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+              price_per_metr_new, price, section, floor, flat_number]
 
-    korpus = item.select_one('.product-title')
-    korpus = korpus.text.strip().replace('Корпус №', '') if korpus else ''
-
-    price_tags = item.select('bdi')
-    prices = []
-    for tag in price_tags:
-        txt = tag.text.strip().replace('от', '').replace('р', '').replace(' ', '')
-        if txt.isdigit():
-            prices.append(int(txt))
-
-    price_lot = price_discounted = ''
-    if prices:
-        max_price = max(prices)
-        min_price = min(prices)
-        price_lot = str(max_price)
-        price_discounted = str(min_price)
-
-    area_tag = item.select_one('.product-footage')
-    area = area_tag.text.replace('кв. м', '').strip() if area_tag else ''
-
-    tags = item.select('.product-tags span')
-    flat_type, floor, finishing = '', '', ''
-    if tags:
-        flat_type = tags[0].text.strip()
-        if len(tags) > 1:
-            floor = tags[1].text.replace('этаж ', '').split(' ')[0]
-        if len(tags) > 2:
-            finishing = tags[2].text.strip()
-
-    if price_lot == price_discounted:
-        price_discounted = None
-
-    flats_data.append({
-        'Дата обновления': datetime.date.today(),
-        'Название проекта': 'Пироговская Ривьера',
-        'на англ': None,
-        'промзона': None,
-        'Местоположение': None,
-        'Метро': None,
-        'Расстояние до метро, км': None,
-        'Время до метро, мин': None,
-        'МЦК/МЦД/БКЛ': None,
-        'Расстояние до МЦК/МЦД, км': None,
-        'Время до МЦК/МЦД, мин': None,
-        'БКЛ': None,
-        'Расстояние до БКЛ, км': None,
-        'Время до БКЛ, мин': None,
-        'статус': None,
-        'старт': None,
-        'Комментарий': None,
-        'Девелопер': "Эс Ди Ай",
-        'Округ': None,
-        'Район': None,
-        'Адрес': None,
-        'Эскроу': None,
-        'Корпус': korpus,
-        'Конструктив': None,
-        'Класс': None,
-        'Срок сдачи': None,
-        'Старый срок сдачи': None,
-        'Стадия строительной готовности': None,
-        'Договор': None,
-        'Тип помещения': "Квартира",
-        'Отделка': finishing,
-        'Кол-во комнат': flat_type.split(' ')[0],
-        'Площадь, кв.м': float(area) if area else None,
-        'Цена кв.м, руб.': None,
-        'Цена лота, руб.': int(price_lot) if price_lot else None,
-        'Скидка,%': None,
-        'Цена кв.м со ск, руб.': None,
-        'Цена лота со ск, руб.': int(price_discounted) if price_discounted else None,
-        'секция': '',
-        'этаж': floor,
-        'номер': None
-    })
+    flats_data.append(result)
 
 # Сохраняем в Excel
-developer = 'Эс Ди Ай'
-project = 'Пироговская Ривьера'
+
 save_flats_to_excel(flats_data, project, developer)

@@ -31,13 +31,14 @@ while True:
             hasNextPage
         }
         edges {
-            node {
+            node {                
                 id
                 number
                 rooms
                 area
                 price
                 originPrice
+                phase { number }
                 building { number }
                 section { number }
                 floor { number }
@@ -68,8 +69,9 @@ while True:
 
         edges = data.get('data', {}).get('allFlats', {}).get('edges', [])
         page_info = data.get('data', {}).get('allFlats', {}).get('pageInfo', {})
-
+        node2 = data['data']['allFlats']['edges']
         for edge in edges:
+
             node = edge.get('node', {})
             date = datetime.date.today()
             developer = 'Абсолют'
@@ -77,8 +79,10 @@ while True:
 
             if project == 'Заречье Парк':
                 continue
-
-            korpus = node.get('building', {}).get('number', '')
+            if project == 'Сколково':
+                korpus = node.get('building', {}).get('number', '')
+            else:
+                korpus = f"Фаза {node.get('phase', '').get('number', '').replace('_', ' ')} корп. {node.get('building', {}).get('number', '')}"
             type = 'Квартира'
 
             finish_types = node.get('finishTypes', {})

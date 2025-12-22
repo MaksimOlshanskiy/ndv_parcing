@@ -80,11 +80,7 @@ url = f'https://krasnodar.domostroyrf.ru/kvartiry/zhk-kutuzovskiy'
 
 driver.get(url=url)
 
-button = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/div[3]/div/div[2]/button'))  # Или другой локатор
-)
-button.click()
-time.sleep(5)
+
 
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
 soup = BeautifulSoup(page_content, 'html.parser')
