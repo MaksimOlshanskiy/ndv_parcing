@@ -7,10 +7,10 @@ import pandas as pd
 '''
 
 # Загружаем исходный Excel
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База11.xlsx")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\1_FILES\2025-12-12\СЗ Северный квартал_Северный квартал_2025-12-12.xlsx")
 
 # Оставляем только нужные столбцы
-df = df[["Название проекта", "Площадь, кв.м", "Кол-во комнат"]]
+df = df[["Название проекта", 'Девелопер', "Площадь, кв.м", "Кол-во комнат"]]
 
 df["Название проекта"] = df["Название проекта"].str.lower()
 

@@ -1,5 +1,7 @@
 import pandas as pd
 import json
+import numpy as np
+import unicodedata
 
 # Загружаем данные из Excel файла
 df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Квартирография_new.xlsx")  # укажите путь к вашему файлу
@@ -10,6 +12,25 @@ df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Кварт
 
 # Приводим названия проектов к нижнему регистру
 df['Название проекта'] = df['Название проекта'].str.lower()
+df['Кол-во комнат'] = df['Кол-во комнат'].apply(
+    lambda x: x.replace('e', 'е') if isinstance(x, str) else x
+)
+
+
+def to_number_if_possible(x):
+    # если NaN — оставляем как есть
+    if pd.isna(x):
+        return x
+
+    # пробуем превратить в число
+    try:
+        return int(float(str(x).replace(',', '.')))
+    except:
+        return x  # если не получилось, оставляем строку
+
+
+df['Кол-во комнат'] = df['Кол-во комнат'].apply(to_number_if_possible)
+
 
 # Сортируем внутри каждого проекта по площади (если 'Площадь, кв.м' — числовая)
 df = df.sort_values(by=['Название проекта', 'Площадь, кв.м'])

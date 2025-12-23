@@ -87,7 +87,7 @@ while True:
 
                     result = [
                         date, project, '', '', '', '', '', '', '', '', '', '', '', '',
-                        '', '', '', developer, '', '', '', '', float(korpus) if korpus else '',
+                        '', '', '', developer, '', '', '', '', korpus if korpus else '',
                         '', '', '', '', '', '', type_, 'Без отделки', room_count, area,
                         '', old_price, '', '', price,
                         int(section) if section else 0, int(floor) if floor else 0, ''

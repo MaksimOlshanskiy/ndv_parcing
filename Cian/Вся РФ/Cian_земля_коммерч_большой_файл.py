@@ -7,7 +7,7 @@ import random
 from functions import merge_and_clean, haversine
 import json
 
-type_of_lot = 'Земля, продажа'
+type_of_lot = 'Коммерция, продажа'
 
 # noinspection PyDictDuplicateKeys
 cookies = {
@@ -153,15 +153,7 @@ def extract_digits_or_original(s):
 
 current_date = datetime.date.today()
 
-region_list = [4588, 4584, 4596, 4606, 4608, 4618, 4560, 4609, 4619, 181462,
-    4564, 4581, 4620, 4607, 4557, 4623, 4612, 4573, 4598, 4585, 4555,
-    4567, 4621, 4587, 4605, 4568, 4625, 184723, 4604, 4576, 4574, 4603,
-
-
-    4614, 4591, 4553, 4635,
-
-
-
+region_list = [181462, 4623, 4612
 ]
 
 session = requests.Session()
@@ -481,6 +473,27 @@ for region in region_list:
                             land_type = i['land']['type']
                         except:
                             land_type = ''
+                        try:
+                            buildingType2 = i['businessShoppingCenter']['buildingType']
+                        except:
+                            buildingType2 = ''
+                        try:
+                            buildingClassType = i['businessShoppingCenter']['buildingClassType']
+                        except:
+                            buildingType = ''
+                        try:
+                            building_name = i['businessShoppingCenter']['name']
+                        except:
+                            building_name = ''
+                        try:
+                            buildingType = i['businessShoppingCenter']['type']
+                        except:
+                            buildingType = ''
+                        try:
+                            layout = i['layout']['type']
+                        except:
+                            layout = ''
+
 
 
 

@@ -94,37 +94,39 @@ driver.get("https://lyesnaya.ru/catalog/")
 
 wait = WebDriverWait(driver, 5)  # небольшое ожидание
 
+prev_count = 0
+
 while True:
     try:
-        # ждём, пока кнопка снова станет кликабельной
+        # считаем, сколько товаров отображается
+        items = driver.find_elements(By.CSS_SELECTOR, ".catalog-item")
+        curr_count = len(items)
+
+        # если после предыдущего клика число элементов не изменилось → конец
+        if curr_count == prev_count and curr_count != 0:
+            print("Товары больше не подгружаются. Выход из цикла.")
+            break
+
+        prev_count = curr_count
+
+        # ждём, пока кнопка станет кликабельной
         button = wait.until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-more-btn]"))
         )
         time.sleep(2)
 
         try:
-            # пробуем обычный клик
             button.click()
-        except (StaleElementReferenceException, Exception):
-            # если элемент "устарел" или перекрыт
-            try:
-                button = driver.find_element(By.CSS_SELECTOR, "button[data-more-btn]")
-                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
-                driver.execute_script("arguments[0].click();", button)
-            except (NoSuchElementException, StaleElementReferenceException):
-                continue
+        except Exception:
+            button = driver.find_element(By.CSS_SELECTOR, "button[data-more-btn]")
+            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
+            driver.execute_script("arguments[0].click();", button)
 
+        # ждём подгрузку новых карточек
+        time.sleep(2)
 
     except TimeoutException:
-
         print("Кнопка 'Показать ещё' больше не найдена. Выход из цикла.")
-
-        break
-
-    except NoSuchElementException:
-
-        print("Кнопка отсутствует. Выход из цикла.")
-
         break
 
 driver.quit()

@@ -124,10 +124,7 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        if i['type'] == 'Квартира':
-            type = 'Квартиры'
-        else:
-            type = i['type']
+        type = 'Апартаменты'
         if i["finishing"] == '':
             finish_type = "Без отделки"
         else:

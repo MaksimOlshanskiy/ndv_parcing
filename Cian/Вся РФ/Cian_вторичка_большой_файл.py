@@ -106,20 +106,10 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'object_type': {
-            'type': 'terms',
-            'value': [
-                3,
-            ],
-        },
-'building_status': {
-            'type': 'term',
-            'value': 1,
-        },
         'region': {
             'type': 'terms',
             'value': [
-                4623,
+                1,
             ],
         },
         'page': {
@@ -143,15 +133,6 @@ json_data = {
                 9,
             ],
         },
-'repair': {
-            'type': 'terms',
-            'value': [
-                1,
-                2,
-                3,
-                4,
-            ],
-        },
 'floor': {
             'type': 'range',
             'value': {
@@ -161,11 +142,7 @@ json_data = {
         },
 'electronic_trading': {
             'type': 'term',
-            'value': 2,
-        },
-        'flat_share': {
-            'type': 'term',
-            'value': 2,
+            'value': 1,
         },
     },
 }

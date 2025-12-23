@@ -81,45 +81,28 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'suburbansale',
-        'from_mcad_km': {
-            'type': 'range',
-            'value': {
-                'lte': 20,
-            },
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
-        'region': {
-            'type': 'terms',
-            'value': [
-                1,
-                4593,
-            ],
-        },
-        'publish_period': {
-            'type': 'term',
-            'value': 2592000,
-        },
-        'offer_seller_type': {
-            'type': 'terms',
-            'value': [
-                1,
-            ],
-        },
+
         'object_type': {
             'type': 'terms',
             'value': [
-                1,
+                4,
             ],
         },
-        'page': {
+        'kp_id': {
+            'type': 'term',
+            'value': 2260,
+        },
+'page': {
             'type': 'term',
             'value': 1,
         },
     },
 }
+
 
 
 name_counter = 17
@@ -179,11 +162,14 @@ while len(flats) < total_count:
         items = response.json()["data"]["offersSerialized"]
 
     for i in items:
-        if i['similar']['count'] != 0:
-            multi_id = i['similar']['url'].split('=')[-1]
-            print(multi_id)
-            multi_ids.append(multi_id)
-            continue
+        try:
+            if i['similar']['count'] != 0:
+                multi_id = i['similar']['url'].split('=')[-1]
+                print(multi_id)
+                multi_ids.append(multi_id)
+                continue
+        except:
+            pass
 
         try:
             region = i['geo']['address'][0]['fullName']

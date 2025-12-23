@@ -7,9 +7,26 @@ import datetime
 from Developer_dict import name_dict, developer_dict
 from area_dictionary.Старая_квартирография.step_4_replacement_to_excel import process_data, load_json_data
 import json
+from enrich.main2 import enrich_dataframe, load_json
+from openpyxl import load_workbook
+from openpyxl.styles import Alignment
+from openpyxl.utils import get_column_letter
 
+def get_unique_filepath(folder_path: str, filename: str) -> str:
+    """
+    Если файл существует — добавляет _1, _2, _3 ...
+    """
+    base, ext = os.path.splitext(filename)
+    file_path = os.path.join(folder_path, filename)
 
-def save_flats_to_excel(flats, project, developer, kvartirografia=True):
+    counter = 1
+    while os.path.exists(file_path):
+        file_path = os.path.join(folder_path, f"{base}_{counter}{ext}")
+        counter += 1
+
+    return file_path
+
+def save_flats_to_excel(flats, project, developer, kvartirografia=True, drop_columns=True):
 
     df = pd.DataFrame(flats, columns=['Дата обновления',
                                       'Название проекта',
@@ -95,32 +112,26 @@ def save_flats_to_excel(flats, project, developer, kvartirografia=True):
     df["Название проекта"] = df["Название проекта"].replace(name_dict)
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 
-    # Загружаем JSON с характеристиками проектов
-    with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
-        projects_dict = json.load(f)
+    projects_dict = load_json(
+        r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json'
+    )
+    corpus_dict = load_json(
+        r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json'
+    )
+    if kvartirografia:
+        area_dict = load_json(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json')
+    else:
+        area_dict = None
 
-    # Готовим название проекта к сопоставлению (убираем «»)
-    df["project_key"] = (
-        df["Название проекта"].astype(str)
-        .str.replace("«", "", regex=False)
-        .str.replace("»", "", regex=False)
+    df = enrich_dataframe(
+        df,
+        projects_dict,
+        corpus_dict,
+        area_dict
     )
 
-    # Заполняем характеристики ТОЛЬКО по совпадению Названия проекта
-    for idx, row in df.iterrows():
-        key = row["project_key"]
-        if key in projects_dict:
-            for col, value in projects_dict[key].items():
-                if col in df.columns:
-                    df.at[idx, col] = value
-
-    df.drop(columns=["project_key"], inplace=True)
-
-    df['Дата обновления'] = pd.to_datetime(df['Дата обновления'], errors="coerce")
-
-    json_data = load_json_data(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json')
-    if kvartirografia and developer != 'Фонд реновации':
-        df = process_data(json_data, df)
+    if drop_columns:
+        df = df.drop(columns=['секция', 'этаж', 'номер'], errors='ignore')
 
     print(df[['Корпус', 'Кол-во комнат', 'Площадь, кв.м', 'Цена лота, руб.', 'Цена со скидкой, руб.']].info())
     print(f'')
@@ -140,12 +151,42 @@ def save_flats_to_excel(flats, project, developer, kvartirografia=True):
         os.makedirs(folder_path)
     project = re.sub(r'[<>:"/\\|?*]', '_', project)
     filename = f"{developer}_{project}_{current_date}.xlsx"
-    file_path = os.path.join(folder_path, filename)
+    file_path = get_unique_filepath(folder_path, filename)
     df.to_excel(file_path, index=False)
+    # открываем файл и применяем выравнивание
+    wb = load_workbook(file_path)
+    ws = wb.active
+
+    center_alignment = Alignment(horizontal='center', vertical='center')
+
+    for row in ws.iter_rows():
+        for cell in row:
+            cell.alignment = center_alignment
+
+    # Автоподбор ширины колонок
+    for col in ws.columns:
+        max_length = 0
+        col_letter = get_column_letter(col[0].column)  # Получаем буквенное обозначение колонки
+
+        for cell in col:
+            try:
+                if cell.value:
+                    # Учитываем длину текста в ячейке
+                    cell_length = len(str(cell.value))
+                    if cell_length > max_length:
+                        max_length = cell_length
+            except:
+                pass
+
+        # Устанавливаем ширину колонки (добавляем 2 для отступов)
+        adjusted_width = max_length + 2
+        ws.column_dimensions[col_letter].width = adjusted_width
+
+    wb.save(file_path)
     print(f"✅ Данные сохранены в файл: {file_path}")
 
 
-def save_cian_to_excel(flats, project, developer):
+def save_cian_to_excel(flats, project, developer, drop_columns = True):
     df = pd.DataFrame(flats, columns=['Дата обновления',
                                       'Название проекта',
                                       'на англ',
@@ -252,10 +293,10 @@ def save_cian_to_excel(flats, project, developer):
 
     df.drop(columns=["primary_key"], inplace=True)
 
-
-
-
     print(f'Число лотов: {len(df)}')
+
+    if drop_columns:
+        df = df.drop(columns=['секция', 'этаж', 'номер'], errors='ignore')
 
 
     current_date = datetime.date.today()
@@ -267,8 +308,10 @@ def save_cian_to_excel(flats, project, developer):
     project = re.sub(r'[<>:"/\\|?*]', '_', project)
     developer = re.sub(r'[<>:"/\\|?*]', '_', developer)
     filename = f"{developer}_{project}_{current_date}.xlsx"
-    file_path = os.path.join(folder_path, filename)
+    file_path = get_unique_filepath(folder_path, filename)
     df.to_excel(file_path, index=False)
+
+
     try:
         print(f"✅ Данные сохранены в файл: {file_path}")
     except:

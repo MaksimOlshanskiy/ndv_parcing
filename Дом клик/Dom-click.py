@@ -61,27 +61,28 @@ cookies = {
     '_ym_d': '1759300554',
     'adrdel': '1759300555210',
     '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
-    'iosAppLink': 'https://redirect.appmetrica.yandex.com/serve/606068252266727267',
-    'currentRegionGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'currentLocalityGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'regionName': '1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
     'favoriteHintShowed': 'true',
+    'iosAppLink': '',
     '_ym_isad': '2',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737',
-    'qrator_jsr': 'v2.0.1764943889.853.5b6ce31faIkQhtwa|VmtU04iwSIDBDXn2|CEQrP+kdYFvbB5Eq0uh4qKbsmCux3BXcAUSz3lqmfMrC11VTnZIDFB7O5FVCp0hiFRbWZPd9/gXHaIwjEHDtow==-dm4ralupSXT7McOY7qH5iiF59Vw=-00',
-    'qrator_jsid2': 'v2.0.1764943889.853.5b6ce31faIkQhtwa|a5Q1xHKPtgyzcBIG|061VWhClrHpXENqs9tFvnNo+mJg/ta/XOe8rfRTbX5yPU8SmX3AJeHIY8wzbMGK99ymWK/UGYQdx2YyKs51Pc6hBK6smDLjyZz6MynZ/qwo/woNi5aElGXbq9jJVC5MOeLM+XVU8Fni2pfTFiyavTsL80oTjpumyJKI3h1hdyVk=-ZTN0X1UOKOUynmQ3C+zIbBXhGWA=',
-    '_visitId': 'dfe46d82-0ac4-40b3-ac68-538205099fde-f4f0dcc432ac8ba6',
-    't3_sid_7711713': 's1.579603876.1764922255259.1764943916148.31.22.5.1..',
-    'tmr_reqNum': '288',
+    'currentRegionGuid': '321b0daa-da95-4ce5-81b3-a7ab62d89d19',
+    'currentLocalityGuid': '6369cbfc-1f06-4574-adba-82f4dc42c0f7',
+    'regionName': '6369cbfc-1f06-4574-adba-82f4dc42c0f7:%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0',
+    'qrator_ssid2': 'v2.0.1765201073.673.c344b005A6uhc7L8|eMeq8Ek3tNgXcQ2B|qZPWWX9Ml0+Z5icbP1sLD+ziivYprxZK0XyVW7sfXLo13jfRdVCRwvSKAsmfYgDMSRnA5S29kFJ+sevfAhXjfA==-hGmjvL8rtjCd8kFIxcrMwL/DLrg=',
+    'qrator_jsr': 'v2.0.1765201073.673.c344b005A6uhc7L8|5nUAVcb8tmxmRy4t|N24rtrbBuM0kU0zTVYPzx3N3NxphXTprgQj8UmvDZU/+6rakDMg/Ln0gA+1k0A2UHvyfSJfeeaZvtn6NPQPXIg==-xthbOh/cuuWuyOt8rodrqFPgIAI=-00',
+    'qrator_jsid2': 'v2.0.1765201073.673.c344b005A6uhc7L8|kGCBtE2t5FaYOyfI|+ZLkUoa9iNDhg24vS5CuHb5xuy07vgqblXSsl12YnT5LG1UprEqcdEoZ7ux7p1v1ED3jA/YRIHpzQrILZX+dcKAWBeeeX4Jc/iDxpXjzSTyZFQ2SSrlYDn8DFVtB7qBUUmnnXPsd0o2iSag9fuhtHsQdH8QKEjprfSfkxKpPE5g=-uLdQv37sCExtawAiIykdmH9lK6w=',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1765201079',
+    '_visitId': '2e14f46c-317b-4953-bf78-db9101b75a1e-f4f0dcc432ac8ba6',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1765201079',
+    't3_sid_7711713': 's1.1055238742.1765201079647.1765201100143.33.7.2.1..',
+    'tmr_reqNum': '290',
 }
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'Connection': 'keep-alive',
-    'Origin': 'https://domclick.ru',
-    'Referer': 'https://domclick.ru/',
+    'Origin': 'https://samara.domclick.ru',
+    'Referer': 'https://samara.domclick.ru/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
@@ -89,11 +90,11 @@ headers = {
     'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; iosAppLink=https://redirect.appmetrica.yandex.com/serve/606068252266727267; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; favoriteHintShowed=true; _ym_isad=2; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737; qrator_jsr=v2.0.1764943889.853.5b6ce31faIkQhtwa|VmtU04iwSIDBDXn2|CEQrP+kdYFvbB5Eq0uh4qKbsmCux3BXcAUSz3lqmfMrC11VTnZIDFB7O5FVCp0hiFRbWZPd9/gXHaIwjEHDtow==-dm4ralupSXT7McOY7qH5iiF59Vw=-00; qrator_jsid2=v2.0.1764943889.853.5b6ce31faIkQhtwa|a5Q1xHKPtgyzcBIG|061VWhClrHpXENqs9tFvnNo+mJg/ta/XOe8rfRTbX5yPU8SmX3AJeHIY8wzbMGK99ymWK/UGYQdx2YyKs51Pc6hBK6smDLjyZz6MynZ/qwo/woNi5aElGXbq9jJVC5MOeLM+XVU8Fni2pfTFiyavTsL80oTjpumyJKI3h1hdyVk=-ZTN0X1UOKOUynmQ3C+zIbBXhGWA=; _visitId=dfe46d82-0ac4-40b3-ac68-538205099fde-f4f0dcc432ac8ba6; t3_sid_7711713=s1.579603876.1764922255259.1764943916148.31.22.5.1..; tmr_reqNum=288',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; favoriteHintShowed=true; iosAppLink=; _ym_isad=2; currentRegionGuid=321b0daa-da95-4ce5-81b3-a7ab62d89d19; currentLocalityGuid=6369cbfc-1f06-4574-adba-82f4dc42c0f7; regionName=6369cbfc-1f06-4574-adba-82f4dc42c0f7:%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0; qrator_ssid2=v2.0.1765201073.673.c344b005A6uhc7L8|eMeq8Ek3tNgXcQ2B|qZPWWX9Ml0+Z5icbP1sLD+ziivYprxZK0XyVW7sfXLo13jfRdVCRwvSKAsmfYgDMSRnA5S29kFJ+sevfAhXjfA==-hGmjvL8rtjCd8kFIxcrMwL/DLrg=; qrator_jsr=v2.0.1765201073.673.c344b005A6uhc7L8|5nUAVcb8tmxmRy4t|N24rtrbBuM0kU0zTVYPzx3N3NxphXTprgQj8UmvDZU/+6rakDMg/Ln0gA+1k0A2UHvyfSJfeeaZvtn6NPQPXIg==-xthbOh/cuuWuyOt8rodrqFPgIAI=-00; qrator_jsid2=v2.0.1765201073.673.c344b005A6uhc7L8|kGCBtE2t5FaYOyfI|+ZLkUoa9iNDhg24vS5CuHb5xuy07vgqblXSsl12YnT5LG1UprEqcdEoZ7ux7p1v1ED3jA/YRIHpzQrILZX+dcKAWBeeeX4Jc/iDxpXjzSTyZFQ2SSrlYDn8DFVtB7qBUUmnnXPsd0o2iSag9fuhtHsQdH8QKEjprfSfkxKpPE5g=-uLdQv37sCExtawAiIykdmH9lK6w=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1765201079; _visitId=2e14f46c-317b-4953-bf78-db9101b75a1e-f4f0dcc432ac8ba6; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1765201079; t3_sid_7711713=s1.1055238742.1765201079647.1765201100143.33.7.2.1..; tmr_reqNum=290',
 }
 
 params = {
-    'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'address': '6369cbfc-1f06-4574-adba-82f4dc42c0f7',
     'offset': '0',
     'limit': '20',
     'sort': 'qi',
@@ -101,12 +102,13 @@ params = {
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '122541',
-    'complex_name': 'ЖК Высокий берег',
+    'complex_ids': '119301',
+    'utm_source': 'yandex',
+    'complex_name': 'ЖК Гранд комфорт',
     'from_developer': '1',
     'sort_by_tariff_date': '1',
-    'enable_mixed_ranking': '1',
 }
+
 
 
 flats = []
@@ -225,7 +227,10 @@ while True:
                     district2 = ''
                     adress2 = adress
                     eskrou2 = ''
-                    korpus2 = soup.find('span', class_= 'Is5nd').text.replace('Корпус: ', '').replace('Корпус ', '').replace('№', '').strip()
+                    try:
+                        korpus2 = soup.find('span', class_= 'Is5nd').text.replace('Корпус: ', '').replace('Корпус ', '').replace('№', '').strip()
+                    except:
+                        korpus2 = ''
                     konstruktiv2 = ''
                     klass2 = ''
                     quarter2 = ''

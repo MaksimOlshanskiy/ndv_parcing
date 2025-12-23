@@ -96,7 +96,7 @@ json_data = {
             'value': [
                 {
                     'type': 'newobject',
-                    'id': 5411,
+                    'id': 7240,
                 },
             ],
         },
@@ -132,7 +132,7 @@ json_data = {
         },
         'page': {
             'type': 'term',
-            'value': 2,
+            'value': 1,
         },
     },
 }
@@ -321,7 +321,7 @@ for rooms in rooms_ids:
                 counter += 1
                 if not items:
                     break
-                sleep_time = random.uniform(7, 11)
+                sleep_time = random.uniform(1, 3)
                 time.sleep(sleep_time)
 
                 counter += 1

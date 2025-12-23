@@ -58,8 +58,9 @@ params = {
 }
 
 zk_dict = {4: 'Mainstreet', 2: 'RED7', 3: "UNO, Старокоптевский", 1: "Very на ботанической", 7: "UNO, Головинские пруды",
-       8: "Физтехсити", 9: "Nametkin tower", 11: "Гоголь парк", 12: "Мираполис", 14: "Emotion", 15: "Малиново",
-       16: "Evopark Сокольники", 17: "Evopark Измайлово", 18: "UNO, Соколиная гора", 19: 'UNO.Горбунова'
+8: "Физтехсити", 9: "Nametkin tower", 11: "Гоголь парк", 12: "Мираполис", 13: 'VERY на Миклухо-Маклая',
+14: "Emotion", 15: "Малиново", 16: "Evopark Сокольники", 17: "Evopark Измайлово", 18: "UNO, Соколиная гора",
+19: 'UNO.Горбунова'
        }
 
 flats = []
@@ -101,6 +102,8 @@ while True:
         url = ""
 
         date = datetime.date.today()
+        if i["project_id"] == 20:
+            continue
         project = zk_dict.get(i["project_id"], i["project_id"])
         english = ''
         promzona = ''
@@ -122,9 +125,9 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        try:
-            korpus = int(i["building"])
-        except:
+        if i["project_id"] == 13:
+            korpus = i["section"]
+        else:
             korpus = i["building"]
         konstruktiv = ''
         klass = ''
@@ -169,7 +172,7 @@ while True:
               stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
     params["page"] = str(int(params["page"]) + 1)
-    sleep_time = random.uniform(4, 8)
+    sleep_time = random.uniform(1, 3)
     time.sleep(sleep_time)
     if not items:
         print("Всё скачано. Переходим к загрузке в файл")

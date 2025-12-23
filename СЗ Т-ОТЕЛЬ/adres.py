@@ -63,12 +63,12 @@ def parse_adresdoma_ru():
                     raw_type = card.find_element(By.CSS_SELECTOR, '.roomCard__title').text.strip().lower()
                     if 'студия' in raw_type:
                         room_count='студия'
-                        room_type = 'Квартира'
+                        room_type = 'Апартаменты'
                     elif 'евро' in raw_type:
                         import re
                         match = re.search(r'(\d+)\s*к\s*евро', raw_type)
                         room_count = f"{match.group(1)}Е" if match else raw_type
-                        room_type = 'Квартира'
+                        room_type = 'Апартаменты'
                     elif 'офис' in raw_type:
                         continue
 
@@ -104,7 +104,7 @@ def parse_adresdoma_ru():
                         'Стадия строительной готовности': '',
                         'Договор': '',
                         'Тип помещения': room_type,
-                        'Отделка': card.find_element(By.CSS_SELECTOR, '.roomCard__type').text.strip(),
+                        'Отделка': 'Без отделки',
                         'Кол-во комнат': room_count,
                         'Площадь, кв.м': float(area),
                         'Цена кв.м, руб.': '',
