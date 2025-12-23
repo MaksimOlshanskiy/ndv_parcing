@@ -7,10 +7,11 @@ import os
 '''
 
 # читаем файл
-df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные.xlsx")
+df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные_NEWW.xlsx")
 
 # удаляем дубликаты по ключам
-df = df.drop_duplicates(subset=["Название проекта", "Девелопер", "Корпус", "Договор"])
+print(df.columns.tolist())
+df = df.drop_duplicates(subset=["Название проекта", "Девелопер", "Корпус", "Договор", "id", "ID дом.рф"])
 
 # пробуем загрузить старый JSON (если он есть)
 if os.path.exists("projects.json"):
@@ -35,33 +36,45 @@ for _, row in df.iterrows():
     srok = str(row['Срок сдачи'])
     stage = str(row['Стадия строительной готовности'])
     ddu = str(row['Договор'])
+    id = str(row['id'])
+    id_domrf = str(row['ID дом.рф'])
+
+    # 🔥 Новые поля
+    status = str(row.get("Статус", ""))
+    sold = str(row.get("Распроданность квартир", ""))
+    flats = str(row.get("Количество квартир", ""))
+    area = str(row.get("Жилая площадь, м²", ""))
+
+    new_fields = {
+        "Срок сдачи": srok,
+        "Стадия строительной готовности": stage,
+        "Договор": ddu,
+        "id": id,
+        "ID дом.рф": id_domrf,
+        "Статус": status,
+        "Распроданность квартир": sold,
+        "Количество квартир": flats,
+        "Жилая площадь, м²": area
+    }
 
     # если проект новый
     if project_key not in new_result:
-        new_result[project_key] = {
-            corpus: {"Срок сдачи": srok, "Стадия строительной готовности": stage, "Договор": ddu}
-        }
+        new_result[project_key] = {corpus: new_fields}
         stats["projects_added"] += 1
         stats["corpus_added"] += 1
         continue
 
     # если корпус новый
     if corpus not in new_result[project_key]:
-        new_result[project_key][corpus] = {
-            "Срок сдачи": srok,
-            "Стадия строительной готовности": stage,
-            "Договор": ddu
-        }
+        new_result[project_key][corpus] = new_fields
         stats["corpus_added"] += 1
         stats["projects_updated"] += 1
         continue
 
     # если корпус есть, но данные изменились
     old_data = new_result[project_key][corpus]
-    if old_data["Срок сдачи"] != srok or old_data["Стадия строительной готовности"] != stage:
-        new_result[project_key][corpus]["Срок сдачи"] = srok
-        new_result[project_key][corpus]["Стадия строительной готовности"] = stage
-        new_result[project_key][corpus]["Договор"] = ddu
+    if any(old_data.get(k) != v for k, v in new_fields.items()):
+        new_result[project_key][corpus] = new_fields
         stats["corpus_updated"] += 1
         stats["projects_updated"] += 1
 

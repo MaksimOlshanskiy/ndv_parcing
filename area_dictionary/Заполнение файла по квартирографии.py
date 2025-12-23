@@ -3,8 +3,8 @@ import pandas as pd
 
 json_path = r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json' # база квартирографии
 
-excel_path = r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12.xlsx"   # загружаемый файл
-output_path = r"C:\Users\m.olshanskiy\Desktop\Запрос 04.12\Запрос 04.12к.xlsx"  # сохраняемый файл
+excel_path = r"C:\Users\m.olshanskiy\Desktop\База декабрь\Исходники\Ноябрь База 7.xlsx"   # загружаемый файл
+output_path = r"C:\Users\m.olshanskiy\Desktop\База декабрь\Исходники\Ноябрь База 7.xlsx"  # сохраняемый файл
 
 
 def load_json_data(json_path):
@@ -27,7 +27,7 @@ def process_data(json_data, excel_df):
     total = len(result_df)
 
     # Список застройщиков, у которых не надо менять типологию
-    developers_to_skip = {'фонд реновации'}
+    developers_to_skip = {'московские кварталы'}
     # Список проектов, у которых не надо менять типологию
     jk_name_to_skip = {'гармония парк', 'мишино-2'}
     jk_name_to_skip2 = {'серебро', 'берег'}
@@ -135,6 +135,8 @@ def process_data(json_data, excel_df):
             result_df.at[idx, 'Кол-во комнат'] = 'Н/Д'
         if __name__ == "__main__":
             print(f"[{idx + 1}/{total}] Обработано: ЖК {jk_name}, площадь {area}")
+
+
 
     return result_df
 

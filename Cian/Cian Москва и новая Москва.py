@@ -1,4 +1,4 @@
-'''
+'''ГЛАВКАПИТАЛСТРОЙ М
 
 cian отдаёт не более 1500 объявлений
 нужно проходиться по каждому списку: ids_moscow и т.д., подставляя его в 40 строке
@@ -14,7 +14,7 @@ import openpyxl
 import os
 import random
 import re
-from functions import classify_renovation, save_cian_to_excel
+from functions import classify_renovation, save_cian_to_excel, save_flats_to_excel
 
 decoration_dict = {'preFine' : 'Предчистовая', 'fine' : 'С отделкой', 'without' : 'Без отделки', 'fineWithFurniture' : 'С отделкой и доп опциями'}
 decoration_list = ['preFine', 'fine', 'without', 'fineWithFurniture']
@@ -28,7 +28,7 @@ obshiy = [36935, 1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 2344978, 7778
        5100524, 4260360, 5340468, 4648486, 46529, 48693, 4482950, 176051, 7789, 2567913, 4585408, 7030,
        300653, 5138871, 3730443, 7956, 4558643, 4729772, 1358767, 17877, 1628126, 8689, 5208,
         4482905, 3394804, 600475, 5499, 4056931, 2522095, 2202, 4677457, 3922634, 4109874, 6644, 319,
-          4126730, 3402470, 3872784, 5500590, 5698426, 4747901, 5624837, 3975866, 5694445, 41567, 4983718]
+          4126730, 3402470, 3872784, 5500590, 5698426, 4747901, 5624837, 3975866, 5694445]
 
 ids_moscow = [1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 2344978, 7778, 5138735, 3683691,
        3419909, 3911074, 46840, 50027, 4051375, 4186702, 2234022, 1900321, 368, 81377, 45865,
@@ -49,7 +49,7 @@ ids_mo_srednee = [1628126, 8689, 5208, 4482905, 5194393, 3394804, 600475, 5499, 
 ids_mo_bliz = [118473, 4677457, 3922634, 4109874, 6644, 319, 4126730
        ]
 
-parsim = [5694445, 4585408, 4677457]
+parsim = [5728598]
 
 cookies = {
     '_CIAN_GK': '787699e3-fc12-4a31-a77a-6cfd610b499c',
@@ -334,7 +334,7 @@ for y in parsim:
             counter += 1
 
     if len(flats) > 0:
-        save_cian_to_excel(flats, project, developer)
+        save_flats_to_excel(flats, project, developer, kvartirografia=False)
     else:
         no_flats.append(y)
 

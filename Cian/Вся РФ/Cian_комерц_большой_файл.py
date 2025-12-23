@@ -7,7 +7,7 @@ import random
 from functions import merge_and_clean, haversine
 import json
 
-type_of_lot = 'Коммерция, продажа'
+
 
 # noinspection PyDictDuplicateKeys
 cookies = {
@@ -146,15 +146,11 @@ def extract_digits_or_original(s):
 
 current_date = datetime.date.today()
 
-region_list = [
-    4593, 4588, 4584, 4596, 4606, 4608, 4618, 4560, 4609, 4619, 181462,
-    4564, 4581, 4620, 4607, 4557, 4623, 4612, 4573, 4598, 4585, 4555,
-    4567, 4621, 4587, 4605, 4568, 4625, 184723, 4604, 4576, 4574, 4603,
-    4602, 4562, 4561, 4565, 4601, 4636, 4599, 4629, 4580, 4630, 4572,
-    4615, 4614, 4591, 4553, 4635, 4624, 4570, 4583, 4566, 4600, 4554,
-    4556, 4558, 4563, 4569, 5053, 4571, 4575, 4577, 4578, 4579, 4582,
-    4586, 4589, 4590, 4592, 4594, 4595, 4597, 4610, 4611, 4613, 4617,
-    4622, 4627, 4628, 4631, 4633, 4634
+types_dict = {1: 'Офис, продажа', 2: 'Торговая площадь, продажа', 3: 'Склад, продажа', 5: 'Помещение свободного назначения, продажа',
+              7: 'Производство, продажа', 11: 'Здание, продажа'}
+
+not_done = [1, 2]
+region_list = [4576, 4580, 4587, 4599, 4602, 4605, 4621, 4625, 4636, 4629, 184723, 2
 ]
 
 session = requests.Session()
@@ -165,7 +161,7 @@ for region in region_list:
 
     json_data["jsonQuery"]["page"]["value"] = 1
     json_data["jsonQuery"]["region"]["value"][0] = region
-    json_data["jsonQuery"]["office_type"]["value"] = [1, 2, 3, 4, 5, 7]
+    json_data["jsonQuery"]["office_type"]["value"] = [1,2,3,5,7,11]
     json_data["jsonQuery"]["offer_seller_type"]["value"] = [2, 3, 1]
 
 
@@ -186,29 +182,21 @@ for region in region_list:
     items_count = response.json()['data']["aggregatedCount"]
     print(f'В регионе {items_count} лотов')
 
-    if items_count <= 1500:
-
-        land_status_ids = [[1,2,3,5,7,11]]
-        offer_seller_types = [[1, 2, 3]]
-
-    elif 1500 < items_count < 2500:
+    if items_count <= 2500:
 
         land_status_ids = [[1], [2], [3], [5], [7], [11]]
         offer_seller_types = [[1, 2, 3]]
 
-    elif 2500 <= items_count <= 4500:
+    elif 2500 <= items_count <= 999000:
 
         land_status_ids = [[1], [2], [3], [5], [7], [11]]
         offer_seller_types = [[1], [2], [3]]
 
-    elif items_count > 4500:
-
-        land_status_ids = [[1], [2], [3], [5], [7], [11]]
-        offer_seller_types = [[1], [2], [3]]
 
     flats = []
     counter = 1
     total_count = 1
+
 
 
     for land_status in land_status_ids:
@@ -488,12 +476,13 @@ for region in region_list:
                         officeType = i['office']
                     except:
                         officeType = ''
+                    type_of_lot = types_dict[land_status[0]]
 
 
 
 
                     print(
-                        f"Город {location}, {location2}, {okrug}, {raion}, {metro}, {street}, {house}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}")
+                        f"{type_of_lot}, Город {location}, {location2}, {okrug}, {raion}, {metro}, {street}, {house}, {url}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}")
                     result = [type_of_lot, location, location2, location3, okrug, raion, mikroraion, metro, street, house, adress, rooms_count, area, price, finish_type, description, property_from, url,
                               added, balconiesCount, bedroomsCount, buildYear, cargoLiftsCount, passengerLiftsCount, floorsCount, materialType,
                               parking, creationDate, floorNumber, coordinates_lat, coordinates_lng, highways_nearest, highway_distance,
