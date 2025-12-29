@@ -208,6 +208,8 @@ response = session.post(    # Первичный запрос для опред�
 
 items_count = response.json()['data']["aggregatedCount"]
 print(f'В городе {items_count} лотов')
+city_in_work = response.json()['data']['breadcrumbs'][0]['title']
+print(city_in_work)
 
 
 if items_count <=  1500:
@@ -229,9 +231,6 @@ elif items_count > 4500:
 
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
     total_floor_list = [[1, 3], [4, 7], [8, 15], [16, 200]]
-
-
-
 
 
 for rooms in rooms_ids:
@@ -296,67 +295,142 @@ for rooms in rooms_ids:
                     items = response.json()["data"]["offersSerialized"]
 
                 for i in items:
+
+                    data = i['geo']['address']
+                    result = {}
+                    counterr = {}
+
+                    for item in data:
+                        t = item["type"]
+                        name = item["fullName"]
+
+                        # Первый раз — без номера
+                        if t not in counterr:
+                            counterr[t] = 1
+                            key = t
+                        else:
+                            counterr[t] += 1
+                            key = f"{t}{counterr[t]}"
+
+                        result[key] = name
+
+                    new_result = {
+                        ('mikroraion' if isinstance(v, str) and 'мкр' in v else k): v
+                        for k, v in result.items()
+                    }
+                    result = new_result
+                    # список нужных переменных
+                    keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
+
+                    # создаём переменные
+                    for key in keys:
+                        globals()[key] = result.get(key, "")
                     try:
-                        geo1 = i['geo']['address'][0]['fullName']
+                        if i['building']['deadline']['isComplete']:
+                            srok_sdachi = "Дом сдан"
+                        elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline'][
+                            'year'] is None:
+                            srok_sdachi = ''
+                        else:
+                            srok_sdachi = f"Cдача ГК: {i['newbuilding']['house']['finishDate']['quarter']} квартал, {i['newbuilding']['house']['finishDate']['year']} года".replace(
+                                'None', '')
                     except:
-                        geo1 = ''
+                        srok_sdachi = ''
                     try:
-                        geo2 = i['geo']['address'][1]['fullName']
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
                     except:
-                        geo2 = ''
+                        url = ''
+
                     try:
-                        geo3 = i['geo']['address'][2]['fullName']
+                        if i['isApartments']:
+                            type = "Апартаменты"
+                        else:
+                            type = "Квартира"
                     except:
-                        geo3 = ''
+                        type = ''
+
                     try:
-                        geo4 = i['geo']['address'][3]['fullName']
+                        price = i['bargainTerms']['priceRur']
                     except:
-                        geo4 = ''
+                        price = ''
+                    try:
+                        project = i['geo']['jk']['displayName'].replace('ЖК ', '').replace('«', '').replace('»', '')
+                    except:
+                        project = ''
+                    # try:
+                    #   if i['decoration'] == "fine":
+                    #      finish_type = "С отделкой"
+                    #    elif i['decoration'] == "without" or i['decoration'] == "rough":
+                    #       finish_type = "Без отделки"
+                    #   else:
+                    #      finish_type = i['decoration']
+                    # except:
+                    #   finish_type = ''
+                    # if not finish_type:
+                    #    finish_type = classify_renovation(i['description'])
+                    try:
+                        finish_type = repair_ids_dict.get(repair_id)
+                    except:
+                        finish_type = 'Не определён'
 
                     try:
                         adress = i['geo']['userInput']
                     except:
-                        adress = ''
+                        adress = ""
+
                     try:
-                        jk = i['geo']['jk']['displayName']
+                        korpus = i["geo"]["jk"]["house"]["name"]
                     except:
-                        jk = ''
+                        korpus = ''
+
                     try:
-                        if not i['roomsCount'] and i['flatType'] == 'studio':
-                            rooms_count = 0
+                        developer = i['geo']['jk']['developer']['name']
+                    except:
+                        developer = ""
+
+                    try:
+                        if i["roomsCount"] is None:
+                            room_count = 0
                         else:
-                            rooms_count = i['roomsCount']
+                            room_count = int(i["roomsCount"])
                     except:
-                        rooms_count = ''
+                        room_count = ''
                     try:
-                        area = float(i['totalArea'])
+                        area = float(i["totalArea"])
                     except:
                         area = ''
-                    try:
-                        price = int(i['bargainTerms']['priceRur'])
-                    except:
-                        price = i['bargainTerms']['priceRur']
-                    try:
-                        finish_type = repair_ids_dict.get(repair_id)
-                    except:
-                        finish_type = 'Неизвестно'
-                    try:
-                        description = i['description']
-                    except:
-                        description = ''
-                    try:
-                        if i['fromDeveloper'] == True or i['user']['isBuilder'] == True:
-                            property_from = "От застройщика"
-                        elif i['user']['isAgent'] is True:
-                            property_from = "От агента"
-                        elif i['isByHomeowner'] is True:
-                            property_from = 'От собственника'
-                        else:
-                            property_from = ''
-                    except:
-                        property_from = ''
-                    url = str(i['fullUrl'])
 
+                    date = datetime.date.today()
+
+                    try:
+                        floor = i["floorNumber"]
+                    except:
+                        floor = ''
+                    try:
+                        added = i['added']
+                    except:
+                        added = ''
+                    try:
+                        kitchenArea = float(i['kitchenArea'])
+                    except:
+                        kitchenArea = 0
+                    try:
+                        livingArea = float(i['livingArea'])
+                    except:
+                        livingArea = 0
+                    try:
+                        parking = i['building']['parking']['type']
+                    except:
+                        parking = ''
+                    try:
+                        balconiesCount = int(i['balconiesCount'])
+                    except:
+                        balconiesCount = 0
+                    try:
+                        loggiasCount = int(i['loggiasCount'])
+                    except:
+                        loggiasCount = 0
+                    balconies_and_loggias_count = balconiesCount + loggiasCount
                     try:
 
                         lat_jk = i['geo']['coordinates']['lat']
@@ -369,22 +443,52 @@ for rooms in rooms_ids:
                         distance = ''
 
                     print(
-                        f"Город {geo1}, {geo2}, {geo3}, {geo4}, {url}, Расстояние: {distance}, Комнаты: {rooms_count}, площадь: {area}, цена: {price}, ремонт {finish_type}")
-                    result = [geo1, geo2, geo3, geo4, distance, adress, rooms_count, area, price, finish_type, description, property_from, url]
+                        f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
+                    result = [project, developer, location, location2, okrug, raion, mikroraion, metro, street, house,
+                              korpus, distance, srok_sdachi, type,
+                              finish_type, room_count, area, kitchenArea, livingArea, price, floor,
+                              balconies_and_loggias_count, parking, url]
                     flats.append(result)
 
+                if not items:
+                    break
                 json_data["jsonQuery"]["page"]["value"] += 1
+                print(len(flats))
                 print("-----------------------------------------------------------------------------")
                 total_count = response.json()["data"]["offerCount"]
                 downloaded = len(flats)
-                print(f'Номер страницы: {json_data["jsonQuery"]["page"]["value"]}')
-                print(f'Загружено {downloaded} предложений из {total_count}')
+                print()
                 counter += 1
-                if not items:
-                    break
-                sleep_time = random.uniform(7, 9)
-                time.sleep(sleep_time)
 
+        if len(flats) > 1:
+
+            df = pd.DataFrame(flats, columns=['Название проекта',
+                                                    'Девелопер',
+                                                    'Локация',
+                                                    'Локация2',
+                                                    'Округ',
+                                                    'Район',
+                                                    'Микрорайон',
+                                                    'Метро',
+                                                    'Улица',
+                                                    'Дом',
+                                                    'Корпус',
+                                                    'Расстояние до центра, км',
+                                                    'Срок сдачи',
+                                                    'Тип помещения',
+                                                    'Отделка',
+                                                    'Кол-во комнат',
+                                                    'Площадь, кв.м',
+                                                    'Площадь кухни, кв.м',
+                                                    'Жилая площадь, кв.м',
+                                                    'Цена лота, руб.',
+                                                    'Этаж',
+                                                    'Балконы/лоджии',
+                                                    'Паркинг',
+                                                    'Ссылка'
+                                                    ])
+
+            current_date = datetime.date.today()
 
             # Базовый путь для сохранения
             base_path = r""
@@ -393,35 +497,25 @@ for rooms in rooms_ids:
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
 
-            filename = f"{geo1}_{current_date}_{name_counter}.xlsx"
 
-            # Полный путь к файлу
+            def sanitize_filename(name):
+                for char in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
+                    name = name.replace(char, '_')
+                return name
+
+
+            project = sanitize_filename(project)
+            filename = f"{project}__{current_date}_{name_counter}.xlsx"
+
+            # Полный путь к файлу0
             file_path = os.path.join(folder_path, filename)
 
-            df = pd.DataFrame(flats, columns=['Гео1',
-                                              'Гео2',
-                                              'Гео3',
-                                              'Гео4',
-                                              'Расстояние до центра, км',
-                                              'Адрес',
-                                              'Кол-во комнат',
-                                              'Площадь',
-                                              'Цена',
-                                              'Отделка',
-                                              'Описание',
-                                              'Объявление от',
-                                              'Ссылка'
-                                              ])
-
-
-
             # Сохранение файла в папку
-            df.to_excel(file_path, index=False)
-            print(f'✅ Файл {filename} успешно сохранён')
+            try:
+                df.to_excel(file_path, index=False)
+            except:
+                filename = f"{project}_{current_date}_2.xlsx"
+                file_path = os.path.join(folder_path, filename)
+                df.to_excel(file_path, index=False)
 
-end_time = time.time()
-
-
-merge_and_clean(folder_path, f'Вторичка_{geo1}_{current_date}.xlsx')
-
-print(f"Время выполнения: {end_time - start_time:.4f} сек")
+merge_and_clean(folder_path, f'Вторичка_{city_in_work}_{current_date}.xlsx')
