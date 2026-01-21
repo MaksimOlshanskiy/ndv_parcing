@@ -85,7 +85,7 @@ while True:
 
 
         date = datetime.now()
-        project = 'Новые Островцы'
+        project = 'Новые Островцы (ОМ Девелопмент)'
 
 
         english = ''
@@ -103,7 +103,7 @@ while True:
         status = ''
         start = ''
         comment = ''
-        developer = "РТД Групп"
+        developer = "ОМ Девелопмент"
         okrug = ''
         district = ''
         adress = i['address']

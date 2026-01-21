@@ -16,9 +16,9 @@ project_list = ["'6921'", "'6923'", "'7074'", "'4836'", "'1012'", "'5610'", "'51
 
 year = 2025
 previous_year = 2024
-month = 11
-previous_month = 10
-file_name = 'Продажи конкурентов Космос'
+month = 12
+previous_month = 11
+file_name = 'Продажи конкурентов Космос 12'
 
 warnings.filterwarnings(
     "ignore",

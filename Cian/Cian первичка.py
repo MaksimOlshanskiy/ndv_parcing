@@ -224,7 +224,7 @@ json_data = {
 
 current_date = datetime.date.today()
 
-
+ids = [7219, 49501, 37138, 4703556, 3903936, 4651229, 29766, 3365057, 321231]
 for y in ids:
 
     flats = []
@@ -377,7 +377,7 @@ for y in ids:
                         except:
                             srok_sdachi = ''
                         try:
-                            url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
+                            url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
                         except:
                             url = ''
 
@@ -559,4 +559,4 @@ for y in ids:
             file_path = os.path.join(folder_path, filename)
             df.to_excel(file_path, index=False)
 
-merge_and_clean(folder_path, f'Первичка_{city_in_work}_{current_date}.xlsx')
+# merge_and_clean(folder_path, f'Первичка_{city_in_work}_{current_date}.xlsx')

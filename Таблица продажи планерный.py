@@ -6,15 +6,16 @@ import warnings
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, Alignment
 
-project_list = ["'4962'", "'5805'", "'5020'", "'6922'", "'6943'",
-                "'7393'", "'7616'", "'5652'", "'5722'", "'4505'",
-                "'5784'", "'1898'", "'6180'", "'7402'", "'7277'"]
+project_list = ["'8694'", "'2006'", "'4962'", "'5805'", "'5020'",
+                "'6922'", "'6943'", "'7393'", "'7616'", "'5652'",
+                "'5722'", "'4505'", "'5784'", "'1898'", "'6180'",
+                "'7402'", "'7277'"]
 
 year = 2025
 previous_year = 2024
-month = 11
-previous_month = 10
-file_name = 'Продажи конкурентов Планерный'
+month = 12
+previous_month = 11
+file_name = 'Продажи конкурентов Планерный 12'
 
 warnings.filterwarnings(
     "ignore",

@@ -1,6 +1,6 @@
 '''
 
-Указываем номер последней страницы с предложениями. if page_counter == ....
+Указываем номер последней страницы с предложениями. if page_counter ==
 
 '''
 
@@ -93,7 +93,7 @@ while True:
         project = 'Домодедово Парк Новый квартал'
         korpus = int(i.find(class_='product-card__subtitle').text.split()[1])
         type = 'Квартира'
-        finish_type = i.find(class_='finishing').get_text(strip=True)
+        finish_type = i.find(class_='finishing').get_text(strip=True).replace('отделка', '').strip()
         if i.find(class_= 'product-card__name').get_text(strip=True).split()[0] == 'Студия':
             room_count = 0
         else:
@@ -156,7 +156,7 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
 
-    if page_counter == 29:
+    if page_counter == 23:
         break
     page_counter += 1
     sleep_time = random.uniform(1, 3)

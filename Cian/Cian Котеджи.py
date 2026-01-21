@@ -83,17 +83,27 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
-        'page': {
-            'type': 'term',
-            'value': 1,
+        'region': {
+            'type': 'terms',
+            'value': [
+                4713,
+            ],
         },
-        'kp_id': {
+        'publish_period': {
             'type': 'term',
-            'value': 82906,
+            'value': 2592000,
         },
-        'suburban_offer_filter': {
-            'type': 'term',
-            'value': 0,
+        'house_year': {
+            'type': 'range',
+            'value': {
+                'lte': 1990,
+            },
+        },
+        'house_material': {
+            'type': 'terms',
+            'value': [
+                5,
+            ],
         },
         'object_type': {
             'type': 'terms',
@@ -101,16 +111,17 @@ json_data = {
                 1,
             ],
         },
-        'sort': {
+        'page': {
             'type': 'term',
-            'value': 'price_object_order',
+            'value': 1,
         },
     },
 }
 
 
 
-name_counter = 17
+
+name_counter = 14
 
 
 response = requests.post(
@@ -212,7 +223,7 @@ while len(flats) < total_count:
 
         print(
             f"Шоссе {highway}, {url}, Участок: {uchastok_area}, дом: {house_area}, цена: {price}, посёлок {poselok}, кп: {kp}, объявление {property_from}")
-        result = [highway, uchastok_area, house_area, price, poselok, kp, property_from, url]
+        result = ['Воронежская область', highway, uchastok_area, house_area, price, poselok, kp, property_from, url]
         flats.append(result)
 
     json_data["jsonQuery"]["page"]["value"] += 1
@@ -239,7 +250,8 @@ filename = f"МО-{name_counter}_{current_date}.xlsx"
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)
 
-df = pd.DataFrame(flats, columns=['Шоссе',
+df = pd.DataFrame(flats, columns=['Регион',
+                                  'Шоссе',
                                   'Размер участка',
                                   'Размер дома',
                                   'Цена',

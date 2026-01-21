@@ -248,7 +248,8 @@ name_dict = {'Сити Микс-Новокосино': 'СитиМикс Нов�
              'STONE Rise': 'Stone Rise',
              'Звёзды Арбата' : 'Звезды Арбата',
              'Жилой дом по ул. Станционная' : 'Элемент',
-             'ArmaniCasa Moscow Residences' : 'Armani/Casa Moscow Residences'
+             'ArmaniCasa Moscow Residences' : 'Armani/Casa Moscow Residences',
+             'Одинград' : 'Одинград. Квартал семейный'
 
              }
 

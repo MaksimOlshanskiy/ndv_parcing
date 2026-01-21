@@ -5,10 +5,10 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2025-12-05"
+folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2026-01-20"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'Запрос 04.12.xlsx'
+output_file_name = 'Тюмень Вторичка.xlsx'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -73,7 +73,7 @@ def fill_missing_price(df):
 
 
 
-# all_data = all_data.drop_duplicates(subset=["Ссылка"], keep="first")       # убираем полные дубликаты
+all_data = all_data.drop_duplicates()       # убираем полные дубликаты
 #  all_data = remove_share_sale(all_data)   # убираем доли в квартирахВоронежская область
 try:
     all_data = clean_project_name(all_data, 'Название проекта') # убираем слова ЖК и кавычки в названии проектов
@@ -83,6 +83,7 @@ except:
 
 # all_data['Ссылка'] = all_data['Ссылка'].apply(str)
 
+# all_data['Корпус'] = all_data['Корпус'].astype(str).replace(',', '.')
 print(all_data)
 print(f'Число строк в датафрейме {len(all_data)}')
 

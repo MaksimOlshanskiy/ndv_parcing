@@ -108,7 +108,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4927
+                1
             ],
         },
         'repair': {
@@ -127,7 +127,7 @@ json_data = {
         'room': {
             'type': 'terms',
             'value': [
-                1, 9
+                1
             ],
         },
         'publish_period': {
@@ -190,7 +190,7 @@ elif 2500 <= items_count <= 4500:
 
 elif items_count > 4500:
 
-    rooms_ids = [[1], [9]]
+    rooms_ids = [[1]]
     total_floor_list = [[1, 2], [3, 5], [6, 8], [9, 12], [13, 200]]
 
 
@@ -256,6 +256,8 @@ for rooms in rooms_ids:
 
                 for i in items:
 
+                    print(i)
+
 
                     data = i['geo']['address']
                     result = {}
@@ -284,7 +286,7 @@ for rooms in rooms_ids:
                         globals()[key] = result.get(key, "")
 
                     try:
-                        url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
                     except:
                         url = ''
                     try:
@@ -348,7 +350,7 @@ for rooms in rooms_ids:
                     date = datetime.date.today()
 
                     print(
-                        f"{location}, {location2}, {url}, площадь: {area}, цена: {price}")
+                        f"{location}, {location2}, {okrug}, {raion}, площадь: {area}, цена: {price}, {url}")
                     result = [date, location, location2, okrug, raion, mikroraion, metro, street, house, url, adress, distance, area, kitchenArea, livingArea, balconies_and_loggias_count,
                               price, rooms, finish_type]
                     flats.append(result)

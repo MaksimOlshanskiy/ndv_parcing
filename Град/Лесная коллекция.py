@@ -94,50 +94,52 @@ driver.get("https://lyesnaya.ru/catalog/")
 
 wait = WebDriverWait(driver, 5)  # небольшое ожидание
 
+MAX_COUNT = 100
+
 while True:
     try:
-        # ждём, пока кнопка снова станет кликабельной
         button = wait.until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-more-btn]"))
         )
-        time.sleep(2)
+
+        # читаем текущее значение data-count
+        count = int(button.get_attribute("data-count"))
+        print(f"Текущий data-count: {count}")
+
+        # условие выхода
+        if count >= MAX_COUNT:
+            print("Достигнут максимальный data-count. Выходим из цикла.")
+            break
+
+        time.sleep(1)
 
         try:
-            # пробуем обычный клик
             button.click()
         except (StaleElementReferenceException, Exception):
-            # если элемент "устарел" или перекрыт
-            try:
-                button = driver.find_element(By.CSS_SELECTOR, "button[data-more-btn]")
-                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
-                driver.execute_script("arguments[0].click();", button)
-            except (NoSuchElementException, StaleElementReferenceException):
-                continue
+            # fallback через JS
+            button = driver.find_element(By.CSS_SELECTOR, "button[data-more-btn]")
+            driver.execute_script(
+                "arguments[0].scrollIntoView({block: 'center'});", button
+            )
+            driver.execute_script("arguments[0].click();", button)
 
+        time.sleep(1)
 
-    except TimeoutException:
-
-        print("Кнопка 'Показать ещё' больше не найдена. Выход из цикла.")
-
+    except (TimeoutException, NoSuchElementException):
+        print("Кнопка не найдена. Выход из цикла.")
         break
 
-    except NoSuchElementException:
 
-        print("Кнопка отсутствует. Выход из цикла.")
-
-        break
-
-driver.quit()
 
 
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
 soup = BeautifulSoup(page_content, 'html.parser')
-flats_soup = soup.find_all('a', class_="flat-card catalog-view__item")
+flats_soup = soup.find_all('a', class_="catalog-card")
 for i in flats_soup:
 
     url = ''
     date = datetime.date.today()
-    project = ("Обручева 30")
+    project = "Лесная Коллекция"
     english = ''
     promzona = ''
     mestopolozhenie = ''
@@ -153,7 +155,7 @@ for i in flats_soup:
     status = ''
     start = ''
     comment = ''
-    developer = "ЛСР"
+    developer = "ГРАД"
     okrug = ''
     district = ''
     adress = ''
@@ -162,18 +164,24 @@ for i in flats_soup:
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''
-    finish_type = ''
+    finish_type = 'Без отделки'
     srok_sdachi_old = ''
     stadia = ''
     dogovor = ''
     type = 'Квартиры'
     room_count = ''
-    area = ''
+    area = i.find('span', class_='catalog-card__square').text.replace(' м²', '')
     price_per_metr = ''
-    old_price = i.find('span', class_='flat-card__price-current').text.strip().replace(' ', '').replace('₽', '')
+
+    try:
+        old_price = i.find('span', class_='catalog-card__cost-old').text.strip().replace(' ', '').replace('₽', '')
+        price = i.find('span', class_='catalog-card__cost-current').text.strip().replace(' ', '').replace('₽', '')
+    except:
+        old_price = i.find('span', class_='catalog-card__cost-current').text.strip().replace(' ', '').replace('₽', '')
+        price = ''
+
     discount = ''
     price_per_metr_new = ''
-    price = ''
     section = ''
     floor = ''
     flat_number = ''
@@ -188,6 +196,8 @@ for i in flats_soup:
               stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
               price_per_metr_new, price, section, floor, flat_number]
     flats.append(result)
+
+driver.quit()
 
 
 

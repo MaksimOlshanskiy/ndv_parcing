@@ -1,7 +1,7 @@
 import datetime
 import time
 import requests
-
+import random
 from functions import save_flats_to_excel
 from info_1DSK import info
 
@@ -64,6 +64,7 @@ for key, data in info.items():
         flats.append(result)
         count += 1
 
-    time.sleep(0.2)  # Задержка между запросами
+    sleep_time = random.uniform(1, 3)
+    time.sleep(sleep_time)  # Задержка между запросами
 
 save_flats_to_excel(flats, 'all', developer)
