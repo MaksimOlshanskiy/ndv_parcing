@@ -79,8 +79,8 @@ def update_all_base():
     df = df.drop_duplicates(subset=["Название проекта", "Девелопер", "Корпус", "Договор"])
 
     # пробуем загрузить старый JSON (если он есть)
-    if os.path.exists(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json"):
-        with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
+    if os.path.exists(r"/!changing_haracteristik_dictionary/projects_old.json"):
+        with open(r"/!changing_haracteristik_dictionary/projects_old.json", "r", encoding="utf-8") as f:
             old_result = json.load(f)
     else:
         old_result = {}
@@ -132,7 +132,7 @@ def update_all_base():
             stats["projects_updated"] += 1
 
     # сохраняем новый JSON
-    with open(r"!changing_haracteristik_dictionary/projects.json", "w", encoding="utf-8") as f:
+    with open(r"!changing_haracteristik_dictionary/projects_old.json", "w", encoding="utf-8") as f:
         json.dump(new_result, f, ensure_ascii=False, indent=4)
 
     # выводим логи

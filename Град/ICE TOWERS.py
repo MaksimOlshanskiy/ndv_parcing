@@ -72,8 +72,7 @@ for key, inner_dict in data.items():
     developer = "Град"
     project = 'ICE TOWERS'
     korpus = inner_dict['b']
-    if inner_dict['t'] == 'Квартира':
-        type = 'Квартиры'
+    type = 'Квартиры'
     finish_type = 'Без отделки'
     room_count = inner_dict['rc']
     try:

@@ -14,11 +14,11 @@ from functions import save_flats_to_excel
 
 cookies = {
     '_ym_uid': '174358513932310668',
-    '_ym_d': '1762777279',
+    '_ym_d': '1769438650',
+    'XSRF-TOKEN': 'eyJpdiI6ImNHWWtEOWMwRFFna2dTdXlPU2FxM2c9PSIsInZhbHVlIjoiRmErbXgwaEh2Nm01alJRc1RkK1hHNWh1RWQrY3RyNnY0ZGdUZTZoRGhYS05ncjkveEdWQ2FSeFpEaEFXeUJkRkhWTUtLYUcvZVNuRWNROGFwUFQrK2pteVhLK25WWUpnMEFaUUZ5eVlIbFpHS29XS3FleWR1YlhIam1mekJjUGkiLCJtYWMiOiIzZGZhNTY2ODIzNDgzMmM0ZDQyZTRjYWJmMzM5MDgzOTc1NGQ4NTMwYWYwYTAxZjhkNDRlMWY4OGEwMmJiZTBjIiwidGFnIjoiIn0%3D',
+    'aist_session': 'eyJpdiI6InJXT2NvMWpLYVcxNFZpdThTMlIrZHc9PSIsInZhbHVlIjoiMTkxZVA2eklkdktaLzJKSHdISDJHcnRTeno3QXV0M2ZzUzdCYlNSZ0c4SUpMNThVRXJrNnl3SkIxL2pVc1Y2ZVlLTHNXWHkzenBZbnVVSjUyanVYVXM2U2FpWlBlOVI3VnExcmRVc1VGbHM1NzM0OHpVRVZGc3l6d0pkOXJzMWgiLCJtYWMiOiJmNWYwNDZiZjVkNzRmODE5MzljNGQ3M2ZkMTkxOTRhYWI0NzI0NjQwZDkyM2IxZGEzYTFlOWY3ZGNkYzJkNWEwIiwidGFnIjoiIn0%3D',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
-    'XSRF-TOKEN': 'eyJpdiI6IkpORGt6TzNhUkJkTGJYUXdURFdETEE9PSIsInZhbHVlIjoiVkdDdzhnNHNzc0RSQkJrS000MnlrSlU0bWZMZC8rcWNLVWJyRDVnTVN2dWdGYzdVUjh0cHZWZDZaRHlMNWVkTXpGQmRHWE5qSzJYWkNtaVRrS0NrRkJ4dnQvMmNIbU5BRVFJaFIyMWdtNjNoTExMVUszWUpBaWV2enBBQStiTHoiLCJtYWMiOiJjODQ1MmYzMzY5Zjc4ZDY0Mzg1MWFmY2E4NDdhOWQzNDE3MzM2YmIwM2EyZGM3Y2YyN2NkNDY3MTVjNzUyNDEzIiwidGFnIjoiIn0%3D',
-    'aist_session': 'eyJpdiI6IjVSdHUrK0pvVHoydGxGOHQvT0hhS2c9PSIsInZhbHVlIjoiTGtqVVQ5cWx0TVM1TWlGN0QzdEJSM01Qb09ZNzJieHk3S2VYMUduUW9QWjFwTnp6T2U4K2hIYUpsM2dibnB0a2QyTTBySk03SysvdnZrbm0ydnpldXJhcGR5dkxWZ2x6ais5aXpwOFlNMHhPQUlCeitaenVUY3M3YllvbEF5WWgiLCJtYWMiOiIxNzQ2NDIwMWI2NjMwOWQyZTcwM2JmMjkyNTUxN2RhMmNiMjJkMGE3NjQ2MTMwMDYxYTdhYzM5YmRjZjg0ZGFmIiwidGFnIjoiIn0%3D',
 }
 
 headers = {
@@ -28,15 +28,15 @@ headers = {
     'origin': 'https://aist-residence.com',
     'priority': 'u=1, i',
     'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=2',
-    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
+    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
-    'x-csrf-token': '7JSbbpJn2KS5ocj2AWjIYYfSlZD0oSKpVYr0lanY',
-    # 'cookie': '_ym_uid=174358513932310668; _ym_d=1762777279; _ym_isad=2; _ym_visorc=w; XSRF-TOKEN=eyJpdiI6IkpORGt6TzNhUkJkTGJYUXdURFdETEE9PSIsInZhbHVlIjoiVkdDdzhnNHNzc0RSQkJrS000MnlrSlU0bWZMZC8rcWNLVWJyRDVnTVN2dWdGYzdVUjh0cHZWZDZaRHlMNWVkTXpGQmRHWE5qSzJYWkNtaVRrS0NrRkJ4dnQvMmNIbU5BRVFJaFIyMWdtNjNoTExMVUszWUpBaWV2enBBQStiTHoiLCJtYWMiOiJjODQ1MmYzMzY5Zjc4ZDY0Mzg1MWFmY2E4NDdhOWQzNDE3MzM2YmIwM2EyZGM3Y2YyN2NkNDY3MTVjNzUyNDEzIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6IjVSdHUrK0pvVHoydGxGOHQvT0hhS2c9PSIsInZhbHVlIjoiTGtqVVQ5cWx0TVM1TWlGN0QzdEJSM01Qb09ZNzJieHk3S2VYMUduUW9QWjFwTnp6T2U4K2hIYUpsM2dibnB0a2QyTTBySk03SysvdnZrbm0ydnpldXJhcGR5dkxWZ2x6ais5aXpwOFlNMHhPQUlCeitaenVUY3M3YllvbEF5WWgiLCJtYWMiOiIxNzQ2NDIwMWI2NjMwOWQyZTcwM2JmMjkyNTUxN2RhMmNiMjJkMGE3NjQ2MTMwMDYxYTdhYzM5YmRjZjg0ZGFmIiwidGFnIjoiIn0%3D',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
+    'x-csrf-token': 'lGqeHb4n3IW8J7qxkI5m7YgCYIxf78loE4lUAWq9',
+    # 'cookie': '_ym_uid=174358513932310668; _ym_d=1769438650; XSRF-TOKEN=eyJpdiI6ImNHWWtEOWMwRFFna2dTdXlPU2FxM2c9PSIsInZhbHVlIjoiRmErbXgwaEh2Nm01alJRc1RkK1hHNWh1RWQrY3RyNnY0ZGdUZTZoRGhYS05ncjkveEdWQ2FSeFpEaEFXeUJkRkhWTUtLYUcvZVNuRWNROGFwUFQrK2pteVhLK25WWUpnMEFaUUZ5eVlIbFpHS29XS3FleWR1YlhIam1mekJjUGkiLCJtYWMiOiIzZGZhNTY2ODIzNDgzMmM0ZDQyZTRjYWJmMzM5MDgzOTc1NGQ4NTMwYWYwYTAxZjhkNDRlMWY4OGEwMmJiZTBjIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6InJXT2NvMWpLYVcxNFZpdThTMlIrZHc9PSIsInZhbHVlIjoiMTkxZVA2eklkdktaLzJKSHdISDJHcnRTeno3QXV0M2ZzUzdCYlNSZ0c4SUpMNThVRXJrNnl3SkIxL2pVc1Y2ZVlLTHNXWHkzenBZbnVVSjUyanVYVXM2U2FpWlBlOVI3VnExcmRVc1VGbHM1NzM0OHpVRVZGc3l6d0pkOXJzMWgiLCJtYWMiOiJmNWYwNDZiZjVkNzRmODE5MzljNGQ3M2ZkMTkxOTRhYWI0NzI0NjQwZDkyM2IxZGEzYTFlOWY3ZGNkYzJkNWEwIiwidGFnIjoiIn0%3D; _ym_isad=2; _ym_visorc=w',
 }
 
 

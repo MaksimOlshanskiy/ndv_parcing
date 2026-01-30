@@ -7,18 +7,18 @@ from save_to_excel import save_flats_to_excel_near
 
 headers = {
     'accept': 'application/json, text/plain, */*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,he;q=0.6,ka;q=0.5',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'content-type': 'application/json',
     'origin': 'https://xn--80ahfqq5h.xn--p1ai',
     'priority': 'u=1, i',
     'referer': 'https://xn--80ahfqq5h.xn--p1ai/',
-    'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
+    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
 }
 
 json_data = {
@@ -26,7 +26,7 @@ json_data = {
     'data': {
         'category': 'flat',
         'activity': 'sell',
-        'page': 1,
+        'page': 0,
         'filters': {
             'studio': 'null',
             'rooms': [],
@@ -34,8 +34,9 @@ json_data = {
             'promos': [],
             'tags': [],
             'riser_side': [],
-            'geo_city': None,
+            'geo_city': '3430',
             'floors': [],
+            'geoLines': [],
             'houses_ids': [],
             'type': None,
             'areaFrom': None,
@@ -49,24 +50,22 @@ json_data = {
             'priceRentM2From': None,
             'priceRentM2To': None,
             'status': None,
+            'isHot': False,
+            'isExclusive': False,
         },
         'complex_id': 4051629,
         'house_id': None,
-        'orders': [
-            {
-                'field': 'price',
-                'direction': 'asc',
-            },
-        ],
+        'orders': [],
         'complex_search': None,
-        'house_search': [],
+        'house_search': None,
+        'lazy': False,
         'cabinetMode': False,
     },
     'auth_token': None,
     'locale': None,
 }
 
-url = 'https://api.macro.sbercrm.com/estate/catalog/?domain=xn--80ahfqq5h.xn--p1ai&check=wzrmC0pFwm-b0tm2tOlZbmKi0ufOjl2brGzj7Ocj9Ke_KlUK-q39_dWaDy7q2q3-rnwxNzQyMzgyNjk2fGI5ZDhi&type=catalog&autoshow=false&inline=true&presmode=complex&complexid=4051629&presMode=complex&complexId=4051629&fromApi=true&domain_config=%5Bobject+Object%5D&domain_config_overwrite=%5Bobject+Object%5D&issetJQuery=1&uuid=744bf420-db98-4455-96df-9cd6ee741451&cookie_base64=eyJfZ2EiOiJHQTEuMS4xODkzMjg2NzgzLjE3NDIzODI2OTMiLCJfeW1fdWlkIjoiMTc0MjM4MjY5NDY3NTA2ODEyNCJ9&time=1742382696&token=3183e0e31046220ef577675e46c4cf10/'
+url = 'https://api.macro.sbercrm.com/estate/catalog/?domain=xn--80ahfqq5h.xn--p1ai&check=wzrmC0pFwm-b0tm2tOlZbmKi0ufOjl2brGzj7Ocj9Ke_KlUK-q39_dWaDy7q2q3-rnwxNzY5NTg3OTA2fGRjNDIy&type=catalog&lenisPrevent=true&autoshow=false&inline=true&issetJQuery=0&uuid=b73426c8-0e70-4c73-a93d-3c75b7eba250&cookie_base64=eyJfeW1fdWlkIjoiMTc2OTU4Nzg3NzEyNjc2ODQxMiJ9&time=1769587906&token=52454aea74c417c1b528436bbf7a837b/'
 
 flats = []
 count = 0
@@ -80,7 +79,8 @@ def extract_digits_or_original(s):
 
 while True:
     try:
-        response = requests.get(url, json=json_data, headers=headers)
+        response = requests.post(url, json=json_data, headers=headers)
+        print(response.status_code)
         response.raise_for_status()
     except requests.exceptions.RequestException as e:
         print(f"Ошибка при запросе: {e}")
@@ -102,15 +102,15 @@ while True:
         korpus = int(parts[-1].replace('корпус&nbsp', ''))
 
         room_count = i["estate"]["estate_rooms"]
-        type = i["category"]
+        type = i["estate"]["category"]
         if type == 'flat':
             type = 'Квартира'
-        area = f'{float(i["area"]):.2f}'
-        price = f'{float(i["price"]):.0f}'
-        floor = i["floor"]
+        area = f'{float(i["estate"]["estate_area"]):.2f}'
+        price = f'{float(i["estate"]["estate_price"]):.0f}'
+        floor = i["estate"]["estate_floor"]
 
         print(
-            f"{count} | {i['flatnum']} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, корпус: {korpus}, этаж: {floor}")
+            f"{count} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, корпус: {korpus}, этаж: {floor}")
 
         result = [date, project, '', '', '', '', '', '', '', '', '', '',
                   '', '', '', '', '', developer, '', '', '', '', korpus, '', '', '', '',

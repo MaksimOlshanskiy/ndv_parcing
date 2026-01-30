@@ -81,7 +81,7 @@ try:
 
                     result = [
                         date, project, '', '', '', '', '', '', '', '', '', '', '', '',
-                        '', '', '', developer, '', '', '', '', float(str(korpus)), '', '', '', '',
+                        '', '', '', developer, '', '', '', '', korpus, '', '', '', '',
                         '', '', type_, 'Предчистовая', room_count, area, price_per_metr, old_price, '',
                         '', price, int(section), int(str(floor)), ''
                     ]

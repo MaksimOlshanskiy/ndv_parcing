@@ -88,9 +88,9 @@ while True:
         items2 = soup2.find_all('div', class_="tabs_content active")
 
         for y in items2:
-
+            print(y.text.split())
             try:
-                area = float(y.text.split()[-9])
+                area = float(y.text.split()[-8])
             except:
                 area = ''
             korpus = int(y.text.split()[1])

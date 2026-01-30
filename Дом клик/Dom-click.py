@@ -43,7 +43,6 @@ cookies = {
     'ns_session': '5210b38b-2a77-4df9-a428-6405b3065d3d',
     'is-green-day-banner-hidden': 'true',
     'is-ddf-banner-hidden': 'true',
-    'logoSuffix': '',
     'RETENTION_COOKIES_NAME': 'd7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI',
     'sessionId': 'be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE',
     'UNIQ_SESSION_ID': '01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs',
@@ -60,40 +59,42 @@ cookies = {
     'COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING': 'true',
     '_ym_d': '1759300554',
     'adrdel': '1759300555210',
-    '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
-    'iosAppLink': 'https://redirect.appmetrica.yandex.com/serve/606068252266727267',
-    'currentRegionGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'currentLocalityGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'regionName': '1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
-    'favoriteHintShowed': 'true',
+    'auto-definition-region': 'false',
+    'currentRegionGuid': '7b4698a7-f8b8-424c-9195-e24f3ddb88f3',
+    'currentSubDomain': 'spb',
+    'regionName': '7b4698a7-f8b8-424c-9195-e24f3ddb88f3:%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3',
+    'currentLocalityGuid': '7b4698a7-f8b8-424c-9195-e24f3ddb88f3',
+    'logoSuffix': '',
+    'iosAppLink': '',
     '_ym_isad': '2',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737',
-    'qrator_jsr': 'v2.0.1764943889.853.5b6ce31faIkQhtwa|VmtU04iwSIDBDXn2|CEQrP+kdYFvbB5Eq0uh4qKbsmCux3BXcAUSz3lqmfMrC11VTnZIDFB7O5FVCp0hiFRbWZPd9/gXHaIwjEHDtow==-dm4ralupSXT7McOY7qH5iiF59Vw=-00',
-    'qrator_jsid2': 'v2.0.1764943889.853.5b6ce31faIkQhtwa|a5Q1xHKPtgyzcBIG|061VWhClrHpXENqs9tFvnNo+mJg/ta/XOe8rfRTbX5yPU8SmX3AJeHIY8wzbMGK99ymWK/UGYQdx2YyKs51Pc6hBK6smDLjyZz6MynZ/qwo/woNi5aElGXbq9jJVC5MOeLM+XVU8Fni2pfTFiyavTsL80oTjpumyJKI3h1hdyVk=-ZTN0X1UOKOUynmQ3C+zIbBXhGWA=',
-    '_visitId': 'dfe46d82-0ac4-40b3-ac68-538205099fde-f4f0dcc432ac8ba6',
-    't3_sid_7711713': 's1.579603876.1764922255259.1764943916148.31.22.5.1..',
-    'tmr_reqNum': '288',
+    '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
+    'qrator_jsr': 'v2.0.1769604671.003.c344b005MICdZ6M7|eWBX5thl6y3R6dck|nQ8sR+HVBvaRkOPxBUo/a4YW320JLjl1bwKLgkVj2BavAWI6flvmottshECvaMrDUGfhja9HhSjF87xxjgvplw==-+ufH4DeM8w0LXN4I9t7mI+H51xo=-00',
+    'qrator_jsid2': 'v2.0.1769604671.003.c344b005MICdZ6M7|8IY7k2SrM8R49KZQ|ZEmU/JEo+c6AHZkPrWMpgL/6+oz1pZj7gTLCV1ua2Gk5sUBjEV38bWKfzvTZcYqCWyENn39lxDUXCVVkBMFuVwkU2gkPB6IWC3tRM7BZhFSSmJbeAmORAXiG+Hs+hfBaCwlV0nI0Zr8c+sfG7vVEZP6gSkMacGBpUgYQ7WdL/Qc=-pjeAjZ9JJK/Y96H7MQYRux1nyvY=',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1769604673',
+    '_visitId': 'f3c51c32-542e-471a-8f9e-1551a619b287-f4f0dcc432ac8ba6',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1769604676',
+    'tmr_reqNum': '291',
+    't3_sid_7711713': 's1.1394685594.1769604673556.1769604749246.44.8.1.1..',
 }
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'Connection': 'keep-alive',
-    'Origin': 'https://domclick.ru',
-    'Referer': 'https://domclick.ru/',
+    'Origin': 'https://spb.domclick.ru',
+    'Referer': 'https://spb.domclick.ru/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
-    'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; iosAppLink=https://redirect.appmetrica.yandex.com/serve/606068252266727267; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; favoriteHintShowed=true; _ym_isad=2; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764943737; qrator_jsr=v2.0.1764943889.853.5b6ce31faIkQhtwa|VmtU04iwSIDBDXn2|CEQrP+kdYFvbB5Eq0uh4qKbsmCux3BXcAUSz3lqmfMrC11VTnZIDFB7O5FVCp0hiFRbWZPd9/gXHaIwjEHDtow==-dm4ralupSXT7McOY7qH5iiF59Vw=-00; qrator_jsid2=v2.0.1764943889.853.5b6ce31faIkQhtwa|a5Q1xHKPtgyzcBIG|061VWhClrHpXENqs9tFvnNo+mJg/ta/XOe8rfRTbX5yPU8SmX3AJeHIY8wzbMGK99ymWK/UGYQdx2YyKs51Pc6hBK6smDLjyZz6MynZ/qwo/woNi5aElGXbq9jJVC5MOeLM+XVU8Fni2pfTFiyavTsL80oTjpumyJKI3h1hdyVk=-ZTN0X1UOKOUynmQ3C+zIbBXhGWA=; _visitId=dfe46d82-0ac4-40b3-ac68-538205099fde-f4f0dcc432ac8ba6; t3_sid_7711713=s1.579603876.1764922255259.1764943916148.31.22.5.1..; tmr_reqNum=288',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; auto-definition-region=false; currentRegionGuid=7b4698a7-f8b8-424c-9195-e24f3ddb88f3; currentSubDomain=spb; regionName=7b4698a7-f8b8-424c-9195-e24f3ddb88f3:%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3; currentLocalityGuid=7b4698a7-f8b8-424c-9195-e24f3ddb88f3; logoSuffix=; iosAppLink=; _ym_isad=2; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; qrator_jsr=v2.0.1769604671.003.c344b005MICdZ6M7|eWBX5thl6y3R6dck|nQ8sR+HVBvaRkOPxBUo/a4YW320JLjl1bwKLgkVj2BavAWI6flvmottshECvaMrDUGfhja9HhSjF87xxjgvplw==-+ufH4DeM8w0LXN4I9t7mI+H51xo=-00; qrator_jsid2=v2.0.1769604671.003.c344b005MICdZ6M7|8IY7k2SrM8R49KZQ|ZEmU/JEo+c6AHZkPrWMpgL/6+oz1pZj7gTLCV1ua2Gk5sUBjEV38bWKfzvTZcYqCWyENn39lxDUXCVVkBMFuVwkU2gkPB6IWC3tRM7BZhFSSmJbeAmORAXiG+Hs+hfBaCwlV0nI0Zr8c+sfG7vVEZP6gSkMacGBpUgYQ7WdL/Qc=-pjeAjZ9JJK/Y96H7MQYRux1nyvY=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1769604673; _visitId=f3c51c32-542e-471a-8f9e-1551a619b287-f4f0dcc432ac8ba6; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1769604676; tmr_reqNum=291; t3_sid_7711713=s1.1394685594.1769604673556.1769604749246.44.8.1.1..',
 }
 
 params = {
-    'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'address': '7b4698a7-f8b8-424c-9195-e24f3ddb88f3',
     'offset': '0',
     'limit': '20',
     'sort': 'qi',
@@ -101,11 +102,10 @@ params = {
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '122541',
-    'complex_name': 'ЖК Высокий берег',
+    'complex_ids': '124757',
+    'complex_name': 'ЖК Горки Марусино',
     'from_developer': '1',
     'sort_by_tariff_date': '1',
-    'enable_mixed_ranking': '1',
 }
 
 
@@ -225,7 +225,10 @@ while True:
                     district2 = ''
                     adress2 = adress
                     eskrou2 = ''
-                    korpus2 = soup.find('span', class_= 'Is5nd').text.replace('Корпус: ', '').replace('Корпус ', '').replace('№', '').strip()
+                    try:
+                        korpus2 = soup.find('span', class_= 'Is5nd').text.replace('Корпус: ', '').replace('Корпус ', '').replace('№', '').strip()
+                    except:
+                        korpus2 = ''
                     konstruktiv2 = ''
                     klass2 = ''
                     quarter2 = ''

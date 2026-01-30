@@ -101,7 +101,7 @@ while True:
         url = ""
 
         date = datetime.date.today()
-        project = i["project"]["name"]
+        project = i["project"]["name"].replace('МИRA', 'Мира')
         english = ''
         promzona = ''
         mestopolozhenie = ''

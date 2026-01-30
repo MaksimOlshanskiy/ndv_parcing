@@ -46,10 +46,10 @@ params = {
     'limit': '20',
     'sortField': 'obj_publ_dt',
     'sortType': 'desc',
-    'residentialBuildings': '1',
-    'place': '50',
+    'place': '0-40',
     'objStatus': '0',
 }
+
 
 
 
@@ -64,7 +64,7 @@ offset_counter = 0
 
 while True:
 
-    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=obj_publ_dt&sortType=desc&residentialBuildings=1&place=50&objStatus=0'
+    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=obj_publ_dt&sortType=desc&residentialBuildings=1&place=0-40&objStatus=0:2'
 
 
     driver.get(url=url)

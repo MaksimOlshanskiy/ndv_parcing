@@ -21,51 +21,21 @@ headers = {
     'origin': 'https://xn----jtbbfggcdyc3aqvm.xn--p1ai',
     'priority': 'u=1, i',
     'referer': 'https://xn----jtbbfggcdyc3aqvm.xn--p1ai/',
-    'sec-ch-ua': '"Chromium";v="140", "Not=A?Brand";v="24", "Google Chrome";v="140"',
+    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
 }
 
 json_data = {
     'action': 'objects_list',
     'data': {
         'category': 'flat',
-        'activity': 'sell',
-        'page': 0,
-        'filters': {
-            'studio': 'null',
-            'rooms': [],
-            'restorations': [],
-            'promos': [],
-            'tags': [],
-            'riser_side': [],
-            'geo_city': None,
-            'floors': [],
-            'houses_ids': [],
-            'type': None,
-            'areaFrom': None,
-            'areaTo': None,
-            'priceFrom': None,
-            'priceTo': None,
-            'priceM2From': None,
-            'priceM2To': None,
-            'priceRentFrom': None,
-            'priceRentTo': None,
-            'priceRentM2From': None,
-            'priceRentM2To': None,
-            'status': None,
-            'isHot': False,
-            'isExclusive': False,
-        },
-        'complex_id': None,
         'house_id': 7750570,
-        'orders': [],
-        'complex_search': None,
-        'house_search': None,
+        'activity': 'sell',
         'cabinetMode': False,
     },
     'auth_token': None,
@@ -108,11 +78,11 @@ while True:
         finish_type = 'С отделкой'
         room_count = extract_digits_or_original(i['rooms'])
         try:
-            area = float(i['area'])
+            area = float(i['estate']['estate_area'])
         except:
             area = ''
         try:
-            old_price = int(i['price'].replace('.0000', ''))
+            old_price = int(i['estate']['estate_price'].replace('.0000', ''))
         except:
             old_price = ''
         try:
@@ -121,7 +91,7 @@ while True:
             price = ''
         section = ''
         try:
-            floor = int(i['floor'])
+            floor = int(i['estate']['estate_floor'])
         except:
             floor = ''
         flat_number = ''
@@ -158,7 +128,7 @@ while True:
 
 
         print(
-            f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+            f"{project}, {url}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
                   time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]

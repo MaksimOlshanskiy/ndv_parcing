@@ -14,10 +14,10 @@ import requests
 from functions import save_flats_to_excel
 
 '''
-Нужно проверять количество страниц с лотами и проставлять это число в переменную count_of_pages
+Нужно проверять количество страниц с лотами и проставлять это число в переменную count_of_pages  https://atlantdevelopment.ru/flats/clear/apply/
 '''
 
-count_of_pages = 29
+count_of_pages = 22
 
 cookies = {
     'BX_USER_ID': '15016e9404744ee3cb1a5dfed786822b',
@@ -59,12 +59,12 @@ data = {
         'BOOKED',
     ],
     'FILTER_ITEMS_RESULT[arrFilter][=PROPERTY_2][]': [
-        'ЖК «Внуково Парк»',
-        'ЖК «Крекшино Парк»',
+        'ЖК «Внуково Парк 2» ',
+        'ЖК «Внуково Парк 3»',
         'КД «Малые Вешки»',
         'КД «Новое Вашутино»',
     ],
-    'FILTER_ITEMS_RESULT[COUNT]': '337',
+    'FILTER_ITEMS_RESULT[COUNT]': '255',
     'FILTER_ITEMS_RESULT[NEW_URL]': '',
 }
 
@@ -103,7 +103,7 @@ while int(params['PAGEN_1']) <= count_of_pages:
         url = ''
 
         date = datetime.date.today()
-        project = i.find('span', class_= 'catalogCard__text').text.replace('«', '').replace('»', '').replace('КД ', '').replace('ЖК ', '')
+        project = i.find('span', class_= 'catalogCard__text').text.replace('«', '').replace('»', '').replace('КД ', '').replace('ЖК ', '').strip()
 
         english = ''
         promzona = ''
@@ -125,9 +125,10 @@ while int(params['PAGEN_1']) <= count_of_pages:
         district = ''
         adress = ''
         eskrou = ''
-        try:
-            korpus = ''
-        except ValueError:
+        if project == 'Внуково Парк 2' or project == 'Внуково Парк 3':
+            korpus = f"Очередь {project[-1]}"
+            project = project.replace(' 2', '').replace(' 3', '')
+        else:
             korpus = ''
         konstruktiv = ''
         klass = ''

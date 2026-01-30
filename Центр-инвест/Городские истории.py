@@ -60,7 +60,7 @@ params = {
 data = {
     'post[prog]': 'PROG_M_1',
     'post[sort][PROPERTY_COST]': 'ASC',
-    'post[nPageSize]': '123',     #   Нужно изменить данное количество на число квартир с сайта!! https://city-story.ru/flats/table/
+    'post[nPageSize]': '88',     #   Нужно изменить данное количество на число квартир с сайта!! https://city-story.ru/flats/table/
     'post[iNumPage]': '1',
 }
 

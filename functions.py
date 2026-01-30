@@ -101,16 +101,20 @@ def save_flats_to_excel(flats, project, developer, kvartirografia=True, drop_col
 
     df["Корпус"] = df["Корпус"].astype(str).str.replace(",", ".", regex=False)
 
-    def clean_name(name):
-        name = name.replace('ЖК ', '').replace('«', '').replace('»', '').strip()  # Убираем 'ЖК '
+    def clean_name(name: str) -> str:
+        name = name.replace('ЖК ', '')
+        name = re.sub(r'[\\:*?"<>|«»]', '', name)
+        name = re.sub(r'\s+', ' ', name).strip()
         return name
 
+    developer = clean_name(developer)
     df['Название проекта'] = df['Название проекта'].apply(clean_name)
-    df['Название проекта'] = df['Название проекта'].str.strip()
-
-    # df['col1'] = df['col1'].astype(int)
     df["Название проекта"] = df["Название проекта"].replace(name_dict)
+    print(df['Девелопер'].unique())
+    df['Девелопер'] = df['Девелопер'].apply(clean_name)
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)
+    print(df['Девелопер'].unique())
+
 
     projects_dict = load_json(
         r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json'
@@ -260,13 +264,19 @@ def save_cian_to_excel(flats, project, developer, drop_columns = True):
 
     df["Корпус"] = df["Корпус"].astype(str).str.replace(",", ".", regex=False)
 
-    def clean_name(name):
-        name = name.replace('ЖК ', '').replace('«', '').replace('»', '').replace('/', '')
+    def clean_name(name: str) -> str:
+        name = name.replace('ЖК ', '')
+        name = re.sub(r'[\\/:*?"<>|]', '', name)
+        name = re.sub(r'\s+', ' ', name).strip()
         return name
 
+    developer = clean_name(developer)
     df['Название проекта'] = df['Название проекта'].apply(clean_name)
     df["Название проекта"] = df["Название проекта"].replace(name_dict)
+    print(df['Девелопер'].unique())
+    df['Девелопер'] = df['Девелопер'].apply(clean_name)
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)
+    print(df['Девелопер'].unique())
 
     # Загружаем JSON с характеристиками проектов
     with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json", "r",

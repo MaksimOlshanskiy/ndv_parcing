@@ -146,7 +146,7 @@ def main():
     df = load_excel(excel_path)
 
     projects_dict = load_json(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json")
-    corpus_dict = load_json(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json")
+    corpus_dict = load_json(r"/!changing_haracteristik_dictionary/projects_old.json")
     area_dict = load_json(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json")
 
     df = enrich_projects(df, projects_dict)

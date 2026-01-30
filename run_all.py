@@ -20,6 +20,31 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Апсис Глоуб\CITIMIX Novokosino.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Ар Ди Ай\Ново-Молоково.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Ар Ди Ай\Южная долина.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Вектор\Vector_all.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Атлантис Скай\Odinchovo.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Афи\Afi Tower.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Афи\odinburg.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Берендей\Троицкая слобода.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Бесткон\Bestcon.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Брусника\Brusnika.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\БТР Групп\kit.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Веспер\Vesper.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ВиХолдинг\Алиа.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГАЛС\HALS.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гефест\ekograd.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Мега-мечта\Мечта.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Монолит\elyon.py"),
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -54,7 +79,9 @@ for script in SCRIPTS:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
-        bufsize=1  # построчно
+        encoding="utf-8",
+        errors="replace",
+        bufsize=1
     )
 
     # stdout в реальном времени

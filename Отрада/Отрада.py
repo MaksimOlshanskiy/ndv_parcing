@@ -88,8 +88,10 @@ while True:
     print(response.status_code)
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    flats_soup = soup.find_all('div', class_="flat-tile__wrapper")
+    flats_soup = soup.find_all('div', class_="parameter-selection__flat-card")
     for i in flats_soup:
+
+        print(i.text)
 
         if i.find('div', class_='banner-card swiper-container'):
             continue  # Пропускаем итерацию, если такой элемент найден

@@ -9,41 +9,47 @@ import random
 from functions import save_flats_to_excel
 
 cookies = {
-    'session': '90fc15d235ce6603826c0c0e4f68f6185cec1def6d9e399bbb6914b48e9a8ed9',
     '_ym_uid': '1752221103932115499',
-    '_ym_d': '1752221103',
-    'roistat_visit': '140277',
-    'roistat_first_visit': '140277',
+    '_ym_d': '1769583420',
+    '_ym_visorc': 'w',
+    '_ym_isad': '2',
+    'roistat_visit': '1163569',
     'roistat_visit_cookie_expire': '1209600',
     'roistat_is_need_listen_requests': '0',
     'roistat_is_save_data_in_cookie': '1',
-    '_ym_isad': '2',
-    '_ym_visorc': 'w',
-    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit',
+    'roistat_phone': '8%20(495)%20189-65-32',
+    'roistat_raw_phone': '74951896532',
+    'roistat_call_tracking': '1',
+    'roistat_phone_replacement': 'null',
+    'roistat_phone_script_data': '%5B%7B%22phone%22%3A%228%20(495)%20189-65-32%22%2C%22css_selectors%22%3A%5B%5D%2C%22replaceable_numbers%22%3A%5B%2274953858334%22%5D%2C%22raw_phone%22%3A%2274951896532%22%7D%5D',
     '___dc': '5787f38d-071a-46a3-83a6-d5146cd78335',
+    'roistat_emailtracking_email': 'null',
+    'roistat_emailtracking_tracking_email': 'null',
+    'roistat_emailtracking_emails': '%5B%5D',
+    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_phone%2Croistat_raw_phone%2Croistat_call_tracking%2Croistat_phone_replacement%2Croistat_phone_script_data%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
 }
 
 headers = {
-    'accept': 'application/json, text/plain, */*',
+    'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'baggage': 'sentry-environment=main,sentry-public_key=0fb6c062c84d17cffe5d163743844f00,sentry-trace_id=0b55f98316b649ef8e269f2fac9abb3e,sentry-sampled=true,sentry-sample_rand=0.8836383942607882,sentry-sample_rate=1',
     'priority': 'u=1, i',
     'referer': 'https://u2.moscow/flats',
-    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-    'x-host': 'u2.moscow',
-    # 'cookie': 'session=90fc15d235ce6603826c0c0e4f68f6185cec1def6d9e399bbb6914b48e9a8ed9; _ym_uid=1752221103932115499; _ym_d=1752221103; roistat_visit=140277; roistat_first_visit=140277; roistat_visit_cookie_expire=1209600; roistat_is_need_listen_requests=0; roistat_is_save_data_in_cookie=1; _ym_isad=2; _ym_visorc=w; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit; ___dc=5787f38d-071a-46a3-83a6-d5146cd78335',
+    'sentry-trace': '0b55f98316b649ef8e269f2fac9abb3e-875fc677fbad0d25-1',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
+    # 'cookie': '_ym_uid=1752221103932115499; _ym_d=1769583420; _ym_visorc=w; _ym_isad=2; roistat_visit=1163569; roistat_visit_cookie_expire=1209600; roistat_is_need_listen_requests=0; roistat_is_save_data_in_cookie=1; roistat_phone=8%20(495)%20189-65-32; roistat_raw_phone=74951896532; roistat_call_tracking=1; roistat_phone_replacement=null; roistat_phone_script_data=%5B%7B%22phone%22%3A%228%20(495)%20189-65-32%22%2C%22css_selectors%22%3A%5B%5D%2C%22replaceable_numbers%22%3A%5B%2274953858334%22%5D%2C%22raw_phone%22%3A%2274951896532%22%7D%5D; ___dc=5787f38d-071a-46a3-83a6-d5146cd78335; roistat_emailtracking_email=null; roistat_emailtracking_tracking_email=null; roistat_emailtracking_emails=%5B%5D; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_phone%2Croistat_raw_phone%2Croistat_call_tracking%2Croistat_phone_replacement%2Croistat_phone_script_data%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
 }
 
 params = {
-    'project_id': '75693214-1a5e-49b9-a1d0-a5376edf431d',
-    'status': 'free',
+    'order': 'price',
+    'limit': '8',
     'offset': '0',
-    'limit': '16',
 }
 
 
@@ -59,51 +65,47 @@ session = requests.Session()
 while True:
 
     response = session.get(
-        'https://u2.moscow/api/realty-filter/residential/real-estates',
+        'https://u2.moscow/api/flats/',
         params=params,
         cookies=cookies,
         headers=headers,
     )
-    items = response.json()
+    print(response.status_code)
+    items = response.json()['results']
 
     for i in items:
 
         url = ''
         developer = "Точно"
         project = 'U2'
-        korpus = i['building_number']
-        section = i['section_number']
+        korpus = '1'
+        section = i['section']
 
-        if i['type'] == 'flat':
+        if i['type'] == "flats":
             type = 'Квартиры'
         else:
             type = i['type']
 
-        if not i['finishing_type']:
-            finish_type = 'Без отделки'
-        else:
-            finish_type = i['finishing_type']
-        if i['rooms_title'] == '0':
+        finish_type = 'Без отделки'
+        if i['rooms'] == '0':
             room_count = 'Студия'
         else:
-            room_count = i['rooms_title']
-        if i['is_euro']:
-            room_count += 'е'
-        flat_number = i['int_number']
+            room_count = i['rooms']
+        flat_number = i['number']
         try:
-            area = float(i['total_area'])
+            area = float(i['area'])
         except:
             area = ''
         try:
-            old_price = int(i['old_price'])
+            old_price = float(i['original_price'])
         except:
             old_price = ''
         try:
-            price = int(i['price'])
+            price = float(i['price'])
         except:
             price = ''
         try:
-            floor = int(i['floor_number'])
+            floor = int(i['floor'])
         except:
             floor = ''
 
@@ -147,7 +149,7 @@ while True:
 
     if not items:
         break
-    params['offset'] = str(int(params['offset']) + 16)
+    params['offset'] = str(int(params['offset']) + 8)
     sleep_time = random.uniform(1, 4)
     time.sleep(sleep_time)
 

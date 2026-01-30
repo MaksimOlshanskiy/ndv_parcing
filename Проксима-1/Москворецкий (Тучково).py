@@ -57,8 +57,7 @@ for i in items:
         type = 'Квартиры'
     else:
         type = i['is_apart']
-    if not i['decoration_id']:
-        finish_type = 'Без отделки'
+    finish_type = 'Без отделки'
     room_count = i['rooms']
     try:
         area = float(i['area'])

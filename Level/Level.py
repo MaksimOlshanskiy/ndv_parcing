@@ -99,7 +99,7 @@ while True:
 
         url = f"https://level.ru{i["url"]}"
         date = datetime.date.today()
-        project = i["project"]
+        project = i["project"].replace('Левел', 'Level')
         if project == 'Level Звенигородская, этап 1':
             project = 'Level Звенигородская'
         if 'Мичуринский' in project:

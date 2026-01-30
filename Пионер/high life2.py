@@ -87,9 +87,11 @@ for f in flats_soup:
     dogovor = ''
     type = 'Квартиры'
 
-    finish_type = f.find('div', class_="flat-params").text.strip().replace('Отделка: ', '').replace('дизайнерская', 'С отделкой').replace('без отделки', 'Без отделки')
+    finish_type = f.find('div', class_="flat-params").text.strip().replace('Отделка: ', '').replace('дизайнерская', 'С отделкой').replace('без отделки', 'Без отделки').replace('Выдаем ключи', '')
     if 'Вид' in finish_type:
         finish_type = finish_type.split("Вид")[0]
+    if 'Сдаем' in finish_type:
+        finish_type = finish_type.split("Сдаем")[0]
     area = float(flat_params[2].replace('комната', '').replace('комнаты', '').replace('комнат', '').replace(',', '.'))
     price_per_metr = ''
     try:

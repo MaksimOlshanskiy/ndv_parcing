@@ -81,7 +81,7 @@ while True:
 
 
         date = datetime.now()
-        project = i['project_name']
+        project = 'Пушкино град'
 
 
         english = ''

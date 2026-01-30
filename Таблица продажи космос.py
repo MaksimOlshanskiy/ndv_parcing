@@ -11,13 +11,12 @@ from openpyxl.styles import Font, Alignment
 Указываем 
 '''
 
-project_list = ["'6921'", "'6923'", "'7074'", "'4836'", "'1012'", "'5610'", "'5139'", "'6760'", "'1982'",
-                "'1830'", "'1989'", "'1955'", "'4622'"]
+project_list = ["'7464'", "'4422'", "'5631'", "'7268'", "'4960'", "'7232'"]
 
 year = 2025
 previous_year = 2024
-month = 12
-previous_month = 11
+month = 11
+previous_month = 10
 file_name = 'Продажи конкурентов Космос 12'
 
 warnings.filterwarnings(

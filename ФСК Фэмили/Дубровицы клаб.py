@@ -15,6 +15,10 @@ import time
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+'''
+Не нажимать ничего на сайте, иначе будет ошибка, скрипт сам всё сделает
+'''
+
 cookies = {
     'SCBFormsAlreadyPulled': 'true',
     'scbsid_old': '2746015342',
@@ -250,7 +254,7 @@ for i in items:
 
     url = ''
     developer = "ФСК"
-    project = 'Дубровицы Клаб'
+    project = 'Дубровицы клаб'
     korpus = i.find('div', class_='cards-item__amount').text.strip().split()[-3].replace('№','').replace('.','')
     section = ''
     type = 'Таунхаусы'
