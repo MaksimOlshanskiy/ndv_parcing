@@ -55,7 +55,10 @@ if response.status_code == 200:
     data = response.json()
     items = data.get('apartments', {})
 
+
     for i, j in items.items():
+        print(i)
+        print(j)
         date = datetime.date.today()
         project = 'Апсайд Тауэрс'
         developer = 'Upside Development'
@@ -75,7 +78,8 @@ if response.status_code == 200:
 
 
         area = j.get("sq", '')
-        price = j.get("tc", '')
+        price = j.get("tcd", '')
+        old_price = j.get("tc", '')
         floor = j.get('f', '')
         if price == 0:
             continue
@@ -85,7 +89,7 @@ if response.status_code == 200:
 
         result = [date, project, '', '', '', '', '', '', '', '', '', '',
                   '', '', '', '', '', developer, '', '', '', '', korpus, '', '', '', '',
-                  '', '', type, finish_type, room_count, area, '', price, '', '', '',
+                  '', '', type, finish_type, room_count, area, '',old_price, '', '', price,
                   '', floor, '']
         flats.append(result)
         count += 1

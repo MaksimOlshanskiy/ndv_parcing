@@ -90,7 +90,7 @@ while True:
         all_tags = i.find_all('div', class_='tag tag--isSmall')
         listingCard = i.find('div', class_= 'listingCard__label').find_all(class_= 'label l3')
 
-        korpus = listingCard[0].text
+        korpus = listingCard[0].text.replace('(агентские продажи)', '').strip()
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''

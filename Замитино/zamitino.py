@@ -19,6 +19,7 @@ params = {
     'limit': '150',
     'full': 'true',
     'returnFilteredCount': 'true',
+    'propertyTypeAliases[0]': 'property',
 }
 
 flats = []

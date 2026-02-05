@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import os
+from datetime import datetime
 
 '''
 Скрипт для обновления json файла из базы изменяемых характеристик
@@ -8,6 +9,22 @@ import os
 
 # читаем файл
 df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные.xlsx")
+
+df["id"] = (
+    df["id"]
+    .dropna()
+    .astype("int64")
+    .astype(str)
+    .reindex(df.index)
+)
+
+df["ID дом.рф"] = (
+    df["ID дом.рф"]
+    .dropna()
+    .astype("int64")
+    .astype(str)
+    .reindex(df.index)
+)
 
 # удаляем дубликаты по ключам
 print(df.columns.tolist())
@@ -27,13 +44,93 @@ stats = {
     "projects_added": 0,
     "projects_updated": 0,
     "corpus_added": 0,
-    "corpus_updated": 0
+    "corpus_updated": 0,
+
 }
+today = pd.Timestamp(datetime.today().date())
+
+quarter_map = {
+    "1": "03-31",
+    "2": "06-30",
+    "3": "09-30",
+    "4": "12-31"
+}
+
+tmp = df["Срок сдачи"].astype(str).str.extract(
+    r"(?P<quarter>[1-4])\s*кв\s*(?P<year>\d{4})"
+)
+
+df["Дата сдачи"] = pd.to_datetime(
+    tmp["year"] + "-" + tmp["quarter"].map(quarter_map),
+    errors="coerce"
+)
+
+
+# заполнение дат смены статуса, там где не заполнено
+mask_base = (
+    df["Дата сдачи"].notna() &
+    df["stage_2_date"].isna() &
+    df["stage_3_date"].isna()
+)
+
+mask_initial = mask_base & (df["Стадия строительной готовности"] == "начальный цикл")
+mask_монтаж = mask_base & (df["Стадия строительной готовности"] == "монтажные работы")
+
+days_to_finish_initial = (
+    (df.loc[mask_initial, "Дата сдачи"] - today)
+    .dt.days
+    .div(3)
+    .round()
+    .astype("Int64")
+)
+
+df.loc[mask_initial, "stage_2_date"] = today + pd.to_timedelta(
+    days_to_finish_initial, unit="D"
+)
+
+df.loc[mask_initial, "stage_3_date"] = (
+    df.loc[mask_initial, "stage_2_date"] +
+    pd.to_timedelta(days_to_finish_initial, unit="D")
+)
+
+days_to_finish_монтаж = (
+    (df.loc[mask_монтаж, "Дата сдачи"] - today)
+    .dt.days
+    .div(2)
+    .round()
+    .astype("Int64")
+)
+
+df.loc[mask_монтаж, "stage_3_date"] = today + pd.to_timedelta(
+    days_to_finish_монтаж, unit="D"
+)
+
+# обновляем Договор
+df['Договор'] = df['Стадия строительной готовности'].apply(
+    lambda x: 'ДКП' if x == 'введен' else 'ДДУ')
+
+for idx, row in df.iterrows():
+    stage_2_date = row.get("stage_2_date")
+    stage_3_date = row.get("stage_3_date")
+
+    stage = row["Стадия строительной готовности"]
+
+    if pd.notna(stage_3_date) and today >= stage_3_date:
+        stage = "завершающий цикл"
+    elif pd.notna(stage_2_date) and today >= stage_2_date:
+        stage = "монтажные работы"
+
+    # 🔥 ОБНОВЛЯЕМ DATAFRAME
+    df.loc[idx, "Стадия строительной готовности"] = stage
+
+
 
 for _, row in df.iterrows():
     project_key = f"{row['Название проекта']}_{row['Девелопер']}"
     corpus = str(row['Корпус'])
     srok = str(row['Срок сдачи'])
+    stage_2_date = row.get("stage_2_date")
+    stage_3_date = row.get("stage_3_date")
     stage = str(row['Стадия строительной готовности'])
     ddu = str(row['Договор'])
     id = str(row['id'])
@@ -45,6 +142,9 @@ for _, row in df.iterrows():
     flats = str(row.get("Количество квартир", ""))
     area = str(row.get("Жилая площадь, м²", ""))
 
+
+    today = pd.Timestamp(datetime.today().date())
+
     new_fields = {
         "Срок сдачи": srok,
         "Стадия строительной готовности": stage,
@@ -54,7 +154,9 @@ for _, row in df.iterrows():
         "Статус": status,
         "Распроданность квартир": sold,
         "Количество квартир": flats,
-        "Жилая площадь, м²": area
+        "Жилая площадь, м²": area,
+        "stage_2_date": stage_2_date.isoformat() if pd.notna(stage_2_date) else None,
+        "stage_3_date": stage_3_date.isoformat() if pd.notna(stage_3_date) else None
     }
 
     # если проект новый
@@ -78,9 +180,29 @@ for _, row in df.iterrows():
         stats["corpus_updated"] += 1
         stats["projects_updated"] += 1
 
+# обновляем ссылку на дом.рф
+
+BASE_URL = (
+    "https://xn--80az8a.xn--d1aqf.xn--p1ai/"
+    "%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/"
+    "%D0%BA%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3-%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BA/"
+    "%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82/"
+)
+
+mask_link = df["ID дом.рф"].notna()
+
+df.loc[mask_link, "Ссылка"] = (
+    BASE_URL + df.loc[mask_link, "ID дом.рф"].astype(str)
+)
+
 # сохраняем новый JSON
 with open("projects.json", "w", encoding="utf-8") as f:
     json.dump(new_result, f, ensure_ascii=False, indent=4)
+
+df.to_excel(
+    r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные22222.xlsx",
+    index=False
+)
 
 # выводим логи
 print("=== Изменяемые характеристики ===")

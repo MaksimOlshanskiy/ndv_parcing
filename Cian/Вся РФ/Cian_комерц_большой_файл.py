@@ -89,6 +89,8 @@ headers = {
 
 
 
+
+
 json_data = {
     'jsonQuery': {
         '_type': 'commercialsale',
@@ -109,19 +111,14 @@ json_data = {
         'office_type': {
             'type': 'terms',
             'value': [
-                1,
-                2,
                 3,
-                5,
-                7,
-                11,
             ],
         },
-        'object_type': {
-            'type': 'terms',
-            'value': [
-                3,
-            ],
+'price': {
+            'type': 'range',
+            'value': {
+                'gte': 300000001,
+            },
         },
         'page': {
             'type': 'term',
@@ -150,8 +147,7 @@ types_dict = {1: 'Офис, продажа', 2: 'Торговая площадь
               7: 'Производство, продажа', 11: 'Здание, продажа'}
 
 not_done = [1, 2]
-region_list = [4576, 4580, 4587, 4599, 4602, 4605, 4621, 4625, 4636, 4629, 184723, 2
-]
+region_list = [4593]
 
 session = requests.Session()
 
@@ -161,7 +157,7 @@ for region in region_list:
 
     json_data["jsonQuery"]["page"]["value"] = 1
     json_data["jsonQuery"]["region"]["value"][0] = region
-    json_data["jsonQuery"]["office_type"]["value"] = [1,2,3,5,7,11]
+    json_data["jsonQuery"]["office_type"]["value"] = [3]
     json_data["jsonQuery"]["offer_seller_type"]["value"] = [2, 3, 1]
 
 
@@ -184,12 +180,12 @@ for region in region_list:
 
     if items_count <= 2500:
 
-        land_status_ids = [[1], [2], [3], [5], [7], [11]]
+        land_status_ids = [[3]]
         offer_seller_types = [[1, 2, 3]]
 
     elif 2500 <= items_count <= 999000:
 
-        land_status_ids = [[1], [2], [3], [5], [7], [11]]
+        land_status_ids = [[3]]
         offer_seller_types = [[1], [2], [3]]
 
 
@@ -316,7 +312,7 @@ for region in region_list:
                     except:
                         property_from = ''
                     try:
-                        url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
                     except:
                         url = ''
 
@@ -476,6 +472,10 @@ for region in region_list:
                         officeType = i['office']
                     except:
                         officeType = ''
+                    try:
+                        phones = i['phones'][0]['number']
+                    except:
+                        phones = ''
                     type_of_lot = types_dict[land_status[0]]
 
 
@@ -489,7 +489,7 @@ for region in region_list:
                               railways_nearest, railways_nearest_distance, railways_nearest_time, railways_nearest_travelType, jk,
                               underground_nearest, underground_nearest_time, hasFurniture,
                               kitchenArea, livingArea, loggiasCount, land_area, land_area_unit_type, possibleToChangeStatus, land_statusl, land_type,
-                              buildingType2, buildingClassType, building_name, buildingType, layout, offerType, officeType
+                              buildingType2, buildingClassType, building_name, buildingType, layout, offerType, officeType, phones
                               ]
                     flats.append(result)
 
@@ -575,7 +575,8 @@ for region in region_list:
                                                   'buildingType',
                                                   'layout',
                                                   'offerType',
-                                                  'officeType'
+                                                  'officeType',
+                                                  'Телефон'
                                                   ])
 
 

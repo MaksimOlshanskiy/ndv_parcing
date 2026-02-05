@@ -86,7 +86,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4713,
+                4576,
             ],
         },
         'publish_period': {
@@ -96,14 +96,8 @@ json_data = {
         'house_year': {
             'type': 'range',
             'value': {
-                'lte': 1990,
+                'lte': 1950,
             },
-        },
-        'house_material': {
-            'type': 'terms',
-            'value': [
-                5,
-            ],
         },
         'object_type': {
             'type': 'terms',
@@ -223,7 +217,7 @@ while len(flats) < total_count:
 
         print(
             f"Шоссе {highway}, {url}, Участок: {uchastok_area}, дом: {house_area}, цена: {price}, посёлок {poselok}, кп: {kp}, объявление {property_from}")
-        result = ['Воронежская область', highway, uchastok_area, house_area, price, poselok, kp, property_from, url]
+        result = ['Калужская область', highway, uchastok_area, house_area, price, poselok, kp, property_from, url]
         flats.append(result)
 
     json_data["jsonQuery"]["page"]["value"] += 1

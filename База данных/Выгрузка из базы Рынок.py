@@ -7,8 +7,8 @@ from Developer_dict import name_dict, developer_dict
 
 year = 2025
 previous_year = 2024
-month = 8
-previous_month = 7
+month = 1
+previous_month = 12
 project = 'Берег'
 
 warnings.filterwarnings(
@@ -32,12 +32,8 @@ except:
 sql_query = f"""
 SELECT *
 FROM ndv_data
-WHERE (EXTRACT(YEAR from update_date) = 2025
-AND EXTRACT(MONTH from update_date) = 8)
-OR (EXTRACT(YEAR from update_date) = 2025
-AND EXTRACT(MONTH from update_date) = 7)
-OR (EXTRACT(YEAR from update_date) = 2025
-AND EXTRACT(MONTH from update_date) = 6)
+WHERE (EXTRACT(YEAR from date) = 2025
+AND EXTRACT(MONTH from date) = 1)
                     """
 
 
@@ -91,4 +87,4 @@ print(df.info())
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 # df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
 
-df.to_excel("Выгрузка.xlsx", index=False)
+df.to_excel("Выгрузка01-2025.xlsx", index=False)

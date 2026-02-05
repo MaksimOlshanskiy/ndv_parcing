@@ -129,7 +129,8 @@ for i in items:
     url = ''
     developer = "ФСК"
     project = 'Мартемьяново Клаб'
-    korpus = i.find('div', class_='cards-item__amount').text.strip().split()[-1].replace(')', '')
+    korpus = i.find('div', class_='cards-item__amount').text.strip().split()[3].replace(')', '')
+    print(i.find('div', class_='cards-item__amount').text.strip().split())
     section = ''
     type = 'Квартиры'
     finish_type = 'Без отделки'
@@ -251,7 +252,8 @@ for i in items:
     url = ''
     developer = "ФСК"
     project = 'Мартемьяново Клаб'
-    korpus = i.find('div', class_='cards-item__amount').text.strip().split()[-3].replace('№','').replace('.','')
+    korpus = i.find('div', class_='cards-item__amount').text.strip().split()[-3].replace('№','').replace('.','').replace(',', '')
+    print(i.find('div', class_='cards-item__amount').text.strip().split())
     section = ''
     type = 'Таунхаусы'
     finish_type = 'Без отделки'

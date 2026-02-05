@@ -58,9 +58,10 @@ params = {
 }
 
 zk_dict = {4: 'Mainstreet', 2: 'RED7', 3: "UNO, Старокоптевский", 1: "Very на ботанической", 7: "UNO, Головинские пруды",
-       8: "Физтехсити", 9: "Nametkin tower", 11: "Гоголь парк", 12: "Мираполис", 14: "Emotion", 15: "Малиново",
-       16: "Evopark Сокольники", 17: "Evopark Измайлово", 18: "UNO, Соколиная гора", 19: 'UNO.Горбунова'
-       }
+            8: "Физтехсити", 9: "Nametkin tower", 11: "Гоголь парк", 12: "Мираполис", 13: 'Very на Миклухо-Маклая',
+            14: "Emotion", 15: "Малиново", 16: "Evopark Сокольники", 17: "Evopark Измайлово", 18: "UNO, Соколиная гора",
+            19: 'UNO.Горбунова', 20 : 'Сенсация'
+}
 
 flats = []
 
@@ -87,7 +88,7 @@ while True:
         time.sleep(10)
         session = requests.Session()
         response = session.get(
-            'https://gk-osnova.ru/api/building-objects/filter?min_cost=4000000&max_cost=265000000&min_floor=1&max_floor=33&layout_types[0]=flat&layout_types[1]=apartment&sort[cost]=asc&&min_discount=0&projects[0]=4&projects[1]=2&projects[2]=3&projects[3]=1&projects[4]=7&projects[5]=6&projects[6]=8&projects[7]=9&projects[8]=10&projects[9]=11&projects[10]=12&projects[11]=13&projects[12]=14&projects[13]=15&projects[14]=16&projects[15]=17&projects[16]=18&projects[17]=19',
+            'https://gk-osnova.ru/api/building-objects/filter?min_cost=5000000&max_cost=265000000&min_floor=1&max_floor=35&layout_types[0]=flat&layout_types[1]=apartment&sort[cost]=asc&&&page=2&projects[0]=4&projects[1]=2&projects[2]=3&projects[3]=1&projects[4]=7&projects[5]=6&projects[6]=8&projects[7]=9&projects[8]=10&projects[9]=11&projects[10]=5&projects[11]=12&projects[12]=13&projects[13]=14&projects[14]=15&projects[15]=16&projects[16]=17&projects[17]=18&projects[18]=19&projects[19]=20&projects[20]=21',
             cookies=cookies,
             headers=headers,
             params=params
@@ -123,7 +124,10 @@ while True:
         adress = ''
         eskrou = ''
         try:
-            korpus = int(i["building"])
+            if project == 'Very на Миклухо-Маклая':
+                korpus = i["section"]
+            else:
+                korpus = int(i["building"])
         except:
             korpus = i["building"]
         konstruktiv = ''
@@ -163,13 +167,13 @@ while True:
         flat_number = i["number"]
 
         print(
-            f"{project}, {url}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, {finish_type}")
+            f"{project}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, {finish_type}")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
               time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
               stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
     params["page"] = str(int(params["page"]) + 1)
-    sleep_time = random.uniform(4, 8)
+    sleep_time = random.uniform(5, 9)
     time.sleep(sleep_time)
     if not items:
         print("Всё скачано. Переходим к загрузке в файл")
