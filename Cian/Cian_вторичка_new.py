@@ -97,8 +97,10 @@ json_data = {
         },
         'repair': {
             'type': 'terms',
-            'value': [
-                2,
+            'value': [1,
+                      2,
+                      3,
+                      4,
             ],
         },
         'floor': {
@@ -212,6 +214,7 @@ print(f'В городе {items_count} лотов')
 city_in_work = response.json()['data']['breadcrumbs'][0]['title']
 print(city_in_work)
 
+json_data["jsonQuery"]["repair"]["value"] = [1]
 
 if items_count <=  1500:
 

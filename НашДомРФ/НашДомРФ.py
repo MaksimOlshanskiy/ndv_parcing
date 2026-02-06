@@ -44,10 +44,11 @@ headers = {
 params = {
     'offset': '0',
     'limit': '20',
-    'sortField': 'obj_publ_dt',
+    'sortField': 'objReady100PercDt',
     'sortType': 'desc',
-    'place': '0-40',
-    'objStatus': '0',
+    'escrowFlag': '1',
+    'place': '0-1',
+    'startSaleFlg': '0',
 }
 
 
@@ -64,7 +65,7 @@ offset_counter = 0
 
 while True:
 
-    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=obj_publ_dt&sortType=desc&residentialBuildings=1&place=0-40&objStatus=0:2'
+    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=objReady100PercDt&sortType=desc&place=0-1&startSaleFlg=0'
 
 
     driver.get(url=url)
