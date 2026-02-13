@@ -59,10 +59,7 @@ while True:
         developer = "Glorax"
         project = i['projectName']
         korpus = i['building']
-        if i['type'] == 'apartments':
-            type = 'Апартаменты'
-        if i['type'] == 'apartments':
-            type = 'Квартиры'
+        type = 'Апартаменты'
         finish_type = 'Без отделки'
         room_count = i['rooms']
         try:

@@ -160,7 +160,7 @@ for i in flats_soup:
     district = ''
     adress = ''
     eskrou = ''
-    korpus = ''
+    korpus = i.find('span', class_="catalog-card__info").get_text().strip().split(',')[0].replace('к', '')
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''
@@ -170,14 +170,17 @@ for i in flats_soup:
     dogovor = ''
     type = 'Квартиры'
     room_count = ''
-    area = i.find('span', class_='catalog-card__square').text.replace(' м²', '')
+    try:
+        area = float(i.find('span', class_='catalog-card__square').text.replace(' м²', ''))
+    except:
+        area = ''
     price_per_metr = ''
 
     try:
-        old_price = i.find('span', class_='catalog-card__cost-old').text.strip().replace(' ', '').replace('₽', '')
-        price = i.find('span', class_='catalog-card__cost-current').text.strip().replace(' ', '').replace('₽', '')
+        old_price = float(i.find('span', class_='catalog-card__cost-old').text.strip().replace(' ', '').replace('₽', ''))
+        price = float(i.find('span', class_='catalog-card__cost-current').text.strip().replace(' ', '').replace('₽', ''))
     except:
-        old_price = i.find('span', class_='catalog-card__cost-current').text.strip().replace(' ', '').replace('₽', '')
+        old_price = float(i.find('span', class_='catalog-card__cost-current').text.strip().replace(' ', '').replace('₽', ''))
         price = ''
 
     discount = ''

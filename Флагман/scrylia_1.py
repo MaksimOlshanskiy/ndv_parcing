@@ -75,8 +75,8 @@ while int(params['slice']) <= max_slice:
 
         flats.append([
             date, project, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", developer, '', "", "", "",
-            korpus, "", "", "", "", "", "", type, finish_type, int(room_count), float(area), "", old_price, "", "", '', "",
-            int(floor), ""
+            korpus, "", "", "", "", "", "", type, finish_type, room_count, float(area), "", float(old_price), "", "", '', "",
+            floor, ""
         ])
         count += 1
 

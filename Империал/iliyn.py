@@ -89,10 +89,16 @@ if response.status_code == 200:
         area = float(
             i["descr"].replace('Евростудия с отделкой ', '').replace(' м2', '').replace(' ', '').replace(',', '.'))
         price_per_metr = ''
-        old_price = i['priceold']
+        try:
+            old_price = float(i['priceold'].strip().replace(',', '.'))
+        except:
+            old_price = ''
         discount = ''
         price_per_metr_new = ''
-        price = float(i["price"])
+        try:
+            price = float(i["price"].replace(',', '.'))
+        except:
+            price = ''
         section = ''
 
         flat_number = str(i['title'].replace(' ', '').replace('№', ''))

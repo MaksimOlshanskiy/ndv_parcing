@@ -130,7 +130,7 @@ while True:
             if type == "КВ":
                 type = "Квартира"
             else:
-                type = "Аппартаменты"
+                type = "Апартаменты"
             finish_type = i.get("decorationName", "")
 
             if finish_type == 'Черновая':

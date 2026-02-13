@@ -5,6 +5,10 @@ import requests
 from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new_all
 
+'''
+может не работать с VPN
+'''
+
 cookies = {
     'scbsid_old': '2777220903',
     'tmr_lvid': 'f347782f2edb72a1c122a4ca19bbecba',

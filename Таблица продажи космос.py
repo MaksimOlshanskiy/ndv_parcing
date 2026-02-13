@@ -8,15 +8,17 @@ from openpyxl.styles import Font, Alignment
 
 '''
 Заполняем id проектов из нашей базы
-Указываем 
+
+Если делаем Январь, то будет проблема прошлого месяца, т.к. выходит прошлый месяц, а год текущий
 '''
 
-project_list = ["'7464'", "'4422'", "'5631'", "'7268'", "'4960'", "'7232'"]
+project_list = ["'6921'", "'6923'", "'7074'", "'5610'", "'4564'",
+                "'6092'", "'6760'", "'1901'", "'5551'"]
 
-year = 2025
-previous_year = 2024
-month = 11
-previous_month = 10
+year = 2026
+previous_year = 2025
+month = 1
+previous_month = 12
 file_name = 'Продажи конкурентов Космос 12'
 
 warnings.filterwarnings(
@@ -70,7 +72,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                     WHERE tip_pomescheniya IN ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
                     AND kupil_lotov_v_jk BETWEEN 1 AND 2
-                    AND EXTRACT(YEAR FROM data_registratsii) = {year}
+                    AND EXTRACT(YEAR FROM data_registratsii) = 
+                        CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                     AND EXTRACT(MONTH FROM data_registratsii) = {previous_month}
                     GROUP BY region 
                     ),
@@ -125,7 +131,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                         region,
                         COUNT(*) FILTER (WHERE ipoteka = 1)::numeric / COUNT(*) AS val
                     FROM pipin
-                    WHERE extract(YEAR from data_registratsii) = {year}
+                    WHERE extract(YEAR from data_registratsii) = 
+                        CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                       AND extract(MONTH from data_registratsii) = {previous_month}
                       AND tip_pomescheniya IN ('квартира', 'апартамент')
                       AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -158,7 +168,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                            AND otsenka_ceny IS NOT NULL) AS prev_year,
                         (SELECT COUNT(*) FILTER (WHERE ipoteka = 1)::numeric / COUNT(*)
                          FROM pipin
-                         WHERE extract(YEAR from data_registratsii) = {year}
+                         WHERE extract(YEAR from data_registratsii) = 
+                                CASE
+                                WHEN {month} = 1 THEN {year} - 1
+                                ELSE {year}
+                                END
                            AND extract(MONTH from data_registratsii) = {previous_month}
                            AND tip_pomescheniya IN ('квартира', 'апартамент')
                            AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -288,7 +302,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                 SELECT COUNT(id) AS val
                 FROM pipin
                 WHERE id = {project}
-                AND extract(YEAR from data_registratsii) = {year}
+                AND extract(YEAR from data_registratsii) = 
+                                        CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                 AND extract(MONTH from data_registratsii) = {previous_month}
                 AND tip_pomescheniya in ('квартира', 'апартамент')
                 AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -333,7 +351,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
                 from ndv_data
                 Join ids ON ndv_data.project_name = ids.project_name
                 WHERE id = {project}
-                and extract(year from date) = {year}
+                and extract(year from date) = 
+                                        CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                 and extract(month from date) = {previous_month}
         ),
         now AS (
@@ -370,7 +392,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         prev_month AS (SELECT round(AVG(area_sqm)::numeric, 1) as val
                     from pipin
                     WHERE id = {project}
-                    and extract(YEAR from data_registratsii) = {year}
+                    and extract(YEAR from data_registratsii) = 
+                                            CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                     and extract(MONTH from data_registratsii) = {previous_month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -413,7 +439,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         prev_month AS (SELECT round(AVG(otsenka_ceny) / 1000000, 1) as val
                     from pipin
                     WHERE id = {project}
-                    and extract(YEAR from data_registratsii) = {year}
+                    and extract(YEAR from data_registratsii) = 
+                                            CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                     and extract(MONTH from data_registratsii) = {previous_month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -469,7 +499,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         SELECT COUNT(id)
         from pipin
         WHERE id = {project}
-        and extract(YEAR from data_registratsii) = {year}
+        and extract(YEAR from data_registratsii) = 
+                                CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
         and extract(MONTH from data_registratsii) = {previous_month}
         and ipoteka = 1
         AND tip_pomescheniya in ('квартира', 'апартамент')
@@ -479,7 +513,11 @@ with pd.ExcelWriter(rf"C:\Users\m.olshanskiy\Desktop\{file_name}.xlsx", engine="
         )::numeric / NULLIF(COUNT(id), 0) AS val
                     from pipin
                     WHERE id = {project}
-                    and extract(YEAR from data_registratsii) = {year}
+                    and extract(YEAR from data_registratsii) = 
+                                            CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                     and extract(MONTH from data_registratsii) = {previous_month}
                     AND tip_pomescheniya in ('квартира', 'апартамент')
                     AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -581,7 +619,11 @@ total AS (
         (SELECT ROUND(AVG(area_sqm)::numeric,1)
          FROM pipin
          WHERE id = {project}
-           AND EXTRACT(YEAR FROM data_registratsii) = {year}
+           AND EXTRACT(YEAR FROM data_registratsii) = 
+                                   CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
            AND EXTRACT(MONTH FROM data_registratsii) = {previous_month}
            AND tip_pomescheniya IN ('квартира','апартамент')
            AND (pokupatel_yul IS NULL OR pokupatel_yul = '')
@@ -630,11 +672,19 @@ ORDER BY
                 LIMIT 5),
 
                 prev_month AS (SELECT zalogoderzhatel, round(count(id)::numeric /
-                (SELECT count(id) from filter WHERE extract(YEAR from data_registratsii) = {year}
+                (SELECT count(id) from filter WHERE extract(YEAR from data_registratsii) = 
+                                        CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                       AND extract(MONTH from data_registratsii) = {previous_month}), 3) AS prev_procent,
                       ROUND(AVG(area_sqm)::numeric,1) AS prev_ploshchad
                 FROM filter
-                WHERE extract(YEAR from data_registratsii) = {year}
+                WHERE extract(YEAR from data_registratsii) = 
+                                        CASE
+                        WHEN {month} = 1 THEN {year} - 1
+                        ELSE {year}
+                        END
                       AND extract(MONTH from data_registratsii) = {previous_month}
                 GROUP BY zalogoderzhatel
                 ORDER BY count(id) desc

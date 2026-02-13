@@ -31,7 +31,7 @@ for card in cards:
         area_info = card.find_all("h2")[3].text.strip()
 
         price_parts = price_info.replace('\xa0', ' ').split()
-        price = ''.join(price_parts[2:5])
+        price = int(''.join(price_parts[2:5]))
         price_per_m2 = int(price_parts[-2].replace('.', '')) if len(price_parts) > 2 else ""
 
         area = float(area_info.split()[-2])

@@ -80,8 +80,6 @@ while True:
 
     soup = BeautifulSoup(page_content, 'html.parser')
     flats_soup = soup.find_all('tr', class_= ['cat-tbl__item'])
-    print(flats_soup)
-
 
     for i in flats_soup:
 
@@ -117,6 +115,7 @@ while True:
         konstruktiv = ''
         klass = ''
         elements = i.find_all('span', class_='badge__text')
+        print(elements)
         finish_type = elements[1].text
         srok_sdachi = ''
 

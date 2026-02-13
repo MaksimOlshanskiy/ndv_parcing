@@ -88,20 +88,17 @@ json_data = {
         'engine_version': {
             'type': 'term',
             'value': 2,
+
         },
         'region': {
             'type': 'terms',
             'value': [
-                5024,
+                1,
             ],
         },
-        'repair': {
-            'type': 'terms',
-            'value': [1,
-                      2,
-                      3,
-                      4,
-            ],
+        'page': {
+            'type': 'term',
+            'value': 1,
         },
         'floor': {
             'type': 'range',
@@ -113,6 +110,22 @@ json_data = {
         'publish_period': {
             'type': 'term',
             'value': 2592000,
+        },
+        'house_year': {
+            'type': 'range',
+            'value': {
+                'gte': 2020,
+                'lte': 2023,
+            },
+        },
+        'repair': {
+            'type': 'terms',
+            'value': [
+                1,
+                2,
+                3,
+                4,
+            ],
         },
         'room': {
             'type': 'terms',
@@ -131,17 +144,13 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'flat_share': {
+        'only_flat': {
             'type': 'term',
-            'value': 2,
+            'value': True,
         },
-        'page': {
+        'sort': {
             'type': 'term',
-            'value': 1,
-        },
-        'electronic_trading': {
-            'type': 'term',
-            'value': 2,
+            'value': 'price_object_order',
         },
     },
 }

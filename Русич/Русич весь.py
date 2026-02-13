@@ -102,14 +102,13 @@ while True:
             area = float(i['SQUARE'])
         except:
             area = ''
-        try:
+        if i.get('OLD_PRICE'):
             old_price = int(i['OLD_PRICE'])
-        except:
-            old_price = ''
-        try:
             price = int(i['PRICE'])
-        except:
+        else:
+            old_price = int(i['PRICE'])
             price = ''
+
         section = int(i['SECTION'])
         try:
             floor = i['FLOOR']

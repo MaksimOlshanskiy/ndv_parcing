@@ -53,8 +53,8 @@ params = {
     'show_booked': '2',
     'offset': 0,
     'limit': '20',
-    'price_0': '13700000',
-    'price_1': '37948337',
+    'price_0': '1',
+    'price_1': '379483379',
 }
 
 url = 'https://kaskad-park.ru/api/townhouse/'

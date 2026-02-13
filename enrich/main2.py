@@ -39,9 +39,12 @@ def enrich_corpus(df, corpus_dict):
         "Статус",
         "Распроданность квартир",
         "Количество квартир",
-        "Жилая площадь, м²"
+        "Жилая площадь, м²",
+        "id",
+        "ID дом.рф"
     ]
 
+    # создаём недостающие столбцы
     for col in required_columns:
         if col not in df.columns:
             df[col] = None

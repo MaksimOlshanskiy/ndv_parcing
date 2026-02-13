@@ -57,8 +57,7 @@ if response.status_code == 200:
 
 
     for i, j in items.items():
-        print(i)
-        print(j)
+
         date = datetime.date.today()
         project = 'Апсайд Тауэрс'
         developer = 'Upside Development'
