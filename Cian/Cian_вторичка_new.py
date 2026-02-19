@@ -111,13 +111,6 @@ json_data = {
             'type': 'term',
             'value': 2592000,
         },
-        'house_year': {
-            'type': 'range',
-            'value': {
-                'gte': 2020,
-                'lte': 2023,
-            },
-        },
         'repair': {
             'type': 'terms',
             'value': [

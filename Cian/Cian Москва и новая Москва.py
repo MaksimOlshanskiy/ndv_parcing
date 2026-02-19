@@ -232,7 +232,6 @@ for y in parsim:
                         old_price = i['bargainTerms']['priceRur']
                         price = ''
                 except:
-                    print('Херня какая-то тут')
                     old_price = i['bargainTerms']['priceRur']
                     price = ''
                 try:
