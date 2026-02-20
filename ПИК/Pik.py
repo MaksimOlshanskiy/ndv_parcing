@@ -52,7 +52,7 @@ for zk in zk_list:
     while True:
 
 
-        url = f'https://flat.pik-service.ru/api/v1/filter/flat-by-block/{str(zk)}'
+        url = f'https://filter.dev-service.tech/api/v1/filter/flat-by-block/{str(zk)}'
 
         response = requests.get(
             url=url,

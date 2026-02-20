@@ -1,9 +1,31 @@
 import subprocess
-import logging
-from pathlib import Path
-
 import sys
 import codecs
+import logging
+from logging.handlers import RotatingFileHandler
+from pathlib import Path
+import colorlog
+
+handler = colorlog.StreamHandler(sys.stdout)
+
+formatter = colorlog.ColoredFormatter(
+    "%(log_color)s%(asctime)s | %(levelname)s | %(message)s",
+    log_colors={
+        'DEBUG': 'white',
+        'INFO': 'white',
+        'WARNING': 'white',
+        'ERROR': 'red',
+        'CRITICAL': 'bold_red',
+    },
+    reset=True
+)
+
+handler.setFormatter(formatter)
+
+logger = logging.getLogger("runner")
+logger.setLevel(logging.INFO)
+logger.addHandler(handler)
+
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.buffer)
 sys.stderr = codecs.getwriter("utf-8")(sys.stderr.buffer)
 
@@ -141,16 +163,30 @@ SCRIPTS = [
 
 ]
 
-# логирование
 LOG_DIR = Path("All/logs")
 LOG_DIR.mkdir(exist_ok=True)
 
-logging.basicConfig(
-    filename=LOG_DIR / "run_all.log",
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s",
+logger = logging.getLogger("runner")
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter(
+    "%(asctime)s | %(levelname)s | %(message)s"
+)
+
+# 🔹 Консоль
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
+# 🔹 Файл с ротацией
+file_handler = RotatingFileHandler(
+    LOG_DIR / "run_all.log",
+    maxBytes=5_000_000,  # 5 MB
+    backupCount=5,
     encoding="utf-8"
 )
+file_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
 
 
 
@@ -162,20 +198,15 @@ for script in SCRIPTS:
     process = subprocess.Popen(
         ["python", script],
         stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
         text=True,
         encoding="utf-8",
         errors="replace",
         bufsize=1
     )
 
-    # stdout в реальном времени
     for line in process.stdout:
-        logging.info(f"{script.name} | {line.rstrip()}")
-
-    # stderr в реальном времени
-    for line in process.stderr:
-        logging.error(f"{script.name} | {line.rstrip()}")
+        logger.info(f"{script.name} | {line.rstrip()}")
 
     return_code = process.wait()
 

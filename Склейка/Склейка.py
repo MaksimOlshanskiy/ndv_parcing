@@ -5,10 +5,10 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\Desktop\Ростов"
+folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\2026-02-20"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'Ростовская область вторичка.xlsx'
+output_file_name = 'Владивосток_первичка.xlsx'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -23,6 +23,7 @@ for file_path in excel_files:
 
 
     all_data = pd.concat([all_data, df], ignore_index=True)  # Добавляем данные в общий DataFrame
+
 
 all_data["Ссылка"] = (
     all_data["Ссылка"]

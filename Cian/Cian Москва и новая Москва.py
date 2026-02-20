@@ -49,7 +49,7 @@ ids_mo_srednee = [1628126, 8689, 5208, 4482905, 5194393, 3394804, 600475, 5499, 
 ids_mo_bliz = [118473, 4677457, 3922634, 4109874, 6644, 319, 4126730
        ]
 
-parsim = [4708643]
+parsim = [3893189]
 
 cookies = {
     '_CIAN_GK': '787699e3-fc12-4a31-a77a-6cfd610b499c',
@@ -333,7 +333,7 @@ for y in parsim:
             counter += 1
 
     if len(flats) > 0:
-        save_flats_to_excel(flats, project, developer)
+        save_flats_to_excel(flats, project, developer, kvartirografia=False)
     else:
         no_flats.append(y)
 

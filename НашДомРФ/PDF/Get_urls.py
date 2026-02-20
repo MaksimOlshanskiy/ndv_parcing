@@ -18,7 +18,8 @@ def making_list_of_urls(corpus_id):
 
         date = i['rpdIssueDttm']
         link = i['rpdPdfLink']
-        url_list.append([date, link])
+        pd_number = i['rpdNum']
+        url_list.append([date, link, pd_number])
 
     return url_list
 

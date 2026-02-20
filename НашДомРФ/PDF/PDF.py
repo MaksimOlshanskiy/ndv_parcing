@@ -19,11 +19,11 @@ with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracter
 
 
 def extract_number(text):
-    # 1. убрать zero-width
+    # 1. убрать zero-width и переносы строк
     text = re.sub(r'[\u200b\n]', '', text)
 
-    # 2. найти число
-    match = re.search(r'(\d[\d\s,\.]*\d)', text)
+    # 2. найти число (включая однозначные)
+    match = re.search(r'(\d+(?:[\s,.]\d+)*)', text)
     if not match:
         return None
 
@@ -50,10 +50,7 @@ def extract_number(text):
         if pairs_ok:
             fixed = raw_digits[::2]
 
-            # если в исходнике была точка — восстановим дробную часть
             if '.' in value:
-                # дробная часть в x2 тоже задвоена
-                # считаем, сколько цифр было после точки
                 decimals = len(value.split('.')[-1]) // 2
                 fixed = fixed[:-decimals] + '.' + fixed[-decimals:]
 
@@ -85,10 +82,10 @@ def extract_points_from_pdf_url(url, target_points):
                     for point in target_points:
                         if any(point in cell for cell in row):
 
-                            right_column_text = row[-1]
-                            print("POINT:", point)
-                            print("RAW:", repr(right_column_text))
-                            print("-" * 50)
+                            # right_column_text = row[-1]
+                            # print("POINT:", point)
+                            # print("RAW:", repr(right_column_text))
+                            # print("-" * 50)
 
                             value = extract_number(row[-1])
                             if value is not None:
@@ -102,7 +99,7 @@ def extract_points_from_pdf_url(url, target_points):
     return summed_results
 
 
-corpus_ids = [38163]
+corpus_ids = [64564, 44953]
 finish_result_list = []
 
 for corpus_id in corpus_ids:
@@ -126,15 +123,13 @@ for corpus_id in corpus_ids:
         print(date_of_pd)
         month_key = (date_of_pd.year, date_of_pd.month)
 
-        if date_of_pd.year < 2024:
-            break
-
         if month_key in seen_months:
             continue  # 🔥 пропускаем, PDF даже не скачиваем
 
         seen_months.add(month_key)
 
         url = project_declaration[1]
+        pd_number = project_declaration[2]
 
         target_points = [
             "19.7.1.1.1.1",
@@ -150,12 +145,15 @@ for corpus_id in corpus_ids:
 
         data = extract_points_from_pdf_url(url, target_points)
 
-        result = [project, building, corpus_id, date_of_pd, data['19.7.1.1.1.1'], data['19.7.2.1.1.1'],
+        result = [project, building, corpus_id, date_of_pd, pd_number, data['19.7.1.1.1.1'], data['19.7.2.1.1.1'],
                   data['19.7.3.1.1.1'], data['19.7.1.1.2.1'], data['19.7.2.1.2.1'], data['19.7.3.1.2.1'],
                   data['19.7.1.1.3.1'], data['19.7.2.1.3.1'], data['19.7.3.1.3.1']]
         print(result)
         finish_result_list.append(result)
         if all(value == 0 for value in data.values()):
+            break
+
+        if date_of_pd.year < 2024:
             break
 
         sleep_time = random.uniform(3, 10)
@@ -179,7 +177,7 @@ df = pd.DataFrame(finish_result_list, columns=[
 print(df)
 
 # Базовый путь для сохранения
-base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ\PR.xlsx"
+base_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ\Посейдония.xlsx"
 
 # Сохранение файла в папку
 df.to_excel(base_path, index=False)
