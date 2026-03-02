@@ -63,10 +63,6 @@ params = {
     'offset': '0',
 }
 
-
-
-
-
 flats = []
 
 def extract_digits_or_original(s):
@@ -102,14 +98,15 @@ while True:
             area = float(i['area'])
         except:
             area = i['area']
-        try:
-            old_price = round(int(i['price']) * 100 / (100-i['discount']))
-        except:
-            old_price = ''
-        try:
+
+        discounts = i.get('discount_on_benefits') or []
+        if discounts and discounts[0].get('discount'):
+            old_price = i['mortgage_informer']['benefit']['benefitPrice']
             price = int(i['price'])
-        except:
-            price = ''
+        else:
+            old_price = int(i['price'])
+            price = old_price
+
         section = ''
         try:
             floor = int(i['floor'])

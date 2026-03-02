@@ -95,7 +95,6 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Киноквартал\Киноквартал.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Колди\Найс лофт.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Корпорация ВИТ\Триумф.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Кортрос\Kortros.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Крост\krost.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Level\Level.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Легион\ametist.py"),

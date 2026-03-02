@@ -30,13 +30,11 @@ except:
     print('Ошибка подключения к базе данных')
 
 sql_query = f"""
-select ids.id, ndv_data.date, ndv_data.project_name, ndv_data.area_sqm, rooms    
+select *
 from ndv_data
-JOIN ids ON ndv_data.project_name = ids.project_name
 where extract(year from date) = 2025 
-and district like '%АО' 
-and district not in ('ТАО', 'НАО')
-and unit_type = 'Квартиры'
+and extract(month from date) = 2 
+
                     """
 
 
@@ -50,4 +48,4 @@ print(df.info())
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 # df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
 
-df.to_excel("Выгрузка01-2025.xlsx", index=False)
+df.to_excel("Выгрузка02-2025.xlsx", index=False)

@@ -58,14 +58,11 @@ while int(params['slice']) <= max_slice:
         korpus = ''
         type = 'Квартира'
         finish_type = 'Без отделки'
-
         characteristics = i.get('characteristics', [])
-
         room_count = characteristics[1]['value'] if len(characteristics) > 1 else ''
-        area = characteristics[2]['value'] if len(characteristics) > 2 else ''
-        area=area.replace(',', '.')
-        floor = characteristics[3]['value'].split('/')[0] if len(characteristics) > 3 else ''
-
+        area = characteristics[3]['value'] if len(characteristics) > 2 else ''
+        area = area.replace(',', '.')
+        floor = characteristics[4]['value'].split('/')[0] if len(characteristics) > 3 else ''
         price = i.get('price', '0').split('.')[0]
         old_price = i.get('priceold', '0').split('.')[0]
 
@@ -77,7 +74,7 @@ while int(params['slice']) <= max_slice:
         flats.append([
             date, project, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", developer, '', "", "", "",
             korpus, "", "", "", "", "", "", type, finish_type, int(room_count), float(area), "", old_price, "", "", '', "",
-            int(floor), ""
+            floor, ""
         ])
         count += 1
 

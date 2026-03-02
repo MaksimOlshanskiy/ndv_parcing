@@ -34,21 +34,18 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
 }
 
-params = {
-        'haveItem': 'true',
-        'limit': '9',
-        'offset': '0',
-    }
 
-url = 'https://newsite.etalongroup.ru/api/filter/msk/flat/list/'
+# Параметры пагинации
+offset = 0
+page_number = 0
+limit = 7  # Количество объявлений на одной странице (можно менять)
+have_item = True  # Флаг наличия данных
+
 
 flats = []
 count = 1
 
-# Параметры пагинации
-offset = 0
-limit = 9  # Количество объявлений на одной странице (можно менять)
-have_item = True  # Флаг наличия данных
+
 
 
 def get_meta_description(flat_url):
@@ -92,11 +89,16 @@ def extract_building_and_complex(meta_description):
 
 
 while True:
+
+    url = f"https://newsite.etalongroup.ru/api/filter/msk/flat/list/?pagination=%7B%22haveItem%22:true,%22page%22:{page_number},%22object%22:null,%22offset%22:{offset}%7D&getAuctionSlider=false"
+
+    print(url)
+
     print(f"Загружаю объявления с offset={offset}...")
 
 
 
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers)
     print(response.status_code)
 
     if response.status_code != 200:
@@ -164,8 +166,12 @@ while True:
             count += 1
             time.sleep(0.05)
 
-
-        params["offset"] = str(int(params["offset"]) + 9)
+        print(offset)
+        offset += 7
+        print(offset)
+        print(page_number)
+        page_number += 1
+        print(page_number)
         time.sleep(0.05)  # Задержка между запросами
     except Exception as e:
         print(f"Ошибка обработки JSON: {e}")

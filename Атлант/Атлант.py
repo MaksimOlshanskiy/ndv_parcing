@@ -17,7 +17,7 @@ from functions import save_flats_to_excel
 Нужно проверять количество страниц с лотами и проставлять это число в переменную count_of_pages  https://atlantdevelopment.ru/flats/clear/apply/
 '''
 
-count_of_pages = 22
+count_of_pages = 26
 
 cookies = {
     'BX_USER_ID': '15016e9404744ee3cb1a5dfed786822b',
@@ -61,10 +61,11 @@ data = {
     'FILTER_ITEMS_RESULT[arrFilter][=PROPERTY_2][]': [
         'ЖК «Внуково Парк 2» ',
         'ЖК «Внуково Парк 3»',
+        'ЖК «Крекшино Парк»',
         'КД «Малые Вешки»',
         'КД «Новое Вашутино»',
     ],
-    'FILTER_ITEMS_RESULT[COUNT]': '255',
+    'FILTER_ITEMS_RESULT[COUNT]': '308',
     'FILTER_ITEMS_RESULT[NEW_URL]': '',
 }
 

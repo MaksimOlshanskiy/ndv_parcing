@@ -16,7 +16,7 @@ from functions import get_unique_filepath
 """
 
 # Загружаем Excel
-file_path = r"C:\Users\m.olshanskiy\Desktop\База Январь\База\спб.xlsx"
+file_path = r"C:\Users\m.olshanskiy\Desktop\Февраль-2026.xlsx"
 
 df = pd.read_excel(file_path)
 
@@ -28,6 +28,7 @@ corpus_dict = load_json(
 )
 area_dict = load_json(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json'
 )
+
 
 df = enrich_dataframe(
     df,

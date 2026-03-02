@@ -118,6 +118,8 @@ if response.status_code == 200:
         area = float(i["square"])
         old_price = i["price"]
         price = i["price_sale"]
+        if not price:
+            price = old_price
 
         if finish_type == '':
             finish_type = 'Без отделки'
@@ -125,7 +127,7 @@ if response.status_code == 200:
             finish_type = 'С отделкой'
 
         print(
-            f"{count},{project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, этаж: {floor}")
+            f"{count},{project}, дата: {date}, комнаты: {room_count}, площадь: {area}, старая цена: {old_price}, цена: {price}, этаж: {floor}")
 
         result = [date, project, '', '', '', '', '', '',
                   '',

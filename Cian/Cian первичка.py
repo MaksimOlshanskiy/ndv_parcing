@@ -19,6 +19,7 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
+print(requests.get("https://ipinfo.io/json").json())
 
 # noinspection PyDictDuplicateKeys
 cookies = {
@@ -223,6 +224,7 @@ json_data = {
 }
 
 current_date = datetime.date.today()
+ids = [5388961, 4486232, 4822160, 4025158, 4115664, 3946443, 3798039, 5724375, 4699226, 4493023, 4927111, 24919, 24987, 3804614, 4221501, 3001470, 5270178, 3342050, 4141760, 4072663, 3818849, 4503768, 5121201, 4492945, 26196, 41930, 46388, 4115070, 4038380]
 
 for y in ids:
 

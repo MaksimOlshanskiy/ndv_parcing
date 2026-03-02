@@ -13,6 +13,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
 import time
 
+'''
+Нажать самостоятельно Квартиры - Список
+'''
+
 cookies = {
     'SCBFormsAlreadyPulled': 'true',
     'scbsid_old': '2746015342',

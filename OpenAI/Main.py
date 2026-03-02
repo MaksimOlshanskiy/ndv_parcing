@@ -102,9 +102,8 @@ if __name__ == "__main__":
 
 
     images = [
-        compress_image(r"C:\Users\m.olshanskiy\Desktop\7D6375EBA2754CF894666C8675D5989B.jpeg"),
-        compress_image(r"C:\Users\m.olshanskiy\Desktop\0185006A74C64272B461133A6100977D.jpeg"),
-        compress_image(r"C:\Users\m.olshanskiy\Desktop\EC2938E034FF4FC8A0B6827F44B44B59.jpeg"),
+        compress_image(r"C:\Users\m.olshanskiy\Desktop\E801734820EC4376B389DBD0359ABE37.jpeg"),
+
     ]
 
     stage = analyze_construction_stage_multi(images, prompt)

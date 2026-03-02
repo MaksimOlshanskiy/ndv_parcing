@@ -73,7 +73,7 @@ for i in items:
     district = ''
     adress = ''
     eskrou = ''
-    korpus = i["bulk"]["number"]
+    korpus = str(i["bulk"]["number"]).replace(',', '.')
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''

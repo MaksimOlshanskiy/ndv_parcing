@@ -138,6 +138,9 @@ for finishing in range(2):
                 price = round(float(i["price"]))
             except:
                 price = i["price"]
+            if not old_price or price == 0:
+                old_price = price
+
             section = int(i['section']['number'])
             floor = i['floor']['number']
             flat_number = i['number']

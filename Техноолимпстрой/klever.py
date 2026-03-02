@@ -11,28 +11,30 @@ from save_to_excel import save_flats_to_excel_far
 
 headers = {
     'accept': 'application/json, text/plain, */*',
-    'accept-language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'origin': 'https://smart-catalog.profitbase.ru',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'sec-ch-ua': '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
 }
 
 params = {
-    'propertyTypeAliases[0]': 'property',
+    'projectIds[0]': '36061',
     'isHouseFinished': '0',
     'status[0]': 'AVAILABLE',
-    'limit': '161',
+    'limit': '10',
+    'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': '0c50bbd6e35bfe54431d78d030ef44c74ee063cc7dca36873d42dae46dee4d8c',
+    'access_token': '6d14931f595fb265a5e300fa8250a5673f04ce0e2f2ffff051f983c4e054ae97',
 }
+
 
 
 flats = []

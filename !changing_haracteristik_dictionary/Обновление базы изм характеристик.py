@@ -26,6 +26,18 @@ df["ID дом.рф"] = (
     .reindex(df.index)
 )
 
+df["Распроданность квартир"] = (
+    df["Распроданность квартир"]
+    .astype(str)
+    .str.replace("%", "", regex=False)  # убираем %
+    .str.replace(",", ".", regex=False) # если вдруг 50,5%
+)
+
+df["Распроданность квартир"] = pd.to_numeric(
+    df["Распроданность квартир"],
+    errors="coerce"
+) / 100
+
 # удаляем дубликаты по ключам
 print(df.columns.tolist())
 df = df.drop_duplicates(subset=["Название проекта", "Девелопер", "Корпус", "Договор", "id", "ID дом.рф"])
@@ -138,7 +150,11 @@ for _, row in df.iterrows():
 
     # 🔥 Новые поля
     status = str(row.get("Статус", ""))
-    sold = str(row.get("Распроданность квартир", ""))
+    sold = row.get("Распроданность квартир")
+
+    if pd.isna(sold):
+        sold = None
+
     flats = str(row.get("Количество квартир", ""))
     area = str(row.get("Жилая площадь, м²", ""))
 

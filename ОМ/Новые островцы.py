@@ -85,7 +85,7 @@ while True:
 
 
         date = datetime.now()
-        project = 'Новые Островцы (ОМ Девелопмент)'
+        project = 'Новые Островцы'
 
 
         english = ''

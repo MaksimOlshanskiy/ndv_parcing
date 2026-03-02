@@ -116,10 +116,11 @@ for i in items:
         area = float(i['square'])
         price_per_metr = ''
         old_price = int(i['actionpr'])
-
         discount = ''
         price_per_metr_new = ''
         price = int(i["price"])
+        if price > old_price:
+            price = old_price
         section = int(i['sectionNum'])
         floor = int(i['floorNum'])
         flat_number = ''

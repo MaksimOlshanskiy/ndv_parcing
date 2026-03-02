@@ -146,8 +146,8 @@ while True:
         discount = ''
         price_per_metr_new = ''
         price = int(i["price"])
-        section = int(i["section_title"])
-        floor = int(i["floor"])
+        section = ''
+        floor = i["floor"]
         flat_number = ''
 
         print(
