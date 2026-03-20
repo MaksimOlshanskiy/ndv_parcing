@@ -32,7 +32,7 @@ cookies = {
     'roistat_visit': '32710720',
     'roistat_visit_cookie_expire': '1209600',
     'qrator_jsr': '1772196842.840.RwrkFWPMJqOuyxro-h8ffeehueef3cc3h2eico8s43546617j-00',
-    'qrator_jsid': '1772196842.840.RwrkFWPMJqOuyxro-21atfdps5vhm9jtduofuuc3lt9ni6743',
+    'qrator_jsid': '1773729102.592.H8TUbe9bk17HElej-ipltbjpgeguh2djkl08jfjmcv6f4etpd',
     'auth.strategy': 'users',
     '_slsession': '649c62a7-c9d9-42fb-ba66-5c9483945dd7',
     '_ym_visorc': 'w',
@@ -83,9 +83,7 @@ json_data = {
         'first': 24,
         'floorChoices': [],
         'building': [],
-        'project': [
-            'UHJvamVjdFR5cGU6YXVydXM=',
-        ],
+        'project': [],
         'section': [],
         'rooms': [],
         'city': 'Q2l0eVR5cGU6MQ==',
@@ -105,9 +103,10 @@ json_data = {
         ],
         'type': 'flat',
         'withoutOffers': None,
-        'after': 'YXJyYXljb25uZWN0aW9uOjIz',
+        'offset': 0,
     },
 }
+
 
 
 

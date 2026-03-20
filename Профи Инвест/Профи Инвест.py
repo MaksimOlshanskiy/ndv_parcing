@@ -1,3 +1,4 @@
+from requests.exceptions import Timeout
 import requests
 from datetime import datetime
 import time
@@ -80,12 +81,19 @@ for finishing in finishing_list:
 
     while True:
 
-        response = requests.post(
-            'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/api/load_more',
-            cookies=cookies,
-            headers=headers,
-            data=data,
-        )
+        try:
+
+            response = requests.post(
+                'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/api/load_more',
+                cookies=cookies,
+                headers=headers,
+                data=data,
+                timeout=(5, 30)
+            )
+        except Timeout:
+            print("Timeout запроса, повтор...")
+            time.sleep(3)
+            continue
 
         print(response.status_code)
         html = response.json()['code']
@@ -139,6 +147,9 @@ for finishing in finishing_list:
             except:
                 floor = ''
             flat_number = ''
+            if not old_price:
+                old_price = price
+
 
             english = ''
             promzona = ''

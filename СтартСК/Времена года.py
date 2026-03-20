@@ -71,6 +71,7 @@ web_site = f'https://jk-vg.su/#flats'
 driver = webdriver.Chrome()
 driver.get(url=web_site)
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
+time.sleep(5)
 soup = BeautifulSoup(page_content, 'html.parser')
 flats_soup = soup.find_all('div', class_="_wrapper_1p9bk_1")
 for f in flats_soup:

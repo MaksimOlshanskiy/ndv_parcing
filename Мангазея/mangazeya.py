@@ -1,6 +1,6 @@
 import datetime
 import time
-
+import random
 from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new_all
 import requests
@@ -126,8 +126,9 @@ while url:
     else:
         print(f'Ошибка: {response.status_code}')
         break
+    sleep_time = random.uniform(1, 3)
+    time.sleep(sleep_time)
 
-    time.sleep(0.3)
 
 project = 'all'
 save_flats_to_excel(flats, project, developer)

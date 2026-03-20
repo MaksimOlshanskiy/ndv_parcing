@@ -11,7 +11,7 @@ from save_to_excel import save_flats_to_excel_old_new
 """
 
 projects_ids = ['hide', 'hideout', 'svet']
-projects_dict = {'HIDE' : 'Hide', 'hideOUT' : 'Hide out', 'svet' : 'Свет'}
+projects_dict = {'HIDE' : 'Hide', 'hideOUT' : 'ХАЙДАУТ', 'svet' : 'Свет'}
 flats = []
 
 for project_id in projects_ids:

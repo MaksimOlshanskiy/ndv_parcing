@@ -73,21 +73,32 @@ headers = {
     # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; cf_clearance=iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk; _ym_uid=174161324651361127; _ym_d=1741613246; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; adrdel=1744094487237; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D; _gcl_au=1.1.358370826.1745923014; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; newbuilding-search-frontend.consultant_cian_chat_onboarding_shown=1; cookie_agreement_accepted=1; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; map_preview_onboarding_counter=1; _ga=GA1.1.781516742.1746453483; uxfb_usertype=searcher; afUserId=01d5d1e2-93cc-4880-8496-5dfe7ddb17cf-p; AF_SYNC=1746453484323; uxs_uid=f7e2e9d0-29b8-11f0-9dbd-830a513100bc; cian_ruid=8098251; F6_CIAN_SID=a9a48f63f662387d3c35ca6c6cb20740d7c86bb81f0c2b9767f62a64e8087c55; _ym_isad=2; login_mro_popup=1; login_button_tooltip_key=1; countCallNowPopupShowed=2%3A1746517081809; _yasc=8R9/wr218vWJMfK05fBo5KUPxW5J6smlJc3lsbzK7vnwV/2oYgxkWZAv+aGBmHZLlQc=; _yasc=7EJRUjZIw8befWCH7Q8prRioIBnENtPFjOfuiUI6eC63hgTnMLGHoaCZZVuwd2dtOK4=; sopr_session=ee304049ec614f4a; _ym_visorc=b; session_region_id=4827; session_main_town_region_id=4827; _ga_3369S417EL=GS2.1.s1746519290$o4$g1$t1746519322$j28$l0$h0',
 }
 
+newbuilding_classes = [
+                'economy',
+                'comfort',
+                'business',
+                'premium',
+            ]
+
+
+
 json_data = {
     'jsonQuery': {
-        'from_developer': {
-            'type': 'term',
-            'value': True,
-        },
         'region': {
             'type': 'terms',
             'value': [
-                467539,
+                1,
+            ],
+        },
+        'newbuilding_class': {
+            'type': 'terms',
+            'value': [
+                'comfort',
             ],
         },
     },
     'uri': '/newobjects/list?deal_type=sale&engine_version=2&from_developer=1&offer_type=newobject&region=2&p=4',
-    'subdomain': 'spb',
+    'subdomain': 'www',
     'offset': 0,
     'count': 25,
     'userCanUseHiddenBase': False,
@@ -133,29 +144,40 @@ coords = city_centers.get(user_input)
 # noinspection PyTypeChecker
 json_data['jsonQuery']['region']['value'] = [user_input]
 
-ids = []
+ids_dict = {}
+
 json_data['offset'] = 0
 
-while True:
+for newbuilding_class in newbuilding_classes:
 
-    response = requests.post(
-        'https://api.cian.ru/newbuilding-search/v1/get-newbuildings-for-serp/',
-        cookies=cookies,
-        headers=headers,
-        json=json_data,
-    )
+    json_data['jsonQuery']['newbuilding_class']['value'] = [newbuilding_class]
+    json_data['offset'] = 0
 
-    items = response.json()['newbuildings']
+    while True:
 
-    for i in items:
-        if i['fromDeveloperPropsCount'] < 1:
-            continue
-        id = i['id']
-        ids.append(id)
-    if not items:
-        break
-    json_data['offset'] += 25
+        response = requests.post(
+            'https://api.cian.ru/newbuilding-search/v1/get-newbuildings-for-serp/',
+            cookies=cookies,
+            headers=headers,
+            json=json_data,
+        )
 
+        items = response.json()['newbuildings']
+
+        for i in items:
+            if i['fromDeveloperPropsCount'] < 1:
+                continue
+            id = i['id']
+            class_of_building = json_data['jsonQuery']['newbuilding_class']['value']
+            ids_dict[id] = class_of_building[0]
+        if not items:
+            break
+        json_data['offset'] += 25
+
+
+ids = list(ids_dict.keys())
+
+print(ids_dict)
 city_in_work = response.json()['breadcrumbs'][0]['title']
 print(city_in_work)
 print(response.json()['breadcrumbs'][1]['title'])
@@ -212,19 +234,10 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'from_developer': {
-            'type': 'term',
-            'value': True,
-        },
-        'publish_period': {
-            'type': 'term',
-            'value': 2592000,
-        },
     },
 }
 
 current_date = datetime.date.today()
-ids = [5388961, 4486232, 4822160, 4025158, 4115664, 3946443, 3798039, 5724375, 4699226, 4493023, 4927111, 24919, 24987, 3804614, 4221501, 3001470, 5270178, 3342050, 4141760, 4072663, 3818849, 4503768, 5121201, 4492945, 26196, 41930, 46388, 4115070, 4038380]
 
 for y in ids:
 
@@ -482,10 +495,11 @@ for y in ids:
 
                         except:
                             distance = ''
+                        class_of_jk = ''
 
                         print(
-                            f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
-                        result = [project, developer, location, location2, okrug, raion, mikroraion, metro, street, house, korpus, distance, srok_sdachi, type,
+                            f"{project}, {url}, класс: {class_of_jk}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
+                        result = [project, developer, class_of_jk, location, location2, okrug, raion, mikroraion, metro, street, house, korpus, distance, srok_sdachi, type,
                                   finish_type, room_count, area, kitchenArea, livingArea, price, floor,
                                   balconies_and_loggias_count, parking, url]
                         flats.append(result)
@@ -506,6 +520,7 @@ for y in ids:
 
         df = pd.DataFrame(flats_total, columns=['Название проекта',
                                                 'Девелопер',
+                                                'Класс',
                                                 'Локация',
                                                 'Локация2',
                                                           'Округ',

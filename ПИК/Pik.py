@@ -5,6 +5,7 @@ import pandas as pd
 import openpyxl
 import os
 import random
+from requests.exceptions import Timeout
 
 from functions import save_flats_to_excel
 
@@ -53,12 +54,17 @@ for zk in zk_list:
 
 
         url = f'https://filter.dev-service.tech/api/v1/filter/flat-by-block/{str(zk)}'
-
-        response = requests.get(
-            url=url,
-            headers=headers,
-            params=params
-        )
+        try:
+            response = requests.get(
+                url=url,
+                headers=headers,
+                params=params,
+                timeout=(5, 30)
+            )
+        except Timeout:
+            print("Timeout запроса, повтор...")
+            time.sleep(3)
+            continue
 
         print('--------------------------------------------------------------')
         items = response.json()["data"]["items"]

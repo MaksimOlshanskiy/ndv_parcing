@@ -1,8 +1,27 @@
 import pandas as pd
 import json
 
+def add_location_column(df):
+    df = df.copy()
+
+    new_moscow = {'ТАО', 'НАО'}
+    old_moscow = {'ЮАО', 'ЮВАО', 'ЗАО', 'ЮЗАО', 'СЗАО', 'СВАО', 'ВАО', 'САО', 'ЦАО', 'ЗелАО'}
+
+    df["Локация"] = None
+
+    df.loc[df["Округ"].isin(new_moscow), "Локация"] = "Новая Москва"
+    df.loc[df["Округ"].isin(old_moscow), "Локация"] = "Старая Москва"
+
+    # всё остальное, но не пустое
+    df.loc[
+        (~df["Округ"].isin(new_moscow | old_moscow)) & df["Округ"].notna(),
+        "Локация"
+    ] = "Московская область"
+
+    return df
+
 def load_excel(excel_path):
-    df = pd.read_excel(excel_path, sheet_name='Sheet1')
+    df = pd.read_excel(excel_path, sheet_name='Sheet1', dtype={"Корпус": str})
     df.columns = df.columns.str.strip()
     return df
 
@@ -19,6 +38,10 @@ def enrich_projects(df, projects_dict):
         .str.replace("«", "", regex=False)
         .str.replace("»", "", regex=False)
     )
+
+    # ✅ добавляем столбец id, если его нет
+    if "id" not in df.columns:
+        df["id"] = None
 
     for idx, row in df.iterrows():
         key = row["project_key"]
@@ -40,7 +63,6 @@ def enrich_corpus(df, corpus_dict):
         "Распроданность квартир",
         "Количество квартир",
         "Жилая площадь, м²",
-        "id",
         "ID дом.рф"
     ]
 
@@ -155,6 +177,7 @@ def main():
     df = enrich_projects(df, projects_dict)
     df = enrich_corpus(df, corpus_dict)
     df = enrich_area_typology(df, area_dict)
+    df = add_location_column(df)
 
     df.to_excel(excel_path, index=False)
     print("✅ Готово. Файл обработан за один проход.")
@@ -179,6 +202,7 @@ def enrich_dataframe(
         df = enrich_corpus(df, corpus_dict)
     if area_dict is not None:
         df = enrich_area_typology(df, area_dict)
+    df = add_location_column(df)
 
     return df
 

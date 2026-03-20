@@ -5,10 +5,10 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\1_FILES\2026-03-02"
+folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Дом клик\2026-03-19"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'Скрылья.xlsx'
+output_file_name = 'Владикавказ.xlsx'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()

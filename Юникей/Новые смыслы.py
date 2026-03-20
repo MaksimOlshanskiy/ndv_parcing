@@ -17,18 +17,45 @@ from functions import save_flats_to_excel
 
 cookies = {
     '_ym_uid': '1742827436146654235',
-    '_ym_d': '1742827436',
-    '_ct': '2900000000083277762',
-    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
-    'cookiesApply': '1',
-    'cted': 'modId%3D46cqnlyv%3Bya_client_id%3D1742827436146654235%7CmodId%3Dli0xsjag%3Bya_client_id%3D1742827436146654235',
-    '_ct_ids': '46cqnlyv%3A61236%3A228189572_li0xsjag%3A70248%3A126686309',
-    '_ym_isad': '2',
+    '_ym_d': '1773662608',
+    'tmr_lvid': 'd30c05ee2b9f77dcbb919dc27de11d37',
+    'tmr_lvidTS': '1773662608186',
     '_ym_visorc': 'w',
+    'scbsid_old': '2746015342',
+    'cted': 'modId%3Dli0xsjag%3Bya_client_id%3D1742827436146654235%7CmodId%3D46cqnlyv%3Bya_client_id%3D1742827436146654235%7CmodId%3Dlj2zo781%3Bya_client_id%3D1742827436146654235%7CmodId%3Ddg09qsgb%3Bya_client_id%3D1742827436146654235',
+    '_ym_isad': '2',
+    '_cmg_csstVKMSr': '1773662609',
+    '_comagic_idVKMSr': '12394749031.16939302976.1773662608',
+    'roistat_visit': '464135',
+    'roistat_first_visit': '464135',
+    'roistat_visit_cookie_expire': '1209600',
+    '_ct': '3200000000164633209',
+    '_ct_client_global_id': 'ac7bc830-33a7-54d1-b90e-949b89f995ae',
+    'roistat_marker': 'seo_google_',
+    'roistat_marker_old': 'seo_google_',
+    '_ct_ids': 'lj2zo781%3A75002%3A244508497_dg09qsgb%3A56483%3A601098743_li0xsjag%3A70248%3A363964101_46cqnlyv%3A61236%3A391526870',
+    'domain_sid': 'Y936jCzubaCmJVyUYEjnZ%3A1773662609608',
+    'sma_session_id': '2638875113',
+    'SCBfrom': 'https%3A%2F%2Fwww.google.com%2F',
+    '___dc': '01ad1c1c-383c-4e0d-99da-830bc986c09d',
+    'smFpId_old_values': '%5B%22cd14d52d59b08c237e2004225d23c665%22%5D',
+    'SCBnotShow': '-1',
+    'SCBstart': '1773662610279',
+    'SCBporogAct': '5000',
+    'sma_postview_ready': '1',
     'city': 'moscow',
-    '_ct_session_id': '126686309',
-    '_ct_site_id': '70248',
-    'call_s': '___46cqnlyv.1743165798.228189572.335118:959616|li0xsjag.1743165799.126686309.427067:1195816|2___',
+    'cookiesApply': '1',
+    '_ct_session_id': '601098743',
+    '_ct_site_id': '56483',
+    'call_s': '___46cqnlyv.1773664422.391526870.335118:959614|lj2zo781.1773664422.244508497.499586:1423891|li0xsjag.1773664422.363964101.427067:1195806|dg09qsgb.1773664422.601098743.299232:1491469|2___',
+    'tmr_detect': '0%7C1773662624878',
+    'roistat_call_tracking': '0',
+    'roistat_emailtracking_email': 'null',
+    'roistat_emailtracking_tracking_email': 'null',
+    'roistat_emailtracking_emails': '%5B%5D',
+    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_marker%2Croistat_marker_old%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
+    'SCBindexAct': '295',
+    'sma_index_activity': '6895',
 }
 
 headers = {
@@ -37,23 +64,30 @@ headers = {
     'Connection': 'keep-alive',
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     'Origin': 'https://unikey.space',
-    'Referer': 'https://unikey.space/category/?complex=2325',
+    'Referer': 'https://unikey.space/category/?city=3087&complex=2325&filter_finishDates=&area_range=&price_range=&finishing=&filter_building=&floor_range=&order=',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origin',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
     'X-Requested-With': 'XMLHttpRequest',
-    'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
+    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': '_ym_uid=1742827436146654235; _ym_d=1742827436; _ct=2900000000083277762; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; cookiesApply=1; cted=modId%3D46cqnlyv%3Bya_client_id%3D1742827436146654235%7CmodId%3Dli0xsjag%3Bya_client_id%3D1742827436146654235; _ct_ids=46cqnlyv%3A61236%3A228189572_li0xsjag%3A70248%3A126686309; _ym_isad=2; _ym_visorc=w; city=moscow; _ct_session_id=126686309; _ct_site_id=70248; call_s=___46cqnlyv.1743165798.228189572.335118:959616|li0xsjag.1743165799.126686309.427067:1195816|2___',
+    # 'Cookie': '_ym_uid=1742827436146654235; _ym_d=1773662608; tmr_lvid=d30c05ee2b9f77dcbb919dc27de11d37; tmr_lvidTS=1773662608186; _ym_visorc=w; scbsid_old=2746015342; cted=modId%3Dli0xsjag%3Bya_client_id%3D1742827436146654235%7CmodId%3D46cqnlyv%3Bya_client_id%3D1742827436146654235%7CmodId%3Dlj2zo781%3Bya_client_id%3D1742827436146654235%7CmodId%3Ddg09qsgb%3Bya_client_id%3D1742827436146654235; _ym_isad=2; _cmg_csstVKMSr=1773662609; _comagic_idVKMSr=12394749031.16939302976.1773662608; roistat_visit=464135; roistat_first_visit=464135; roistat_visit_cookie_expire=1209600; _ct=3200000000164633209; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; roistat_marker=seo_google_; roistat_marker_old=seo_google_; _ct_ids=lj2zo781%3A75002%3A244508497_dg09qsgb%3A56483%3A601098743_li0xsjag%3A70248%3A363964101_46cqnlyv%3A61236%3A391526870; domain_sid=Y936jCzubaCmJVyUYEjnZ%3A1773662609608; sma_session_id=2638875113; SCBfrom=https%3A%2F%2Fwww.google.com%2F; ___dc=01ad1c1c-383c-4e0d-99da-830bc986c09d; smFpId_old_values=%5B%22cd14d52d59b08c237e2004225d23c665%22%5D; SCBnotShow=-1; SCBstart=1773662610279; SCBporogAct=5000; sma_postview_ready=1; city=moscow; cookiesApply=1; _ct_session_id=601098743; _ct_site_id=56483; call_s=___46cqnlyv.1773664422.391526870.335118:959614|lj2zo781.1773664422.244508497.499586:1423891|li0xsjag.1773664422.363964101.427067:1195806|dg09qsgb.1773664422.601098743.299232:1491469|2___; tmr_detect=0%7C1773662624878; roistat_call_tracking=0; roistat_emailtracking_email=null; roistat_emailtracking_tracking_email=null; roistat_emailtracking_emails=%5B%5D; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_marker%2Croistat_marker_old%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails; SCBindexAct=295; sma_index_activity=6895',
 }
 
 data = {
     'action': 'get_more_apartments',
     'page': '1',
+    'params[city]': '3087',
     'params[complex]': '2325',
-    'params[finishing]': '0',
+    'params[filter_finishDates]': '',
+    'params[area_range]': '',
+    'params[price_range]': '',
+    'params[finishing]': '',
+    'params[filter_building]': '',
+    'params[floor_range]': '',
+    'params[order]': '',
 }
 
 finishings = ['UniLoft', 'Без отделки', 'UniBox', 'UniDesign']
@@ -76,6 +110,7 @@ for finish in finishings:
     while True:
 
         response = requests.post('https://unikey.space/wp-admin/admin-ajax.php', cookies=cookies, headers=headers, data=data)
+        print(response.status_code)
 
         soup = BeautifulSoup(response.text, 'html.parser')
         flats_soup = soup.find_all('li', class_="layouts-parameters__item")
@@ -153,8 +188,7 @@ for finish in finishings:
 
 
 
-            print(
-                f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+            print(f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
             result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
                       time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
                       stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]

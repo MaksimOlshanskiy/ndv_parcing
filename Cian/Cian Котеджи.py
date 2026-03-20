@@ -76,357 +76,50 @@ headers = {
     # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; _gcl_au=1.1.1976040648.1741613242; cf_clearance=iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; login_button_tooltip_key=1; cookie_agreement_accepted=1; _ga=GA1.1.1252090197.1741613246; _ym_uid=174161324651361127; _ym_d=1741613246; uxfb_usertype=searcher; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; uxs_uid=6864bb20-fdb3-11ef-a35a-c57d685f6f57; afUserId=01d5d1e2-93cc-4880-8496-5dfe7ddb17cf-p; session_main_town_region_id=1; login_mro_popup=1; AF_SYNC=1742810465392; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; map_preview_onboarding_counter=3; domain_sid=h9UFzhDmhYsy0jug-hr66%3A1742892001597; transport-accessibility_onboarding_counter=3; nbrdng_sn=1; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1743070248833%2C%22sl%22%3A%7B%22224%22%3A1742983848833%2C%221228%22%3A1742983848833%7D%7D; DMIR_AUTH=6taU2fxYUK9ueK3v9H%2FinxPLBeylmpWK1TRc9t0epfkverMXTikTFSx6jpqFQwWItMRZisykrzBiRnVB8iFUUAffcck7zRtJLc%2B88RX8lXpn4th4%2FfkvQeZt%2BP%2FicK2e4qBNPv2QrGlB3VqFMQA0c44kdcfYraf0teyhsZ%2BNEVg%3D; F6_CIAN_SID=e5fb20e50b6d8357ec78a6551e662c55c7c41203f66bb61f78d67e1c89137956; cian_ruid=8098251; uxfb_card_satisfaction=%5B310880450%2C310557584%2C314175573%2C304239998%2C313883579%5D; countCallNowPopupShowed=2%3A1742994427162; frontend-offer-card.builder_chat_onboarding_shown=1; _yasc=e7bGoAyg8WaEp3nDwlIDFLVhQVf/SoWOCY8+9hj1BS+JTIqsy44ziZG6nN3QrHwlnoI=; _yasc=VGksZPmps+Clu92DTfglhosHxZU9j4DEqe21+mgtpzN/QGlcthLtmiPri8U21vWCOsg=; sopr_session=38951139d7bd4bdb; cookieUserID=8098251; _ym_isad=2; adrdel=1743060223780; _ym_visorc=b; session_region_id=1; __zzatw-cian=MDA0dC0cTHtmcDhhDHEWTT17CT4VHThHKHIzd3spRG0fZEhVEQsSF0ReXFVpdRUaS0olbngqZSUtMVYkfEspRFxRfCUfEX5vKFEJFFcvDT47Xi1vDycLElgJIQpJaQtec11SfiogfmBaFBlYVHkPaRpLZXQZGjYXIxl3dCtRDAxXLwkqPWx0MGFRUUtiDxwXMlxOe3NdZxBEQE1HQnR3LDtrHWZLXiFGVUlraWJRNF0tQUdHFHZ/OTBxf1dqNA==tOFAqQ==; F6_CIAN_UID=8098251; _ga_3369S417EL=GS1.1.1743060223.18.1.1743060768.31.0.0; cfidsw-cian=frKSft27ZPWJRnUJNMSNbx43eFqg3aWZdU5iIHk4H+kFYVEkvJiorpT0x5XNtYnzIwyJrGS1bpRS1YOshpc00KAMPF43dVYZhpsHRLiDiLx1p1HLekKViIxNKNXRhA7kuSFH9cDIXeLP9ykgh9DwwTLh01fNFp5U/B3f6F8=',
 }
 
+
 json_data = {
     'jsonQuery': {
-        '_type': 'suburbansale',
-        'from_mcad_km': {
-            'type': 'range',
-            'value': {
-                'lte': 25,
-            },
-        },
+        '_type': 'suburbanrent',
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
-        'geo': {
-            'type': 'geo',
+        'region': {
+            'type': 'terms',
             'value': [
-                {
-                    'type': 'polygon',
-                    'name': 'Выделенная область',
-                    'coordinates': [
-                        [
-                            '37.1043181',
-                            '55.7922778',
-                        ],
-                        [
-                            '37.0998549',
-                            '55.7934383',
-                        ],
-                        [
-                            '37.0959067',
-                            '55.7949857',
-                        ],
-                        [
-                            '37.0924735',
-                            '55.7969199',
-                        ],
-                        [
-                            '37.086122',
-                            '55.7980805',
-                        ],
-                        [
-                            '37.0797706',
-                            '55.7995312',
-                        ],
-                        [
-                            '37.074964',
-                            '55.8004016',
-                        ],
-                        [
-                            '37.0718741',
-                            '55.801949',
-                        ],
-                        [
-                            '37.0689559',
-                            '55.8036898',
-                        ],
-                        [
-                            '37.066896',
-                            '55.8058174',
-                        ],
-                        [
-                            '37.0651793',
-                            '55.8081385',
-                        ],
-                        [
-                            '37.0619178',
-                            '55.8095892',
-                        ],
-                        [
-                            '37.0576262',
-                            '55.8105563',
-                        ],
-                        [
-                            '37.053163',
-                            '55.8112333',
-                        ],
-                        [
-                            '37.0488715',
-                            '55.8118136',
-                        ],
-                        [
-                            '37.04458',
-                            '55.8125873',
-                        ],
-                        [
-                            '37.0404601',
-                            '55.8127807',
-                        ],
-                        [
-                            '37.0361686',
-                            '55.8130708',
-                        ],
-                        [
-                            '37.0327353',
-                            '55.8116201',
-                        ],
-                        [
-                            '37.0284438',
-                            '55.8101695',
-                        ],
-                        [
-                            '37.0246673',
-                            '55.8090089',
-                        ],
-                        [
-                            '37.0215774',
-                            '55.8072681',
-                        ],
-                        [
-                            '37.0179725',
-                            '55.8060108',
-                        ],
-                        [
-                            '37.0135093',
-                            '55.8060108',
-                        ],
-                        [
-                            '37.0093894',
-                            '55.8064944',
-                        ],
-                        [
-                            '37.0057845',
-                            '55.8050437',
-                        ],
-                        [
-                            '37.0028663',
-                            '55.8033029',
-                        ],
-                        [
-                            '37.0011497',
-                            '55.8011753',
-                        ],
-                        [
-                            '37.0011497',
-                            '55.7983706',
-                        ],
-                        [
-                            '37.0008063',
-                            '55.7959528',
-                        ],
-                        [
-                            '36.9987464',
-                            '55.7939219',
-                        ],
-                        [
-                            '36.9973731',
-                            '55.7916975',
-                        ],
-                        [
-                            '36.9963431',
-                            '55.7890863',
-                        ],
-                        [
-                            '36.9963431',
-                            '55.7864751',
-                        ],
-                        [
-                            '36.9973731',
-                            '55.7829934',
-                        ],
-                        [
-                            '36.999433',
-                            '55.7804789',
-                        ],
-                        [
-                            '37.001493',
-                            '55.778448',
-                        ],
-                        [
-                            '37.0025229',
-                            '55.7756433',
-                        ],
-                        [
-                            '37.0056128',
-                            '55.7739992',
-                        ],
-                        [
-                            '37.010076',
-                            '55.7730321',
-                        ],
-                        [
-                            '37.0153975',
-                            '55.7724518',
-                        ],
-                        [
-                            '37.0202041',
-                            '55.7714847',
-                        ],
-                        [
-                            '37.0244956',
-                            '55.7706143',
-                        ],
-                        [
-                            '37.0287871',
-                            '55.7697439',
-                        ],
-                        [
-                            '37.0330787',
-                            '55.7695505',
-                        ],
-                        [
-                            '37.0378852',
-                            '55.7689702',
-                        ],
-                        [
-                            '37.0426917',
-                            '55.7688735',
-                        ],
-                        [
-                            '37.0468116',
-                            '55.7694538',
-                        ],
-                        [
-                            '37.0517898',
-                            '55.7704209',
-                        ],
-                        [
-                            '37.0564246',
-                            '55.7708077',
-                        ],
-                        [
-                            '37.0626044',
-                            '55.7711946',
-                        ],
-                        [
-                            '37.066896',
-                            '55.7711946',
-                        ],
-                        [
-                            '37.0711875',
-                            '55.7712913',
-                        ],
-                        [
-                            '37.0758223',
-                            '55.771388',
-                        ],
-                        [
-                            '37.0799422',
-                            '55.7710012',
-                        ],
-                        [
-                            '37.0844054',
-                            '55.7706143',
-                        ],
-                        [
-                            '37.0888686',
-                            '55.7699373',
-                        ],
-                        [
-                            '37.1026015',
-                            '55.7703242',
-                        ],
-                        [
-                            '37.108438',
-                            '55.7710012',
-                        ],
-                        [
-                            '37.1125579',
-                            '55.7723551',
-                        ],
-                        [
-                            '37.1166778',
-                            '55.7731288',
-                        ],
-                        [
-                            '37.1209693',
-                            '55.7748696',
-                        ],
-                        [
-                            '37.1252608',
-                            '55.7761269',
-                        ],
-                        [
-                            '37.1266341',
-                            '55.7786414',
-                        ],
-                        [
-                            '37.1273208',
-                            '55.7810592',
-                        ],
-                        [
-                            '37.1271491',
-                            '55.7837671',
-                        ],
-                        [
-                            '37.1257758',
-                            '55.7860882',
-                        ],
-                        [
-                            '37.121141',
-                            '55.7872488',
-                        ],
-                        [
-                            '37.1154761',
-                            '55.7880224',
-                        ],
-                        [
-                            '37.1098113',
-                            '55.789183',
-                        ],
-                        [
-                            '37.1060348',
-                            '55.7903435',
-                        ],
-                        [
-                            '37.1039748',
-                            '55.7923745',
-                        ],
-                        [
-                            '37.1043181',
-                            '55.7922778',
-                        ],
-                    ],
-                },
-            ],
-        },
-        'bbox': {
-            'type': 'term',
-            'value': [
-                [
-                    36.9299960125,
-                    55.7657757562,
-                ],
-                [
-                    37.1936678875,
-                    55.8161647689,
-                ],
+                4606,
             ],
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
+        'house_year': {
+            'type': 'range',
+            'value': {
+                'gte': 1995,
+            },
+        },
+        'for_day': {
+            'type': 'term',
+            'value': '!1',
+        },
         'object_type': {
             'type': 'terms',
             'value': [
                 1,
-                4,
             ],
         },
         'page': {
             'type': 'term',
-            'value': 2,
+            'value': 1,
         },
     },
+    '_liquiditySource': 'web_serp',
 }
 
 
-
-
-name_counter = 14
+name_counter = "Ростов"
 
 
 response = requests.post(
@@ -528,7 +221,7 @@ while len(flats) < total_count:
 
         print(
             f"Шоссе {highway}, {url}, Участок: {uchastok_area}, дом: {house_area}, цена: {price}, посёлок {poselok}, кп: {kp}, объявление {property_from}")
-        result = ['Калужская область', highway, uchastok_area, house_area, price, poselok, kp, property_from, url]
+        result = ['Ленинградская область', highway, uchastok_area, house_area, price, poselok, kp, property_from, url]
         flats.append(result)
 
     json_data["jsonQuery"]["page"]["value"] += 1

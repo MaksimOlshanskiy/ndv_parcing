@@ -1,36 +1,23 @@
 import subprocess
-import sys
-import codecs
 import logging
-from logging.handlers import RotatingFileHandler
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-import colorlog
+import requests
+import time
+from tqdm import tqdm
 
-handler = colorlog.StreamHandler(sys.stdout)
 
-formatter = colorlog.ColoredFormatter(
-    "%(log_color)s%(asctime)s | %(levelname)s | %(message)s",
-    log_colors={
-        'DEBUG': 'white',
-        'INFO': 'white',
-        'WARNING': 'white',
-        'ERROR': 'red',
-        'CRITICAL': 'bold_red',
-    },
-    reset=True
-)
+print(requests.get("https://ipinfo.io/json").json())
+time.sleep(2)
 
-handler.setFormatter(formatter)
 
-logger = logging.getLogger("runner")
-logger.setLevel(logging.INFO)
-logger.addHandler(handler)
 
-sys.stdout = codecs.getwriter("utf-8")(sys.stdout.buffer)
-sys.stderr = codecs.getwriter("utf-8")(sys.stderr.buffer)
+MAX_PARALLEL = 20
 
 # папка со скриптами
+
 SCRIPTS = [
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ПИК\Pik.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\3С Групп\3S_Group.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\А101\A101.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Абсолют\Absolute.py"),
@@ -49,9 +36,7 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Ар Ди Ай\Южная долина.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Вектор\Vector_all.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Атлантис Скай\Odinchovo.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Афи\Afi Tower.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Афи\odinburg.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Афи\sirenevy park.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Афи\Afi.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Берендей\Троицкая слобода.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Бесткон\Bestcon.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Брусника\Brusnika.py"),
@@ -59,7 +44,7 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Веспер\Vesper.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ВиХолдинг\Алиа.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГАЛС\HALS.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гефест\ekograd.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гефест\ekograd2.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Мега-мечта\Мечта.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Монолит\elyon.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Развитие\malahovsky.py"),
@@ -85,7 +70,6 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ФСК_1ДСК\main_1DSK.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Замитино\zamitino.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ИММО ДЕВЕЛОПМЕНТ\zeleny gorod.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Империал\iliyn.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Ин-Групп\Ценности.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Инвест траст\Новые ватутинки.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Инвестстрой\Отрадный.py"),
@@ -101,7 +85,7 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Ломоносов Девелопмент\mitischi city.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\М1 Девелопмент\М1 Сколково.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Мангазея\mangazeya.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Массиер-Девелопмент\ул. Советская 18.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Массиер-Девелопмент\ул. Советская 18 new.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\MR\MR.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Некрасовка Девелопмент\Nekrasovka.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Неострой\Тургенев.py"),
@@ -110,7 +94,6 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ОМ\Новые островцы.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ОМ\Станиславский.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Основа\Osnova.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ПИК\Pik.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Плюс Девелопмент\detali.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Премьера\Оптима.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Проксима-1\Москворецкий (Тучково).py"),
@@ -133,12 +116,12 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Сибпромстрой\moscow.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Сити 21\8klenov.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Сити 21\Rafinad.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Сити 21\Аристов берег.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Sminex\Sminex.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СМУ 6\smu6.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Upside Development\smu6.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Спсити\moscowsky.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Стадион Спартак\Примавера.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Стоун\Сокольники.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Стоун\Стоун Rise.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Стоун\Stone.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Строй мир\Dius.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СтройИнновация\andreevka.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Талан\Инджой.py"),
@@ -156,43 +139,54 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\УНР 494\renessans.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Форма\forma.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ФСК_1ДСК\main_FSK.py"),
-
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\BAZA Development\bestseller.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ЮР-Инвест\Бакеево Парк.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Юнион\Riga Hills New.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Энергостройинвест\energoinvest.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Центр-инвест\Городские истории.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Центр-инвест\Centr-invest_willtower.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Центр-инвест\Centr-invest_festival.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Хаттон\Лунар.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Хаттон\Дом Дуо.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Флагман\scrylia_1.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Флагман\scrylia_2.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СЗ Глобалмытищи\barhat.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СЗ Т-ОТЕЛЬ\adres.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СтартСК\Времена года.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Пионер\high life2.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Пионер\opus.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Пионер\pride.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Пионер\shift.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Пионер\varshavskaya.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Upside Development\enigmia (upside).py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\РКС Девелопмент\Коллекция.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\РКС Девелопмент\Insider.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Карандаш\Октябрьский.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Остов\Авиатор.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ВЭМЗ-Эстейт\Бруно.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Атлантис Одинцово\Вяземы Парк.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СЗ Спортивная 2Б\Сердце Лыткарино.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Веста\Кратовоград.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Палладио Групп\Аннабельс.py"),
 
 
 
 ]
 
-LOG_DIR = Path("All/logs")
-LOG_DIR.mkdir(exist_ok=True)
 
-logger = logging.getLogger("runner")
-logger.setLevel(logging.INFO)
-
-formatter = logging.Formatter(
-    "%(asctime)s | %(levelname)s | %(message)s"
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s"
 )
 
-# 🔹 Консоль
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
-
-# 🔹 Файл с ротацией
-file_handler = RotatingFileHandler(
-    LOG_DIR / "run_all.log",
-    maxBytes=5_000_000,  # 5 MB
-    backupCount=5,
-    encoding="utf-8"
-)
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+active_scripts = set()
 
 
+def run_script(script):
 
-for script in SCRIPTS:
-    if not script.exists():
-        raise FileNotFoundError(f"Скрипт не найден: {script}")
-    logging.info(f"===== Запуск {script.name} =====")
+    active_scripts.add(script.name)
+
+    start = time.time()
 
     process = subprocess.Popen(
         ["python", script],
@@ -200,18 +194,55 @@ for script in SCRIPTS:
         stderr=subprocess.STDOUT,
         text=True,
         encoding="utf-8",
-        errors="replace",
-        bufsize=1
+        errors="replace"
     )
 
     for line in process.stdout:
-        logger.info(f"{script.name} | {line.rstrip()}")
+        logging.info(f"{script.name} | {line.rstrip()}")
 
     return_code = process.wait()
 
-    if return_code != 0:
-        logging.error(f"{script.name} завершился с кодом {return_code}")
-    else:
-        logging.info(f"{script.name} выполнен успешно")
+    duration = round(time.time() - start, 1)
 
-logging.info("Все скрипты обработаны")
+    active_scripts.remove(script.name)
+
+    if return_code != 0:
+        return script.name, duration
+
+    return None, duration
+
+
+failed_scripts = []
+
+start_all = time.time()
+
+with ThreadPoolExecutor(MAX_PARALLEL) as executor:
+
+    futures = [executor.submit(run_script, s) for s in SCRIPTS]
+
+    with tqdm(total=len(SCRIPTS), desc="Парсеры", ncols=100) as pbar:
+
+        for future in as_completed(futures):
+
+            result, duration = future.result()
+
+            if result:
+                failed_scripts.append(result)
+
+            pbar.update(1)
+
+            pbar.set_postfix({
+                "active": len(active_scripts),
+                "running": list(active_scripts)[:3]
+            })
+
+total_time = round(time.time() - start_all, 1)
+
+print("\n===== РЕЗУЛЬТАТ =====")
+print(f"Всего скриптов: {len(SCRIPTS)}")
+print(f"Время выполнения: {total_time} сек")
+
+if failed_scripts:
+    print(f"Упали: {failed_scripts}")
+else:
+    print("Все скрипты выполнены успешно")

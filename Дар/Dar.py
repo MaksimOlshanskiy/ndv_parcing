@@ -15,6 +15,7 @@ import os
 import random
 from Developer_dict import developer_dict, name_dict
 from functions import save_flats_to_excel
+from requests.exceptions import Timeout
 
 jks = {1317 : "SOLOS", 1316: "Rakurs", 1318: "DOM"}
 houses = {1183: '2', 1184: '3', 1185: '4', 1186 : '1', 1187: '2', 1189: '1'}
@@ -111,8 +112,14 @@ for pr in projects_id:
 
         url = 'https://api.planetarf.ru/api/v3/places'
 
+        try:
+            response = requests.get(url, cookies=cookies, headers = headers, params=params, timeout=(5, 30))
 
-        response = requests.get(url, cookies=cookies, headers = headers, params=params)
+        except Timeout:
+            print("Timeout запроса, повтор...")
+            time.sleep(3)
+            continue
+
         print(response.status_code)
 
         items = response.json()["places"]

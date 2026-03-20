@@ -100,7 +100,10 @@ while url:
             type = 'Квартира'
             area = float(i["area"])
             price_per_metr = ''
-            old_price = int(i["price_rub"])
+            try:
+                old_price = int(i["price_rub"])
+            except:
+                old_price = ''
             discount = ''
             price_per_metr_new = ''
             price = ''

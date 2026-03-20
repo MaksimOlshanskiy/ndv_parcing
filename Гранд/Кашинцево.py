@@ -3,6 +3,7 @@ import time
 import requests
 from functions import save_flats_to_excel
 from Profitbase_token import get_token
+from requests.exceptions import Timeout
 
 
 tenant_id = 4242
@@ -34,9 +35,18 @@ try:
         # Добавляем параметр offset для пагинации
         params_with_offset = params.copy()
         params_with_offset['offset'] = offset
-        response = requests.get('https://pb4242.profitbase.ru/api/v4/json/property',
-                                params=params_with_offset,
-                                headers=headers)
+        try:
+            response = requests.get(
+                'https://pb4242.profitbase.ru/api/v4/json/property',
+                params=params_with_offset,
+                headers=headers,
+                timeout=(5, 30)
+            )
+
+        except Timeout:
+            print("Timeout запроса, повтор...")
+            time.sleep(3)
+            continue
 
         if response.status_code == 200:
             data = response.json()

@@ -15,7 +15,7 @@ from functions import save_flats_to_excel
 
 def get_full_catalog_html(url):
     options = Options()
-    options.add_argument('--headless')  # убрать, чтобы видеть браузер
+
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
 
@@ -46,7 +46,7 @@ def parse_apartments(html):
         flat = {}
 
         flat['Дата обновления'] = datetime.date.today().strftime("%Y-%m-%d")
-        flat['Название проекта'] = "Переделкино"
+        flat['Название проекта'] = "Родина Переделкино"
         flat['на англ'] = ''
         flat['промзона'] = ''
         flat['Местоположение'] = ''

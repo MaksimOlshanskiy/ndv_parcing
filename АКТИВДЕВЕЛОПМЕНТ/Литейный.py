@@ -7,13 +7,14 @@
 
 import datetime
 import time
+
 import pandas as pd
 import openpyxl
 import os
 import random
 from bs4 import BeautifulSoup
 import requests
-
+from requests.exceptions import Timeout
 from functions import save_flats_to_excel
 
 cookies = {
@@ -78,12 +79,20 @@ for buildings_id in buildings_ids:
 
     while True:
 
-        response = requests.post(
-            'https://liteyniy.life/include/mainpage/ajax_flat_choice.php',
-            cookies=cookies,
-            headers=headers,
-            data=data,
-        )
+        try:
+
+            response = requests.post(
+                'https://liteyniy.life/include/mainpage/ajax_flat_choice.php',
+                cookies=cookies,
+                headers=headers,
+                data=data,
+                timeout=(5, 30)
+            )
+        except Timeout:
+            print("Timeout запроса, повтор...")
+            time.sleep(3)
+            continue
+
         print(response.status_code)
         soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -122,7 +131,7 @@ for buildings_id in buildings_ids:
             konstruktiv = ''
             klass = ''
             srok_sdachi = ''
-            finish_type = 'Без отделки'
+            finish_type = 'Предчистовая'
             srok_sdachi_old = ''
             stadia = ''
             dogovor = ''

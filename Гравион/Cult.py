@@ -27,7 +27,7 @@ if response.status_code == 200:
         if specs:
             for li in specs.find_all('li'):
                 text = li.get_text(strip=True)
-                if 'м' in text and any(char.isdigit() for char in text):
+                if ' м' in text and any(char.isdigit() for char in text):
                     area = text.replace('м2', '').replace('м²', '').strip()
 
 
@@ -48,6 +48,8 @@ if response.status_code == 200:
         price_element = apartment.find('div', class_='flat__card_price')
         price = int(price_element.get_text(strip=True).replace('₽', '').replace(' ','')) if price_element else None
 
+        print(rooms, price, area, floor)
+
         type_='Апартаменты'
 
         flats.append([datetime.date.today(), 'CULT', "", "", "", "",
@@ -57,7 +59,7 @@ if response.status_code == 200:
                       "", "Гравион", "", "", "", "",
                       '1', "", "", "", "",
                       "", "", type_, "Без отделки",
-                      rooms, float(area), '', price, "", '',
+                      rooms, area, '', price, "", '',
                       '', "", floor, ""])
 
 save_flats_to_excel(flats,'CULT','Гравион')

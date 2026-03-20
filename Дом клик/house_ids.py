@@ -53,7 +53,7 @@ headers = {
 }
 
 params = {
-    'address': '857c0a08-7dc0-445e-a044-ed2f6d435a7b',
+    'address': '07d7bc2f-c37b-4ce5-8df4-c1670ad243ea',
     'offset': '0',
     'limit': '20',
     'sort': 'qi',
@@ -61,7 +61,7 @@ params = {
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'complex',
-    'aids': '19186',
+    'aids': '78159',
     'seo': '1',
 }
 

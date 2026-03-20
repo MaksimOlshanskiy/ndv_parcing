@@ -137,8 +137,14 @@ json_data = {
             'type': 'range',
             'value': {
                 'gte': 1,
-                'lte': 99,
+                'lte': 2,
             },
+        },
+'offer_seller_type': {
+            'type': 'terms',
+            'value': [
+                2,
+            ],
         },
 'electronic_trading': {
             'type': 'term',
@@ -192,7 +198,7 @@ elif 2500 <= items_count <= 4500:
 elif items_count > 4500:
 
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 13], [14, 16], [17, 20], [21, 25], [26, 200]]
+    total_floor_list = [[14, 16]]
 
 
 

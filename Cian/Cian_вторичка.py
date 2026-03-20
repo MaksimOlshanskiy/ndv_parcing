@@ -83,10 +83,6 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'flatsale',
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -94,7 +90,7 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                5024,
+                5075,
             ],
         },
         'floor': {
@@ -107,6 +103,19 @@ json_data = {
         'publish_period': {
             'type': 'term',
             'value': 2592000,
+        },
+        'repair': {
+            'type': 'terms',
+            'value': [
+                1,
+                2,
+                3,
+                4,
+            ],
+        },
+        'electronic_trading': {
+            'type': 'term',
+            'value': 2,
         },
         'room': {
             'type': 'terms',
@@ -125,6 +134,10 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
+        'only_flat': {
+            'type': 'term',
+            'value': True,
+        },
         'flat_share': {
             'type': 'term',
             'value': 2,
@@ -133,11 +146,8 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'electronic_trading': {
-            'type': 'term',
-            'value': 2,
-        },
     },
+    '_liquiditySource': 'web_serp',
 }
 
 cities_dict = {

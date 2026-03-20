@@ -53,16 +53,16 @@ headers = {
 
 json_data = {
     'price': [
-        17.8,
-        915.2,
+        1.8,
+        91599.2,
     ],
     'area': [
-        27,
-        392,
+        1,
+        39299,
     ],
     'floor_number': [
         2,
-        37,
+        99,
     ],
     'rooms': [],
     'projects': [],

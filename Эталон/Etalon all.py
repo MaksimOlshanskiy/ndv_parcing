@@ -22,23 +22,27 @@ cookies = {
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'authorization': 'Basic',
     'origin': 'https://etalongroup.ru',
     'priority': 'u=1, i',
     'referer': 'https://etalongroup.ru/',
-    'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
 }
 
 
 # Параметры пагинации
 offset = 0
-page_number = 0
-limit = 7  # Количество объявлений на одной странице (можно менять)
+page_number = 1
+if page_number == 1:
+    limit = 8
+else:
+    limit = 9
 have_item = True  # Флаг наличия данных
 
 
@@ -90,9 +94,7 @@ def extract_building_and_complex(meta_description):
 
 while True:
 
-    url = f"https://newsite.etalongroup.ru/api/filter/msk/flat/list/?pagination=%7B%22haveItem%22:true,%22page%22:{page_number},%22object%22:null,%22offset%22:{offset}%7D&getAuctionSlider=false"
-
-    print(url)
+    url = f'https://newsite.etalongroup.ru/api/filter/msk/flat/list/?groupByObject=false&onlyInSale=false&pagination=%7B%22haveItem%22:true,%22page%22:{page_number},%22object%22:null,%22offset%22:{offset},%22limit%22:{limit}%7D&getAuctionSlider=false'
 
     print(f"Загружаю объявления с offset={offset}...")
 
@@ -167,7 +169,10 @@ while True:
             time.sleep(0.05)
 
         print(offset)
-        offset += 7
+        if page_number == 1:
+            offset += 8
+        else:
+            offset += 9
         print(offset)
         print(page_number)
         page_number += 1

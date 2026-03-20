@@ -44,6 +44,7 @@ for key, data in info.items():
             section = item.get("SectionNumber", "")
             number = item.get("FlatNum", "")
             house_number = item.get("HouseCount", "")
+            type = 'Квартиры'
 
             if (number == 94 and house_number == 12) or (number == 91 and house_number == 12) or (
                     number == 90 and house_number == 12):
@@ -54,11 +55,12 @@ for key, data in info.items():
             date = datetime.date.today()
             room_count = item.get("FlatRoomsCount", "")
             area = item.get("TotalArea", "")
-            old_price = old_price
             price = int(item.get("PriceFormat", "").replace(' ', ''))
+            old_price = price
             floor = item.get("FloorNumber", "")
             section = item.get("SectionNumber", "")
             finish_type = "Без отделки"
+            type = 'Таунхаусы'
 
         if price == old_price:
             price = None
@@ -68,7 +70,7 @@ for key, data in info.items():
         row = [
             date, project, '', '', '', '', '', '', '', '', '', '',
             '', '', '', '', '', developer, '', '', '', '', house_number, '', '', '', '',
-            '', '', 'Квартира', finish_type, room_count, area, '', old_price, '', '', price,
+            '', '', type, finish_type, room_count, area, '', old_price, '', '', price,
             section, floor, ''
         ]
 

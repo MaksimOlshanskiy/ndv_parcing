@@ -80,13 +80,7 @@ headers = {
 
 json_data = {
     'jsonQuery': {
-        '_type': 'suburbansale',
-        'from_mcad_km': {
-            'type': 'range',
-            'value': {
-                'lte': 20,
-            },
-        },
+        '_type': 'suburbanrent',
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -94,19 +88,22 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                1,
-                4593,
+                181462,
             ],
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
-        'offer_seller_type': {
-            'type': 'terms',
-            'value': [
-                1,
-            ],
+        'house_year': {
+            'type': 'range',
+            'value': {
+                'gte': 1995,
+            },
+        },
+        'for_day': {
+            'type': 'term',
+            'value': '!1',
         },
         'object_type': {
             'type': 'terms',
@@ -119,6 +116,7 @@ json_data = {
             'value': 1,
         },
     },
+    '_liquiditySource': 'web_serp',
 }
 
 

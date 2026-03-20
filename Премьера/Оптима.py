@@ -77,6 +77,8 @@ while True:
         developer = "Премьера"
         project = 'Оптима'
         korpus = i.find(class_='realty-card__subtitle').get_text().strip().replace('Дом ', '')
+        if korpus == 'Текстильщиков 45':
+            project = 'Оптима на Текстильщиков'
         section = ''
         type = 'Квартиры'
         finish_type = 'Без отделки'

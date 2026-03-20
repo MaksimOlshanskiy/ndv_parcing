@@ -27,7 +27,7 @@ with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\coordinates.j
 developer = ''
 project = ''
 area = ''
-region = 'Уфа'
+region = 'Владикавказ'
 
 coords = city_centers.get(region)
 
@@ -43,14 +43,12 @@ cookies = {
     'ns_session': '5210b38b-2a77-4df9-a428-6405b3065d3d',
     'is-green-day-banner-hidden': 'true',
     'is-ddf-banner-hidden': 'true',
-    'logoSuffix': '',
     'RETENTION_COOKIES_NAME': 'd7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI',
     'sessionId': 'be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE',
     'UNIQ_SESSION_ID': '01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs',
     'adtech_uid': '5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru',
     'top100_id': 't1.7711713.1405137252.1743518288740',
     '_ym_uid': '1743518289666663600',
-    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}',
     'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
     'tmr_lvid': '6b6b440680155a4ac17ccaf6a462f603',
     'tmr_lvidTS': '1743518291170',
@@ -60,40 +58,47 @@ cookies = {
     'COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING': 'true',
     '_ym_d': '1759300554',
     'adrdel': '1759300555210',
+    'logoSuffix': '',
+    'iosAppLink': '',
     '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
-    'iosAppLink': 'https://redirect.appmetrica.yandex.com/serve/606068252266727267',
-    'currentRegionGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'currentLocalityGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
-    'regionName': '1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
     'favoriteHintShowed': 'true',
-    'qrator_jsr': 'v2.0.1764922253.298.c344b005SLwgjqMn|jSU4RiyeWdZLr4g1|R3hIpnYTJ9otIHkFfBEMtZZqVqvamF0T6mQmU86aSEFazRk7Jllmc7OObfHyYlrIPZCD2Gl0PO4aMhxsA31K3A==-P9N1G7yYvKOhicB1+loFdcMuWdM=-00',
-    'qrator_jsid2': 'v2.0.1764922253.298.c344b005SLwgjqMn|4J1g3tUfTe6gZAX9|/eJC74n68mv6uFxjzctG25CjxJq95WG79VisZPNIqEJwHlTTMsYv/8yhro1v7emyFnEsXy6HaILBYV5/zu6eptBgkoIYh8/+//Rny7HyngvZfW5/ykTeRU1JiZVoO8DkTY9iSl2K5vKCJXR8mUseLOY5q72PWDNpbgVHjG+yxHM=-HxTVI372NJgyVLUeKcZLwEagjEQ=',
     '_ym_isad': '2',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764922255',
-    '_visitId': 'fa069082-a8e8-49c6-94cd-c471389602f6-f4f0dcc432ac8ba6',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764922269',
-    't3_sid_7711713': 's1.579603876.1764922255259.1764922343660.31.12.3.1..',
-    'tmr_reqNum': '285',
+    'showDddIntro': 'false',
+    'dddIntroOnline': 'false',
+    'auto-definition-region': 'false',
+    'currentLocalityGuid': '07d7bc2f-c37b-4ce5-8df4-c1670ad243ea',
+    'currentRegionGuid': '94fb6c09-6d40-4eb2-97de-723080857a05',
+    'currentSubDomain': 'vladikavkaz',
+    'regionName': '07d7bc2f-c37b-4ce5-8df4-c1670ad243ea:%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7',
+    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%2294fb6c09-6d40-4eb2-97de-723080857a05%22%2C%22localityGuid%22:%2207d7bc2f-c37b-4ce5-8df4-c1670ad243ea%22%2C%22subdomain%22:%22vladikavkaz%22}%2C%22isAutoResolved%22:true}',
+    'canary-bind-id-11407': 'prev-1',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714',
+    '_visitId': '4d647ded-5737-4e04-9af0-636add9263be-320838cd54292be',
+    'qrator_jsr': 'v2.0.1773929767.652.96f16094dEvERUNW|dhc9Pui9hgued0Pw|XUsCAfogomGkeng+MI1HlpfDf/KsaN2wN7jvhr//VMFLn+4q3kNkh2jTdYaQbTi9fzZwGxwRqGLCVe4T++YtGy447GuVOa2sys1eE8ubjacmAO7vaFQef9X+tWqnYj0wHrxeoGY0ukVSWHb1wef+3DRkjoDAPWcPHX2ebbMsBL3zuh0RUPOeMcgbiIiS8kET-8Ofux42osjK1j4nw+8VUmxEoXr0=-00',
+    'qrator_jsid2': 'v2.0.1773929767.652.96f16094dEvERUNW|myTPfc8UacvHJIHF|ZKPsj7ffGpTuD7hNnrnrRJ4ZEuPzx3uXE7cWsrGvSVN9POCcqjYFIiXeP7XCyAmKx7wAYLG6Zs23CUrTWXcFFy4aNxVqv0tydhks1311SiEGyDCtVEmMI7l6Z7Y0ekZ2VWEq0ztqy+FoMYw2KJQnlWvCowtUOeRQhfpG589OeDMYrtdqBD7WAkrlTcvm+UU8-ob/ijtu1vvQlIaw65Xkjv4iHNjU=',
+    't3_sid_7711713': 's1.1740131368.1773929772356.1773931952706.63.37.8.1..',
+    'tmr_reqNum': '299',
 }
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'Connection': 'keep-alive',
-    'Origin': 'https://domclick.ru',
-    'Referer': 'https://domclick.ru/',
+    'Origin': 'https://vladikavkaz.domclick.ru',
+    'Referer': 'https://vladikavkaz.domclick.ru/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36',
-    'sec-ch-ua': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; logoSuffix=; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22kladr%22:%2277%22%2C%22guid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22}%2C%22isAutoResolved%22:true}; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; iosAppLink=https://redirect.appmetrica.yandex.com/serve/606068252266727267; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; favoriteHintShowed=true; qrator_jsr=v2.0.1764922253.298.c344b005SLwgjqMn|jSU4RiyeWdZLr4g1|R3hIpnYTJ9otIHkFfBEMtZZqVqvamF0T6mQmU86aSEFazRk7Jllmc7OObfHyYlrIPZCD2Gl0PO4aMhxsA31K3A==-P9N1G7yYvKOhicB1+loFdcMuWdM=-00; qrator_jsid2=v2.0.1764922253.298.c344b005SLwgjqMn|4J1g3tUfTe6gZAX9|/eJC74n68mv6uFxjzctG25CjxJq95WG79VisZPNIqEJwHlTTMsYv/8yhro1v7emyFnEsXy6HaILBYV5/zu6eptBgkoIYh8/+//Rny7HyngvZfW5/ykTeRU1JiZVoO8DkTY9iSl2K5vKCJXR8mUseLOY5q72PWDNpbgVHjG+yxHM=-HxTVI372NJgyVLUeKcZLwEagjEQ=; _ym_isad=2; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764922255; _visitId=fa069082-a8e8-49c6-94cd-c471389602f6-f4f0dcc432ac8ba6; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1764922269; t3_sid_7711713=s1.579603876.1764922255259.1764922343660.31.12.3.1..; tmr_reqNum=285',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; logoSuffix=; iosAppLink=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; favoriteHintShowed=true; _ym_isad=2; showDddIntro=false; dddIntroOnline=false; auto-definition-region=false; currentLocalityGuid=07d7bc2f-c37b-4ce5-8df4-c1670ad243ea; currentRegionGuid=94fb6c09-6d40-4eb2-97de-723080857a05; currentSubDomain=vladikavkaz; regionName=07d7bc2f-c37b-4ce5-8df4-c1670ad243ea:%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%2294fb6c09-6d40-4eb2-97de-723080857a05%22%2C%22localityGuid%22:%2207d7bc2f-c37b-4ce5-8df4-c1670ad243ea%22%2C%22subdomain%22:%22vladikavkaz%22}%2C%22isAutoResolved%22:true}; canary-bind-id-11407=prev-1; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714; _visitId=4d647ded-5737-4e04-9af0-636add9263be-320838cd54292be; qrator_jsr=v2.0.1773929767.652.96f16094dEvERUNW|dhc9Pui9hgued0Pw|XUsCAfogomGkeng+MI1HlpfDf/KsaN2wN7jvhr//VMFLn+4q3kNkh2jTdYaQbTi9fzZwGxwRqGLCVe4T++YtGy447GuVOa2sys1eE8ubjacmAO7vaFQef9X+tWqnYj0wHrxeoGY0ukVSWHb1wef+3DRkjoDAPWcPHX2ebbMsBL3zuh0RUPOeMcgbiIiS8kET-8Ofux42osjK1j4nw+8VUmxEoXr0=-00; qrator_jsid2=v2.0.1773929767.652.96f16094dEvERUNW|myTPfc8UacvHJIHF|ZKPsj7ffGpTuD7hNnrnrRJ4ZEuPzx3uXE7cWsrGvSVN9POCcqjYFIiXeP7XCyAmKx7wAYLG6Zs23CUrTWXcFFy4aNxVqv0tydhks1311SiEGyDCtVEmMI7l6Z7Y0ekZ2VWEq0ztqy+FoMYw2KJQnlWvCowtUOeRQhfpG589OeDMYrtdqBD7WAkrlTcvm+UU8-ob/ijtu1vvQlIaw65Xkjv4iHNjU=; t3_sid_7711713=s1.1740131368.1773929772356.1773931952706.63.37.8.1..; tmr_reqNum=299',
 }
 
 
-ids =
+ids = [120568]
 
 
 
@@ -116,7 +121,6 @@ for complex_id in ids:
         'offer_type': 'layout',
         'complex_ids': [complex_id],  # Используем текущий ID из списка
         'complex_name': 'ЖК Солнечный город',
-        'from_developer': '1',
         'sort_by_tariff_date': '1',
     }
 
@@ -295,12 +299,12 @@ for complex_id in ids:
                         flats.append(result2)
 
                     try:
-                        buttons = driver.find_elements(By.CLASS_NAME, "pgnt-control-eeb-4-0-1")
+                        buttons = driver.find_elements(By.CLASS_NAME, "pgnt-control-eeb-4-1-2")
                         next_button = None
 
                         for btn in buttons:
                             try:
-                                btn.find_element(By.CLASS_NAME, "pgnt-next-c9c-4-0-1")
+                                btn.find_element(By.CLASS_NAME, "pgnt-next-c9c-4-1-2")
                                 next_button = btn
                                 break
                             except NoSuchElementException:
@@ -310,7 +314,7 @@ for complex_id in ids:
                             print("Кнопка 'вперёд' не найдена")
                             break
 
-                        if "pgnt-disabled-835-4-0-1" in next_button.get_attribute("class"):
+                        if "pgnt-disabled-835-4-1-2" in next_button.get_attribute("class"):
                             print("Кнопка 'вперёд' неактивна, выходим из цикла")
                             break
 
