@@ -101,7 +101,7 @@ headers = {
 
 json_data = {
     'jsonQuery': {
-        '_type': 'flatsale',
+        '_type': 'flatrent',
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -116,9 +116,18 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'publish_period': {
+'for_day': {
             'type': 'term',
-            'value': 2592000,
+            'value': '!1',
+        },
+'repair': {
+            'type': 'terms',
+            'value': [
+                1,
+                2,
+                3,
+                4,
+            ],
         },
 'room': {
             'type': 'terms',
@@ -140,17 +149,9 @@ json_data = {
                 'lte': 2,
             },
         },
-'offer_seller_type': {
-            'type': 'terms',
-            'value': [
-                2,
-            ],
-        },
-'electronic_trading': {
-            'type': 'term',
-            'value': 1,
-        },
+
     },
+'_liquiditySource': 'web_serp',
 }
 
 
@@ -198,7 +199,7 @@ elif 2500 <= items_count <= 4500:
 elif items_count > 4500:
 
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[14, 16]]
+    total_floor_list = [[1, 2], [3, 4],[5, 6], [7, 8], [9, 10], [11, 12], [13, 15], [16, 18], [19, 21], [22, 25], [26, 30], [31, 50]]
 
 
 
@@ -333,7 +334,7 @@ for rooms in rooms_ids:
                     except:
                         property_from = ''
                     try:
-                        url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
                     except:
                         url = ''
 
@@ -445,6 +446,22 @@ for rooms in rooms_ids:
                         loggiasCount = i['loggiasCount']
                     except:
                         loggiasCount = ''
+                    try:
+                        agent_company = i['user']['companyName']
+                    except:
+                        agent_company = ''
+                    try:
+                        deposit = i['bargainTerms']['deposit']
+                    except:
+                        deposit = ''
+                    try:
+                        agentFee = i['bargainTerms']['agentFee']
+                    except:
+                        agentFee = ''
+                    try:
+                        clientFee = i['bargainTerms']['clientFee']
+                    except:
+                        clientFee = ''
 
 
                     print(
@@ -454,7 +471,7 @@ for rooms in rooms_ids:
                               parking, creationDate, floorNumber, coordinates_lat, coordinates_lng, highways_nearest, highway_distance,
                               railways_nearest, railways_nearest_distance, railways_nearest_time, railways_nearest_travelType, jk,
                               underground_nearest, underground_nearest_time, hasFurniture,
-                              kitchenArea, livingArea, loggiasCount
+                              kitchenArea, livingArea, loggiasCount, agent_company, deposit, agentFee, clientFee
                               ]
                     flats.append(result)
 
@@ -528,7 +545,11 @@ for rooms in rooms_ids:
                                               'С мебелью',
                                               'Площадь кухни',
                                               'Жилая площадь',
-                                              'Число лоджий'
+                                              'Число лоджий',
+                                              'Агенство',
+                                              'Депозит',
+                                              'agentFee',
+                                              'clientFee'
                                               ])
 
 
