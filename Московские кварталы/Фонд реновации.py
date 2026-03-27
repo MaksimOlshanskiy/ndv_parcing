@@ -161,5 +161,5 @@ for i in flats_soup:
     flats.append(result)
 
 
-save_flats_to_excel(flats, project, developer)
+save_flats_to_excel(flats, project, developer, kvartirografia=False)
 

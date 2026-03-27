@@ -71,7 +71,7 @@ while True:
 
         url = ''
         developer = "Талан"
-        project = 'Injoy'
+        project = 'Инджой'
         korpus = i['building_int_number']
         section = i['section_number']
 

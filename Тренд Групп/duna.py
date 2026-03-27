@@ -12,13 +12,13 @@ headers = {
     'origin': 'https://xn--80ahfqq5h.xn--p1ai',
     'priority': 'u=1, i',
     'referer': 'https://xn--80ahfqq5h.xn--p1ai/',
-    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
+    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
 }
 
 json_data = {
@@ -34,7 +34,7 @@ json_data = {
             'promos': [],
             'tags': [],
             'riser_side': [],
-            'geo_city': '3430',
+            'geo_city': None,
             'floors': [],
             'geoLines': [],
             'houses_ids': [],
@@ -55,9 +55,14 @@ json_data = {
         },
         'complex_id': 4051629,
         'house_id': None,
-        'orders': [],
+        'orders': [
+            {
+                'field': 'area',
+                'direction': 'desc',
+            },
+        ],
         'complex_search': None,
-        'house_search': None,
+        'house_search': [],
         'lazy': False,
         'cabinetMode': False,
     },
@@ -65,7 +70,6 @@ json_data = {
     'locale': None,
 }
 
-url = 'https://api.macro.sbercrm.com/estate/catalog/?domain=xn--80ahfqq5h.xn--p1ai&check=wzrmC0pFwm-b0tm2tOlZbmKi0ufOjl2brGzj7Ocj9Ke_KlUK-q39_dWaDy7q2q3-rnwxNzY5NTg3OTA2fGRjNDIy&type=catalog&lenisPrevent=true&autoshow=false&inline=true&issetJQuery=0&uuid=b73426c8-0e70-4c73-a93d-3c75b7eba250&cookie_base64=eyJfeW1fdWlkIjoiMTc2OTU4Nzg3NzEyNjc2ODQxMiJ9&time=1769587906&token=52454aea74c417c1b528436bbf7a837b/'
 
 flats = []
 count = 0
@@ -79,7 +83,11 @@ def extract_digits_or_original(s):
 
 while True:
     try:
-        response = requests.post(url, json=json_data, headers=headers)
+        response = requests.post(
+            'https://api.macro.sbercrm.com/estate/catalog/?domain=xn--80ahfqq5h.xn--p1ai&check=wzrmC0pFwm-b0tm2tOlZbmKi0ufOjl2brGzj7Ocj9Ke_KlUK-q39_dWaDy7q2q3-rnwxNzc0NjE0MDQ3fGI5ZjM5&type=catalog&lenisPrevent=true&autoshow=false&inline=true&issetJQuery=0&uuid=abe51bf7-bb6b-46df-8a9b-a22a2ebecd24&cookie_base64=eyJfeW1fdWlkIjoiMTc2OTU4Nzg3NzEyNjc2ODQxMiJ9&time=1774614047&token=00408e0f3282379f61f5db99efc9a96e/',
+            headers=headers,
+            json=json_data,
+        )
         print(response.status_code)
         response.raise_for_status()
     except requests.exceptions.RequestException as e:

@@ -148,6 +148,16 @@ ids_dict = {}
 
 json_data['offset'] = 0
 
+proxies = {
+    "http": "http://uDa52BZxQO:PW96GXFEJi@193.232.174.121:14706",
+    "https": "https://uDa52BZxQO:PW96GXFEJi@193.232.174.121:14706"
+}
+
+
+response = requests.get("https://httpbin.org/ip", proxies=proxies)
+
+print(response.text)
+
 for newbuilding_class in newbuilding_classes:
 
     json_data['jsonQuery']['newbuilding_class']['value'] = [newbuilding_class]
@@ -155,12 +165,17 @@ for newbuilding_class in newbuilding_classes:
 
     while True:
 
+        requests.get("https://www.cian.ru/")
+
         response = requests.post(
             'https://api.cian.ru/newbuilding-search/v1/get-newbuildings-for-serp/',
             cookies=cookies,
             headers=headers,
             json=json_data,
+            proxies=proxies
         )
+
+        print(response.status_code)
 
         items = response.json()['newbuildings']
 
@@ -265,7 +280,8 @@ for y in ids:
         'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
         cookies=cookies,
         headers=headers,
-        json=json_data
+        json=json_data,
+        proxies=proxies
     )
     flats_count = response.json()['data']['aggregatedCount']
     print(f'Количество квартир в проекте: {flats_count}')
@@ -333,7 +349,8 @@ for y in ids:
                             'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
                             cookies=cookies,
                             headers=headers,
-                            json=json_data
+                            json=json_data,
+                            proxies=proxies
                         )
 
                         print(response.status_code)
@@ -495,7 +512,7 @@ for y in ids:
 
                         except:
                             distance = ''
-                        class_of_jk = ''
+                        class_of_jk = ids_dict.get(y, '').replace('economy', 'Комфорт').replace('comfort', 'Комфорт').replace('business', 'Бизнес').replace('premium', 'Премиум')
 
                         print(
                             f"{project}, {url}, класс: {class_of_jk}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")

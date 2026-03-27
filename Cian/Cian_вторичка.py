@@ -83,10 +83,15 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'flatsale',
+'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
+
         'region': {
             'type': 'terms',
             'value': [

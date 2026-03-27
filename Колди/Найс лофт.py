@@ -110,16 +110,16 @@ for i in items:
         dogovor = ''
         if i['type'] == "apartments":
             type = 'Апартаменты'
-        finish_type = "Без отделки"
+        finish_type = ('Без отделки')
         room_count = int(i['rooms'])
 
         area = float(i['square'])
         price_per_metr = ''
-        old_price = int(i['actionpr'])
+        old_price = int(i['price'])
         discount = ''
         price_per_metr_new = ''
-        price = int(i["price"])
-        if price > old_price:
+        price = int(i["actionpr"])
+        if not price:
             price = old_price
         section = int(i['sectionNum'])
         floor = int(i['floorNum'])

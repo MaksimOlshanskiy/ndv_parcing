@@ -66,7 +66,7 @@ while url:
 
         for i in items:
             date = datetime.date.today()
-            project = "West Tower"
+            project = 'Вест Тауэр'
             developer = 'Ташир'
             room_count = i["rooms"]
 

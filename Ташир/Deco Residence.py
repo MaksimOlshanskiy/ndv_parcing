@@ -70,7 +70,7 @@ while True:
             continue
         url = ''
         developer = "Ташир"
-        project = 'Deco Residence'
+        project = 'Деко Резиденс'
         korpus = '1'
         section = i['section_number']
         if i['type'] == "APARTMENT":

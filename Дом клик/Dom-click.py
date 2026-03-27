@@ -59,30 +59,37 @@ cookies = {
     '_ym_d': '1759300554',
     'adrdel': '1759300555210',
     'logoSuffix': '',
-    'iosAppLink': '',
     '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
-    'currentRegionGuid': '1691f4a5-8e87-41ab-b0d3-05a0c7a07c76',
-    'currentLocalityGuid': '857c0a08-7dc0-445e-a044-ed2f6d435a7b',
-    'regionName': '857c0a08-7dc0-445e-a044-ed2f6d435a7b:%D0%A3%D1%84%D0%B0',
-    'favoriteHintShowed': 'true',
-    'qrator_ssid2': 'v2.0.1773844449.834.96f16094TbVtmlBo|hnqZYolOmgMdf602|TrX67NCXAoDBf9QTJ31+0Pb3lVb5kFh6w+oHfN2X2+ju3wj8VNuqIC5g0cj8qhYuEkHQ/YSLcytPuUyLUQakaur8ZcBuqo3JIIoRx9WbFn8=-VOEv2bvcKQs7ILfZ1pR6fGgi9Es=',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773844455',
+    'showDddIntro': 'false',
+    'dddIntroOnline': 'false',
+    'auto-definition-region': 'false',
+    'currentSubDomain': 'vladikavkaz',
+    'iosAppLink': 'https://redirect.appmetrica.yandex.com/serve/750345901926604171',
     '_ym_isad': '2',
-    '_visitId': '5e6ccc41-d711-48fb-b72d-9e6c1210e007-f4f0dcc432ac8ba6',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773844462',
-    'qrator_jsr': 'v2.0.1773844446.577.96f16094YkjzUH30|dZDGLQ2SULDujN5v|x5GhC5aSWOX6NGDwVCE5WBDFWnFCat+a+eRcfagyxyjtSQaMttTBO7WCsirctDNrUPjVJZJ7rHGbcnbhaQeLk4B/bH3903t/jB0KMc6INRjDZfNe2zK+zF1JPJ/KiPttwE0hAHfXo7JHYsbvqCTa1qt5NCpBUE30ynlzzBEKOMDqFZ6d4HyzY6DVR1c8Riwf-nRQZ7IwUg9AZPotZ3CKHi2iL94o=-00',
-    'qrator_jsid2': 'v2.0.1773844446.577.96f16094YkjzUH30|jdRagcM4Ziok6aLA|FUx1+9bRrJNte4xpB8r5xtFgF2l46CIUxiHsWFlquZLfpgS8ivj9VTnCXNSfcOCcyidnv17xOsUBx5CSwODBXo4R2kXv5ogGoG+RrbU7OBJBqV1dtYlMgE5H2SqJxHh5vBSOjsMsEFkUKxDn3dr+BDEKdDphDvYx+yELABXDRVlFXZy8AFFIbqNH33EBtwS6-BY8pTek43YJmWOZR2sk7Vd4pcR8=',
-    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221691f4a5-8e87-41ab-b0d3-05a0c7a07c76%22%2C%22localityGuid%22:%22857c0a08-7dc0-445e-a044-ed2f6d435a7b%22%2C%22subdomain%22:%22%22}%2C%22isAutoResolved%22:true}',
-    'tmr_reqNum': '296',
-    't3_sid_7711713': 's1.1969432551.1773844455874.1773845150031.62.43.6.1..',
+    'canary-bind-id-11772': 'next-2',
+    'favoriteHintShowed': 'true',
+    'canary-bind-id-11751': 'next-1',
+    'max-chat-settings-show': '%7B%22countOfEntry%22%3A4%2C%22lastStatus%22%3A%22NOT_CREATED%22%7D',
+    't3_sid_7731951': 's1.1763172985.1774606241489.1774606247917.1.8.1.0..',
+    'currentRegionGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'currentLocalityGuid': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
+    'regionName': '1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
+    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22%2C%22localityGuid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22%2C%22subdomain%22:%22vladikavkaz%22}%2C%22isAutoResolved%22:true}',
+    'qrator_jsid2': 'v2.0.1774602935.777.96f16094OEzYDiae|ugbnMUM8rlb8Qphj|RxdQxqmeQ4jHLSRl9Kg6YDFl8YsUAqJ75PkblLKt04WCKEnM75qtY6ZF6OW51x+7NDyPBd2BXhrOhJwvXlZhy6ZZEtsxAwtY8zrejhcjgXs2UfXlEMMXHNMwJsRGjV1FkwlkE4Kra/PHZLsVFBaw1FfUzjCDOvE+0z0cCEZntYI=-wHWEEzQfrm5EmoAxdUfnDu9PvbM=',
+    'canary-bind-id-11790': 'prev-0',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1774622801',
+    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1774622801',
+    '_visitId': '54c55212-87f9-4543-b147-e66eafd9ad3f-f4f0dcc432ac8ba6',
+    't3_sid_7711713': 's1.64255472.1774622802256.1774622910516.71.15.4.1..',
+    'tmr_reqNum': '310',
 }
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'Connection': 'keep-alive',
-    'Origin': 'https://ufa.domclick.ru',
-    'Referer': 'https://ufa.domclick.ru/',
+    'Origin': 'https://domclick.ru',
+    'Referer': 'https://domclick.ru/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
@@ -90,11 +97,12 @@ headers = {
     'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; logoSuffix=; iosAppLink=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; currentRegionGuid=1691f4a5-8e87-41ab-b0d3-05a0c7a07c76; currentLocalityGuid=857c0a08-7dc0-445e-a044-ed2f6d435a7b; regionName=857c0a08-7dc0-445e-a044-ed2f6d435a7b:%D0%A3%D1%84%D0%B0; favoriteHintShowed=true; qrator_ssid2=v2.0.1773844449.834.96f16094TbVtmlBo|hnqZYolOmgMdf602|TrX67NCXAoDBf9QTJ31+0Pb3lVb5kFh6w+oHfN2X2+ju3wj8VNuqIC5g0cj8qhYuEkHQ/YSLcytPuUyLUQakaur8ZcBuqo3JIIoRx9WbFn8=-VOEv2bvcKQs7ILfZ1pR6fGgi9Es=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773844455; _ym_isad=2; _visitId=5e6ccc41-d711-48fb-b72d-9e6c1210e007-f4f0dcc432ac8ba6; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773844462; qrator_jsr=v2.0.1773844446.577.96f16094YkjzUH30|dZDGLQ2SULDujN5v|x5GhC5aSWOX6NGDwVCE5WBDFWnFCat+a+eRcfagyxyjtSQaMttTBO7WCsirctDNrUPjVJZJ7rHGbcnbhaQeLk4B/bH3903t/jB0KMc6INRjDZfNe2zK+zF1JPJ/KiPttwE0hAHfXo7JHYsbvqCTa1qt5NCpBUE30ynlzzBEKOMDqFZ6d4HyzY6DVR1c8Riwf-nRQZ7IwUg9AZPotZ3CKHi2iL94o=-00; qrator_jsid2=v2.0.1773844446.577.96f16094YkjzUH30|jdRagcM4Ziok6aLA|FUx1+9bRrJNte4xpB8r5xtFgF2l46CIUxiHsWFlquZLfpgS8ivj9VTnCXNSfcOCcyidnv17xOsUBx5CSwODBXo4R2kXv5ogGoG+RrbU7OBJBqV1dtYlMgE5H2SqJxHh5vBSOjsMsEFkUKxDn3dr+BDEKdDphDvYx+yELABXDRVlFXZy8AFFIbqNH33EBtwS6-BY8pTek43YJmWOZR2sk7Vd4pcR8=; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221691f4a5-8e87-41ab-b0d3-05a0c7a07c76%22%2C%22localityGuid%22:%22857c0a08-7dc0-445e-a044-ed2f6d435a7b%22%2C%22subdomain%22:%22%22}%2C%22isAutoResolved%22:true}; tmr_reqNum=296; t3_sid_7711713=s1.1969432551.1773844455874.1773845150031.62.43.6.1..',
+    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; logoSuffix=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; showDddIntro=false; dddIntroOnline=false; auto-definition-region=false; currentSubDomain=vladikavkaz; iosAppLink=https://redirect.appmetrica.yandex.com/serve/750345901926604171; _ym_isad=2; canary-bind-id-11772=next-2; favoriteHintShowed=true; canary-bind-id-11751=next-1; max-chat-settings-show=%7B%22countOfEntry%22%3A4%2C%22lastStatus%22%3A%22NOT_CREATED%22%7D; t3_sid_7731951=s1.1763172985.1774606241489.1774606247917.1.8.1.0..; currentRegionGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; currentLocalityGuid=1d1463ae-c80f-4d19-9331-a1b68a85b553; regionName=1d1463ae-c80f-4d19-9331-a1b68a85b553:%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22%2C%22localityGuid%22:%221d1463ae-c80f-4d19-9331-a1b68a85b553%22%2C%22subdomain%22:%22vladikavkaz%22}%2C%22isAutoResolved%22:true}; qrator_jsid2=v2.0.1774602935.777.96f16094OEzYDiae|ugbnMUM8rlb8Qphj|RxdQxqmeQ4jHLSRl9Kg6YDFl8YsUAqJ75PkblLKt04WCKEnM75qtY6ZF6OW51x+7NDyPBd2BXhrOhJwvXlZhy6ZZEtsxAwtY8zrejhcjgXs2UfXlEMMXHNMwJsRGjV1FkwlkE4Kra/PHZLsVFBaw1FfUzjCDOvE+0z0cCEZntYI=-wHWEEzQfrm5EmoAxdUfnDu9PvbM=; canary-bind-id-11790=prev-0; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1774622801; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1774622801; _visitId=54c55212-87f9-4543-b147-e66eafd9ad3f-f4f0dcc432ac8ba6; t3_sid_7711713=s1.64255472.1774622802256.1774622910516.71.15.4.1..; tmr_reqNum=310',
 }
 
+
 params = {
-    'address': '857c0a08-7dc0-445e-a044-ed2f6d435a7b',
+    'address': '1d1463ae-c80f-4d19-9331-a1b68a85b553',
     'offset': '0',
     'limit': '20',
     'sort': 'qi',
@@ -102,8 +110,8 @@ params = {
     'deal_type': 'sale',
     'category': 'living',
     'offer_type': 'layout',
-    'complex_ids': '122606',
-    'complex_name': 'ЖК "Большевик"',
+    'complex_ids': '115932',
+    'complex_name': 'ЖК "Горки Марусино"',
     'from_developer': '1',
 }
 
@@ -263,13 +271,13 @@ while True:
 
                 try:
                     # Получаем все кнопки с нужным классом
-                    buttons = driver.find_elements(By.CLASS_NAME, "pgnt-control-eeb-4-0-1")
+                    buttons = driver.find_elements(By.CLASS_NAME, "pgnt-control-eeb-4-1-2")
                     next_button = None
 
                     for btn in buttons:
                         try:
                             # Проверяем, есть ли у кнопки div с нужным вложенным классом
-                            btn.find_element(By.CLASS_NAME, "pgnt-next-c9c-4-0-1")
+                            btn.find_element(By.CLASS_NAME, "pgnt-next-c9c-4-1-2")
                             next_button = btn
                             break  # нашли нужную кнопку — дальше не ищем
                         except NoSuchElementException:
@@ -280,7 +288,7 @@ while True:
                         break
 
                     # Проверяем, не отключена ли она
-                    if "pgnt-disabled-835-4-0-1" in next_button.get_attribute("class"):
+                    if "pgnt-disabled-835-4-1-2" in next_button.get_attribute("class"):
                         print("Кнопка 'вперёд' неактивна, выходим из цикла")
                         break
 

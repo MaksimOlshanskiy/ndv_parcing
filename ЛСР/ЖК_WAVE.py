@@ -63,7 +63,7 @@ while True:
 
         url = ''
         date = datetime.date.today()
-        project = flats_soup2.text.strip().replace('в ЖК ', '')
+        project = 'ВЕЙВ'
         english = ''
         promzona = ''
         mestopolozhenie = ''

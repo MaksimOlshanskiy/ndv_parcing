@@ -12,7 +12,7 @@ def parse_citi_mix_flats():
     base_url = "https://citi-mix.ru"
     start_url = "/flats/catalog?pmin=10.1&pmax=12.2&fmin=10&fmax=18&korpus=5%2C4&sort=default"
     developer = "Apsis Globe"
-    project = "Citi-Mix"
+    project = "СИТИМИКС"
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'

@@ -15,6 +15,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException, \
     StaleElementReferenceException, NoSuchElementException
 
+'''
+отдельно снимаем с отделкой и без отделки, берём ссылку с сайта и подставляем дважды, а также указываем кол-во объявлений
+'''
+
 cookies = {
     'SCBFormsAlreadyPulled': 'true',
     'scbsid_old': '2746015342',
@@ -61,23 +65,16 @@ params = {
     'isNaked': '1',
 }
 
-files = [
-    ('building[]', (None, '1')),
-    ('building[]', (None, '2')),
-    ('building[]', (None, '3')),
-    ('building[]', (None, '4')),
-    ('building[]', (None, '5')),
-    ('rooms[]', (None, '1')),
-    ('rooms[]', (None, '2')),
-    ('rooms[]', (None, '3')),
-    ('price-from', (None, '8.83')),
-    ('price-to', (None, '22.98')),
-    ('square-from', (None, '28.40')),
-    ('square-to', (None, '79.90')),
-    ('finishes', (None, '1')),
-    ('sorting', (None, '1')),
-    ('more', (None, '0')),
-]
+files = {
+    'price-from': (None, '10.73'),
+    'price-to': (None, '26.10'),
+    'square-from': (None, '30.10'),
+    'square-to': (None, '79.90'),
+    'finishes': (None, 'Whitebox'),
+    'building[]': (None, '1,2,3,4,5'),
+    'sorting': (None, '1'),
+    'more': (None, '20'),
+}
 
 
 
@@ -90,11 +87,11 @@ def extract_digits_or_original(s):
 
 
 driver = webdriver.Chrome()
-driver.get("https://lyesnaya.ru/catalog/")
+driver.get("https://xn----7sbocpkbcearp8a9etgj.xn--p1ai/catalog/?price-from=10.73&price-to=26.10&square-from=30.10&square-to=79.90&finishes=%D0%91%D0%B5%D0%B7+%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%BA%D0%B8&building=1%2C2%2C3%2C4%2C5&sorting=1")
 
 wait = WebDriverWait(driver, 5)  # небольшое ожидание
 
-MAX_COUNT = 100
+MAX_COUNT = 132
 
 while True:
     try:

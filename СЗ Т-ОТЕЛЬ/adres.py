@@ -56,7 +56,9 @@ def parse_adresdoma_ru():
                         continue  # Пропускаем дубликат
                     seen_numbers.add(number)
 
-                    price = card.find_element(By.CSS_SELECTOR, '.roomCard__price').text.strip().replace('\xa0', ' ').replace(' Р', '')
+                    # apartments_items > a:nth-child(6) > div.roomCard__body > div.roomCard__price
+                    price = card.find_element(By.CSS_SELECTOR, '.roomCard__price').text.replace('Цена:', '').split('₽')[0].strip().replace('\xa0', ' ').replace('₽', '').strip()
+                    print(price)
                     area = card.find_element(By.CSS_SELECTOR, '.roomCard__s').text.strip().replace('\xa0', ' ').replace(' м²', '').replace(' м2', '').replace('Площадь:','')
                     room_count=card.find_element(By.CSS_SELECTOR, '.roomCard__count').text.strip()
 

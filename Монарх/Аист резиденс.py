@@ -15,10 +15,10 @@ from functions import save_flats_to_excel
 cookies = {
     '_ym_uid': '174358513932310668',
     '_ym_d': '1769438650',
-    'XSRF-TOKEN': 'eyJpdiI6IkNQS3lGU2hsMWFvRkllSVRBYXpGOFE9PSIsInZhbHVlIjoiL0M4QXh5WENuSnY5QjlKL1Z3QWtXSkhyaEd1S0xKUlNsVDMxeG5sanZYb053c0twOU10Ylh5Z2ZESmVZYU1lZGtDcW5tUE1qNk1zMWt3RkpKMjFVaEFUY3hobURHUjg2akhVZTlqQm9rZlhZU2ZxRzlBUXZhS1pidjF3eVNtWXEiLCJtYWMiOiIzN2NlMzM4ZGNjMjdmNjdlZDQ3YjVjMTg3YTk4Nzk0NmU4MGI5MDg3NmIxMDU2YjZlODJlYzVlNGQ5Nzk1ODAwIiwidGFnIjoiIn0%3D',
-    'aist_session': 'eyJpdiI6IlJkVTB1cUQyMzFRY09KWTZBb250bHc9PSIsInZhbHVlIjoiWGZEa2tqdFRsVTBtdm9iYXJWMkNkeWJmZ0lXWmdLaE84THlnd1hEd0N1bFNRTXA5UUtFZkZLeDF6eGhpaVg1NW96RG1wU0wzTEhnVldycS9lT2NDK1Q3eGovdmNtenNyTWtvTGhYZFF0RHNxbDByQVhMb1NSeVJUZ1J3TzVVSGgiLCJtYWMiOiJlN2FhZGE5OTg4NTZjZTZlZDVjMmE4ODA3OWQzMzc4ZWQzNjkwMzlhNzMwMmZkZTUzZjUyYmE4ZmJlNDlhMjU5IiwidGFnIjoiIn0%3D',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
+    'XSRF-TOKEN': 'eyJpdiI6ImVlV0hLVVlKc3ZXd05ja3h1Mm95Vmc9PSIsInZhbHVlIjoiODhScnM4YWd4MlFGR3RnQUR6Y25SV2xWV25MUUQ3Q3NnTmRYdytzNTRCVS94VURVLzZKdisydXMxVWVTdVpSYUlNcXNLUGxUK0ZyK0plekJKbTZ1aG8zU05lYW5CRVpPZDF4R25KUHZvVW1hL0pFc055SFB1aGR0dURMR1B0Y2YiLCJtYWMiOiJlMTkxYzU2OTU0NThlZjlkNmVlYjdjMzUxYjBjNjQ3YzJjNjQwYjJiZjMxY2QzYjkwYzg4OWM0YjQ3MTAxYTk3IiwidGFnIjoiIn0%3D',
+    'aist_session': 'eyJpdiI6InNyZEthOFUrRjF5T253SmgzMXFhaVE9PSIsInZhbHVlIjoiMmplSjJtRUJ5VDNNU1dBd1ZtQ1g4SHd6N08vanJxc1U3WDdDRUx3WG5ZeFpiUHdyYi9rVlJQR2p4Z1NkNkl1L3NEb3B4L1cxRmhzNjc2T3d2elpCa0paOEZLV2JPeVR5eHptTk5KVHFubnJGWkROdFRuOU0wOVpsMEgrZXFLd2MiLCJtYWMiOiJjMjU4OWU5NDFlYzBlOTY2ZDA3NWUwNTNhNGMzN2Y4NGMxMmViYmQ5MDJmYzllNDljNzEzOTZiN2UyMzI5OGViIiwidGFnIjoiIn0%3D',
 }
 
 headers = {
@@ -28,16 +28,17 @@ headers = {
     'origin': 'https://aist-residence.com',
     'priority': 'u=1, i',
     'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=2',
-    'sec-ch-ua': '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
+    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
-    'x-csrf-token': 'g3K0ZQtjvECKlH8VxfYItAUdzB5qp8r9O9EtO7bw',
-    # 'cookie': '_ym_uid=174358513932310668; _ym_d=1769438650; XSRF-TOKEN=eyJpdiI6IkNQS3lGU2hsMWFvRkllSVRBYXpGOFE9PSIsInZhbHVlIjoiL0M4QXh5WENuSnY5QjlKL1Z3QWtXSkhyaEd1S0xKUlNsVDMxeG5sanZYb053c0twOU10Ylh5Z2ZESmVZYU1lZGtDcW5tUE1qNk1zMWt3RkpKMjFVaEFUY3hobURHUjg2akhVZTlqQm9rZlhZU2ZxRzlBUXZhS1pidjF3eVNtWXEiLCJtYWMiOiIzN2NlMzM4ZGNjMjdmNjdlZDQ3YjVjMTg3YTk4Nzk0NmU4MGI5MDg3NmIxMDU2YjZlODJlYzVlNGQ5Nzk1ODAwIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6IlJkVTB1cUQyMzFRY09KWTZBb250bHc9PSIsInZhbHVlIjoiWGZEa2tqdFRsVTBtdm9iYXJWMkNkeWJmZ0lXWmdLaE84THlnd1hEd0N1bFNRTXA5UUtFZkZLeDF6eGhpaVg1NW96RG1wU0wzTEhnVldycS9lT2NDK1Q3eGovdmNtenNyTWtvTGhYZFF0RHNxbDByQVhMb1NSeVJUZ1J3TzVVSGgiLCJtYWMiOiJlN2FhZGE5OTg4NTZjZTZlZDVjMmE4ODA3OWQzMzc4ZWQzNjkwMzlhNzMwMmZkZTUzZjUyYmE4ZmJlNDlhMjU5IiwidGFnIjoiIn0%3D; _ym_isad=2; _ym_visorc=w',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
+    'x-csrf-token': '8Ertli1TSKA7LOZOLtqHWugG05i5cWOt3DH9MIr0',
+    # 'cookie': '_ym_uid=174358513932310668; _ym_d=1769438650; _ym_isad=2; _ym_visorc=w; XSRF-TOKEN=eyJpdiI6ImVlV0hLVVlKc3ZXd05ja3h1Mm95Vmc9PSIsInZhbHVlIjoiODhScnM4YWd4MlFGR3RnQUR6Y25SV2xWV25MUUQ3Q3NnTmRYdytzNTRCVS94VURVLzZKdisydXMxVWVTdVpSYUlNcXNLUGxUK0ZyK0plekJKbTZ1aG8zU05lYW5CRVpPZDF4R25KUHZvVW1hL0pFc055SFB1aGR0dURMR1B0Y2YiLCJtYWMiOiJlMTkxYzU2OTU0NThlZjlkNmVlYjdjMzUxYjBjNjQ3YzJjNjQwYjJiZjMxY2QzYjkwYzg4OWM0YjQ3MTAxYTk3IiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6InNyZEthOFUrRjF5T253SmgzMXFhaVE9PSIsInZhbHVlIjoiMmplSjJtRUJ5VDNNU1dBd1ZtQ1g4SHd6N08vanJxc1U3WDdDRUx3WG5ZeFpiUHdyYi9rVlJQR2p4Z1NkNkl1L3NEb3B4L1cxRmhzNjc2T3d2elpCa0paOEZLV2JPeVR5eHptTk5KVHFubnJGWkROdFRuOU0wOVpsMEgrZXFLd2MiLCJtYWMiOiJjMjU4OWU5NDFlYzBlOTY2ZDA3NWUwNTNhNGMzN2Y4NGMxMmViYmQ5MDJmYzllNDljNzEzOTZiN2UyMzI5OGViIiwidGFnIjoiIn0%3D',
 }
+
 
 
 

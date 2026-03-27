@@ -14,6 +14,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
+'''
+Нажать на Выбрать квартиру. 
+Затем когда закончит с квартирами подняться наверх и нажать на Таунхаусы
+'''
+
 cookies = {
     'SCBFormsAlreadyPulled': 'true',
     'scbsid_old': '2746015342',
@@ -82,17 +87,9 @@ time.sleep(9)
 wait = WebDriverWait(driver, 20)
 
 button = wait.until(
-    EC.element_to_be_clickable((By.CSS_SELECTOR, 'a.geo__btn.btn[href="/kvartiry/?display=list"]'))
+    EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[href="/kvartiry/?display=list"]'))
 )
-
-# прокручиваем к кнопке
-driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
-
-# небольшой паузка, чтобы страница перестроилась
-driver.implicitly_wait(1)
-
-# кликаем через JS — это самый стабильный метод
-driver.execute_script("arguments[0].click();", button)
+button.click()
 
 while True:
     try:
@@ -140,6 +137,121 @@ for i in items:
     korpus = i.find('div', class_='cards-item__amount').text.strip().split()[-1]
     section = ''
     type = 'Квартиры'
+    finish_type = 'Без отделки'
+    room_count_finding = i.find_all('div', class_=['cards-item__info-item', 'cards-item__rooms'])
+    room_count_list = []
+    for r in room_count_finding:
+        room_count_list.append(r.text.strip().split())
+    print(room_count_list)
+    room_count = room_count_list[2][0]
+    flat_number = ''
+    try:
+        area = float(room_count_list[1][0].replace(',', '.'))
+    except:
+        area = ''
+    try:
+        price = int(i.find('div', class_='cards-item__price-current').text.strip().replace(' ', '').replace(' ', '').replace('р.', ''))
+        old_price = int(i.find('div', class_=['cards-item__price-old', 'cards-item__price-old--through']).text.strip().replace(' ', '').replace(' ', '').replace('р.', ''))
+        print(old_price)
+    except:
+        old_price = int(i.find('div', class_='cards-item__price-current').text.strip().replace(' ', '').replace(' ', '').replace('р.', ''))
+        price = ''
+
+    try:
+        floor = int()
+    except:
+        floor = ''
+
+
+
+    english = ''
+    promzona = ''
+    mestopolozhenie = ''
+    subway = ''
+    distance_to_subway = ''
+    time_to_subway = ''
+    mck = ''
+    distance_to_mck = ''
+    time_to_mck = ''
+    bkl = ''
+    distance_to_bkl = ''
+    time_to_bkl = ''
+    status = ''
+    start = ''
+    comment = ''
+    okrug = ''
+    district = ''
+    adress = ''
+    eskrou = ''
+    konstruktiv = ''
+    klass = ''
+    srok_sdachi = ''
+    srok_sdachi_old = ''
+    stadia = ''
+    dogovor = ''
+    price_per_metr = ''
+    discount = ''
+    price_per_metr_new = ''
+
+
+    print(
+        f"{project}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+    result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
+              time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
+              stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]
+    flats.append(result)
+
+button = wait.until(
+    EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[href="/taunhausy/?display=list"]'))
+)
+button.click()
+
+while True:
+    try:
+        # Ищем кнопку КАЖДЫЙ раз заново (важно!)
+        btn = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'button[data-pagination-action="show-more"]'))
+        )
+
+        # Прокручиваем к кнопке — обязательно!
+        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", btn)
+        time.sleep(0.5)
+
+        # Ждём кликабельности
+        btn = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[data-pagination-action="show-more"]'))
+        )
+
+        # Пробуем кликнуть через JS
+        driver.execute_script("arguments[0].click();", btn)
+
+        time.sleep(1.5)  # ждём подгрузку
+
+    except StaleElementReferenceException:
+        # элемент пропал и перерисовался — просто повторяем цикл
+        print("Элемент устарел → обновляем ссылку и продолжаем...")
+        time.sleep(1)
+        continue
+
+    except TimeoutException:
+        print("Кнопки больше нет — всё загружено.")
+        break
+
+page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
+
+soup = BeautifulSoup(page_content, 'html.parser')
+items = soup.find_all('a', class_='cards-item')
+
+print(len(items))
+
+for i in items:
+
+    url = ''
+    developer = "ФСК"
+    project = 'Жаворонки Клаб'
+    korpus = i.find('div', class_='cards-item__amount').text.strip().split()[-1]
+    section = ''
+    type = 'Таунхаусы'
     finish_type = 'Без отделки'
     room_count_finding = i.find_all('div', class_=['cards-item__info-item', 'cards-item__rooms'])
     room_count_list = []

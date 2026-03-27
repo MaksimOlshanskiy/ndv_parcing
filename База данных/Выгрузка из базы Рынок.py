@@ -33,7 +33,7 @@ sql_query = f"""
 select *
 from ndv_data
 where extract(year from date) = 2025 
-and extract(month from date) = 2 
+and extract(month from date) = 3 
 
                     """
 
@@ -48,4 +48,4 @@ print(df.info())
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 # df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
 
-df.to_excel("Выгрузка02-2025.xlsx", index=False)
+df.to_excel("Выгрузка03-2025.xlsx", index=False)

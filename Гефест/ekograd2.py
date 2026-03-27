@@ -60,10 +60,10 @@ while True:
 
     try:
         response = requests.post(
-        'https://xn--2-7sba2b6akh.xn--p1ai/api/realty-filter/custom/real-estates',
-        cookies=cookies,
-        headers=headers,
-        json=json_data, timeout=(5, 30))
+            'https://xn----8sbaf9ahriysl4g.xn--p1ai/api/realty-filter/custom/real-estates',
+            cookies=cookies,
+            headers=headers,
+            json=json_data, timeout=(5, 30))
     except:
 
         print("Timeout запроса, повтор...")
@@ -103,6 +103,8 @@ while True:
         klass = ''
         srok_sdachi = ''
         otdelka = i['finishing_type']
+        if otdelka == 'no':
+            otdelka = 'Без отделки'
         if not otdelka:
             otdelka = 'Без отделки'
         srok_sdachi_old = ''

@@ -59,7 +59,7 @@ while True:
 
         for i in items:
             date = datetime.date.today()
-            project = i["project"]
+            project = 'Ривер Парк Кутузовский'
             english = ''
             promzona = ''
             mestopolozhenie = ''

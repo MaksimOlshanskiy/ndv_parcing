@@ -12,7 +12,7 @@ time.sleep(2)
 
 
 
-MAX_PARALLEL = 20
+MAX_PARALLEL = 10
 
 # папка со скриптами
 
@@ -21,7 +21,6 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\3С Групп\3S_Group.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\А101\A101.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Абсолют\Absolute.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Абсолют\luzhniki.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Аверус\novograd monino.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Авиаспецресурс\vesna.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Агрострой\Novo-Nikolsk.py"),
@@ -45,6 +44,7 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ВиХолдинг\Алиа.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГАЛС\HALS.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гефест\ekograd2.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Абсолют\luzhniki.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Мега-мечта\Мечта.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Монолит\elyon.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\ГК Развитие\malahovsky.py"),
@@ -54,7 +54,6 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Горакс\Смарт Гарден.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гравион\Cult.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Град\ICE TOWERS.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Град\Лесная коллекция.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гранд\klukveny.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гранд\sobolevka.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гранд\volkovskaya 67.py"),
@@ -168,11 +167,15 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\СЗ Спортивная 2Б\Сердце Лыткарино.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Веста\Кратовоград.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Палладио Групп\Аннабельс.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Гранард\Гранд фили.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Березовец\atlantis.py"),
+    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Джи3\Джи3.py"),
 
 
 
 ]
 
+print(len(SCRIPTS))
 
 logging.basicConfig(
     level=logging.INFO,

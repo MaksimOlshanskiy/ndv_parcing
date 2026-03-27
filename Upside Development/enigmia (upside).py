@@ -71,6 +71,8 @@ if response.status_code == 200:
             finish_type='Предчистовая'
         elif finish_type=='Чистовая':
             finish_type='С отделкой'
+        else:
+            finish_type = 'Без отделки'
         type = 'Квартира'
 
 

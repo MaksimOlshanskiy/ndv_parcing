@@ -122,6 +122,8 @@ while True:
             price = int(i['price'])
         except:
             price = ''
+        if not old_price:
+            old_price = price
         section = i['section']
         try:
             floor = int(i['floor'])

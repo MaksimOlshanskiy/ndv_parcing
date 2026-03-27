@@ -64,7 +64,7 @@ while True:
                 try:
                     count += 1
                     date = datetime.date.today()
-                    project = 'DIUS'
+                    project = 'Диус'
                     developer = "Строй мир"
                     korpus = '1'
                     room_count = i['rooms']
@@ -87,7 +87,7 @@ while True:
 
                     result = [
                         date, project, '', '', '', '', '', '', '', '', '', '', '', '',
-                        '', '', '', developer, '', '', '', '', float(korpus) if korpus else '',
+                        '', '', '', developer, '', '', '', '', korpus,
                         '', '', '', '', '', '', type_, 'Без отделки', room_count, area,
                         '', old_price, '', '', price,
                         int(section) if section else 0, int(floor) if floor else 0, ''

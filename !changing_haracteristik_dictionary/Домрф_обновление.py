@@ -3,7 +3,7 @@ import numpy as np
 
 # Загружаем файлы
 df1 = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные.xlsx")
-df2 = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\НашДомРФ2.xlsx")
+df2 = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ\2026-03-24\НашДомРФ_глубже_МО.xlsx")
 
 df1["ID дом.рф"] = (
     df1["ID дом.рф"]
@@ -48,7 +48,7 @@ df1.loc[
 ] = "введен"
 
 # Сохраняем результат
-df1.to_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\База изм хар temp.xlsx", index=False)
+df1.to_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\База изм хар март.xlsx", index=False)
 
 print("Готово! Новый файл сохранён.")
 

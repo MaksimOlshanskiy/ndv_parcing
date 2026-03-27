@@ -37,7 +37,7 @@ for key, data in info.items():
             if 'отделк' in j['title'].lower():
                 finish_type = j['title']
 
-        if finish_type == 'Отделка White Box + с/у под ключ' or finish_type == 'Отделка White Box':
+        if finish_type == 'Отделка White Box + с/у под ключ' or finish_type == 'Отделка White Box' or finish_type == 'Предчистовая отделка':
             finish_type = 'Предчистовая'
         elif finish_type == 'Чистовая отделка':
             finish_type = 'С отделкой'
