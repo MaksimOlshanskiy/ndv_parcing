@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # Загружаем Excel
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\10-11.2025_рынок.xlsx")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\1_FILES\2026-04-07\ПИК_Холланд парк_2026-04-07.xlsx")
 
 # Загружаем JSON
 with open("projects_old.json", "r", encoding="utf-8") as f:

@@ -39,63 +39,6 @@ options.add_experimental_option('useAutomationExtension', False)
 
 driver = webdriver.Chrome(options=options)
 
-cookies = {
-    'ns_session': '5210b38b-2a77-4df9-a428-6405b3065d3d',
-    'is-green-day-banner-hidden': 'true',
-    'is-ddf-banner-hidden': 'true',
-    'RETENTION_COOKIES_NAME': 'd7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI',
-    'sessionId': 'be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE',
-    'UNIQ_SESSION_ID': '01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs',
-    'adtech_uid': '5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru',
-    'top100_id': 't1.7711713.1405137252.1743518288740',
-    '_ym_uid': '1743518289666663600',
-    'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
-    'tmr_lvid': '6b6b440680155a4ac17ccaf6a462f603',
-    'tmr_lvidTS': '1743518291170',
-    'regionAlert': '1',
-    'COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING': 'true',
-    'cookieAlert': '1',
-    'COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING': 'true',
-    '_ym_d': '1759300554',
-    'adrdel': '1759300555210',
-    'logoSuffix': '',
-    'iosAppLink': '',
-    '_sv': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000',
-    'favoriteHintShowed': 'true',
-    '_ym_isad': '2',
-    'showDddIntro': 'false',
-    'dddIntroOnline': 'false',
-    'auto-definition-region': 'false',
-    'currentLocalityGuid': '07d7bc2f-c37b-4ce5-8df4-c1670ad243ea',
-    'currentRegionGuid': '94fb6c09-6d40-4eb2-97de-723080857a05',
-    'currentSubDomain': 'vladikavkaz',
-    'regionName': '07d7bc2f-c37b-4ce5-8df4-c1670ad243ea:%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7',
-    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%2294fb6c09-6d40-4eb2-97de-723080857a05%22%2C%22localityGuid%22:%2207d7bc2f-c37b-4ce5-8df4-c1670ad243ea%22%2C%22subdomain%22:%22vladikavkaz%22}%2C%22isAutoResolved%22:true}',
-    'canary-bind-id-11407': 'prev-1',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714',
-    '_sas': 'SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714',
-    '_visitId': '4d647ded-5737-4e04-9af0-636add9263be-320838cd54292be',
-    'qrator_jsr': 'v2.0.1773929767.652.96f16094dEvERUNW|dhc9Pui9hgued0Pw|XUsCAfogomGkeng+MI1HlpfDf/KsaN2wN7jvhr//VMFLn+4q3kNkh2jTdYaQbTi9fzZwGxwRqGLCVe4T++YtGy447GuVOa2sys1eE8ubjacmAO7vaFQef9X+tWqnYj0wHrxeoGY0ukVSWHb1wef+3DRkjoDAPWcPHX2ebbMsBL3zuh0RUPOeMcgbiIiS8kET-8Ofux42osjK1j4nw+8VUmxEoXr0=-00',
-    'qrator_jsid2': 'v2.0.1773929767.652.96f16094dEvERUNW|myTPfc8UacvHJIHF|ZKPsj7ffGpTuD7hNnrnrRJ4ZEuPzx3uXE7cWsrGvSVN9POCcqjYFIiXeP7XCyAmKx7wAYLG6Zs23CUrTWXcFFy4aNxVqv0tydhks1311SiEGyDCtVEmMI7l6Z7Y0ekZ2VWEq0ztqy+FoMYw2KJQnlWvCowtUOeRQhfpG589OeDMYrtdqBD7WAkrlTcvm+UU8-ob/ijtu1vvQlIaw65Xkjv4iHNjU=',
-    't3_sid_7711713': 's1.1740131368.1773929772356.1773931952706.63.37.8.1..',
-    'tmr_reqNum': '299',
-}
-
-headers = {
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'Connection': 'keep-alive',
-    'Origin': 'https://vladikavkaz.domclick.ru',
-    'Referer': 'https://vladikavkaz.domclick.ru/',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-site',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
-    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=5210b38b-2a77-4df9-a428-6405b3065d3d; is-green-day-banner-hidden=true; is-ddf-banner-hidden=true; RETENTION_COOKIES_NAME=d7cf7088ab814dde8d8f546c98c6f8c4:nBa67XQBjdIGZ8ctm6VUWFBZvuI; sessionId=be29cf2aa31349c5b9526a8908556af9:qLh2pQi0C902c_qNAP6M4MB1TKE; UNIQ_SESSION_ID=01e8c70898c34d438fc9eefa59f4b03e:1_zXQ6IYGeCp9PiCY8T9XGEuXgs; adtech_uid=5b955382-d038-40cf-a271-c67f8cd94af8%3Adomclick.ru; top100_id=t1.7711713.1405137252.1743518288740; _ym_uid=1743518289666663600; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; tmr_lvid=6b6b440680155a4ac17ccaf6a462f603; tmr_lvidTS=1743518291170; regionAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_ONBOARDING=true; cookieAlert=1; COOKIE_IS_HIDDEN_EASY_SEARCH_COUNTRY_ONBOARDING=true; _ym_d=1759300554; adrdel=1759300555210; logoSuffix=; iosAppLink=; _sv=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000; favoriteHintShowed=true; _ym_isad=2; showDddIntro=false; dddIntroOnline=false; auto-definition-region=false; currentLocalityGuid=07d7bc2f-c37b-4ce5-8df4-c1670ad243ea; currentRegionGuid=94fb6c09-6d40-4eb2-97de-723080857a05; currentSubDomain=vladikavkaz; regionName=07d7bc2f-c37b-4ce5-8df4-c1670ad243ea:%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BA%D0%B0%D0%B2%D0%BA%D0%B0%D0%B7; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%2294fb6c09-6d40-4eb2-97de-723080857a05%22%2C%22localityGuid%22:%2207d7bc2f-c37b-4ce5-8df4-c1670ad243ea%22%2C%22subdomain%22:%22vladikavkaz%22}%2C%22isAutoResolved%22:true}; canary-bind-id-11407=prev-1; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714; _sas=SV1.f1a08dc7-e850-4782-91b9-9a68b87e7bf1.1741776000.1773931714; _visitId=4d647ded-5737-4e04-9af0-636add9263be-320838cd54292be; qrator_jsr=v2.0.1773929767.652.96f16094dEvERUNW|dhc9Pui9hgued0Pw|XUsCAfogomGkeng+MI1HlpfDf/KsaN2wN7jvhr//VMFLn+4q3kNkh2jTdYaQbTi9fzZwGxwRqGLCVe4T++YtGy447GuVOa2sys1eE8ubjacmAO7vaFQef9X+tWqnYj0wHrxeoGY0ukVSWHb1wef+3DRkjoDAPWcPHX2ebbMsBL3zuh0RUPOeMcgbiIiS8kET-8Ofux42osjK1j4nw+8VUmxEoXr0=-00; qrator_jsid2=v2.0.1773929767.652.96f16094dEvERUNW|myTPfc8UacvHJIHF|ZKPsj7ffGpTuD7hNnrnrRJ4ZEuPzx3uXE7cWsrGvSVN9POCcqjYFIiXeP7XCyAmKx7wAYLG6Zs23CUrTWXcFFy4aNxVqv0tydhks1311SiEGyDCtVEmMI7l6Z7Y0ekZ2VWEq0ztqy+FoMYw2KJQnlWvCowtUOeRQhfpG589OeDMYrtdqBD7WAkrlTcvm+UU8-ob/ijtu1vvQlIaw65Xkjv4iHNjU=; t3_sid_7711713=s1.1740131368.1773929772356.1773931952706.63.37.8.1..; tmr_reqNum=299',
-}
 
 
 ids = [120568]

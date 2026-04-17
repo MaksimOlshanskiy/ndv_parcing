@@ -141,12 +141,15 @@ json_data = {
             'type': 'term',
             'value': True,
         },
-        'sort': {
+        'flat_share': {
             'type': 'term',
-            'value': 'price_object_order',
+            'value': 2,
         },
     },
+    '_liquiditySource': 'web_serp',
 }
+
+print(f'Первоначальный IP: {requests.get("https://ipinfo.io/json").json()}')
 
 cities_dict = {
     'Москва': 1,
@@ -271,7 +274,7 @@ for rooms in rooms_ids:
             while len(flats) < total_count:
 
                 if counter > 1:
-                    sleep_time = random.uniform(7, 10)
+                    sleep_time = random.uniform(3, 5)
                     time.sleep(sleep_time)
                 try:
                     response = session.post(
@@ -289,7 +292,7 @@ for rooms in rooms_ids:
                 except:
                     print("Произошла ошибка, пробуем ещё раз")
                     print(response.status_code)
-                    time.sleep(30)
+                    time.sleep(15)
                     session = requests.Session()
                     response = session.post(
                         'https://api.cian.ru/search-offers/v2/search-offers-desktop/',

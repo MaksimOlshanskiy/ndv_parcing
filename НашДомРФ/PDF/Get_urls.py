@@ -19,10 +19,10 @@ from selenium.webdriver.chrome.options import Options
 def making_list_of_urls(corpus_id):
 
 
-    proxy_host = "89.23.114.250"
-    proxy_port = "17331"
-    proxy_user = "e0gdcKM8OS"
-    proxy_pass = "8C0r1I3U7R"
+    proxy_host = "185.42.27.210"
+    proxy_port = "10270"
+    proxy_user = "STm87nUFS6"
+    proxy_pass = "6StepJYs2y"
 
     manifest_json = """
     {
@@ -84,6 +84,7 @@ def making_list_of_urls(corpus_id):
 
     driver = webdriver.Chrome(options=options)
     driver.get("https://api.ipify.org")
+    print(driver.page_source)
 
     url_list = []
 

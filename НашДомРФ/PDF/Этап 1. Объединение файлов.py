@@ -2,18 +2,23 @@ import os
 import glob
 import pandas as pd
 
+"""
+Выполняем данный скрипт первым, указывая папку, где хранятся файлы с продажами, а также файл, где указаны характеристики проектов
+Далее используем скрипт "Редактирование таблицы с продажами"
+"""
+
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\Desktop\Владикавказ"
+folder_path = r"C:\Users\m.olshanskiy\Desktop\Первый Химкинский"
 
-df2 = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ_Кал\2026-03-20\Мо_НашДомРФ_2026-03-20.xlsx")
+# Путь к базе с характеристиками проектов
+df2 = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ_Кал\2026-04-06\Мо_НашДомРФ_2026-04-06.xlsx")
 
 
-# Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'Продажи_Владикавказ.xlsx'
+# Название нового файла
+output_file_name = 'Продажи_1ый_Химкинский.xlsx'
 
-# Создаём пустой DataFrame для накопления данных
+
 all_data = pd.DataFrame()
-
 # Используем glob для поиска всех Excel файлов в папке
 excel_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
 
@@ -21,17 +26,10 @@ excel_files = glob.glob(os.path.join(folder_path, "*.xlsx"))
 for file_path in excel_files:
 
 
-    df = pd.read_excel(file_path)  # Читаем Excel файл в DataFrame
+    df = pd.read_excel(file_path, dtype={'Корпус': str})  # Читаем Excel файл в DataFrame
 
-    df = df.merge(
-        df2[['id', 'Название проекта', 'Застройщик']],
-        left_on='ID дом.рф',
-        right_on='id',
-        how='left'
-    )
 
-    df = df.drop(columns=['Название проекта_x', 'id'])
-    df.rename(columns={'Название проекта_y': 'Название проекта'}, inplace=True)
+
 
     df.columns = df.columns.str.capitalize()
 

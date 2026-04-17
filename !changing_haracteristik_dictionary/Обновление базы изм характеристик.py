@@ -127,10 +127,11 @@ for idx, row in df.iterrows():
 
     stage = row["Стадия строительной готовности"]
 
-    if pd.notna(stage_3_date) and today >= stage_3_date:
-        stage = "завершающий цикл"
-    elif pd.notna(stage_2_date) and today >= stage_2_date:
-        stage = "монтажные работы"
+    if stage != "введен":
+        if pd.notna(stage_3_date) and today >= stage_3_date:
+            stage = "завершающий цикл"
+        elif pd.notna(stage_2_date) and today >= stage_2_date:
+            stage = "монтажные работы"
 
     # 🔥 ОБНОВЛЯЕМ DATAFRAME
     df.loc[idx, "Стадия строительной готовности"] = stage

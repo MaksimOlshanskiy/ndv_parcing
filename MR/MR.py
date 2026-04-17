@@ -122,13 +122,13 @@ while True:
         district = ''
         adress = ''
         eskrou = ''
-        korpus = i["building"]["name"].replace('Корпус ', '')
+        korpus = i["building"]["name"].replace('Корпус ', '').replace('Janssen', '')
         if korpus == 'Janssen':
             korpus = 'Jansson'
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
-        srok_sdachi_old = ''
+        srok_sdachi_old = i['building']['deadline']
         stadia = ''
         dogovor = ''
         if i['subtype']['name'] == 'Апартаменты':

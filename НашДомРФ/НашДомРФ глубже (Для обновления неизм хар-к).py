@@ -165,17 +165,23 @@ for building_id in buildings_id:
     wait = WebDriverWait(driver, 10)
 
     # ждем появления нужных элементов
-    wait.until(
-        EC.presence_of_element_located((By.CLASS_NAME, "Row__Value-sc-13pfgqd-2"))
+    element = wait.until(
+        EC.presence_of_element_located(
+            (By.XPATH, "//p[text()='Все характеристики']")
+        )
     )
+
+    driver.execute_script("arguments[0].click();", element)
 
     page_content = driver.page_source
     soup = BeautifulSoup(page_content, 'html.parser')
-    info = soup.find_all('div', class_=["Row__Value-sc-13pfgqd-2 dySlPJ", 'Row__Value-sc-13pfgqd-2 ClvkY'])
+    info = soup.find_all('h5', class_=["_heading_7t2en_1 _h5_7t2en_74", 'CharacteristicsBlock__Value-sc-1fyyfia-9', 'ciMWMC'])
     i = []
     for inf in info:
 
         i.append(inf.text)
+
+    print(i)
 
 
     if len(i) == 3:  # сданный проект
@@ -253,12 +259,18 @@ for building_id in buildings_id:
 
 
 
-    dop_info = soup.find_all('span', class_="CharacteristicsBlock__RowSpan-sc-1fyyfia-4 eCBXEE")
+
+    dop_info = driver.find_elements(
+        By.XPATH,
+        "//p[contains(@class, 'paragraphBold2')]"
+    )
     i = []
     for inf in dop_info:
 
-        i.append(inf.text)
 
+
+        i.append(inf.text)
+    print(i)
     klass = i[1]
     material = i[3]
     finish_type = i[5].replace('\xa0', ' ')

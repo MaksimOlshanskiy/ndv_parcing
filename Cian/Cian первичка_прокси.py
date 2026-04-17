@@ -19,6 +19,11 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
+proxies = {
+    "http": "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270",
+"https": "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270"
+}
+
 print(f'Первоначальный IP: {requests.get("https://ipinfo.io/json").json()}')
 
 cookies = {
@@ -166,13 +171,6 @@ ids_dict = {}
 json_data['offset'] = 0
 
 
-
-try:
-    r = requests.get("https://api.ipify.org?format=json", timeout=5)
-    print(r.text)
-except Exception as e:
-    print("Ошибка:", e)
-
 for newbuilding_class in newbuilding_classes:
 
     json_data['jsonQuery']['newbuilding_class']['value'] = [newbuilding_class]
@@ -187,6 +185,7 @@ for newbuilding_class in newbuilding_classes:
             cookies=cookies,
             headers=headers,
             json=json_data,
+            proxies=proxies,
         )
 
         print(response.status_code)
@@ -267,16 +266,11 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'electronic_trading': {
-            'type': 'term',
-            'value': 2,
-        }
     },
     '_liquiditySource': 'web_serp',
 }
 
 current_date = datetime.date.today()
-
 
 for y in ids:
 
@@ -376,6 +370,8 @@ for y in ids:
                         )
 
                         print(response.status_code)
+                        print(f'Объём трафика: {len(response.content) / 1024}')
+                        print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
 
 
                         items = response.json()["data"]["offersSerialized"]
@@ -388,6 +384,7 @@ for y in ids:
                             cookies=cookies,
                             headers=headers,
                             json=json_data,
+                            proxies=proxies,
                         )
                         print(response.status_code)
                         items = response.json()["data"]["offersSerialized"]

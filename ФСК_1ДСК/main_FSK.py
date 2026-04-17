@@ -3,6 +3,7 @@ import time
 import pandas as pd
 import os
 import requests
+
 from functions import save_flats_to_excel
 from info_FSK import info
 from save_to_excel import save_flats_to_excel_old_new_all
@@ -62,7 +63,7 @@ headers = {
 }
 
 params = {
-    'offset': '22',
+    'offset': '0',
     'limit': '24',
     'sort': 'price',
     'order': '1',
@@ -124,13 +125,18 @@ while True:
         if old_price == price:
             price = None
 
+        srok_sdachi = ''
+        srok_sdachi_old = i['corpus']['dateDelivery']
+
+
+
 
         print(
-            f"{count}, {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+            f"{count}, {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, срок сдачи {srok_sdachi_old}",)
         result = [
             date, project, '', '', '', '', '', '', '',
             '', '', '', '', '', '', '', '', developer,
-            '', '', '', '', korpus, '', '', '', '', '',
+            '', '', '', '', korpus, '', '', srok_sdachi, srok_sdachi_old, '',
             '', type, finish_type, room_count, area, '', old_price, '', '',
             price, section, floor, ''
         ]

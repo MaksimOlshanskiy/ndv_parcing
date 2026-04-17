@@ -99,11 +99,11 @@ while True:
 
         url = f"https://level.ru{i["url"]}"
         date = datetime.date.today()
-        project = i["project"].replace('Левел', 'Level')
-        if project == 'Level Звенигородская, этап 1':
-            project = 'Level Звенигородская'
+        project = i["project"]
+        if project == 'Левел Звенигородская, этап 1':
+            project = 'Левел Звенигородская'
         if 'Мичуринский' in project:
-            project = 'Level Мичуринский'
+            project = 'Левел Мичуринский'
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -128,7 +128,7 @@ while True:
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
-        srok_sdachi_old = ''
+        srok_sdachi_old = f"{i['completion_quarter']} кв {i['completion_year']}"
         stadia = ''
         dogovor = ''
         if i['flat_category'] == 'flat':

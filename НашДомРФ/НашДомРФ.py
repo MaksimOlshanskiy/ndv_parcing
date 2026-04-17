@@ -41,14 +41,13 @@ headers = {
     # 'cookie': 'spid=1741679465470_d3eb45434c69fa862e96f696b2311a6c_mqsl1svnw3dudau3; _ym_uid=1741679472430329696; _ym_d=1741679472; tmr_lvid=21dd9990a0516763e1af5efdddfe2ece; tmr_lvidTS=1741679492626; _ym_isad=2; domain_sid=p9NEOoC7wfYKTfSohYE69%3A1743597502986; NSC_wtsw_obti.epn.sg_dzs_iuuqt=ffffffff09da1a3745525d5f4f58455e445a4a423660; tmr_detect=0%7C1743599371818; spsc=1743603129300_0cb4a77edd3a2899c0fb9888c1ef36d6_e6cfb3ea8f0a0fa28cc6ebefdcae8ea5',
 }
 
-params =  {
-    "offset": 0,
-    "limit": 20,
-    "sortField": "default",
-    "sortType": "desc",
-    "place": "0-67",
-    "fromQuarter": "2025-01-01",
-    "objStatus": "0:2"
+params = {
+    'offset': '0',
+    'limit': '20',
+    'sortField': 'default',
+    'sortType': 'desc',
+    'place': '77',
+    'objStatus': '0',
 }
 
 
@@ -65,7 +64,8 @@ offset_counter = 0
 
 while True:
 
-    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=default&sortType=desc&place=0-67&fromQuarter=2025-01-01&objStatus=0:2'
+
+    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=default&sortType=desc&place=50&objStatus=0:2'
 
 
     driver.get(url=url)

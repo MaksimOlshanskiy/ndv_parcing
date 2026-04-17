@@ -100,7 +100,10 @@ for i in items:
     url = f"https://granelle.ru/flats/{i["id"]}"
     developer = "Гранель"
     project = i["project"]
-    korpus = i["building"]
+    if project == 'Мнёвники от Гранель':
+        korpus = f'{i["building"]}.{i["section"]}'
+    else:
+        korpus = i["building"]
     if i['type'] == "flat":
         type = 'Квартиры'
     else:
@@ -154,8 +157,8 @@ for i in items:
     eskrou = ''
     konstruktiv = ''
     klass = ''
-    srok_sdachi = f"{i["completion_quarter"]} кв {i["completion_year"]} года"
-    srok_sdachi_old = ''
+    srok_sdachi = ''
+    srok_sdachi_old = f"{i["completion_quarter"]} кв {i["completion_year"]} года"
     stadia = ''
     dogovor = ''
     price_per_metr = ''
@@ -163,7 +166,7 @@ for i in items:
     price_per_metr_new = ''
 
     print(
-        f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
+        f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type}, срок сдачи: {srok_sdachi_old}")
     result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
               distance_to_mck, time_to_mck, distance_to_bkl,
               time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv,

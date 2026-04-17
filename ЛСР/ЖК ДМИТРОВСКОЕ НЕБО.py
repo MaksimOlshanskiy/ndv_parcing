@@ -95,19 +95,19 @@ while True:
         klass = ''
         srok_sdachi = ''
         if len(all_tags) == 3:
-            srok_sdachi = ''
+            srok_sdachi_old = all_tags[0].text
             if all_tags[2].text.strip() == "С меблировкой":
                 finish_type = f"{all_tags[1].text.strip()} и доп опциями"
             else:
                 finish_type = all_tags[1].text.strip()
         else:
-            srok_sdachi = ''
+            srok_sdachi_old = all_tags[0].text
             if all_tags[1].text.strip() == "С меблировкой":
                 finish_type = f"{all_tags[0].text.strip()} и доп опциями"
             else:
                 finish_type = all_tags[0].text.strip()
+        srok_sdachi = ''
 
-        srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
         type = 'Квартиры'
@@ -131,7 +131,7 @@ while True:
         flat_number = ''
 
         print(
-            f"{project}, квартира {flat_number}, отделка: {finish_type}, количество комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+            f"{project}, квартира {flat_number}, отделка: {finish_type}, количество комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, срок сдачи: {srok_sdachi_old}")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
                   distance_to_mck, time_to_mck, distance_to_bkl,
                   time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,

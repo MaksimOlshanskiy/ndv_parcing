@@ -51,13 +51,16 @@ for key, data in info.items():
         if old_price == price:
             price = None
 
+        srok_sdachi = ''
+        srok_sdachi_old = i['corpus']['dateDelivery']
+
         print(
             f"{count} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, отделка: {finish_type}")
 
         result = [
             date, project, '', '', '', '', '', '', '',
             '', '', '', '', '', '', '', '', developer,
-            '', '', '', '', korpus, '', '', '', '', '',
+            '', '', '', '', korpus, '', '', srok_sdachi, srok_sdachi_old, '',
             '', type, finish_type, room_count, area, '', old_price, '', '',
             price, section, floor, ''
         ]

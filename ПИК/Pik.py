@@ -97,7 +97,7 @@ for zk in zk_list:
             konstruktiv = ''
             klass = ''
             srok_sdachi = ''
-            srok_sdachi_old = ''
+            srok_sdachi_old = i['settlementStatusName']
             stadia = ''
             dogovor = ''
             if i['typeId'] == 2:
@@ -132,7 +132,7 @@ for zk in zk_list:
             flat_number = ''
 
             print(
-                f"{project}, дата: {date}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
+                f"{project}, дата: {date}, тип: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, {finish_type}, срок сдачи: {srok_sdachi_old}")
             result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway,
                       mck, distance_to_mck, time_to_mck, distance_to_bkl,
                       time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,

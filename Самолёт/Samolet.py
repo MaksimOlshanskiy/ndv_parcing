@@ -4,7 +4,7 @@
 
 '''
 
-# id всех проектов: [68195,7,69054,57,44,68189,56,41,69057,69011,68192,68188,68191,69106,68199,69206,2,45,40,69103,68196,31,69101,68194,3,69051,55,1,49,69109,68185,69102,4,42,69100,69110,20,5]
+# id всех проектов: [20,69054,5,57,44,68189,56,41,69057,69011,68192,68188,69106,68199,69206,69208,45,40,68195,69103,21,68196,31,69101,68194,3,69051,55,1,49,69109,68185,7,4,42,69100,69110]
 
 import requests
 from datetime import datetime
@@ -30,56 +30,55 @@ cookies = {
     'gbuuid': '113c42b2-cd5b-4919-9195-57a7ceaff3e0',
     'cookies_accepted': '1',
     '_ym_d': '1773823275',
-    'sessionid': 'hu4ka4tf1cz3wzocpnoemuxyxhxmbhib',
     'city_approved': '1',
-    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1774342429092',
-    'qrator_jsr': '1774421858.811.z0DMZaaogX8x08QM-00krkjdiqd6cla432kiko49kdf2gha4h-00',
+    'qrator_jsr': '1775813955.414.Xry711H9mgsgZZSg-7s9fg1ea3nhakn18qtjjlgtnkt4ft8jm-00',
+    'cted': 'modId%3Dhtlowve6%3Bya_client_id%3D1741678176664168974',
+    '_ct_ids': 'htlowve6%3A36409%3A1007469468',
+    '_ct_session_id': '1007469468',
+    '_ct_site_id': '36409',
     'mindboxDeviceUUID': 'b8b42419-45ee-4a92-8e84-640b5c64455a',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D',
-    'cted': 'modId%3Dhtlowve6%3Bya_client_id%3D1741678176664168974',
-    '_ct_ids': 'htlowve6%3A36409%3A1000659676',
-    '_ct_session_id': '1000659676',
-    '_ct_site_id': '36409',
-    'vp_width': '2560',
+    'vp_width': '1920',
     '_ym_isad': '2',
-    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
-    'session_timer_104054': '1',
     '_ym_visorc': 'b',
+    'session_timer_104054': '1',
+    'domain_sid': 'pPz3-bLEHe1VOjIhFyQ_1%3A1775813962944',
     'Fired15sec': 'true',
-    'pageviewTimerLiteraturnyiKvartal': '16.368',
-    'pageviewTimerAll': '16.368',
-    'pageviewTimerMSK': '16.368',
-    'pageviewTimerAllPages': '16.368',
+    'pageviewTimerBolshoeYurlovo': '0.018',
+    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
+    'pageviewTimerAll': '21.637',
+    'pageviewTimerMSK': '21.637',
     '__flats_v3_query_params_by_slug': '%7B%7D',
-    'seconds_on_page_104054': '17',
-    'pageviewCount': '2',
-    'pageviewCountMSK': '2',
-    'PageNumber': '2',
-    'call_s': '___htlowve6.1774423680.1000659676.199238:684247|2___',
-    'csrftoken': 'Dmb1K1eU9UOErE6E9OhLPBZEXueHqVuhsxPqSN6b4tM54v1Cv3OoKmYlY5WwEi8p',
-    'tmr_detect': '0%7C1774421883392',
-    'user_account_return_url_session': '%2Fflats%2F%3FnameType%3Dsale%26free%3D0%26type%3D100000000%26ordering%3D-order_manual%2Cfilter_price_package%2Cpk%26project%3D69208',
-    'qrator_jsid': '1774421858.811.z0DMZaaogX8x08QM-5a1ipcseknufh6aldbtnjjhm8ns2hr32',
+    'seconds_on_page_104054': '23',
+    'pageviewCount': '3',
+    'pageviewCountMSK': '3',
+    'PageNumber': '3',
+    'call_s': '___htlowve6.1775815784.1007469468.185714:571620|2___',
+    'csrftoken': '5sFIMyVa0hG9THkrSau2Vhy9pMlKONabDLNMO6yy1vGQaUZbPJpZflm3LoqXH2n1',
+    'tmr_detect': '0%7C1775813986783',
+    'user_account_return_url_session': '%2Fflats%2F%3FnameType%3Dsale%26free%3D0%26type%3D100000000%26ordering%3D-order_manual%2Cfilter_price_package%2Cpk',
+    'qrator_jsid': '1775813955.414.Xry711H9mgsgZZSg-7spfejisiv7it1oactboli2op9dsbeol',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'baggage': 'sentry-environment=PROD,sentry-release=release-major-260122,sentry-public_key=6f0fe185684eda71da9741fe58c43591,sentry-trace_id=3efda6df6f214f33b8bc6dee1c04e9fa,sentry-transaction=flats,sentry-sampled=false,sentry-sample_rand=0.5330946921263369,sentry-sample_rate=0.05',
+    'baggage': 'sentry-environment=PROD,sentry-release=release-major-260410,sentry-public_key=6f0fe185684eda71da9741fe58c43591,sentry-trace_id=3a71d1491f9e49b28538f724cc94b9e7,sentry-transaction=%2Fflats,sentry-sampled=false,sentry-sample_rand=0.22678343578439752,sentry-sample_rate=0.05',
     'priority': 'u=1, i',
-    'referer': 'https://samolet.ru/flats/?project=20&free=1&from=project',
-    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
+    'referer': 'https://samolet.ru/flats/?nameType=sale&free=0&type=100000000&ordering=-order_manual,filter_price_package,pk',
+    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-ch-viewport-height': '945',
-    'sec-ch-viewport-width': '1067',
+    'sec-ch-viewport-width': '1041',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'sentry-trace': '3efda6df6f214f33b8bc6dee1c04e9fa-b78d903372140dda-0',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
-    # 'cookie': '_ymab_param=8XRBcNsyXKtIDbacrAc2BACgO21rCm8Ag3D9zrGpvAndIxB0P18Yxc_5KjOr3ip1jyUFVoI_vSab5fXPK7ntewsKWyM; _ym_uid=1741678176664168974; FPID=FPID2.2.CDdF7rEkFIS%2FekBLl3jtW7K80kFov3hiqvjbDmcAEcw%3D.1741678184; _ym_d=1757579555; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct=1300000000581157422; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; undefined=true; tmr_lvid=609b80c61abf0ce366c33bbd78503b61; tmr_lvidTS=1741678183827; suggested_city=1; gbuuid=113c42b2-cd5b-4919-9195-57a7ceaff3e0; cookies_accepted=1; mindboxDeviceUUID=b8b42419-45ee-4a92-8e84-640b5c64455a; directCrm-session=%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D; qrator_jsr=1769515076.532.pUUygwJi8gAD1fOD-rfoq238f85n5ca55783uu1roivgm3gea-00; qrator_jsid=1769515076.532.pUUygwJi8gAD1fOD-grlj406ijv4mn1rjoi3lfau7ml3l7iah; nxt-city=%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D; __flats_v3_query_params_by_slug=%7B%7D; cted=modId%3Dhtlowve6%3Bya_client_id%3D1741678176664168974; _ct_ids=htlowve6%3A36409%3A976028166; _ct_session_id=976028166; _ct_site_id=36409; call_s=___htlowve6.1769516881.976028166.143945:445562|2___; vp_width=1920; _ym_isad=2; _ym_visorc=b; user_account_return_url_session=%2Fflats%2F%3Fproject%3D20%26free%3D1%26from%3Dproject; pageviewCountMSK=1; pageviewCount=1; session_timer_104054=1; PageNumber=1; csrftoken=5gdKM4cbHuoqirnhfeBIws6boBBvT8FLzHtuZNoeXlG3c7Fs458K8BPV6HqiAqms; domain_sid=pPz3-bLEHe1VOjIhFyQ_1%3A1769515086407; tmr_detect=0%7C1769515086961',
+    'sentry-trace': '3a71d1491f9e49b28538f724cc94b9e7-87f527266d20274d-0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
+    # 'cookie': '_ymab_param=8XRBcNsyXKtIDbacrAc2BACgO21rCm8Ag3D9zrGpvAndIxB0P18Yxc_5KjOr3ip1jyUFVoI_vSab5fXPK7ntewsKWyM; _ym_uid=1741678176664168974; FPID=FPID2.2.CDdF7rEkFIS%2FekBLl3jtW7K80kFov3hiqvjbDmcAEcw%3D.1741678184; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct=1300000000581157422; _ct_client_global_id=ac7bc830-33a7-54d1-b90e-949b89f995ae; undefined=true; tmr_lvid=609b80c61abf0ce366c33bbd78503b61; tmr_lvidTS=1741678183827; suggested_city=1; gbuuid=113c42b2-cd5b-4919-9195-57a7ceaff3e0; cookies_accepted=1; _ym_d=1773823275; city_approved=1; qrator_jsr=1775813955.414.Xry711H9mgsgZZSg-7s9fg1ea3nhakn18qtjjlgtnkt4ft8jm-00; cted=modId%3Dhtlowve6%3Bya_client_id%3D1741678176664168974; _ct_ids=htlowve6%3A36409%3A1007469468; _ct_session_id=1007469468; _ct_site_id=36409; mindboxDeviceUUID=b8b42419-45ee-4a92-8e84-640b5c64455a; directCrm-session=%7B%22deviceGuid%22%3A%22b8b42419-45ee-4a92-8e84-640b5c64455a%22%7D; vp_width=1920; _ym_isad=2; _ym_visorc=b; session_timer_104054=1; domain_sid=pPz3-bLEHe1VOjIhFyQ_1%3A1775813962944; Fired15sec=true; pageviewTimerBolshoeYurlovo=0.018; nxt-city=%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D; pageviewTimerAll=21.637; pageviewTimerMSK=21.637; __flats_v3_query_params_by_slug=%7B%7D; seconds_on_page_104054=23; pageviewCount=3; pageviewCountMSK=3; PageNumber=3; call_s=___htlowve6.1775815784.1007469468.185714:571620|2___; csrftoken=5sFIMyVa0hG9THkrSau2Vhy9pMlKONabDLNMO6yy1vGQaUZbPJpZflm3LoqXH2n1; tmr_detect=0%7C1775813986783; user_account_return_url_session=%2Fflats%2F%3FnameType%3Dsale%26free%3D0%26type%3D100000000%26ordering%3D-order_manual%2Cfilter_price_package%2Cpk; qrator_jsid=1775813955.414.Xry711H9mgsgZZSg-7spfejisiv7it1oactboli2op9dsbeol',
 }
+
 
 
 params = {
@@ -89,11 +88,10 @@ params = {
     "ordering": "-order_manual,filter_price_package,pk",
     "offset": 0,
     "limit": 12,
-    "page": 1,
-    "project": 68188
+    "page": 1
 }
 
-projects = [69208,68195,7,69054,57,44,68189,56,41,69057,69011,68192,68188,68191,69106,68199,69206,2,45,40,69103,68196,31,69101,68194,3,69051,55,1,49,69109,68185,69102,4,42,69100,69110,20,5]
+projects = [20,69054,5,57,44,68189,56,41,69057,69011,68192,68188,69106,68199,69206,69208,45,40,68195,69103,21,68196,31,69101,68194,3,69051,55,1,49,69109,68185,7,4,42,69100,69110]
 
 
 session = requests.Session()
@@ -102,129 +100,125 @@ session = requests.Session()
 parsed_flat_count = 0
 flats = []
 
-for project in projects:
 
+while True:
 
-    offset = 0
-    params['project'] = project
-    params['offset'] = 0
-    params['page'] = 1
-    print(f"ЖК ID : {project}")
+    url = 'https://samolet.ru/backend/api_redesign/flats/'
+    response = session.get(
+        url=url,
+        headers=headers,
+        cookies=cookies,
+        params=params
+    )
 
-    while True:
+    print(response.status_code)
 
-        url = 'https://samolet.ru/backend/api_redesign/flats/'
-        response = session.get(
-            url=url,
-            headers=headers,
-            cookies=cookies,
-            params=params
-        )
-
-        print(response.status_code)
-
-        items = response.json()["results"]
-        # total_flat_count = response.json()["count"]
+    items = response.json()["results"]
+    # total_flat_count = response.json()["count"]
 
 
 
-        for i in items:
+    for i in items:
 
-            url = i['url']
-            developer = "Самолет"
-            project = i["project"]
-            korpus = i["building"]
-            if i['is_apartment'] is True:
-                type = 'Апартаменты'
+        url = i['url']
+        developer = "Самолет"
+        project = i["project"]
+        korpus = i["building"]
+        if i['is_apartment'] is True:
+            type = 'Апартаменты'
+        else:
+            type = 'Квартиры'
+        if i["default_decor_type"] == None:
+            finish_type = "Без отделки"
+        elif i["default_decor_type"] == 1 or i["default_decor_type"] == 0 or i["default_decor_type"] == 2:
+            if i["is_kitchen_included_in_price"] == False:
+                finish_type = "С отделкой"
             else:
-                type = 'Квартиры'
-            if i["default_decor_type"] == None:
-                finish_type = "Без отделки"
-            elif i["default_decor_type"] == 1 or i["default_decor_type"] == 0 or i["default_decor_type"] == 2:
-                if i["is_kitchen_included_in_price"] == False:
-                    finish_type = "С отделкой"
-                else:
-                    finish_type = "С отделкой и доп опциями"
-            elif i["default_decor_type"] == 3:
-                finish_type = "Предчистовая"
-            else:
-                finish_type = i["default_decor_type"]
-            if int(i["rooms"]) == 0 or int(i["rooms"]) == -1:
-                room_count = 0
-            else:
-                room_count = int(i["rooms"])
-            try:
-                area = float(i["area"])
-            except:
-                area = ''
-            try:
-                price = int(i["filter_price_package"])
+                finish_type = "С отделкой и доп опциями"
+        elif i["default_decor_type"] == 3:
+            finish_type = "Предчистовая"
+        else:
+            finish_type = i["default_decor_type"]
+        if i["rooms"] == 0 or i["rooms"] == -1:
+            room_count = 'Студия'
+        else:
+            room_count = int(i["rooms"])
+        if i['euro'] is True and room_count != 'Студия':
+            room_count += 1
+            room_count = str(room_count) + 'е'
 
-            except:
-                price = ''
-            try:
-                old_price = int(i["old_filter_price_package"])
-            except:
-                old_price = ''
-            if not old_price:
-                old_price = price
+        try:
+            area = float(i["area"])
+        except:
+            area = ''
+        try:
+            price = int(i["filter_price_package"])
 
-            section = i["section"]
-            try:
-                floor = int(i["floor_number"])
-            except:
-                floor = ''
-            flat_number = ''
-            english = ''
-            promzona = ''
-            mestopolozhenie = ''
-            subway = ''
-            distance_to_subway = ''
-            time_to_subway = ''
-            mck = ''
-            distance_to_mck = ''
-            time_to_mck = ''
-            bkl = ''
-            distance_to_bkl = ''
-            time_to_bkl = ''
-            status = ''
-            start = ''
-            comment = ''
-            okrug = ''
-            district = ''
-            adress = ''
-            eskrou = ''
-            konstruktiv = ''
-            klass = ''
-            srok_sdachi = ''
-            srok_sdachi_old = ''
-            stadia = ''
-            dogovor = ''
-            price_per_metr = ''
-            discount = ''
-            price_per_metr_new = ''
-            date = datetime.now().date()
+        except:
+            price = ''
+        try:
+            old_price = int(i["old_filter_price_package"])
+        except:
+            old_price = ''
+        if not old_price:
+            old_price = price
 
-            print(
-                f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type} ")
-            result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway,
-                      mck, distance_to_mck, time_to_mck, distance_to_bkl,
-                      time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
-                      konstruktiv, klass, srok_sdachi, srok_sdachi_old,
-                      stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
-                      price_per_metr_new, price, section, floor, flat_number]
-            flats.append(result)
+        section = i["section"]
+        try:
+            floor = int(i["floor_number"])
+        except:
+            floor = ''
+        flat_number = ''
+        english = ''
+        promzona = ''
+        mestopolozhenie = ''
+        subway = ''
+        distance_to_subway = ''
+        time_to_subway = ''
+        mck = ''
+        distance_to_mck = ''
+        time_to_mck = ''
+        bkl = ''
+        distance_to_bkl = ''
+        time_to_bkl = ''
+        status = ''
+        start = ''
+        comment = ''
+        okrug = ''
+        district = ''
+        adress = ''
+        eskrou = ''
+        konstruktiv = ''
+        klass = ''
+        srok_sdachi = i['settling_date_formatted']
+        srok_sdachi_old = ''
+        stadia = ''
+        dogovor = ''
+        price_per_metr = ''
+        discount = ''
+        price_per_metr_new = ''
+        date = datetime.now().date()
 
-        if not items:
-            print("Всё скачано. Переходим к загрузке в файл")
-            break
-        # print(f"Выполнено на {round(parsed_flat_count * 100 / total_flat_count, 2)} процентов")
+        print(
+            f"{project}, {url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, отделка: {finish_type}, срок сдачи: {srok_sdachi}")
+        result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway,
+                  mck, distance_to_mck, time_to_mck, distance_to_bkl,
+                  time_to_bkl, bkl, status, url, comment, developer, okrug, district, adress, eskrou, korpus,
+                  konstruktiv, klass, srok_sdachi, srok_sdachi_old,
+                  stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
+                  price_per_metr_new, price, section, floor, flat_number]
+        flats.append(result)
 
-        params['offset'] += 12
-        params['page'] += 1
+    if not items:
+        print("Всё скачано. Переходим к загрузке в файл")
+        break
+    # print(f"Выполнено на {round(parsed_flat_count * 100 / total_flat_count, 2)} процентов")
 
-        sleep_time = random.uniform(0.5, 2)
-        time.sleep(sleep_time)
+    params['offset'] += 12
+    params['page'] += 1
+
+    sleep_time = random.uniform(0.5, 2)
+    time.sleep(sleep_time)
 
 save_flats_to_excel(flats, project, developer)
 

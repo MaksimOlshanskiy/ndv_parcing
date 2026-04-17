@@ -229,14 +229,8 @@ json_data = {
             'value': [
                 {
                     'type': 'newobject',
-                    'id': 4013017,
+                    'id': 4569405,
                 },
-            ],
-        },
-        'decorations_list': {
-            'type': 'terms',
-            'value': [
-                'preFine',
             ],
         },
         'floor': {
@@ -276,8 +270,7 @@ json_data = {
 }
 
 current_date = datetime.date.today()
-
-
+ids = [4561917]
 for y in ids:
 
     flats = []
@@ -298,7 +291,6 @@ for y in ids:
     json_data["jsonQuery"]["floor"]["value"]["lte"] = 99
     json_data["jsonQuery"]["geo"]["value"][0]["id"] = y
     json_data["jsonQuery"]["page"]["value"] = 1
-    json_data["jsonQuery"]["decorations_list"]["value"][0] = []
 
     response = session.post(
         'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
@@ -335,226 +327,224 @@ for y in ids:
 
     print(json_data)
 
-    for decoration in decoration_list:
+    json_data["jsonQuery"]["page"]["value"] = 1
 
-        json_data["jsonQuery"]["decorations_list"]["value"][0] = decoration
+    for room_id in rooms_ids:
+
         json_data["jsonQuery"]["page"]["value"] = 1
 
-        for room_id in rooms_ids:
+        try:
+            json_data["jsonQuery"]["room"]["value"][0] = room_id
+        except:
+            ''
+        counter = 1
+        total_count = 1
 
+        for f in total_floor_list:
+
+
+            json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
+            json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
             json_data["jsonQuery"]["page"]["value"] = 1
+            print(f'Этажи квартир: {f}')
 
-            try:
-                json_data["jsonQuery"]["room"]["value"][0] = room_id
-            except:
-                ''
-            counter = 1
-            total_count = 1
+            name_counter = f'{room_id}-{f[0]}-{f[1]}'
 
-            for f in total_floor_list:
+            while True:
+
+                print(f"Число комнат: {room_id}")
+                if counter > 1:
+                    sleep_time = random.uniform(2, 4)
+                    time.sleep(sleep_time)
+                try:
+                    response = session.post(
+                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                        cookies=cookies,
+                        headers=headers,
+                        json=json_data,
+                    )
+
+                    print(response.status_code)
+                    print(f'Объём трафика: {len(response.content) / 1024}')
 
 
-                json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
-                json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
-                json_data["jsonQuery"]["page"]["value"] = 1
-                print(f'Этажи квартир: {f}')
+                    items = response.json()["data"]["offersSerialized"]
+                except:
+                    print("Произошла ошибка, пробуем ещё раз")
+                    time.sleep(61)
+                    session = requests.Session()
+                    response = session.post(
+                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                        cookies=cookies,
+                        headers=headers,
+                        json=json_data,
+                    )
+                    print(response.status_code)
+                    items = response.json()["data"]["offersSerialized"]
 
-                name_counter = f'{room_id}-{f[0]}-{f[1]}-{decoration}'
+                for i in items:
 
-                while True:
+                    data = i['geo']['address']
+                    result = {}
+                    counterr = {}
 
-                    print(f"Число комнат: {room_id}")
-                    if counter > 1:
-                        sleep_time = random.uniform(2, 4)
-                        time.sleep(sleep_time)
+                    for item in data:
+                        t = item["type"]
+                        name = item["fullName"]
+
+                        # Первый раз — без номера
+                        if t not in counterr:
+                            counterr[t] = 1
+                            key = t
+                        else:
+                            counterr[t] += 1
+                            key = f"{t}{counterr[t]}"
+
+                        result[key] = name
+
+
+                    # список нужных переменных
+                    keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
+
+                    # создаём переменные
+                    for key in keys:
+                        globals()[key] = result.get(key, "")
                     try:
-                        response = session.post(
-                            'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                            cookies=cookies,
-                            headers=headers,
-                            json=json_data,
-                        )
-
-                        print(response.status_code)
-
-
-                        items = response.json()["data"]["offersSerialized"]
-                    except:
-                        print("Произошла ошибка, пробуем ещё раз")
-                        time.sleep(61)
-                        session = requests.Session()
-                        response = session.post(
-                            'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                            cookies=cookies,
-                            headers=headers,
-                            json=json_data,
-                        )
-                        print(response.status_code)
-                        items = response.json()["data"]["offersSerialized"]
-
-                    for i in items:
-
-                        data = i['geo']['address']
-                        result = {}
-                        counterr = {}
-
-                        for item in data:
-                            t = item["type"]
-                            name = item["fullName"]
-
-                            # Первый раз — без номера
-                            if t not in counterr:
-                                counterr[t] = 1
-                                key = t
-                            else:
-                                counterr[t] += 1
-                                key = f"{t}{counterr[t]}"
-
-                            result[key] = name
-
-
-                        # список нужных переменных
-                        keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
-
-                        # создаём переменные
-                        for key in keys:
-                            globals()[key] = result.get(key, "")
-                        try:
-                            if i['building']['deadline']['isComplete']:
-                                srok_sdachi = "Дом сдан"
-                            elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline'][
-                                'year'] is None:
-                                srok_sdachi = ''
-                            else:
-                                srok_sdachi = f"Cдача ГК: {i['newbuilding']['house']['finishDate']['quarter']} квартал, {i['newbuilding']['house']['finishDate']['year']} года".replace(
-                                    'None', '')
-                        except:
+                        if i['building']['deadline']['isComplete']:
+                            srok_sdachi = "Дом сдан"
+                        elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline'][
+                            'year'] is None:
                             srok_sdachi = ''
-                        try:
-                            url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
-                        except:
-                            url = ''
+                        else:
+                            srok_sdachi = f"Cдача ГК: {i['newbuilding']['house']['finishDate']['quarter']} квартал, {i['newbuilding']['house']['finishDate']['year']} года".replace(
+                                'None', '')
+                    except:
+                        srok_sdachi = ''
+                    try:
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
+                    except:
+                        url = ''
 
-                        try:
-                            if i['isApartments']:
-                                type = "Апартаменты"
-                            else:
-                                type = "Квартира"
-                        except:
-                            type = ''
+                    try:
+                        if i['isApartments']:
+                            type = "Апартаменты"
+                        else:
+                            type = "Квартира"
+                    except:
+                        type = ''
 
-                        try:
-                            price = i['bargainTerms']['priceRur']
-                        except:
-                            price = ''
-                        try:
-                            project = i['geo']['jk']['displayName'].replace('ЖК ', '').replace('«', '').replace('»', '')
-                        except:
-                            project = ''
-                        # try:
-                        #   if i['decoration'] == "fine":
-                        #      finish_type = "С отделкой"
-                        #    elif i['decoration'] == "without" or i['decoration'] == "rough":
-                        #       finish_type = "Без отделки"
-                        #   else:
-                        #      finish_type = i['decoration']
-                        # except:
-                        #   finish_type = ''
-                        # if not finish_type:
-                        #    finish_type = classify_renovation(i['description'])
-                        try:
-                            finish_type = decoration_dict.get(decoration)
-                        except:
-                            finish_type = 'Не определён'
+                    try:
+                        price = i['bargainTerms']['priceRur']
+                    except:
+                        price = ''
+                    try:
+                        project = i['geo']['jk']['displayName'].replace('ЖК ', '').replace('«', '').replace('»', '')
+                    except:
+                        project = ''
+                    # try:
+                    #   if i['decoration'] == "fine":
+                    #      finish_type = "С отделкой"
+                    #    elif i['decoration'] == "without" or i['decoration'] == "rough":
+                    #       finish_type = "Без отделки"
+                    #   else:
+                    #      finish_type = i['decoration']
+                    # except:
+                    #   finish_type = ''
+                    # if not finish_type:
+                    #    finish_type = classify_renovation(i['description'])
+                    try:
+                        finish_type = 'Не определён'
+                    except:
+                        finish_type = 'Не определён'
 
-                        try:
-                            adress = i['geo']['userInput']
-                        except:
-                            adress = ""
+                    try:
+                        adress = i['geo']['userInput']
+                    except:
+                        adress = ""
 
-                        try:
-                            korpus = i["geo"]["jk"]["house"]["name"]
-                        except:
-                            korpus = ''
+                    try:
+                        korpus = i["geo"]["jk"]["house"]["name"]
+                    except:
+                        korpus = ''
 
-                        try:
-                            developer = i['geo']['jk']['developer']['name']
-                        except:
-                            developer = ""
+                    try:
+                        developer = i['geo']['jk']['developer']['name']
+                    except:
+                        developer = ""
 
-                        try:
-                            if i["roomsCount"] is None:
-                                room_count = 0
-                            else:
-                                room_count = int(i["roomsCount"])
-                        except:
-                            room_count = ''
-                        try:
-                            area = float(i["totalArea"])
-                        except:
-                            area = ''
+                    try:
+                        if i["roomsCount"] is None:
+                            room_count = 0
+                        else:
+                            room_count = int(i["roomsCount"])
+                    except:
+                        room_count = ''
+                    try:
+                        area = float(i["totalArea"])
+                    except:
+                        area = ''
 
-                        date = datetime.date.today()
+                    date = datetime.date.today()
 
-                        try:
-                            floor = i["floorNumber"]
-                        except:
-                            floor = ''
-                        try:
-                            added = i['added']
-                        except:
-                            added = ''
-                        try:
-                            kitchenArea = float(i['kitchenArea'])
-                        except:
-                            kitchenArea = 0
-                        try:
-                            livingArea = float(i['livingArea'])
-                        except:
-                            livingArea = 0
-                        try:
-                            parking = i['building']['parking']['type']
-                        except:
-                            parking = ''
-                        try:
-                            balconiesCount = int(i['balconiesCount'])
-                        except:
-                            balconiesCount = 0
-                        try:
-                            loggiasCount = int(i['loggiasCount'])
-                        except:
-                            loggiasCount = 0
-                        balconies_and_loggias_count = balconiesCount + loggiasCount
-                        try:
+                    try:
+                        floor = i["floorNumber"]
+                    except:
+                        floor = ''
+                    try:
+                        added = i['added']
+                    except:
+                        added = ''
+                    try:
+                        kitchenArea = float(i['kitchenArea'])
+                    except:
+                        kitchenArea = 0
+                    try:
+                        livingArea = float(i['livingArea'])
+                    except:
+                        livingArea = 0
+                    try:
+                        parking = i['building']['parking']['type']
+                    except:
+                        parking = ''
+                    try:
+                        balconiesCount = int(i['balconiesCount'])
+                    except:
+                        balconiesCount = 0
+                    try:
+                        loggiasCount = int(i['loggiasCount'])
+                    except:
+                        loggiasCount = 0
+                    balconies_and_loggias_count = balconiesCount + loggiasCount
+                    try:
 
-                            lat_jk = i['geo']['coordinates']['lat']
-                            lon_jk = i['geo']['coordinates']['lng']
-                            lat_center = coords["lat_center"]
-                            lon_center = coords["lon_center"]
-                            distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
+                        lat_jk = i['geo']['coordinates']['lat']
+                        lon_jk = i['geo']['coordinates']['lng']
+                        lat_center = coords["lat_center"]
+                        lon_center = coords["lon_center"]
+                        distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
 
-                        except:
-                            distance = ''
-                        class_of_jk = ids_dict.get(y, '').replace('economy', 'Комфорт').replace('comfort', 'Комфорт').replace('business', 'Бизнес').replace('premium', 'Премиум')
+                    except:
+                        distance = ''
+                    class_of_jk = ids_dict.get(y, '').replace('economy', 'Комфорт').replace('comfort', 'Комфорт').replace('business', 'Бизнес').replace('premium', 'Премиум')
 
-                        print(
-                            f"{project}, {url}, класс: {class_of_jk}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
-                        result = [project, developer, class_of_jk, location, location2, okrug, raion, mikroraion, metro, street, house, korpus, distance, srok_sdachi, type,
-                                  finish_type, room_count, area, kitchenArea, livingArea, price, floor,
-                                  balconies_and_loggias_count, parking, url]
-                        flats.append(result)
-                        flats_total.append(result)
-
-                    if not items:
-                        break
-                    json_data["jsonQuery"]["page"]["value"] += 1
-                    print(len(flats))
-                    print("-----------------------------------------------------------------------------")
-                    total_count = response.json()["data"]["offerCount"]
-                    downloaded = len(flats)
                     print(
-                        f'ID ЖК: {y}, {ids.index(y) + 1} из {len(ids)}. Загружено {downloaded} предложений из {total_count}')
-                    counter += 1
+                        f"{project}, {url}, класс: {class_of_jk}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
+                    result = [project, developer, class_of_jk, location, location2, okrug, raion, mikroraion, metro, street, house, korpus, distance, srok_sdachi, type,
+                              finish_type, room_count, area, kitchenArea, livingArea, price, floor,
+                              balconies_and_loggias_count, parking, url]
+                    flats.append(result)
+                    flats_total.append(result)
+
+                if not items:
+                    break
+                json_data["jsonQuery"]["page"]["value"] += 1
+                print(len(flats))
+                print("-----------------------------------------------------------------------------")
+                total_count = response.json()["data"]["offerCount"]
+                downloaded = len(flats)
+                print(
+                    f'ID ЖК: {y}, {ids.index(y) + 1} из {len(ids)}. Загружено {downloaded} предложений из {total_count}')
+                counter += 1
 
     if len(flats_total) > 1:
 

@@ -77,7 +77,7 @@ for i in items:
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''
-    srok_sdachi_old = ''
+    srok_sdachi_old = f'{i['bulk']['settlement_quarter']} кв {i["bulk"]["settlement_year"]}'
     stadia = ''
     dogovor = ''
     type = 'Квартира'
@@ -105,7 +105,7 @@ for i in items:
         price = None
 
     print(
-        f"{count} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+        f"{count} | {project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, срок сдачи: {srok_sdachi_old}")
     result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
               distance_to_mck, time_to_mck, distance_to_bkl,
               time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
@@ -114,7 +114,7 @@ for i in items:
               price_per_metr_new, price, section, floor, flat_number]
     flats.append(result)
 
-sleep_time = random.uniform(10, 15)
+sleep_time = random.uniform(3, 15)
 time.sleep(sleep_time)
 
 save_flats_to_excel(flats, 'all', developer)

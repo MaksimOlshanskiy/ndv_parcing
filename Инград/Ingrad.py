@@ -75,7 +75,7 @@ while True:
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
-        srok_sdachi_old = ''
+        srok_sdachi_old = f"{i['houseData']['settlement_quarter']} кв {i['houseData']['settlement_year']}"
         stadia = ''
         dogovor = ''
         if i['type'] == "flat":
@@ -105,7 +105,7 @@ while True:
         flat_number = ''
 
         print(
-            f"{project}, {url}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, {finish_type}")
+            f"{project}, {url}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}, {finish_type}, срок сдачи: {srok_sdachi_old}")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck, distance_to_mck, time_to_mck, distance_to_bkl,
               time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus, konstruktiv, klass, srok_sdachi, srok_sdachi_old,
               stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount, price_per_metr_new, price, section, floor, flat_number]

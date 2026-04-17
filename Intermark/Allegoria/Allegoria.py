@@ -117,7 +117,7 @@ for i in flats_soup:
     status = ''
     start = ''
     comment = ''
-    developer = "Стройтекс"
+    developer = "Стройтэкс"
     okrug = ''
     district = ''
     adress = ''

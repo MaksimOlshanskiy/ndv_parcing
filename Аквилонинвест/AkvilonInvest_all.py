@@ -101,7 +101,7 @@ while url:
             klass = ''
             srok_sdachi = ''
 
-            srok_sdachi_old = ''
+            srok_sdachi_old = f"{i['completion_quarter']} кв {i['completion_year']}"
             stadia = ''
             dogovor = ''
 

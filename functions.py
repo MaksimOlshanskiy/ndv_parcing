@@ -26,7 +26,7 @@ def get_unique_filepath(folder_path: str, filename: str) -> str:
 
     return file_path
 
-def save_flats_to_excel(flats, project, developer, kvartirografia=True, drop_columns=False):
+def save_flats_to_excel(flats, project, developer, kvartirografia=True, drop_columns=False, change_dates=False):
 
     df = pd.DataFrame(flats, columns=['Дата обновления',
                                       'Название проекта',
