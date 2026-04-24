@@ -14,7 +14,7 @@ from selenium.common.exceptions import TimeoutException, StaleElementReferenceEx
 import time
 
 '''
-Нажать самостоятельно Квартиры - Список
+Нажать самостоятельно Квартиры - Списком
 '''
 
 cookies = {

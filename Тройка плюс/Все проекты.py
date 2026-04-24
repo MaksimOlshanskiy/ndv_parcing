@@ -6,24 +6,22 @@ import openpyxl
 import os
 from datetime import datetime
 import random
-
 from functions import save_flats_to_excel
 
 headers = {
     'Accept': 'application/json, text/plain, */*',
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
     'Origin': 'https://troikapluz.ru',
-    'Pragma': 'no-cache',
     'Referer': 'https://troikapluz.ru/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'cross-site',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
+    'x-widget-uuid': '20f791b0-06cd-4c23-8295-81f10171bee9',
 }
 
 project_ids_dict = {1164: 'Краснофлотский', 1165: 'Молодежный', 1168: 'Солнечный', 1172: 'Солнечный',
@@ -48,7 +46,9 @@ for project_id in project_id_list:
 
     response = requests.get(f'https://widget-server.m2lab.ru/front/realtys/{project_id}',
                             headers=headers)
+    print(response.status_code)
     items = response.json()
+
 
     for i in items:
 

@@ -12,27 +12,27 @@ from save_to_excel import save_flats_to_excel_far
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6ImUzYzEwMDQxOWRiZTRhY2RmODdiY2FhZWFiOTcwZmY1ZGUxNGI5OGFmYjg0Yzc1MjJhYmY5M2I1ZmY1OWEyZTdkOTAxZTE3NmE0OWM1MGU2IiwiaWF0IjoxNzc3MDIyNjEzLjgwNzU4MywibmJmIjoxNzc3MDIyNjEzLjgwNzU4OCwiZXhwIjoxNzc3MDI2MjEzLjc5ODMzLCJzdWIiOiJTSVRFX1dJREdFVHwyNDU2Iiwic2NvcGVzIjpbIlNJVEVfV0lER0VUIl0sInR5cGUiOiJzaXRlV2lkZ2V0IiwiZW50aXRsZW1lbnRzIjoiIiwiYWNjb3VudCI6eyJpZCI6MzAwMiwidGl0bGUiOiLQotC10YXQvdC-0KHRgtGA0L7QudCe0LvQuNC80L8iLCJzdWJkb21haW4iOiJwYjMwMDIiLCJiaWxsaW5nT3duZXJJZCI6MzAwOSwiY291bnRyeUNvZGUiOiJSVSJ9LCJyb2xlcyI6WyJST0xFX1NJVEVfV0lER0VUIl0sInNpdGVXaWRnZXQiOnsiaWQiOjI0NTYsImRvbWFpbiI6Imh0dHBzOi8veG4tLS0tY3RiYmxiemNpd2JiNGFwNGI5Zy54bi0tcDFhaSJ9fQ.UHiGTuph5JXDEuIKrKTgxvplp_jyxwFSK87nrzqYzOK87uO7CuBllGPc1X7YD7GoCfWVr4iFSHO2yVp7HqDLbmkrZyjEpHtyFFJjLuXLUE-PWIUT8eYnOBgJnZubTZ3wIA2mhFasy0jBvt1DkNbXbQKKUgapWqGGhUTxjVqMctCMJBdt7WmkeFud33mKdmxogMy-IdLbVV08D0ueeClnkjERqnnNWhdNbP13S8eGx87cewmcCxefJQGqWk7a_xNEWk3H7J_Zk23Q7B-guxLcPAlb3YoFraqFhQEYeXgBXqA5ztyIbejKDJNJ_oGtDjMuhW7AlfejTznMfzsffvvT0Q',
     'origin': 'https://smart-catalog.profitbase.ru',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
+    'sec-ch-ua': '"Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
 }
 
 params = {
     'projectIds[0]': '36061',
-    'isHouseFinished': '0',
+    'propertyTypeAliases[0]': 'property',
     'status[0]': 'AVAILABLE',
     'limit': '10',
-    'offset': '0',
     'full': 'true',
+    'showQueueCount': 'true',
     'returnFilteredCount': 'true',
-    'access_token': 'b24a776eb4523cb4d073dbf378aa87519907c7f95400f28653d552b8ea3db668',
 }
 
 

@@ -10,7 +10,6 @@ unique_ids = list({
     if (
         isinstance(v, dict)
         and "ID дом.рф" in v
-        and v.get("Стадия строительной готовности") != "введен"
     )
 })
 

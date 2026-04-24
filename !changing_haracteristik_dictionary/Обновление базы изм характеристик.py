@@ -10,6 +10,8 @@ from datetime import datetime
 # читаем файл
 df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные.xlsx")
 
+
+
 df["id"] = (
     df["id"]
     .dropna()
@@ -37,6 +39,7 @@ df["Распроданность квартир"] = pd.to_numeric(
     df["Распроданность квартир"],
     errors="coerce"
 ) / 100
+
 
 # удаляем дубликаты по ключам
 print(df.columns.tolist())
@@ -121,6 +124,7 @@ df.loc[mask_монтаж, "stage_3_date"] = today + pd.to_timedelta(
 df['Договор'] = df['Стадия строительной готовности'].apply(
     lambda x: 'ДКП' if x == 'введен' else 'ДДУ')
 
+
 for idx, row in df.iterrows():
     stage_2_date = row.get("stage_2_date")
     stage_3_date = row.get("stage_3_date")
@@ -135,8 +139,6 @@ for idx, row in df.iterrows():
 
     # 🔥 ОБНОВЛЯЕМ DATAFRAME
     df.loc[idx, "Стадия строительной готовности"] = stage
-
-
 
 for _, row in df.iterrows():
     project_key = f"{row['Название проекта']}_{row['Девелопер']}"
@@ -196,6 +198,8 @@ for _, row in df.iterrows():
         new_result[project_key][corpus] = new_fields
         stats["corpus_updated"] += 1
         stats["projects_updated"] += 1
+
+print(df.info())
 
 # обновляем ссылку на дом.рф
 

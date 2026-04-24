@@ -17,7 +17,7 @@ from functions import save_flats_to_excel
 Нужно проверять количество страниц с лотами и проставлять это число в переменную count_of_pages  https://atlantdevelopment.ru/flats/clear/apply/
 '''
 
-count_of_pages = 32
+count_of_pages = 30
 
 cookies = {
     'BX_USER_ID': '15016e9404744ee3cb1a5dfed786822b',

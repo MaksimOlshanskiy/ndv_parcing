@@ -16,7 +16,7 @@ from functions import get_unique_filepath
 """
 
 # Загружаем Excel
-file_path = r"/1_FILES/2026-04-10/Самолет_НОВА_2026-04-10-ешки2.xlsx"
+file_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\1_FILES\2026-04-24\ГК Зеленый сад_ЖК Гранд Комфорт-2_2026-04-24.xlsx"
 
 df = pd.read_excel(file_path)
 

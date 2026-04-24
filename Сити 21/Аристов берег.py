@@ -53,12 +53,17 @@ while True:
         items = item.get("objects", [])
 
         for i in items:
+            if i['id'] == 0:
+                continue
             date = datetime.date.today()
             project = 'Аристов Берег'
             status = ''
             developer = 'Сити 21 век'
             district = ''
-            korpus = i["building"]
+            try:
+                korpus = i["building"]
+            except:
+                korpus = ''
             room_count = str(i["room"]).replace('0', 'студия')
             if i['euro'] is True:
                 room_count += 'е'

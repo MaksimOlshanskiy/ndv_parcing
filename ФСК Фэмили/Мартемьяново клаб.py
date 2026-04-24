@@ -15,6 +15,10 @@ import time
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+'''
+Запустить и ничего не трогать
+'''
+
 cookies = {
     'SCBFormsAlreadyPulled': 'true',
     'scbsid_old': '2746015342',
