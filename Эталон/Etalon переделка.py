@@ -7,9 +7,17 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-
+from selenium.webdriver.chrome.options import Options
 from functions import save_flats_to_excel
-from save_to_excel import save_flats_to_excel_old_new_all
+import json
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+"""
+Скрипт очень медленный, часа на три, но рабочий, нужно менять number_of_flats на верное количество квартир с сайта
+"""
+
+number_of_flats = 515
 
 cookies = {
     'PHPSESSID': 'kLhpYpDU4pBf5qEWlalRohUJEv3FHoQh',
@@ -32,29 +40,50 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
 }
 
+pagination = {
+    "haveItem": True,
+    "page": 1,
+    "object": None,
+    "offset": 0,
+    "limit": 9
+}
+
+
+
 
 # Параметры пагинации
-offset = 0
+
 page_number = 1
-if page_number == 1:
-    limit = 8
-else:
-    limit = 9
+
 have_item = True  # Флаг наличия данных
 
 
 flats = []
 count = 1
 
-while True:
+retry_strategy = Retry(
+    total=5,
+    backoff_factor=2,  # 2s, 4s, 8s...
+    status_forcelist=[500, 502, 503, 504]
+)
 
-    url = f'https://newsite.etalongroup.ru/api/filter/msk/flat/list/?groupByObject=false&onlyInSale=false&pagination=%7B%22haveItem%22:true,%22page%22:{page_number},%22object%22:null,%22offset%22:{offset},%22limit%22:{limit}%7D&getAuctionSlider=false'
+session = requests.Session()
+adapter = HTTPAdapter(max_retries=retry_strategy)
+session.mount("http://", adapter)
+session.mount("https://", adapter)
 
-    print(f"Загружаю объявления с offset={offset}...")
+while pagination['offset'] < number_of_flats:
 
+    params = {
+        "pagination": json.dumps(pagination),
+        "getAuctionSlider": "false"
+    }
 
+    print(params)
 
-    response = requests.get(url, headers=headers)
+    url = f'https://newsite.etalongroup.ru/api/filter/msk/flat/list/'
+
+    response = session.get(url, cookies=cookies, headers=headers, params=params)
     print(response.status_code)
 
     if response.status_code != 200:
@@ -106,21 +135,28 @@ while True:
 
             flat_url = i.get("link", "")
 
-            driver = webdriver.Chrome()
-            driver.get(flat_url)
+            options = Options()
+            options.add_argument("--headless=new")
+            options.page_load_strategy = "eager"
 
-            korpus = driver.find_element(
-                By.XPATH,
-                "//div[p[text()='Корпус']]/p[last()]"
-            ).text
+            prefs = {
+                "profile.managed_default_content_settings.images": 2
+            }
+
+            options.add_experimental_option("prefs", prefs)
+
+            driver = webdriver.Chrome(options=options)
+
+            driver.get(flat_url)
+            try:
+                korpus = driver.find_element(
+                    By.XPATH,
+                    "//div[p[text()='Корпус']]/p[last()]"
+                ).text
+            except:
+                korpus = ''
 
             driver.quit()
-
-
-
-
-
-
 
             if old_price == price:
                 price = None
@@ -135,17 +171,15 @@ while True:
 
             count += 1
 
-        print(offset)
-        if page_number == 1:
-            offset += 8
-        else:
-            offset += 9
-        print(offset)
-        print(page_number)
+        pagination['offset'] = response.json()['data']['pagination']['offset']
+        pagination['page'] = response.json()['data']['pagination']['page']
+        pagination['limit'] = response.json()['data']['pagination']['limit']
+        print(pagination)
+
         page_number += 1
-        print(page_number)
+
     except Exception as e:
         print(f"Ошибка обработки JSON: {e}")
-        break
+        continue
 
 save_flats_to_excel(flats, 'all', developer)

@@ -129,7 +129,12 @@ while True:
                     elif i['finishing'] == 'clear':
                         finish_type = 'С отделкой'
                 except:
-                    finish_type = ''
+                    if i['finishing']['group_data'][0] == 'base':
+                        finish_type = 'Без отделки'
+                    elif i['finishing']['group_data'][0] == 'semiclear':
+                        finish_type = 'Предчистовая'
+                    elif i['finishing']['group_data'][0] == 'clear':
+                        finish_type = 'С отделкой'
 
                 try:
                     room_count = i['layout_rooms_amount']
@@ -278,7 +283,7 @@ while True:
             konstruktiv = ''
             klass = ''
             srok_sdachi = ''
-            srok_sdachi_old = ''
+            srok_sdachi_old = i['check_in_data'].replace('квартал', 'кв').replace(' г.', '')
             stadia = ''
             dogovor = ''
             price_per_metr = ''

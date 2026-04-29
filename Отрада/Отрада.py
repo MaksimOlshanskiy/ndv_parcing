@@ -99,6 +99,8 @@ while True:
             flats_start -= 1
             continue  # Пропускаем итерацию, если такой элемент найден
         flat_params = i.find('div', class_= 'flat-tile__additional').find_all('div', class_= 'flat-tile__info-part')
+        flat_params2 = i.find('div', class_= 'parameter-selection__heading-props')
+        print(flat_params2.text)
 
         url = ''
 

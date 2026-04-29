@@ -8,7 +8,7 @@ import pandas as pd
 folder_path = r"C:\Users\m.olshanskiy\Desktop\Месячная база\База апрель"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'База Апрель.xlsx'
+output_file_name = '03-04.xlsx'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()

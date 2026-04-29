@@ -38,10 +38,10 @@ obshiy = [36935, 1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 2344978, 7778
         3394804, 600475, 5499, 4056931, 2522095, 2202, 4677457, 3922634, 4109874, 6644, 319,
           4126730, 3402470, 3872784, 5500590, 5698426, 4747901, 5624837, 3975866, 4394151, 4090740,
           5593155, 5077128, 5747793, 5734461, 4202659, 7020, 5736965, 5708539, 4670407, 5688213, 36571, 7480, 52703,
-          5692858, 5739813, 5741740, 5274, 8607, 5747459, 5713989, 3867553]
+          5692858, 5739813, 5741740, 5274, 8607, 5747459, 5713989, 3867553, 5556228, 12967]
 
 
-parsim = [3867553]
+parsim = [12967]
 
 cookies = {
     '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
@@ -178,6 +178,7 @@ for y in parsim:
         json_data["jsonQuery"]["decorations_list"]["value"][0] = decoration
         json_data["jsonQuery"]["page"]["value"] = 1
         print(decoration)
+        print(json_data)
 
 
 
@@ -342,7 +343,7 @@ for y in parsim:
             counter += 1
 
     if len(flats) > 0:
-        save_flats_to_excel(flats, project, developer, kvartirografia=False)
+        save_flats_to_excel(flats, project, developer, kvartirografia=True)
     else:
         no_flats.append(y)
 

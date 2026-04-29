@@ -29,7 +29,7 @@ SCRIPTS = [
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Айкон\Сколково.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Аквилонинвест\AkvilonInvest_all.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\АМ Девелопмент\dom v malahovke.py"),
-    Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Апсис Глоуб\CITIMIX.py"),
+    Path(r"/Апсис Глоуб/CITIMIX (X).py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Апсис Глоуб\CITIMIX Novokosino.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Ар Ди Ай\Ново-Молоково.py"),
     Path(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Ар Ди Ай\Южная долина.py"),

@@ -76,19 +76,13 @@ for i in elements:
     adress = ''
     eskrou = ''
     try:
-        korpus = i.find_element(By.CSS_SELECTOR,"div.parameter-selection__item-property.phase").find_element(By.CSS_SELECTOR,"span:nth-of-type(2)").text
+        korpus = i.find_element(By.CSS_SELECTOR,"span.parameter-selection__heading-prop.phase").text
     except NoSuchElementException:
         korpus = ''
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''
-    finish_type = ''
-    items = i.find_elements(
-        By.CSS_SELECTOR,
-        "div.parameter-selection__item-marker[class*='parameter-selection__item-finishing'] span"
-    )
-    if items:
-        finish_type = items[0].get_attribute("textContent").strip()
+    finish_type = soup.find('div', class_='parameter-selection__item-finishing').get('data-marker')
     srok_sdachi_old = ''
     stadia = ''
     dogovor = ''
@@ -121,10 +115,4 @@ for i in elements:
 
 driver.quit()
 
-
-
-
-
-
-
-save_flats_to_excel(flats, project, developer)
+save_flats_to_excel(flats, 'Все проекты', 'Отрада Девелопмент')

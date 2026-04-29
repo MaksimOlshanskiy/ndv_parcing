@@ -180,6 +180,6 @@ while True:
         time.sleep(0.05)  # Задержка между запросами
     except Exception as e:
         print(f"Ошибка обработки JSON: {e}")
-        break
+        continue
 
 save_flats_to_excel(flats, 'all', developer)

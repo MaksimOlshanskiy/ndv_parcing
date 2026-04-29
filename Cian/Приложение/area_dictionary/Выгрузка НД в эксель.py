@@ -7,7 +7,7 @@ import pandas as pd
 '''
 
 # Загружаем исходный Excel
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Месячная база\База апрель\База Апрель.xlsx")
+df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\База Март\Итог\Март.xlsx")
 
 # Оставляем только нужные столбцы
 df = df[["Название проекта", "Площадь, кв.м", "Кол-во комнат"]]

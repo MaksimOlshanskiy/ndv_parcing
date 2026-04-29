@@ -33,7 +33,7 @@ sql_query = f"""
 select *
 from ndv_data
 where extract(year from date) = 2025 
-and extract(month from date) = 3 
+and extract(month from date) = 4 
 
                     """
 

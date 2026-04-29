@@ -88,7 +88,7 @@ while url:
             try:
                 finish_type = i["finishing_name"]
             except KeyError:
-                finish_type = ''
+                finish_type = 'Без отделки'
             area = float(i["area"])
             old_price = round(float(i["original_price"]))
             discount = ''

@@ -77,7 +77,9 @@ new = {
     "Sky Sputnik": "Скай Спутник",
     "AURUS Residences": "АУРУС Резиденции",
     "balance": "баланс",
-    "AHEAD": "АХЭД",
+    "AHEAD": "АХЕД",
+    "АХЭД": "АХЕД",
+    "МУЗА": "Муза",
     "Five Towers": "Файв Тауэрс",
     "ARTEL": "АРТЕЛЬ",
     "KING & SONS": "КИНГ&САНС",
@@ -85,7 +87,9 @@ new = {
     "Stories на Мосфильмовской": "СТОРИС на Мосфильмовской",
     "Woods": "Вудс",
     'ultima' : 'УЛЬТИМА Сити',
-    'Tate' : 'ТАТЕ'
+    'Tate' : 'ТАТЕ',
+    'Springs' : 'Спрингс',
+    'Upside Towers' : 'Апсайд Тауэрс'
 }
 
 values = ",\n".join(f"('{k.replace(\"'\", \"''\")}', '{v}')" for k, v in new.items())

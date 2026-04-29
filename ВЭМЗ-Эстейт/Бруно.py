@@ -95,7 +95,7 @@ while True:
             section = ''
 
             flat_number = str(i['title'].replace(' ', '').replace('№', ''))
-            floor = i["characteristics"][3]["value"]
+            floor = i["characteristics"][3]["value"].split()[0]
             flat_number = ''
 
             if old_price == '':

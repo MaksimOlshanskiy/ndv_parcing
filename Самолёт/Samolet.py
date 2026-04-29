@@ -181,8 +181,8 @@ while True:
         eskrou = ''
         konstruktiv = ''
         klass = ''
-        srok_sdachi = i['settling_date_formatted']
-        srok_sdachi_old = ''
+        srok_sdachi = ''
+        srok_sdachi_old = i['settling_date_formatted']
         stadia = ''
         dogovor = ''
         price_per_metr = ''
