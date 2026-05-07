@@ -15,7 +15,7 @@ df2 = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашД
 
 
 # Название нового файла
-output_file_name = 'Продажи_1ый_Химкинский.xlsx'
+output_file_name = 'Продажи_Обнинск.xlsx'
 
 
 all_data = pd.DataFrame()

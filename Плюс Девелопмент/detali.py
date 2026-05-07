@@ -77,7 +77,11 @@ while True:
                     date = datetime.date.today()
                     project = 'Детали'
                     developer = "Плюс девелопмент"
-                    korpus = i['building_int_number']
+                    korpus = int(i['building_int_number'])
+                    if 1 <= korpus <= 11:
+                        korpus = '1'
+                    else:
+                        korpus = '2'
                     room_count = i.get('rooms', 0)
 
                     if room_count == 0:

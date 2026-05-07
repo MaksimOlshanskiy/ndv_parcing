@@ -6,6 +6,8 @@ import os
 import random
 import json
 from functions import merge_and_clean, haversine
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 decoration_dict = {'preFine': 'Предчистовая', 'fine': 'С отделкой', 'without': 'Без отделки',
                    'fineWithFurniture': 'С отделкой и доп опциями'}
@@ -20,12 +22,28 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 proxies = {
-    "http": "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270",
-"https": "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270"
+    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270",
+"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270"
 }
 
+# from itertools import cycle
+#
+# proxies_list = [
+#
+#     "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270",
+#
+# ]
+#
+# proxy_pool = cycle(proxies_list)
+
+
+
+
+
+
+
+
 print(f'Первоначальный IP: {requests.get("https://ipinfo.io/json").json()}')
-print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
 
 cookies = {
     '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
@@ -119,10 +137,12 @@ cities_dict = {
     'Омск': 4914,
     'Воронеж': 4713,
     'Пермь': 4927,
-    'Волгоград': 4704
+    'Волгоград': 4704,
+    'Тюмень' : 5024,
+    'Владивосток' : 4701
 }
 
-cities_list = [4966, 4914]
+cities_list = [4908]
 
 for city_id in cities_list:
 
@@ -176,7 +196,6 @@ for city_id in cities_list:
                 cookies=cookies,
                 headers=headers,
                 json=json_data_first,
-                proxies=proxies,
             )
 
             print(response.status_code)
@@ -263,6 +282,7 @@ for city_id in cities_list:
 
     current_date = datetime.date.today()
 
+
     for y in ids:
 
         flats = []
@@ -293,7 +313,7 @@ for city_id in cities_list:
         )
         flats_count = response.json()['data']['aggregatedCount']
         print(f'Количество квартир в проекте: {flats_count}')
-        time.sleep(7)
+        time.sleep(1)
 
         if flats_count > 2500:
 
@@ -311,12 +331,12 @@ for city_id in cities_list:
                 'value': [1],
             }
             rooms_ids = [1, 2, 3, 4, 5, 6, 7, 9]
-            total_floor_list = [[1, 100]]
+            total_floor_list = [[1, 200]]
 
         else:
             del json_data['jsonQuery']['room']
             rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
-            total_floor_list = [[1, 100]]
+            total_floor_list = [[1, 200]]
 
         print(json_data)
 
@@ -351,7 +371,7 @@ for city_id in cities_list:
                         print(f"Число комнат: {room_id}")
                         if counter > 1:
                             sleep_time = random.uniform(2, 4)
-                            time.sleep(sleep_time)
+                            # time.sleep(sleep_time)
                         try:
                             response = session.post(
                                 'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
@@ -361,14 +381,27 @@ for city_id in cities_list:
                             )
 
                             print(response.status_code)
+                            print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
 
 
 
                             items = response.json()["data"]["offersSerialized"]
                         except:
                             print("Произошла ошибка, пробуем ещё раз")
-                            time.sleep(61)
+                            time.sleep(7)
                             session = requests.Session()
+
+                            retry = Retry(
+                                total=5,
+                                backoff_factor=1,
+                                status_forcelist=[429, 500, 502, 503, 504],
+                            )
+
+                            adapter = HTTPAdapter(max_retries=retry)
+
+                            session.mount("http://", adapter)
+                            session.mount("https://", adapter)
+
                             response = session.post(
                                 'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
                                 cookies=cookies,

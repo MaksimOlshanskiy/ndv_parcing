@@ -1,11 +1,15 @@
 import pandas as pd
 
 # Загружаем файлы
-df1 = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Города млн\Апрель 2026\Первичка\Первичка_Млн_Апрель.xlsx")
-df2 = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Города млн\Апрель 2026\Города-миллионники_классы.xlsx")
+df1 = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Для переноса\Города млн\Май 2026\Млн Первичка Май 2026.xlsx")
+df2 = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Города-миллионники_классы.xlsx")
 
 for df in [df1, df2]:
-    df['Название проекта'] = df['Название проекта'].str.replace(r"[\"'«»]", "", regex=True)
+    df['Название проекта'] = (
+        df['Название проекта']
+        .astype(str)  # 👈 ВАЖНО
+        .str.replace(r"[\"'«»]", "", regex=True)
+    )
 
 # создаём "очищенные" колонки (НЕ заменяя оригинальные)
 for col in ['Название проекта', 'Локация']:

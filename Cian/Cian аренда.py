@@ -7,6 +7,11 @@ import random
 import json
 from functions import haversine
 
+proxies = {
+    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260",
+"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260"
+}
+
 '''
 
 cities_dict = {
@@ -181,7 +186,8 @@ response = session.post(    # Первичный запрос для опред�
                         'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
                         cookies=cookies,
                         headers=headers,
-                        json=json_data
+                        json=json_data,
+                        proxies=proxies,
                     )
 
 items_count = response.json()['data']["aggregatedCount"]
@@ -239,10 +245,9 @@ for rooms in rooms_ids:
 
             while len(flats) < total_count:
 
-                print(json_data)
 
                 if counter > 1:
-                    sleep_time = random.uniform(3, 5)
+                    sleep_time = random.uniform(1, 2)
                     time.sleep(sleep_time)
                 try:
                     response = session.post(
@@ -258,20 +263,19 @@ for rooms in rooms_ids:
                 except:
                     print("Произошла ошибка, пробуем ещё раз")
                     print(response.status_code)
-                    time.sleep(61)
+                    time.sleep(5)
                     session = requests.Session()
                     response = session.post(
                         'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
                         cookies=cookies,
                         headers=headers,
-                        json=json_data
+                        json=json_data,
+                        proxies=proxies,
                     )
                     print(response.status_code)
                     items = response.json()["data"]["offersSerialized"]
 
                 for i in items:
-
-                    print(i)
 
 
                     data = i['geo']['address']

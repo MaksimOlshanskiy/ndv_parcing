@@ -12,8 +12,8 @@ import json
 
 # noinspection PyDictDuplicateKeys
 proxies = {
-    "http": "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270",
-"https": "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270"
+    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260",
+"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260"
 }
 
 try:
@@ -149,10 +149,6 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'only_flat': {
-            'type': 'term',
-            'value': True,
-        },
         'flat_share': {
             'type': 'term',
             'value': 2,
@@ -180,367 +176,368 @@ cities_dict = {
     'Волгоград': 4704
 }
 
-
-print("Список доступных регионов:")
-for city, city_id in cities_dict.items():
-    print(f"{city}: {city_id}")
-
-user_input = input("\nВведите ID нужного региона или введите свой: ")
-
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
-coords = city_centers.get(user_input)
+cities_list = [5048]
 
-try:
-    user_id = int(user_input)
-    if user_id in cities_dict.values():
-        selected_city = [city for city, cid in cities_dict.items() if cid == user_id][0]
-        print(f"\nВы выбрали город: {selected_city}")
-    else:
-        print("\nГород не в списке")
-except ValueError:
-    print("\nОшибка: введите числовой ID.")
+for city_id in cities_list:
 
-json_data['jsonQuery']['region']['value'] = [user_input]
+    coords = city_centers.get(city_id)
 
-def extract_digits_or_original(s):
-    digits = ''.join([char for char in s if char.isdigit()])
-    return int(digits) if digits else s
+    json_data['jsonQuery']['region']['value'] = [city_id]
 
-start_time = time.time()
-current_date = datetime.date.today()
+    def extract_digits_or_original(s):
+        digits = ''.join([char for char in s if char.isdigit()])
+        return int(digits) if digits else s
 
-repair_ids = [1, 2, 3, 4]
-repair_ids_dict = {1: 'Без отделки', 2: 'Косметический', 3: 'Евроремонт', 4: 'Дизайнерский'}
-rooms_ids = [1,2,3,4,5,6,7,9]
+    start_time = time.time()
+    current_date = datetime.date.today()
 
-session = requests.Session()
+    repair_ids = [1, 2, 3, 4]
+    repair_ids_dict = {1: 'Без отделки', 2: 'Косметический', 3: 'Евроремонт', 4: 'Дизайнерский'}
+    rooms_ids = [1,2,3,4,5,6,7,9]
 
-response = session.post(    # Первичный запрос для определения количества лотов
-                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                        cookies=cookies,
-                        headers=headers,
-                        json=json_data,
-                        proxies=proxies,
-                    )
+    session = requests.Session()
 
-items_count = response.json()['data']["aggregatedCount"]
-print(f'В городе {items_count} лотов')
-city_in_work = response.json()['data']['breadcrumbs'][0]['title']
-print(city_in_work)
+    response = session.post(    # Первичный запрос для определения количества лотов
+                            'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                            cookies=cookies,
+                            headers=headers,
+                            json=json_data,
+                            proxies=proxies,
+                        )
 
-json_data["jsonQuery"]["repair"]["value"] = [1]
 
-if items_count <=  1500:
+    print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
+    print(f"Код от сервера cian: {response.status_code}")
 
-    rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
-    total_floor_list = [[1, 100]]
 
-elif  1500 < items_count < 2500:
+    items_count = response.json()['data']["aggregatedCount"]
+    print(f'В городе {items_count} лотов')
+    city_in_work = response.json()['data']['breadcrumbs'][0]['title']
+    print(city_in_work)
 
-    rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 100]]
+    json_data["jsonQuery"]["repair"]["value"] = [1]
 
-elif 2500 <= items_count <= 4500:
-
-    rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 6], [7, 12], [13, 200]]
-
-elif items_count > 4500:
+    # if items_count <=  1500:
+    #
+    #     rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
+    #     total_floor_list = [[1, 200]]
+    #
+    # elif  1500 < items_count < 2500:
+    #
+    #     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
+    #     total_floor_list = [[1, 200]]
+    #
+    # elif 2500 <= items_count <= 4500:
+    #
+    #     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
+    #     total_floor_list = [[1, 6], [7, 12], [13, 200]]
+    #
+    # elif items_count > 4500:
 
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
     total_floor_list = [[1, 3], [4, 7], [8, 15], [16, 200]]
 
 
-for rooms in rooms_ids:
-
-    json_data["jsonQuery"]["page"]["value"] = 1
-    json_data["jsonQuery"]["room"]["value"] = rooms
-
-
-    for repair_id in repair_ids:
+    for rooms in rooms_ids:
 
         json_data["jsonQuery"]["page"]["value"] = 1
-        json_data["jsonQuery"]["repair"]["value"][0] = repair_id
+        json_data["jsonQuery"]["room"]["value"] = rooms
 
 
-        for f in total_floor_list:
+        for repair_id in repair_ids:
 
-
-            json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
-            json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
             json_data["jsonQuery"]["page"]["value"] = 1
-            print(f'Снимаем комнатность: {rooms}')
-            print(f'Снимаем отделку: {repair_ids_dict.get(repair_id)}')
-            print(f'Снимаем следующие этажи: {f}')
-
-            name_counter = f'{rooms} комнат_этажи - {f[0]}-{f[1]}_{repair_ids_dict.get(repair_id)}'
-            flats = []
-            counter = 1
-            total_count = 1
+            json_data["jsonQuery"]["repair"]["value"][0] = repair_id
 
 
+            for f in total_floor_list:
 
-            while len(flats) < total_count:
 
-                if counter > 1:
-                    sleep_time = random.uniform(7, 10)
-                    time.sleep(sleep_time)
-                try:
-                    response = session.post(
-                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                        cookies=cookies,
-                        headers=headers,
-                        json=json_data,
-                        proxies=proxies,
-                    )
+                json_data["jsonQuery"]["floor"]["value"]["gte"] = f[0]
+                json_data["jsonQuery"]["floor"]["value"]["lte"] = f[1]
+                json_data["jsonQuery"]["page"]["value"] = 1
+                print(f'Снимаем комнатность: {rooms}')
+                print(f'Снимаем отделку: {repair_ids_dict.get(repair_id)}')
+                print(f'Снимаем следующие этажи: {f}')
 
-                    print(json_data)
+                name_counter = f'{rooms} комнат_этажи - {f[0]}-{f[1]}_{repair_ids_dict.get(repair_id)}'
+                flats = []
+                counter = 1
+                total_count = 1
 
-                    print(response.status_code)
 
-                    print(f'Объём трафика: {len(response.content) / 1024}')
 
-                    items = response.json()["data"]["offersSerialized"]
-                except:
-                    print("Произошла ошибка, пробуем ещё раз")
-                    print(response.status_code)
-                    time.sleep(30)
-                    session = requests.Session()
-                    response = session.post(
-                        'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                        cookies=cookies,
-                        headers=headers,
-                        json=json_data,
-                        proxies=proxies
-                    )
-                    print(response.status_code)
-                    items = response.json()["data"]["offersSerialized"]
+                while len(flats) < total_count:
 
-                for i in items:
+                    if counter > 1:
+                        sleep_time = random.uniform(2, 3)
+                        time.sleep(sleep_time)
+                    for attempt in range(3):
+                        try:
+                            response = session.post(
+                                'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                                cookies=cookies,
+                                headers=headers,
+                                json=json_data,
+                                proxies=proxies,
+                                timeout=10
+                            )
+                            break  # успех — выходим из цикла
 
-                    data = i['geo']['address']
-                    result = {}
-                    counterr = {}
+                        except requests.exceptions.ProxyError:
+                            print(f"Прокси умер, попытка {attempt + 1}")
+                            time.sleep(2)
 
-                    for item in data:
-                        t = item["type"]
-                        name = item["fullName"]
+                        except requests.exceptions.RequestException as e:
+                            print("Ошибка запроса:", e)
+                            time.sleep(2)
+                    else:
+                        print("Все попытки не удались")
 
-                        # Первый раз — без номера
-                        if t not in counterr:
-                            counterr[t] = 1
-                            key = t
-                        else:
-                            counterr[t] += 1
-                            key = f"{t}{counterr[t]}"
+                        print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
+                        print(f"Код от сервера cian: {response.status_code}")
 
-                        result[key] = name
+                        print(response.status_code)
+                    if response.status_code != 200:
+                        items = response.json()["data"]["offersSerialized"]
+                    else:
+                        time.sleep(5)
+                        response = session.post(
+                            'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                            cookies=cookies,
+                            headers=headers,
+                            json=json_data,
+                            proxies=proxies
+                        )
+                        items = response.json()["data"]["offersSerialized"]
 
-                    new_result = {
-                        ('mikroraion' if isinstance(v, str) and 'мкр' in v else k): v
-                        for k, v in result.items()
-                    }
-                    result = new_result
-                    # список нужных переменных
-                    keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
 
-                    # создаём переменные
-                    for key in keys:
-                        globals()[key] = result.get(key, "")
-                    try:
-                        if i['building']['deadline']['isComplete']:
-                            srok_sdachi = "Дом сдан"
-                        elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline'][
-                            'year'] is None:
+                    for i in items:
+
+                        data = i['geo']['address']
+                        result = {}
+                        counterr = {}
+
+                        for item in data:
+                            t = item["type"]
+                            name = item["fullName"]
+
+                            # Первый раз — без номера
+                            if t not in counterr:
+                                counterr[t] = 1
+                                key = t
+                            else:
+                                counterr[t] += 1
+                                key = f"{t}{counterr[t]}"
+
+                            result[key] = name
+
+                        new_result = {
+                            ('mikroraion' if isinstance(v, str) and 'мкр' in v else k): v
+                            for k, v in result.items()
+                        }
+                        result = new_result
+                        # список нужных переменных
+                        keys = ["location", "location2", "okrug", "raion", "mikroraion", "metro", "street", "house"]
+
+                        # создаём переменные
+                        for key in keys:
+                            globals()[key] = result.get(key, "")
+                        try:
+                            if i['building']['deadline']['isComplete']:
+                                srok_sdachi = "Дом сдан"
+                            elif i['building']['deadline']['quarterEnd'] is None and i['building']['deadline'][
+                                'year'] is None:
+                                srok_sdachi = ''
+                            else:
+                                srok_sdachi = f"Cдача ГК: {i['newbuilding']['house']['finishDate']['quarter']} квартал, {i['newbuilding']['house']['finishDate']['year']} года".replace(
+                                    'None', '')
+                        except:
                             srok_sdachi = ''
-                        else:
-                            srok_sdachi = f"Cдача ГК: {i['newbuilding']['house']['finishDate']['quarter']} квартал, {i['newbuilding']['house']['finishDate']['year']} года".replace(
-                                'None', '')
-                    except:
-                        srok_sdachi = ''
-                    try:
-                        url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
-                    except:
-                        url = ''
+                        try:
+                            url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
+                        except:
+                            url = ''
 
-                    try:
-                        if i['isApartments']:
-                            type = "Апартаменты"
-                        else:
-                            type = "Квартира"
-                    except:
-                        type = ''
+                        try:
+                            if i['isApartments']:
+                                type = "Апартаменты"
+                            else:
+                                type = "Квартира"
+                        except:
+                            type = ''
 
-                    try:
-                        price = i['bargainTerms']['priceRur']
-                    except:
-                        price = ''
-                    try:
-                        project = i['geo']['jk']['displayName'].replace('ЖК ', '').replace('«', '').replace('»', '')
-                    except:
-                        project = ''
-                    # try:
-                    #   if i['decoration'] == "fine":
-                    #      finish_type = "С отделкой"
-                    #    elif i['decoration'] == "without" or i['decoration'] == "rough":
-                    #       finish_type = "Без отделки"
-                    #   else:
-                    #      finish_type = i['decoration']
-                    # except:
-                    #   finish_type = ''
-                    # if not finish_type:
-                    #    finish_type = classify_renovation(i['description'])
-                    try:
-                        finish_type = repair_ids_dict.get(repair_id)
-                    except:
-                        finish_type = 'Не определён'
+                        try:
+                            price = i['bargainTerms']['priceRur']
+                        except:
+                            price = ''
+                        try:
+                            project = i['geo']['jk']['displayName'].replace('ЖК ', '').replace('«', '').replace('»', '')
+                        except:
+                            project = ''
+                        # try:
+                        #   if i['decoration'] == "fine":
+                        #      finish_type = "С отделкой"
+                        #    elif i['decoration'] == "without" or i['decoration'] == "rough":
+                        #       finish_type = "Без отделки"
+                        #   else:
+                        #      finish_type = i['decoration']
+                        # except:
+                        #   finish_type = ''
+                        # if not finish_type:
+                        #    finish_type = classify_renovation(i['description'])
+                        try:
+                            finish_type = repair_ids_dict.get(repair_id)
+                        except:
+                            finish_type = 'Не определён'
 
-                    try:
-                        adress = i['geo']['userInput']
-                    except:
-                        adress = ""
+                        try:
+                            adress = i['geo']['userInput']
+                        except:
+                            adress = ""
 
-                    try:
-                        korpus = i["geo"]["jk"]["house"]["name"]
-                    except:
-                        korpus = ''
+                        try:
+                            korpus = i["geo"]["jk"]["house"]["name"]
+                        except:
+                            korpus = ''
 
-                    try:
-                        developer = i['geo']['jk']['developer']['name']
-                    except:
-                        developer = ""
+                        try:
+                            developer = i['geo']['jk']['developer']['name']
+                        except:
+                            developer = ""
 
-                    try:
-                        if i["roomsCount"] is None:
-                            room_count = 0
-                        else:
-                            room_count = int(i["roomsCount"])
-                    except:
-                        room_count = ''
-                    try:
-                        area = float(i["totalArea"])
-                    except:
-                        area = ''
+                        try:
+                            if i["roomsCount"] is None:
+                                room_count = 0
+                            else:
+                                room_count = int(i["roomsCount"])
+                        except:
+                            room_count = ''
+                        try:
+                            area = float(i["totalArea"])
+                        except:
+                            area = ''
 
-                    date = datetime.date.today()
+                        date = datetime.date.today()
 
-                    try:
-                        floor = i["floorNumber"]
-                    except:
-                        floor = ''
-                    try:
-                        added = i['added']
-                    except:
-                        added = ''
-                    try:
-                        kitchenArea = float(i['kitchenArea'])
-                    except:
-                        kitchenArea = 0
-                    try:
-                        livingArea = float(i['livingArea'])
-                    except:
-                        livingArea = 0
-                    try:
-                        parking = i['building']['parking']['type']
-                    except:
-                        parking = ''
-                    try:
-                        balconiesCount = int(i['balconiesCount'])
-                    except:
-                        balconiesCount = 0
-                    try:
-                        loggiasCount = int(i['loggiasCount'])
-                    except:
-                        loggiasCount = 0
-                    balconies_and_loggias_count = balconiesCount + loggiasCount
-                    try:
+                        try:
+                            floor = i["floorNumber"]
+                        except:
+                            floor = ''
+                        try:
+                            added = i['added']
+                        except:
+                            added = ''
+                        try:
+                            kitchenArea = float(i['kitchenArea'])
+                        except:
+                            kitchenArea = 0
+                        try:
+                            livingArea = float(i['livingArea'])
+                        except:
+                            livingArea = 0
+                        try:
+                            parking = i['building']['parking']['type']
+                        except:
+                            parking = ''
+                        try:
+                            balconiesCount = int(i['balconiesCount'])
+                        except:
+                            balconiesCount = 0
+                        try:
+                            loggiasCount = int(i['loggiasCount'])
+                        except:
+                            loggiasCount = 0
+                        balconies_and_loggias_count = balconiesCount + loggiasCount
+                        try:
 
-                        lat_jk = i['geo']['coordinates']['lat']
-                        lon_jk = i['geo']['coordinates']['lng']
-                        lat_center = coords["lat_center"]
-                        lon_center = coords["lon_center"]
-                        distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
+                            lat_jk = i['geo']['coordinates']['lat']
+                            lon_jk = i['geo']['coordinates']['lng']
+                            lat_center = coords["lat_center"]
+                            lon_center = coords["lon_center"]
+                            distance = round(haversine(lat_jk, lon_jk, lat_center, lon_center), 2)
 
-                    except:
-                        distance = ''
+                        except:
+                            distance = ''
 
-                    print(
-                        f"{url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
-                    result = [project, developer, location, location2, okrug, raion, mikroraion, metro, street, house,
-                              korpus, distance, srok_sdachi, type,
-                              finish_type, room_count, area, kitchenArea, livingArea, price, floor,
-                              balconies_and_loggias_count, parking, url]
-                    flats.append(result)
+                        print(
+                            f"{url}, дата: {date}, тип: {type}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
+                        result = [project, developer, location, location2, okrug, raion, mikroraion, metro, street, house,
+                                  korpus, distance, srok_sdachi, type,
+                                  finish_type, room_count, area, kitchenArea, livingArea, price, floor,
+                                  balconies_and_loggias_count, parking, url]
+                        flats.append(result)
 
-                if not items:
-                    break
-                json_data["jsonQuery"]["page"]["value"] += 1
-                print(len(flats))
-                print("-----------------------------------------------------------------------------")
-                total_count = response.json()["data"]["offerCount"]
-                downloaded = len(flats)
-                print()
-                counter += 1
+                    if not items:
+                        break
+                    json_data["jsonQuery"]["page"]["value"] += 1
+                    print(len(flats))
+                    print("-----------------------------------------------------------------------------")
+                    total_count = response.json()["data"]["offerCount"]
+                    downloaded = len(flats)
+                    print()
+                    counter += 1
 
-            if len(flats) > 1:
+                if len(flats) > 1:
 
-                df = pd.DataFrame(flats, columns=['Название проекта',
-                                                        'Девелопер',
-                                                        'Локация',
-                                                        'Локация2',
-                                                        'Округ',
-                                                        'Район',
-                                                        'Микрорайон',
-                                                        'Метро',
-                                                        'Улица',
-                                                        'Дом',
-                                                        'Корпус',
-                                                        'Расстояние до центра, км',
-                                                        'Срок сдачи',
-                                                        'Тип помещения',
-                                                        'Отделка',
-                                                        'Кол-во комнат',
-                                                        'Площадь, кв.м',
-                                                        'Площадь кухни, кв.м',
-                                                        'Жилая площадь, кв.м',
-                                                        'Цена лота, руб.',
-                                                        'Этаж',
-                                                        'Балконы/лоджии',
-                                                        'Паркинг',
-                                                        'Ссылка'
-                                                        ])
+                    df = pd.DataFrame(flats, columns=['Название проекта',
+                                                            'Девелопер',
+                                                            'Локация',
+                                                            'Локация2',
+                                                            'Округ',
+                                                            'Район',
+                                                            'Микрорайон',
+                                                            'Метро',
+                                                            'Улица',
+                                                            'Дом',
+                                                            'Корпус',
+                                                            'Расстояние до центра, км',
+                                                            'Срок сдачи',
+                                                            'Тип помещения',
+                                                            'Отделка',
+                                                            'Кол-во комнат',
+                                                            'Площадь, кв.м',
+                                                            'Площадь кухни, кв.м',
+                                                            'Жилая площадь, кв.м',
+                                                            'Цена лота, руб.',
+                                                            'Этаж',
+                                                            'Балконы/лоджии',
+                                                            'Паркинг',
+                                                            'Ссылка'
+                                                            ])
 
-                current_date = datetime.date.today()
+                    current_date = datetime.date.today()
 
-                # Базовый путь для сохранения
-                base_path = r""
+                    # Базовый путь для сохранения
+                    base_path = r""
 
-                folder_path = os.path.join(base_path, "Вторичка", str(current_date))
-                if not os.path.exists(folder_path):
-                    os.makedirs(folder_path)
+                    folder_path = os.path.join(base_path, "Вторичка", str(current_date))
+                    if not os.path.exists(folder_path):
+                        os.makedirs(folder_path)
 
 
-                def sanitize_filename(name):
-                    for char in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
-                        name = name.replace(char, '_')
-                    return name
+                    def sanitize_filename(name):
+                        for char in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
+                            name = name.replace(char, '_')
+                        return name
 
 
-                project = sanitize_filename(project)
-                filename = f"{city_in_work}__{current_date}_{name_counter}.xlsx"
+                    project = sanitize_filename(project)
+                    filename = f"{city_in_work}__{current_date}_{name_counter}.xlsx"
 
-                # Полный путь к файлу0
-                file_path = os.path.join(folder_path, filename)
-
-                # Сохранение файла в папку
-                try:
-                    df.to_excel(file_path, index=False)
-                    print(f'Сохранён файл {file_path}')
-                except:
-                    filename = f"{project}_{current_date}_2.xlsx"
+                    # Полный путь к файлу0
                     file_path = os.path.join(folder_path, filename)
-                    df.to_excel(file_path, index=False)
 
-merge_and_clean(folder_path, f'Вторичка_{city_in_work}_{current_date}.xlsx')
+                    # Сохранение файла в папку
+                    try:
+                        df.to_excel(file_path, index=False)
+                        print(f'Сохранён файл {file_path}')
+                    except:
+                        filename = f"{project}_{current_date}_2.xlsx"
+                        file_path = os.path.join(folder_path, filename)
+                        df.to_excel(file_path, index=False)
+
+# merge_and_clean(folder_path, f'Вторичка_{city_in_work}_{current_date}.xlsx')

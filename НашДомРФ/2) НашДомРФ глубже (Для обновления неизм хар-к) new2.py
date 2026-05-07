@@ -45,7 +45,9 @@ def convert_quarter(text: str) -> str:
 
     return text  # если формат не совпал
 
-buildings_id = ['65642', '65640', '65638', '65641', '65639', '65505']
+buildings_id = ['71633', '64017', '61275', '71275', '65254', '65256', '65255', '56297', '30516', '66099', '71506', '70446', '62065']
+
+
 print(len(buildings_id))
 flats = []
 problem_id = []
@@ -149,13 +151,19 @@ for building_id in buildings_id:
     material = data.get('Материал стен', '')
     floors_count = data.get('Количество этажей', '')
     flats_sales_perc = data.get('Распроданность квартир', '')
+    if flats_sales_perc:
+        flats_sales_perc = int(flats_sales_perc.replace('%', '').strip())/100
     parking_availability = data.get('Обеспеченность машиноместами', '')
     energy_efficiency_class = add_data.get('Класс энергоэффективности', '')
     first_floor = add_data.get('Первый этаж', '')
     entrances_count = add_data.get('Количество подъездов', '')
     flats_count = add_data.get('Количество квартир', '')
+    if flats_count:
+        flats_count = int(flats_count.strip())
     flats_count_on_the_floor = add_data.get('Среднее количество квартир на этаже', '')
     living_area = add_data.get('Жилая площадь, м²', '').replace(' ', '')
+    if living_area:
+        living_area = int(living_area.strip())
     passenger_elevators_count = add_data.get('Количество пассажирских лифтов', '')
     freight_and_passenger_elevators_count = add_data.get('Количество грузовых и грузопассажирских лифтов', '')
     parking_place_count = add_data.get('Количество мест в паркинге', '')
@@ -172,11 +180,15 @@ for building_id in buildings_id:
     pandus = add_data.get('Наличие пандуса', '')
     low_places = add_data.get('Понижающие площадки', '')
     wheelchair_lifts_count = add_data.get('Инвалидные подъемники', '')
+    try:
+        flats_left = round(flats_count - (flats_count * flats_sales_perc))
+    except:
+        flats_left = ''
 
 
 
 
-    res = [int(building_id), project_name, developer, developer_group, status, publication_date, explotation_start_date.replace('IV', '4').replace('III', '3').replace('II', '2').replace('I', '1').replace('.', ''), keys_date, flats_sales_perc, klass, material,
+    res = [int(building_id), project_name, developer, developer_group, status, publication_date, explotation_start_date.replace('IV', '4').replace('III', '3').replace('II', '2').replace('I', '1').replace('.', ''), keys_date, flats_sales_perc, flats_left, klass, material,
            finish_type, is_free_plan, floors_count, flats_count, living_area, roofs_height, bike_paths, playgrounds_count, sports_grounds_count, garbage_collection_sites_count, parking_availability, parking_place_count, guest_places_inside,
            guest_places_outside, pandus, low_places, wheelchair_lifts_count, entrances_count, passenger_elevators_count, freight_and_passenger_elevators_count]
     print(res)
@@ -209,6 +221,7 @@ for building_id in buildings_id:
                                       'Ввод в эксплуатацию',
                                       'Выдача ключей',
                                       'Распроданность квартир',
+                                      'Остаток квартир',
                                       'Класс недвижимости',
                                       'Материал стен',
                                       'Тип отделки',

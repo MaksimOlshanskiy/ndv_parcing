@@ -108,6 +108,13 @@ json_data = {
             'type': 'term',
             'value': 'price_object_order',
         },
+        'ceiling_height': {
+            'type': 'range',
+            'value': {
+                'gte': 2.61,
+                'lte': 2.7,
+            },
+        },
         'region': {
             'type': 'terms',
             'value': [
@@ -321,7 +328,7 @@ for rooms in rooms_ids:
                     except:
                         property_from = ''
                     try:
-                        url = i['fullUrl'].rstrip('/').rpartition('/')[-1]
+                        url = i['fullUrl'].rstrip('/').rpartition('/')[-3]
                     except:
                         url = ''
 
