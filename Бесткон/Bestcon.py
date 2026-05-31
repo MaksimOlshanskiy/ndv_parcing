@@ -18,7 +18,7 @@ for key, item in info.items():
     data = item['data']
     project=item['project_name']
 
-    url = 'https://planetarf.ru/api/site.php'
+    url = 'https://bestconold.planetarf.ru/api/site.php'
 
     page = 1
 

@@ -5,8 +5,8 @@ import time
 import warnings
 from Developer_dict import name_dict, developer_dict
 
-year = 2025
-month = 1
+year = 2026
+month = 4
 project = None
 
 warnings.filterwarnings(
@@ -92,4 +92,4 @@ print(df.info())
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 # df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
 
-df.to_excel("Выгрузка.xlsx", index=False)
+df.to_excel("Выгрузка0426.xlsx", index=False)

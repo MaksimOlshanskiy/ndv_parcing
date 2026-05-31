@@ -1,3 +1,4 @@
+from pathlib import Path
 import json
 import re
 import numpy as np
@@ -16,17 +17,25 @@ from functions import get_unique_filepath
 """
 
 # Загружаем Excel
-file_path = r"C:\Users\m.olshanskiy\Desktop\Месячная база\База апрель\База Апрель.xlsx"
+file_path = r"D:\НДВ\База май\04-05\Первичка.xlsx"
+kvartirografia = True # Нужно или нет менять квартирографию
 
 df = pd.read_excel(file_path)
 
+# projects_dict = load_json(Path(__file__).resolve().parent / '!haracteristik_dictionary' / 'projects.json')
+# corpus_dict = load_json(Path(__file__).resolve().parent / '!changing_haracteristik_dictionary' / 'projects.json')
+# if kvartirografia:
+#     area_dict = load_json(Path(__file__).resolve().parent / 'area_dictionary' / 'output.json')
+# else:
+#     area_dict = None
+
 projects_dict = load_json(
-        r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json'
+        r'C:\PycharmProjects\ndv_parcing\!haracteristik_dictionary\projects.json'
 )
 corpus_dict = load_json(
-    r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json'
+    r'C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\projects.json'
 )
-area_dict = load_json(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json'
+area_dict = load_json(r'C:\PycharmProjects\ndv_parcing\area_dictionary\output.json'
 )
 
 

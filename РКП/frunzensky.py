@@ -17,25 +17,59 @@ from functions import save_flats_to_excel
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
     'content-type': 'application/json',
     'origin': 'https://xn----jtbbfggcdyc3aqvm.xn--p1ai',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://xn----jtbbfggcdyc3aqvm.xn--p1ai/',
-    'sec-ch-ua': '"Not(A:Brand";v="8", "Chromium";v="144", "Google Chrome";v="144"',
+    'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'cross-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
 }
 
 json_data = {
     'action': 'objects_list',
     'data': {
         'category': 'flat',
-        'house_id': 7750570,
         'activity': 'sell',
+        'page': 0,
+        'filters': {
+            'studio': 'null',
+            'rooms': [],
+            'restorations': [],
+            'promos': [],
+            'tags': [],
+            'riser_side': [],
+            'geo_city': None,
+            'floors': [],
+            'geoLines': [],
+            'houses_ids': [],
+            'type': None,
+            'areaFrom': None,
+            'areaTo': None,
+            'priceFrom': None,
+            'priceTo': None,
+            'priceM2From': None,
+            'priceM2To': None,
+            'priceRentFrom': None,
+            'priceRentTo': None,
+            'priceRentM2From': None,
+            'priceRentM2To': None,
+            'status': None,
+            'isHot': False,
+            'isExclusive': False,
+        },
+        'complex_id': None,
+        'house_id': 7750570,
+        'orders': [],
+        'complex_search': None,
+        'house_search': None,
+        'lazy': False,
         'cabinetMode': False,
     },
     'auth_token': None,
@@ -67,7 +101,7 @@ while True:
 
 
     for i in items:
-        if i['status'] == 'booked':
+        if i['status'] == 'booked' or i['status'] == 'sold':
             continue
 
         url = i['id']

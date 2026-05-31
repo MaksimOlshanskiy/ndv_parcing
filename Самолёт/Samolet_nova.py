@@ -17,60 +17,60 @@ from Developer_dict import developer_dict, name_dict
 from functions import save_flats_to_excel
 
 cookies = {
-    '_ymab_param': 'sz_QgQZpMz-NbtHY7nJb1QX10-JOBmDUPkHcAkuel91YLiWgAq1GDAz4YKiumc8N8fVkJbMS3e6_tuBkRAu2aU-2IAQ',
-    'FPID': 'FPID2.2.YwB9iVECxBVsA7yXUh2MbCpE9qWCeYlH43aT837oQBY%3D.1746026848',
-    'qrator_jsr': '1779823528.099.ePpowhbpDPOZRJ8U-cm0fhc045t9mlp165fedfn6465l6i8oc-00',
-    'qrator_jsid': '1779823528.099.ePpowhbpDPOZRJ8U-4boa6io9rigmr39f0jtnhk6h3ads0jc8',
-    '__flats_v3_query_params_by_slug': '%7B%7D',
-    '_smt': 'e91f4352-6c98-49f5-a418-d40d7821171d',
-    '_ct_ids': 'htlowve6%3A36409%3A1024530909',
-    '_ct_session_id': '1024530909',
-    '_ct_site_id': '36409',
-    '_ct': '1300000000630721453',
-    '_ct_client_global_id': 'fbe0ef66-3f93-5e30-a689-c3153a19a53a',
-    'vp_width': '1920',
-    'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
-    'suggested_city': '1',
-    'gbuuid': 'bfcf6368-44d8-4c6b-8e58-6ce4c4797275',
-    'gb_cache_variant': '%7B%22exp%3Ahome_page_new_version%22%3A0%7D',
     'mindboxDeviceUUID': 'd6b3597d-4b0b-4e45-8167-0b84971b36f7',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D',
-    'city_was_suggested': '1',
-    'nxt-city': '%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D',
-    'call_s': '___htlowve6.1779825352.1024530909.143945:445562|2___',
-    'user_account_return_url_session': '%2Fflats%2F',
-    'csrftoken': 'EqPDjXAPWJiOnfe15zCXr4PWIBP1HvHMND2JHT5WRJKZXVZkSJp6Tf2Rm3rkvxvY',
+    'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
+    '_ct_ids': 'htlowve6%3A36409%3A1026136980',
+    '_ct_session_id': '1026136980',
+    '_ct_site_id': '36409',
+    '_ct': '1300000000631722815',
+    '_ct_client_global_id': 'fbe0ef66-3f93-5e30-a689-c3153a19a53a',
+    '_ym_uid': '1780225391469853948',
+    '_ym_d': '1780225391',
+    'vp_width': '1920',
+    '_ym_isad': '2',
+    '_ymab_param': 'CKp-usJBKP4YZpq3l2A92OozSS0WXDzAFnqfuZzzV9VBxC02lt7AUH606WM8rOGSy9LwOnFtA1e9OEL2Iz-i0jRpvUU',
+    '_ym_visorc': 'b',
+    'tmr_lvid': 'd2a231e987f9bdb33f7d2a15fbf8150c',
+    'tmr_lvidTS': '1780225390956',
+    'cted': 'modId%3Dhtlowve6%3Bya_client_id%3D1780225391469853948',
+    'domain_sid': '5gyBALT3l_X77i-0R9zyv%3A1780225392065',
+    'Fired15sec': 'true',
+    'pageviewTimerNovaMoscow': '37.086',
+    'pageviewTimerAll': '37.086',
+    'pageviewTimerMSK': '37.086',
+    'pageviewCount': '3',
+    'call_s': '___htlowve6.1780227316.1026136980.185717:571622.383902:1078348|2___',
+    'tmr_detect': '0%7C1780225520153',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'baggage': 'sentry-environment=PROD,sentry-release=release-major-260520,sentry-public_key=6f0fe185684eda71da9741fe58c43591,sentry-trace_id=a7b5176616a14b799dd0fe1984a46687,sentry-transaction=%2Fflats,sentry-sampled=false,sentry-sample_rand=0.37432950028614786,sentry-sample_rate=0.05',
     'cache-control': 'no-cache',
     'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://samolet.ru/flats/',
+    'referer': 'https://nova.moscow/flats/?nameType=sale&free=1&type=100000000&ordering=-order_manual,filter_price_package,pk',
     'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    'sec-ch-viewport-height': '945',
-    'sec-ch-viewport-width': '1098',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'sentry-trace': 'a7b5176616a14b799dd0fe1984a46687-83d451a263f274bf-0',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
-    # 'cookie': '_ymab_param=sz_QgQZpMz-NbtHY7nJb1QX10-JOBmDUPkHcAkuel91YLiWgAq1GDAz4YKiumc8N8fVkJbMS3e6_tuBkRAu2aU-2IAQ; FPID=FPID2.2.YwB9iVECxBVsA7yXUh2MbCpE9qWCeYlH43aT837oQBY%3D.1746026848; qrator_jsr=1779823528.099.ePpowhbpDPOZRJ8U-cm0fhc045t9mlp165fedfn6465l6i8oc-00; qrator_jsid=1779823528.099.ePpowhbpDPOZRJ8U-4boa6io9rigmr39f0jtnhk6h3ads0jc8; __flats_v3_query_params_by_slug=%7B%7D; _smt=e91f4352-6c98-49f5-a418-d40d7821171d; _ct_ids=htlowve6%3A36409%3A1024530909; _ct_session_id=1024530909; _ct_site_id=36409; _ct=1300000000630721453; _ct_client_global_id=fbe0ef66-3f93-5e30-a689-c3153a19a53a; vp_width=1920; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; suggested_city=1; gbuuid=bfcf6368-44d8-4c6b-8e58-6ce4c4797275; gb_cache_variant=%7B%22exp%3Ahome_page_new_version%22%3A0%7D; mindboxDeviceUUID=d6b3597d-4b0b-4e45-8167-0b84971b36f7; directCrm-session=%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D; city_was_suggested=1; nxt-city=%7B%22key%22%3A%22moscow%22%2C%22name%22%3A%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22url_prefix%22%3A%22%22%2C%22contact_number%22%3A%22%2B7%20495%20292-31-31%22%7D; call_s=___htlowve6.1779825352.1024530909.143945:445562|2___; user_account_return_url_session=%2Fflats%2F; csrftoken=EqPDjXAPWJiOnfe15zCXr4PWIBP1HvHMND2JHT5WRJKZXVZkSJp6Tf2Rm3rkvxvY',
+    # 'cookie': 'mindboxDeviceUUID=d6b3597d-4b0b-4e45-8167-0b84971b36f7; directCrm-session=%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct_ids=htlowve6%3A36409%3A1026136980; _ct_session_id=1026136980; _ct_site_id=36409; _ct=1300000000631722815; _ct_client_global_id=fbe0ef66-3f93-5e30-a689-c3153a19a53a; _ym_uid=1780225391469853948; _ym_d=1780225391; vp_width=1920; _ym_isad=2; _ymab_param=CKp-usJBKP4YZpq3l2A92OozSS0WXDzAFnqfuZzzV9VBxC02lt7AUH606WM8rOGSy9LwOnFtA1e9OEL2Iz-i0jRpvUU; _ym_visorc=b; tmr_lvid=d2a231e987f9bdb33f7d2a15fbf8150c; tmr_lvidTS=1780225390956; cted=modId%3Dhtlowve6%3Bya_client_id%3D1780225391469853948; domain_sid=5gyBALT3l_X77i-0R9zyv%3A1780225392065; Fired15sec=true; pageviewTimerNovaMoscow=37.086; pageviewTimerAll=37.086; pageviewTimerMSK=37.086; pageviewCount=3; call_s=___htlowve6.1780227316.1026136980.185717:571622.383902:1078348|2___; tmr_detect=0%7C1780225520153',
 }
 
 params = {
-    "nameType": "sale",
-    "free": 1,
-    "type": 100000000,
-    "ordering": "-order_manual,filter_price_package,pk",
-    "offset": 0,
-    "limit": 12,
-    "page": 1
+    'independent_project': 'true',
+    'nameType': 'sale',
+    'free': '1',
+    'type': '100000000',
+    'ordering': '-order_manual,filter_price_package,pk',
+    'offset': 12,
+    'limit': '12',
+    'page': 1,
+    'project': '68195'
 }
 
 projects = [20,69054,5,57,44,68189,56,41,69057,69011,68192,68188,69106,68199,69206,69208,45,40,68195,69103,21,68196,31,69101,68194,3,69051,55,1,49,69109,68185,7,4,42,69100,69110]
@@ -85,11 +85,10 @@ flats = []
 
 while True:
 
-    url = 'https://samolet.ru/backend/api_redesign/flats/'
-    response = session.get(
-        url=url,
-        headers=headers,
+    response = requests.get(
+        'https://nova.moscow/api/server/backend/api_redesign/flats/',
         cookies=cookies,
+        headers=headers,
         params=params
     )
 

@@ -116,7 +116,7 @@ while True:
         stadia = ''
         dogovor = ''
         if i['type'] == 'flat':
-            type = 'Квартира'
+            type = 'Квартиры'
         else:
             type = i['type']
         if i['finishing_type'] == "pre_fine":

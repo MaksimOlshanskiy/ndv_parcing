@@ -8,7 +8,7 @@ from datetime import datetime
 '''
 
 # читаем файл
-df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База изменяемые данные.xlsx")
+df = pd.read_excel(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\База изм хар май.xlsx")
 
 
 

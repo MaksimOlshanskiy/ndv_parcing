@@ -6,23 +6,25 @@ from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_far
 
 '''
-в params меняем access_token по ссылке https://xn----ctbblbzciwbb4ap4b9g.xn--p1ai/#/profitbase/projects/houses?filter=property.status:AVAILABLE
+ меняем headers по ссылке https://xn----ctbblbzciwbb4ap4b9g.xn--p1ai/#/profitbase/projects/houses?filter=property.status:AVAILABLE
 '''
 
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6ImUzYzEwMDQxOWRiZTRhY2RmODdiY2FhZWFiOTcwZmY1ZGUxNGI5OGFmYjg0Yzc1MjJhYmY5M2I1ZmY1OWEyZTdkOTAxZTE3NmE0OWM1MGU2IiwiaWF0IjoxNzc3MDIyNjEzLjgwNzU4MywibmJmIjoxNzc3MDIyNjEzLjgwNzU4OCwiZXhwIjoxNzc3MDI2MjEzLjc5ODMzLCJzdWIiOiJTSVRFX1dJREdFVHwyNDU2Iiwic2NvcGVzIjpbIlNJVEVfV0lER0VUIl0sInR5cGUiOiJzaXRlV2lkZ2V0IiwiZW50aXRsZW1lbnRzIjoiIiwiYWNjb3VudCI6eyJpZCI6MzAwMiwidGl0bGUiOiLQotC10YXQvdC-0KHRgtGA0L7QudCe0LvQuNC80L8iLCJzdWJkb21haW4iOiJwYjMwMDIiLCJiaWxsaW5nT3duZXJJZCI6MzAwOSwiY291bnRyeUNvZGUiOiJSVSJ9LCJyb2xlcyI6WyJST0xFX1NJVEVfV0lER0VUIl0sInNpdGVXaWRnZXQiOnsiaWQiOjI0NTYsImRvbWFpbiI6Imh0dHBzOi8veG4tLS0tY3RiYmxiemNpd2JiNGFwNGI5Zy54bi0tcDFhaSJ9fQ.UHiGTuph5JXDEuIKrKTgxvplp_jyxwFSK87nrzqYzOK87uO7CuBllGPc1X7YD7GoCfWVr4iFSHO2yVp7HqDLbmkrZyjEpHtyFFJjLuXLUE-PWIUT8eYnOBgJnZubTZ3wIA2mhFasy0jBvt1DkNbXbQKKUgapWqGGhUTxjVqMctCMJBdt7WmkeFud33mKdmxogMy-IdLbVV08D0ueeClnkjERqnnNWhdNbP13S8eGx87cewmcCxefJQGqWk7a_xNEWk3H7J_Zk23Q7B-guxLcPAlb3YoFraqFhQEYeXgBXqA5ztyIbejKDJNJ_oGtDjMuhW7AlfejTznMfzsffvvT0Q',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6IjJmZjZlZDI1ZDlmMDk0ZDI1NzU0MDhhNzUxNDExNjNkNjUwYzc4N2FhYzM2ZmI4N2RjNjMyZDUyMTlkN2ZkOTcwZDkwYzIyYTUyMWI1MjRiIiwiaWF0IjoxNzc5ODk3MTk4LjE4MzA1NCwibmJmIjoxNzc5ODk3MTk4LjE4MzA1NywiZXhwIjoxNzc5OTAwNzk4LjE3NTA5OCwic3ViIjoiU0lURV9XSURHRVR8MjQ1NiIsInNjb3BlcyI6WyJTSVRFX1dJREdFVCJdLCJ0eXBlIjoic2l0ZVdpZGdldCIsImVudGl0bGVtZW50cyI6IiIsImFjY291bnQiOnsiaWQiOjMwMDIsInRpdGxlIjoi0KLQtdGF0L3QvtCh0YLRgNC-0LnQntC70LjQvNC_Iiwic3ViZG9tYWluIjoicGIzMDAyIiwiYmlsbGluZ093bmVySWQiOjMwMDksImNvdW50cnlDb2RlIjoiUlUifSwicm9sZXMiOlsiUk9MRV9TSVRFX1dJREdFVCJdLCJzaXRlV2lkZ2V0Ijp7ImlkIjoyNDU2LCJkb21haW4iOiJodHRwczovL3huLS0tLWN0YmJsYnpjaXdiYjRhcDRiOWcueG4tLXAxYWkifX0.lKEwnQGf-9n0LBeRbsVsndwSheB-f_fd0aXyyD_ygLNbcDa2gtCLG4BuaEa1kCryx2yfvVFUn0F95F75kq6Lf_NXIIq4l1JccR5LwIYlyCRN35tmxVt_tEFXaHMHAfPbW1xWe8HRuzRhNemWGjJqedQOS0vuUJUowO3rr3KKNVtV7K9Suozzgz9RXWYqB3FbZLQSPqyPdbM9--0pVJS3Z1Ej1id4E89urWbuzSk-peJwXmoGeFP-qh9XN_hag6ph8a-bezD4O6R9u0_NAyPjCbrtlCgilNo6-E7v0Hx30op8KR5Jhe0s-wHULW4uYLMJwyUtgDghfAJ5z0KSwKlyTA',
+    'cache-control': 'no-cache',
     'origin': 'https://smart-catalog.profitbase.ru',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Google Chrome";v="147", "Not.A/Brand";v="8", "Chromium";v="147"',
+    'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
 }
 
 params = {
@@ -33,6 +35,7 @@ params = {
     'full': 'true',
     'showQueueCount': 'true',
     'returnFilteredCount': 'true',
+
 }
 
 

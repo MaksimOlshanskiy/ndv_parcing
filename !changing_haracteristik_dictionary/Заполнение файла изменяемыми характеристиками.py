@@ -2,10 +2,10 @@ import pandas as pd
 import json
 
 # Загружаем Excel
-df = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\1_FILES\2026-04-07\ПИК_Холланд парк_2026-04-07.xlsx")
+df = pd.read_excel(r"C:\Users\Mi\OneDrive\Desktop\База апрель\База Апрель.xlsx")
 
 # Загружаем JSON
-with open("projects_old.json", "r", encoding="utf-8") as f:
+with open(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 # Добавляем колонки, если их нет
@@ -72,7 +72,7 @@ df["Жилая площадь, м²"] = (
 )
 
 # сохраняем результат
-df.to_excel(r"C:\Users\m.olshanskiy\Desktop\10-11.2025_рынок_new.xlsx", index=False)
+df.to_excel(r"C:\Users\Mi\OneDrive\Desktop\База апрель\База Апрель.xlsx", index=False)
 
 # выводим логи
 print("=== 🔥 ЛОГИ 🔥 ===")

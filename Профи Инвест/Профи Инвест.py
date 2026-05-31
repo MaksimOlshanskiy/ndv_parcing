@@ -14,33 +14,34 @@ from functions import merge_and_clean, save_flats_to_excel
 '''
 
 cookies = {
-    'PHPSESSID': 'e27f2cc6bec9301a7ce623455c482aaa',
-    '_ym_uid': '174402831689653693',
-    '_ym_d': '1744028316',
+    'PHPSESSID': '3f5e635dbc16ed362a1e5a9cae468d87',
+    '_ym_uid': '178023310590365099',
+    '_ym_d': '1780233105',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
-    '_ga': 'GA1.1.1236471003.1744028316',
-    '_cmg_csst9xkMh': '1744028317',
-    '_comagic_id9xkMh': '9267533637.13214484387.1744028316',
-    '_ga_07RX8YLWVE': 'GS1.1.1744028316.1.1.1744028339.0.0.0',
+    '_cmg_csst9xkMh': '1780233105',
+    '_comagic_id9xkMh': '10757621997.14915478592.1780233104',
+    '_ymab_param': 'x9Bm9LE6kCq0Nz-KBZ_m3XEJKzNc-66mUHOUabCaK2Asw7hE-7YOjTvnFgJP8_x8EG-BpZOgyjC2ioRpYPzh73FrcU4',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
     'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
     'origin': 'https://xn----dtbjjb4adhjrlq.xn--p1ai',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/property/object-43886',
-    'sec-ch-ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
+    'referer': 'https://xn----dtbjjb4adhjrlq.xn--p1ai/properties/property',
+    'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
     'x-requested-with': 'XMLHttpRequest',
-    # 'cookie': 'PHPSESSID=e27f2cc6bec9301a7ce623455c482aaa; _ym_uid=174402831689653693; _ym_d=1744028316; _ym_isad=2; _ym_visorc=w; _ga=GA1.1.1236471003.1744028316; _cmg_csst9xkMh=1744028317; _comagic_id9xkMh=9267533637.13214484387.1744028316; _ga_07RX8YLWVE=GS1.1.1744028316.1.1.1744028339.0.0.0',
+    # 'cookie': 'PHPSESSID=3f5e635dbc16ed362a1e5a9cae468d87; _ym_uid=178023310590365099; _ym_d=1780233105; _ym_isad=2; _ym_visorc=w; _cmg_csst9xkMh=1780233105; _comagic_id9xkMh=10757621997.14915478592.1780233104; _ymab_param=x9Bm9LE6kCq0Nz-KBZ_m3XEJKzNc-66mUHOUabCaK2Asw7hE-7YOjTvnFgJP8_x8EG-BpZOgyjC2ioRpYPzh73FrcU4',
 }
 
 data = {
@@ -49,7 +50,6 @@ data = {
     'sort': 'price_az',
     'facing': '0',
     'no_booked': '0',
-    'stage': '0',
     'object': 'all',
     'house': 'all',
     'ready': 'all',
@@ -63,8 +63,8 @@ data = {
     'page': '1',
 }
 
-finishing_list = ['0', '1', '2', '3', '5']
-finishing_dict = {'0' : 'Без отделки', '1' : 'Предчистовая', '2': 'Предчистовая', '3': 'Предчистовая', '4' : 'Без отделки', '5': 'С отделкой'}
+finishing_list = ['1', '2', '3', '4', '6', '0']
+finishing_dict = {'0' : 'Без отделки', '1' : 'С отделкой', '2': 'Предчистовая', '3': 'Предчистовая', '4' : 'Предчистовая', '5': 'Без отделки', '6': 'С отделкой'}
 
 flats = []
 date = datetime.now().date()

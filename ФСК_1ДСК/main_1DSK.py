@@ -27,7 +27,7 @@ for key, data in info.items():
 
         if type == 'Студия':
             room_count = 'Студия'
-            type = 'Квартира'
+            type = 'Квартиры'
         else:
             room_count = int(i["crmRoomsQty"])
 

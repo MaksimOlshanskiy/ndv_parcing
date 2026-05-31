@@ -84,7 +84,7 @@ while url:
             if type in 'ст':
                 room_count='Студия'
 
-            type='Квартира'
+            type='Квартиры'
             finish_type="Без отделки"
             area = float(i["area"])
             price_per_metr = ''

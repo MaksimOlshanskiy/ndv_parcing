@@ -1,6 +1,6 @@
 import json
 
-with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
+with open(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 unique_ids = list({

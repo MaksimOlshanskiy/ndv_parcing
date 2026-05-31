@@ -23,7 +23,8 @@ warnings.filterwarnings(
 # readonly_user:1234
 try:
     # пытаемся подключиться к базе данных
-    conn = psycopg2.connect('postgresql://postgres:ndv212XO@localhost:5432/postgres')
+    conn = psycopg2.connect('postgresql://postgres:PassToPostgres$@192.168.252.134:5432/postgres')
+    # conn = psycopg2.connect('postgresql://postgres:ndv212XO@localhost:5432/postgres')
     print('Подключились к базе данных')
 except:
     # в случае сбоя подключения будет выведено сообщение в STDOUT

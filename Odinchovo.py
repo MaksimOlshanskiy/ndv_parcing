@@ -66,7 +66,7 @@ while True:
                     project = 'Одинцово Сити'
                     developer = "Атлантис Скай"
                     korpus = prop['building_number'].replace('Корпус ', '')
-                    type_ = 'Квартира'
+                    type_ = 'Квартиры'
                     finish_type = 'Без отделки'
                     room_count = prop['rooms']
 

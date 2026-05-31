@@ -2,13 +2,15 @@ import json
 import pandas as pd
 from Developer_dict import name_dict, developer_dict
 
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\122025_Проекты_описание_renamed.xlsx")
+df = pd.read_excel(r"C:\Users\Mi\OneDrive\Desktop\База апрель\Выгрузка04-2025-renamed.xlsx")
+
+
 
 # df["Название проекта"] = df["Название проекта"].replace(name_dict)
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 
 # Загружаем JSON с характеристиками проектов
-with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json", "r",
+with open(r"C:\PycharmProjects\ndv_parcing\!haracteristik_dictionary\projects.json", "r",
           encoding="utf-8") as f:
     projects_dict = json.load(f)
 
@@ -29,4 +31,4 @@ for idx, row in df.iterrows():
 
 df.drop(columns=["project_key"], inplace=True)
 
-df.to_excel(r"C:\Users\m.olshanskiy\Desktop\122025_Проекты_описание_renamed2.xlsx", index=False)
+df.to_excel(r"C:\Users\Mi\OneDrive\Desktop\База апрель\Выгрузка04-2025-renamed2.xlsx", index=False)

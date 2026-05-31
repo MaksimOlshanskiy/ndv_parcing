@@ -137,13 +137,12 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'only_flat': {
-            'type': 'term',
-            'value': True,
-        },
-        'flat_share': {
-            'type': 'term',
-            'value': 2,
+
+'house_year': {
+            'type': 'range',
+            'value': {
+                'lte': 1945,
+            },
         },
     },
     '_liquiditySource': 'web_serp',
@@ -221,7 +220,7 @@ print(city_in_work)
 
 json_data["jsonQuery"]["repair"]["value"] = [1]
 
-if items_count <=  1500:
+if items_count <= 2000:
 
     rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
     total_floor_list = [[1, 100]]
@@ -451,12 +450,14 @@ for rooms in rooms_ids:
                     except:
                         distance = ''
 
+                    year_of_build = i['building']['buildYear']
+
                     print(
                         f"{url}, дата: {date}, кол-во комнат: {room_count}, площадь: {area}, цена: {price}, срок сдачи: {srok_sdachi}, корпус: {korpus}, этаж: {floor}, {finish_type} ")
                     result = [project, developer, location, location2, okrug, raion, mikroraion, metro, street, house,
                               korpus, distance, srok_sdachi, type,
                               finish_type, room_count, area, kitchenArea, livingArea, price, floor,
-                              balconies_and_loggias_count, parking, url]
+                              balconies_and_loggias_count, parking, year_of_build, url]
                     flats.append(result)
 
                 if not items:
@@ -494,6 +495,7 @@ for rooms in rooms_ids:
                                                         'Этаж',
                                                         'Балконы/лоджии',
                                                         'Паркинг',
+                                                        'Год постройки',
                                                         'Ссылка'
                                                         ])
 

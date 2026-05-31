@@ -43,7 +43,7 @@ try:
                 project = 'Бестселлер'
                 developer = "BAZA Development"
                 korpus = prop.get("houseName", "").replace('Корпус №', '')
-                type_ = 'Квартира'
+                type_ = 'Квартиры'
                 room_count = prop.get("rooms_amount")
                 area = prop.get("area", {}).get("area_total")
                 price_data = prop.get("price", {})

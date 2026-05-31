@@ -55,6 +55,12 @@ while True:
         for i in items:
             if i['id'] == 0:
                 continue
+            try:
+                if i['is_promo']:
+                    continue
+            except:
+                pass
+
             date = datetime.date.today()
             project = 'Аристов Берег'
             status = ''

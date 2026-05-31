@@ -142,7 +142,7 @@ cities_dict = {
     'Владивосток' : 4701
 }
 
-cities_list = [4908]
+cities_list = [2, 4897, 4743, 4777, 4827, 4885, 5048, 4820, 4959, 4914]
 
 for city_id in cities_list:
 
@@ -378,10 +378,11 @@ for city_id in cities_list:
                                 cookies=cookies,
                                 headers=headers,
                                 json=json_data,
+                                proxies=proxies
                             )
 
                             print(response.status_code)
-                            print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
+                            # print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
 
 
 

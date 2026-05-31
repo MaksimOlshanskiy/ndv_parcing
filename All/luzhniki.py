@@ -97,7 +97,7 @@ while url:
                 finish_type = 'Предчистовая'
 
             room_count = i["bedrooms_count"]
-            type = 'Квартира'
+            type = 'Квартиры'
             area = float(i["area"])
             price_per_metr = ''
             try:

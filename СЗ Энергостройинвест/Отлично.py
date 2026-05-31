@@ -5,8 +5,8 @@ import requests
 from Profitbase_token import get_token
 
 
-tenant_id = 20298
-referer = 'https://bruno-vemz.ru'
+tenant_id = 19687
+referer = 'https://otlichnodom.ru'
 headers_token = get_token(tenant_id, referer)
 
 print(headers_token)
@@ -14,8 +14,9 @@ print(headers_token)
 headers = headers_token
 
 params = {
+    'propertyTypeAliases[0]': 'property',
     'status[0]': 'AVAILABLE',
-    'houseId': '131663',
+    'houseId': '120542',
     'limit': '10',
     'offset': '0',
     'full': 'true',
@@ -33,7 +34,7 @@ try:
         params_with_offset = params.copy()
         params_with_offset['offset'] = offset
 
-        response = requests.get('https://pb20298.profitbase.ru/api/v4/json/property',
+        response = requests.get('https://pb19687.profitbase.ru/api/v4/json/property',
                                 params=params_with_offset,
                                 headers=headers)
 
@@ -53,10 +54,10 @@ try:
                         continue
                     count += 1
                     date = datetime.date.today()
-                    project = 'Бруно'
-                    developer = "ВЭМЗ-Эстейт"
-                    korpus = '1'
-                    type_ = 'Квартиры'
+                    project = 'Отлично'
+                    developer = "СЗ ЭНЕРГОСТРОЙИНВЕСТ"
+                    korpus = prop.get("houseName", "").replace('Корпус ', '').replace('Луговая ','')
+                    type_ = 'Квартира'
                     finish_type = 'Без отделки'
                     room_count = prop.get("rooms_amount")
                     area = prop.get("area", {}).get("area_total")
@@ -72,7 +73,7 @@ try:
                         date, project, '', '', '', '', '', '', '', '', '', '', '', '',
                         '', '', '', developer, '', '', '', '', korpus, '', '', '', '',
                         '', '', type_, finish_type, room_count, area, '', old_price, '',
-                        '', '', section, floor, ''
+                        '', '', int(section), floor, ''
                     ]
                     flats.append(result)
 

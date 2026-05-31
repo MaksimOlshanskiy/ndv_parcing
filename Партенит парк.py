@@ -57,7 +57,7 @@ for buildings_id in buildings_ids:
                         project = 'Партенит Парк'
                         developer = "Севастопольстрой"
                         korpus = prop.get("houseName", "").replace('Дом ', '').replace(' - квартиры', '')
-                        type_ = 'Квартира'
+                        type_ = 'Квартиры'
                         finish_type = 'Без отделки'
                         room_count = prop.get("rooms_amount")
 
