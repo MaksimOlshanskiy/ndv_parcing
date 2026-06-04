@@ -21,13 +21,68 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\Cian\coordinates.json", "r", encoding="utf-8") as f:
+
+cookies = {
+    '_ym_uid': '1765012936500443323',
+    '_ym_d': '1765012936',
+    'adtech_uid': 'c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru',
+    'ns_session': '6b7f0e11-9d39-4d9f-bde9-e0ea2b194184',
+    'RETENTION_COOKIES_NAME': 'c4194f168c4b486394b9e0e579a6ad7c:rcdfFDfvr7s0pTQeRgykGrLqh8M',
+    'sessionId': '47f88fa2f01a440f9154dfe2c16bc0ef:kumwnApx1cyy1eyhaY2VD01hj_U',
+    'UNIQ_SESSION_ID': '8aebb9c1984c4fdbad9edaf6dc22d362:WPANcUW3wmpwW1wxsCc8-9CCjGk',
+    'logoSuffix': '',
+    'iosAppLink': '',
+    '_sv': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688',
+    'top100_id': 't1.7711713.1020003933.1779904305209',
+    'tmr_lvid': '6509c7cbd63e89eea195eb14c34fbb17',
+    'tmr_lvidTS': '1773855203088',
+    'showDddIntro': 'false',
+    'dddIntroOnline': 'false',
+    'regionAlert': '1',
+    'max-chat-settings-show': '%7B%22countOfEntry%22%3A4%2C%22lastStatus%22%3A%22NOT_CREATED%22%7D',
+    '_ym_isad': '2',
+    'cookieAlert': '1',
+    'canary-bind-id-14320': 'next-2',
+    'currentRegionGuid': '321b0daa-da95-4ce5-81b3-a7ab62d89d19',
+    'currentLocalityGuid': '6369cbfc-1f06-4574-adba-82f4dc42c0f7',
+    'regionName': '6369cbfc-1f06-4574-adba-82f4dc42c0f7:%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0',
+    '_visitId': '272ca817-2835-4c7a-98b1-200325b90f07-6315121d1b510ace',
+    'qrator_ssid2': 'v2.0.1780505330.747.5fa9bf1fTzzOGZv1|2Kl3rNsoNcwYfEVW|nZ4PD/GA4Nh4HkZsevPeC3EcVCqcZmAJLszRUQ96WystVJ7uZNIdwkAH+sJcRwSE46Cuy1ow71qizCQCSjPrd3h3LadpNY5V2/oC1SxLRLD3fTD0Wo0AIjh92uxdICeNcVaTO7ppcZA07KUnX58TtSwcv7bDA+rQALaLVMJkqNA=-dV7kJe7XDCNbwyIFH+IyIr2xIwg=',
+    'qrator_jsid2': 'v2.0.1780505330.747.5fa9bf1fTzzOGZv1|tvNDw8edYsDLns7Z|V2NMDJD6Zubb+9xvZpnwYFj/dYU6DOBTJFSZSJIazh5DyrksUmDKi2JShNrgWPoHxCfhdCIXba9MNhCx00mweAO9UeECVSfvPwNp74/gDdFyHypiU1zBn+b1ob6YmG//vqF5Qld1lvZaao3PtE4JFomxl8KC9ffFyQrfgDGEZBM=-gKZ/0TveDwB5rr7eXlGyxFfZ6ME=',
+    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%22321b0daa-da95-4ce5-81b3-a7ab62d89d19%22%2C%22localityGuid%22:%226369cbfc-1f06-4574-adba-82f4dc42c0f7%22%2C%22subdomain%22:%22%22}%2C%22isAutoResolved%22:true}',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982',
+    '_sas': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982',
+    't3_sid_7711713': 's1.160642329.1780471411515.1780516987585.7.58.6.1..',
+    't3_sid_7731951': 's1.21260308.1780471411528.1780516987761.6.194.6.1..',
+    'tmr_reqNum': '213',
+}
+
+headers = {
+    'Accept': 'application/json, text/plain, */*',
+    'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'Origin': 'https://samara.domclick.ru',
+    'Pragma': 'no-cache',
+    'Referer': 'https://samara.domclick.ru/',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-site',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    # 'Cookie': '_ym_uid=1765012936500443323; _ym_d=1765012936; adtech_uid=c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru; ns_session=6b7f0e11-9d39-4d9f-bde9-e0ea2b194184; RETENTION_COOKIES_NAME=c4194f168c4b486394b9e0e579a6ad7c:rcdfFDfvr7s0pTQeRgykGrLqh8M; sessionId=47f88fa2f01a440f9154dfe2c16bc0ef:kumwnApx1cyy1eyhaY2VD01hj_U; UNIQ_SESSION_ID=8aebb9c1984c4fdbad9edaf6dc22d362:WPANcUW3wmpwW1wxsCc8-9CCjGk; logoSuffix=; iosAppLink=; _sv=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688; top100_id=t1.7711713.1020003933.1779904305209; tmr_lvid=6509c7cbd63e89eea195eb14c34fbb17; tmr_lvidTS=1773855203088; showDddIntro=false; dddIntroOnline=false; regionAlert=1; max-chat-settings-show=%7B%22countOfEntry%22%3A4%2C%22lastStatus%22%3A%22NOT_CREATED%22%7D; _ym_isad=2; cookieAlert=1; canary-bind-id-14320=next-2; currentRegionGuid=321b0daa-da95-4ce5-81b3-a7ab62d89d19; currentLocalityGuid=6369cbfc-1f06-4574-adba-82f4dc42c0f7; regionName=6369cbfc-1f06-4574-adba-82f4dc42c0f7:%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0; _visitId=272ca817-2835-4c7a-98b1-200325b90f07-6315121d1b510ace; qrator_ssid2=v2.0.1780505330.747.5fa9bf1fTzzOGZv1|2Kl3rNsoNcwYfEVW|nZ4PD/GA4Nh4HkZsevPeC3EcVCqcZmAJLszRUQ96WystVJ7uZNIdwkAH+sJcRwSE46Cuy1ow71qizCQCSjPrd3h3LadpNY5V2/oC1SxLRLD3fTD0Wo0AIjh92uxdICeNcVaTO7ppcZA07KUnX58TtSwcv7bDA+rQALaLVMJkqNA=-dV7kJe7XDCNbwyIFH+IyIr2xIwg=; qrator_jsid2=v2.0.1780505330.747.5fa9bf1fTzzOGZv1|tvNDw8edYsDLns7Z|V2NMDJD6Zubb+9xvZpnwYFj/dYU6DOBTJFSZSJIazh5DyrksUmDKi2JShNrgWPoHxCfhdCIXba9MNhCx00mweAO9UeECVSfvPwNp74/gDdFyHypiU1zBn+b1ob6YmG//vqF5Qld1lvZaao3PtE4JFomxl8KC9ffFyQrfgDGEZBM=-gKZ/0TveDwB5rr7eXlGyxFfZ6ME=; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%22321b0daa-da95-4ce5-81b3-a7ab62d89d19%22%2C%22localityGuid%22:%226369cbfc-1f06-4574-adba-82f4dc42c0f7%22%2C%22subdomain%22:%22%22}%2C%22isAutoResolved%22:true}; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982; _sas=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982; t3_sid_7711713=s1.160642329.1780471411515.1780516987585.7.58.6.1..; t3_sid_7731951=s1.21260308.1780471411528.1780516987761.6.194.6.1..; tmr_reqNum=213',
+}
+
+
+with open(r"C:\PycharmProjects\ndv_parcing\Cian\coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
 developer = ''
 project = ''
 area = ''
-region = 'Владикавказ'
+region = 'Самара'
 
 coords = city_centers.get(region)
 
@@ -36,12 +91,14 @@ options.add_argument('--disable-blink-features=AutomationControlled')
 options.add_argument("--start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
+options.page_load_strategy = "eager"
 
 driver = webdriver.Chrome(options=options)
 
 
 
-ids = [120568]
+ids =  [123711, 124413, 124740, 125388, 125444, 121779, 125706]
+
 
 
 
@@ -87,7 +144,10 @@ for complex_id in ids:
         for i in items:
             url = ""
             date = datetime.date.today()
-            project = i['complex']['name'].replace('"', '').replace('ЖК ', '')
+            try:
+                project = i['complex']['name'].replace('"', '').replace('ЖК ', '')
+            except:
+                continue
             english = ''
             promzona = ''
             mestopolozhenie = ''
@@ -158,6 +218,11 @@ for complex_id in ids:
                 geo4 = i['address']['displayName'].split(',')[4].strip()
             except:
                 geo4 = ''
+            project_class = ''
+            location = 'Республика Башкортостан'
+            house = ''
+            metro = ''
+            okrug = ''
 
             kitchenArea = ''
             livingArea = ''
@@ -237,8 +302,9 @@ for complex_id in ids:
                         print(
                             f"Вложенные лоты || {project2}, комнаты: {room_count}, площадь: {area2}, цена: {price2}, этаж: {floor2}, отделка: {finish_type2}")
 
-                        result2 = [project, developer, geo1, geo2, geo3, geo4, korpus, distance, srok_sdachi, type,
-                                   finish_type2, room_count, area, '', '', price2, floor2, '', '', url2]
+                        result2 = [project, developer, project_class, location, geo1, okrug, geo2, geo3, metro, geo4,
+                                  house, korpus, distance, srok_sdachi, type, finish_type2, room_count, area, '', '', price2, floor2, '', '', url2]
+
                         flats.append(result2)
 
                     try:
@@ -296,10 +362,15 @@ for complex_id in ids:
                 url = url2
             except:
                 url = ''
+            project_class = ''
+            location = 'Республика Башкортостан'
+            house = ''
+            metro = ''
+            okrug = ''
 
             print(
                 f"{project}, дата: {date}, комнаты: {room_count}, площадь: {area}, цена: {price}, этаж: {floor}, отделка: {finish_type}")
-            result = [project, developer, geo1, geo2, geo3, geo4, korpus, distance, srok_sdachi, type,
+            result = [project, developer, project_class, location, geo1, okrug, geo2, geo3, metro, geo4, house, korpus, distance, srok_sdachi, type,
                       finish_type, room_count, area, '', '', price, floor, '', '', url]
             flats.append(result)
 
@@ -310,10 +381,15 @@ for complex_id in ids:
         # Сохраняем результаты в Excel
     df = pd.DataFrame(flats, columns=['Название проекта',
                                       'Девелопер',
-                                      'Гео1',
-                                      'Гео2',
-                                      'Гео3',
-                                      'Гео4',
+                                      'Класс',
+                                      'Локация',
+                                      'Локация2',
+                                      'Округ',
+                                      'Район',
+                                      'Микрорайон',
+                                      'Метро',
+                                      'Улица',
+                                      'Дом',
                                       'Корпус',
                                       'Расстояние до центра, км',
                                       'Срок сдачи',

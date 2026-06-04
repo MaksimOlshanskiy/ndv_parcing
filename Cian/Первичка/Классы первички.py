@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Загружаем файлы
-df1 = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Для переноса\Города млн\Май 2026\Млн Первичка Май 2026.xlsx")
-df2 = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Города-миллионники_классы.xlsx")
+df1 = pd.read_excel(r"D:\НДВ\Города млн\Июнь 2026\Первичка\Первичка июнь.xlsx")
+df2 = pd.read_excel(r"D:\НДВ\Города млн\Июнь 2026\Первичка\032026_Города-миллионники_классы.xlsx")
 
 for df in [df1, df2]:
     df['Название проекта'] = (
@@ -41,4 +41,4 @@ result = pd.concat([
 ]).reset_index(drop=True)
 
 # сохраняем
-result.to_excel('result.xlsx', index=False)
+result.to_excel("D:\НДВ\Города млн\Июнь 2026\Первичка\Первичка июнь_с классами.xlsx", index=False)

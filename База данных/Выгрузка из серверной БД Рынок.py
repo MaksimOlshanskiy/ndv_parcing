@@ -5,8 +5,8 @@ import time
 import warnings
 from Developer_dict import name_dict, developer_dict
 
-year = 2026
-month = 4
+year = 2025
+month = 5
 project = None
 
 warnings.filterwarnings(
@@ -31,7 +31,6 @@ sql_query = f"""
 select *
 from ndv_data
 where extract(year from date) = {year}
-and extract(month from date) = {month} 
 
                     """
 
@@ -92,4 +91,4 @@ print(df.info())
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 # df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
 
-df.to_excel("Выгрузка0426.xlsx", index=False)
+df.to_excel("Выгрузка0425.xlsx", index=False)

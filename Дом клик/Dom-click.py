@@ -125,7 +125,10 @@ while True:
 
         url = ""
         date = datetime.date.today()
-        project = i['complex']['name']
+        try:
+            project = i['complex']['name']
+        except:
+            continue
         english = ''
         promzona = ''
         mestopolozhenie = ''

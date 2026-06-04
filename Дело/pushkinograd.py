@@ -112,11 +112,10 @@ while True:
         stadia = ''
         dogovor = ''
         type = 'Квартира'
-        if i['finishing_type'] == "white_box":
-            finish_type = 'Предчистовая'
-        else:
-            finish_type = 'Без отделки'
-
+        try:
+            finish_type = i['finishing_type'].replace('fine', 'С отделкой').replace('white_box', 'Предчистовая').replace('no', 'Без отделки')
+        except:
+            finish_type = ''
         room_count = i['rooms']
 
         area = float(i['total_area'])

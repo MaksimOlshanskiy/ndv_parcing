@@ -39,7 +39,7 @@ headers = {
 data = {
     'projectId': '0',
     'offset': '0',
-    'filters': 'type=1&multi=1&projects%5B0%5D=11&smin=20&smax=103&pmin=3+202+800&pmax=14+336+000',
+    'filters': 'type=1&multi=1&projects%5B%5D=11&smin=27&smax=75&pmin=4%20219%20600&pmax=11%20294%20440',
 }
 
 

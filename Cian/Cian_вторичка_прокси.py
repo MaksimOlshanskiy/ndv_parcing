@@ -179,7 +179,7 @@ cities_dict = {
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
-cities_list = [5048]
+cities_list = [4743, 4897]
 
 for city_id in cities_list:
 
@@ -209,7 +209,7 @@ for city_id in cities_list:
                         )
 
 
-    print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
+
     print(f"Код от сервера cian: {response.status_code}")
 
 
@@ -273,7 +273,7 @@ for city_id in cities_list:
                 while len(flats) < total_count:
 
                     if counter > 1:
-                        sleep_time = random.uniform(2, 3)
+                        sleep_time = random.uniform(0, 2)
                         time.sleep(sleep_time)
                     for attempt in range(3):
                         try:
@@ -297,7 +297,7 @@ for city_id in cities_list:
                     else:
                         print("Все попытки не удались")
 
-                        print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
+
                         print(f"Код от сервера cian: {response.status_code}")
 
                         print(response.status_code)
