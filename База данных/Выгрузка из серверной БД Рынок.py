@@ -30,7 +30,9 @@ except:
 sql_query = f"""
 select *
 from ndv_data
-where extract(year from date) = {year}
+where extract(year from date) = 2025 
+and extract(month from date) = 5
+and project_name = 'Новая Ивантеевка'
 
                     """
 

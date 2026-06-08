@@ -8,7 +8,7 @@ from datetime import datetime
 '''
 
 # читаем файл
-df = pd.read_excel(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\База изм хар май.xlsx")
+df = pd.read_excel(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\База изм хар июнь.xlsx")
 
 
 
