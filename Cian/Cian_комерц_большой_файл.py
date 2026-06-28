@@ -10,92 +10,83 @@ import json
 type_of_lot = 'Коммерция, продажа'
 
 # noinspection PyDictDuplicateKeys
+import requests
+
 cookies = {
-    '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
-    'cf_clearance': 'iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk',
-    '_ym_uid': '174161324651361127',
-    'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
-    'adrdel': '1744094487237',
-    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D',
-    'newbuilding-search-frontend.consultant_cian_chat_onboarding_shown': '1',
+    '_ym_uid': '1740731467185025844',
+    '_gcl_au': '1.1.221627179.1775114569',
     'cookie_agreement_accepted': '1',
-    'tmr_lvid': '61ae9374a9f1699406db7cc31ef00775',
-    'tmr_lvidTS': '1741613242260',
-    '_ga': 'GA1.1.460280003.1749468781',
+    'tmr_lvid': '5d429d59ad05d69a68419a6b714c0955',
+    'tmr_lvidTS': '1775114589434',
+    '_ga': 'GA1.1.1494365673.1775114597',
     'uxfb_usertype': 'searcher',
-    'uxs_uid': '1ed08180-4604-11f0-94f5-19dbce91137e',
-    'seen_cpd_landing': '1',
+    '_CIAN_GK': '9dad5c1d-1f84-4ff8-afb9-1be8d68b7c80',
+    '_ym_d': '1776705880',
     'cian_ruid': '8098251',
-    'map_preview_onboarding_counter': '3',
+    'uxs_uid': 'd6ea8010-470f-11f1-a167-7960045d3975',
+    'nbrdng_fv': '1777837191618',
+    'newbuilding-card-desktop-fichering-frontend.builder_chat_onboarding_shown': '1',
+    'newbuilding-search-frontend.chatTooltipAnimationShown': '1',
+    'newbuilding-search-frontend.chatAnimationShownCount': '3',
+    'newbuilding-card-desktop-frontend.consultant_cian_chat_onboarding_shown': '1',
+    'newbuilding-card-desktop-fichering-frontend.consultant_cian_chat_onboarding_shown': '1',
     'frontend-serp.offer_chat_onboarding_shown': '1',
-    'frontend-offer-card.newbuilding_broker_onboarding_shown': '1',
-    'rrpvid': '771260525504896',
-    'rcuid': '67e27578d41e2c9a8a114add',
-    'frontend-offer-card.builder_chat_onboarding_shown': '1',
+    'WBRMVisitLast_utm': '',
+    'WBRMVisitLast_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'WBRMVisitFirst_utm': '',
+    'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
+    'frontend-serp.chatTooltipAnimationShown': '1',
+    'frontend-serp.chatAnimationShownCount': '3',
+    'frontend-serp.chatAnimationCounter': '5',
+    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26decorations_list%255B0%255D%3Dfine%26decorations_list%255B1%255D%3DfineWithFurniture%26decorations_list%255B2%255D%3DpreFine%26decorations_list%255B3%255D%3Dwithout%26engine_version%3D2%26from_developer%3D1%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D4927%26totime%3D2592000',
+    'map_preview_onboarding_counter': '3',
     'transport-accessibility_onboarding_counter': '3',
-    'ma_id': '6225667261741613246584',
-    '__upin': 'jzXjhLRLkqO1JTeopJQqkQ',
-    '_ym_d': '1757401308',
-    '__ai_fp_uuid': '245d903c22bdc927%3A15',
-    'cfidsw-cian': 'SgybcGIxNohISLx1pm7TZqH4g2s0yZuun/43PQdS2lgKaW1Kt2AcGCTAyJaFGaa6yif3R/HldhAgXm3NC0K1u2QP7/sFfrGAdA4ZVPMfOJa4b0/tEUtDjqgwm9GSX+69a5J2oQxu0kb6xLq5qabHFKDbtz7bLcmntk7vk6q2',
-    'fgsscw-cian': 'dkUfb3f6bf8a85c6dfe120486165772c64b880e0',
-    'gsscw-cian': 'GdzeiSCNUpAGrW7VRqkf5HSFFt9sNQakyL+AtSmc+VocwkwctD0owGAy6Ep70WOKkOAy04eijt+ES0daHnOK3gwUOuidmlC2G9TB0+wNvtP8V7sHMYFtMTpkKfyD6YRffqoxkmNFnaFzVK89TYWEvJqUdrnwGhnmR1lz4ESuajkKMlmHorWlZYK6F5eL8vkb18AUsoA0gb3TqJZcjGTNUM0NDgVC77X1RVs+OTJ0BoIZS5emlG03oHMUOE5DmailvO+/rtfQBtyE',
-    'ma_id_api': 'GxRtmeoGuaB8279kyKiOOWoPH3AsJBUy4myCSKYvMpjBeANYebQlWRDzcAcb90W0aJ3L82J0ln2wRtm+ZcV/EtxWXxRMU3PbIiQ+wf0Q2kPuA5vJ5WrM0laQZQoxa7r8hTzTdJ1xpw4hKDANo4wrMeQ5E+pmcaaQlBTcWkjgFjcCgrcb5/1hOsy4Nv8P/yxdpkf2ErnEUxaWyUGayjdao676tqTl//KiB2aQXIbJV6N/+hg6BweZ4ef6fwjquBXebADBMM3MAawoME8u0fnP/3qkkD3/m4jccb4sC735sgX3+kYmdxq/nQjGk3O11dbRxbZaLgMPt6C6d8xY+FzAhg==',
-    '_gcl_au': '1.1.1810869406.1761569722',
-    'frontend-offer-card.consultant_chat_onboarding_shown': '1',
-    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki-ot-zastroyschikov%2F',
-    'countCallNowPopupShowed': '2%3A1763716639971',
-    'last_paid_utm': '?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037811265|ad:16202025265|grp:5454187042|drf:no|dev:desktop|p:premium|n:1|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&ybaip=1&yclid=10829203034459865087',
-    'sopr_utm': '%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
-    '_ym_isad': '2',
-    'newbuilding-search-frontend.chatAnimationCounter': '3',
-    'newbuilding_mortgage_payment_filter_onboarding': '1',
-    'session_region_name': '%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4',
-    'forever_region_id': '4704',
-    'forever_region_name': '%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4',
-    'uxfb_card_satisfaction': '%5B309384022%2C324043854%2C323869097%2C323963675%5D',
-    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D184723%26with_newobject%3D1',
-    'domain_sid': 'h9UFzhDmhYsy0jug-hr66%3A1764075804222',
-    'tmr_detect': '0%7C1764075908711',
-    '_yasc': '2pJhiBC9TKWK+iEBt0k7uqLzYAamY8koI2dwBC1R57nRBWm98Pc4WfFXcGpEyCYGbQ==',
-    '_yasc': 'ehxxEZLh8A5uNNZIvEAgT48WIgAamRbce24lu+osB4O/l8bs7EXwxOmp6kY4whrppw==',
-    'session_region_id': '184723',
-    'session_main_town_region_id': '184723',
-    'login_mro_popup': '1',
-    'sopr_session': '7fde76427fd54c5e',
-    '_ym_visorc': 'b',
+    'newbuilding-search-frontend.chatAnimationCounter': '6',
+    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnewobjects%2Flist%2F%3Fbuilders%255B0%255D%3D17132%26deal_type%3Dsale%26engine_version%3D2%26offer_type%3Dnewobject%26region%3D-1%26show_old_newobjects%3D1',
+    'frontend-serp.header_builder_chat_onboarding_shown': '1',
+    'WBRMVisitFirst_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'DMIR_AUTH': 'NljgjqJFspi9B9hsVLvOL%2BN485l2a9rEXksqKNZqXrAYN9mp0xFbnrmllZXUXxTJ0ECVZaPNbRxkfUgWCr8zfaHnKwYJd89t5UVlGfOHwISanLF%2BxErUpPcKTPI3eN9rzbOZLukbDk0n58Qs9wtu%2BWbFT%2FlGQ6lN%2BRPE4cU6TNg%3D',
+    'countCallNowPopupShowed': '2%3A1780486387527',
+    'sopr_utm': '%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
+    'forever_region_id': '4606',
+    'session_region_id': '4606',
+    'session_region_name': '%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
+    'forever_region_name': '%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
+    'session_main_town_region_id': '4959',
+    'forever_main_town_region_id': '4959',
+    'sopr_session': '1e8ccd66bfb0402e',
     'cookieUserID': '8098251',
-    '_ga_3369S417EL': 'GS2.1.s1764083298$o390$g1$t1764083308$j50$l0$h0',
-    'frontend-serp.chatAnimationCounter': '4',
+    '_ym_visorc': 'b',
+    '_ym_isad': '1',
+    'rrpvid': '77082295317102',
+    '_yasc': 'VmTQ6KQLLyBluKSY8jMQwh7eIb1ayWwoXZ6QpiZVdOJ+C0/uPCKR2IpoIiu7bdhlIYm9DqRtUA==.MTc4MDI1OTE2MjE1MQ==',
+    '_yasc': '2Dq1+uP3UoGz2VNd/WdC+PFehaij+gWbw0VSgh40745K9/+s0gjpFw8CkmqTtHC2XNn0NjQw0Q==.MTc4MDI2MTM5NjY3Mg==',
+    'uxfb_card_satisfaction': '%5B329625786%2C299784235%5D',
+    '_ga_3369S417EL': 'GS2.1.s1781510154$o43$g1$t1781510602$j60$l0$h0',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
     'content-type': 'application/json',
-    'origin': 'https://sevastopol.cian.ru',
+    'origin': 'https://www.cian.ru',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://sevastopol.cian.ru/',
-    'sec-ch-ua': '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"',
+    'referer': 'https://www.cian.ru/',
+    'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
-    # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; cf_clearance=iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk; _ym_uid=174161324651361127; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; adrdel=1744094487237; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D; newbuilding-search-frontend.consultant_cian_chat_onboarding_shown=1; cookie_agreement_accepted=1; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; _ga=GA1.1.460280003.1749468781; uxfb_usertype=searcher; uxs_uid=1ed08180-4604-11f0-94f5-19dbce91137e; seen_cpd_landing=1; cian_ruid=8098251; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; rrpvid=771260525504896; rcuid=67e27578d41e2c9a8a114add; frontend-offer-card.builder_chat_onboarding_shown=1; transport-accessibility_onboarding_counter=3; ma_id=6225667261741613246584; __upin=jzXjhLRLkqO1JTeopJQqkQ; _ym_d=1757401308; __ai_fp_uuid=245d903c22bdc927%3A15; cfidsw-cian=SgybcGIxNohISLx1pm7TZqH4g2s0yZuun/43PQdS2lgKaW1Kt2AcGCTAyJaFGaa6yif3R/HldhAgXm3NC0K1u2QP7/sFfrGAdA4ZVPMfOJa4b0/tEUtDjqgwm9GSX+69a5J2oQxu0kb6xLq5qabHFKDbtz7bLcmntk7vk6q2; fgsscw-cian=dkUfb3f6bf8a85c6dfe120486165772c64b880e0; gsscw-cian=GdzeiSCNUpAGrW7VRqkf5HSFFt9sNQakyL+AtSmc+VocwkwctD0owGAy6Ep70WOKkOAy04eijt+ES0daHnOK3gwUOuidmlC2G9TB0+wNvtP8V7sHMYFtMTpkKfyD6YRffqoxkmNFnaFzVK89TYWEvJqUdrnwGhnmR1lz4ESuajkKMlmHorWlZYK6F5eL8vkb18AUsoA0gb3TqJZcjGTNUM0NDgVC77X1RVs+OTJ0BoIZS5emlG03oHMUOE5DmailvO+/rtfQBtyE; ma_id_api=GxRtmeoGuaB8279kyKiOOWoPH3AsJBUy4myCSKYvMpjBeANYebQlWRDzcAcb90W0aJ3L82J0ln2wRtm+ZcV/EtxWXxRMU3PbIiQ+wf0Q2kPuA5vJ5WrM0laQZQoxa7r8hTzTdJ1xpw4hKDANo4wrMeQ5E+pmcaaQlBTcWkjgFjcCgrcb5/1hOsy4Nv8P/yxdpkf2ErnEUxaWyUGayjdao676tqTl//KiB2aQXIbJV6N/+hg6BweZ4ef6fwjquBXebADBMM3MAawoME8u0fnP/3qkkD3/m4jccb4sC735sgX3+kYmdxq/nQjGk3O11dbRxbZaLgMPt6C6d8xY+FzAhg==; _gcl_au=1.1.1810869406.1761569722; frontend-offer-card.consultant_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki-ot-zastroyschikov%2F; countCallNowPopupShowed=2%3A1763716639971; last_paid_utm=?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037811265|ad:16202025265|grp:5454187042|drf:no|dev:desktop|p:premium|n:1|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&ybaip=1&yclid=10829203034459865087; sopr_utm=%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D; _ym_isad=2; newbuilding-search-frontend.chatAnimationCounter=3; newbuilding_mortgage_payment_filter_onboarding=1; session_region_name=%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4; forever_region_id=4704; forever_region_name=%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4; uxfb_card_satisfaction=%5B309384022%2C324043854%2C323869097%2C323963675%5D; frontend-serp.chatAnimationPrevPath=%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D184723%26with_newobject%3D1; domain_sid=h9UFzhDmhYsy0jug-hr66%3A1764075804222; tmr_detect=0%7C1764075908711; _yasc=2pJhiBC9TKWK+iEBt0k7uqLzYAamY8koI2dwBC1R57nRBWm98Pc4WfFXcGpEyCYGbQ==; _yasc=ehxxEZLh8A5uNNZIvEAgT48WIgAamRbce24lu+osB4O/l8bs7EXwxOmp6kY4whrppw==; session_region_id=184723; session_main_town_region_id=184723; login_mro_popup=1; sopr_session=7fde76427fd54c5e; _ym_visorc=b; cookieUserID=8098251; _ga_3369S417EL=GS2.1.s1764083298$o390$g1$t1764083308$j50$l0$h0; frontend-serp.chatAnimationCounter=4',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
+    # 'cookie': '_ym_uid=1740731467185025844; _gcl_au=1.1.221627179.1775114569; cookie_agreement_accepted=1; tmr_lvid=5d429d59ad05d69a68419a6b714c0955; tmr_lvidTS=1775114589434; _ga=GA1.1.1494365673.1775114597; uxfb_usertype=searcher; _CIAN_GK=9dad5c1d-1f84-4ff8-afb9-1be8d68b7c80; _ym_d=1776705880; cian_ruid=8098251; uxs_uid=d6ea8010-470f-11f1-a167-7960045d3975; nbrdng_fv=1777837191618; newbuilding-card-desktop-fichering-frontend.builder_chat_onboarding_shown=1; newbuilding-search-frontend.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationShownCount=3; newbuilding-card-desktop-frontend.consultant_cian_chat_onboarding_shown=1; newbuilding-card-desktop-fichering-frontend.consultant_cian_chat_onboarding_shown=1; frontend-serp.offer_chat_onboarding_shown=1; WBRMVisitLast_utm=; WBRMVisitLast_referrer=https%3A%2F%2Fwww.google.com%2F; WBRMVisitFirst_utm=; newbuilding-search-frontend.builder_chat_onboarding_shown=1; frontend-serp.chatTooltipAnimationShown=1; frontend-serp.chatAnimationShownCount=3; frontend-serp.chatAnimationCounter=5; frontend-serp.chatAnimationPrevPath=%2Fcat.php%3Fdeal_type%3Dsale%26decorations_list%255B0%255D%3Dfine%26decorations_list%255B1%255D%3DfineWithFurniture%26decorations_list%255B2%255D%3DpreFine%26decorations_list%255B3%255D%3Dwithout%26engine_version%3D2%26from_developer%3D1%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D4927%26totime%3D2592000; map_preview_onboarding_counter=3; transport-accessibility_onboarding_counter=3; newbuilding-search-frontend.chatAnimationCounter=6; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnewobjects%2Flist%2F%3Fbuilders%255B0%255D%3D17132%26deal_type%3Dsale%26engine_version%3D2%26offer_type%3Dnewobject%26region%3D-1%26show_old_newobjects%3D1; frontend-serp.header_builder_chat_onboarding_shown=1; WBRMVisitFirst_referrer=https%3A%2F%2Fwww.google.com%2F; DMIR_AUTH=NljgjqJFspi9B9hsVLvOL%2BN485l2a9rEXksqKNZqXrAYN9mp0xFbnrmllZXUXxTJ0ECVZaPNbRxkfUgWCr8zfaHnKwYJd89t5UVlGfOHwISanLF%2BxErUpPcKTPI3eN9rzbOZLukbDk0n58Qs9wtu%2BWbFT%2FlGQ6lN%2BRPE4cU6TNg%3D; countCallNowPopupShowed=2%3A1780486387527; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; forever_region_id=4606; session_region_id=4606; session_region_name=%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; forever_region_name=%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_main_town_region_id=4959; forever_main_town_region_id=4959; sopr_session=1e8ccd66bfb0402e; cookieUserID=8098251; _ym_visorc=b; _ym_isad=1; rrpvid=77082295317102; _yasc=VmTQ6KQLLyBluKSY8jMQwh7eIb1ayWwoXZ6QpiZVdOJ+C0/uPCKR2IpoIiu7bdhlIYm9DqRtUA==.MTc4MDI1OTE2MjE1MQ==; _yasc=2Dq1+uP3UoGz2VNd/WdC+PFehaij+gWbw0VSgh40745K9/+s0gjpFw8CkmqTtHC2XNn0NjQw0Q==.MTc4MDI2MTM5NjY3Mg==; uxfb_card_satisfaction=%5B329625786%2C299784235%5D; _ga_3369S417EL=GS2.1.s1781510154$o43$g1$t1781510602$j60$l0$h0',
 }
-
-
-
 
 json_data = {
     'jsonQuery': {
         '_type': 'commercialsale',
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -103,40 +94,64 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                2,
+                1,
+            ],
+        },
+        'geo': {
+            'type': 'geo',
+            'value': [
+                {
+                    'coordinates': [
+                        [
+                            '37.680365',
+                            '55.719769',
+                        ],
+                        [
+                            '37.680365',
+                            '55.746046',
+                        ],
+                        [
+                            '37.767887',
+                            '55.746046',
+                        ],
+                        [
+                            '37.767887',
+                            '55.719769',
+                        ],
+                        [
+                            '37.680365',
+                            '55.719769',
+                        ],
+                    ],
+                    'name': 'Нижегородский район',
+                    'type': 'polygon',
+                    'title': 'Москва, Юго-Восточный административный округ, Нижегородский район',
+                },
             ],
         },
         'office_type': {
             'type': 'terms',
             'value': [
                 1,
-                2,
-                3,
-                5,
-                7,
-                11,
-            ],
-        },
-        'object_type': {
-            'type': 'terms',
-            'value': [
-                3,
             ],
         },
         'page': {
             'type': 'term',
             'value': 1,
         },
-        'offer_seller_type': {
-            'type': 'terms',
-            'value': [
-                2,
-                3,
-                1,
-            ],
-        },
     },
+    '_liquiditySource': 'web_commercial-serp',
 }
+
+# Note: json_data will not be serialized by requests
+# exactly as it was in the original request.
+#data = '{"jsonQuery":{"_type":"commercialsale","engine_version":{"type":"term","value":2},"region":{"type":"terms","value":[1]},"geo":{"type":"geo","value":[{"coordinates":[["37.680365","55.719769"],["37.680365","55.746046"],["37.767887","55.746046"],["37.767887","55.719769"],["37.680365","55.719769"]],"name":"Нижегородский район","type":"polygon","title":"Москва, Юго-Восточный административный округ, Нижегородский район"}]},"office_type":{"type":"terms","value":[1]},"page":{"type":"term","value":2}},"_liquiditySource":"web_commercial-serp"}'.encode()
+#response = requests.post(
+#    'https://api.cian.ru/commercial-search-offers/desktop/v1/offers/get-offers/',
+#    cookies=cookies,
+#    headers=headers,
+#    data=data,
+#)
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])

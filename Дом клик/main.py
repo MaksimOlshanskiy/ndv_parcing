@@ -24,7 +24,6 @@ import time
 
 cookies = {
     '_ym_uid': '1765012936500443323',
-    '_ym_d': '1765012936',
     'adtech_uid': 'c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru',
     'ns_session': '6b7f0e11-9d39-4d9f-bde9-e0ea2b194184',
     'RETENTION_COOKIES_NAME': 'c4194f168c4b486394b9e0e579a6ad7c:rcdfFDfvr7s0pTQeRgykGrLqh8M',
@@ -32,7 +31,6 @@ cookies = {
     'UNIQ_SESSION_ID': '8aebb9c1984c4fdbad9edaf6dc22d362:WPANcUW3wmpwW1wxsCc8-9CCjGk',
     'logoSuffix': '',
     'iosAppLink': '',
-    '_sv': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688',
     'top100_id': 't1.7711713.1020003933.1779904305209',
     'tmr_lvid': '6509c7cbd63e89eea195eb14c34fbb17',
     'tmr_lvidTS': '1773855203088',
@@ -40,21 +38,28 @@ cookies = {
     'dddIntroOnline': 'false',
     'regionAlert': '1',
     'max-chat-settings-show': '%7B%22countOfEntry%22%3A4%2C%22lastStatus%22%3A%22NOT_CREATED%22%7D',
-    '_ym_isad': '2',
     'cookieAlert': '1',
-    'canary-bind-id-14320': 'next-2',
-    'currentRegionGuid': '321b0daa-da95-4ce5-81b3-a7ab62d89d19',
-    'currentLocalityGuid': '6369cbfc-1f06-4574-adba-82f4dc42c0f7',
-    'regionName': '6369cbfc-1f06-4574-adba-82f4dc42c0f7:%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0',
-    '_visitId': '272ca817-2835-4c7a-98b1-200325b90f07-6315121d1b510ace',
-    'qrator_ssid2': 'v2.0.1780505330.747.5fa9bf1fTzzOGZv1|2Kl3rNsoNcwYfEVW|nZ4PD/GA4Nh4HkZsevPeC3EcVCqcZmAJLszRUQ96WystVJ7uZNIdwkAH+sJcRwSE46Cuy1ow71qizCQCSjPrd3h3LadpNY5V2/oC1SxLRLD3fTD0Wo0AIjh92uxdICeNcVaTO7ppcZA07KUnX58TtSwcv7bDA+rQALaLVMJkqNA=-dV7kJe7XDCNbwyIFH+IyIr2xIwg=',
-    'qrator_jsid2': 'v2.0.1780505330.747.5fa9bf1fTzzOGZv1|tvNDw8edYsDLns7Z|V2NMDJD6Zubb+9xvZpnwYFj/dYU6DOBTJFSZSJIazh5DyrksUmDKi2JShNrgWPoHxCfhdCIXba9MNhCx00mweAO9UeECVSfvPwNp74/gDdFyHypiU1zBn+b1ob6YmG//vqF5Qld1lvZaao3PtE4JFomxl8KC9ffFyQrfgDGEZBM=-gKZ/0TveDwB5rr7eXlGyxFfZ6ME=',
-    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%22321b0daa-da95-4ce5-81b3-a7ab62d89d19%22%2C%22localityGuid%22:%226369cbfc-1f06-4574-adba-82f4dc42c0f7%22%2C%22subdomain%22:%22%22}%2C%22isAutoResolved%22:true}',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982',
-    '_sas': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982',
-    't3_sid_7711713': 's1.160642329.1780471411515.1780516987585.7.58.6.1..',
-    't3_sid_7731951': 's1.21260308.1780471411528.1780516987761.6.194.6.1..',
-    'tmr_reqNum': '213',
+    '_ym_d': '1781860469',
+    'showDddWidgets': 'true',
+    '_sv': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688',
+    'canary-bind-id-15319': 'next-2',
+    'favoriteHintShowed': 'true',
+    'auto-definition-region': 'false',
+    'currentLocalityGuid': '857c0a08-7dc0-445e-a044-ed2f6d435a7b',
+    'currentRegionGuid': '1691f4a5-8e87-41ab-b0d3-05a0c7a07c76',
+    'currentSubDomain': 'ufa',
+    'regionName': '857c0a08-7dc0-445e-a044-ed2f6d435a7b:%D0%A3%D1%84%D0%B0',
+    'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221691f4a5-8e87-41ab-b0d3-05a0c7a07c76%22%2C%22localityGuid%22:%22857c0a08-7dc0-445e-a044-ed2f6d435a7b%22%2C%22subdomain%22:%22ufa%22}%2C%22isAutoResolved%22:true}',
+    '_ym_isad': '2',
+    'canary-bind-id-15272': 'next-1',
+    'qrator_jsr': 'v2.0.1782668671.555.05e47254nFjsV4cC|jMZuaicalpTg88HK|MEcZWOBAkQpFFEqbBpYSgJxBc4EB+WD1omYjfvYJDA/EDsjHuwVJTjdX1QAk7sMAUlX5uLQDPbfFI+VVITU+7g==-hGN9Engn2KkAIkwU6xTyUoEzpHA=-00',
+    'qrator_jsid2': 'v2.0.1782668671.555.05e47254nFjsV4cC|WttdHW1t0nza4BVp|XP/ec/U0mTzmHklY/hdWPWMCCpLkA4RRHz/HQzNDpTjSt67EPODv6gZsdy9ty6Kw9GFrt8B7nWHtb5Ry7wu/RdGcEv972YA8vpnTAv1SAbtF8pDv16sEb0/rtXJ0CXIsy/6nl19c5KUJpNbHbiEX4wFLV4XqBVPPV+GMdUSZM4c=-OfNKj+bJzeTTccr/6HKNzW9An9o=',
+    '_visitId': '56e7006e-440d-45b1-b45a-47f71f2efe31-f4f0dcc432ac8ba6',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1782668674',
+    '_sas': 'SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1782668674',
+    't3_sid_7711713': 's1.272086133.1782668675058.1782668688198.15.8.2.1..',
+    'tmr_reqNum': '321',
+    't3_sid_7731951': 's1.1669716308.1782668675538.1782668691329.14.22.2.1..',
 }
 
 headers = {
@@ -62,9 +67,9 @@ headers = {
     'Accept-Language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
-    'Origin': 'https://samara.domclick.ru',
+    'Origin': 'https://ufa.domclick.ru',
     'Pragma': 'no-cache',
-    'Referer': 'https://samara.domclick.ru/',
+    'Referer': 'https://ufa.domclick.ru/',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
@@ -72,7 +77,7 @@ headers = {
     'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': '_ym_uid=1765012936500443323; _ym_d=1765012936; adtech_uid=c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru; ns_session=6b7f0e11-9d39-4d9f-bde9-e0ea2b194184; RETENTION_COOKIES_NAME=c4194f168c4b486394b9e0e579a6ad7c:rcdfFDfvr7s0pTQeRgykGrLqh8M; sessionId=47f88fa2f01a440f9154dfe2c16bc0ef:kumwnApx1cyy1eyhaY2VD01hj_U; UNIQ_SESSION_ID=8aebb9c1984c4fdbad9edaf6dc22d362:WPANcUW3wmpwW1wxsCc8-9CCjGk; logoSuffix=; iosAppLink=; _sv=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688; top100_id=t1.7711713.1020003933.1779904305209; tmr_lvid=6509c7cbd63e89eea195eb14c34fbb17; tmr_lvidTS=1773855203088; showDddIntro=false; dddIntroOnline=false; regionAlert=1; max-chat-settings-show=%7B%22countOfEntry%22%3A4%2C%22lastStatus%22%3A%22NOT_CREATED%22%7D; _ym_isad=2; cookieAlert=1; canary-bind-id-14320=next-2; currentRegionGuid=321b0daa-da95-4ce5-81b3-a7ab62d89d19; currentLocalityGuid=6369cbfc-1f06-4574-adba-82f4dc42c0f7; regionName=6369cbfc-1f06-4574-adba-82f4dc42c0f7:%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0; _visitId=272ca817-2835-4c7a-98b1-200325b90f07-6315121d1b510ace; qrator_ssid2=v2.0.1780505330.747.5fa9bf1fTzzOGZv1|2Kl3rNsoNcwYfEVW|nZ4PD/GA4Nh4HkZsevPeC3EcVCqcZmAJLszRUQ96WystVJ7uZNIdwkAH+sJcRwSE46Cuy1ow71qizCQCSjPrd3h3LadpNY5V2/oC1SxLRLD3fTD0Wo0AIjh92uxdICeNcVaTO7ppcZA07KUnX58TtSwcv7bDA+rQALaLVMJkqNA=-dV7kJe7XDCNbwyIFH+IyIr2xIwg=; qrator_jsid2=v2.0.1780505330.747.5fa9bf1fTzzOGZv1|tvNDw8edYsDLns7Z|V2NMDJD6Zubb+9xvZpnwYFj/dYU6DOBTJFSZSJIazh5DyrksUmDKi2JShNrgWPoHxCfhdCIXba9MNhCx00mweAO9UeECVSfvPwNp74/gDdFyHypiU1zBn+b1ob6YmG//vqF5Qld1lvZaao3PtE4JFomxl8KC9ffFyQrfgDGEZBM=-gKZ/0TveDwB5rr7eXlGyxFfZ6ME=; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%22321b0daa-da95-4ce5-81b3-a7ab62d89d19%22%2C%22localityGuid%22:%226369cbfc-1f06-4574-adba-82f4dc42c0f7%22%2C%22subdomain%22:%22%22}%2C%22isAutoResolved%22:true}; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982; _sas=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1780516982; t3_sid_7711713=s1.160642329.1780471411515.1780516987585.7.58.6.1..; t3_sid_7731951=s1.21260308.1780471411528.1780516987761.6.194.6.1..; tmr_reqNum=213',
+    # 'Cookie': '_ym_uid=1765012936500443323; adtech_uid=c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru; ns_session=6b7f0e11-9d39-4d9f-bde9-e0ea2b194184; RETENTION_COOKIES_NAME=c4194f168c4b486394b9e0e579a6ad7c:rcdfFDfvr7s0pTQeRgykGrLqh8M; sessionId=47f88fa2f01a440f9154dfe2c16bc0ef:kumwnApx1cyy1eyhaY2VD01hj_U; UNIQ_SESSION_ID=8aebb9c1984c4fdbad9edaf6dc22d362:WPANcUW3wmpwW1wxsCc8-9CCjGk; logoSuffix=; iosAppLink=; top100_id=t1.7711713.1020003933.1779904305209; tmr_lvid=6509c7cbd63e89eea195eb14c34fbb17; tmr_lvidTS=1773855203088; showDddIntro=false; dddIntroOnline=false; regionAlert=1; max-chat-settings-show=%7B%22countOfEntry%22%3A4%2C%22lastStatus%22%3A%22NOT_CREATED%22%7D; cookieAlert=1; _ym_d=1781860469; showDddWidgets=true; _sv=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688; canary-bind-id-15319=next-2; favoriteHintShowed=true; auto-definition-region=false; currentLocalityGuid=857c0a08-7dc0-445e-a044-ed2f6d435a7b; currentRegionGuid=1691f4a5-8e87-41ab-b0d3-05a0c7a07c76; currentSubDomain=ufa; regionName=857c0a08-7dc0-445e-a044-ed2f6d435a7b:%D0%A3%D1%84%D0%B0; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221691f4a5-8e87-41ab-b0d3-05a0c7a07c76%22%2C%22localityGuid%22:%22857c0a08-7dc0-445e-a044-ed2f6d435a7b%22%2C%22subdomain%22:%22ufa%22}%2C%22isAutoResolved%22:true}; _ym_isad=2; canary-bind-id-15272=next-1; qrator_jsr=v2.0.1782668671.555.05e47254nFjsV4cC|jMZuaicalpTg88HK|MEcZWOBAkQpFFEqbBpYSgJxBc4EB+WD1omYjfvYJDA/EDsjHuwVJTjdX1QAk7sMAUlX5uLQDPbfFI+VVITU+7g==-hGN9Engn2KkAIkwU6xTyUoEzpHA=-00; qrator_jsid2=v2.0.1782668671.555.05e47254nFjsV4cC|WttdHW1t0nza4BVp|XP/ec/U0mTzmHklY/hdWPWMCCpLkA4RRHz/HQzNDpTjSt67EPODv6gZsdy9ty6Kw9GFrt8B7nWHtb5Ry7wu/RdGcEv972YA8vpnTAv1SAbtF8pDv16sEb0/rtXJ0CXIsy/6nl19c5KUJpNbHbiEX4wFLV4XqBVPPV+GMdUSZM4c=-OfNKj+bJzeTTccr/6HKNzW9An9o=; _visitId=56e7006e-440d-45b1-b45a-47f71f2efe31-f4f0dcc432ac8ba6; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1782668674; _sas=SV1.ac0fd74b-ce4b-4462-a8b3-8e03416e7213.1728322688.1782668674; t3_sid_7711713=s1.272086133.1782668675058.1782668688198.15.8.2.1..; tmr_reqNum=321; t3_sid_7731951=s1.1669716308.1782668675538.1782668691329.14.22.2.1..',
 }
 
 
@@ -82,7 +87,7 @@ with open(r"C:\PycharmProjects\ndv_parcing\Cian\coordinates.json", "r", encoding
 developer = ''
 project = ''
 area = ''
-region = 'Самара'
+region = 'Уфа'
 
 coords = city_centers.get(region)
 
@@ -97,7 +102,7 @@ driver = webdriver.Chrome(options=options)
 
 
 
-ids =  [123711, 124413, 124740, 125388, 125444, 121779, 125706]
+ids =  [121581, 121663, 122092, 122496, 122640, 122811, 123690, 124462, 124651, 124902, 125843, 125147, 121911, 111255, 1604, 3707, 60878, 73680, 110934, 112780, 113899, 113936, 114920, 115919, 116212, 116349, 116542, 118384, 119378, 122094, 122498, 123038, 125052, 125557, 125299, 125555, 125855, 125870]
 
 
 

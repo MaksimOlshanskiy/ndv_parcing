@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # Загружаем Excel
-df = pd.read_excel(r"C:\Users\Mi\OneDrive\Desktop\База апрель\База Апрель.xlsx")
+df = pd.read_excel(r"D:\Ricci\Коммерция\06.2026\Коммерция.xlsx")
 
 # Загружаем JSON
 with open(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\projects.json", "r", encoding="utf-8") as f:
@@ -72,7 +72,7 @@ df["Жилая площадь, м²"] = (
 )
 
 # сохраняем результат
-df.to_excel(r"C:\Users\Mi\OneDrive\Desktop\База апрель\База Апрель.xlsx", index=False)
+df.to_excel(r"D:\Ricci\Коммерция\06.2026\Коммерция2.xlsx", index=False)
 
 # выводим логи
 print("=== 🔥 ЛОГИ 🔥 ===")

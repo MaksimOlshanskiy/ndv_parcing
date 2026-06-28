@@ -179,7 +179,7 @@ cities_dict = {
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
-cities_list = [4966, 4959, 176245, 4820]
+cities_list = [4951]
 
 for city_id in cities_list:
 

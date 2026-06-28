@@ -108,9 +108,27 @@ def save_flats_to_excel(flats, project, developer, kvartirografia=True, drop_col
         name = re.sub(r'\s+', ' ', name).strip()
         return name
 
+    lower_words = {'на', 'в', 'и', 'с', 'к', 'у', 'о', 'от', 'по', 'за', 'из', 'над', 'под', 'об', 'же', 'ли', 'бы'}
+
+    def correct_title(text):
+        if not isinstance(text, str):
+            return text
+        # Разбиваем на слова
+        words = text.lower().split()
+        # Первое слово всегда с большой буквы
+        result = [words[0].capitalize()]
+        # Остальные слова: если в списке исключений -> оставляем маленькими, иначе с большой
+        for word in words[1:]:
+            if word in lower_words:
+                result.append(word)
+            else:
+                result.append(word.capitalize())
+        return ' '.join(result)
+
     developer = clean_name(developer)
     df['Название проекта'] = df['Название проекта'].apply(clean_name)
     df["Название проекта"] = df["Название проекта"].replace(name_dict)
+    df["Название проекта"] = df["Название проекта"].apply(correct_title)
     print(df['Девелопер'].unique())
     df['Девелопер'] = df['Девелопер'].apply(clean_name)
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)

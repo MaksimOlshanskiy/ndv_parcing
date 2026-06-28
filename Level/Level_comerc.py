@@ -70,6 +70,7 @@ headers = {
 
 params = {
     'type_of_advertisement': '0',
+    'category' : 'commercial',
     'limit': '1000',
     'offset': '0',
 }
@@ -118,7 +119,7 @@ while True:
         srok_sdachi_old = ''
         stadia = ''
         dogovor = ''
-        type = 'Квартиры'
+        type = i['category']
         finish_type = i['renovation']
         room_count = ''
         area = float(i["area"])

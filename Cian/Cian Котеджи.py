@@ -79,7 +79,14 @@ headers = {
 
 json_data = {
     'jsonQuery': {
-        '_type': 'suburbanrent',
+        '_type': 'suburbansale',
+        'from_mcad_km': {
+            'type': 'range',
+            'value': {
+                'gte': 15,
+                'lte': 22,
+            },
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
@@ -87,21 +94,27 @@ json_data = {
         'region': {
             'type': 'terms',
             'value': [
-                4636,
+                4593,
             ],
         },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
         },
-        'for_day': {
+        'electronic_trading': {
             'type': 'term',
-            'value': '!1',
+            'value': 2,
+        },
+        'land_status': {
+            'type': 'terms',
+            'value': [
+                2,
+            ],
         },
         'object_type': {
             'type': 'terms',
             'value': [
-                1, 2, 4
+                3,
             ],
         },
         'page': {
@@ -113,7 +126,7 @@ json_data = {
 }
 
 
-name_counter = "Ярославль"
+name_counter = "МО-15"
 
 
 response = requests.post(

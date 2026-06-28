@@ -1,6 +1,6 @@
 import json
 
-with open(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json', 'r', encoding='utf-8') as f:
+with open(r'C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\projects.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 id_map = {}
@@ -19,7 +19,7 @@ for project_dev, corps in data.items():
 
 import pandas as pd
 
-df = pd.read_excel(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ\2026-05-06\НашДомРФ_глубже_МО_2.xlsx')
+df = pd.read_excel(r'C:\PycharmProjects\ndv_parcing\НашДомРФ\2026-06-23\НашДомРФ_глубже_080626_add.xlsx')
 
 
 def update_row(row):
@@ -33,4 +33,4 @@ def update_row(row):
 
 
 df = df.apply(update_row, axis=1)
-df.to_excel('updated2.xlsx', index=False)
+df.to_excel(r'C:\PycharmProjects\ndv_parcing\НашДомРФ\2026-06-23\НашДомРФ_глубже_23062026.xlsx', index=False)

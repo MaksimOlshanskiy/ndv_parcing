@@ -82,8 +82,13 @@ json_data = {
         'from_mcad_km': {
             'type': 'range',
             'value': {
-                'lte': 100,
+                'gte': 1,
+                'lte': 80,
             },
+        },
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
         },
         'engine_version': {
             'type': 'term',
@@ -95,30 +100,31 @@ json_data = {
                 4593,
             ],
         },
+        'price': {
+            'type': 'range',
+            'value': {
+                'gte': 99000001,
+                'lte': 9999000000,
+            },
+        },
         'publish_period': {
             'type': 'term',
             'value': 2592000,
-        },
-        'house_year': {
-            'type': 'range',
-            'value': {
-                'lte': 1990,
-            },
-        },
-        'house_material': {
-            'type': 'terms',
-            'value': [
-                5,
-            ],
         },
         'electronic_trading': {
             'type': 'term',
             'value': 2,
         },
+        'land_status': {
+            'type': 'terms',
+            'value': [
+                2,
+            ],
+        },
         'object_type': {
             'type': 'terms',
             'value': [
-                1,
+                3,
             ],
         },
         'page': {
@@ -126,8 +132,8 @@ json_data = {
             'value': 1,
         },
     },
+    '_liquiditySource': 'web_serp',
 }
-
 
 
 
@@ -156,7 +162,7 @@ json_data["jsonQuery"]["page"]["value"] = 1
 while len(flats) < total_count:
 
     if counter > 1:
-        sleep_time = random.uniform(7, 10)
+        sleep_time = random.uniform(5, 7)
         time.sleep(sleep_time)
     try:
         response = session.post(
@@ -244,7 +250,7 @@ folder_path = os.path.join(base_path, str(current_date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"ИЖС-1_50_{current_date}.xlsx"
+filename = f"ИЖС-8_{current_date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

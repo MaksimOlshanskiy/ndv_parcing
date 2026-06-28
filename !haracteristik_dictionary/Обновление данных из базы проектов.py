@@ -16,12 +16,31 @@ def normalize_value(v):
     return v
 
 # загружаем Excel
-df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\База проектов.xlsx")
+df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Рабочие для базы\База проектов.xlsx")
+
+lower_words = {'на', 'в', 'и', 'с', 'к', 'у', 'о', 'от', 'по', 'за', 'из', 'над', 'под', 'об', 'же', 'ли', 'бы'}
+
+def correct_title(text):
+    if not isinstance(text, str):
+        return text
+    # Разбиваем на слова
+    words = text.lower().split()
+    # Первое слово всегда с большой буквы
+    result = [words[0].capitalize()]
+    # Остальные слова: если в списке исключений -> оставляем маленькими, иначе с большой
+    for word in words[1:]:
+        if word in lower_words:
+            result.append(word)
+        else:
+            result.append(word.capitalize())
+    return ' '.join(result)
+
 
 # создаем новый столбец-ключ = только Название проекта
 df["primary_key"] = (
     df["Название проекта"]
         .astype(str)
+        .apply(correct_title)
         .str.strip()
         .str.replace("«", "", regex=False)
         .str.replace("»", "", regex=False)

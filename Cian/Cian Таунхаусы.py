@@ -8,9 +8,6 @@ import openpyxl
 import os
 import random
 
-ids = [4457540
-       ]  # id ЖК для парсинга
-
 multi_ids = []
 
 proxies = {
@@ -95,18 +92,8 @@ json_data = {
         'from_mcad_km': {
             'type': 'range',
             'value': {
-                'lte': 20,
-            },
-        },
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
-        'price': {
-            'type': 'range',
-            'value': {
-                'gte': 500000001,
-                'lte': 9999000000,
+                'gte': 73,
+                'lte': 80,
             },
         },
         'engine_version': {
@@ -123,27 +110,36 @@ json_data = {
             'type': 'term',
             'value': 2592000,
         },
+        'electronic_trading': {
+            'type': 'term',
+            'value': 2,
+        },
+        'land_status': {
+            'type': 'terms',
+            'value': [
+                2,
+            ],
+        },
         'object_type': {
             'type': 'terms',
             'value': [
-                1,
-                4,
+                3,
             ],
-        },
-        'is_dacha': {
-            'type': 'term',
-            'value': False,
         },
         'page': {
             'type': 'term',
             'value': 1,
+        },
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
         },
     },
     '_liquiditySource': 'web_serp',
 }
 
 
-name_counter = 9999
+name_counter = 80
 
 response = requests.post(
     'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
@@ -271,12 +267,6 @@ for mult_id in multi_ids:
                 'type': 'term',
                 'value': 2,
             },
-            'region': {
-                'type': 'terms',
-                'value': [
-                    4593,
-                ],
-            },
             'multi_id': {
                 'type': 'term',
                 'value': mult_id,
@@ -285,8 +275,16 @@ for mult_id in multi_ids:
                 'type': 'term',
                 'value': 1,
             },
+            'region': {
+                'type': 'terms',
+                'value': [
+                    1,
+                ],
+            },
         },
+        '_liquiditySource': 'web_serp',
     }
+
     json_data["jsonQuery"]["page"]["value"] = 1
     print(f'id = {mult_id}')
     print(json_data)

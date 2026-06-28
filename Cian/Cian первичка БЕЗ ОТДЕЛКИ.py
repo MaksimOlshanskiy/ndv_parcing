@@ -270,7 +270,7 @@ json_data = {
 }
 
 current_date = datetime.date.today()
-ids = [4561917]
+
 for y in ids:
 
     flats = []

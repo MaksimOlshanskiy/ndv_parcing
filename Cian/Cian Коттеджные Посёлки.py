@@ -79,37 +79,49 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'suburbansale',
+        'from_mcad_km': {
+            'type': 'range',
+            'value': {
+                'gte': 0,
+                'lte': 15,
+            },
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
-        'from_developer': {
+        'region': {
+            'type': 'terms',
+            'value': [
+                4593,
+            ],
+        },
+        'publish_period': {
             'type': 'term',
-            'value': True,
+            'value': 2592000,
+        },
+        'electronic_trading': {
+            'type': 'term',
+            'value': 2,
+        },
+        'land_status': {
+            'type': 'terms',
+            'value': [
+                2,
+            ],
+        },
+        'object_type': {
+            'type': 'terms',
+            'value': [
+                3,
+            ],
         },
         'page': {
             'type': 'term',
             'value': 1,
         },
-        'kp_id': {
-            'type': 'term',
-            'value': 108953,
-        },
-        'suburban_offer_filter': {
-            'type': 'term',
-            'value': 1,
-        },
-        'object_type': {
-            'type': 'terms',
-            'value': [
-                1,
-            ],
-        },
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
     },
+    '_liquiditySource': 'web_serp',
 }
 
 
