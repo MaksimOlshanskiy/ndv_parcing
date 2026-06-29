@@ -11,7 +11,7 @@ import requests
 from НашДомРФ.PDF.Find_project_by_id import find_project_and_building
 from НашДомРФ.PDF.Get_urls import making_list_of_urls
 
-with open(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\projects.json", "r",
+with open(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json", "r",
           encoding="utf-8") as f:
     changing_hars = json.load(f)
 

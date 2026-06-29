@@ -1,4 +1,3 @@
-from pathlib import Path
 import re
 import numpy as np
 import pandas as pd
@@ -134,22 +133,17 @@ def save_flats_to_excel(flats, project, developer, kvartirografia=True, drop_col
     df["Девелопер"] = df["Девелопер"].replace(developer_dict)
     print(df['Девелопер'].unique())
 
-    projects_dict = load_json(Path(__file__).resolve().parent / '!haracteristik_dictionary' / 'projects.json')
-    corpus_dict = load_json(Path(__file__).resolve().parent / '!changing_haracteristik_dictionary' / 'projects.json')
+
+    projects_dict = load_json(
+        r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json'
+    )
+    corpus_dict = load_json(
+        r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json'
+    )
     if kvartirografia:
-        area_dict = load_json(Path(__file__).resolve().parent / 'area_dictionary' / 'output.json')
+        area_dict = load_json(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json')
     else:
         area_dict = None
-    # projects_dict = load_json(
-    #     r'!haracteristik_dictionary/projects.json'
-    # )
-    # corpus_dict = load_json(
-    #     r'!changing_haracteristik_dictionary\projects.json'
-    # )
-    # if kvartirografia:
-    #     area_dict = load_json(r'area_dictionary\output.json')
-    # else:
-    #     area_dict = None
 
     df = enrich_dataframe(
         df,

@@ -15,6 +15,10 @@ def normalize_value(v):
         return float(v)
     return v
 
+rr = {"title": "Доля ипотеки",
+        "initial_data_type": "int",
+        "valid": 'false',}
+
 # загружаем Excel
 df = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Рабочие для базы\База проектов.xlsx")
 

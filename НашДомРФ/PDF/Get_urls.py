@@ -92,6 +92,7 @@ def making_list_of_urls(corpus_id):
 
 
     driver.get(url=url)
+    time.sleep(10)
     page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
     json_text = driver.find_element("tag name", "body").text  # Читаем текст из <body>
     data = json.loads(json_text)['data']

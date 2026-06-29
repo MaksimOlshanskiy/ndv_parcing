@@ -48,7 +48,7 @@ def enrich_projects(df, projects_dict):
         if key in projects_dict:
             for col, value in projects_dict[key].items():
                 if col in df.columns:
-                    df.at[idx, col] = value
+                    df.at[idx, col] = str(value)  # Convert to string
 
     return df.drop(columns=["project_key"])
 

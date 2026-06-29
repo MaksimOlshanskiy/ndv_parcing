@@ -62,7 +62,7 @@ while True:
             status = ''
             start = ''
             comment = ''
-            developer = "СЗ Спортивная-2Б"
+            developer = "ТЕОС Девелопмент"
             okrug = ''
             district = ''
             adress = ''

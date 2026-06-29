@@ -74,7 +74,7 @@ while True:
     for i in items:
 
         url = ''
-        developer = "Киноквартал"
+        developer = "ГК Монолит"
         project = 'Киноквартал'
         korpus = i['building_int_number']
         type = 'Квартиры'

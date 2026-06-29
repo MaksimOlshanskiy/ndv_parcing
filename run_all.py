@@ -74,7 +74,7 @@ SCRIPTS = [
     Path(r"C:\PycharmProjects\ndv_parcing\Инград\Ingrad.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Каскад\kaskad park.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Квартал Инвестстрой\Новая Щербинка.py"),
-    Path(r"C:\PycharmProjects\ndv_parcing\Киноквартал\Киноквартал.py"),
+    Path(r"C:\PycharmProjects\ndv_parcing\ГК Монолит\Киноквартал.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Колди\Найс лофт.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Корпорация ВИТ\Триумф.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Крост\krost.py"),

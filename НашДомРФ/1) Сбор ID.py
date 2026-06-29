@@ -65,8 +65,9 @@ offset_counter = 0
 while True:
 
 
-    #url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=default&sortType=desc&residentialBuildings=1&place=77&objStatus=0:2'  # status=0 - строящиеся. status=0:2 строящиеся и сданные
-    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=default&sortType=desc&place=77&objStatus=0'
+    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=default&sortType=desc&place=50&objStatus=0:2'  # status=0 - строящиеся. status=0:2 строящиеся и сданные
+
+
     driver.get(url=url)
     page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
     json_text = driver.find_element("tag name", "body").text  # Читаем текст из <body>
@@ -236,7 +237,7 @@ folder_path = os.path.join(base_path, str(date))
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-filename = f"НашДомРФ_Москва_{date}.xlsx"
+filename = f"НашДомРФ_МО_{date}.xlsx"
 
 # Полный путь к файлу
 file_path = os.path.join(folder_path, filename)

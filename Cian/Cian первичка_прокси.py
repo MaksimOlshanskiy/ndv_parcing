@@ -26,6 +26,21 @@ proxies = {
 "https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270"
 }
 
+# from itertools import cycle
+#
+# proxies_list = [
+#
+#     "http://STm87nUFS6:6StepJYs2y@185.42.27.210:10270",
+#
+# ]
+#
+# proxy_pool = cycle(proxies_list)
+
+
+
+
+
+
 
 
 print(f'Первоначальный IP: {requests.get("https://ipinfo.io/json").json()}')
@@ -104,6 +119,8 @@ newbuilding_classes = [
 
 
 
+
+
 cities_dict = {
     'Москва': 1,
     'Санкт-Петербург': 2,
@@ -125,7 +142,7 @@ cities_dict = {
     'Владивосток' : 4701
 }
 
-cities_list = [4713, 4927, 4704]
+cities_list = [2, 4897, 4743, 4777, 4827, 4885, 5048, 4820, 4959, 4914]
 
 for city_id in cities_list:
 
