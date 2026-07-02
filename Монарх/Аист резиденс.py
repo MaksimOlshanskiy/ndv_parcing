@@ -15,10 +15,10 @@ from functions import save_flats_to_excel
 cookies = {
     '_ym_uid': '1779879851910342352',
     '_ym_d': '1779879851',
+    'XSRF-TOKEN': 'eyJpdiI6IlE2K1ZNSE1FQnJOSUIvVStjaFFlZUE9PSIsInZhbHVlIjoibmFmUiswd08rdFZDdFRpTVpxMXFMM2tQa1hvaVVtRzZ6eldFc3k3OUlVV2ZTVkVpTENjc3hRa0ExeEF0dkxScHU4ZEFjdHFqblVxcmsyaHMrRUUzNisrQkZMN3JWcmdZMmV2SlMzOUFHRzVKM0M3V2c2UE9peGRLaFRDUmlBdXUiLCJtYWMiOiI5M2YwOTE2ZjY3ZTUwODc1ZDlkOWEyNThlMjc5MDlhODgxYTM2NWU2OTEwOTUyNTQxOWE0ZjYyYTY3M2Y4MDEyIiwidGFnIjoiIn0%3D',
+    'aist_session': 'eyJpdiI6InVNTEVyR2lsVWt6eHRCVzJxaG1Cc3c9PSIsInZhbHVlIjoiam5YczVRWDI1M1lldGZPaEh0bHdxSjZvZjZyaGM1YmpBdDFVMmo0ZUsrQmRpL0RBZlVBTGJiSmVhdzNqSW9xbTc1dldsSTN4b3RVWlVPamVad1J1WG00Z2RVRVRaTVBNNTN2ZWhaZFhXYkxuOHpJLzdvbkcxK3VFelR3bmlDblkiLCJtYWMiOiI5MzFmMzlmZTcyYzVjNzgwY2ZlNjU4ODIxYTA5MzViYWFjN2E3ZjY3MDlkYzcwNmJjZWFiODA0ZWM4NjE0NTFkIiwidGFnIjoiIn0%3D',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
-    'XSRF-TOKEN': 'eyJpdiI6ImxjZ1B6Vmowc3lUd1RYaDNLT2RtaWc9PSIsInZhbHVlIjoiMEVTTm1meGhMM3ZHN09LUmFtNzBUOFplVGs4TFA1Z3VXOFBWSTEvZHFvU0FCbE1UaFk0THhsZTRnU2F4eG50UUVNNlNqWkhMenRCKzdKSCtEZFhIU2V3NEtZMFRVaDRpdlR1Y2NZc09EQ0FoeGJCekhKUkNYblV5SjlmM3hGU1QiLCJtYWMiOiJkMDQyN2Q3MTE5ZGEyYTk1OTU4ZWRlZjAzMDkwOTllN2FhNmI5YTc2OGIwZDhiYzNlNGNjMGY4OGY2YjRlYTU5IiwidGFnIjoiIn0%3D',
-    'aist_session': 'eyJpdiI6IlNKZVpuZWI0WjRTRlI0VmxUNUJoN1E9PSIsInZhbHVlIjoibDZSZ05qNHJDQWVxR1NMdDhHQURnd1FZV0QvWGpKK3lqbTYwSUJhS1krMXh1NGErMkZOL005SGdCUXBwL05tYnN1VlhUWlQ2eHhuOU0rSzVJZEQ1d3NTcnhucS9FUkh5cXdnOW4rR1RWZHlJUXl5MXNHdnl5WlhVNmpOSEtVOSsiLCJtYWMiOiJiODNjMWFkNDYzMjA5YjQ3ODE5YTgxNjA5MGI3ZTQ3MGIyOTljYjNjMTY5NGU3NzAwNWI1OGVlYjA0YzcwOTA2IiwidGFnIjoiIn0%3D',
 }
 
 headers = {
@@ -30,15 +30,15 @@ headers = {
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=2',
-    'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
+    'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
-    'x-csrf-token': 'ogQj13lS5OgCzkOWs7ytkpbTxLVJG13ZP69wMP1x',
-    # 'cookie': '_ym_uid=1779879851910342352; _ym_d=1779879851; _ym_isad=2; _ym_visorc=w; XSRF-TOKEN=eyJpdiI6ImxjZ1B6Vmowc3lUd1RYaDNLT2RtaWc9PSIsInZhbHVlIjoiMEVTTm1meGhMM3ZHN09LUmFtNzBUOFplVGs4TFA1Z3VXOFBWSTEvZHFvU0FCbE1UaFk0THhsZTRnU2F4eG50UUVNNlNqWkhMenRCKzdKSCtEZFhIU2V3NEtZMFRVaDRpdlR1Y2NZc09EQ0FoeGJCekhKUkNYblV5SjlmM3hGU1QiLCJtYWMiOiJkMDQyN2Q3MTE5ZGEyYTk1OTU4ZWRlZjAzMDkwOTllN2FhNmI5YTc2OGIwZDhiYzNlNGNjMGY4OGY2YjRlYTU5IiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6IlNKZVpuZWI0WjRTRlI0VmxUNUJoN1E9PSIsInZhbHVlIjoibDZSZ05qNHJDQWVxR1NMdDhHQURnd1FZV0QvWGpKK3lqbTYwSUJhS1krMXh1NGErMkZOL005SGdCUXBwL05tYnN1VlhUWlQ2eHhuOU0rSzVJZEQ1d3NTcnhucS9FUkh5cXdnOW4rR1RWZHlJUXl5MXNHdnl5WlhVNmpOSEtVOSsiLCJtYWMiOiJiODNjMWFkNDYzMjA5YjQ3ODE5YTgxNjA5MGI3ZTQ3MGIyOTljYjNjMTY5NGU3NzAwNWI1OGVlYjA0YzcwOTA2IiwidGFnIjoiIn0%3D',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
+    'x-csrf-token': '5qGhdV4o9coGMzNhvJhzxOhfhmmqWF8HB5alR6oD',
+    # 'cookie': '_ym_uid=1779879851910342352; _ym_d=1779879851; XSRF-TOKEN=eyJpdiI6IlE2K1ZNSE1FQnJOSUIvVStjaFFlZUE9PSIsInZhbHVlIjoibmFmUiswd08rdFZDdFRpTVpxMXFMM2tQa1hvaVVtRzZ6eldFc3k3OUlVV2ZTVkVpTENjc3hRa0ExeEF0dkxScHU4ZEFjdHFqblVxcmsyaHMrRUUzNisrQkZMN3JWcmdZMmV2SlMzOUFHRzVKM0M3V2c2UE9peGRLaFRDUmlBdXUiLCJtYWMiOiI5M2YwOTE2ZjY3ZTUwODc1ZDlkOWEyNThlMjc5MDlhODgxYTM2NWU2OTEwOTUyNTQxOWE0ZjYyYTY3M2Y4MDEyIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6InVNTEVyR2lsVWt6eHRCVzJxaG1Cc3c9PSIsInZhbHVlIjoiam5YczVRWDI1M1lldGZPaEh0bHdxSjZvZjZyaGM1YmpBdDFVMmo0ZUsrQmRpL0RBZlVBTGJiSmVhdzNqSW9xbTc1dldsSTN4b3RVWlVPamVad1J1WG00Z2RVRVRaTVBNNTN2ZWhaZFhXYkxuOHpJLzdvbkcxK3VFelR3bmlDblkiLCJtYWMiOiI5MzFmMzlmZTcyYzVjNzgwY2ZlNjU4ODIxYTA5MzViYWFjN2E3ZjY3MDlkYzcwNmJjZWFiODA0ZWM4NjE0NTFkIiwidGFnIjoiIn0%3D; _ym_isad=2; _ym_visorc=w',
 }
 
 params = {

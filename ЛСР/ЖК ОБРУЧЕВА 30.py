@@ -14,28 +14,20 @@ headers = headers
 
 
 data = {
-    'last_delivery': '30',
-    'price[min]': '1',
-    'price[max]': '999',
-    'price_range[min]': '1',
-    'price_range[max]': '999',
-    'obj[]': ['223', '223'],
-    'area[min]': '1',
-    'area[max]': '999',
-    'area_range[min]': '1',
-    'area_range[max]': '999',
-    'floor[min]': '1',
-    'floor[max]': '99',
-    'floor_range[min]': '1',
-    'floor_range[max]': '99',
-    'ob[page]': '1',
-    'ob[sort]': 'price',
-    'ob[order]': 'asc',
-    'group[t]': 'false',
-    'ob[id]': '211',
-    'object': '211',
-    'a': 'types',
-    'ok': ok
+    "price[min]": 10.5,
+    "price[max]": 31.6,
+    "obj[]": [211],
+    "area[min]": 20,
+    "area[max]": 65,
+    "floor[max]": 24,
+    "ob[page]": 1,
+    "ob[sort]": "price",
+    "ob[order]": "asc",
+    "group[t]": "false",
+    "ob[id]": 211,
+    "object": 211,
+    "a": "types",
+    "ok": ok,
 }
 
 

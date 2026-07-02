@@ -137,7 +137,6 @@ SCRIPTS = [
     Path(r"C:\PycharmProjects\ndv_parcing\УНР 494\renessans.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Форма\forma.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\ФСК_1ДСК\main_FSK.py"),
-    Path(r"C:\PycharmProjects\ndv_parcing\BAZA Development\bestseller.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\ЮР-Инвест\Бакеево Парк.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Юнион\Riga Hills New.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Энергостройинвест\energoinvest.py"),
@@ -170,6 +169,11 @@ SCRIPTS = [
     Path(r"C:\PycharmProjects\ndv_parcing\Березовец\atlantis.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Джи3\Джи3.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Первоград\Горки Марусино.py"),
+    Path(r'C:\PycharmProjects\ndv_parcing\Сезар-Груп\Сезар Будущее.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\СЗ Сосновый парк\Новое Павлово.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\СЗ Энергостройинвест\Отлично.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\Юник девелопмент\Springs.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\Primacom\Внуково Кантри клаб.py'),
 
 
 ]

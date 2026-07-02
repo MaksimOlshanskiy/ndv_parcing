@@ -17,7 +17,7 @@ from functions import get_unique_filepath
 """
 
 # Загружаем Excel
-file_path = r"D:\НДВ\База май\04-05\База 05_2026.xlsx"
+file_path = r"D:\НДВ\База июнь\Сравнение\Май-Июнь\База 6.xlsx"
 kvartirografia = True # Нужно или нет менять квартирографию
 
 df = pd.read_excel(file_path)

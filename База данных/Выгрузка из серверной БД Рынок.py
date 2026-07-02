@@ -6,7 +6,7 @@ import warnings
 from Developer_dict import name_dict, developer_dict
 
 year = 2025
-month = 5
+month = 6
 project = None
 
 warnings.filterwarnings(
@@ -31,8 +31,7 @@ sql_query = f"""
 select *
 from ndv_data
 where extract(year from date) = 2025 
-and extract(month from date) = 5
-and project_name = 'Новая Ивантеевка'
+and extract(month from date) = 6
 
                     """
 

@@ -105,14 +105,14 @@ def enrich_area_typology(df, area_json):
         .astype(float)
     )
 
-    developers_to_skip = {'московские кварталы'}
-    jk_name_to_skip = {'гармония парк', 'мишино-2'}
-    jk_name_to_skip2 = {'серебро', 'берег'}
+    developers_to_skip = {'А101', 'Аквилон'}
+    jk_name_to_skip = {'Гармония Парк', 'Мишино-2'}
+    jk_name_to_skip2 = {'Серебро', 'Берег'}
 
     for idx, row in df.iterrows():
-        jk_name = str(row['Название проекта']).strip().lower()
+        jk_name = str(row['Название проекта']).strip()
         area = row['Площадь, кв.м']
-        developer = str(row['Девелопер']).strip().lower()
+        developer = str(row['Девелопер']).strip()
 
         if pd.isna(jk_name) or pd.isna(area):
             df.at[idx, 'Кол-во комнат'] = 'Н/Д'

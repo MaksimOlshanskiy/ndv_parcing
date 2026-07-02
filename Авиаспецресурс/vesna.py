@@ -9,7 +9,7 @@ import time
 
 # Настройки браузера
 options = Options()
-options.add_argument('--headless')  # Без графического окна
+
 options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
 

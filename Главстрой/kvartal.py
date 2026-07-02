@@ -29,14 +29,7 @@ url = 'https://kvartal-geroev.ru/realty/flats/'
 # Загружаем страницу
 driver.get(url)
 
-driver.execute_script("""
-    const removePopups = () => {
-        let popups = document.querySelectorAll('[class*="popup"], [class*="modal"], [class*="overlay"]');
-        popups.forEach(p => p.remove());
-    };
-    removePopups();
-    setInterval(removePopups, 100);  // удалять каждые 2 секунды
-""")
+
 
 # Даем время для загрузки динамического контента (можно подкорректировать время в зависимости от скорости сайта)
 time.sleep(10)
@@ -130,6 +123,7 @@ for apartment in apartments:
             'этаж': floor,
             'номер': None,
         })
+        print(apartment_data)
     except AttributeError as e:
         print(f"Ошибка при извлечении данных из элемента: {e}")
 

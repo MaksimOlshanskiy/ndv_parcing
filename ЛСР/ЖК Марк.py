@@ -14,33 +14,26 @@ cookies = cookies
 headers = headers
 
 data = {
-    'last_delivery': '30',
-    'price[min]': '1',
-    'price[max]': '999',
-    'price_range[min]': '1',
-    'price_range[max]': '999',
-    'obj[]': ['223', '223'],
-    'area[min]': '1',
-    'area[max]': '999',
-    'area_range[min]': '1',
-    'area_range[max]': '999',
-    'floor[min]': '1',
-    'floor[max]': '99',
-    'floor_range[min]': '1',
-    'floor_range[max]': '99',
-    'ob[page]': '1',
-    'ob[sort]': 'price',
-    'ob[order]': 'asc',
-    'group[t]': 'false',
-    'ob[id]': '223',
-    'object': '223',
-    'a': 'types',
-    'ok': ok
+  "price[min]": "17.8",
+  "price[max]": "56.3",
+  "obj[]": "223",
+  "area[min]": "28",
+  "area[max]": "81",
+  "floor[max]": "42",
+  "ob[page]": "1",
+  "ob[sort]": "price",
+  "ob[order]": "asc",
+  "group[t]": "false",
+  "ob[id]": "223",
+  "object": "223",
+  "a": "types",
+  "ok": ok
 }
 
 
 flats = []
-
+counter = 0
+max_counter = 283
 
 def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
@@ -113,7 +106,7 @@ while True:
         flat_number = ''
 
         print(
-            f"{project}, квартира {flat_number}, отделка: {finish_type}, количество комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
+            f"{counter}, {project}, квартира {flat_number}, отделка: {finish_type}, количество комнат: {room_count}, площадь: {area}, цена: {price}, старая цена: {old_price}, корпус: {korpus}, этаж: {floor}")
         result = [date, project, english, promzona, mestopolozhenie, subway, distance_to_subway, time_to_subway, mck,
                   distance_to_mck, time_to_mck, distance_to_bkl,
                   time_to_bkl, bkl, status, start, comment, developer, okrug, district, adress, eskrou, korpus,
@@ -122,12 +115,13 @@ while True:
                   stadia, dogovor, type, finish_type, room_count, area, price_per_metr, old_price, discount,
                   price_per_metr_new, price, section, floor, flat_number]
         flats.append(result)
+        counter += 1
     if not flats_soup:
         break
 
     print('--------------------------------------------------------------------------------')
-
-    data['ob[page]'] = str(int(data['ob[page]']) + 1)
+    print(data['ob[page]'])
+    data['ob[page]'] = int(data['ob[page]']) + 1
     sleep_time = random.uniform(1, 3)
     time.sleep(sleep_time)
 

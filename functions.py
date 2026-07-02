@@ -135,13 +135,13 @@ def save_flats_to_excel(flats, project, developer, kvartirografia=True, drop_col
 
 
     projects_dict = load_json(
-        r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!haracteristik_dictionary\projects.json'
+        r'C:\PycharmProjects\ndv_parcing\!haracteristik_dictionary\projects.json'
     )
     corpus_dict = load_json(
-        r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\!changing_haracteristik_dictionary\projects.json'
+        r'C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\projects.json'
     )
     if kvartirografia:
-        area_dict = load_json(r'C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\area_dictionary\output.json')
+        area_dict = load_json(r'C:\PycharmProjects\ndv_parcing\area_dictionary\output.json')
     else:
         area_dict = None
 

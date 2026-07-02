@@ -18,6 +18,7 @@ from selenium.common.exceptions import TimeoutException, ElementClickIntercepted
 '''
 отдельно снимаем с отделкой и без отделки, берём ссылку с сайта и подставляем дважды, а также указываем кол-во объявлений
 Отделка - предчистовая
+https://xn----7sbocpkbcearp8a9etgj.xn--p1ai/catalog/
 '''
 
 cookies = {
@@ -88,11 +89,11 @@ def extract_digits_or_original(s):
 
 
 driver = webdriver.Chrome()
-driver.get("https://xn----7sbocpkbcearp8a9etgj.xn--p1ai/catalog/?price-from=10.73&price-to=26.14&square-from=30.10&square-to=79.90&finishes=%D0%91%D0%B5%D0%B7+%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%BA%D0%B8&building=1%2C2%2C3%2C4%2C5&sorting=1")
+driver.get("https://xn----7sbocpkbcearp8a9etgj.xn--p1ai/catalog/?price-from=10.87&price-to=26.33&square-from=30.10&square-to=79.90&finishes=Whitebox&building=1%2C2%2C3%2C4%2C5&sorting=1")
 
 wait = WebDriverWait(driver, 5)  # небольшое ожидание
 
-MAX_COUNT = 119
+MAX_COUNT = 74
 
 while True:
     try:

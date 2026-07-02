@@ -17,7 +17,7 @@ from urllib3.util.retry import Retry
 Скрипт очень медленный, часа на три, но рабочий, нужно менять number_of_flats на верное количество квартир с сайта
 """
 
-number_of_flats = 702
+number_of_flats = 682
 
 cookies = {
     'PHPSESSID': 'kLhpYpDU4pBf5qEWlalRohUJEv3FHoQh',
@@ -98,6 +98,17 @@ while pagination['offset'] < number_of_flats:
             print("Данные закончились, выхожу из цикла.")
             break
 
+        options = Options()
+        options.add_argument("--headless=new")
+        options.page_load_strategy = "eager"
+
+        prefs = {
+            "profile.managed_default_content_settings.images": 2
+        }
+        options.add_experimental_option("prefs", prefs)
+
+        driver = webdriver.Chrome(options=options)
+
         for i in items:
             project = i['objectTitle']
             date = datetime.date.today()
@@ -134,20 +145,8 @@ while pagination['offset'] < number_of_flats:
             srok_sdachi_old = i['deliveryName']
 
             flat_url = i.get("link", "")
-
-            options = Options()
-            options.add_argument("--headless=new")
-            options.page_load_strategy = "eager"
-
-            prefs = {
-                "profile.managed_default_content_settings.images": 2
-            }
-
-            options.add_experimental_option("prefs", prefs)
-
-            driver = webdriver.Chrome(options=options)
-
             driver.get(flat_url)
+
             try:
                 korpus = driver.find_element(
                     By.XPATH,
@@ -156,7 +155,7 @@ while pagination['offset'] < number_of_flats:
             except:
                 korpus = ''
 
-            driver.quit()
+
 
             if old_price == price:
                 price = None
@@ -170,7 +169,7 @@ while pagination['offset'] < number_of_flats:
             flats.append(result)
 
             count += 1
-
+        driver.quit()
         pagination['offset'] = response.json()['data']['pagination']['offset']
         pagination['page'] = response.json()['data']['pagination']['page']
         pagination['limit'] = response.json()['data']['pagination']['limit']

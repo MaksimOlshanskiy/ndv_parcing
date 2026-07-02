@@ -1,65 +1,57 @@
+import random
 import time
 import pandas as pd
 import requests
 
+
+
+proxies = {
+    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270",
+"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270"
+}
+
+
 cookies = {
-    'srv_id': 'Gb6Fbx7syC7LYy8t.jYvIB-wUSRkcTmceXH4pn9zZVfdze23ZHsmYi0exT35flimYd7rPKb5yZ-5seBk=.26yBxWLRrZ-tm0iy-6Ah-hqesd5YHu7AsEIxLemnUqE=.web',
-    'u': '3bpzd62a.1l1blx.ymfdyb1js200',
-    'h_u': 'fba9ad8efced2bb2:1780932780',
+    'srv_id': '2dnESOo22eCGPdM3._chqovxdeOGTz9UjzQMiIzrn8MyW-6IUdyzb-V_Oei8Ss8-ofypac4siLzEU6JA=.3tq9c31xQbaRA9OEi6tmRSxyg2qxHEDU38xPbX1xEK8=.web',
+    'u': '3brjague.pc23wr.1wjj8jh2v2q0',
+    'h_u': 'c3845c3f3b2ac21b:1782982680',
     'selected_locale': 'ru-RU',
-    '_gcl_au': '1.1.1955744551.1780932811',
-    '_ga': 'GA1.1.1765901951.1780932812',
-    '_ym_uid': '1780932813814473936',
-    '_ym_d': '1780932813',
-    'cookie_consent_shown': '1',
-    '_ym_isad': '2',
+    '_gcl_au': '1.1.943401564.1782982713',
+    '_ga': 'GA1.1.911765094.1782982714',
     'luri': 'moskva',
     'buyer_location_id': '637640',
+    'cookie_consent_shown': '1',
+    'SEARCH_HISTORY_IDS': '1%2C4%2C%2C3',
     'gMltIuegZN2COuSe': 'EOFGWsm50bhh17prLqaIgdir1V0kgrvN',
-    'ma_id_api': 'k5dgGahBF6xn8morr02075wvMGXm7UT/3MtIfJrhEbdqsT7sOIKaLL4VtE51x+Sml98uM6yBIYIMj5CKjKH0InNTfMKycU+T0Hcv/cLfP8U6tFZWjkSzLbct8rjaWfvaocUABNRRYib0DqAT7HiWm1wAT1yTsrjlsoM5/iOq9xJVz5l5/XpM+TR8yTEBd0XE7aP4DvzdQeS+25oG3sz6MygsGSxzcHthuZSGbXi45NUTLoIb/CbKwltDuj991YLc73NTcJgVfjDOn4fEN39JM2J+rfq2UnSUfzfasiv0lqEQlr8XMrlj9XZ8mIVmhpEizcvuRg8dnw2UrdqaiwcqCA==',
-    'tmr_lvid': '28d77703c279a2a9a1db42f152d89865',
-    'tmr_lvidTS': '1780932817796',
-    'adrdel': '1780932817803',
-    'adrdel': '1780932817803',
-    'adrcid': 'APu4BCRWelBbzwV_SPdwf5g',
-    'adrcid': 'APu4BCRWelBbzwV_SPdwf5g',
-    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1781019217813%2C%22sl%22%3A%7B%22224%22%3A1780932817813%2C%221228%22%3A1780932817813%7D%7D',
-    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1781019217813%2C%22sl%22%3A%7B%22224%22%3A1780932817813%2C%221228%22%3A1780932817813%7D%7D',
-    'domain_sid': 'QOE2hQdHwoZGihqoqA7QQ%3A1780932817979',
-    'uxs_uid': '6bae0950-634f-11f1-93e8-4f04af640159',
-    '__upin': '09HKMOBPxRUdOhKhiUQ99w',
-    'ma_id': '6322120861780932813192',
-    '__ai_fp_uuid': '131e0b86379cf11a%3A2',
+    'f': '5.b5dcd0bea8d6cb0db75ecc2c69e0e99847e1eada7172e06c47e1eada7172e06c47e1eada7172e06c47e1eada7172e06cb59320d6eb6303c1b59320d6eb6303c1b59320d6eb6303c147e1eada7172e06c8a38e2c5b3e08b898a38e2c5b3e08b890df103df0c26013a7b0d53c7afc06d0b2ebf3cb6fd35a0ac0df103df0c26013a8b1472fe2f9ba6b9c99dece94c5a563168e2978c700f15b6831064c92d93c3903815369ae2d1a81d4e0d8a280d6b65f00df103df0c26013aba0ac8037e2b74f9268a7bf63aa148d20df103df0c26013a8b1472fe2f9ba6b97b0d53c7afc06d0b71e7cb57bbcb8e0f03c77801b122405c03c77801b122405c03c77801b122405c2ebf3cb6fd35a0ac20f3d16ad0b1c546b892c6c84ad16848a9b4102d42ade879dcb5a55b9498f6421a43c89527accb13a8f8bc44c0f353f1a9afb448c9611b8c080393b6e127dbba00594a1bd53a660e6233a985e80aa28afb04ec07e43a120cfb0fb526bb39450a46b8ae4e81acb9fa46b8ae4e81acb9fadc0d86d9e44006d8313ab77de0efbe16aa061a6227ce656d2da10fb74cac1eab2da10fb74cac1eaba5d9b37818eab7b0a1a4f6d22df17006a44a72275ee79654',
+    'ft': '"yyd7ilFMCSvPmVhenHG7f3zgG9y/aA5LmbOZdDSwABktB0XYWMxemeAmXKWOK9kYevRiqnnv08nn5Whoy1gX7Ia2dvzdmZNyWTlUfkq271vXhElRv92xoFgb+2Rbo4RPdlrM/ynOgh9APxpnUTVZ/w=="',
+    'v': '1782985296',
+    'cssid': '28805c82-b692-471a-b123-08c787cc66ce',
+    'cssid_exp': '1782987099574',
     'buyer_from_page': 'catalog',
-    'f': '5.0c4f4b6d233fb906b75ecc2c69e0e99847e1eada7172e06c47e1eada7172e06c47e1eada7172e06c47e1eada7172e06cb59320d6eb6303c1b59320d6eb6303c1b59320d6eb6303c147e1eada7172e06c8a38e2c5b3e08b898a38e2c5b3e08b890df103df0c26013a7b0d53c7afc06d0b2ebf3cb6fd35a0ac0df103df0c26013a8b1472fe2f9ba6b9c99dece94c5a563168e2978c700f15b6831064c92d93c3903815369ae2d1a81d4e0d8a280d6b65f00df103df0c26013aba0ac8037e2b74f9268a7bf63aa148d20df103df0c26013a8b1472fe2f9ba6b97b0d53c7afc06d0b71e7cb57bbcb8e0f03c77801b122405c03c77801b122405c03c77801b122405c2ebf3cb6fd35a0ac20f3d16ad0b1c546b892c6c84ad16848a9b4102d42ade879dcb5a55b9498f6421a43c89527accb13a8f8bc44c0f353f1a9afb448c9611b8c080393b6e127dbba00594a1bd53a660e6233a985e80aa28afb04ec07e43a120cfb0fb526bb39450a46b8ae4e81acb9fa46b8ae4e81acb9fadc0d86d9e44006d8b4d7926e9ef7a8c2b062cda5fe463b4f2da10fb74cac1eab2da10fb74cac1eaba5d9b37818eab7b0a1a4f6d22df17006a44a72275ee79654',
-    '_buzz_aidata': 'JTdCJTIydWZwJTIyJTNBJTIyMDlIS01PQlB4UlVkT2hLaGlVUTk5dyUyMiUyQyUyMmJyb3dzZXJWZXJzaW9uJTIyJTNBJTIyMTQ5LjAlMjIlMkMlMjJ0c0NyZWF0ZWQlMjIlM0ExNzgwOTMyODI1Njc3JTdE',
-    '_buzz_mtsa': 'JTdCJTIydWZwJTIyJTNBJTIyNGUxNGU5YWQ2MTgwNDljZWFkZTNmZTQ3NjJiNzUzNWMlMjIlMkMlMjJicm93c2VyVmVyc2lvbiUyMiUzQSUyMjE0OS4wJTIyJTJDJTIydHNDcmVhdGVkJTIyJTNBMTc4MDkzMjgyNDI2NCU3RA==',
-    'ft': '"qBNztO0ALfnBaBzy4VQDiZvJRATK4bAG6Rtn5TIIwfI4DdDMxZZcuNDbqbhQZcCD6CW8rwrxo0PqmCbSLZ+7nShJqOLEoJ2vbCpznvalpmgSuntSsSCkqqjx7ZeyiIpC8MGFK1FSR93OJVk1NL/kUg=="',
-    'sx': 'H4sIAAAAAAAC%2F1TMvUoDQRAA4HeZ%2Boqdvfm5uS4iGMEYRRRMtz%2BzGG1OhaCEffdUKe4FvjPoaKSVsQhpI0QRZhLU7KhejGE%2Bwwlm4M3d7%2Fv%2Ble%2F1cdo%2B7BYYwGFGnTCgxYh9gORSW4mukj2EWpWILaaExFR11CsV%2Fg9%2FT9vl%2BXD8eTE57VbUFKkPUJTMk0mOlFsryoaUa9Cx5JDG6lfq9nux%2FZE%2F3z42%2BHXT1lQk7P0SAAD%2F%2F2HxeAziAAAA',
-    '__zzatw-avito': 'MDA0dBA=Fz2+aQ==',
-    '__zzatw-avito': 'MDA0dBA=Fz2+aQ==',
-    'cssid': '6fbfcad8-f29f-4a69-b385-0db6cadf1979',
-    'cssid_exp': '1780952088046',
-    'v': '1780950288',
-    'cfidsw-avito': 'FAuQjm9akaOnpJtw6bL8JXoWSm+pls9Q/ZHxiqqhicJhPozGj23gp5FJfCZLo7r1wNpRQ/jOpuv3f+WHZNBSDByIWXNAJPgGVLC5L+VaiwRkvIK2us/VPgFA/z0tetWSitpwfz+Hn9Q52E5wvQKr/soaMeFjY2qgYj5NoA==',
-    'cfidsw-avito': 'FAuQjm9akaOnpJtw6bL8JXoWSm+pls9Q/ZHxiqqhicJhPozGj23gp5FJfCZLo7r1wNpRQ/jOpuv3f+WHZNBSDByIWXNAJPgGVLC5L+VaiwRkvIK2us/VPgFA/z0tetWSitpwfz+Hn9Q52E5wvQKr/soaMeFjY2qgYj5NoA==',
-    'cfidsw-avito': 'E8Yhj6mk7dDAorAW1xZY+sSwys8R5BMRLqRQTPB92n6FDFlOTIdALeAjhZJr5JFj3MueVE57wEKCYEqmNQBgXuZWGoNVMydiPNTnybY8BoQG9BbUd5iKxIOk/GorTlzNT+Ir7PfQ3qKFwxb+2qb8wvccyP/Q4hxCoQ6mqA==',
-    '_avisc': 'd7u0eCxio/UQP9cnxkzgb8D4sS9kpuvmMpI4bBNhMwA=',
-    '_ga_M29JC28873': 'GS2.1.s1780950292$o2$g1$t1780951178$j60$l0$h0',
+    'sx': 'H4sIAAAAAAAC%2F1TMMa6CQBAG4LtMTbHLz84A7XuJNhobGztmd8YCNNEYISHc3crCC3wrcZICi1qAVhQl5wytRaOlZGiF%2BpXe1FPa%2Fc3H8rT59LiM7i%2BqyKiP0iJI5I63igxuDM%2FuEaqo89CZqw7WBIZI%2BFIH7abrfrFxuf%2Bfp%2Bb2Q0ngbfsEAAD%2F%2F3HUibWXAAAA',
+    'tmr_lvid': 'f18e0a65305840b8206b3f0ae143af8a',
+    'tmr_lvidTS': '1704448814427',
+    'domain_sid': 'xjgx3fJR1R3syH_6fe10Q%3A1782985616308',
+    '_ym_uid': '1704448817787041633',
+    '_ym_d': '1782985624',
+    '_ym_isad': '2',
     '_ym_visorc': 'b',
-    'SEARCH_HISTORY_IDS': '1',
-    'tmr_detect': '0%7C1780951185356',
-    '_adcc': '2.bDYYEjiwzyVQywOqH6QY8XT52aukmY8OBZyeBeZpwTFqVFB07MPgYsSey8gbDkLFcRRknpZOw4biRVmVfckMVOztO5wUAc6PNiaOoUC0QYG2NdUKTaC7fb6zZBg0fqnVV8P2ezoKF7nZE55LNejUKEX1Fhzv',
-    'csprefid': 'e43ae3dd-134a-4cc2-9e66-8e1b64502ca7',
+    '_avisc': '3t95wUSidDkUNBQ4L3dO+tmvvJ1VoAGF+L/zDKy0Isc=',
+    'pageviewCount': '5',
+    '_ga_M29JC28873': 'GS2.1.s1782985298$o2$g1$t1782985663$j3$l0$h0',
+    'tmr_detect': '0%7C1782985675403',
+    '_adcc': '2.ntWQoKgamyW81ZVkS4xg72z0DJmMpOLGeT3hkfgJTM8dw1Qt34rF/rGvcTqLaPqnfGaCMDOQqZzwoLTgsySiTJnxh1OXXOq9qMQuyWBUZ73bWXjN/gdAoxbGc9Y+SQa4pp2OHmTvKzIAvRT0C2JQYBnEzcma',
+    'csprefid': 'b4e9018b-f76b-48ba-80bf-78141a56e5e6',
 }
 
 headers = {
     'accept': 'application/json',
-    'accept-language': 'ru-RU,ru;q=0.9',
+    'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'cache-control': 'no-cache',
     'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://www.avito.ru/moskva/kvartiry/prodam/vtorichka-ASgBAgICAkSSA8YQ5geMUg?context=H4sIAAAAAAAA_wEmANn_YToxOntzOjE6InkiO3M6MTY6IkdDcW9hdWNTeUR1MjNtMzMiO31C8_NCJgAAAA&f=ASgBAQICA0SSA8YQ5geMUpC~DZauNQFAyghE_liAWYJZhFk&i=1',
+    'referer': 'https://www.avito.ru/moskva/kvartiry/prodam/vtorichka-ASgBAgICAkSSA8YQ5geMUg?f=ASgBAgICA0SSA8YQ5geMUpC~DZauNQ&i=1',
     'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
@@ -69,7 +61,7 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
     'x-requested-with': 'XMLHttpRequest',
     'x-source': 'client-browser',
-    # 'cookie': 'srv_id=Gb6Fbx7syC7LYy8t.jYvIB-wUSRkcTmceXH4pn9zZVfdze23ZHsmYi0exT35flimYd7rPKb5yZ-5seBk=.26yBxWLRrZ-tm0iy-6Ah-hqesd5YHu7AsEIxLemnUqE=.web; u=3bpzd62a.1l1blx.ymfdyb1js200; h_u=fba9ad8efced2bb2:1780932780; selected_locale=ru-RU; _gcl_au=1.1.1955744551.1780932811; _ga=GA1.1.1765901951.1780932812; _ym_uid=1780932813814473936; _ym_d=1780932813; cookie_consent_shown=1; _ym_isad=2; luri=moskva; buyer_location_id=637640; gMltIuegZN2COuSe=EOFGWsm50bhh17prLqaIgdir1V0kgrvN; ma_id_api=k5dgGahBF6xn8morr02075wvMGXm7UT/3MtIfJrhEbdqsT7sOIKaLL4VtE51x+Sml98uM6yBIYIMj5CKjKH0InNTfMKycU+T0Hcv/cLfP8U6tFZWjkSzLbct8rjaWfvaocUABNRRYib0DqAT7HiWm1wAT1yTsrjlsoM5/iOq9xJVz5l5/XpM+TR8yTEBd0XE7aP4DvzdQeS+25oG3sz6MygsGSxzcHthuZSGbXi45NUTLoIb/CbKwltDuj991YLc73NTcJgVfjDOn4fEN39JM2J+rfq2UnSUfzfasiv0lqEQlr8XMrlj9XZ8mIVmhpEizcvuRg8dnw2UrdqaiwcqCA==; tmr_lvid=28d77703c279a2a9a1db42f152d89865; tmr_lvidTS=1780932817796; adrdel=1780932817803; adrdel=1780932817803; adrcid=APu4BCRWelBbzwV_SPdwf5g; adrcid=APu4BCRWelBbzwV_SPdwf5g; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1781019217813%2C%22sl%22%3A%7B%22224%22%3A1780932817813%2C%221228%22%3A1780932817813%7D%7D; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1781019217813%2C%22sl%22%3A%7B%22224%22%3A1780932817813%2C%221228%22%3A1780932817813%7D%7D; domain_sid=QOE2hQdHwoZGihqoqA7QQ%3A1780932817979; uxs_uid=6bae0950-634f-11f1-93e8-4f04af640159; __upin=09HKMOBPxRUdOhKhiUQ99w; ma_id=6322120861780932813192; __ai_fp_uuid=131e0b86379cf11a%3A2; buyer_from_page=catalog; f=5.0c4f4b6d233fb906b75ecc2c69e0e99847e1eada7172e06c47e1eada7172e06c47e1eada7172e06c47e1eada7172e06cb59320d6eb6303c1b59320d6eb6303c1b59320d6eb6303c147e1eada7172e06c8a38e2c5b3e08b898a38e2c5b3e08b890df103df0c26013a7b0d53c7afc06d0b2ebf3cb6fd35a0ac0df103df0c26013a8b1472fe2f9ba6b9c99dece94c5a563168e2978c700f15b6831064c92d93c3903815369ae2d1a81d4e0d8a280d6b65f00df103df0c26013aba0ac8037e2b74f9268a7bf63aa148d20df103df0c26013a8b1472fe2f9ba6b97b0d53c7afc06d0b71e7cb57bbcb8e0f03c77801b122405c03c77801b122405c03c77801b122405c2ebf3cb6fd35a0ac20f3d16ad0b1c546b892c6c84ad16848a9b4102d42ade879dcb5a55b9498f6421a43c89527accb13a8f8bc44c0f353f1a9afb448c9611b8c080393b6e127dbba00594a1bd53a660e6233a985e80aa28afb04ec07e43a120cfb0fb526bb39450a46b8ae4e81acb9fa46b8ae4e81acb9fadc0d86d9e44006d8b4d7926e9ef7a8c2b062cda5fe463b4f2da10fb74cac1eab2da10fb74cac1eaba5d9b37818eab7b0a1a4f6d22df17006a44a72275ee79654; _buzz_aidata=JTdCJTIydWZwJTIyJTNBJTIyMDlIS01PQlB4UlVkT2hLaGlVUTk5dyUyMiUyQyUyMmJyb3dzZXJWZXJzaW9uJTIyJTNBJTIyMTQ5LjAlMjIlMkMlMjJ0c0NyZWF0ZWQlMjIlM0ExNzgwOTMyODI1Njc3JTdE; _buzz_mtsa=JTdCJTIydWZwJTIyJTNBJTIyNGUxNGU5YWQ2MTgwNDljZWFkZTNmZTQ3NjJiNzUzNWMlMjIlMkMlMjJicm93c2VyVmVyc2lvbiUyMiUzQSUyMjE0OS4wJTIyJTJDJTIydHNDcmVhdGVkJTIyJTNBMTc4MDkzMjgyNDI2NCU3RA==; ft="qBNztO0ALfnBaBzy4VQDiZvJRATK4bAG6Rtn5TIIwfI4DdDMxZZcuNDbqbhQZcCD6CW8rwrxo0PqmCbSLZ+7nShJqOLEoJ2vbCpznvalpmgSuntSsSCkqqjx7ZeyiIpC8MGFK1FSR93OJVk1NL/kUg=="; sx=H4sIAAAAAAAC%2F1TMvUoDQRAA4HeZ%2Boqdvfm5uS4iGMEYRRRMtz%2BzGG1OhaCEffdUKe4FvjPoaKSVsQhpI0QRZhLU7KhejGE%2Bwwlm4M3d7%2Fv%2Ble%2F1cdo%2B7BYYwGFGnTCgxYh9gORSW4mukj2EWpWILaaExFR11CsV%2Fg9%2FT9vl%2BXD8eTE57VbUFKkPUJTMk0mOlFsryoaUa9Cx5JDG6lfq9nux%2FZE%2F3z42%2BHXT1lQk7P0SAAD%2F%2F2HxeAziAAAA; __zzatw-avito=MDA0dBA=Fz2+aQ==; __zzatw-avito=MDA0dBA=Fz2+aQ==; cssid=6fbfcad8-f29f-4a69-b385-0db6cadf1979; cssid_exp=1780952088046; v=1780950288; cfidsw-avito=FAuQjm9akaOnpJtw6bL8JXoWSm+pls9Q/ZHxiqqhicJhPozGj23gp5FJfCZLo7r1wNpRQ/jOpuv3f+WHZNBSDByIWXNAJPgGVLC5L+VaiwRkvIK2us/VPgFA/z0tetWSitpwfz+Hn9Q52E5wvQKr/soaMeFjY2qgYj5NoA==; cfidsw-avito=FAuQjm9akaOnpJtw6bL8JXoWSm+pls9Q/ZHxiqqhicJhPozGj23gp5FJfCZLo7r1wNpRQ/jOpuv3f+WHZNBSDByIWXNAJPgGVLC5L+VaiwRkvIK2us/VPgFA/z0tetWSitpwfz+Hn9Q52E5wvQKr/soaMeFjY2qgYj5NoA==; cfidsw-avito=E8Yhj6mk7dDAorAW1xZY+sSwys8R5BMRLqRQTPB92n6FDFlOTIdALeAjhZJr5JFj3MueVE57wEKCYEqmNQBgXuZWGoNVMydiPNTnybY8BoQG9BbUd5iKxIOk/GorTlzNT+Ir7PfQ3qKFwxb+2qb8wvccyP/Q4hxCoQ6mqA==; _avisc=d7u0eCxio/UQP9cnxkzgb8D4sS9kpuvmMpI4bBNhMwA=; _ga_M29JC28873=GS2.1.s1780950292$o2$g1$t1780951178$j60$l0$h0; _ym_visorc=b; SEARCH_HISTORY_IDS=1; tmr_detect=0%7C1780951185356; _adcc=2.bDYYEjiwzyVQywOqH6QY8XT52aukmY8OBZyeBeZpwTFqVFB07MPgYsSey8gbDkLFcRRknpZOw4biRVmVfckMVOztO5wUAc6PNiaOoUC0QYG2NdUKTaC7fb6zZBg0fqnVV8P2ezoKF7nZE55LNejUKEX1Fhzv; csprefid=e43ae3dd-134a-4cc2-9e66-8e1b64502ca7',
+    # 'cookie': 'srv_id=2dnESOo22eCGPdM3._chqovxdeOGTz9UjzQMiIzrn8MyW-6IUdyzb-V_Oei8Ss8-ofypac4siLzEU6JA=.3tq9c31xQbaRA9OEi6tmRSxyg2qxHEDU38xPbX1xEK8=.web; u=3brjague.pc23wr.1wjj8jh2v2q0; h_u=c3845c3f3b2ac21b:1782982680; selected_locale=ru-RU; _gcl_au=1.1.943401564.1782982713; _ga=GA1.1.911765094.1782982714; luri=moskva; buyer_location_id=637640; cookie_consent_shown=1; SEARCH_HISTORY_IDS=1%2C4%2C%2C3; gMltIuegZN2COuSe=EOFGWsm50bhh17prLqaIgdir1V0kgrvN; f=5.b5dcd0bea8d6cb0db75ecc2c69e0e99847e1eada7172e06c47e1eada7172e06c47e1eada7172e06c47e1eada7172e06cb59320d6eb6303c1b59320d6eb6303c1b59320d6eb6303c147e1eada7172e06c8a38e2c5b3e08b898a38e2c5b3e08b890df103df0c26013a7b0d53c7afc06d0b2ebf3cb6fd35a0ac0df103df0c26013a8b1472fe2f9ba6b9c99dece94c5a563168e2978c700f15b6831064c92d93c3903815369ae2d1a81d4e0d8a280d6b65f00df103df0c26013aba0ac8037e2b74f9268a7bf63aa148d20df103df0c26013a8b1472fe2f9ba6b97b0d53c7afc06d0b71e7cb57bbcb8e0f03c77801b122405c03c77801b122405c03c77801b122405c2ebf3cb6fd35a0ac20f3d16ad0b1c546b892c6c84ad16848a9b4102d42ade879dcb5a55b9498f6421a43c89527accb13a8f8bc44c0f353f1a9afb448c9611b8c080393b6e127dbba00594a1bd53a660e6233a985e80aa28afb04ec07e43a120cfb0fb526bb39450a46b8ae4e81acb9fa46b8ae4e81acb9fadc0d86d9e44006d8313ab77de0efbe16aa061a6227ce656d2da10fb74cac1eab2da10fb74cac1eaba5d9b37818eab7b0a1a4f6d22df17006a44a72275ee79654; ft="yyd7ilFMCSvPmVhenHG7f3zgG9y/aA5LmbOZdDSwABktB0XYWMxemeAmXKWOK9kYevRiqnnv08nn5Whoy1gX7Ia2dvzdmZNyWTlUfkq271vXhElRv92xoFgb+2Rbo4RPdlrM/ynOgh9APxpnUTVZ/w=="; v=1782985296; cssid=28805c82-b692-471a-b123-08c787cc66ce; cssid_exp=1782987099574; buyer_from_page=catalog; sx=H4sIAAAAAAAC%2F1TMMa6CQBAG4LtMTbHLz84A7XuJNhobGztmd8YCNNEYISHc3crCC3wrcZICi1qAVhQl5wytRaOlZGiF%2BpXe1FPa%2Fc3H8rT59LiM7i%2BqyKiP0iJI5I63igxuDM%2FuEaqo89CZqw7WBIZI%2BFIH7abrfrFxuf%2Bfp%2Bb2Q0ngbfsEAAD%2F%2F3HUibWXAAAA; tmr_lvid=f18e0a65305840b8206b3f0ae143af8a; tmr_lvidTS=1704448814427; domain_sid=xjgx3fJR1R3syH_6fe10Q%3A1782985616308; _ym_uid=1704448817787041633; _ym_d=1782985624; _ym_isad=2; _ym_visorc=b; _avisc=3t95wUSidDkUNBQ4L3dO+tmvvJ1VoAGF+L/zDKy0Isc=; pageviewCount=5; _ga_M29JC28873=GS2.1.s1782985298$o2$g1$t1782985663$j3$l0$h0; tmr_detect=0%7C1782985675403; _adcc=2.ntWQoKgamyW81ZVkS4xg72z0DJmMpOLGeT3hkfgJTM8dw1Qt34rF/rGvcTqLaPqnfGaCMDOQqZzwoLTgsySiTJnxh1OXXOq9qMQuyWBUZ73bWXjN/gdAoxbGc9Y+SQa4pp2OHmTvKzIAvRT0C2JQYBnEzcma; csprefid=b4e9018b-f76b-48ba-80bf-78141a56e5e6',
 }
 
 params = {
@@ -80,22 +72,19 @@ params = {
     'p': '1',
     'params[201]': '1059',
     'params[499]': '5254',
-    'params[549][0]': '5695',
-    'params[549][1]': '5696',
-    'params[549][2]': '5697',
-    'params[549][3]': '5698',
     'params[110472]': '437131',
     'verticalCategoryId': '1',
     'rootCategoryId': '4',
     'localPriority': '0',
     'updateListOnly': 'true',
-    'context': 'H4sIAAAAAAAA_wEmANn_YToxOntzOjE6InkiO3M6MTY6IkcwRkxJTUNSeDZ4NHdUYjEiO31gQMuJJgAAAA',
+    'context': 'H4sIAAAAAAAA_wEmANn_YToxOntzOjE6InkiO3M6MTY6IkMyc0FveHRrS1BkQUxudHciO30fw85KJgAAAA',
 }
 
 result = []
 
 while True:
-    response = requests.get('https://www.avito.ru/web/1/js/items', params=params, cookies=cookies, headers=headers)
+
+    response = requests.get('https://www.avito.ru/web/1/js/items', params=params, cookies=cookies, headers=headers, proxies=proxies)
 
     print(response.status_code)
     items = response.json()['catalog']['items']
@@ -119,10 +108,11 @@ while True:
     if not items:
         break
     params['p'] = str(int(params['p']) +1)
-    if int(params['p']) > 22:
+    if int(params['p']) > 56:
         break
-    time.sleep(3)
+    sleep_time = random.uniform(7, 9)
+    time.sleep(sleep_time)
 
 df = pd.DataFrame(result)
-df.to_excel('avito.xlsx', index=False)
+df.to_excel('avito_02-07-26.xlsx', index=False)
 

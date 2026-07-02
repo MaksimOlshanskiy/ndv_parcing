@@ -1,9 +1,13 @@
 import pandas as pd
 import numpy as np
 
+'''
+проверять названия столбцов
+'''
+
 # Загружаем файлы
-df1 = pd.read_excel(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\База изм хар май.xlsx")
-df2 = pd.read_excel(r"C:\PycharmProjects\ndv_parcing\НашДомРФ\2026-06-08\НашДомРФ_глубже_080626_add.xlsx")
+df1 = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Рабочие для базы\База изменяемые данные.xlsx")
+df2 = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Рабочие для базы\НашДомРФ_глубже_23062026.xlsx", sheet_name='Sheet1')
 
 
 df1["ID дом.рф"] = (
