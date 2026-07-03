@@ -93,24 +93,15 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'flatsale',
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
-
         },
         'region': {
             'type': 'terms',
             'value': [
-                1,
+                5044,
             ],
-        },
-        'page': {
-            'type': 'term',
-            'value': 1,
         },
         'floor': {
             'type': 'range',
@@ -149,9 +140,9 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'flat_share': {
+        'page': {
             'type': 'term',
-            'value': 2,
+            'value': 1,
         },
     },
     '_liquiditySource': 'web_serp',
@@ -179,7 +170,7 @@ cities_dict = {
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
-cities_list = [4951]
+cities_list = [5044]
 
 for city_id in cities_list:
 

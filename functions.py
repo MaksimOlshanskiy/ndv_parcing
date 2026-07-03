@@ -11,6 +11,9 @@ from enrich.main2 import enrich_dataframe, load_json
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 def get_unique_filepath(folder_path: str, filename: str) -> str:
     """

@@ -113,10 +113,10 @@ rename_dict = {
 
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"D:\НДВ\База июнь\Сравнение\Май-Июнь"
+folder_path = r"C:\Users\Maxim.Olshansky\PycharmProjects\ndv_parcing\Cian\Вторичка\2026-07-03"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'База final.xlsx'
+output_file_name = 'Химки.xlsx'
 
 # Создаём пустой DataFrame для накопления данных
 all_data = pd.DataFrame()
@@ -191,7 +191,8 @@ def fill_missing_price(df):
 
     return df
 
-all_data['Название проекта'] = all_data['Название проекта'].replace(rename_dict)
+# all_data['Название проекта'] = all_data['Название проекта'].replace(rename_dict)
+
 # all_data = all_data.drop_duplicates()       # убираем полные дубликаты
 #  all_data = remove_share_sale(all_data)   # убираем доли в квартирах
 # try:
