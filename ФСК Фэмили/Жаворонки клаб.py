@@ -146,7 +146,7 @@ for i in items:
     room_count = room_count_list[2][0]
     flat_number = ''
     try:
-        area = float(room_count_list[1][0].replace(',', '.'))
+        area = next((item[0] for item in room_count_list if 'м2' in item), None)
     except:
         area = ''
     try:
@@ -261,7 +261,7 @@ for i in items:
     room_count = room_count_list[2][0]
     flat_number = ''
     try:
-        area = float(room_count_list[1][0].replace(',', '.'))
+        area = next((item[0] for item in room_count_list if 'м2' in item), None)
     except:
         area = ''
     try:

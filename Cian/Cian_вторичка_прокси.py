@@ -4,8 +4,9 @@ import time
 import pandas as pd
 import os
 import random
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
-from jedi.api import file_name
 
 from functions import merge_and_clean, haversine
 import json
@@ -93,15 +94,24 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'flatsale',
+        'sort': {
+            'type': 'term',
+            'value': 'price_object_order',
+        },
         'engine_version': {
             'type': 'term',
             'value': 2,
+
         },
         'region': {
             'type': 'terms',
             'value': [
-                5044,
+                1,
             ],
+        },
+        'page': {
+            'type': 'term',
+            'value': 1,
         },
         'floor': {
             'type': 'range',
@@ -140,9 +150,9 @@ json_data = {
             'type': 'term',
             'value': 1,
         },
-        'page': {
+        'flat_share': {
             'type': 'term',
-            'value': 1,
+            'value': 2,
         },
     },
     '_liquiditySource': 'web_serp',
@@ -170,7 +180,7 @@ cities_dict = {
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
-cities_list = [5044]
+cities_list = [1, 2]
 
 for city_id in cities_list:
 
@@ -229,7 +239,8 @@ for city_id in cities_list:
     # elif items_count > 4500:
 
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    total_floor_list = [[1, 3], [4, 7], [8, 15], [16, 200]]
+    # total_floor_list = [[1, 3], [4, 7], [8, 15], [16, 200]]
+    total_floor_list = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 15], [16, 18], [19, 22], [23, 25], [26, 30], [31, 35], [36, 40], [41, 50], [51, 65], [66, 999]]
 
 
     for rooms in rooms_ids:
@@ -259,50 +270,58 @@ for city_id in cities_list:
                 counter = 1
                 total_count = 1
 
+                while True:
 
-
-                while len(flats) < total_count:
-
-                    if counter > 1:
-                        sleep_time = random.uniform(0, 2)
-                        time.sleep(sleep_time)
-                    for attempt in range(3):
-                        try:
-                            response = session.post(
-                                'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
-                                cookies=cookies,
-                                headers=headers,
-                                json=json_data,
-                                proxies=proxies,
-                                timeout=10
-                            )
-                            break  # успех — выходим из цикла
-
-                        except requests.exceptions.ProxyError:
-                            print(f"Прокси умер, попытка {attempt + 1}")
-                            time.sleep(2)
-
-                        except requests.exceptions.RequestException as e:
-                            print("Ошибка запроса:", e)
-                            time.sleep(2)
-                    else:
-                        print("Все попытки не удались")
-
-
-                        print(f"Код от сервера cian: {response.status_code}")
-
-                        print(response.status_code)
-                    if response.status_code != 200:
-                        items = response.json()["data"]["offersSerialized"]
-                    else:
-                        time.sleep(5)
+                    try:
                         response = session.post(
                             'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
                             cookies=cookies,
                             headers=headers,
                             json=json_data,
-                            proxies=proxies
+                            proxies=proxies,
+                            timeout=10
                         )
+
+                        print(response.status_code)
+                        # print(f'IP через прокси: {requests.get("https://ipinfo.io/json", proxies=proxies).json()}')
+
+                        items = response.json()["data"]["offersSerialized"]
+
+                    except:
+                        print("Произошла ошибка, пробуем ещё раз")
+
+                        time.sleep(7)
+
+                        session = requests.Session()
+
+                        retry = Retry(
+
+                            total=5,
+
+                            backoff_factor=1,
+
+                            status_forcelist=[429, 500, 502, 503, 504],
+
+                        )
+
+                        adapter = HTTPAdapter(max_retries=retry)
+
+                        session.mount("http://", adapter)
+
+                        session.mount("https://", adapter)
+
+                        print(f"Код от сервера cian: {response.status_code}")
+
+                        print(response.status_code)
+
+                        response = session.post(
+                            'https://api.cian.ru/search-offers/v2/search-offers-desktop/',
+                            cookies=cookies,
+                            headers=headers,
+                            json=json_data,
+                            proxies=proxies,
+                        )
+                        print(response.status_code)
                         items = response.json()["data"]["offersSerialized"]
 
 

@@ -39,8 +39,9 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
     # 'cookie': '_ym_uid=1751363186277125085; _ym_d=1770968425; scbsid_old=2746015342; _ym_isad=2; sma_session_id=2636194413; SCBfrom=https%3A%2F%2Fyandex.ru%2F; smFpId_old_values=%5B%22ab19ac2380782ae239d725bfec8e9f49%22%2C%22cd14d52d59b08c237e2004225d23c665%22%5D; _ym_visorc=w; _cmg_csstS0cfD=1773405616; _comagic_idS0cfD=12376477526.16918849771.1773405616; sma_index_activity=4293',
 }
-
+# подставлял айди из project_dict по очереди
 params = {
+'project': '3b13c636-89c5-11e8-83fb-0cc47aaa4272',
     'type': 'Коммерческое помещение',
     'sortBy': 'price',
     'sortOrder': 'asc',

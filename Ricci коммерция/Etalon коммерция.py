@@ -18,7 +18,7 @@ from urllib3.util.retry import Retry
 Скрипт очень медленный, часа на три, но рабочий, нужно менять number_of_flats на верное количество квартир с сайта
 """
 
-number_of_flats = 61
+number_of_flats = 45
 
 headers = {
     'accept': '*/*',

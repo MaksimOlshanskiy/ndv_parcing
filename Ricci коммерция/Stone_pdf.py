@@ -13,18 +13,34 @@ from functions import save_flats_to_excel
 Также вручную указываем названия проектов
 '''
 
+import pdfplumber
 
+print(pdfplumber.__version__)
 
-url = 'https://stone-s3.storage.yandexcloud.net/STOUN_Sokolniki_Ritejl_553383_Prajs_list_4308f65bac.pdf'
+import pdfminer
+print(pdfminer.__version__)
 
-response = requests.get(url)
-pdf_file = BytesIO(response.content)
+pdf_path = r"C:\Users\Mi\Downloads\СТОУН_Грэйн___Ритейл.pdf"
+
+import pypdfium2 as pdfium
+
+pdf = pdfium.PdfDocument(pdf_path)
+
+page = pdf[0]
+textpage = page.get_textpage()
+
+text = textpage.get_text_range()
+print('pypdfium2')
+print(text[:1000])
+
 
 all_rows = []
 
-with pdfplumber.open(pdf_file) as pdf:
+with pdfplumber.open(pdf_path) as pdf:
 
     for page in pdf.pages:
+
+
 
         # Получаем текст страницы
         page_text = page.extract_text() or ""
@@ -39,13 +55,20 @@ with pdfplumber.open(pdf_file) as pdf:
 
         # Получаем таблицы страницы
         tables = page.extract_tables()
+        print(f'Страница {page.page_number}: найдено {len(tables)} таблиц')
 
         for table in tables:
+
+            for i, table in enumerate(tables):
+                print(f'\nТаблица {i + 1}')
+                print(table)
 
             if not table or len(table) < 2:
                 continue
 
             headers = [str(x).strip() if x else '' for x in table[0]]
+
+
 
             if 'Лот' not in headers:
                 continue

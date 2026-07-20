@@ -1,13 +1,17 @@
 import datetime
-
 import pandas as pd
 from selenium import webdriver
 import json
+import os
 import time
 from playwright.sync_api import sync_playwright
 
-ids = [71592, 70198, 69962, 69431, 68781, 68264, 67507, 67276, 67146, 67099, 66746, 66212, 66052, 65901, 65639, 65638, 65640, 65642, 65641, 65505, 65452, 65248, 65249, 64983, 64494, 64219, 63822, 63821, 63450, 63497, 62677, 62414, 62125, 61714, 61673, 61276, 60622, 59897, 59887, 59683, 59327, 59237, 59144, 58488, 58489, 58187, 58111, 58110, 58064, 57808, 57807, 57362, 57008, 57009, 56842, 56694, 56341, 56270, 56269, 55472, 55421, 55422, 55433, 55224, 55198, 54897, 54281, 54102, 53988, 53748, 53658, 53150, 52567, 51394, 51395, 48767, 47486, 47431, 46310, 45519, 44648, 37984, 62087, 62088, 63029, 29009, 26460, 26466, 51725, 70416, 40160, 62843, 62055, 60896, 63629, 58644, 66023, 65172, 56224, 48352, 71545, 67696, 53669, 46311, 65422, 52006, 52227, 30004, 62103, 41581, 70610, 62789, 63966, 48353, 58524, 45298, 7531, 71090, 68926, 69006, 52725, 55218, 35468, 35467, 67620, 60872, 60564, 66242, 45185, 45184, 59598, 66982, 66981, 66957, 67388, 67329, 70960, 70961, 70962, 68728, 61344, 53874, 69199, 57838, 53713, 51567, 51566, 64096, 43701, 55142, 60533, 60712, 66274, 69377, 69374, 69376, 69375, 71828, 69149, 64808, 64596, 30640, 30090, 30242, 65267, 58073, 71025, 65465, 59756, 39827, 44125, 57465, 43199, 60011, 70309, 70310, 56949, 56951, 56950, 53412, 53413, 53411, 50237, 71340, 51766, 66240, 54454, 68144, 46163, 72374, 53498, 69386, 68831, 69153, 62247, 56514, 56157, 53790, 32319, 32320, 32322, 32321, 65192, 56623, 25173, 59759, 64768, 64446, 65371, 65372, 65370, 62557, 62556, 66793, 70718, 64921, 70095, 70968, 56687, 51432, 71425, 58298, 58299, 57478, 67723, 58150, 55387, 56944, 56945, 53541, 53543, 53542, 58135, 56306, 56304, 56307, 56305, 53359, 62590, 62589, 69710, 72298, 68001, 54394, 59966, 59967, 65337, 65338, 50144, 44596, 56974, 56866, 54521, 51119, 51108, 50420, 69549, 64340, 52790, 58749, 54732, 66447, 66448, 66443, 71480, 71468, 69317, 70300, 70368, 45849, 45092, 45093, 45091, 45094, 67699, 67700, 9607, 67498, 66997, 66527, 65825, 64324, 61046, 59391, 64325, 63646, 63647, 56212, 63594, 56210, 60548, 65460, 57291, 61312, 59595, 70846, 66801, 61588, 56750, 63948, 63949, 66931, 54528, 66132, 63603, 61521, 68929, 63659, 68426, 60880, 66234, 59150, 63020, 63015, 62069, 68513, 67424, 64244, 56502, 59686, 59685, 27252, 70778, 65944, 50448, 72174, 47512, 47510, 47511, 47509, 47508, 61221, 63962, 61303, 46687, 61610, 53747, 66710, 67437, 59934, 57179, 27250, 27247, 27248, 59213, 68014, 66131, 57033, 27251, 27240, 27242, 26278, 68901, 61294, 60591, 69595, 69179, 54664, 56102, 72273, 37859, 19620, 58312, 58168, 46278, 46281, 53519, 53520, 53521, 53522, 53523, 56753, 54578, 54579, 54580, 54581, 54582, 54583, 46644, 46646, 46647, 46648, 50407, 50408, 50409, 59507, 56266, 71428, 55760, 53581, 72456, 67209, 50976, 50975, 56715, 58281, 54577, 57817, 68396, 24954, 66847, 65478, 59212, 51091, 48243, 62503, 65723, 70374, 59370, 54984, 51622, 53635, 64985, 53661, 70938, 70939, 48805, 70547, 67659, 62998, 62266, 62265, 59506, 66744, 48808, 48777, 48776, 48779, 46060, 63924, 56071, 54541, 54505, 68276, 68821, 68822, 45826, 49777, 45192, 70783, 59157, 55103, 60273, 55104, 55106, 55105, 66400, 66399, 69275, 56953, 42929, 54981, 69675, 67396, 66520, 62038, 62039, 55644, 54917, 51572, 68245, 64748, 65125, 68269, 70684, 69378, 50200, 51438, 51440, 51437, 51439, 70548, 67859, 66328, 71477, 71431, 56363, 64003, 64004, 60247, 63823, 47688, 70663, 45970, 45969, 66008, 49357, 49356, 49358, 39716, 64566, 58256, 62614, 61562, 69775, 69774, 67067, 61422, 71089, 67615, 57752, 70585, 68275, 56910, 52456, 52453, 52454, 52455, 69138, 66661, 61311, 62431, 44768, 44771, 44769, 50364, 50366, 50365, 50363, 54628, 69273, 64568, 55432, 51929, 51928, 70442, 64454, 31074, 64168, 71579, 65141, 66802, 70590, 68659, 68660, 68658, 72362, 70119, 70117, 70118, 61843, 61842, 52082, 46127, 69773, 56265, 56264, 32274, 58132, 58133, 58232, 60425, 72161, 66300, 58201, 57919, 53464, 66013, 72297, 71512, 71446, 71206, 71138, 70225, 69178, 68217, 67173, 66285, 64850, 63865, 63875, 61290, 59864, 58300, 56719, 55992, 54161, 52976, 52871, 52872, 52869, 52870, 52873, 52372, 52371, 52236, 52234, 52233, 52235, 49702, 46468, 40634, 36579, 36234, 35849, 35852, 35850, 35851, 24248]
-result_list = []
+ids = [50874, 42767, 42025, 29765, 42026, 43061, 43062, 42443, 53778, 53780, 53769, 53776, 53779, 53770, 53771, 53772, 53773, 53774, 53775, 53777, 51054, 27645, 51187, 36568, 35909, 58891, 35613, 43489, 33907, 33908, 21336, 16732, 16735, 16734, 16733, 27569, 27563, 27561, 27567, 27562]
+
+results_list = []
+city = 'Самара'
+date = datetime.date.today()
+counter = 1
 
 # def making_list_of_urls(corpus_id):
 #     driver = webdriver.Chrome()
@@ -47,73 +51,65 @@ with sync_playwright() as p:
 
     time.sleep(8)
 
+
     for project_id in ids:
-        project_id = str(project_id)
-        # Выполняем fetch внутри браузера
-        result = page.evaluate(
-            """
-        async (projectId) => {
-            const r = await fetch(
-                `https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/object/${projectId}/sales_agg`,
-                {
-                    headers: {
-                        authorization: 'Basic MTpxd2U='
-                    }
+
+
+        offset = 0
+        while True:
+            project_id = str(project_id)
+            # Выполняем fetch внутри браузера
+            result = page.evaluate(
+    """
+    async ({ projectId, offset }) => {
+        const r = await fetch(
+            `https://xn--80az8a.xn--d1aqf.xn--p1ai/portal-kn/api/kn/objects/${projectId}/flats?flatGroupType=premises&limit=5&offset=${offset}`,
+            {
+                headers: {
+                    authorization: 'Basic MTpxd2U='
                 }
-            );
+            }
+        );
+    
+        return await r.json();
+    }
+    """,
+    {"projectId": project_id, "offset": offset}
+    )
 
-            return await r.json();
-        }
-        """,
-            project_id
-        )
+            total_count = result["total"]
+            for i in result['data']:
+                type = i['type']
+                floorNumber = i['floorNumber']
+                price = i['price']
+                status = i['status']
+                totalArea = i['totalArea']
+                print(f'{counter} из {len(ids)}', project_id, type, floorNumber, price, status, totalArea)
+                res = [city, project_id, type, floorNumber, price, status, totalArea]
+                results_list.append(res)
+            offset +=5
+            if offset > total_count:
+                break
+            time.sleep(1)
+        counter += 1
 
-        date = datetime.date.today()
-        try:
-            aps_perc = result['data']['apartmentsAggData']['perc']
-        except:
-            aps_perc = ''
-        try:
-            aps_realised = result['data']['apartmentsAggData']['realised']
-        except:
-            aps_realised = ''
-        try:
-            aps_total = result['data']['apartmentsAggData']['total']
-        except:
-            aps_total = ''
-        try:
-            nonlive_perc = result['data']['nonlivAggData']['perc']
-        except:
-            nonlive_perc = ''
-        try:
-            nonlive_realised = result['data']['nonlivAggData']['realised']
-        except:
-            nonlive_realised = ''
-        try:
-            nonlive_total = result['data']['nonlivAggData']['total']
-        except:
-            nonlive_total = ''
-        try:
-            parking_perc = result['data']['parkingAggData']['perc']
-        except:
-            parking_perc = ''
-        try:
-            parking_realised = result['data']['parkingAggData']['realised']
-        except:
-            parking_realised = ''
-        try:
-            parking_total = result['data']['parkingAggData']['total']
-        except:
-            parking_total = ''
-        result_list.append(
-            [date, project_id, aps_perc, aps_realised, aps_total, nonlive_perc, nonlive_realised, nonlive_total, parking_perc,
-             parking_realised, parking_total])
-        print([date, project_id, aps_perc, aps_realised, aps_total, nonlive_perc, nonlive_realised, nonlive_total, parking_perc,
-             parking_realised, parking_total])
-        time.sleep(1)
+df = pd.DataFrame(results_list, columns=['city','project_id', 'type', 'floorNumber', 'price', 'status', 'totalArea'])
 
-df = pd.DataFrame(result_list, columns=['date', 'project_id', 'aps_perc', 'aps_realised', 'aps_total', 'nonlive_perc', 'nonlive_realised', 'nonlive_total', 'parking_perc', 'parking_realised', 'parking_total'])
-df.to_excel('sales_agg.xlsx', index=False)
+# Базовый путь для сохранения
+base_path = r"C:\PycharmProjects\ndv_parcing\НашДомРФ"
+
+folder_path = os.path.join(base_path, str(date))
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
+
+filename = f'{city}_Лоты.xlsx'
+
+# Полный путь к файлу
+file_path = os.path.join(folder_path, filename)
+
+# Сохранение файла в папку
+df.to_excel(file_path, index=False)
+
 
 
 

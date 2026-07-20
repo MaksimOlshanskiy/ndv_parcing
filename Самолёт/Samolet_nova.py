@@ -17,31 +17,17 @@ from Developer_dict import developer_dict, name_dict
 from functions import save_flats_to_excel
 
 cookies = {
+    '_ymab_param': 'KayPsUUvjdHX2yTZO4rKls3WtR9nKhPah2Vykmko0YtK8QnEJDRSpQfqj4cWElMIjIhP6Y93Jpyx0ByJOGCux8ua9ho',
     'mindboxDeviceUUID': 'd6b3597d-4b0b-4e45-8167-0b84971b36f7',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D',
-    'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
-    '_ct_ids': 'htlowve6%3A36409%3A1026136980',
-    '_ct_session_id': '1026136980',
-    '_ct_site_id': '36409',
-    '_ct': '1300000000631722815',
-    '_ct_client_global_id': 'fbe0ef66-3f93-5e30-a689-c3153a19a53a',
-    '_ym_uid': '1780225391469853948',
-    '_ym_d': '1780225391',
     'vp_width': '1920',
-    '_ym_isad': '2',
-    '_ymab_param': 'CKp-usJBKP4YZpq3l2A92OozSS0WXDzAFnqfuZzzV9VBxC02lt7AUH606WM8rOGSy9LwOnFtA1e9OEL2Iz-i0jRpvUU',
-    '_ym_visorc': 'b',
-    'tmr_lvid': 'd2a231e987f9bdb33f7d2a15fbf8150c',
-    'tmr_lvidTS': '1780225390956',
-    'cted': 'modId%3Dhtlowve6%3Bya_client_id%3D1780225391469853948',
-    'domain_sid': '5gyBALT3l_X77i-0R9zyv%3A1780225392065',
-    'Fired15sec': 'true',
-    'pageviewTimerNovaMoscow': '37.086',
-    'pageviewTimerAll': '37.086',
-    'pageviewTimerMSK': '37.086',
-    'pageviewCount': '3',
-    'call_s': '___htlowve6.1780227316.1026136980.185717:571622.383902:1078348|2___',
-    'tmr_detect': '0%7C1780225520153',
+    'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
+    '_ct_ids': 'htlowve6%3A36409%3A1042068647',
+    '_ct_session_id': '1042068647',
+    '_ct_site_id': '36409',
+    'call_s': '___htlowve6.1784552484.1042068647.143945:445562.383897:1078350|2___',
+    '_ct': '1300000000642275134',
+    '_ct_client_global_id': '089407ce-d8b4-596e-88ef-eee2bfcb3172',
 }
 
 headers = {
@@ -51,15 +37,16 @@ headers = {
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://nova.moscow/flats/?nameType=sale&free=1&type=100000000&ordering=-order_manual,filter_price_package,pk',
-    'sec-ch-ua': '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
+    'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36',
-    # 'cookie': 'mindboxDeviceUUID=d6b3597d-4b0b-4e45-8167-0b84971b36f7; directCrm-session=%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct_ids=htlowve6%3A36409%3A1026136980; _ct_session_id=1026136980; _ct_site_id=36409; _ct=1300000000631722815; _ct_client_global_id=fbe0ef66-3f93-5e30-a689-c3153a19a53a; _ym_uid=1780225391469853948; _ym_d=1780225391; vp_width=1920; _ym_isad=2; _ymab_param=CKp-usJBKP4YZpq3l2A92OozSS0WXDzAFnqfuZzzV9VBxC02lt7AUH606WM8rOGSy9LwOnFtA1e9OEL2Iz-i0jRpvUU; _ym_visorc=b; tmr_lvid=d2a231e987f9bdb33f7d2a15fbf8150c; tmr_lvidTS=1780225390956; cted=modId%3Dhtlowve6%3Bya_client_id%3D1780225391469853948; domain_sid=5gyBALT3l_X77i-0R9zyv%3A1780225392065; Fired15sec=true; pageviewTimerNovaMoscow=37.086; pageviewTimerAll=37.086; pageviewTimerMSK=37.086; pageviewCount=3; call_s=___htlowve6.1780227316.1026136980.185717:571622.383902:1078348|2___; tmr_detect=0%7C1780225520153',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+    # 'cookie': '_ymab_param=KayPsUUvjdHX2yTZO4rKls3WtR9nKhPah2Vykmko0YtK8QnEJDRSpQfqj4cWElMIjIhP6Y93Jpyx0ByJOGCux8ua9ho; mindboxDeviceUUID=d6b3597d-4b0b-4e45-8167-0b84971b36f7; directCrm-session=%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D; vp_width=1920; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct_ids=htlowve6%3A36409%3A1042068647; _ct_session_id=1042068647; _ct_site_id=36409; call_s=___htlowve6.1784552484.1042068647.143945:445562.383897:1078350|2___; _ct=1300000000642275134; _ct_client_global_id=089407ce-d8b4-596e-88ef-eee2bfcb3172',
 }
+
 
 params = {
     'independent_project': 'true',

@@ -92,8 +92,35 @@ json_data = {
         'from_mcad_km': {
             'type': 'range',
             'value': {
-                'gte': 73,
-                'lte': 80,
+                 'lte': 50,
+            },
+        },
+        'geo': {
+            'type': 'geo',
+            'value': [
+                {
+                    'type': 'highway',
+                    'id': 4,
+                },
+                {
+                    'type': 'highway',
+                    'id': 10,
+                },
+                {
+                    'type': 'highway',
+                    'id': 29,
+                },
+                {
+                    'type': 'highway',
+                    'id': 129,
+                },
+            ],
+        },
+        'house_year': {
+            'type': 'range',
+            'value': {
+                'gte': 2010,
+                'lte': 2026,
             },
         },
         'engine_version': {
@@ -117,13 +144,14 @@ json_data = {
         'land_status': {
             'type': 'terms',
             'value': [
+                1,
                 2,
             ],
         },
         'object_type': {
             'type': 'terms',
             'value': [
-                3,
+                1,
             ],
         },
         'page': {

@@ -92,4 +92,5 @@ print(df.info())
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 # df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
 
-df.to_excel("Выгрузка0425.xlsx", index=False)
+df.to_excel("В"
+            "ыгрузка0625.xlsx", index=False)
