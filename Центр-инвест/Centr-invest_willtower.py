@@ -6,7 +6,10 @@ import os
 import random
 from bs4 import BeautifulSoup
 from selenium import webdriver
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from functions import save_flats_to_excel
 
 headers = {
@@ -37,6 +40,42 @@ def extract_digits_or_original(s):
 web_site = f'https://willtowers.ru/params/'
 driver = webdriver.Chrome()
 driver.get(url=web_site)
+
+while True:
+    try:
+        # Ждем появления и кликабельности кнопки
+        button = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "button.load_more"))
+        )
+
+        # Проверяем видимость
+        if not button.is_displayed():
+            print("Кнопка не видима, завершаем")
+            break
+
+        # Нажимаем
+        driver.execute_script("arguments[0].click();", button)
+        print("Кнопка нажата")
+
+        # Ждем загрузки новых данных
+        time.sleep(2)
+
+        # Проверяем, не исчезла ли кнопка
+        try:
+            WebDriverWait(driver, 2).until(
+                EC.invisibility_of_element_located((By.CSS_SELECTOR, "button.load_more"))
+            )
+            print("Кнопка исчезла, завершаем")
+            break
+        except TimeoutException:
+            # Кнопка все еще видима, продолжаем цикл
+            continue
+
+    except TimeoutException:
+        print("Кнопка не найдена, завершаем")
+        break
+
+
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
 soup = BeautifulSoup(page_content, 'html.parser')
 

@@ -11,6 +11,10 @@ from selenium import webdriver
 
 from functions import save_flats_to_excel
 
+'''
+Часто срабатывает не с первого раза, можно попробовать промотать предложения до конца
+'''
+
 cookies = {
     'PHPSESSID': 'NVPjHM1uJDmzql7K1XAcJ76OpgI68j9i',
     'BITRIX_SM_TZ': 'Europe/Moscow',
@@ -71,7 +75,7 @@ web_site = f'https://jk-vg.su/#flats'
 driver = webdriver.Chrome()
 driver.get(url=web_site)
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
-time.sleep(5)
+time.sleep(7)
 soup = BeautifulSoup(page_content, 'html.parser')
 flats_soup = soup.find_all('div', class_="_wrapper_1p9bk_1")
 for f in flats_soup:

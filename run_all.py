@@ -174,7 +174,7 @@ SCRIPTS = [
     Path(r'C:\PycharmProjects\ndv_parcing\СЗ Энергостройинвест\Отлично.py'),
     Path(r'C:\PycharmProjects\ndv_parcing\Юник девелопмент\Springs.py'),
     Path(r'C:\PycharmProjects\ndv_parcing\Primacom\Внуково Кантри клаб.py'),
-
+    Path(r'C:\PycharmProjects\ndv_parcing\AVA\Городской бор.py')
 
 ]
 

@@ -13,13 +13,14 @@ import requests
 cookies = cookies
 headers = headers
 
-data = {
-    "price[min]": 10.5,
-    "price[max]": 31.6,
+data =  {
+    "price[min]": 15,
+    "price[max]": 46.2,
     "obj[]": [152],
     "area[min]": 20,
-    "area[max]": 65,
-    "floor[max]": 24,
+    "area[max]": 89,
+    "floor[max]": 23,
+    "view": "line",
     "ob[page]": 1,
     "ob[sort]": "price",
     "ob[order]": "asc",
@@ -27,7 +28,7 @@ data = {
     "ob[id]": 152,
     "object": 152,
     "a": "types",
-    "ok": ok,
+    "ok": "y3pNEleDe7hjBuDjP9VQSjxVDUIFEBP9",
 }
 
 

@@ -61,7 +61,7 @@ if response.status_code == 200:
         date = datetime.date.today()
         project = 'Апсайд Тауэрс'
         developer = 'Upside Development'
-        korpus = j.get('tr_n', '')[0]
+        korpus = j.get('tb', '')
         korpus = korpus_dict.get(korpus, korpus)
         room_count = j.get('rc', '')
 

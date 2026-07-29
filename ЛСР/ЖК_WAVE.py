@@ -15,21 +15,22 @@ headers = headers
 
 if __name__ == "__main__":
     data = {
-        "price[min]": 10.5,
-        "price[max]": 31.6,
-        "obj[]": [202],
-        "area[min]": 20,
-        "area[max]": 65,
-        "floor[max]": 24,
-        "ob[page]": 1,
-        "ob[sort]": "price",
-        "ob[order]": "asc",
-        "group[t]": "false",
-        "ob[id]": 202,
-        "object": 202,
-        "a": "types",
-        "ok": ok,
-    }
+    "price[min]": 15,
+    "price[max]": 79.3,
+    "obj[]": [202],
+    "area[min]": 20,
+    "area[max]": 109,
+    "floor[max]": 52,
+    "view": "line",
+    "ob[page]": 1,
+    "ob[sort]": "price",
+    "ob[order]": "asc",
+    "group[t]": "false",
+    "ob[id]": 202,
+    "object": 202,
+    "a": "types",
+    "ok": "y3pNEleDe7hjBuDjP9VQSjxVDUIFEBP9",
+}
 
 
 flats = []

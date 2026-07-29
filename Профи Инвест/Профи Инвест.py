@@ -50,7 +50,7 @@ data = {
     'sort': 'price_az',
     'facing': '0',
     'no_booked': '0',
-    'object': 'all',
+    'object': '47436',
     'house': 'all',
     'ready': 'all',
     'rooms[]': 'all',

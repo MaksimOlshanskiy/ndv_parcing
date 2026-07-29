@@ -17,7 +17,7 @@ from urllib3.util.retry import Retry
 Скрипт очень медленный, часа на три, но рабочий, нужно менять number_of_flats на верное количество квартир с сайта
 """
 
-number_of_flats = 682
+number_of_flats = 665
 
 cookies = {
     'PHPSESSID': 'kLhpYpDU4pBf5qEWlalRohUJEv3FHoQh',

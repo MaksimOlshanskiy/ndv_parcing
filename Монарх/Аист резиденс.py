@@ -13,10 +13,10 @@ from functions import save_flats_to_excel
 '''
 
 cookies = {
+    'XSRF-TOKEN': 'eyJpdiI6IjM3bFgvS3g2aUlMMVRZeWJOUWlCckE9PSIsInZhbHVlIjoiaHEvdnlCSUM3TDFvQlJDNE5MclRzU2FNU0FuTG50dVUyZU1WWUVMOUxlOHIrU1pMVHlMNXArcEdMaDNmL1A0UjNpWFBna2U2ckRzZ1Y2M3R6MU9jekRQYUJVVXR1QXNyM1NmM01NNVd1NDJXcmVIUTlRL2RuMXlyN0VkM0J4NUciLCJtYWMiOiIxOTUwNWYyYzQ2NjlmZTNlZDliYTMwOTkyMDVkOTM4ODZiYjU3MTA1NGE3NDVhNjAwMGFlNTEyYTNkZjQ5NDBmIiwidGFnIjoiIn0%3D',
+    'aist_session': 'eyJpdiI6InR3ZEwwNUNwR1ZuaVc3ZEFpb3VVT3c9PSIsInZhbHVlIjoiZzNSSjlqKzhBUWlRY1l2eURNUTJaQnJiWmtzSGxUV2x2TVRJZGhXZko5bGRiTmNLUnNWQTlkUjVPWTZzais3cDVyQk1nREExZDM0R1k3YmdFcGtiUGlGbTRkdFY3TXA4cUxPYTVpaCt5Z3NCRnRXMHIzZHAvZWpmRUU5bWNxRUkiLCJtYWMiOiJhNjk3OGZhN2M0NTk1OGZlOTIyNDBlYjBiOGE2MzA3NmQ5MGIwZjA5YzY3OWEzODY0ZGI5Mzc3MzVlYjlkMzNjIiwidGFnIjoiIn0%3D',
     '_ym_uid': '1779879851910342352',
-    '_ym_d': '1779879851',
-    'XSRF-TOKEN': 'eyJpdiI6IlE2K1ZNSE1FQnJOSUIvVStjaFFlZUE9PSIsInZhbHVlIjoibmFmUiswd08rdFZDdFRpTVpxMXFMM2tQa1hvaVVtRzZ6eldFc3k3OUlVV2ZTVkVpTENjc3hRa0ExeEF0dkxScHU4ZEFjdHFqblVxcmsyaHMrRUUzNisrQkZMN3JWcmdZMmV2SlMzOUFHRzVKM0M3V2c2UE9peGRLaFRDUmlBdXUiLCJtYWMiOiI5M2YwOTE2ZjY3ZTUwODc1ZDlkOWEyNThlMjc5MDlhODgxYTM2NWU2OTEwOTUyNTQxOWE0ZjYyYTY3M2Y4MDEyIiwidGFnIjoiIn0%3D',
-    'aist_session': 'eyJpdiI6InVNTEVyR2lsVWt6eHRCVzJxaG1Cc3c9PSIsInZhbHVlIjoiam5YczVRWDI1M1lldGZPaEh0bHdxSjZvZjZyaGM1YmpBdDFVMmo0ZUsrQmRpL0RBZlVBTGJiSmVhdzNqSW9xbTc1dldsSTN4b3RVWlVPamVad1J1WG00Z2RVRVRaTVBNNTN2ZWhaZFhXYkxuOHpJLzdvbkcxK3VFelR3bmlDblkiLCJtYWMiOiI5MzFmMzlmZTcyYzVjNzgwY2ZlNjU4ODIxYTA5MzViYWFjN2E3ZjY3MDlkYzcwNmJjZWFiODA0ZWM4NjE0NTFkIiwidGFnIjoiIn0%3D',
+    '_ym_d': '1785060862',
     '_ym_isad': '2',
     '_ym_visorc': 'w',
 }
@@ -30,15 +30,15 @@ headers = {
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=2',
-    'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
+    'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
-    'x-csrf-token': '5qGhdV4o9coGMzNhvJhzxOhfhmmqWF8HB5alR6oD',
-    # 'cookie': '_ym_uid=1779879851910342352; _ym_d=1779879851; XSRF-TOKEN=eyJpdiI6IlE2K1ZNSE1FQnJOSUIvVStjaFFlZUE9PSIsInZhbHVlIjoibmFmUiswd08rdFZDdFRpTVpxMXFMM2tQa1hvaVVtRzZ6eldFc3k3OUlVV2ZTVkVpTENjc3hRa0ExeEF0dkxScHU4ZEFjdHFqblVxcmsyaHMrRUUzNisrQkZMN3JWcmdZMmV2SlMzOUFHRzVKM0M3V2c2UE9peGRLaFRDUmlBdXUiLCJtYWMiOiI5M2YwOTE2ZjY3ZTUwODc1ZDlkOWEyNThlMjc5MDlhODgxYTM2NWU2OTEwOTUyNTQxOWE0ZjYyYTY3M2Y4MDEyIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6InVNTEVyR2lsVWt6eHRCVzJxaG1Cc3c9PSIsInZhbHVlIjoiam5YczVRWDI1M1lldGZPaEh0bHdxSjZvZjZyaGM1YmpBdDFVMmo0ZUsrQmRpL0RBZlVBTGJiSmVhdzNqSW9xbTc1dldsSTN4b3RVWlVPamVad1J1WG00Z2RVRVRaTVBNNTN2ZWhaZFhXYkxuOHpJLzdvbkcxK3VFelR3bmlDblkiLCJtYWMiOiI5MzFmMzlmZTcyYzVjNzgwY2ZlNjU4ODIxYTA5MzViYWFjN2E3ZjY3MDlkYzcwNmJjZWFiODA0ZWM4NjE0NTFkIiwidGFnIjoiIn0%3D; _ym_isad=2; _ym_visorc=w',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+    'x-csrf-token': 'm1k1uJfHOEE6bqx1KejxFh9jkdFWgLGo1yvYeis5',
+    # 'cookie': 'XSRF-TOKEN=eyJpdiI6IjM3bFgvS3g2aUlMMVRZeWJOUWlCckE9PSIsInZhbHVlIjoiaHEvdnlCSUM3TDFvQlJDNE5MclRzU2FNU0FuTG50dVUyZU1WWUVMOUxlOHIrU1pMVHlMNXArcEdMaDNmL1A0UjNpWFBna2U2ckRzZ1Y2M3R6MU9jekRQYUJVVXR1QXNyM1NmM01NNVd1NDJXcmVIUTlRL2RuMXlyN0VkM0J4NUciLCJtYWMiOiIxOTUwNWYyYzQ2NjlmZTNlZDliYTMwOTkyMDVkOTM4ODZiYjU3MTA1NGE3NDVhNjAwMGFlNTEyYTNkZjQ5NDBmIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6InR3ZEwwNUNwR1ZuaVc3ZEFpb3VVT3c9PSIsInZhbHVlIjoiZzNSSjlqKzhBUWlRY1l2eURNUTJaQnJiWmtzSGxUV2x2TVRJZGhXZko5bGRiTmNLUnNWQTlkUjVPWTZzais3cDVyQk1nREExZDM0R1k3YmdFcGtiUGlGbTRkdFY3TXA4cUxPYTVpaCt5Z3NCRnRXMHIzZHAvZWpmRUU5bWNxRUkiLCJtYWMiOiJhNjk3OGZhN2M0NTk1OGZlOTIyNDBlYjBiOGE2MzA3NmQ5MGIwZjA5YzY3OWEzODY0ZGI5Mzc3MzVlYjlkMzNjIiwidGFnIjoiIn0%3D; _ym_uid=1779879851910342352; _ym_d=1785060862; _ym_isad=2; _ym_visorc=w',
 }
 
 params = {

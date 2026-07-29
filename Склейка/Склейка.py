@@ -5,10 +5,10 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"D:\НДВ\Коммерция с Нашего дома рф\Характеристики"
+folder_path = r"D:\НДВ\База июль\Новая папка"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'Характеристики.xlsx'
+output_file_name = 'База.xlsx'
 
 rename_dict = {
     "CITYZEN": "Ситизен",
@@ -192,7 +192,7 @@ def fill_missing_price(df):
 
     return df
 
-# all_data['Название проекта'] = all_data['Название проекта'].replace(rename_dict)
+all_data['Название проекта'] = all_data['Название проекта'].replace(rename_dict)
 # all_data = all_data.drop_duplicates()       # убираем полные дубликаты
 #  all_data = remove_share_sale(all_data)   # убираем доли в квартирах
 # try:

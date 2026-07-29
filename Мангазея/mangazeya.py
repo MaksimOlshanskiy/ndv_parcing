@@ -5,6 +5,10 @@ from functions import save_flats_to_excel
 from save_to_excel import save_flats_to_excel_old_new_all
 import requests
 
+'''
+Посматривать за отделкой. Сейчас всё без отделки, но может появиться отделка
+'''
+
 # Настройки для запросов
 cookies = {
     '_ga': 'GA1.1.1741273793.1741952312',
@@ -90,7 +94,7 @@ while url:
             type = 'Квартира'
 
             index_finish = len(i["data"]["params"])
-            finish_type = i["data"]["params"][index_finish - 1]["value"]
+            finish_type = 'Без отделки'
             room_count = i["data"]["rooms"]
 
             if room_count == 0:

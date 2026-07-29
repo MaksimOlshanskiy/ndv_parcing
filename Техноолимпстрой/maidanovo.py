@@ -17,13 +17,13 @@ headers = {
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Google Chrome";v="149", "Chromium";v="149", "Not)A;Brand";v="24"',
+    'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
 }
 
 
@@ -34,7 +34,7 @@ params = {
     'offset': '0',
     'full': 'true',
     'returnFilteredCount': 'true',
-    'access_token': 'c4e5bb9ae08eb740262831a5506402a6f8be2e479685355e008b84e2d680647b',
+    'access_token': 'd32db5df8acdd8dcff51ea0e1305a1cac58fb48501cc7b2631e37239ba9aba2b',
 }
 
 flats = []

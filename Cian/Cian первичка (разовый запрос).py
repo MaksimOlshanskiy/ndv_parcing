@@ -148,6 +148,7 @@ def parse_cian_page(session, cookies, headers, json_data, decoration_dict):
             srok_sdachi,
             property_type,
             room_count,
+            decoration,
             area,
             kitchen_area,
             living_area,
@@ -228,101 +229,47 @@ headers = {
 json_data = {
     'jsonQuery': {
         '_type': 'flatsale',
-        'sort': {
-            'type': 'term',
-            'value': 'price_object_order',
-        },
         'engine_version': {
             'type': 'term',
             'value': 2,
         },
-        'geo': {
-            'type': 'geo',
-            'value': [
-                {
-                    'type': 'polygon',
-                    'name': 'Выделенная область',
-                    'coordinates': [
-                        [
-                            '92.724158',
-                            '56.0695531',
-                        ],
-                        [
-                            '92.7021853',
-                            '56.0699374',
-                        ],
-                        [
-                            '92.6857058',
-                            '56.0691688',
-                        ],
-                        [
-                            '92.6733462',
-                            '56.0622512',
-                        ],
-                        [
-                            '92.6829592',
-                            '56.0518748',
-                        ],
-                        [
-                            '92.6973788',
-                            '56.0457259',
-                        ],
-                        [
-                            '92.7131716',
-                            '56.0411142',
-                        ],
-                        [
-                            '92.7282778',
-                            '56.0457259',
-                        ],
-                        [
-                            '92.7344577',
-                            '56.0553336',
-                        ],
-                        [
-                            '92.7269045',
-                            '56.0641727',
-                        ],
-                        [
-                            '92.7145449',
-                            '56.0703217',
-                        ],
-                        [
-                            '92.724158',
-                            '56.0695531',
-                        ],
-                    ],
-                },
-            ],
-        },
-        'bbox': {
-            'type': 'term',
-            'value': [
-                [
-                    92.534729663,
-                    56.0271337911,
-                ],
-                [
-                    92.8643195068,
-                    56.0962824402,
-                ],
-            ],
-        },
-        'decorations_list': {
+        'region': {
             'type': 'terms',
             'value': [
-                'fineWithFurniture',
+                1,
+                4593,
+            ],
+        },
+        'page': {
+            'type': 'term',
+            'value': 1,
+        },
+        'description_include': {
+            'type': 'terms',
+            'value': [
+                'с террасой',
+                'терраса',
             ],
         },
         'building_status': {
             'type': 'term',
             'value': 2,
         },
-        'page': {
+        'from_developer': {
             'type': 'term',
-            'value': 2,
+            'value': True,
+        },
+        'decorations_list': {
+            'type': 'terms',
+            'value': [
+                'fineWithFurniture',
+                'without',
+                'fine',
+                'preFine',
+            ],
         },
     },
+    '_liquiditySource': 'web_serp',
 }
 
 
@@ -446,9 +393,9 @@ while True:
 
 
     print(multi_ids)
-    if len(flats_total) > 1:
+    if len(all_flats) > 1:
 
-        df = pd.DataFrame(flats_total, columns=['Название проекта',
+        df = pd.DataFrame(all_flats, columns=['Название проекта',
                                                 'Девелопер',
                                                 'Локация',
                                                 'Локация2',
@@ -461,8 +408,8 @@ while True:
                                                 'Корпус',
                                                 'Срок сдачи',
                                                 'Тип помещения',
+                                              'Кол-во комнат',
                                                 'Отделка',
-                                                'Кол-во комнат',
                                                 'Площадь, кв.м',
                                                 'Площадь кухни, кв.м',
                                                 'Жилая площадь, кв.м',
@@ -489,8 +436,8 @@ while True:
             return name
 
 
-        project = sanitize_filename(project)
-        filename = f"{project}__{current_date}_{name_counter}.xlsx"
+        # project = sanitize_filename(project)
+        filename = f"{current_date}_1.xlsx"
 
         # Полный путь к файлу0
         file_path = os.path.join(folder_path, filename)
@@ -499,7 +446,7 @@ while True:
         try:
             df.to_excel(file_path, index=False)
         except:
-            filename = f"{project}_{current_date}_2.xlsx"
+            filename = f"{current_date}_2.xlsx"
             file_path = os.path.join(folder_path, filename)
             df.to_excel(file_path, index=False)
 

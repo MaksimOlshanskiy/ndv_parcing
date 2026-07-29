@@ -180,7 +180,7 @@ cities_dict = {
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
-cities_list = [1, 2]
+cities_list = [4756]
 
 for city_id in cities_list:
 
@@ -241,7 +241,7 @@ for city_id in cities_list:
     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
     # total_floor_list = [[1, 3], [4, 7], [8, 15], [16, 200]]
     total_floor_list = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 15], [16, 18], [19, 22], [23, 25], [26, 30], [31, 35], [36, 40], [41, 50], [51, 65], [66, 999]]
-
+    total_floor_list = [[1, 99]]
 
     for rooms in rooms_ids:
 

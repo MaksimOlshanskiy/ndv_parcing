@@ -6,7 +6,7 @@ import warnings
 from Developer_dict import name_dict, developer_dict
 
 year = 2025
-month = 6
+month = 7
 project = None
 
 warnings.filterwarnings(
@@ -31,7 +31,7 @@ sql_query = f"""
 select *
 from ndv_data
 where extract(year from date) = 2025 
-and extract(month from date) = 6
+and extract(month from date) = 7
 
                     """
 
@@ -51,7 +51,7 @@ df = df.rename(columns={
     'metro': 'Метро',
     'dist_to_metro': 'Расстояние до метро, км',
     'time_to_metro': 'Время до метро, мин',
-    'rail_line': 'Мцк/мцд/бкл',
+    'rail_line': 'МЦК/МЦД',
     'dist_to_rail': 'Расстояние до мцк/мцд, км',
     'time_to_rail': 'Время до мцк/мцд, мин',
     'bkl_station': 'Бкл',
@@ -92,5 +92,4 @@ print(df.info())
 # df["Девелопер"] = df["Девелопер"].replace(developer_dict)
 # df.to_csv(r"База Июль-Август>.csv", index=False, encoding='utf-8-sig')
 
-df.to_excel("В"
-            "ыгрузка0625.xlsx", index=False)
+df.to_excel("Выгрузка0725.xlsx", index=False)

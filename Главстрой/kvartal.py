@@ -14,6 +14,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
+'''
+Скрипт нестабильный, то отлично работает, то с ошибками, нужно следить, закрывать всплывающие баннеры
+'''
+
 # Настройка драйвера для Selenium
 service = Service('C:/chromedriver/chromedriver.exe')
 chrome_options = Options()

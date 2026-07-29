@@ -63,6 +63,7 @@ for i in items:
     developer = 'Тренд групп'
 
     korpus = i['CORPUS_NUMBER']
+
     room_count = i["ROOMS"]
     type = i["CATEGORY"].replace('квартира', 'квартиры')
     area = i['TOTAL_AREA']

@@ -20,6 +20,7 @@ web_site = f'https://r1864.ru/search'
 driver = webdriver.Chrome()
 driver.get(url=web_site)
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
+time.sleep(5)
 soup = BeautifulSoup(page_content, 'html.parser')
 flats_soup = soup.find_all('a', class_=["SearchDesktopResultsRow"])
 

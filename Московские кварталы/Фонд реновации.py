@@ -82,15 +82,15 @@ def extract_digits_or_original(s):
     digits = ''.join([char for char in s if char.isdigit()])
     return int(digits) if digits else s
 
-url = 'https://xn--80aae5aibotfo5h.xn--p1ai/kvartiry/'
+url = 'https://xn--80aae5aibotfo5h.xn--p1ai/?finishing=FULL;STD&status_code=FINISHED&view=tile'
 
 driver.get(url=url)
 
-button = WebDriverWait(driver, 10).until(
+button = WebDriverWait(driver, 12).until(
     EC.element_to_be_clickable((By.CSS_SELECTOR, ".bf_pag_arr.-r"))
 )
 button.click()
-time.sleep(2)
+time.sleep(5)
 
 
 page_content = driver.page_source  # Получаем HTML страницы после полной загрузки JavaScript
@@ -110,10 +110,14 @@ for i in flats_soup:
         korpus = korpus.replace('к.', '')
 
     type = 'Квартиры'
-    try:
-        finish_type = i.select_one('div.bf_list_tags > div > div:nth-of-type(2)').text
-    except AttributeError:
-        finish_type = ''
+
+    srok_sdachi_old = 'Введен'
+    finish_type = 'С отделкой'
+
+    # try:
+    #     finish_type = i.select_one('div.bf_list_tags > div > div:nth-of-type(2)').text
+    # except AttributeError:
+    #     finish_type = ''
     room_count = extract_digits_or_original(i.select_one('div.-params span').text)
 
     area = float(i.select_one('div.-params > span:nth-of-type(2)').text.replace(' м2', ''))
@@ -144,7 +148,7 @@ for i in flats_soup:
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''
-    srok_sdachi_old = ''
+
     stadia = ''
     dogovor = ''
     price_per_metr = ''

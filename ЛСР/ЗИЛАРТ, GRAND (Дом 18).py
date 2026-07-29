@@ -14,21 +14,20 @@ cookies = cookies
 headers = headers
 
 data = {
-    "price[min]": 19.6,
-    "price[max]": 57.3,
-    "obj[]": [216],
-    "area[min]": 20,
-    "area[max]": 83,
-    "floor[min]": 10,
-    "floor[max]": 28,
+    "price[min]": 16.3,
+    "price[max]": 111.2,
+    "obj[]": [216, 218],
+    "floor[min]": 3,
+    "floor[max]": 43,
+    "view": "line",
     "ob[page]": 1,
-    "ob[sort]": "price",
-    "ob[order]": "asc",
+    "ob[sort]": "undefined",
+    "ob[order]": "undefined",
     "group[t]": "false",
     "ob[id]": 216,
     "object": 216,
     "a": "types",
-    "ok": ok,
+    "ok": "y3pNEleDe7hjBuDjP9VQSjxVDUIFEBP9",
 }
 
 
