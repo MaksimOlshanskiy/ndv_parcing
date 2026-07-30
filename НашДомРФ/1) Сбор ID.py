@@ -46,9 +46,10 @@ params = {
     'limit': '20',
     'sortField': 'default',
     'sortType': 'desc',
-    'place': '78',
-    'fromQuarter': '2021-01-01',
-    'toQuarter': '2026-12-31',
+    'objClass': '2',
+    'place': '77',
+    'fromQuarter': '2025-01-01',
+    'toQuarter': '2025-30-06',
     'objStatus': '0',
 }
 
@@ -67,7 +68,7 @@ offset_counter = 0
 while True:
 
 
-    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=default&sortType=desc&place=0-9&fromQuarter=2021-01-01&toQuarter=2026-12-31&objStatus=0:2'  # status=0 - строящиеся. status=0:2 строящиеся и сданные
+    url = f'https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset={offset_counter}&limit=20&sortField=default&sortType=desc&objClass=2&place=77&fromQuarter=2025-01-01&toQuarter=2025-30-06&objStatus=2'  # status=0 - строящиеся. status=0:2 строящиеся и сданные
 
 
     driver.get(url=url)

@@ -142,7 +142,7 @@ cities_dict = {
     'Владивосток' : 4701
 }
 
-cities_list = [1275326]
+cities_list = [4713, 4927, 4704]
 
 for city_id in cities_list:
 
