@@ -18,30 +18,28 @@ import requests
 from functions import save_flats_to_excel
 
 cookies = {
-    'qrator_jsr': '1784285923.835.TkwOiq9kOSRgXSeg-5ji4fuglp7rvtj0uih72uarm62ps61gb-00',
-    'qrator_jsid': '1784285923.835.TkwOiq9kOSRgXSeg-ke6hn2g849mrjp1ejrad90rodc519v84',
-    'auth.strategy': 'users',
-    'roistat_visit': '36709968',
-    'roistat_visit_cookie_expire': '1209600',
-    '_ct_ids': 'om6ni2v1%3A44807%3A756669139',
-    '_ct_session_id': '756669139',
-    '_ct_site_id': '44807',
     '_ct': '1700000000491550923',
     '_ct_client_global_id': '089407ce-d8b4-596e-88ef-eee2bfcb3172',
-    'roistat_marker': 'seo_google_',
-    'roistat_marker_old': 'seo_google_',
     'slug_city': 'msk',
+    '_slid': '6a16d1663b199d321b41b6ce',
+    '_slfreq': '68beb63ffb3d7c66230880a6%3A68beb63ffb3d7c66230880ac%3A1784293136',
+    '_slid_server': '6a16d1663b199d321b41b6ce',
+    'qrator_jsr': '1786519549.844.CLrwKAulbOUuX0rm-5tv5r081d25ftfh83pfk7mrk30s9tgq7-00',
+    'qrator_jsid': '1786519549.844.CLrwKAulbOUuX0rm-krkkr37jsof9biq0mk8nc26jh9khb1br',
+    'auth.strategy': 'users',
+    'roistat_visit': '37301350',
+    'roistat_visit_cookie_expire': '1209600',
+    '_ct_ids': 'om6ni2v1%3A44807%3A764274426',
+    '_ct_session_id': '764274426',
+    '_ct_site_id': '44807',
+    'call_s': '___om6ni2v1.1786521351.764274426.201255:1353707|2___',
     'nuxt_breakpoint_detector': 'md',
     'roistat_call_tracking': '0',
     'roistat_emailtracking_email': 'null',
     'roistat_emailtracking_tracking_email': 'null',
     'roistat_emailtracking_emails': '%5B%5D',
-    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_marker%2Croistat_marker_old%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
-    '_slid': '6a16d1663b199d321b41b6ce',
-    '_slsession': '7995dc64-396b-4a17-a2a3-3b7ab8932f83',
-    '_slfreq': '68beb63ffb3d7c66230880a6%3A68beb63ffb3d7c66230880ac%3A1784293136',
-    'call_s': '___om6ni2v1.1784287739.756669139.201255:1008659|2___',
-    'csrftoken': 'hjI9Y2kw8MV3p9jpD0h3Qi8s9OHx1qmc',
+    'roistat_cookies_to_resave': 'roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails',
+    'csrftoken': '6HmqEdVSHwZTVX7e4C5mEcTkfoUyV2pI',
 }
 
 headers = {
@@ -55,17 +53,18 @@ headers = {
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://strana.com/msk/flats/',
-    'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
+    'sec-ch-ua': '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
     'slug-city': 'msk',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
-    'x-csrftoken': 'hjI9Y2kw8MV3p9jpD0h3Qi8s9OHx1qmc',
-    # 'cookie': 'qrator_jsr=1784285923.835.TkwOiq9kOSRgXSeg-5ji4fuglp7rvtj0uih72uarm62ps61gb-00; qrator_jsid=1784285923.835.TkwOiq9kOSRgXSeg-ke6hn2g849mrjp1ejrad90rodc519v84; auth.strategy=users; roistat_visit=36709968; roistat_visit_cookie_expire=1209600; _ct_ids=om6ni2v1%3A44807%3A756669139; _ct_session_id=756669139; _ct_site_id=44807; _ct=1700000000491550923; _ct_client_global_id=089407ce-d8b4-596e-88ef-eee2bfcb3172; roistat_marker=seo_google_; roistat_marker_old=seo_google_; slug_city=msk; nuxt_breakpoint_detector=md; roistat_call_tracking=0; roistat_emailtracking_email=null; roistat_emailtracking_tracking_email=null; roistat_emailtracking_emails=%5B%5D; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_marker%2Croistat_marker_old%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails; _slid=6a16d1663b199d321b41b6ce; _slsession=7995dc64-396b-4a17-a2a3-3b7ab8932f83; _slfreq=68beb63ffb3d7c66230880a6%3A68beb63ffb3d7c66230880ac%3A1784293136; call_s=___om6ni2v1.1784287739.756669139.201255:1008659|2___; csrftoken=hjI9Y2kw8MV3p9jpD0h3Qi8s9OHx1qmc',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+    'x-csrftoken': '6HmqEdVSHwZTVX7e4C5mEcTkfoUyV2pI',
+    # 'cookie': '_ct=1700000000491550923; _ct_client_global_id=089407ce-d8b4-596e-88ef-eee2bfcb3172; slug_city=msk; _slid=6a16d1663b199d321b41b6ce; _slfreq=68beb63ffb3d7c66230880a6%3A68beb63ffb3d7c66230880ac%3A1784293136; _slid_server=6a16d1663b199d321b41b6ce; qrator_jsr=1786519549.844.CLrwKAulbOUuX0rm-5tv5r081d25ftfh83pfk7mrk30s9tgq7-00; qrator_jsid=1786519549.844.CLrwKAulbOUuX0rm-krkkr37jsof9biq0mk8nc26jh9khb1br; auth.strategy=users; roistat_visit=37301350; roistat_visit_cookie_expire=1209600; _ct_ids=om6ni2v1%3A44807%3A764274426; _ct_session_id=764274426; _ct_site_id=44807; call_s=___om6ni2v1.1786521351.764274426.201255:1353707|2___; nuxt_breakpoint_detector=md; roistat_call_tracking=0; roistat_emailtracking_email=null; roistat_emailtracking_tracking_email=null; roistat_emailtracking_emails=%5B%5D; roistat_cookies_to_resave=roistat_ab%2Croistat_ab_submit%2Croistat_visit%2Croistat_call_tracking%2Croistat_emailtracking_email%2Croistat_emailtracking_tracking_email%2Croistat_emailtracking_emails; csrftoken=6HmqEdVSHwZTVX7e4C5mEcTkfoUyV2pI',
 }
+
 
 
 json_data = {
@@ -100,6 +99,7 @@ json_data = {
         'withoutOffers': None,
         'metro': [],
         'offset': 0,
+        'after': ''
     },
 }
 
@@ -204,8 +204,10 @@ while True:
     if not items:
         break
     json_data['variables']['offset'] += 23
+    json_data['variables']['after'] = response.json()['data']['result']['pageInfo']['endCursor']
     sleep_time = random.uniform(1, 5)
     time.sleep(sleep_time)
+
 
 save_flats_to_excel(flats, project, developer)
 

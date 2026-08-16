@@ -20,7 +20,7 @@ print(pdfplumber.__version__)
 import pdfminer
 print(pdfminer.__version__)
 
-pdf_path = r"C:\Users\Mi\Downloads\СТОУН_Грэйн___Ритейл.pdf"
+pdf_path = r"C:\Users\Mi\Downloads\СТОУН_Сокольники___Ритейл.pdf"
 
 import pypdfium2 as pdfium
 

@@ -47,7 +47,7 @@ headers = {
 }
 
 params = {
-    'limit': '11',
+    'limit': '200',
     'offset': '0',
     'type': 'commercial',
     'project': 'sezarcity',

@@ -28,35 +28,29 @@ cookies = {
     '_ym_d': '1782939022',
     'logoSuffix': '',
     'iosAppLink': '',
-    'showDddIntro': 'false',
-    'dddIntroOnline': 'false',
     'showDddWidgets': 'true',
     'RETENTION_COOKIES_NAME': '73a09f72fd964582843061b4531b1749:PzMXzDiTZwMDclesDmpsDzCazRc',
     'sessionId': '12791819e59a41f69051746fca5dad7a:kEQkdePJp_BacogdDvlAn091-70',
     'UNIQ_SESSION_ID': 'd58e9846198b4c0289a92ac3432ed3b7:UMgljoWSM32ON1aIaU9IGAv1Sq8',
-    '_sv': 'SV1.9d1bff91-155a-4ed9-8572-9e1d8eb6aebc.1782939008',
     'adtech_uid': 'c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru',
     'top100_id': 't1.7711713.584217383.1782939023617',
     'tmr_lvid': '6509c7cbd63e89eea195eb14c34fbb17',
     'tmr_lvidTS': '1773855203088',
     'regionAlert': '1',
     'favoriteHintShowed': 'true',
-    'canary-bind-id-16542': 'prev-1',
     't3_sid_7731951': 's1.270570886.1785337030781.1785363618239.6.13.1.1..',
     't3_sid_7711713': 's1.1016988686.1785337030788.1785363618245.7.7.1.1..',
-    'canary-bind-id-16493': 'prev-5',
-    'canary-bind-id-16458': 'next-2',
     'auto-definition-region': 'false',
     'cookieAlert': '1',
-    'canary-bind-id-16666': 'next-2',
     'currentRegionGuid': '1691f4a5-8e87-41ab-b0d3-05a0c7a07c76',
     'currentLocalityGuid': '857c0a08-7dc0-445e-a044-ed2f6d435a7b',
     'region': '{%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221691f4a5-8e87-41ab-b0d3-05a0c7a07c76%22%2C%22localityGuid%22:%22857c0a08-7dc0-445e-a044-ed2f6d435a7b%22}%2C%22isAutoResolved%22:true}',
-    'qrator_jsr': 'v2.0.1785440443.839.05e47254euSmYpix|ZZa8mblfrGIjQ68o|4s7p9bVEtpEokzNIOTf4Qfhe6eB63FUCzG15E0qxTG1Kg2uHaGYCSP9z+CBkACjmf/mcYg/XqYZbnxJS4cdtYw==-GJafozbFFDIBwnhtgYZLUobtVog=-00',
-    'qrator_jsid2': 'v2.0.1785440443.839.05e47254euSmYpix|ejKktH82PTxOPkG9|PE+lbIFidEkXVEoBz9eS40ozllfc3bgvsMIV52rllU/28+ql/yAfgVufDHEeu/hKoBQ3GBPOtha6JurAap/4r429xeFw+n0mEnBSNq7MY/SXrBSDysbhv3v6IhTS1T0EDuvZEbwDdtfQS9f9LnO9/b/edhBwm5P2Pi+vSDQCNsA=-KMOPOJYBYDcV/Ksl2kMQ5J9tkQY=',
-    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SV1.9d1bff91-155a-4ed9-8572-9e1d8eb6aebc.1782939008.1785440446',
-    '_sas': 'SV1.9d1bff91-155a-4ed9-8572-9e1d8eb6aebc.1782939008.1785440446',
-    'tmr_reqNum': '492',
+    'qrator_jsr': 'v2.0.1785766211.157.05e47254IXz1AIS3|mXIsp8lYTRbaMgne|4zQrCIx4tVv7IME0KaGC6O/fbyxboFkbAjX3pHKcvYNOd8o4Exn8+1Gwxqi6gYWPRQnkuYAipZhEOghKFVFZYQ==-CtFypS3fRkpRYtdkQRdw2O7zMUU=-00',
+    'qrator_jsid2': 'v2.0.1785766211.157.05e47254IXz1AIS3|WjAiWXgIHwEiet9I|7XWeIf2Nii4TYnQqJ1kHuqdxRgmRhlAMrDQglmV3OIU8kgLERhaaaED4f8tWqROr5BCzH8ByaITr/LefoPbSQXviHHPVBtRbOmvTmXdOuerdMa+IC2NUr7yLkgX8v0my9xzRoPicoscuE0LuURrGC3YGGhh6bdAvKsdEWP3mjEs=-Xhg3FpEZVrpSwIm6rJH61MNLox0=',
+    '_sa': 'SA1.5921084b-375c-4426-927c-9703572e4456.1785766215',
+    '_sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9': 'SA1.5921084b-375c-4426-927c-9703572e4456.1785766215.1785766215',
+    '_sas': 'SA1.5921084b-375c-4426-927c-9703572e4456.1785766215.1785766216',
+    'tmr_reqNum': '498',
 }
 
 headers = {
@@ -74,7 +68,7 @@ headers = {
     'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
-    # 'Cookie': 'ns_session=8d885eed-c151-4167-9919-8657ec697ffe; _ym_uid=1765012936500443323; _ym_d=1782939022; logoSuffix=; iosAppLink=; showDddIntro=false; dddIntroOnline=false; showDddWidgets=true; RETENTION_COOKIES_NAME=73a09f72fd964582843061b4531b1749:PzMXzDiTZwMDclesDmpsDzCazRc; sessionId=12791819e59a41f69051746fca5dad7a:kEQkdePJp_BacogdDvlAn091-70; UNIQ_SESSION_ID=d58e9846198b4c0289a92ac3432ed3b7:UMgljoWSM32ON1aIaU9IGAv1Sq8; _sv=SV1.9d1bff91-155a-4ed9-8572-9e1d8eb6aebc.1782939008; adtech_uid=c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru; top100_id=t1.7711713.584217383.1782939023617; tmr_lvid=6509c7cbd63e89eea195eb14c34fbb17; tmr_lvidTS=1773855203088; regionAlert=1; favoriteHintShowed=true; canary-bind-id-16542=prev-1; t3_sid_7731951=s1.270570886.1785337030781.1785363618239.6.13.1.1..; t3_sid_7711713=s1.1016988686.1785337030788.1785363618245.7.7.1.1..; canary-bind-id-16493=prev-5; canary-bind-id-16458=next-2; auto-definition-region=false; cookieAlert=1; canary-bind-id-16666=next-2; currentRegionGuid=1691f4a5-8e87-41ab-b0d3-05a0c7a07c76; currentLocalityGuid=857c0a08-7dc0-445e-a044-ed2f6d435a7b; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221691f4a5-8e87-41ab-b0d3-05a0c7a07c76%22%2C%22localityGuid%22:%22857c0a08-7dc0-445e-a044-ed2f6d435a7b%22}%2C%22isAutoResolved%22:true}; qrator_jsr=v2.0.1785440443.839.05e47254euSmYpix|ZZa8mblfrGIjQ68o|4s7p9bVEtpEokzNIOTf4Qfhe6eB63FUCzG15E0qxTG1Kg2uHaGYCSP9z+CBkACjmf/mcYg/XqYZbnxJS4cdtYw==-GJafozbFFDIBwnhtgYZLUobtVog=-00; qrator_jsid2=v2.0.1785440443.839.05e47254euSmYpix|ejKktH82PTxOPkG9|PE+lbIFidEkXVEoBz9eS40ozllfc3bgvsMIV52rllU/28+ql/yAfgVufDHEeu/hKoBQ3GBPOtha6JurAap/4r429xeFw+n0mEnBSNq7MY/SXrBSDysbhv3v6IhTS1T0EDuvZEbwDdtfQS9f9LnO9/b/edhBwm5P2Pi+vSDQCNsA=-KMOPOJYBYDcV/Ksl2kMQ5J9tkQY=; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SV1.9d1bff91-155a-4ed9-8572-9e1d8eb6aebc.1782939008.1785440446; _sas=SV1.9d1bff91-155a-4ed9-8572-9e1d8eb6aebc.1782939008.1785440446; tmr_reqNum=492',
+    # 'Cookie': 'ns_session=8d885eed-c151-4167-9919-8657ec697ffe; _ym_uid=1765012936500443323; _ym_d=1782939022; logoSuffix=; iosAppLink=; showDddWidgets=true; RETENTION_COOKIES_NAME=73a09f72fd964582843061b4531b1749:PzMXzDiTZwMDclesDmpsDzCazRc; sessionId=12791819e59a41f69051746fca5dad7a:kEQkdePJp_BacogdDvlAn091-70; UNIQ_SESSION_ID=d58e9846198b4c0289a92ac3432ed3b7:UMgljoWSM32ON1aIaU9IGAv1Sq8; adtech_uid=c9082c41-db22-46c2-ad5a-794db0f6fa39%3Adomclick.ru; top100_id=t1.7711713.584217383.1782939023617; tmr_lvid=6509c7cbd63e89eea195eb14c34fbb17; tmr_lvidTS=1773855203088; regionAlert=1; favoriteHintShowed=true; t3_sid_7731951=s1.270570886.1785337030781.1785363618239.6.13.1.1..; t3_sid_7711713=s1.1016988686.1785337030788.1785363618245.7.7.1.1..; auto-definition-region=false; cookieAlert=1; currentRegionGuid=1691f4a5-8e87-41ab-b0d3-05a0c7a07c76; currentLocalityGuid=857c0a08-7dc0-445e-a044-ed2f6d435a7b; region={%22data%22:{%22name%22:%22%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%22%2C%22regionGuid%22:%221691f4a5-8e87-41ab-b0d3-05a0c7a07c76%22%2C%22localityGuid%22:%22857c0a08-7dc0-445e-a044-ed2f6d435a7b%22}%2C%22isAutoResolved%22:true}; qrator_jsr=v2.0.1785766211.157.05e47254IXz1AIS3|mXIsp8lYTRbaMgne|4zQrCIx4tVv7IME0KaGC6O/fbyxboFkbAjX3pHKcvYNOd8o4Exn8+1Gwxqi6gYWPRQnkuYAipZhEOghKFVFZYQ==-CtFypS3fRkpRYtdkQRdw2O7zMUU=-00; qrator_jsid2=v2.0.1785766211.157.05e47254IXz1AIS3|WjAiWXgIHwEiet9I|7XWeIf2Nii4TYnQqJ1kHuqdxRgmRhlAMrDQglmV3OIU8kgLERhaaaED4f8tWqROr5BCzH8ByaITr/LefoPbSQXviHHPVBtRbOmvTmXdOuerdMa+IC2NUr7yLkgX8v0my9xzRoPicoscuE0LuURrGC3YGGhh6bdAvKsdEWP3mjEs=-Xhg3FpEZVrpSwIm6rJH61MNLox0=; _sa=SA1.5921084b-375c-4426-927c-9703572e4456.1785766215; _sas.2c534172f17069dd8844643bb4eb639294cd4a7a61de799648e70dc86bc442b9=SA1.5921084b-375c-4426-927c-9703572e4456.1785766215.1785766215; _sas=SA1.5921084b-375c-4426-927c-9703572e4456.1785766215.1785766216; tmr_reqNum=498',
 }
 
 
@@ -99,8 +93,7 @@ driver = webdriver.Chrome(options=options)
 
 
 
-ids =  [119533, 120046, 120595, 120602, 120705, 120802, 120923, 121112, 121246, 121663, 122092, 122496, 122640, 122811, 123038, 123690, 124462, 124651, 124902, 125557, 125843, 125147, 125855, 62219, 121668, 112166, 73525, 1604, 60878, 73680, 110934, 112780, 113899, 113936, 114920, 115919, 116212, 116349, 116542, 119519, 122094, 122498, 122895, 124815, 125052, 125870, 125299, 125412, 125555, 126217, 126221]
-
+ids =  [116110, 116406, 116835, 118358, 119095, 119631, 121023, 123711, 124413, 125144, 125706, 126143, 118993, 123400, 121722, 118674, 116648, 3586, 6990, 9506, 80566, 86457, 111611, 112049, 115258, 116112, 116630, 118411, 118639, 119365, 122100, 124740, 125388, 125444, 3377, 121779, 122590, 125660, 126021, 126120]
 
 
 

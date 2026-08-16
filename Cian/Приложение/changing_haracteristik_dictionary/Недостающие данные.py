@@ -30,4 +30,4 @@ unique_df = filtered_df.drop_duplicates()
 # Сохраняем результат в новый Excel
 unique_df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Недостающее11.xlsx", index=False)
 
-print("Файл сохранен как Недостающее.xlsx")
+print("Файл сохранен как Недостающие корпуса.xlsx")

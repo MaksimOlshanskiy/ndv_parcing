@@ -41,7 +41,7 @@ headers = {
 }
 # подставлял айди из project_dict по очереди
 params = {
-'project': '3b13c636-89c5-11e8-83fb-0cc47aaa4272',
+'project': 'b4932c9a-caae-11e7-83fb-0cc47aaa4272',
     'type': 'Коммерческое помещение',
     'sortBy': 'price',
     'sortOrder': 'asc',

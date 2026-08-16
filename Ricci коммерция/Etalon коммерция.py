@@ -15,10 +15,10 @@ from urllib3.util.retry import Retry
 
 """
 Могут быть дубликаты!!!
-Скрипт очень медленный, часа на три, но рабочий, нужно менять number_of_flats на верное количество квартир с сайта
+нужно менять number_of_flats на верное количество квартир с сайта
 """
 
-number_of_flats = 45
+number_of_flats = 52
 
 headers = {
     'accept': '*/*',

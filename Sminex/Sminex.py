@@ -54,7 +54,7 @@ for i in items:
     url = ""
 
     date = datetime.date.today()
-    project = i['project']['attributes'][0]['value']
+    project = i['project']['attributes'][0]['value'].replace('Фрунзенский', 'Клубный Квартал Фрунзенский')
     english = ''
     promzona = ''
     mestopolozhenie = ''

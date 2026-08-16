@@ -88,6 +88,8 @@ while True:
         url = ''
         date = datetime.date.today()
         project = i["project"]
+        if 'work' in project:
+            continue
         english = ''
         promzona = ''
         mestopolozhenie = ''
@@ -112,7 +114,7 @@ while True:
         konstruktiv = ''
         klass = ''
         srok_sdachi = ''
-        srok_sdachi_old = ''
+        srok_sdachi_old = f'{i['completion_quarter']} кв {i['completion_year']}'
         stadia = ''
         dogovor = ''
         type = 'Квартиры'

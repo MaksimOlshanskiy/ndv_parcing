@@ -22,8 +22,8 @@ def extract_digits_or_original(s):
     return int(digits) if digits else s
 
 proxies = {
-    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270",
-"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270"
+    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260",
+"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260"
 }
 
 # from itertools import cycle
@@ -46,68 +46,68 @@ proxies = {
 print(f'Первоначальный IP: {requests.get("https://ipinfo.io/json").json()}')
 
 cookies = {
-    '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
-    '_ym_uid': '174161324651361127',
-    'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
-    'adrdel': '1744094487237',
-    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D',
-    'ma_id': '6225667261741613246584',
-    '__ai_fp_uuid': '245d903c22bdc927%3A15',
-    '_gcl_au': '1.1.9818463.1769411842',
-    '_ym_d': '1773209373',
-    '_ga': 'GA1.1.1538482319.1774343544',
-    'tmr_lvid': '61ae9374a9f1699406db7cc31ef00775',
-    'tmr_lvidTS': '1741613242260',
-    'transport-accessibility_onboarding_counter': '3',
-    'uxs_uid': '92604860-28f8-11f1-a98a-bba19a4d4807',
+    '_CIAN_GK': 'ebd70d3a-b0b3-483e-b09f-0f982f2a4eea',
+    '_gcl_au': '1.1.96319925.1782933291',
+    'tmr_lvid': '3a549fa46199720d5a0041676fe444a9',
+    'tmr_lvidTS': '1782933291907',
+    '_ga': 'GA1.1.2045904184.1782933294',
+    '_ym_uid': '1782933294531685029',
+    '_ym_d': '1782933294',
     'uxfb_usertype': 'searcher',
+    'WBRMVisitLast_utm': '',
+    'WBRMVisitLast_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'WBRMVisitFirst_utm': '',
+    'WBRMVisitFirst_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'uxs_uid': '246eace0-7581-11f1-b1a1-3b03d0af4385',
     'cookie_agreement_accepted': '1',
-    'countCallNowPopupShowed': '2%3A1774604089870',
-    'newbuilding-card-desktop-fichering-frontend.builder_chat_onboarding_shown': '1',
     'map_preview_onboarding_counter': '3',
-    'login_button_tooltip_key': '1',
-    'frontend-serp.header_builder_chat_onboarding_shown': '1',
-    'last_paid_utm': '?utm_source=yandex&utm_medium=cpc&utm_content=kw:205657295806|ad:1889238602131455357|grp:5657295806|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=|205657295806&utm_campaign=b2c_nov_mskmo_perf_mix_search_dsa_feed_general_drr_arwm_703812141&etext=2202.h07M9Tlhg3N9CwbhNMoyrVsLWbdrg5CRpbuLNhiEcIVoTY8yPfNz7DVvSxFMf63mtQfzGVZPsUeL_PUMqGvCe3BsenN6dGFxZmZlYWRmaWY.c0ab089525eaca3735ee4aa1b318395f0703704e&yclid=3873403374751711231',
-    'sopr_utm': '%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
-    'newbuilding-search-frontend.chatAnimationShownCount': '0',
-    'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
-    'newbuilding-search-frontend.chatAnimationCounter': '105',
-    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki-ot-zastroyschikov%2F',
-    '_ym_isad': '2',
-    '_yasc': 'UIbNcWUdyuf0EKgvw8Nq7kQLpqY96efYdlowvRcjBUUSYjpsemyKQRq9kkvAZ2trPg==',
-    'session_region_id': '5048',
-    'forever_region_id': '5048',
-    'session_region_name': '%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
-    'forever_region_name': '%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
-    'session_main_town_region_id': '5048',
-    'forever_main_town_region_id': '5048',
-    'login_mro_popup': '1',
-    '_yasc': 'qT+ZIRInbFfq0ln+TcuewZG60b7DDAe6Po+YZr9KOM2loXMhX7p/LqFGNgNPgdWbtg==',
-    'sopr_session': 'a1796f7b14a04d82',
-    '_ym_visorc': 'b',
-    'newbuilding_mortgage_payment_filter_onboarding': '1',
+    'frontend-serp.offer_chat_onboarding_shown': '1',
     'frontend-serp.chatTooltipAnimationShown': '1',
-    'frontend-serp.chatAnimationShownCount': '1',
-    'frontend-serp.chatAnimationCounter': '3',
-    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26p%3D2%26region%3D5048',
-    '_ga_3369S417EL': 'GS2.1.s1775203684$o23$g1$t1775203826$j49$l0$h0',
+    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki%2F',
+    'newbuilding-search-frontend.chatTooltipAnimationShown': '1',
+    'newbuilding-search-frontend.chatAnimationShownCount': '1',
+    'frontend-offer-card.builder_chat_onboarding_shown': '1',
+    'frontend-offer-card.newbuilding_broker_onboarding_shown': '1',
+    'frontend-serp.chatAnimationShownCount': '19',
+    'transport-accessibility_onboarding_counter': '1',
+    'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
+    'login_button_tooltip_key': '1',
+    'frontend-offer-card.consultant_chat_onboarding_shown': '1',
+    'newbuilding-search-frontend.chatAnimationCounter': '2',
+    'countCallNowPopupShowed': '1%3A1785937438935',
+    'login_mro_popup': '1',
+    'newbuilding_mortgage_payment_filter_onboarding': '1',
+    'forever_region_id': '4574',
+    'session_region_id': '4574',
+    'forever_region_name': '%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
+    'session_region_name': '%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
+    'session_main_town_region_id': '4778',
+    '_yasc': 'w8TDgzDD08Oy87mIz765agzCt/p7VpbenrLFlU9ndI8GQzluNAGTqerlCUZgYiYljY+a60sUfw==',
+    'forever_main_town_region_id': '4778',
+    '_yasc': '6a1mkUHOQvnkg6h+03z5XR4bAjxVuq+LiQV7bnmkosc5YCzDTMcu0v+pm0xZ3QWWMjKg6T3VSg==',
+    'entry_src': 'bare_domain',
+    '_ga_3369S417EL': 'GS2.1.s1786367422$o56$g1$t1786367439$j43$l0$h0',
+    'frontend-serp.chatAnimationCounter': '25',
+    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26p%3D2%26region%3D4574',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
     'content-type': 'application/json',
-    'origin': 'https://chelyabinsk.cian.ru',
+    'origin': 'https://kaliningrad.cian.ru',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://chelyabinsk.cian.ru/',
-    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
+    'referer': 'https://kaliningrad.cian.ru/',
+    'sec-ch-ua': '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
-    # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; _ym_uid=174161324651361127; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; adrdel=1744094487237; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D; ma_id=6225667261741613246584; __ai_fp_uuid=245d903c22bdc927%3A15; _gcl_au=1.1.9818463.1769411842; _ym_d=1773209373; _ga=GA1.1.1538482319.1774343544; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; transport-accessibility_onboarding_counter=3; uxs_uid=92604860-28f8-11f1-a98a-bba19a4d4807; uxfb_usertype=searcher; cookie_agreement_accepted=1; countCallNowPopupShowed=2%3A1774604089870; newbuilding-card-desktop-fichering-frontend.builder_chat_onboarding_shown=1; map_preview_onboarding_counter=3; login_button_tooltip_key=1; frontend-serp.header_builder_chat_onboarding_shown=1; last_paid_utm=?utm_source=yandex&utm_medium=cpc&utm_content=kw:205657295806|ad:1889238602131455357|grp:5657295806|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=|205657295806&utm_campaign=b2c_nov_mskmo_perf_mix_search_dsa_feed_general_drr_arwm_703812141&etext=2202.h07M9Tlhg3N9CwbhNMoyrVsLWbdrg5CRpbuLNhiEcIVoTY8yPfNz7DVvSxFMf63mtQfzGVZPsUeL_PUMqGvCe3BsenN6dGFxZmZlYWRmaWY.c0ab089525eaca3735ee4aa1b318395f0703704e&yclid=3873403374751711231; sopr_utm=%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D; newbuilding-search-frontend.chatAnimationShownCount=0; newbuilding-search-frontend.builder_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationCounter=105; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki-ot-zastroyschikov%2F; _ym_isad=2; _yasc=UIbNcWUdyuf0EKgvw8Nq7kQLpqY96efYdlowvRcjBUUSYjpsemyKQRq9kkvAZ2trPg==; session_region_id=5048; forever_region_id=5048; session_region_name=%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; forever_region_name=%D0%A7%D0%B5%D0%BB%D1%8F%D0%B1%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_main_town_region_id=5048; forever_main_town_region_id=5048; login_mro_popup=1; _yasc=qT+ZIRInbFfq0ln+TcuewZG60b7DDAe6Po+YZr9KOM2loXMhX7p/LqFGNgNPgdWbtg==; sopr_session=a1796f7b14a04d82; _ym_visorc=b; newbuilding_mortgage_payment_filter_onboarding=1; frontend-serp.chatTooltipAnimationShown=1; frontend-serp.chatAnimationShownCount=1; frontend-serp.chatAnimationCounter=3; frontend-serp.chatAnimationPrevPath=%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26p%3D2%26region%3D5048; _ga_3369S417EL=GS2.1.s1775203684$o23$g1$t1775203826$j49$l0$h0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+    # 'cookie': '_CIAN_GK=ebd70d3a-b0b3-483e-b09f-0f982f2a4eea; _gcl_au=1.1.96319925.1782933291; tmr_lvid=3a549fa46199720d5a0041676fe444a9; tmr_lvidTS=1782933291907; _ga=GA1.1.2045904184.1782933294; _ym_uid=1782933294531685029; _ym_d=1782933294; uxfb_usertype=searcher; WBRMVisitLast_utm=; WBRMVisitLast_referrer=https%3A%2F%2Fwww.google.com%2F; WBRMVisitFirst_utm=; WBRMVisitFirst_referrer=https%3A%2F%2Fwww.google.com%2F; uxs_uid=246eace0-7581-11f1-b1a1-3b03d0af4385; cookie_agreement_accepted=1; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; frontend-serp.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki%2F; newbuilding-search-frontend.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationShownCount=1; frontend-offer-card.builder_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; frontend-serp.chatAnimationShownCount=19; transport-accessibility_onboarding_counter=1; newbuilding-search-frontend.builder_chat_onboarding_shown=1; login_button_tooltip_key=1; frontend-offer-card.consultant_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationCounter=2; countCallNowPopupShowed=1%3A1785937438935; login_mro_popup=1; newbuilding_mortgage_payment_filter_onboarding=1; forever_region_id=4574; session_region_id=4574; forever_region_name=%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_region_name=%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_main_town_region_id=4778; _yasc=w8TDgzDD08Oy87mIz765agzCt/p7VpbenrLFlU9ndI8GQzluNAGTqerlCUZgYiYljY+a60sUfw==; forever_main_town_region_id=4778; _yasc=6a1mkUHOQvnkg6h+03z5XR4bAjxVuq+LiQV7bnmkosc5YCzDTMcu0v+pm0xZ3QWWMjKg6T3VSg==; entry_src=bare_domain; _ga_3369S417EL=GS2.1.s1786367422$o56$g1$t1786367439$j43$l0$h0; frontend-serp.chatAnimationCounter=25; frontend-serp.chatAnimationPrevPath=%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26p%3D2%26region%3D4574',
 }
 
 newbuilding_classes = [
@@ -138,11 +138,11 @@ cities_dict = {
     'Воронеж': 4713,
     'Пермь': 4927,
     'Волгоград': 4704,
-    'Тюмень' : 5024,
-    'Владивосток' : 4701
+    'Тюмень': 5024,
+    'Владивосток': 4701
 }
 
-cities_list = [4713, 4927, 4704]
+cities_list = [203149, 184737, 1275322, 184739, 181462]
 
 for city_id in cities_list:
 
@@ -282,7 +282,6 @@ for city_id in cities_list:
 
     current_date = datetime.date.today()
 
-
     for y in ids:
 
         flats = []
@@ -387,7 +386,9 @@ for city_id in cities_list:
 
 
                             items = response.json()["data"]["offersSerialized"]
+
                         except:
+
                             print("Произошла ошибка, пробуем ещё раз")
                             time.sleep(7)
                             session = requests.Session()

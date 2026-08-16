@@ -8,14 +8,14 @@ import pandas as pd
 """
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ\Продажи"
+folder_path = r"C:\PycharmProjects\ndv_parcing\НашДомРФ\Продажи"
 
 # Путь к базе с характеристиками проектов
-df2 = pd.read_excel(r"C:\Users\m.olshanskiy\PycharmProjects\ndv_parsing\НашДомРФ_Кал\2026-04-06\Мо_НашДомРФ_2026-04-06.xlsx")
+df2 = pd.read_excel(r"C:\PycharmProjects\ndv_parcing\НашДомРФ\2026-07-27\НашДомРФ_глубже_080626_add.xlsx")
 
 
 # Название нового файла
-output_file_name = 'Продажи_Обнинск.xlsx'
+output_file_name = 'Продажи.xlsx'
 
 
 all_data = pd.DataFrame()

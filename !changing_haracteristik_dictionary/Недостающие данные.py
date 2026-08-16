@@ -6,7 +6,7 @@ import pandas as pd
 '''
 
 # Загружаем исходный файл
-df = pd.read_excel(r"C:\Users\m.olshanskiy\Desktop\Ноябрь\База11.xlsx")
+df = pd.read_excel(r"D:\НДВ\База июль\Новая папка\База июль v3.xlsx")
 
 # Фильтрация строк
 filtered_df = df[
@@ -28,6 +28,6 @@ unique_df = filtered_df.drop_duplicates()
 
 
 # Сохраняем результат в новый Excel
-unique_df.to_excel(r"C:\Users\m.olshanskiy\Desktop\Недостающее11.xlsx", index=False)
+unique_df.to_excel(r"Недостающие корпуса.xlsx", index=False)
 
-print("Файл сохранен как Недостающее.xlsx")
+print("Файл сохранен как Недостающие корпуса.xlsx")

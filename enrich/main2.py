@@ -6,7 +6,7 @@ def add_location_column(df):
 
     new_moscow = {'ТАО', 'НАО'}
     old_moscow = {'ЮАО', 'ЮВАО', 'ЗАО', 'ЮЗАО', 'СЗАО', 'СВАО', 'ВАО', 'САО', 'ЦАО', 'ЗелАО'}
-
+    df["Округ"] = df["Округ"].replace(r'^\s*$', pd.NA, regex=True)
     df["Локация"] = None
 
     df.loc[df["Округ"].isin(new_moscow), "Локация"] = "Новая Москва"

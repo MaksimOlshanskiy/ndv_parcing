@@ -5,10 +5,10 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\PycharmProjects\ndv_parcing\НашДомРФ\2026-07-30\2025 по городам"
+folder_path = r"C:\PycharmProjects\ndv_parcing\Cian\Первичка\2026-08-16"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = '2025 по городам.xlsx'
+output_file_name = 'Юг.xlsx'
 
 rename_dict = {
     "CITYZEN": "Ситизен",
@@ -142,7 +142,7 @@ for file_path in excel_files:
 #     all_data["Ссылка"]
 #     .astype(str)
 #     .str.split('/')
-#     .str[-2]
+#     .str[-1]
 # )
 
 def clean_project_name(df, column_name):
@@ -193,7 +193,7 @@ def fill_missing_price(df):
     return df
 
 # all_data['Название проекта'] = all_data['Название проекта'].replace(rename_dict)
-# all_data = all_data.drop_duplicates()       # убираем полные дубликаты
+all_data = all_data.drop_duplicates()       # убираем полные дубликаты
 #  all_data = remove_share_sale(all_data)   # убираем доли в квартирах
 # try:
 #     all_data = clean_project_name(all_data, 'Название проекта') # убираем слова ЖК и кавычки в названии проектов
