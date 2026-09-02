@@ -17,17 +17,17 @@ from Developer_dict import developer_dict, name_dict
 from functions import save_flats_to_excel
 
 cookies = {
-    '_ymab_param': 'KayPsUUvjdHX2yTZO4rKls3WtR9nKhPah2Vykmko0YtK8QnEJDRSpQfqj4cWElMIjIhP6Y93Jpyx0ByJOGCux8ua9ho',
     'mindboxDeviceUUID': 'd6b3597d-4b0b-4e45-8167-0b84971b36f7',
     'directCrm-session': '%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D',
-    'vp_width': '1920',
     'popmechanic_sbjs_migrations': 'popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1',
-    '_ct_ids': 'htlowve6%3A36409%3A1042068647',
-    '_ct_session_id': '1042068647',
-    '_ct_site_id': '36409',
-    'call_s': '___htlowve6.1784552484.1042068647.143945:445562.383897:1078350|2___',
     '_ct': '1300000000642275134',
     '_ct_client_global_id': '089407ce-d8b4-596e-88ef-eee2bfcb3172',
+    '_ymab_param': 'RMRM0L4tncBgbiT6P2JH_wscrubX2sgct1FxuWuIrMC-TKHX7X5kpMnPOeJFdAtmaIhuU8Jf3sYTdjnBY9hzoRZsTSA',
+    '_ct_ids': 'htlowve6%3A36409%3A1052520215',
+    '_ct_session_id': '1052520215',
+    '_ct_site_id': '36409',
+    'vp_width': '1600',
+    'call_s': '___htlowve6.1787689094.1052520215.185717:571622|2___',
 }
 
 headers = {
@@ -37,15 +37,16 @@ headers = {
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://nova.moscow/flats/?nameType=sale&free=1&type=100000000&ordering=-order_manual,filter_price_package,pk',
-    'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
+    'sec-ch-ua': '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
-    # 'cookie': '_ymab_param=KayPsUUvjdHX2yTZO4rKls3WtR9nKhPah2Vykmko0YtK8QnEJDRSpQfqj4cWElMIjIhP6Y93Jpyx0ByJOGCux8ua9ho; mindboxDeviceUUID=d6b3597d-4b0b-4e45-8167-0b84971b36f7; directCrm-session=%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D; vp_width=1920; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct_ids=htlowve6%3A36409%3A1042068647; _ct_session_id=1042068647; _ct_site_id=36409; call_s=___htlowve6.1784552484.1042068647.143945:445562.383897:1078350|2___; _ct=1300000000642275134; _ct_client_global_id=089407ce-d8b4-596e-88ef-eee2bfcb3172',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+    # 'cookie': 'mindboxDeviceUUID=d6b3597d-4b0b-4e45-8167-0b84971b36f7; directCrm-session=%7B%22deviceGuid%22%3A%22d6b3597d-4b0b-4e45-8167-0b84971b36f7%22%7D; popmechanic_sbjs_migrations=popmechanic_1418474375998%3D1%7C%7C%7C1471519752600%3D1%7C%7C%7C1471519752605%3D1; _ct=1300000000642275134; _ct_client_global_id=089407ce-d8b4-596e-88ef-eee2bfcb3172; _ymab_param=RMRM0L4tncBgbiT6P2JH_wscrubX2sgct1FxuWuIrMC-TKHX7X5kpMnPOeJFdAtmaIhuU8Jf3sYTdjnBY9hzoRZsTSA; _ct_ids=htlowve6%3A36409%3A1052520215; _ct_session_id=1052520215; _ct_site_id=36409; vp_width=1600; call_s=___htlowve6.1787689094.1052520215.185717:571622|2___',
 }
+
 
 
 params = {

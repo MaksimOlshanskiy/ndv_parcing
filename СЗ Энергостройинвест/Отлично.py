@@ -56,7 +56,7 @@ try:
                     date = datetime.date.today()
                     project = 'Отлично'
                     developer = "СЗ ЭНЕРГОСТРОЙИНВЕСТ"
-                    korpus = prop.get("houseName", "").replace('Корпус ', '').replace('Луговая ','')
+                    korpus = '28А'
                     type_ = 'Квартира'
                     finish_type = 'Без отделки'
                     room_count = prop.get("rooms_amount")

@@ -12,19 +12,19 @@ from save_to_excel import save_flats_to_excel_far
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
-    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6ImE1NDlhYTU5NzVkZjFlOTA3M2NlYjU0ZTllMmNkYjE2Y2Y3MTcyNGU2ZTkwMzE2MDNhNDZjYTc4YzAxY2FmZjNkMTliMTc3YmEyNDA4NTg5IiwiaWF0IjoxNzg1MTc2NDc3Ljk1ODQyNCwibmJmIjoxNzg1MTc2NDc3Ljk1ODQyNiwiZXhwIjoxNzg1MTgwMDc3Ljk0ODY3OCwic3ViIjoiU0lURV9XSURHRVR8MjQ1NiIsInNjb3BlcyI6WyJTSVRFX1dJREdFVCJdLCJ0eXBlIjoic2l0ZVdpZGdldCIsImVudGl0bGVtZW50cyI6IiIsImFjY291bnQiOnsiaWQiOjMwMDIsInRpdGxlIjoi0KLQtdGF0L3QvtCh0YLRgNC-0LnQntC70LjQvNC_Iiwic3ViZG9tYWluIjoicGIzMDAyIiwiYmlsbGluZ093bmVySWQiOjMwMDksImNvdW50cnlDb2RlIjoiUlUifSwicm9sZXMiOlsiUk9MRV9TSVRFX1dJREdFVCJdLCJzaXRlV2lkZ2V0Ijp7ImlkIjoyNDU2LCJkb21haW4iOiJodHRwczovL3huLS0tLWN0YmJsYnpjaXdiYjRhcDRiOWcueG4tLXAxYWkifX0.0_VlMgGqvhCgIueTi9SWcMxeFRySbZqyylofVmEs-Nq8f-J9-n-DigkUR4tG7bsASMm2N1r44h_zE-vQhurpF3IGfGRBDjPwW2DaR6Zrh2wXEJD04-TwDFqdkSpAFZYlYb8DtYusRtWLlbIojgpwNFzIk_Z8lM4hu7bUPXFRvESHf79pTUnaj8fM1n1J3BPmPX8vZvVkiDj2AcxZZM8Uu_izHn_nzZK95Bub9QzDqUQmsof-tRp0K8SyKfLcoaXS07vTvTrxrJV3obg7tpCdLf0QJM28_AAETiCDHGx_2NwYbrh7xnzoXB3v1r5g6xNEXpebP3WiFwUnA_MdZ-oKaA',
+    'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJzaXRlX3dpZGdldCIsImp0aSI6IjI3ODQ3MGI4MDIwMWI1ZjdkMWRkYTBhNWRlMjc0MDJkZDI2MmRiZWMzMWI0MjM3OGM1NjYyYmI0NmEyMDQ0YmVmMTZmZWExZTIzOGNkYWQzIiwiaWF0IjoxNzg3NzY2ODcwLjcxMzY1NiwibmJmIjoxNzg3NzY2ODcwLjcxMzY2MSwiZXhwIjoxNzg3NzcwNDcwLjY5Mzg3Niwic3ViIjoiU0lURV9XSURHRVR8MjQ1NiIsInNjb3BlcyI6WyJTSVRFX1dJREdFVCJdLCJ0eXBlIjoic2l0ZVdpZGdldCIsImVudGl0bGVtZW50cyI6IiIsImFjY291bnQiOnsiaWQiOjMwMDIsInRpdGxlIjoi0KLQtdGF0L3QvtCh0YLRgNC-0LnQntC70LjQvNC_Iiwic3ViZG9tYWluIjoicGIzMDAyIiwiYmlsbGluZ093bmVySWQiOjMwMDksImNvdW50cnlDb2RlIjoiUlUifSwicm9sZXMiOlsiUk9MRV9TSVRFX1dJREdFVCJdLCJzaXRlV2lkZ2V0Ijp7ImlkIjoyNDU2LCJkb21haW4iOiJodHRwczovL3huLS0tLWN0YmJsYnpjaXdiYjRhcDRiOWcueG4tLXAxYWkifX0.Hw85F-NUSo_VbKrw_OQq_jyT_43Kh4Hf_2MRDqOZ8vkvI395DMJMBPAAuvClBVtIbxWRJTPQXlWGvIYS8zd643TMGSG3DlC0vWQNNkdeGB5rSx7KUG_OJuAcJQMHZw8jnLATuN0LkUvxkJF_JbtWKcLsCiqMWcipKhK0NTUjJzpM4uIjq9Z9MKaPQx_iaZfjhNrXa7dKJbGdDGaV9eoiFNBcVV_sUOQ4yIO6csMxxffOI3PAzoPgw5tJCONA5NA8zcuDqauT48uFgGMoxOWmA_6cXWqr4DojTfAgfoxuDswJ-QeeUlIioI1q-OSN0wNWK39F7abiHUYw5necHOktdQ',
     'cache-control': 'no-cache',
     'origin': 'https://smart-catalog.profitbase.ru',
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://smart-catalog.profitbase.ru/',
-    'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
+    'sec-ch-ua': '"Chromium";v="152", "Not?A_Brand";v="24", "Google Chrome";v="152"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36',
 }
 
 params = {

@@ -12,70 +12,72 @@ import json
 
 # noinspection PyDictDuplicateKeys
 cookies = {
-    '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
-    'cf_clearance': 'iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk',
-    '_ym_uid': '174161324651361127',
-    '_ym_d': '1741613246',
-    'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
-    'adrdel': '1744094487237',
-    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D',
-    'newbuilding-search-frontend.consultant_cian_chat_onboarding_shown': '1',
-    'cookie_agreement_accepted': '1',
-    'tmr_lvid': '61ae9374a9f1699406db7cc31ef00775',
-    'tmr_lvidTS': '1741613242260',
-    '_ga': 'GA1.1.460280003.1749468781',
+    '_CIAN_GK': 'ebd70d3a-b0b3-483e-b09f-0f982f2a4eea',
+    '_gcl_au': '1.1.96319925.1782933291',
+    'tmr_lvid': '3a549fa46199720d5a0041676fe444a9',
+    'tmr_lvidTS': '1782933291907',
+    '_ga': 'GA1.1.2045904184.1782933294',
+    '_ym_uid': '1782933294531685029',
+    '_ym_d': '1782933294',
     'uxfb_usertype': 'searcher',
-    'uxs_uid': '1ed08180-4604-11f0-94f5-19dbce91137e',
-    'seen_cpd_landing': '1',
-    'cian_ruid': '8098251',
+    'WBRMVisitLast_utm': '',
+    'WBRMVisitLast_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'WBRMVisitFirst_utm': '',
+    'WBRMVisitFirst_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'uxs_uid': '246eace0-7581-11f1-b1a1-3b03d0af4385',
+    'cookie_agreement_accepted': '1',
     'map_preview_onboarding_counter': '3',
     'frontend-serp.offer_chat_onboarding_shown': '1',
-    'forever_region_id': '4593',
-    'forever_region_name': '%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
-    '__zzatw-cian': 'MDA0dC0cTHtmcDhhDHEWTT17CT4VHThHKHIzd2UxO24lYUxaET9HFTZnXEpCNxVZcU4nfAsmMl4tYQ8rCB5UNV9OCCobFn5tI1ULEF9APV8/cnsiD2k5IVt0FhNFWmFVaUAfQTY6flJkGBRIWRw2czljajUjfj1qTnsJXSlRCg4Ybkp1cyxDaSFneFwldlYKCVdPRggnKwoPEGNuRip7X0BuH2RPFyRKV1UzWxxCNW4mCRAUYEBIdHQqQB4PWzkhVA0gDkRpCxtpNmcWSTwacjNpZW10KlJRUVomSFdSCCcZF3twJ1J7dScOCSplMy0tWRgIH2N4JRlrcmY=6fyd8A==',
-    'cfidsw-cian': 'diusco/HSHrB9muzOk+431TeS6cQwA2I56HMt/7brov/94HTt6PZxKAttqRA7cknvlkPExofzYUUaNpGYM2H3DX5+hW6lp34e+dk6dKONIrD4BtCmA9ax5zv9A5uVB4jEA/l10JrXkqxq87yHcnzszymNb9JyssBbvtBWHxb',
-    'gsscw-cian': 'fWi9cwYAjXKpsYlye2CIqEFatNR4EzAzID3Zv8nXkSLj2gG3G+rhCtmTIBBXqIffuzxFFT0I3QaemDa69+WG6yhz8jocBX9XoM1QZ9WOLsAbuE554o6WsFW2SlrMKXGaXvZx38BtHWGZTxEUGCedMrZGjNCnDnyWb6wDb+lhWZ/3ICCKy8gqOujBw7e44OzzFAx5nLhMDNDyVOf8JUYkPc2St/9z2O7Gz+ihq/Kr7XZw5LL+akepnMYjfqpBEVBBwoKgBCYOkI/4/TKnYg==',
-    'fgsscw-cian': '5dqc76ef4ba5a714de38640aa08605216bfb216e',
+    'frontend-serp.chatTooltipAnimationShown': '1',
+    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki%2F',
+    'newbuilding-search-frontend.chatTooltipAnimationShown': '1',
+    'newbuilding-search-frontend.chatAnimationShownCount': '1',
+    'frontend-offer-card.builder_chat_onboarding_shown': '1',
     'frontend-offer-card.newbuilding_broker_onboarding_shown': '1',
-    '_gcl_au': '1.1.730586332.1753699444',
-    'last_paid_utm': '?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037806106|ad:16202020484|grp:5454186765|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&yclid=4414867700825718783',
-    'DMIR_AUTH': 'KaxPvqgCTBCI5zCe%2FjZEmCDp2qM0RCK2hIVrc%2BBeEt7NRmQr1%2BnsiC%2BbHZ3iUSROflUa18%2BMHTLVVCblh6fvxHSLY6xnYFAHzAPDGcpuV03ZLPabLxOU4bSj2cQYuC%2B4UVbQP%2FkU%2BbmhOCHACsyC4ouWMMu2h9bVJeu458AFWWE%3D',
+    'transport-accessibility_onboarding_counter': '1',
+    'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
+    'login_button_tooltip_key': '1',
+    'frontend-offer-card.consultant_chat_onboarding_shown': '1',
+    'newbuilding-search-frontend.chatAnimationCounter': '2',
+    'nbrdng_fv': '1786546847550',
+    'rrpvid': '938073304451891',
+    'frontend-serp.chatAnimationPrevPath': '%2Fkupit-kvartiru-novostroyki-krasnodarskiy-kray-sochi-gorodskoy-okrug%2F',
+    'frontend-serp.chatAnimationCounter': '75',
+    'frontend-serp.chatAnimationShownCount': '75',
+    'countCallNowPopupShowed': '1%3A1786997542942',
     'sopr_utm': '%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
-    'rrpvid': '771260525504896',
-    'rcuid': '67e27578d41e2c9a8a114add',
-    'F6_CIAN_SID': '2d0d2794e97e6e79802163da7bbe16360dd116dd0dffcd58a510b35388de706f',
+    '_yasc': 'Wiajr9ZLYqzNfsnMxWbY4f3nH/4tPD5PdvqYV6A2x+Stw9i1YJJaC49KofvwUIxs35ndBPnjIg==',
+    '_yasc': 'vGLYQRwRTIBQpoL2XWmYuwTJsFTh8ufz9e6KiBxmM6YcQOIAAInObgoxtTA2O9b2Euy46x1y5Q==',
+    'login_mro_popup': '1',
+    'sopr_session': 'b80f654a16d740c2',
     '_ym_isad': '2',
-    'session_region_id': '4820',
-    'session_main_town_region_id': '4820',
-    'countCallNowPopupShowed': '1%3A1754392030516',
-    '_yasc': 'Rx8/kjbQXML3XheE7gdCnjr4dL1FnqxkN3Id+8soVKYUe2bV2BKe+O8g0t+/0D6GYaM=',
-    'F6_CIAN_UID': '8098251',
-    '_yasc': 't3zeYqoVISApPynimhXVtQIVX+VEjCKgXC68pqmluVwnCpBhUUoX73uKe5e/9UwPW1c=',
-    'sopr_session': '4809e916fe2040e4',
-    'cookieUserID': '8098251',
     '_ym_visorc': 'b',
-    'uxfb_card_satisfaction': '%5B305455884%2C319149332%2C314358350%2C306236662%5D',
-    'cfidsw-cian': 'JevClYyqu4xnr5IdnzWEyvxjvYh/gulO8h6lncNqo/8wDciHJ8rCKlHGpsDIJ9hl+BANTmVzBf1f/WtRHkkCyIDK2E3CJ4Zs6x26Ka0BBL2UQGj86QfHoS0uJBR/P52AlB5pcoiOm9W2PmNflPpUCJlST1M2uA6elKA8+2mu',
-    'fgsscw-cian': 'M7sx47635bb5b204cb5a694ab604226b42610fbf',
-    'gsscw-cian': 'hEt7/3Xo0ldTvJsb9jO5itQ53tJCNytOmREaShRa6BgWuO6hLtbkYoB8qC8KcP1mngKjvyJ2RBfhvVEodXPOGyevTbDLv1jTfsgU7eAWrcqsdcs2UJkD9ik+31xHsxVs5HRKeSpront7+4px7pVzUBrBz2pLEmC4QhB1bs2h8K9J/seT5oa27eHfDQAnitxRwlj4/wV79dSZzMoWUK2hUUVhLcth2KTwp+AWXb9MaUNuDi+8wAy0whjdtifVwnD6cpWUxVxr+RRu9cJIieK4RUGMv1Q=',
-    '_ga_3369S417EL': 'GS2.1.s1754403489$o143$g1$t1754404041$j43$l0$h0',
+    'mdd': '1',
+    'forever_region_id': '-1',
+    'forever_region_name': '%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
+    'session_region_name': '%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
+    'session_region_id': '1',
+    'session_main_town_region_id': '1',
+    '_ga_3369S417EL': 'GS2.1.s1787295947$o71$g1$t1787297182$j53$l0$h0',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
     'content-type': 'application/json',
-    'origin': 'https://krasnodar.cian.ru',
+    'origin': 'https://www.cian.ru',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://krasnodar.cian.ru/',
-    'sec-ch-ua': '"Not)A;Brand";v="8", "Chromium";v="138", "Google Chrome";v="138"',
+    'referer': 'https://www.cian.ru/',
+    'sec-ch-ua': '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-    # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; cf_clearance=iV44UjyYQedk6k6mLlGxFJSJQ8vRTpRyJAEbHdgR6qI-1741613241-1.2.1.1-p.Lq7YMuxUI71ds4r6v2szise7f_47ZvUdX0qvtqEAXpdnxav4CojfSw.MBjSEs4FLka37z6PFsx.G08NzlLVoTo1DmLc159.35zaGtS1DGpsnMa9MNvwJ4V5cqaGW0hittfBDfPlVKpPmziKz3LADg87IAgNBg4_BJW.59U5.Up8A6OI7pBmeTd9PK.MFYBtAewGarUpGxZqU17t96CtbRMcNC53qneva02mFMk4n3mBhbRCfzNVRU3ao5xCAmDRNLqSTrHi7kdErRD8UPEa2IZrZRbznqM87Q6RvimgB9YDOHBut1KblkoOtTEDL5FKaz00aHCvP80uDJOKdar00wq2rLs5g2J.mJ.vls1N_nm0Qx46EAdE7wsdPwSBkeuPAR_q4xQJ0JWVe7isTRmi7V7LbD_NavVvRSboBnq_Xk; _ym_uid=174161324651361127; _ym_d=1741613246; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; adrdel=1744094487237; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D; newbuilding-search-frontend.consultant_cian_chat_onboarding_shown=1; cookie_agreement_accepted=1; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; _ga=GA1.1.460280003.1749468781; uxfb_usertype=searcher; uxs_uid=1ed08180-4604-11f0-94f5-19dbce91137e; seen_cpd_landing=1; cian_ruid=8098251; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; forever_region_id=4593; forever_region_name=%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; __zzatw-cian=MDA0dC0cTHtmcDhhDHEWTT17CT4VHThHKHIzd2UxO24lYUxaET9HFTZnXEpCNxVZcU4nfAsmMl4tYQ8rCB5UNV9OCCobFn5tI1ULEF9APV8/cnsiD2k5IVt0FhNFWmFVaUAfQTY6flJkGBRIWRw2czljajUjfj1qTnsJXSlRCg4Ybkp1cyxDaSFneFwldlYKCVdPRggnKwoPEGNuRip7X0BuH2RPFyRKV1UzWxxCNW4mCRAUYEBIdHQqQB4PWzkhVA0gDkRpCxtpNmcWSTwacjNpZW10KlJRUVomSFdSCCcZF3twJ1J7dScOCSplMy0tWRgIH2N4JRlrcmY=6fyd8A==; cfidsw-cian=diusco/HSHrB9muzOk+431TeS6cQwA2I56HMt/7brov/94HTt6PZxKAttqRA7cknvlkPExofzYUUaNpGYM2H3DX5+hW6lp34e+dk6dKONIrD4BtCmA9ax5zv9A5uVB4jEA/l10JrXkqxq87yHcnzszymNb9JyssBbvtBWHxb; gsscw-cian=fWi9cwYAjXKpsYlye2CIqEFatNR4EzAzID3Zv8nXkSLj2gG3G+rhCtmTIBBXqIffuzxFFT0I3QaemDa69+WG6yhz8jocBX9XoM1QZ9WOLsAbuE554o6WsFW2SlrMKXGaXvZx38BtHWGZTxEUGCedMrZGjNCnDnyWb6wDb+lhWZ/3ICCKy8gqOujBw7e44OzzFAx5nLhMDNDyVOf8JUYkPc2St/9z2O7Gz+ihq/Kr7XZw5LL+akepnMYjfqpBEVBBwoKgBCYOkI/4/TKnYg==; fgsscw-cian=5dqc76ef4ba5a714de38640aa08605216bfb216e; frontend-offer-card.newbuilding_broker_onboarding_shown=1; _gcl_au=1.1.730586332.1753699444; last_paid_utm=?utm_source=yandex&utm_medium=cpc&utm_content=kw:52037806106|ad:16202020484|grp:5454186765|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=---autotargeting&utm_campaign=b2c_nov_mskmo_perf_mix_search_tgo_offers_k50_upperlevel_arwm_111586059&yclid=4414867700825718783; DMIR_AUTH=KaxPvqgCTBCI5zCe%2FjZEmCDp2qM0RCK2hIVrc%2BBeEt7NRmQr1%2BnsiC%2BbHZ3iUSROflUa18%2BMHTLVVCblh6fvxHSLY6xnYFAHzAPDGcpuV03ZLPabLxOU4bSj2cQYuC%2B4UVbQP%2FkU%2BbmhOCHACsyC4ouWMMu2h9bVJeu458AFWWE%3D; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; rrpvid=771260525504896; rcuid=67e27578d41e2c9a8a114add; F6_CIAN_SID=2d0d2794e97e6e79802163da7bbe16360dd116dd0dffcd58a510b35388de706f; _ym_isad=2; session_region_id=4820; session_main_town_region_id=4820; countCallNowPopupShowed=1%3A1754392030516; _yasc=Rx8/kjbQXML3XheE7gdCnjr4dL1FnqxkN3Id+8soVKYUe2bV2BKe+O8g0t+/0D6GYaM=; F6_CIAN_UID=8098251; _yasc=t3zeYqoVISApPynimhXVtQIVX+VEjCKgXC68pqmluVwnCpBhUUoX73uKe5e/9UwPW1c=; sopr_session=4809e916fe2040e4; cookieUserID=8098251; _ym_visorc=b; uxfb_card_satisfaction=%5B305455884%2C319149332%2C314358350%2C306236662%5D; cfidsw-cian=JevClYyqu4xnr5IdnzWEyvxjvYh/gulO8h6lncNqo/8wDciHJ8rCKlHGpsDIJ9hl+BANTmVzBf1f/WtRHkkCyIDK2E3CJ4Zs6x26Ka0BBL2UQGj86QfHoS0uJBR/P52AlB5pcoiOm9W2PmNflPpUCJlST1M2uA6elKA8+2mu; fgsscw-cian=M7sx47635bb5b204cb5a694ab604226b42610fbf; gsscw-cian=hEt7/3Xo0ldTvJsb9jO5itQ53tJCNytOmREaShRa6BgWuO6hLtbkYoB8qC8KcP1mngKjvyJ2RBfhvVEodXPOGyevTbDLv1jTfsgU7eAWrcqsdcs2UJkD9ik+31xHsxVs5HRKeSpront7+4px7pVzUBrBz2pLEmC4QhB1bs2h8K9J/seT5oa27eHfDQAnitxRwlj4/wV79dSZzMoWUK2hUUVhLcth2KTwp+AWXb9MaUNuDi+8wAy0whjdtifVwnD6cpWUxVxr+RRu9cJIieK4RUGMv1Q=; _ga_3369S417EL=GS2.1.s1754403489$o143$g1$t1754404041$j43$l0$h0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+    # 'cookie': '_CIAN_GK=ebd70d3a-b0b3-483e-b09f-0f982f2a4eea; _gcl_au=1.1.96319925.1782933291; tmr_lvid=3a549fa46199720d5a0041676fe444a9; tmr_lvidTS=1782933291907; _ga=GA1.1.2045904184.1782933294; _ym_uid=1782933294531685029; _ym_d=1782933294; uxfb_usertype=searcher; WBRMVisitLast_utm=; WBRMVisitLast_referrer=https%3A%2F%2Fwww.google.com%2F; WBRMVisitFirst_utm=; WBRMVisitFirst_referrer=https%3A%2F%2Fwww.google.com%2F; uxs_uid=246eace0-7581-11f1-b1a1-3b03d0af4385; cookie_agreement_accepted=1; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; frontend-serp.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki%2F; newbuilding-search-frontend.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationShownCount=1; frontend-offer-card.builder_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; transport-accessibility_onboarding_counter=1; newbuilding-search-frontend.builder_chat_onboarding_shown=1; login_button_tooltip_key=1; frontend-offer-card.consultant_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationCounter=2; nbrdng_fv=1786546847550; rrpvid=938073304451891; frontend-serp.chatAnimationPrevPath=%2Fkupit-kvartiru-novostroyki-krasnodarskiy-kray-sochi-gorodskoy-okrug%2F; frontend-serp.chatAnimationCounter=75; frontend-serp.chatAnimationShownCount=75; countCallNowPopupShowed=1%3A1786997542942; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; _yasc=Wiajr9ZLYqzNfsnMxWbY4f3nH/4tPD5PdvqYV6A2x+Stw9i1YJJaC49KofvwUIxs35ndBPnjIg==; _yasc=vGLYQRwRTIBQpoL2XWmYuwTJsFTh8ufz9e6KiBxmM6YcQOIAAInObgoxtTA2O9b2Euy46x1y5Q==; login_mro_popup=1; sopr_session=b80f654a16d740c2; _ym_isad=2; _ym_visorc=b; mdd=1; forever_region_id=-1; forever_region_name=%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_region_name=%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_region_id=1; session_main_town_region_id=1; _ga_3369S417EL=GS2.1.s1787295947$o71$g1$t1787297182$j53$l0$h0',
 }
 
 json_data = {
@@ -96,6 +98,422 @@ json_data = {
                 1,
             ],
         },
+        'geo': {
+            'type': 'geo',
+            'value': [
+                {
+                    'type': 'polygon',
+                    'name': 'Выделенная область',
+                    'coordinates': [
+                        [
+                            '37.5321932',
+                            '55.7511543',
+                        ],
+                        [
+                            '37.5321503',
+                            '55.7514448',
+                        ],
+                        [
+                            '37.5321503',
+                            '55.7517594',
+                        ],
+                        [
+                            '37.5323863',
+                            '55.7520257',
+                        ],
+                        [
+                            '37.5328369',
+                            '55.752183',
+                        ],
+                        [
+                            '37.5333304',
+                            '55.7522677',
+                        ],
+                        [
+                            '37.5338669',
+                            '55.7522798',
+                        ],
+                        [
+                            '37.5344248',
+                            '55.7522798',
+                        ],
+                        [
+                            '37.5349612',
+                            '55.7522677',
+                        ],
+                        [
+                            '37.5354762',
+                            '55.7522556',
+                        ],
+                        [
+                            '37.5359912',
+                            '55.7522435',
+                        ],
+                        [
+                            '37.5365062',
+                            '55.752183',
+                        ],
+                        [
+                            '37.5370855',
+                            '55.7521104',
+                        ],
+                        [
+                            '37.5375576',
+                            '55.7519773',
+                        ],
+                        [
+                            '37.5380297',
+                            '55.7518563',
+                        ],
+                        [
+                            '37.5385876',
+                            '55.75182',
+                        ],
+                        [
+                            '37.5391026',
+                            '55.7518442',
+                        ],
+                        [
+                            '37.5396175',
+                            '55.7518321',
+                        ],
+                        [
+                            '37.540154',
+                            '55.7517352',
+                        ],
+                        [
+                            '37.5406904',
+                            '55.7516505',
+                        ],
+                        [
+                            '37.5412483',
+                            '55.7515779',
+                        ],
+                        [
+                            '37.5417633',
+                            '55.7515174',
+                        ],
+                        [
+                            '37.5422997',
+                            '55.7515295',
+                        ],
+                        [
+                            '37.5427718',
+                            '55.7516505',
+                        ],
+                        [
+                            '37.5431366',
+                            '55.7518563',
+                        ],
+                        [
+                            '37.5430078',
+                            '55.7521467',
+                        ],
+                        [
+                            '37.5429864',
+                            '55.7524372',
+                        ],
+                        [
+                            '37.5432653',
+                            '55.7526913',
+                        ],
+                        [
+                            '37.5437159',
+                            '55.7528608',
+                        ],
+                        [
+                            '37.5442309',
+                            '55.7529818',
+                        ],
+                        [
+                            '37.5447245',
+                            '55.7530786',
+                        ],
+                        [
+                            '37.5452824',
+                            '55.7531512',
+                        ],
+                        [
+                            '37.5457759',
+                            '55.7532602',
+                        ],
+                        [
+                            '37.5463123',
+                            '55.7533812',
+                        ],
+                        [
+                            '37.5468059',
+                            '55.753478',
+                        ],
+                        [
+                            '37.5473208',
+                            '55.7535385',
+                        ],
+                        [
+                            '37.5479002',
+                            '55.7535385',
+                        ],
+                        [
+                            '37.5484366',
+                            '55.7533812',
+                        ],
+                        [
+                            '37.5488443',
+                            '55.7531754',
+                        ],
+                        [
+                            '37.5492091',
+                            '55.7529697',
+                        ],
+                        [
+                            '37.5495524',
+                            '55.7527518',
+                        ],
+                        [
+                            '37.5499172',
+                            '55.7524856',
+                        ],
+                        [
+                            '37.550282',
+                            '55.7522677',
+                        ],
+                        [
+                            '37.5506253',
+                            '55.7520499',
+                        ],
+                        [
+                            '37.5508828',
+                            '55.7517957',
+                        ],
+                        [
+                            '37.5510759',
+                            '55.7515174',
+                        ],
+                        [
+                            '37.551033',
+                            '55.7512269',
+                        ],
+                        [
+                            '37.5507326',
+                            '55.7509849',
+                        ],
+                        [
+                            '37.5503678',
+                            '55.7507549',
+                        ],
+                        [
+                            '37.5499387',
+                            '55.7505613',
+                        ],
+                        [
+                            '37.5495524',
+                            '55.7503555',
+                        ],
+                        [
+                            '37.5491447',
+                            '55.750174',
+                        ],
+                        [
+                            '37.5487156',
+                            '55.7499925',
+                        ],
+                        [
+                            '37.548265',
+                            '55.7497746',
+                        ],
+                        [
+                            '37.5477929',
+                            '55.7495568',
+                        ],
+                        [
+                            '37.5473638',
+                            '55.7493873',
+                        ],
+                        [
+                            '37.5469131',
+                            '55.7492058',
+                        ],
+                        [
+                            '37.5464625',
+                            '55.7490364',
+                        ],
+                        [
+                            '37.5460334',
+                            '55.7488669',
+                        ],
+                        [
+                            '37.5456042',
+                            '55.7486975',
+                        ],
+                        [
+                            '37.5451536',
+                            '55.7484918',
+                        ],
+                        [
+                            '37.5447459',
+                            '55.7483102',
+                        ],
+                        [
+                            '37.5442095',
+                            '55.7480319',
+                        ],
+                        [
+                            '37.5437803',
+                            '55.7478624',
+                        ],
+                        [
+                            '37.5433297',
+                            '55.7476809',
+                        ],
+                        [
+                            '37.5428791',
+                            '55.7474993',
+                        ],
+                        [
+                            '37.5424499',
+                            '55.7473057',
+                        ],
+                        [
+                            '37.5419779',
+                            '55.7471484',
+                        ],
+                        [
+                            '37.5415058',
+                            '55.746991',
+                        ],
+                        [
+                            '37.5410552',
+                            '55.7468216',
+                        ],
+                        [
+                            '37.5405831',
+                            '55.7466764',
+                        ],
+                        [
+                            '37.5400896',
+                            '55.7465553',
+                        ],
+                        [
+                            '37.5395532',
+                            '55.7464585',
+                        ],
+                        [
+                            '37.5389953',
+                            '55.7464101',
+                        ],
+                        [
+                            '37.5384374',
+                            '55.7464101',
+                        ],
+                        [
+                            '37.5379224',
+                            '55.7464343',
+                        ],
+                        [
+                            '37.5373859',
+                            '55.7464585',
+                        ],
+                        [
+                            '37.536828',
+                            '55.7465553',
+                        ],
+                        [
+                            '37.5363131',
+                            '55.7466885',
+                        ],
+                        [
+                            '37.5358624',
+                            '55.7468579',
+                        ],
+                        [
+                            '37.5353689',
+                            '55.7469426',
+                        ],
+                        [
+                            '37.5348325',
+                            '55.7470394',
+                        ],
+                        [
+                            '37.5344248',
+                            '55.7472331',
+                        ],
+                        [
+                            '37.5341458',
+                            '55.7474872',
+                        ],
+                        [
+                            '37.5338454',
+                            '55.7477293',
+                        ],
+                        [
+                            '37.533545',
+                            '55.7479713',
+                        ],
+                        [
+                            '37.5332875',
+                            '55.7482618',
+                        ],
+                        [
+                            '37.5329871',
+                            '55.7485523',
+                        ],
+                        [
+                            '37.5328798',
+                            '55.7488427',
+                        ],
+                        [
+                            '37.5327511',
+                            '55.7491453',
+                        ],
+                        [
+                            '37.5326652',
+                            '55.7494357',
+                        ],
+                        [
+                            '37.5325794',
+                            '55.7497504',
+                        ],
+                        [
+                            '37.5324936',
+                            '55.7500409',
+                        ],
+                        [
+                            '37.5324078',
+                            '55.7503313',
+                        ],
+                        [
+                            '37.5323434',
+                            '55.7506218',
+                        ],
+                        [
+                            '37.5322361',
+                            '55.7509244',
+                        ],
+                        [
+                            '37.5321503',
+                            '55.7512148',
+                        ],
+                        [
+                            '37.5321932',
+                            '55.7511543',
+                        ],
+                    ],
+                },
+            ],
+        },
+        'bbox': {
+            'type': 'term',
+            'value': [
+                [
+                    37.5266197109,
+                    55.7454979228,
+                ],
+                [
+                    37.5678184414,
+                    55.7542115852,
+                ],
+            ],
+        },
         'page': {
             'type': 'term',
             'value': 1,
@@ -106,10 +524,6 @@ json_data = {
                 'gte': 1,
                 'lte': 99,
             },
-        },
-        'publish_period': {
-            'type': 'term',
-            'value': 2592000,
         },
         'repair': {
             'type': 'terms',
@@ -136,13 +550,6 @@ json_data = {
         'building_status': {
             'type': 'term',
             'value': 1,
-        },
-
-'house_year': {
-            'type': 'range',
-            'value': {
-                'lte': 1945,
-            },
         },
     },
     '_liquiditySource': 'web_serp',

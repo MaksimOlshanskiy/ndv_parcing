@@ -7,7 +7,7 @@ import numpy as np
 
 # Загружаем файлы
 df1 = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Рабочие для базы\База изменяемые данные.xlsx")
-df2 = pd.read_excel(r"\\192.168.252.25\аналитики\ОТЧЕТЫ\Рабочие для базы\НашДомРФ_глубже_27072026.xlsx", sheet_name='Sheet1')
+df2 = pd.read_excel(r"C:\PycharmProjects\ndv_parcing\НашДомРФ\2026-08-24\Нашдомрф 08-24.xlsx", sheet_name='Sheet1')
 
 
 df1["ID дом.рф"] = (
@@ -61,7 +61,7 @@ df1.loc[
 print(df1.info())
 
 # Сохраняем результат
-df1.to_excel(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\База изм хар июль.xlsx", index=False)
+df1.to_excel(r"C:\PycharmProjects\ndv_parcing\!changing_haracteristik_dictionary\База изм хар август.xlsx", index=False)
 
 print("Готово! Новый файл сохранён.")
 

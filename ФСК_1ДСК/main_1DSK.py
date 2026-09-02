@@ -39,7 +39,7 @@ for key, data in info.items():
 
         if finish_type == 'Отделка White Box + с/у под ключ' or finish_type == 'Отделка White Box' or finish_type == 'Предчистовая отделка':
             finish_type = 'Предчистовая'
-        elif finish_type == 'Чистовая отделка':
+        elif finish_type == 'Чистовая отделка' or finish_type == 'Чистовая отделка на выбор':
             finish_type = 'С отделкой'
 
         area = i["areaTotal"]

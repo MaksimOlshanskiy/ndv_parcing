@@ -17,8 +17,8 @@ import re
 from functions import classify_renovation, save_cian_to_excel, save_flats_to_excel
 
 proxies = {
-    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270",
-"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10270"
+    "http": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260",
+"https": "http://xDNa7kBu1c:lyUDim3VtZ@pool.proxy.market:10260"
 }
 
 
@@ -29,87 +29,89 @@ decoration_list = ['preFine', 'fine', 'without', 'fineWithFurniture']
 
 
 
-obshiy = [36935, 1444810, 6381, 5494, 50743, 2352, 48686, 2184313, 7778, 5138735,
+obshiy = [36935, 1444810, 5494, 50743, 2352, 48686, 2184313, 7778, 5138735,
           3419909, 3911074, 46840, 50027, 4051375, 4186702, 2234022, 1900321, 368, 81377, 45865,
        5227, 4771631, 4117447, 4708643, 3782658, 4157734, 45774, 2498484, 8825,
-       4025502, 92320, 2511297, 4850351, 3932079, 4780951, 4296442, 4676364, 912499, 4033066,
+       4025502, 92320, 2511297, 4780951, 4296442, 4676364, 912499, 4033066,
        3206071, 3966751, 4720970, 4682511, 3913242, 4779110, 8787, 3930584, 90586,
        4260360, 5340468, 4648486, 46529, 48693, 4482950, 176051, 7789, 2567913, 4585408, 7030,
        300653, 5138871, 3730443, 7956, 4558643, 4729772, 1358767, 17877, 1628126, 8689, 5208,
         3394804, 600475, 5499, 4056931, 2522095, 2202, 4677457, 3922634, 4109874, 6644, 319,
           4126730, 3402470, 3872784, 5500590, 5698426, 5624837, 3975866, 4394151, 4090740,
-          5593155, 5077128, 5747793, 5734461, 4202659, 7020, 5736965, 5708539, 4670407, 5688213, 36571, 7480, 52703,
-          5692858, 5739813, 5741740, 5274, 8607, 5747459, 5713989, 3867553, 5556228, 12967, 5734549, 5553299]
+          5593155, 5077128, 5747793, 5734461, 4202659, 7020, 5736965, 5708539, 5688213, 36571, 7480, 52703,
+          5692858, 5739813, 5274, 8607, 5747459, 5713989, 3867553, 5556228, 12967, 5734549, 5553299]
 
 
-parsim = obshiy
+parsim = [5706133]
 
 cookies = {
-    '_CIAN_GK': '38928be9-bba1-4562-8d8e-71aa9dfb2ba9',
-    '_ym_uid': '174161324651361127',
-    'adrcid': 'Ad53EZahiTy4QvZYZHYhh0Q',
-    'adrdel': '1744094487237',
-    'acs_3': '%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D',
-    'ma_id': '6225667261741613246584',
-    '__ai_fp_uuid': '245d903c22bdc927%3A15',
-    '_gcl_au': '1.1.9818463.1769411842',
-    '_ym_d': '1773209373',
-    '_ga': 'GA1.1.1538482319.1774343544',
-    'tmr_lvid': '61ae9374a9f1699406db7cc31ef00775',
-    'tmr_lvidTS': '1741613242260',
-    'transport-accessibility_onboarding_counter': '3',
-    'uxs_uid': '92604860-28f8-11f1-a98a-bba19a4d4807',
+    '_CIAN_GK': 'ebd70d3a-b0b3-483e-b09f-0f982f2a4eea',
+    '_gcl_au': '1.1.96319925.1782933291',
+    'tmr_lvid': '3a549fa46199720d5a0041676fe444a9',
+    'tmr_lvidTS': '1782933291907',
+    '_ga': 'GA1.1.2045904184.1782933294',
+    '_ym_uid': '1782933294531685029',
+    '_ym_d': '1782933294',
     'uxfb_usertype': 'searcher',
+    'WBRMVisitLast_utm': '',
+    'WBRMVisitLast_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'WBRMVisitFirst_utm': '',
+    'WBRMVisitFirst_referrer': 'https%3A%2F%2Fwww.google.com%2F',
+    'uxs_uid': '246eace0-7581-11f1-b1a1-3b03d0af4385',
     'cookie_agreement_accepted': '1',
-    'newbuilding-card-desktop-fichering-frontend.builder_chat_onboarding_shown': '1',
     'map_preview_onboarding_counter': '3',
-    'login_button_tooltip_key': '1',
-    'frontend-serp.header_builder_chat_onboarding_shown': '1',
-    'last_paid_utm': '?utm_source=yandex&utm_medium=cpc&utm_content=kw:205657295806|ad:1889238602131455357|grp:5657295806|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=|205657295806&utm_campaign=b2c_nov_mskmo_perf_mix_search_dsa_feed_general_drr_arwm_703812141&etext=2202.h07M9Tlhg3N9CwbhNMoyrVsLWbdrg5CRpbuLNhiEcIVoTY8yPfNz7DVvSxFMf63mtQfzGVZPsUeL_PUMqGvCe3BsenN6dGFxZmZlYWRmaWY.c0ab089525eaca3735ee4aa1b318395f0703704e&yclid=3873403374751711231',
-    'sopr_utm': '%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
-    'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
-    'frontend-serp.chatTooltipAnimationShown': '1',
-    'newbuilding-search-frontend.chatTooltipAnimationShown': '1',
-    'newbuilding-search-frontend.chatAnimationShownCount': '107',
     'frontend-serp.offer_chat_onboarding_shown': '1',
-    'frontend-serp.chatAnimationShownCount': '7',
-    'newbuilding-search-frontend.chatAnimationCounter': '111',
+    'frontend-serp.chatTooltipAnimationShown': '1',
     'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki%2F',
+    'newbuilding-search-frontend.chatTooltipAnimationShown': '1',
+    'newbuilding-search-frontend.chatAnimationShownCount': '1',
     'frontend-offer-card.builder_chat_onboarding_shown': '1',
     'frontend-offer-card.newbuilding_broker_onboarding_shown': '1',
-    'frontend-serp.chatAnimationCounter': '10',
-    'frontend-serp.chatAnimationPrevPath': '%2Fkupit-kvartiru-novostroyki%2F',
-    'countCallNowPopupShowed': '1%3A1775476258941',
-    'forever_region_id': '4959',
-    'forever_region_name': '%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
-    'forever_main_town_region_id': '4959',
-    'session_region_id': '4593',
-    'session_main_town_region_id': '1',
+    'transport-accessibility_onboarding_counter': '1',
+    'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
+    'login_button_tooltip_key': '1',
+    'frontend-offer-card.consultant_chat_onboarding_shown': '1',
+    'newbuilding-search-frontend.chatAnimationCounter': '2',
+    'nbrdng_fv': '1786546847550',
+    'rrpvid': '938073304451891',
+    'frontend-serp.chatAnimationPrevPath': '%2Fkupit-kvartiru-novostroyki-krasnodarskiy-kray-sochi-gorodskoy-okrug%2F',
+    'frontend-serp.chatAnimationCounter': '75',
+    'frontend-serp.chatAnimationShownCount': '75',
+    'sopr_utm': '%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
+    'cian_ruid': '8098251',
+    'forever_region_id': '1',
+    'forever_region_name': '%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
+    'countCallNowPopupShowed': '0%3A1787651078355',
+    '_yasc': 'rOkWqiD61tIId0y+u2x4PZAMD++NZaKhmfnJuZBXkdrjYTGw59XnPJwiY0eh68E3YCKgdR50vw==',
+    '_yasc': 'phw8pWZS1Y5dVsfqXzPFXm0AUh/JMQK9enkMKD3Zqcmfc0F7EjECfEvUW+1S45rfnvx5fs+xdg==',
     'login_mro_popup': '1',
+    'sopr_session': 'e7dfb9b931c64166',
     '_ym_isad': '2',
-    'newbuilding_mortgage_payment_filter_onboarding': '1',
-    'sopr_session': '984fe57857c04e92',
     '_ym_visorc': 'b',
-    '_yasc': 'TRKPtQwX100Llb+e03dywP4BMM51qmiqnpIri2vjwENZelIZncfgiKhy9oA6lHkCD45B0dE=',
-    '_yasc': '0SMjQFnVkpPLd+wWAfEiWFOgNTsWxvn3eJZjAgkulSdK+kvhtbHsGVU0Gbe2z9s/OyK/5r8=',
-    '_ga_3369S417EL': 'GS2.1.s1775561722$o34$g1$t1775562653$j60$l0$h0',
+    'mdd': '1',
+    'session_region_id': '1',
+    'session_main_town_region_id': '1',
+    '_ga_3369S417EL': 'GS2.1.s1787676465$o78$g1$t1787676474$j51$l0$h0',
+    'entry_src': 'bare_domain',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+    'cache-control': 'no-cache',
     'content-type': 'application/json',
     'origin': 'https://www.cian.ru',
+    'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://www.cian.ru/',
-    'sec-ch-ua': '"Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"',
+    'sec-ch-ua': '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36',
-    # 'cookie': '_CIAN_GK=38928be9-bba1-4562-8d8e-71aa9dfb2ba9; _ym_uid=174161324651361127; adrcid=Ad53EZahiTy4QvZYZHYhh0Q; adrdel=1744094487237; acs_3=%7B%22hash%22%3A%221aa3f9523ee6c2690cb34fc702d4143056487c0d%22%2C%22nst%22%3A1744181465976%2C%22sl%22%3A%7B%22224%22%3A1744095065976%2C%221228%22%3A1744095065976%7D%7D; ma_id=6225667261741613246584; __ai_fp_uuid=245d903c22bdc927%3A15; _gcl_au=1.1.9818463.1769411842; _ym_d=1773209373; _ga=GA1.1.1538482319.1774343544; tmr_lvid=61ae9374a9f1699406db7cc31ef00775; tmr_lvidTS=1741613242260; transport-accessibility_onboarding_counter=3; uxs_uid=92604860-28f8-11f1-a98a-bba19a4d4807; uxfb_usertype=searcher; cookie_agreement_accepted=1; newbuilding-card-desktop-fichering-frontend.builder_chat_onboarding_shown=1; map_preview_onboarding_counter=3; login_button_tooltip_key=1; frontend-serp.header_builder_chat_onboarding_shown=1; last_paid_utm=?utm_source=yandex&utm_medium=cpc&utm_content=kw:205657295806|ad:1889238602131455357|grp:5657295806|drf:no|dev:desktop|p:premium|n:2|reg:213|s:none&utm_term=|205657295806&utm_campaign=b2c_nov_mskmo_perf_mix_search_dsa_feed_general_drr_arwm_703812141&etext=2202.h07M9Tlhg3N9CwbhNMoyrVsLWbdrg5CRpbuLNhiEcIVoTY8yPfNz7DVvSxFMf63mtQfzGVZPsUeL_PUMqGvCe3BsenN6dGFxZmZlYWRmaWY.c0ab089525eaca3735ee4aa1b318395f0703704e&yclid=3873403374751711231; sopr_utm=%7B%22utm_source%22%3A+%22yandex%22%2C+%22utm_medium%22%3A+%22organic%22%7D; newbuilding-search-frontend.builder_chat_onboarding_shown=1; frontend-serp.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationShownCount=107; frontend-serp.offer_chat_onboarding_shown=1; frontend-serp.chatAnimationShownCount=7; newbuilding-search-frontend.chatAnimationCounter=111; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki%2F; frontend-offer-card.builder_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; frontend-serp.chatAnimationCounter=10; frontend-serp.chatAnimationPrevPath=%2Fkupit-kvartiru-novostroyki%2F; countCallNowPopupShowed=1%3A1775476258941; forever_region_id=4959; forever_region_name=%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; forever_main_town_region_id=4959; session_region_id=4593; session_main_town_region_id=1; login_mro_popup=1; _ym_isad=2; newbuilding_mortgage_payment_filter_onboarding=1; sopr_session=984fe57857c04e92; _ym_visorc=b; _yasc=TRKPtQwX100Llb+e03dywP4BMM51qmiqnpIri2vjwENZelIZncfgiKhy9oA6lHkCD45B0dE=; _yasc=0SMjQFnVkpPLd+wWAfEiWFOgNTsWxvn3eJZjAgkulSdK+kvhtbHsGVU0Gbe2z9s/OyK/5r8=; _ga_3369S417EL=GS2.1.s1775561722$o34$g1$t1775562653$j60$l0$h0',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+    # 'cookie': '_CIAN_GK=ebd70d3a-b0b3-483e-b09f-0f982f2a4eea; _gcl_au=1.1.96319925.1782933291; tmr_lvid=3a549fa46199720d5a0041676fe444a9; tmr_lvidTS=1782933291907; _ga=GA1.1.2045904184.1782933294; _ym_uid=1782933294531685029; _ym_d=1782933294; uxfb_usertype=searcher; WBRMVisitLast_utm=; WBRMVisitLast_referrer=https%3A%2F%2Fwww.google.com%2F; WBRMVisitFirst_utm=; WBRMVisitFirst_referrer=https%3A%2F%2Fwww.google.com%2F; uxs_uid=246eace0-7581-11f1-b1a1-3b03d0af4385; cookie_agreement_accepted=1; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; frontend-serp.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki%2F; newbuilding-search-frontend.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationShownCount=1; frontend-offer-card.builder_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; transport-accessibility_onboarding_counter=1; newbuilding-search-frontend.builder_chat_onboarding_shown=1; login_button_tooltip_key=1; frontend-offer-card.consultant_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationCounter=2; nbrdng_fv=1786546847550; rrpvid=938073304451891; frontend-serp.chatAnimationPrevPath=%2Fkupit-kvartiru-novostroyki-krasnodarskiy-kray-sochi-gorodskoy-okrug%2F; frontend-serp.chatAnimationCounter=75; frontend-serp.chatAnimationShownCount=75; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; cian_ruid=8098251; forever_region_id=1; forever_region_name=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0; countCallNowPopupShowed=0%3A1787651078355; _yasc=rOkWqiD61tIId0y+u2x4PZAMD++NZaKhmfnJuZBXkdrjYTGw59XnPJwiY0eh68E3YCKgdR50vw==; _yasc=phw8pWZS1Y5dVsfqXzPFXm0AUh/JMQK9enkMKD3Zqcmfc0F7EjECfEvUW+1S45rfnvx5fs+xdg==; login_mro_popup=1; sopr_session=e7dfb9b931c64166; _ym_isad=2; _ym_visorc=b; mdd=1; session_region_id=1; session_main_town_region_id=1; _ga_3369S417EL=GS2.1.s1787676465$o78$g1$t1787676474$j51$l0$h0; entry_src=bare_domain',
 }
 
 json_data = {
@@ -196,6 +198,7 @@ for y in parsim:
                     cookies=cookies,
                     headers=headers,
                     json=json_data,
+                    proxies = proxies,
                 )
 
                 print(response.status_code)

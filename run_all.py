@@ -159,7 +159,7 @@ SCRIPTS = [
     Path(r"C:\PycharmProjects\ndv_parcing\РКС Девелопмент\Коллекция.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\РКС Девелопмент\Insider.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Карандаш\Октябрьский.py"),
-    Path(r"C:\PycharmProjects\ndv_parcing\Остов\Авиатор.py"),
+    Path(r"C:\PycharmProjects\ndv_parcing\Остов\Остов.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\ВЭМЗ-Эстейт\Бруно.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\Атлантис Одинцово\Вяземы Парк.py"),
     Path(r"C:\PycharmProjects\ndv_parcing\СЗ Спортивная 2Б\Сердце Лыткарино.py"),
@@ -174,7 +174,23 @@ SCRIPTS = [
     Path(r'C:\PycharmProjects\ndv_parcing\СЗ Энергостройинвест\Отлично.py'),
     Path(r'C:\PycharmProjects\ndv_parcing\Юник девелопмент\Springs.py'),
     Path(r'C:\PycharmProjects\ndv_parcing\Primacom\Внуково Кантри клаб.py'),
-    Path(r'C:\PycharmProjects\ndv_parcing\AVA\Городской бор.py')
+    Path(r'C:\PycharmProjects\ndv_parcing\AVA\Городской бор.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Берег.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Восточный.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Гармония Парк.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Космос.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Красная горка.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Мишино.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Серебро.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\НДВ\Школьный.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\ГК Развитие\voroncovskiy.py'),
+    Path(r'C:\PycharmProjects\ndv_parcing\Элемент\Тессинский 5.py')
+
+
+
+
+
+
 
 ]
 

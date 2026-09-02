@@ -17,7 +17,7 @@ from functions import get_unique_filepath
 """
 
 # Загружаем Excel
-file_path = r"C:\PycharmProjects\ndv_parcing\1_FILES\2026-08-03\Парквью.xlsx"
+file_path = r"D:\НДВ\База август\База 7-8.xlsx"
  # Нужно или нет менять квартирографию
 
 df = pd.read_excel(file_path)
@@ -43,7 +43,7 @@ df = enrich_dataframe(
     df,
     projects_dict=projects_dict,
     corpus_dict=corpus_dict,
-    area_dict=None
+    area_dict=area_dict
 )  # если указать =None, то изменений не будет
 
 df.to_excel(file_path, index=False)

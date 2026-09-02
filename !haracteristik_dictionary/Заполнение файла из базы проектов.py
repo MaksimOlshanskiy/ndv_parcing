@@ -2,7 +2,7 @@ import json
 import pandas as pd
 from Developer_dict import name_dict, developer_dict
 
-df = pd.read_excel(r"D:\Ricci\Коммерция\06.2026\Коммерция2.xlsx")
+df = pd.read_excel(r"D:\НДВ\База август\База final.xlsx")
 
 
 
@@ -31,4 +31,4 @@ for idx, row in df.iterrows():
 
 df.drop(columns=["project_key"], inplace=True)
 
-df.to_excel(r"D:\Ricci\Коммерция\06.2026\Коммерция2.xlsx", index=False)
+df.to_excel(r"D:\НДВ\База август\База final_2.xlsx", index=False)

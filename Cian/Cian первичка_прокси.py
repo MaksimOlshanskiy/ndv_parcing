@@ -63,32 +63,41 @@ cookies = {
     'map_preview_onboarding_counter': '3',
     'frontend-serp.offer_chat_onboarding_shown': '1',
     'frontend-serp.chatTooltipAnimationShown': '1',
-    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki%2F',
     'newbuilding-search-frontend.chatTooltipAnimationShown': '1',
     'newbuilding-search-frontend.chatAnimationShownCount': '1',
     'frontend-offer-card.builder_chat_onboarding_shown': '1',
     'frontend-offer-card.newbuilding_broker_onboarding_shown': '1',
-    'frontend-serp.chatAnimationShownCount': '19',
     'transport-accessibility_onboarding_counter': '1',
     'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
     'login_button_tooltip_key': '1',
     'frontend-offer-card.consultant_chat_onboarding_shown': '1',
-    'newbuilding-search-frontend.chatAnimationCounter': '2',
-    'countCallNowPopupShowed': '1%3A1785937438935',
+    'nbrdng_fv': '1786546847550',
+    'rrpvid': '938073304451891',
+    'sopr_utm': '%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D',
+    'cian_ruid': '8098251',
+    'newbuilding-card-desktop-fichering-frontend.compare_onboarding_shown': '1',
+    'frontend-serp.compare_onboarding_shown': '1',
+    'newbuilding-card-desktop-frontend.compare_onboarding_shown': '1',
+    'newbuilding_compare_onboarding_shown': '1',
+    'forever_region_id': '2',
+    'forever_region_name': '%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3',
+    'frontend-serp.chatAnimationShownCount': '81',
+    'newbuilding-search-frontend.compare_onboarding_shown': '1',
+    'newbuilding-search-frontend.chatAnimationCounter': '4',
+    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnewobjects%2Flist%3Fdeal_type%3Dsale%26engine_version%3D2%26offer_type%3Dnewobject%26region%3D-2%26p%3D2',
+    'countCallNowPopupShowed': '2%3A1788111560835',
+    'uxfb_card_satisfaction': '%5B327835654%5D',
     'login_mro_popup': '1',
+    'session_region_id': '2',
+    'session_region_name': '%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3',
+    'session_main_town_region_id': '2',
     'newbuilding_mortgage_payment_filter_onboarding': '1',
-    'forever_region_id': '4574',
-    'session_region_id': '4574',
-    'forever_region_name': '%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
-    'session_region_name': '%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C',
-    'session_main_town_region_id': '4778',
-    '_yasc': 'w8TDgzDD08Oy87mIz765agzCt/p7VpbenrLFlU9ndI8GQzluNAGTqerlCUZgYiYljY+a60sUfw==',
-    'forever_main_town_region_id': '4778',
-    '_yasc': '6a1mkUHOQvnkg6h+03z5XR4bAjxVuq+LiQV7bnmkosc5YCzDTMcu0v+pm0xZ3QWWMjKg6T3VSg==',
-    'entry_src': 'bare_domain',
-    '_ga_3369S417EL': 'GS2.1.s1786367422$o56$g1$t1786367439$j43$l0$h0',
-    'frontend-serp.chatAnimationCounter': '25',
-    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26p%3D2%26region%3D4574',
+    '_yasc': 'eKM9hDKO37mm6ym8IHXmpyERL3q5FikiesnLDkIg8GLX3JZAzTyPisB+ZnIc5apo72AEU1rGdQ==',
+    'anti_bot': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW50aV9ib3QiLCJ2YWx1ZSI6ImV5SnlaVzF2ZEdWZmFYQWlPaUkxTGpJeU9DNHhNVFF1T0RRaWZRPT0iLCJpYXQiOjE3ODgyMDM0ODh9.BsKm4X-2TgnW2OmG9rdqpDH_J8NYKA_EB5HrDAxBAUI',
+    '_yasc': '5CtRd5Jzr29eM76aNgWB8X+RXvIuZBPxYd7yn1PxXEmTO4hXf3lZn1y9XRGLkc7BOF9EOV0Xsg==',
+    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26p%3D3%26region%3D2',
+    '_ga_3369S417EL': 'GS2.1.s1788203493$o107$g0$t1788203493$j60$l0$h0',
+    'frontend-serp.chatAnimationCounter': '87',
 }
 
 headers = {
@@ -96,19 +105,21 @@ headers = {
     'accept-language': 'ru-RU,ru;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
     'cache-control': 'no-cache',
     'content-type': 'application/json',
-    'origin': 'https://kaliningrad.cian.ru',
+    'origin': 'https://spb.cian.ru',
     'pragma': 'no-cache',
     'priority': 'u=1, i',
-    'referer': 'https://kaliningrad.cian.ru/',
-    'sec-ch-ua': '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
+    'referer': 'https://spb.cian.ru/',
+    'sec-ch-ua': '"Chromium";v="152", "Not?A_Brand";v="24", "Google Chrome";v="152"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-site',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
-    # 'cookie': '_CIAN_GK=ebd70d3a-b0b3-483e-b09f-0f982f2a4eea; _gcl_au=1.1.96319925.1782933291; tmr_lvid=3a549fa46199720d5a0041676fe444a9; tmr_lvidTS=1782933291907; _ga=GA1.1.2045904184.1782933294; _ym_uid=1782933294531685029; _ym_d=1782933294; uxfb_usertype=searcher; WBRMVisitLast_utm=; WBRMVisitLast_referrer=https%3A%2F%2Fwww.google.com%2F; WBRMVisitFirst_utm=; WBRMVisitFirst_referrer=https%3A%2F%2Fwww.google.com%2F; uxs_uid=246eace0-7581-11f1-b1a1-3b03d0af4385; cookie_agreement_accepted=1; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; frontend-serp.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki%2F; newbuilding-search-frontend.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationShownCount=1; frontend-offer-card.builder_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; frontend-serp.chatAnimationShownCount=19; transport-accessibility_onboarding_counter=1; newbuilding-search-frontend.builder_chat_onboarding_shown=1; login_button_tooltip_key=1; frontend-offer-card.consultant_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationCounter=2; countCallNowPopupShowed=1%3A1785937438935; login_mro_popup=1; newbuilding_mortgage_payment_filter_onboarding=1; forever_region_id=4574; session_region_id=4574; forever_region_name=%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_region_name=%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C; session_main_town_region_id=4778; _yasc=w8TDgzDD08Oy87mIz765agzCt/p7VpbenrLFlU9ndI8GQzluNAGTqerlCUZgYiYljY+a60sUfw==; forever_main_town_region_id=4778; _yasc=6a1mkUHOQvnkg6h+03z5XR4bAjxVuq+LiQV7bnmkosc5YCzDTMcu0v+pm0xZ3QWWMjKg6T3VSg==; entry_src=bare_domain; _ga_3369S417EL=GS2.1.s1786367422$o56$g1$t1786367439$j43$l0$h0; frontend-serp.chatAnimationCounter=25; frontend-serp.chatAnimationPrevPath=%2Fcat.php%3Fdeal_type%3Dsale%26engine_version%3D2%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26p%3D2%26region%3D4574',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36',
+    # 'cookie': '_CIAN_GK=ebd70d3a-b0b3-483e-b09f-0f982f2a4eea; _gcl_au=1.1.96319925.1782933291; tmr_lvid=3a549fa46199720d5a0041676fe444a9; tmr_lvidTS=1782933291907; _ga=GA1.1.2045904184.1782933294; _ym_uid=1782933294531685029; _ym_d=1782933294; uxfb_usertype=searcher; WBRMVisitLast_utm=; WBRMVisitLast_referrer=https%3A%2F%2Fwww.google.com%2F; WBRMVisitFirst_utm=; WBRMVisitFirst_referrer=https%3A%2F%2Fwww.google.com%2F; uxs_uid=246eace0-7581-11f1-b1a1-3b03d0af4385; cookie_agreement_accepted=1; map_preview_onboarding_counter=3; frontend-serp.offer_chat_onboarding_shown=1; frontend-serp.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationPrevPath=%2Fnovostroyki%2F; newbuilding-search-frontend.chatTooltipAnimationShown=1; newbuilding-search-frontend.chatAnimationShownCount=1; frontend-offer-card.builder_chat_onboarding_shown=1; frontend-offer-card.newbuilding_broker_onboarding_shown=1; transport-accessibility_onboarding_counter=1; newbuilding-search-frontend.builder_chat_onboarding_shown=1; login_button_tooltip_key=1; frontend-offer-card.consultant_chat_onboarding_shown=1; newbuilding-search-frontend.chatAnimationCounter=2; nbrdng_fv=1786546847550; rrpvid=938073304451891; sopr_utm=%7B%22utm_source%22%3A+%22google%22%2C+%22utm_medium%22%3A+%22organic%22%7D; cian_ruid=8098251; newbuilding-card-desktop-fichering-frontend.compare_onboarding_shown=1; frontend-serp.compare_onboarding_shown=1; newbuilding-card-desktop-frontend.compare_onboarding_shown=1; newbuilding_compare_onboarding_shown=1; uxfb_card_satisfaction=%5B326074406%5D; login_mro_popup=1; _ym_isad=2; mdd=1; newbuilding_mortgage_payment_filter_onboarding=1; forever_region_id=2; session_region_id=2; forever_region_name=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3; session_region_name=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3; countCallNowPopupShowed=1%3A1788111560835; session_main_town_region_id=2; frontend-serp.chatAnimationPrevPath=%2Fcat.php%3Fdeal_type%3Dsale%26decorations_list%255B0%255D%3Dfine%26decorations_list%255B1%255D%3DfineWithFurniture%26decorations_list%255B2%255D%3DpreFine%26decorations_list%255B3%255D%3Dwithout%26engine_version%3D2%26from_developer%3D1%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D2%26totime%3D2592000; frontend-serp.chatAnimationShownCount=81; frontend-serp.chatAnimationCounter=82; _yasc=/JlYpxSilpzMPJl7LbxtPejTSANfxPTeGuGuSa8ePINjLDRd9vlBQnPYybHDA9Gc8ORqw8VOMA==; _ga_3369S417EL=GS2.1.s1788123277$o98$g0$t1788123277$j60$l0$h0; _yasc=dCe3lxF5nQZTaUO2dd1izLRqIMQ718gtlGUsDZpnPeDKwbhsA+UOpVKVxaZep6ugPGyDGgzsLA==',
 }
+
+
 
 newbuilding_classes = [
                 'economy',
@@ -142,7 +153,7 @@ cities_dict = {
     'Владивосток': 4701
 }
 
-cities_list = [203149, 184737, 1275322, 184739, 181462]
+cities_list = [4704]
 
 for city_id in cities_list:
 
@@ -248,6 +259,10 @@ for city_id in cities_list:
                     'preFine',
                 ],
             },
+            'publish_period': {
+                'type': 'term',
+                'value': 2592000,
+            },
             'floor': {
                 'type': 'range',
                 'value': {
@@ -281,7 +296,7 @@ for city_id in cities_list:
     }
 
     current_date = datetime.date.today()
-
+    # ids = [2812291, 6534, 3690038]
     for y in ids:
 
         flats = []

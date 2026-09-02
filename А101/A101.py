@@ -99,7 +99,7 @@ while True:
             district = ''
             korpus = i["building"]
             try:
-                if project == 'Скандинавия' and int(korpus.split('.')[0]) < 25:
+                if project == 'Скандинавия' and int(korpus.split('.')[0].replace('А', '')) < 25:
                     project = 'Скандинавия Юг'
                 if project == 'Скандинавия' and int(korpus.split('.')[0]) >= 25:
                     project = 'Скандинавия Центр'
@@ -109,8 +109,8 @@ while True:
             room_count = str(i["room"])
             if i['euro']:
                 room_count += 'е'
-            if room_count == '1 е':
-                room_count = '2 е'
+            if i['euro'] and i["room"] == 1:
+                room_count = '2е'
             if i['whitebox']:
                 finish_type = 'Предчистовая'
             elif i['design']:

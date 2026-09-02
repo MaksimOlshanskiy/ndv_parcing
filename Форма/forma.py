@@ -28,7 +28,7 @@ json_data = {
     'floor': {},
     'attributes': [],
     'page': 1,
-    'limit': 750,
+    'limit': 1500,
     'order': {
         'key': 'price',
         'type': 'asc',
@@ -73,7 +73,7 @@ for i in items:
     district = ''
     adress = ''
     eskrou = ''
-    korpus = str(i["bulk"]["number"]).replace(',', '.')
+    korpus = str(i["bulk"]["number"]).replace(',', '.').replace('5.41', '5.4.1').replace('5.71', '5.7.1')
     konstruktiv = ''
     klass = ''
     srok_sdachi = ''

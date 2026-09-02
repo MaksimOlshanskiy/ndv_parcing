@@ -5,10 +5,10 @@ import glob
 import pandas as pd
 
 # Путь к папке, где находятся Excel файлы
-folder_path = r"C:\PycharmProjects\ndv_parcing\Cian\Первичка\2026-08-16"
+folder_path = r"C:\PycharmProjects\ndv_parcing\Cian\Вторичка\2026-09-02"
 
 # Сохраняем объединённые данные в новый Excel файл
-output_file_name = 'Юг.xlsx'
+output_file_name = 'Вторичка.xlsx'
 
 rename_dict = {
     "CITYZEN": "Ситизен",
@@ -131,19 +131,19 @@ for file_path in excel_files:
         df = pd.read_excel(file_path)  # Читаем Excel файл в DataFrame
     except:
         print(file_path)
-    # df.columns = df.columns.str.capitalize()
+    df.columns = df.columns.str.capitalize()
 
 
     all_data = pd.concat([all_data, df], ignore_index=True)  # Добавляем данные в общий DataFrame
 
 
 
-# all_data["Ссылка"] = (
-#     all_data["Ссылка"]
-#     .astype(str)
-#     .str.split('/')
-#     .str[-1]
-# )
+all_data["Ссылка"] = (
+    all_data["Ссылка"]
+    .astype(str)
+    .str.split('/')
+    .str[-1]
+)
 
 def clean_project_name(df, column_name):
     """

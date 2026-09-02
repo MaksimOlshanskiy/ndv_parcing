@@ -68,7 +68,7 @@ while True:
         url = ''
         developer = "ОМ Девелопмент"
         project = 'Станиславский'
-        korpus = i['building_number'].split()[-1]
+        korpus = i['building_number'].split()[-1].replace(',', '.')
         type = 'Квартиры'
         if i['finishing_type'] == 'no':
             finish_type = 'Без отделки'

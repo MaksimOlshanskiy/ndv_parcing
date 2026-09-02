@@ -47,10 +47,9 @@ headers = {
 }
 
 params = {
-    'limit': '1000',
+    'limit': '2000',
     'offset': '0',
     'type': 'flat',
-    'project': 'sezar-budushee',
 }
 
 

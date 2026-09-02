@@ -29,7 +29,7 @@ if __name__ == "__main__":
     "ob[id]": 202,
     "object": 202,
     "a": "types",
-    "ok": "y3pNEleDe7hjBuDjP9VQSjxVDUIFEBP9",
+    "ok": ok,
 }
 
 

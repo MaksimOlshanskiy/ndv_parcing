@@ -58,6 +58,10 @@ except AttributeError:
 
 df['id'] = df['id'].astype(str).str.replace(".0", "")
 
+duplicates = df[df["primary_key"].duplicated(keep=False)].sort_values("primary_key")
+
+print(duplicates[["primary_key", "Название проекта"]])
+
 # формируем словарь из Excel (удаляем только Название проекта — теперь девелопер сохраняется)
 projects_dict = (
     df
@@ -65,6 +69,8 @@ projects_dict = (
     .drop(columns=["Название проекта"])  # девелопер теперь НЕ участвует в ключе, но остаётся в данных
     .to_dict(orient="index")
 )
+
+
 
 # читаем старый JSON (если он есть)
 old_projects = {}

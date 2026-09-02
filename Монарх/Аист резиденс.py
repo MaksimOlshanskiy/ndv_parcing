@@ -13,12 +13,10 @@ from functions import save_flats_to_excel
 '''
 
 cookies = {
-    'XSRF-TOKEN': 'eyJpdiI6IjM3bFgvS3g2aUlMMVRZeWJOUWlCckE9PSIsInZhbHVlIjoiaHEvdnlCSUM3TDFvQlJDNE5MclRzU2FNU0FuTG50dVUyZU1WWUVMOUxlOHIrU1pMVHlMNXArcEdMaDNmL1A0UjNpWFBna2U2ckRzZ1Y2M3R6MU9jekRQYUJVVXR1QXNyM1NmM01NNVd1NDJXcmVIUTlRL2RuMXlyN0VkM0J4NUciLCJtYWMiOiIxOTUwNWYyYzQ2NjlmZTNlZDliYTMwOTkyMDVkOTM4ODZiYjU3MTA1NGE3NDVhNjAwMGFlNTEyYTNkZjQ5NDBmIiwidGFnIjoiIn0%3D',
-    'aist_session': 'eyJpdiI6InR3ZEwwNUNwR1ZuaVc3ZEFpb3VVT3c9PSIsInZhbHVlIjoiZzNSSjlqKzhBUWlRY1l2eURNUTJaQnJiWmtzSGxUV2x2TVRJZGhXZko5bGRiTmNLUnNWQTlkUjVPWTZzais3cDVyQk1nREExZDM0R1k3YmdFcGtiUGlGbTRkdFY3TXA4cUxPYTVpaCt5Z3NCRnRXMHIzZHAvZWpmRUU5bWNxRUkiLCJtYWMiOiJhNjk3OGZhN2M0NTk1OGZlOTIyNDBlYjBiOGE2MzA3NmQ5MGIwZjA5YzY3OWEzODY0ZGI5Mzc3MzVlYjlkMzNjIiwidGFnIjoiIn0%3D',
     '_ym_uid': '1779879851910342352',
     '_ym_d': '1785060862',
-    '_ym_isad': '2',
-    '_ym_visorc': 'w',
+    'XSRF-TOKEN': 'eyJpdiI6IlhuWGVNSzJqeXZUQk1jWVg0RnVTQnc9PSIsInZhbHVlIjoiVHNVVUYvSDZQZmdpZ20vREw4NnBrNVpqL2NhMmZpOE1TcmRSQjhXa1NvcnprZnByMDI4K3hRekdLWTRiQlJSUVlMdHpJd29hcFdJSU9nUldwMytPVCt4U1EvclBjVWtKS1YyQ0tDK0NzZjl2d00wQXdZdGY0aGZDZXJ3bTUvTFIiLCJtYWMiOiIwM2U2NzM1MWQzODgyYzAzNTE0ZGFiMjc1YzE2ZWZmMDY3MTAxMzQ1MDY2YmQ1ZmU0ZWNkMWY5MzNhYmZlMzgxIiwidGFnIjoiIn0%3D',
+    'aist_session': 'eyJpdiI6Ik51U0hUc0h6bzc3VHVaZUFGWmVRRUE9PSIsInZhbHVlIjoiUzVVY0FRUnJMeTBaSjgwbDJkZzNha2VRVklCemJUazNtcldyVTRtaEE1VnFycU9wQnhFdjVpUU9PQ1ZJRGdoM3NWVXI3T0JHNTk0clU0d2VDRVhiVWtNWlJ4Wk52NXR5SzZoWE5wQitCd3FyZmZxL3BaZ0xPWE5iMnpnTG1FcmciLCJtYWMiOiJmOTE3NDJhM2E0NzY5OWE3M2NiZDQ0OTY4NzMwYjM0YjcwM2VlZTY1NTlhMGM5ZTZmMmRkN2JhMTgzNjM0NzM0IiwidGFnIjoiIn0%3D',
 }
 
 headers = {
@@ -30,15 +28,15 @@ headers = {
     'pragma': 'no-cache',
     'priority': 'u=1, i',
     'referer': 'https://aist-residence.com/ceni-i-planirovki?group_type%5B0%5D=1&group_type%5B1%5D=2&group_type%5B2%5D=3&group_type%5B3%5D=4&page=2',
-    'sec-ch-ua': '"Not;A=Brand";v="8", "Chromium";v="150", "Google Chrome";v="150"',
+    'sec-ch-ua': '"Not=A?Brand";v="99", "Google Chrome";v="151", "Chromium";v="151"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
-    'x-csrf-token': 'm1k1uJfHOEE6bqx1KejxFh9jkdFWgLGo1yvYeis5',
-    # 'cookie': 'XSRF-TOKEN=eyJpdiI6IjM3bFgvS3g2aUlMMVRZeWJOUWlCckE9PSIsInZhbHVlIjoiaHEvdnlCSUM3TDFvQlJDNE5MclRzU2FNU0FuTG50dVUyZU1WWUVMOUxlOHIrU1pMVHlMNXArcEdMaDNmL1A0UjNpWFBna2U2ckRzZ1Y2M3R6MU9jekRQYUJVVXR1QXNyM1NmM01NNVd1NDJXcmVIUTlRL2RuMXlyN0VkM0J4NUciLCJtYWMiOiIxOTUwNWYyYzQ2NjlmZTNlZDliYTMwOTkyMDVkOTM4ODZiYjU3MTA1NGE3NDVhNjAwMGFlNTEyYTNkZjQ5NDBmIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6InR3ZEwwNUNwR1ZuaVc3ZEFpb3VVT3c9PSIsInZhbHVlIjoiZzNSSjlqKzhBUWlRY1l2eURNUTJaQnJiWmtzSGxUV2x2TVRJZGhXZko5bGRiTmNLUnNWQTlkUjVPWTZzais3cDVyQk1nREExZDM0R1k3YmdFcGtiUGlGbTRkdFY3TXA4cUxPYTVpaCt5Z3NCRnRXMHIzZHAvZWpmRUU5bWNxRUkiLCJtYWMiOiJhNjk3OGZhN2M0NTk1OGZlOTIyNDBlYjBiOGE2MzA3NmQ5MGIwZjA5YzY3OWEzODY0ZGI5Mzc3MzVlYjlkMzNjIiwidGFnIjoiIn0%3D; _ym_uid=1779879851910342352; _ym_d=1785060862; _ym_isad=2; _ym_visorc=w',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+    'x-csrf-token': 'bZB63ZNu8CpSapNoUrcaU9Ryt6VbtiTZRROKO6fN',
+    # 'cookie': '_ym_uid=1779879851910342352; _ym_d=1785060862; XSRF-TOKEN=eyJpdiI6IlhuWGVNSzJqeXZUQk1jWVg0RnVTQnc9PSIsInZhbHVlIjoiVHNVVUYvSDZQZmdpZ20vREw4NnBrNVpqL2NhMmZpOE1TcmRSQjhXa1NvcnprZnByMDI4K3hRekdLWTRiQlJSUVlMdHpJd29hcFdJSU9nUldwMytPVCt4U1EvclBjVWtKS1YyQ0tDK0NzZjl2d00wQXdZdGY0aGZDZXJ3bTUvTFIiLCJtYWMiOiIwM2U2NzM1MWQzODgyYzAzNTE0ZGFiMjc1YzE2ZWZmMDY3MTAxMzQ1MDY2YmQ1ZmU0ZWNkMWY5MzNhYmZlMzgxIiwidGFnIjoiIn0%3D; aist_session=eyJpdiI6Ik51U0hUc0h6bzc3VHVaZUFGWmVRRUE9PSIsInZhbHVlIjoiUzVVY0FRUnJMeTBaSjgwbDJkZzNha2VRVklCemJUazNtcldyVTRtaEE1VnFycU9wQnhFdjVpUU9PQ1ZJRGdoM3NWVXI3T0JHNTk0clU0d2VDRVhiVWtNWlJ4Wk52NXR5SzZoWE5wQitCd3FyZmZxL3BaZ0xPWE5iMnpnTG1FcmciLCJtYWMiOiJmOTE3NDJhM2E0NzY5OWE3M2NiZDQ0OTY4NzMwYjM0YjcwM2VlZTY1NTlhMGM5ZTZmMmRkN2JhMTgzNjM0NzM0IiwidGFnIjoiIn0%3D',
 }
 
 params = {

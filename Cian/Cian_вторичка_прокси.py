@@ -42,7 +42,6 @@ cookies = {
     'map_preview_onboarding_counter': '3',
     'frontend-serp.offer_chat_onboarding_shown': '1',
     'frontend-serp.chatTooltipAnimationShown': '1',
-    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnovostroyki%2F',
     'newbuilding-search-frontend.chatTooltipAnimationShown': '1',
     'newbuilding-search-frontend.chatAnimationShownCount': '1',
     'frontend-offer-card.builder_chat_onboarding_shown': '1',
@@ -51,21 +50,29 @@ cookies = {
     'newbuilding-search-frontend.builder_chat_onboarding_shown': '1',
     'login_button_tooltip_key': '1',
     'frontend-offer-card.consultant_chat_onboarding_shown': '1',
-    'newbuilding-search-frontend.chatAnimationCounter': '2',
-    'countCallNowPopupShowed': '1%3A1785937438935',
-    'frontend-serp.chatAnimationShownCount': '25',
-    'frontend-serp.chatAnimationPrevPath': '%2Fkupit-1-komnatnuyu-kvartiru-novostroyki-kaliningradskaya-oblast%2F',
-    'frontend-serp.chatAnimationCounter': '29',
+    'nbrdng_fv': '1786546847550',
+    'rrpvid': '938073304451891',
+    'cian_ruid': '8098251',
+    'newbuilding-card-desktop-fichering-frontend.compare_onboarding_shown': '1',
+    'frontend-serp.compare_onboarding_shown': '1',
+    'newbuilding-card-desktop-frontend.compare_onboarding_shown': '1',
+    'newbuilding_compare_onboarding_shown': '1',
+    'newbuilding-search-frontend.compare_onboarding_shown': '1',
+    'newbuilding-search-frontend.chatAnimationCounter': '4',
+    'newbuilding-search-frontend.chatAnimationPrevPath': '%2Fnewobjects%2Flist%3Fdeal_type%3Dsale%26engine_version%3D2%26offer_type%3Dnewobject%26region%3D-2%26p%3D2',
+    'countCallNowPopupShowed': '2%3A1788111560835',
+    'frontend-serp.chatAnimationCounter': '95',
+    'frontend-serp.chatAnimationPrevPath': '%2Fcat.php%3Fdeal_type%3Dsale%26decorations_list%255B0%255D%3Dfine%26decorations_list%255B1%255D%3DfineWithFurniture%26decorations_list%255B2%255D%3DpreFine%26decorations_list%255B3%255D%3Dwithout%26electronic_trading%3D2%26engine_version%3D2%26from_developer%3D1%26maxfloor%3D99%26minfloor%3D1%26object_type%255B0%255D%3D2%26offer_type%3Dflat%26region%3D4827%26room1%3D1%26room2%3D1%26room3%3D1%26room4%3D1%26room5%3D1%26room6%3D1%26room7%3D1%26room9%3D1%26totime%3D2592000',
+    'frontend-serp.chatAnimationShownCount': '94',
+    '_yasc': 'cyD4E1f7gdZlL5dCJhE19AgZpBmvvrq3RmVFAcewymQvgPG90icPygVMHJAnfBL7DEtEzaKsRA==',
+    '_yasc': 'iPTo/vI3f1g/KaYI02layQhRN99IiIFLRZJN8kZgirl1XST+hqLk986Zl4aP8Qi87RPFJB849w==',
     'login_mro_popup': '1',
-    '_yasc': 'Q0mUFodDfz53RihoTCPIJPTPvbanzzcXrGuHVrEnSMuLJNJnRZlxbaGph55jTjhBjI6VEpX1Rg==',
-    '_yasc': 'vL3vqlOsRl0cp3g5L2FmaE6eVzLi6Lu1g6DfjO2bHy1HPKB19j5cz3ji5FSlCUkGLrqG6fGqXA==',
-    'forever_region_id': '4593',
-    'forever_region_name': '%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA',
-    'session_region_name': '%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA',
-    'session_region_id': '4935',
-    'session_main_town_region_id': '4935',
-    '_ga_3369S417EL': 'GS2.1.s1786545003$o60$g1$t1786545100$j60$l0$h0',
-    'uxfb_card_satisfaction': '%5B324918022%5D',
+    'session_region_id': '1',
+    'session_region_name': '%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
+    'forever_region_id': '1',
+    'forever_region_name': '%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0',
+    'session_main_town_region_id': '1',
+    '_ga_3369S417EL': 'GS2.1.s1788277945$o109$g1$t1788277994$j11$l0$h0',
 }
 
 headers = {
@@ -150,6 +157,10 @@ json_data = {
             'type': 'term',
             'value': 2,
         },
+        'electronic_trading': {
+            'type': 'term',
+            'value': 2,
+        },
     },
     '_liquiditySource': 'web_serp',
 }
@@ -176,7 +187,7 @@ cities_dict = {
 with open("coordinates.json", "r", encoding="utf-8") as f:
     city_centers = json.load(f)
 
-cities_list = [4935]
+cities_list = [4966, 4959, 4914, 4713, 4927, 4704]
 
 for city_id in cities_list:
 
@@ -217,27 +228,26 @@ for city_id in cities_list:
 
     json_data["jsonQuery"]["repair"]["value"] = [1]
 
-    # if items_count <=  1500:
-    #
-    #     rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
-    #     total_floor_list = [[1, 200]]
-    #
-    # elif  1500 < items_count < 2500:
-    #
-    #     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    #     total_floor_list = [[1, 200]]
-    #
-    # elif 2500 <= items_count <= 4500:
-    #
-    #     rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    #     total_floor_list = [[1, 6], [7, 12], [13, 200]]
-    #
-    # elif items_count > 4500:
+    if items_count <=  1500:
 
-    rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
-    # total_floor_list = [[1, 3], [4, 7], [8, 15], [16, 200]]
-    total_floor_list = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 15], [16, 18], [19, 22], [23, 25], [26, 30], [31, 35], [36, 40], [41, 50], [51, 65], [66, 999]]
-    total_floor_list = [[1, 99]]
+        rooms_ids = [[1, 2, 3, 4, 5, 6, 7, 9]]
+        total_floor_list = [[1, 200]]
+
+    elif  1500 < items_count < 3500:
+
+        rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
+        total_floor_list = [[1, 200]]
+
+    elif 3500 <= items_count <= 7500:
+
+        rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
+        total_floor_list = [[1, 3], [4, 8], [9, 15], [16, 200]]
+
+    elif items_count > 7500:
+
+        rooms_ids = [[1], [2], [3], [4], [5], [6], [7], [9]]
+        total_floor_list = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 15], [16, 18], [19, 22], [23, 25], [26, 30], [31, 35], [36, 40], [41, 50], [51, 65], [66, 999]]
+
 
     for rooms in rooms_ids:
 

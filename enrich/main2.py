@@ -105,7 +105,7 @@ def enrich_area_typology(df, area_json):
         .astype(float)
     )
 
-    developers_to_skip = {'А101', 'Аквилон'}
+    developers_to_skip = {'А101', 'Аквилон', 'Московские кварталы'}
     jk_name_to_skip = {'Гармония Парк', 'Мишино-2'}
     jk_name_to_skip2 = {'Серебро', 'Берег'}
 
